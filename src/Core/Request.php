@@ -7,7 +7,9 @@
 
 namespace SmartLicenseServer\Core;
 
-use SmartLicenseServer\Core\Parsers\HttpRequestParser;
+use Callismart\RequestParser\Exceptions\ParserException;
+use Callismart\RequestParser\HttpRequestParser;
+use SmartLicenseServer\Exceptions\Exception;
 use SmartLicenseServer\Utils\SanitizeAwareTrait;
 
 /**
@@ -227,8 +229,8 @@ class Request {
 				$result = $parser->parse();
 				$this->set_post_data( $result['post'] );
 				$this->set_uploaded_files( $result['files'] );
-			} catch ( \Exception $e ) {
-				throw $e;
+			} catch ( ParserException $e ) {
+				throw new Exception( $e->get_error_code(), $e->getMessage(), '', $e );
 			}
 
 		} else {

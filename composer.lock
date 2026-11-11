@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "466c2fcc0388296a6e411ad124b6644c",
+    "content-hash": "c1523394be6467ac18edb90ad7432d1d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -277,6 +277,56 @@
                 "source": "https://github.com/CallismartLtd/Http/tree/v1.1.0"
             },
             "time": "2026-08-28T19:41:33+00:00"
+        },
+        {
+            "name": "callismart/request-parser",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CallismartLtd/request-parser.git",
+                "reference": "def2bb2291361ee91afaca450209ffcf022dd634"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CallismartLtd/request-parser/zipball/def2bb2291361ee91afaca450209ffcf022dd634",
+                "reference": "def2bb2291361ee91afaca450209ffcf022dd634",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Callismart\\RequestParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Callistus Nwachukwu",
+                    "email": "admin@callismart.com.ng"
+                }
+            ],
+            "description": "Streaming HTTP request body parser for PHP. Fills the gaps in native $_POST/$_FILES population (PUT, PATCH, DELETE and JSON bodies) and returns post, files and query data.",
+            "keywords": [
+                "form-data",
+                "http",
+                "json",
+                "multipart",
+                "parser",
+                "request",
+                "streaming"
+            ],
+            "support": {
+                "issues": "https://github.com/CallismartLtd/request-parser/issues",
+                "source": "https://github.com/CallismartLtd/request-parser/tree/v1.0.0"
+            },
+            "time": "2026-11-11T13:22:43+00:00",
+            "published-time": "2026-11-11T13:24:22+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -7157,5 +7207,5 @@
         "ext-zip": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

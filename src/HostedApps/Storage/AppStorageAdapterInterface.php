@@ -24,6 +24,8 @@ use SmartLicenseServer\Exceptions\StorageException;
  * See AppFile for the kinds and the rules for types, slugs and names:
  *  - one package (the latest distributable);
  *  - one manifest (app.json);
+ *  - at most one attestation (the server's signed checksums of the
+ *    package), written only by the server and replaced with the package;
  *  - any number of artifacts, assets and documents, each named.
  * The adapter stores names exactly as given. Which names are allowed (icon
  * names, screenshot numbering, artifact naming) is the app type's business
@@ -66,7 +68,7 @@ use SmartLicenseServer\Exceptions\StorageException;
  * stat() and the list methods describe a file as
  * array{name: string, size: int, mtime: int, mime_type: string}:
  *  - name: the file's name ("{slug}.zip" for the package, "app.json" for
- *    the manifest);
+ *    the manifest, the adapter's own name for the attestation);
  *  - size: bytes;
  *  - mtime: last modification as a Unix timestamp;
  *  - mime_type: the detected media type, "application/octet-stream" when it
@@ -211,6 +213,52 @@ interface AppStorageAdapterInterface {
 	 *                          encoded as JSON.
 	 */
 	public function put_manifest( string $type, string $slug, array $manifest ) : void;
+
+	/*
+	|---------------
+	| Attestation
+	|---------------
+	*/
+
+	/**
+	 * Get the attestation of the main package.
+	 *
+	 * @param string $type App type.
+	 * @param string $slug App slug.
+	 * @return array{checksums: string, signature: string}|null The stored
+	 *         attestation, or null when the app has none or it is not a
+	 *         well-formed attestation.
+	 * @throws StorageException INVALID_PATH; NOT_FOUND when the app does not
+	 *                          exist; IO_ERROR.
+	 */
+	public function get_attestation( string $type, string $slug ) : ?array;
+
+	/**
+	 * Store the attestation of the main package, replacing any existing one.
+	 *
+	 * The checksums and signature are stored byte for byte: the signature
+	 * covers the exact checksums text.
+	 *
+	 * @param string $type App type.
+	 * @param string $slug App slug.
+	 * @param array{checksums: string, signature: string} $attestation The attestation.
+	 * @return void
+	 * @throws StorageException INVALID_PATH, also when either value is
+	 *                          missing or not a non-empty string; NOT_FOUND
+	 *                          when the app does not exist; IO_ERROR.
+	 */
+	public function put_attestation( string $type, string $slug, array $attestation ) : void;
+
+	/**
+	 * Delete the attestation of the main package.
+	 *
+	 * @param string $type App type.
+	 * @param string $slug App slug.
+	 * @return void
+	 * @throws StorageException INVALID_PATH; NOT_FOUND when the app or its
+	 *                          attestation does not exist; IO_ERROR.
+	 */
+	public function delete_attestation( string $type, string $slug ) : void;
 
 	/*
 	|-------------

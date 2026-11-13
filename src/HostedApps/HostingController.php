@@ -94,6 +94,10 @@ class HostingController {
 				throw new RequestException( 'invalid_input', 'Sorry there is no app matching the provided slug or ID.' , [ 'status' => 404 ] );
 			}
 
+			// The main package is always the latest release: its version only
+			// changes together with a new package (checked before saving).
+			$version_before = $app->exists() ? $app->get_version() : '';
+
 			static::check_app_ownership( $app );
 
 			$name = $request->get( 'app_name', null );
@@ -161,6 +165,19 @@ class HostingController {
 
 			$new_owner_id  = $app->get_owner_id();
 			$owner_changed = ! $is_new && $new_owner_id !== $old_owner_id;
+
+			if ( ! $is_new && ! $zip_uploaded && $app->get_version() !== $version_before ) {
+				throw new RequestException(
+					'package_required',
+					sprintf(
+						'The version of "%s" changes only with a new package. Upload the ZIP of version %s to change it from %s.',
+						$app->get_name(),
+						$app->get_version(),
+						$version_before
+					),
+					[ 'status' => 400 ]
+				);
+			}
 
 			$result = $app->save();
 
@@ -611,19 +628,6 @@ class HostingController {
 				);
 			}
 
-			$requires_attestation = $registry->uses_marketplace_attestation( $app_type )
-				&& str_ends_with( strtolower( $canonical_filename ), '.zip' );
-
-			if ( $requires_attestation ) {
-				if ( null === $artifact_file ) {
-					throw new RequestException( 'invalid_input', 'Re-upload this ZIP so the marketplace can attest its new artifact name.' );
-				}
-
-				// Refuse before the ZIP is stored if the hosting service has no
-				// matching marketplace key configured.
-				$registry->assert_attestation_configured();
-			}
-
 			if ( null === $artifact_file ) {
 
 				if ( ! $is_edit ) {
@@ -649,14 +653,6 @@ class HostingController {
 					$response_data->get_error_code(),
 					$response_data->get_error_message(),
 					$response_data->get_error_data()
-				);
-			}
-
-			if ( $requires_attestation ) {
-				$response_data['attestation'] = $registry->attest_artifact(
-					$app_type,
-					$app->get_slug(),
-					$canonical_filename
 				);
 			}
 
@@ -1084,7 +1080,8 @@ class HostingController {
 
 		$actions = match ( $kind ) {
 			AppFile::PACKAGE                     => [ 'download' => true ],
-			AppFile::MANIFEST, AppFile::DOCUMENT => [ 'view' => true ],
+			AppFile::MANIFEST, AppFile::DOCUMENT,
+			AppFile::ATTESTATION                 => [ 'view' => true ],
 			AppFile::ASSET                       => [
 				'view'    => true,
 				'replace' => $can( 'hosted_apps.edit_assets' ),

@@ -19,11 +19,14 @@ use SmartLicenseServer\Exceptions\StorageException;
  * storage path.
  *
  * Kinds:
- *  - package:  the main distributable, "{slug}.zip". No name.
- *  - manifest: the app.json served as "{type}.manifest". No name.
- *  - artifact: another distributable served under "artifacts". Named.
- *  - asset:    a screenshot, banner, icon or similar. Named.
- *  - document: an app-type file such as readme.txt or style.css. Named.
+ *  - package:     the main distributable, "{slug}.zip". No name.
+ *  - manifest:    the app.json served as "{type}.manifest". No name.
+ *  - attestation: the hosting server's signed checksums of the package
+ *                 (see HostingAttestation). No name; written only by the
+ *                 server, never uploaded.
+ *  - artifact:    another distributable served under "artifacts". Named.
+ *  - asset:       a screenshot, banner, icon or similar. Named.
+ *  - document:    an app-type file such as readme.txt or style.css. Named.
  *
  * Construction validates everything, so an AppFile that exists is always
  * well formed. The rules:
@@ -38,11 +41,12 @@ use SmartLicenseServer\Exceptions\StorageException;
  */
 final class AppFile {
 
-	public const PACKAGE  = 'package';
-	public const MANIFEST = 'manifest';
-	public const ARTIFACT = 'artifact';
-	public const ASSET    = 'asset';
-	public const DOCUMENT = 'document';
+	public const PACKAGE     = 'package';
+	public const MANIFEST    = 'manifest';
+	public const ATTESTATION = 'attestation';
+	public const ARTIFACT    = 'artifact';
+	public const ASSET       = 'asset';
+	public const DOCUMENT    = 'document';
 
 	/**
 	 * Kinds that need a name.
@@ -56,7 +60,7 @@ final class AppFile {
 	 *
 	 * @var string[]
 	 */
-	public const KINDS = [ self::PACKAGE, self::MANIFEST, self::ARTIFACT, self::ASSET, self::DOCUMENT ];
+	public const KINDS = [ self::PACKAGE, self::MANIFEST, self::ATTESTATION, self::ARTIFACT, self::ASSET, self::DOCUMENT ];
 
 	/**
 	 * Pattern for app types.
@@ -122,6 +126,17 @@ final class AppFile {
 	 */
 	public static function manifest( string $type, string $slug ) : self {
 		return new self( $type, $slug, self::MANIFEST );
+	}
+
+	/**
+	 * The hosting attestation of the main package.
+	 *
+	 * @param string $type App type.
+	 * @param string $slug App slug.
+	 * @return self
+	 */
+	public static function attestation( string $type, string $slug ) : self {
+		return new self( $type, $slug, self::ATTESTATION );
 	}
 
 	/**

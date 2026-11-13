@@ -138,6 +138,17 @@ class V1 implements RESTVersionInterface {
 	 */
 	private const REPOSITORY_APP_ROUTE = 'repository/' . self::APP_ROUTE_PATTERN;
 
+	/**
+	 * Route to get what an update client downloads for an application.
+	 * @example ```GET
+	 *  /repository/software/acme/release
+	 *  /repository/software/acme/release?artifact=acme-1.2.0.zip
+	 * ```
+	 *
+	 * @var string
+	 */
+	private const REPOSITORY_APP_RELEASE_ROUTE = self::REPOSITORY_APP_ROUTE . '/release';
+
 	/** 
 	 * Route to  operations on an applications' assets.
 	 * @example ```POST
@@ -365,6 +376,16 @@ class V1 implements RESTVersionInterface {
 					'args'     => self::get_repository_app_args(),
 					'category' => 'repository',
 					'name'     => 'Get Single Application',
+				],
+
+				[
+					'route'    => self::REPOSITORY_APP_RELEASE_ROUTE,
+					'methods'  => ['GET'],
+					'handler'  => [ HostedApps::class, 'release_get' ],
+					'guard'    => [ HostedApps::class, 'repository_get_guard' ],
+					'args'     => self::get_app_release_args(),
+					'category' => 'repository',
+					'name'     => 'Get Application Release',
 				],
 				
 				[
@@ -771,6 +792,21 @@ class V1 implements RESTVersionInterface {
 	 */
 	private static function get_repository_app_args() : array {
 		return [];
+	}
+
+	/**
+	 * Request arguments for the app release route.
+	 *
+	 * @return array
+	 */
+	private static function get_app_release_args() : array {
+		return [
+			'artifact' => [
+				'required'    => false,
+				'type'        => 'string',
+				'description' => 'Name of a ZIP artifact to download instead of the main package, e.g. "acme-1.2.0.zip". Its integrity is the developer\'s <name>.sha256 and <name>.sha256.sig artifacts; version and security are then null.',
+			],
+		];
 	}
 
 	/**

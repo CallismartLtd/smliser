@@ -12,27 +12,33 @@ namespace SmartLicenseServer\Environments\Application\Update;
 
 use Callismart\Http\HttpClient;
 use SmartLicenseServer\FileSystem\FileSystem;
-use SmartLicenseServer\HostedApps\MarketplaceAttestation;
 use Throwable;
 
 /**
  * The Smart License Server instance that publishes this application's
  * releases, and the only source of updates.
  *
- * Asks the REST API for the latest version, then downloads that version's
- * zip, checksums and checksums signature from the public artifact route
- * and verifies them before returning the zip.
+ * Every question goes to the server's release route
+ * (/repository/{type}/{slug}/release, see AppRelease), which states what to
+ * download and embeds the checksums and signature to check it with; this
+ * class never builds a download URL or guesses a file name.
  *
- * The same server is the marketplace for packages this application
- * installs (site themes, see ThemeInstaller): latest_of() and
- * download_artifact() do the same for any hosted app on it, and
- * latest() and download() are those calls for this application.
+ * Two kinds of package, each checked against its own pinned keys:
+ *
+ *  - This application (download()): the build of a version, published as
+ *    the artifact "smart-license-server-<version>-standalone.zip" with the
+ *    release's own .sha256 and .sha256.sig artifacts, verified with the
+ *    release keys (ReleaseSignature::PUBLIC_KEYS).
+ *  - Marketplace modules (download_module()): a theme's or extension's main
+ *    package, verified against the hosting attestation of the official
+ *    marketplace (HostingAttestation::MARKETPLACE_PUBLIC_KEY), which also
+ *    names the app it belongs to.
+ *
+ * Which keys apply is decided by the caller, never by what the server says.
  */
 final class UpdateServer {
 
 	use UpdateProgressTrait;
-
-	private PackageVerifier $marketplace_verifier;
 
 	/**
 	 * The update server URL.
@@ -40,6 +46,13 @@ final class UpdateServer {
 	 * @var string
 	 */
 	public const HOST = 'https://smliser.local';
+
+	/**
+	 * Path of the server's REST API.
+	 *
+	 * @var string
+	 */
+	public const API_PATH = '/smliser/v1';
 
 	/**
 	 * Hosted app type of this application on the update server.
@@ -63,7 +76,7 @@ final class UpdateServer {
 	public const TARGET = 'standalone';
 
 	/**
-	 * Seconds allowed for the info request and the small artifacts.
+	 * Seconds allowed for the release request.
 	 *
 	 * @var int
 	 */
@@ -79,25 +92,100 @@ final class UpdateServer {
 	/**
 	 * Constructor.
 	 *
-	 * @param HttpClient      $http     Outgoing HTTP client.
-	 * @param PackageVerifier      $verifier             Checks application releases.
-	 * @param FileSystem           $fs                   Filesystem API.
-	 * @param PackageVerifier|null $marketplace_verifier Checks hosted app packages.
+	 * @param HttpClient      $http                 Outgoing HTTP client.
+	 * @param PackageVerifier $verifier             Checks application releases (release keys).
+	 * @param FileSystem      $fs                   Filesystem API.
+	 * @param PackageVerifier $marketplace_verifier Checks marketplace modules (marketplace key).
 	 */
 	public function __construct(
 		private HttpClient $http,
 		private PackageVerifier $verifier,
 		private FileSystem $fs,
-		?PackageVerifier $marketplace_verifier = null
-	) {
-		$this->marketplace_verifier = $marketplace_verifier ?? $verifier;
+		private PackageVerifier $marketplace_verifier
+	) {}
+
+	/*
+	|------------
+	| Releases
+	|------------
+	*/
+
+	/**
+	 * The release of a hosted app on the update server.
+	 *
+	 * @param string        $app_type Hosted app type on the update server.
+	 * @param string        $app_slug Hosted app slug on the update server.
+	 * @param string|null   $artifact Name of a ZIP artifact to target; null for the main package.
+	 * @param callable|null $progress Progress callback, see UpdateProgressTrait.
+	 * @return array{
+	 *     type: string,
+	 *     slug: string,
+	 *     version: ?string,
+	 *     security: ?bool,
+	 *     requires_token: bool,
+	 *     package: array{name: string, url: string},
+	 *     integrity: array{signer: string, checksums: string, signature: ?string}|null,
+	 *     source: string
+	 * } The release as the server describes it (see AppRelease), and the URL it was asked at.
+	 * @throws UpdateException When the server cannot be reached, does not publish it, or does not answer as expected.
+	 */
+	public function release( string $app_type, string $app_slug, ?string $artifact = null, ?callable $progress = null ) : array {
+		$url = self::HOST . self::API_PATH . '/repository/' . rawurlencode( $app_type ) . '/' . rawurlencode( $app_slug ) . '/release';
+
+		if ( null !== $artifact ) {
+			$url .= '?' . http_build_query( [ 'artifact' => $artifact ] );
+		}
+
+		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( 'Asking %s for the release.', $url ) );
+
+		try {
+			$response = $this->http->get(
+				url: $url,
+				headers: [
+					'Accept'     => 'application/json',
+					'User-Agent' => \smliser_http_ua( true ),
+				],
+				options: [ 'timeout' => self::TIMEOUT ]
+			);
+		} catch ( Throwable $e ) {
+			throw new UpdateException( sprintf( 'Could not reach the update server: %s', $e->getMessage() ), 0, $e );
+		}
+
+		if ( 404 === $response->status_code ) {
+			throw new UpdateException(
+				null !== $artifact
+					? sprintf( 'The update server does not publish %s yet; try again later.', $artifact )
+					: ( self::APP_TYPE === $app_type && self::APP_SLUG === $app_slug
+						? 'The update server does not publish this application.'
+						: sprintf( 'The update server does not publish "%s".', $app_slug ) )
+			);
+		}
+
+		if ( ! $response->is_success() ) {
+			throw new UpdateException( sprintf( 'The update server answered with HTTP %d; try again later.', $response->status_code ) );
+		}
+
+		$body    = $response->json();
+		$release = is_array( $body ) ? ( $body['release'] ?? null ) : null;
+
+		if ( ! is_array( $release ) || ! self::is_release( $release ) ) {
+			throw new UpdateException( 'The update server did not describe a release; try again later.' );
+		}
+
+		// The release must be the one asked for, so its identity can be checked against the attestation.
+		if ( $app_type !== $release['type'] || $app_slug !== $release['slug'] || ( null !== $artifact && $artifact !== $release['package']['name'] ) ) {
+			throw new UpdateException( 'The update server described a different release than the one asked for.' );
+		}
+
+		$release['source'] = $url;
+
+		return $release;
 	}
 
 	/**
-	 * The latest release the update server publishes.
+	 * The latest release of this application.
 	 *
-	 * A release is a security release when its app.json (served as
-	 * "manifest") has "security": true.
+	 * A release is a security release when its app.json has "security": true.
 	 *
 	 * @param callable|null $progress Progress callback, see UpdateProgressTrait.
 	 * @return array{version: string, security: bool, source: string}
@@ -117,51 +205,15 @@ final class UpdateServer {
 	 * @throws UpdateException When the server cannot be reached, does not publish the app, or does not answer as expected.
 	 */
 	public function latest_of( string $app_type, string $app_slug, ?callable $progress = null ) : array {
-		$url = self::HOST . '/smliser/v1/repository/' . rawurlencode( $app_type ) . '/' . rawurlencode( $app_slug );
+		$release = $this->release( $app_type, $app_slug, null, $progress );
+		$version = self::assert_version( $release );
 
-		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( 'Asking %s for the latest version.', $url ) );
-
-		try {
-			$response = $this->http->get(
-				url: $url,
-				headers: [
-					'Accept'     => 'application/json',
-					'User-Agent' => \smliser_http_ua( true )
-				],
-				options: ['timeout' => self::TIMEOUT ]
-			);
-
-		} catch ( Throwable $e ) {
-			throw new UpdateException( sprintf( 'Could not reach the update server: %s', $e->getMessage() ), 0, $e );
-		}
-
-		if ( 404 === $response->status_code ) {
-			throw new UpdateException(
-				self::APP_TYPE === $app_type && self::APP_SLUG === $app_slug
-					? 'The update server does not publish this application.'
-					: sprintf( 'The update server does not publish "%s".', $app_slug )
-			);
-		}
-
-		if ( ! $response->is_success() ) {
-			throw new UpdateException( sprintf( 'The update server answered with HTTP %d; try again later.', $response->status_code ) );
-		}
-
-		$app     = $response->json()[ $app_type ] ?? null;
-		$version = is_array( $app ) ? ( $app['version'] ?? null ) : null;
-
-		if ( ! is_string( $version ) || 1 !== preg_match( '/^\d+\.\d+\.\d+([.+-][0-9A-Za-z.+-]+)?$/', $version ) ) {
-			throw new UpdateException( 'The update server did not report a valid version; try again later.' );
-		}
-
-		$security = true === ( $app['manifest']['security'] ?? false );
-
-		$this->report( $progress, 'check', self::STATUS_OK, sprintf( 'The update server publishes %s %s%s.', $app_slug, $version, $security ? ' (security release)' : '' ) );
+		$this->report( $progress, 'check', self::STATUS_OK, sprintf( 'The update server publishes %s %s%s.', $app_slug, $version, $release['security'] ? ' (security release)' : '' ) );
 
 		return [
 			'version'  => $version,
-			'security' => $security,
-			'source'   => $url,
+			'security' => true === $release['security'],
+			'source'   => $release['source'],
 		];
 	}
 
@@ -187,7 +239,7 @@ final class UpdateServer {
 			$query['search'] = $search;
 		}
 
-		$url = self::HOST . '/smliser/v1/repository/?' . http_build_query( $query );
+		$url = self::HOST . self::API_PATH . '/repository/?' . http_build_query( $query );
 
 		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( 'Asking %s for its %s apps.', self::HOST, $app_type ) );
 
@@ -196,7 +248,7 @@ final class UpdateServer {
 				url: $url,
 				headers: [
 					'Accept'     => 'application/json',
-					'User-Agent' => \smliser_http_ua( true )
+					'User-Agent' => \smliser_http_ua( true ),
 				],
 				options: [ 'timeout' => self::TIMEOUT ]
 			);
@@ -226,42 +278,99 @@ final class UpdateServer {
 		];
 	}
 
-	/**
-	 * Download a version's package and verify it.
-	 *
-	 * @param string $version        Version to download.
-	 * @param string $dir            Existing, writable directory to download into.
-	 * @param bool          $trust_unsigned Accept a package without a valid signature.
-	 * @param callable|null $progress       Progress callback, see UpdateProgressTrait.
-	 * @return array{zip: string, source: string, sha256: string, signed_by: ?string, warnings: string[]}
-	 *         The verified zip, the URL it came from, its SHA-256, the key that signed it, and warnings.
-	 * @throws UpdateException When a download or a check fails; nothing downloaded is kept.
-	 */
-	public function download( string $version, string $dir, bool $trust_unsigned = false, ?callable $progress = null ) : array {
-		return $this->download_artifact( self::APP_TYPE, self::APP_SLUG, self::package_base( $version ), $dir, $trust_unsigned, $progress );
-	}
+	/*
+	|-------------
+	| Downloads
+	|-------------
+	*/
 
 	/**
-	 * Download a hosted app's package artifacts and verify them.
+	 * Download a version of this application and verify it with the release keys.
 	 *
-	 * The app publishes <base>.zip, <base>.sha256 and (signed packages)
-	 * <base>.sha256.sig as artifacts; see PackageVerifier.
-	 *
-	 * @param string        $app_type       Hosted app type on the update server.
-	 * @param string        $app_slug       Hosted app slug on the update server.
-	 * @param string        $base           Artifact base name, e.g. "acme-1.0.0".
+	 * @param string        $version        Version to download.
 	 * @param string        $dir            Existing, writable directory to download into.
 	 * @param bool          $trust_unsigned Accept a package without a valid signature.
 	 * @param callable|null $progress       Progress callback, see UpdateProgressTrait.
 	 * @return array{zip: string, source: string, sha256: string, signed_by: ?string, warnings: string[]}
-	 * @throws UpdateException When a download or a check fails; nothing downloaded is kept.
+	 *         The verified zip, the URL it came from, its SHA-256, the key that signed it, and warnings.
+	 * @throws UpdateException When the release, the download or a check fails; nothing downloaded is kept.
 	 */
-	public function download_artifact( string $app_type, string $app_slug, string $base, string $dir, bool $trust_unsigned = false, ?callable $progress = null ) : array {
-		$zip = rtrim( $dir, '/\\' ) . '/' . $base . '.zip';
-		$url = $this->artifact_url( $app_type, $app_slug, $base . '.zip' );
+	public function download( string $version, string $dir, bool $trust_unsigned = false, ?callable $progress = null ) : array {
+		$release = $this->release( self::APP_TYPE, self::APP_SLUG, self::package_base( $version ) . '.zip', $progress );
 
-		$checksums = $this->fetch( $app_type, $app_slug, $base . '.sha256', false, $progress );
-		$signature = $this->fetch( $app_type, $app_slug, $base . '.sha256.sig', true, $progress );
+		return $this->fetch_verified( $release, $dir, $this->verifier, $trust_unsigned, null, $progress );
+	}
+
+	/**
+	 * Download a marketplace module's main package and verify its hosting
+	 * attestation with the pinned marketplace key.
+	 *
+	 * @param array         $release  The module's release, from release() with no artifact.
+	 * @param string        $dir      Existing, writable directory to download into.
+	 * @param callable|null $progress Progress callback, see UpdateProgressTrait.
+	 * @return array{zip: string, source: string, sha256: string, signed_by: ?string, warnings: string[]}
+	 * @throws UpdateException When the download or a check fails; nothing downloaded is kept.
+	 */
+	public function download_module( array $release, string $dir, ?callable $progress = null ) : array {
+		if ( ! self::is_release( $release ) ) {
+			throw new UpdateException( 'The module release is not a release from release().' );
+		}
+
+		$identity = [ 'type' => $release['type'], 'slug' => $release['slug'], 'artifact' => $release['slug'] . '.zip' ];
+
+		if ( $identity['artifact'] !== $release['package']['name'] ) {
+			throw new UpdateException( sprintf( 'Marketplace modules install from their main package, not from %s.', $release['package']['name'] ) );
+		}
+
+		return $this->fetch_verified( $release, $dir, $this->marketplace_verifier, false, $identity, $progress );
+	}
+
+	/**
+	 * Release artifact base name of a version of this application.
+	 *
+	 * @param string $version Version.
+	 * @return string E.g. "smart-license-server-1.2.0-standalone".
+	 */
+	public static function package_base( string $version ) : string {
+		return self::APP_SLUG . '-' . $version . '-' . self::TARGET;
+	}
+
+	/**
+	 * The version a release announces.
+	 *
+	 * @param array $release A release from release().
+	 * @return string
+	 * @throws UpdateException When it announces no valid version.
+	 */
+	public static function assert_version( array $release ) : string {
+		$version = $release['version'] ?? null;
+
+		if ( ! is_string( $version ) || 1 !== preg_match( '/^\d+\.\d+\.\d+([.+-][0-9A-Za-z.+-]+)?$/', $version ) ) {
+			throw new UpdateException( 'The update server did not report a valid version; try again later.' );
+		}
+
+		return $version;
+	}
+
+	/**
+	 * Download a release's package and verify it against its integrity.
+	 *
+	 * @param array                $release        A release from release().
+	 * @param string               $dir            Existing, writable directory to download into.
+	 * @param PackageVerifier      $verifier       Verifier holding the keys the package must be signed with.
+	 * @param bool                 $trust_unsigned Accept a package without a valid signature.
+	 * @param array|null           $identity       Attestation identity the checksums must name; null for none.
+	 * @param callable|null        $progress       Progress callback, see UpdateProgressTrait.
+	 * @return array{zip: string, source: string, sha256: string, signed_by: ?string, warnings: string[]}
+	 * @throws UpdateException When the download or a check fails; nothing downloaded is kept.
+	 */
+	private function fetch_verified( array $release, string $dir, PackageVerifier $verifier, bool $trust_unsigned, ?array $identity, ?callable $progress ) : array {
+		if ( $release['requires_token'] ) {
+			throw new UpdateException( sprintf( '%s needs a download token, which this installation cannot send yet.', $release['package']['name'] ) );
+		}
+
+		$url = $release['package']['url'];
+		$zip = rtrim( $dir, '/\\' ) . '/' . $release['package']['name'];
 
 		$this->report( $progress, 'download', self::STATUS_INFO, sprintf( 'Downloading %s.', $url ) );
 
@@ -270,7 +379,7 @@ final class UpdateServer {
 				url: $url,
 				destination: $zip,
 				headers: [
-					'User-Agent' => \smliser_http_ua( true )
+					'User-Agent' => \smliser_http_ua( true ),
 				],
 				options: [ 'timeout' => self::DOWNLOAD_TIMEOUT ]
 			);
@@ -286,10 +395,10 @@ final class UpdateServer {
 
 		$this->report( $progress, 'download', self::STATUS_OK, sprintf( 'Downloaded %s (%s) to %s.', basename( $zip ), $this->size( $zip ), $zip ) );
 
+		$checksums = $release['integrity']['checksums'] ?? null;
+		$signature = $release['integrity']['signature'] ?? null;
+
 		try {
-			$marketplace_module = in_array( $app_type, MarketplaceAttestation::REQUIRED_APP_TYPES, true );
-			$identity = $marketplace_module ? [ 'type' => $app_type, 'slug' => $app_slug, 'artifact' => $base . '.zip' ] : null;
-			$verifier = $marketplace_module ? $this->marketplace_verifier : $this->verifier;
 			$verified = $verifier->verify( $zip, $checksums, $signature, $trust_unsigned, $progress, $identity );
 		} catch ( UpdateException $e ) {
 			$this->discard( $zip );
@@ -300,65 +409,34 @@ final class UpdateServer {
 	}
 
 	/**
-	 * Release artifact base name of a version.
+	 * Whether an array has the shape of a release (see AppRelease).
 	 *
-	 * @param string $version Version.
-	 * @return string E.g. "smart-license-server-1.2.0-standalone".
-	 */
-	public static function package_base( string $version ) : string {
-		return self::APP_SLUG . '-' . $version . '-' . self::TARGET;
-	}
-
-	/**
-	 * Fetch a small artifact into memory.
+	 * The package name must be a plain ZIP file name, since it becomes the
+	 * downloaded file's name.
 	 *
-	 * @param string        $app_type Hosted app type on the update server.
-	 * @param string        $app_slug Hosted app slug on the update server.
-	 * @param string        $name     Artifact file name.
-	 * @param bool          $optional Return null instead of failing when it is not published.
-	 * @param callable|null $progress Progress callback, see UpdateProgressTrait.
-	 * @return string|null
-	 * @throws UpdateException When it cannot be fetched.
+	 * @param array $release Candidate release.
+	 * @return bool
 	 */
-	private function fetch( string $app_type, string $app_slug, string $name, bool $optional = false, ?callable $progress = null ) : ?string {
-		$url = $this->artifact_url( $app_type, $app_slug, $name );
+	private static function is_release( array $release ) : bool {
+		$package   = $release['package'] ?? null;
+		$integrity = $release['integrity'] ?? null;
 
-		$this->report( $progress, 'download', self::STATUS_INFO, sprintf( 'Fetching %s.', $url ) );
-
-		try {
-			$response = $this->http->get(
-				url: $url,
-				headers: [
-					'User-Agent' => \smliser_http_ua( true )
-				],
-				options: [ 'timeout' => self::TIMEOUT ]
-			);
-		} catch ( Throwable $e ) {
-			throw new UpdateException( sprintf( 'Could not download %s: %s', $name, $e->getMessage() ), 0, $e );
-		}
-
-		if ( $optional && 404 === $response->status_code ) {
-			$this->report( $progress, 'download', self::STATUS_WARNING, sprintf( '%s is not published.', $name ) );
-			return null;
-		}
-
-		if ( ! $response->is_success() ) {
-			throw new UpdateException( sprintf( 'Could not download %s (HTTP %d).', $name, $response->status_code ) );
-		}
-
-		return $response->body;
-	}
-
-	/**
-	 * Public URL of a hosted app's artifact.
-	 *
-	 * @param string $app_type Hosted app type on the update server.
-	 * @param string $app_slug Hosted app slug on the update server.
-	 * @param string $name     Artifact file name.
-	 * @return string
-	 */
-	private function artifact_url( string $app_type, string $app_slug, string $name ) : string {
-		return self::HOST . '/downloads/' . rawurlencode( $app_type ) . '/' . rawurlencode( $app_slug ) . '/artifacts/' . rawurlencode( $name );
+		return is_string( $release['type'] ?? null )
+			&& is_string( $release['slug'] ?? null )
+			&& ( null === ( $release['version'] ?? null ) || is_string( $release['version'] ) )
+			&& ( null === ( $release['security'] ?? null ) || is_bool( $release['security'] ) )
+			&& is_bool( $release['requires_token'] ?? null )
+			&& is_array( $package )
+			&& is_string( $package['name'] ?? null )
+			&& 1 === preg_match( '/^[^\/\\\\\x00-\x1F]+\.zip$/i', $package['name'] )
+			&& ! str_starts_with( $package['name'], '.' )
+			&& is_string( $package['url'] ?? null )
+			&& '' !== $package['url']
+			&& ( null === $integrity || (
+				is_array( $integrity )
+				&& is_string( $integrity['checksums'] ?? null )
+				&& ( null === ( $integrity['signature'] ?? null ) || is_string( $integrity['signature'] ) )
+			) );
 	}
 
 	/**

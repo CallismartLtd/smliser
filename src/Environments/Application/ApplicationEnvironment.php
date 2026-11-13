@@ -60,7 +60,7 @@ use SmartLicenseServer\Environments\Application\Update\UpdateRunner;
 use SmartLicenseServer\Environments\Application\Update\UpdateService;
 use SmartLicenseServer\Environments\Application\Web\RestAPIProvider;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
-use SmartLicenseServer\HostedApps\MarketplaceAttestation;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 use SmartLicenseServer\Monetization\MonetizationRegistry;
 use SmartLicenseServer\HostedApps\Storage\AppStorage;
 use SmartLicenseServer\HostedApps\Storage\DirectoryAppStorage;
@@ -192,7 +192,7 @@ class ApplicationEnvironment extends Environment {
 		);
 		$marketplace_verifier = new PackageVerifier(
 			$this->container->get( FileSystem::class ),
-			new ReleaseSignature( [ 'marketplace' => MarketplaceAttestation::PUBLIC_KEY ] )
+			new ReleaseSignature( [ 'marketplace' => HostingAttestation::MARKETPLACE_PUBLIC_KEY ] )
 		);
 
 		$this->container->singleton(

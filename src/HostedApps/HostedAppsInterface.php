@@ -255,6 +255,13 @@ interface HostedAppsInterface {
 	public function get_download_url() : URL;
 
 	/**
+	 * Get the download link of the owner's choosing.
+	 *
+	 * @return URL|null Null when the app is downloaded from this site.
+	 */
+	public function get_custom_download_url() : ?URL;
+
+	/**
 	 * Get the author's name.
 	 *
 	 * @return string

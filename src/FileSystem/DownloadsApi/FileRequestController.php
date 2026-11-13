@@ -143,21 +143,27 @@ class FileRequestController {
 				['type' => $app->get_type()]
 			);
 
-			$response->post_response_action(
-				[$this->apps_analytics, 'log_download'],
-				$app,
-				$request->ip(),
-				(string) $request->userAgent()
-			);
+			// Checksums and signatures are fetched beside a package; only the
+			// package itself counts as a download.
+			$is_sidecar = str_ends_with( $artifact_filename, '.sha256' ) || str_ends_with( $artifact_filename, '.sig' );
 
-			$response->post_response_action(
-				[$this->apps_analytics, 'log_client_access'],
-				$app,
-				'download',
-				$request->ip(),
-				(string) $request->userAgent()
-			);
-			
+			if ( ! $is_sidecar ) {
+				$response->post_response_action(
+					[$this->apps_analytics, 'log_download'],
+					$app,
+					$request->ip(),
+					(string) $request->userAgent()
+				);
+
+				$response->post_response_action(
+					[$this->apps_analytics, 'log_client_access'],
+					$app,
+					'download',
+					$request->ip(),
+					(string) $request->userAgent()
+				);
+			}
+
 			return $response;
 
 		} catch ( FileRequestException $e ) {

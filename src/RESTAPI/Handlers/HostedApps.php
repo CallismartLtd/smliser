@@ -15,6 +15,7 @@ use SmartLicenseServer\Core\Response;
 use SmartLicenseServer\Core\UploadedFile;
 use SmartLicenseServer\Exceptions\RequestException;
 use SmartLicenseServer\HostedApps\AbstractHostedApp;
+use SmartLicenseServer\HostedApps\AppRelease;
 use SmartLicenseServer\HostedApps\HostedApplicationService;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
 use SmartLicenseServer\HostedApps\HostedAppsInterface;
@@ -34,7 +35,8 @@ class HostedApps extends DataStore {
 		protected MonetizationRegistry $monetization,
 		protected AppsAnalytics $apps_analytics,
 		protected RepositoryVisibility $visibility,
-		protected HostedAppsRegistry $registry
+		protected HostedAppsRegistry $registry,
+		protected AppRelease $releases
 	) {}
 
 	/**
@@ -225,6 +227,47 @@ class HostedApps extends DataStore {
 		}
 		
 		return Response::json( $data, 200 );
+	}
+
+	/**
+	 * Responds to HTTP GET request on the app release route:
+	 * /repository/{app-type}/{app-slug}/release[?artifact=<name>.zip].
+	 *
+	 * The update check of every hosted app: the latest version and what to
+	 * download, with its integrity (see AppRelease). Not cached, so it never
+	 * describes a package or artifact that has since been replaced.
+	 *
+	 * An app that is not active is not found (404), except for a system
+	 * admin (RepositoryVisibility).
+	 *
+	 * @param Request $request The REST API request object.
+	 * @return Response
+	 */
+	public function release_get( Request $request ) : Response {
+		$app_type = (string) $request->getTyped( 'app_type', 'string', '' );
+		$app_slug = (string) $request->getTyped( 'app_slug', 'string', '' );
+		$artifact = $request->get( 'artifact' );
+		$artifact = is_string( $artifact ) && '' !== $artifact ? $artifact : null;
+		$app      = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
+
+		if ( ! $app || ! $this->visibility->can_view( $app ) ) {
+			return Response::error( new RequestException( 'app_not_found', __( 'The requested app could not be found', 'smliser' ), [ 'status' => 404 ] ), 404 );
+		}
+
+		try {
+			$release = $this->releases->describe( $app, $artifact );
+		} catch ( RequestException $e ) {
+			return Response::error( $e, (int) ( ( (array) $e->get_error_data() )['status'] ?? 400 ) );
+		}
+
+		$this->apps_analytics->log_client_access(
+			$app,
+			\sprintf( '%s_release', $app->get_type() ),
+			$request->ip(),
+			(string) $request->userAgent()
+		);
+
+		return Response::json( [ 'success' => true, 'release' => $release ], 200 );
 	}
 
 	/**

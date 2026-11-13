@@ -133,6 +133,11 @@ class RequestException extends Exception {
 			'title'   => 'Application Not Found',
 			'message' => 'The requested application could not be located.'
 		],
+		'release_not_found' => [
+			'status'  => 404,
+			'title'   => 'Release Not Found',
+			'message' => 'The requested application has nothing to download.'
+		],
 		'resource_owner_not_found' => [
 			'status'  => 404,
 			'title'   => 'Resource Owner Not Found',

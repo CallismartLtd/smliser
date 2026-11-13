@@ -36,18 +36,20 @@ use ZipArchive;
  *    new version dropped disappear with the old folder.
  *  - Packages are verified the way app updates are (PackageVerifier):
  *    <base>.zip beside <base>.sha256 and <base>.sha256.sig, the checksums
- *    signed by a release key. Marketplace packages must be signed. An
- *    uploaded package without a valid signature installs only when the
- *    administrator trusts it explicitly, and the record says so.
+ *    signed by a release key. Marketplace packages must carry the
+ *    marketplace's hosting attestation (HostingAttestation), checked
+ *    against the pinned marketplace key. An uploaded package without a
+ *    valid signature installs only when the administrator trusts it
+ *    explicitly, and the record says so.
  *  - The marketplace is this same application, running on our
  *    infrastructure (UpdateServer::HOST). Copies of it are released for
  *    download, and it hosts free and paid modules for them. A module is a
  *    hosted app there, like any other: its app type is MARKETPLACE_TYPE (the
  *    application itself is the "software" app type) and its app slug is the
- *    module slug. Everything follows the hosted apps' own URL structure,
- *    /{repository|downloads}/{app_type}/{app_slug}[.zip], with the artifacts
- *    under /downloads/{app_type}/{app_slug}/artifacts/ named
- *    "<slug>-<version>.zip|.sha256|.sha256.sig".
+ *    module slug. Its release (the latest version, the main package's URL
+ *    and its attestation) comes from the hosted apps' release route,
+ *    /repository/{app_type}/{app_slug}/release; nothing is built from file
+ *    names.
  *  - Assets are published in public/, where a copy (on servers without
  *    symlinks) is served by the web server as it is. A package with PHP in
  *    assets/, or with server configuration files (.htaccess, .user.ini,
@@ -336,7 +338,8 @@ abstract class ModuleInstaller {
 		$installed = $this->modules->is_installed( $slug ) ? $this->installed_version( $slug ) : null;
 
 		try {
-			$latest = $this->server->latest_of( static::MARKETPLACE_TYPE, $slug, $progress );
+			$release = $this->server->release( static::MARKETPLACE_TYPE, $slug, null, $progress );
+			$latest  = [ 'version' => UpdateServer::assert_version( $release ) ];
 		} catch ( UpdateException $e ) {
 			throw $this->fail( $e->getMessage(), $e );
 		}
@@ -352,7 +355,7 @@ abstract class ModuleInstaller {
 			$this->make_dir( $dir );
 
 			try {
-				$download = $this->server->download_artifact( static::MARKETPLACE_TYPE, $slug, static::artifact_base( $slug, $latest['version'] ), $dir, false, $progress );
+				$download = $this->server->download_module( $release, $dir, $progress );
 			} catch ( UpdateException $e ) {
 				throw $this->fail( $e->getMessage(), $e );
 			}
@@ -590,17 +593,6 @@ abstract class ModuleInstaller {
 			true === ( $record['trusted'] ?? false )                   => 'Upload (unsigned, trusted)',
 			default                                                    => 'Upload (signed)',
 		};
-	}
-
-	/**
-	 * A module package's artifact base name.
-	 *
-	 * @param string $slug    Module slug.
-	 * @param string $version Module version.
-	 * @return string E.g. "acme-1.0.0".
-	 */
-	public static function artifact_base( string $slug, string $version ) : string {
-		return $slug . '-' . $version;
 	}
 
 	/*

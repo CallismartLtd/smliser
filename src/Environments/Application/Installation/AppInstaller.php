@@ -28,6 +28,7 @@ use SmartLicenseServer\Environments\Application\Boot\MaintenanceFlag;
 use SmartLicenseServer\Environments\Application\Release\ReleaseManifest;
 use SmartLicenseServer\Exceptions\DatabaseException;
 use SmartLicenseServer\FileSystem\FileSystem;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 use SmartLicenseServer\Schema\DatabaseAdapterRegistry;
 use SmartLicenseServer\Schema\MigrationRegistry;
 use SmartLicenseServer\Schema\SchemaRegistry;
@@ -571,9 +572,11 @@ class AppInstaller {
 	 * Generate the application secrets that are still empty in the .env file.
 	 *
 	 * Fills SMLISER_SECRET and SMLISER_SALT with distinct, cryptographically
-	 * secure random values. Keys that already hold a value are never changed,
-	 * since replacing a secret invalidates existing sessions and anything
-	 * derived from it. Does not modify $_ENV.
+	 * secure random values, and SMLISER_ATTESTATION_SIGNING_KEY with a new
+	 * Ed25519 secret key (HostingAttestation). Keys that already hold a value
+	 * are never changed, since replacing a secret invalidates existing
+	 * sessions and anything derived from it, and replacing the signing key
+	 * breaks every client that pinned its public half. Does not modify $_ENV.
 	 *
 	 * @return string[] The keys that were generated; empty when all were already set.
 	 * @throws \RuntimeException When the .env file does not exist or cannot be written.
@@ -613,6 +616,12 @@ class AppInstaller {
 
 			$in_use[]          = $secret;
 			$generated[ $key ] = $secret;
+		}
+
+		$signing_key = $env[ HostingAttestation::ENV_KEY ] ?? null;
+
+		if ( ! is_string( $signing_key ) || '' === trim( $signing_key ) ) {
+			$generated[ HostingAttestation::ENV_KEY ] = base64_encode( sodium_crypto_sign_secretkey( sodium_crypto_sign_keypair() ) );
 		}
 
 		if ( [] === $generated ) {

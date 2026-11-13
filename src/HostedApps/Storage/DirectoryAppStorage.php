@@ -21,6 +21,7 @@ use SmartLicenseServer\FileSystem\FileSystemHelper;
  *
  *     {root}/{type dir}/{slug}/{slug}.zip      package
  *     {root}/{type dir}/{slug}/app.json        manifest
+ *     {root}/{type dir}/{slug}/attestation.json attestation
  *     {root}/{type dir}/{slug}/artifacts/{name} artifacts
  *     {root}/{type dir}/{slug}/assets/{name}    assets
  *     {root}/{type dir}/{slug}/{name}           documents
@@ -28,8 +29,9 @@ use SmartLicenseServer\FileSystem\FileSystemHelper;
  *                                               TRASH_METADATA_FILE
  *
  * Each served type maps to one directory name, given at construction (see
- * CORE_TYPE_DIRS). A document may not be named "app.json", "{slug}.zip",
- * "artifacts" or "assets", so the kinds never collide.
+ * CORE_TYPE_DIRS). A document may not be named "app.json",
+ * "attestation.json", "{slug}.zip", "artifacts" or "assets", so the kinds
+ * never collide.
  *
  * Links: the boundary is each app's own directory as the operating system
  * resolves it. The app directory may itself be a symbolic link (an app kept
@@ -78,6 +80,13 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	 * @var string
 	 */
 	public const MANIFEST_FILE = 'app.json';
+
+	/**
+	 * File name of the attestation.
+	 *
+	 * @var string
+	 */
+	public const ATTESTATION_FILE = 'attestation.json';
 
 	/**
 	 * Directory name of the artifacts.
@@ -405,6 +414,70 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	}
 
 	/*
+	|---------------
+	| Attestation
+	|---------------
+	*/
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function get_attestation( string $type, string $slug ) : ?array {
+		$file = AppFile::attestation( $type, $slug );
+		$path = $this->resolve( $file );
+
+		if ( ! $this->fs->is_file( $path ) ) {
+			return null;
+		}
+
+		$json = $this->fs->get_contents( $path );
+
+		if ( false === $json ) {
+			$this->fail_file( StorageException::IO_ERROR, 'could not be read', $file );
+		}
+
+		$data = json_decode( $json, true );
+
+		if ( ! is_array( $data ) || ! self::is_attestation( $data ) ) {
+			return null;
+		}
+
+		return [ 'checksums' => $data['checksums'], 'signature' => $data['signature'] ];
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function put_attestation( string $type, string $slug, array $attestation ) : void {
+		$file = AppFile::attestation( $type, $slug );
+
+		if ( ! self::is_attestation( $attestation ) ) {
+			$this->fail_file( StorageException::INVALID_PATH, 'needs non-empty "checksums" and "signature" strings', $file );
+		}
+
+		$path = $this->resolve( $file );
+		$json = \smliser_safe_json_encode(
+			[ 'checksums' => $attestation['checksums'], 'signature' => $attestation['signature'] ],
+			\JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES
+		);
+
+		if ( false === $json ) {
+			$this->fail_file( StorageException::IO_ERROR, 'could not be encoded as JSON', $file );
+		}
+
+		if ( ! $this->fs->put_contents( $path, $json ) ) {
+			$this->fail_file( StorageException::IO_ERROR, 'could not be written', $file );
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function delete_attestation( string $type, string $slug ) : void {
+		$this->delete_file( AppFile::attestation( $type, $slug ) );
+	}
+
+	/*
 	|-------------
 	| Artifacts
 	|-------------
@@ -645,6 +718,17 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	*/
 
 	/**
+	 * Tell whether an array holds a well-formed attestation.
+	 *
+	 * @param array<mixed> $data Candidate attestation.
+	 * @return bool True when "checksums" and "signature" are non-empty strings.
+	 */
+	protected static function is_attestation( array $data ) : bool {
+		return is_string( $data['checksums'] ?? null ) && '' !== $data['checksums']
+			&& is_string( $data['signature'] ?? null ) && '' !== $data['signature'];
+	}
+
+	/**
 	 * Throw a StorageException.
 	 *
 	 * @param string $code A StorageException constant.
@@ -768,11 +852,12 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$app_dir = $this->app_dir( $file->type, $file->slug );
 
 		return match ( $file->kind ) {
-			AppFile::PACKAGE  => $app_dir . '/' . $file->slug . '.zip',
-			AppFile::MANIFEST => $app_dir . '/' . self::MANIFEST_FILE,
-			AppFile::ARTIFACT => $app_dir . '/' . self::ARTIFACTS_DIR . '/' . $file->name,
-			AppFile::ASSET    => $app_dir . '/' . self::ASSETS_DIR . '/' . $file->name,
-			default           => $app_dir . '/' . $file->name,
+			AppFile::PACKAGE     => $app_dir . '/' . $file->slug . '.zip',
+			AppFile::MANIFEST    => $app_dir . '/' . self::MANIFEST_FILE,
+			AppFile::ATTESTATION => $app_dir . '/' . self::ATTESTATION_FILE,
+			AppFile::ARTIFACT    => $app_dir . '/' . self::ARTIFACTS_DIR . '/' . $file->name,
+			AppFile::ASSET       => $app_dir . '/' . self::ASSETS_DIR . '/' . $file->name,
+			default              => $app_dir . '/' . $file->name,
 		};
 	}
 
@@ -787,7 +872,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$this->check_type( $file->type );
 
 		if ( AppFile::DOCUMENT === $file->kind ) {
-			$reserved = [ self::MANIFEST_FILE, $file->slug . '.zip', self::ARTIFACTS_DIR, self::ASSETS_DIR ];
+			$reserved = [ self::MANIFEST_FILE, self::ATTESTATION_FILE, $file->slug . '.zip', self::ARTIFACTS_DIR, self::ASSETS_DIR ];
 
 			if ( in_array( $file->name, $reserved, true ) ) {
 				$this->fail_file( StorageException::INVALID_PATH, 'uses a name reserved for another kind of file', $file );
@@ -1061,6 +1146,10 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 
 		if ( self::MANIFEST_FILE === $path ) {
 			return AppFile::MANIFEST;
+		}
+
+		if ( self::ATTESTATION_FILE === $path ) {
+			return AppFile::ATTESTATION;
 		}
 
 		$parts = explode( '/', $path );

@@ -19,14 +19,14 @@ use SmartLicenseServer\Exceptions\StorageException;
  * contract as the adapters, so callers never know or care which adapter
  * answers.
  *
- * Memoization: answers to reads (has_app, get_manifest, get_document,
- * list_artifacts, list_assets, stat, list_trashed) are kept until a write
- * through this facade changes the same app, or flush() is called. Loading
- * one app asks for the same readme and asset listing many times; with a
- * remote adapter each ask would be a round trip. Changes made behind the
- * facade's back (another process, the shell) are not seen until flush(), so
- * long-running processes (queue workers, the interactive shell) call
- * flush() between units of work. Failures are never memoized.
+ * Memoization: answers to reads (has_app, get_manifest, get_attestation,
+ * get_document, list_artifacts, list_assets, stat, list_trashed) are kept
+ * until a write through this facade changes the same app, or flush() is
+ * called. Loading one app asks for the same readme and asset listing many
+ * times; with a remote adapter each ask would be a round trip. Changes made
+ * behind the facade's back (another process, the shell) are not seen until
+ * flush(), so long-running processes (queue workers, the interactive shell)
+ * call flush() between units of work. Failures are never memoized.
  */
 final class AppStorage implements AppStorageAdapterInterface {
 
@@ -202,6 +202,35 @@ final class AppStorage implements AppStorageAdapterInterface {
 	public function put_manifest( string $type, string $slug, array $manifest ) : void {
 		$this->changed( $type, $slug );
 		$this->adapter( $type )->put_manifest( $type, $slug, $manifest );
+	}
+
+	/*
+	|---------------
+	| Attestation
+	|---------------
+	*/
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function get_attestation( string $type, string $slug ) : ?array {
+		return $this->remember( $type . '/' . $slug, 'attestation', fn() => $this->adapter( $type )->get_attestation( $type, $slug ) );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function put_attestation( string $type, string $slug, array $attestation ) : void {
+		$this->changed( $type, $slug );
+		$this->adapter( $type )->put_attestation( $type, $slug, $attestation );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function delete_attestation( string $type, string $slug ) : void {
+		$this->changed( $type, $slug );
+		$this->adapter( $type )->delete_attestation( $type, $slug );
 	}
 
 	/*

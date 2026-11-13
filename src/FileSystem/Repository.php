@@ -15,6 +15,8 @@ use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Exceptions\Exception;
 use SmartLicenseServer\Exceptions\FileSystemException;
 use SmartLicenseServer\Exceptions\StorageException;
+use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 use SmartLicenseServer\HostedApps\Storage\AppFile;
 use SmartLicenseServer\HostedApps\Storage\AppStorage;
 use SmartLicenseServer\Utils\MDParser;
@@ -58,12 +60,14 @@ abstract class Repository {
 	 * @param FileSystem $fs The FileSystem API, for local temporary files.
 	 * @param MDParser $mdparser The markdown parser.
 	 * @param URLManager $urlmanager The URL manager.
+	 * @param HostingAttestation $attestation Signs stored packages.
 	 */
 	public function __construct(
 		protected AppStorage $storage,
 		protected FileSystem $fs,
 		protected MDParser $mdparser,
 		protected URLManager $urlmanager,
+		protected HostingAttestation $attestation,
 	) {}
 
 	/*
@@ -211,6 +215,12 @@ abstract class Repository {
 	 * good package. The documents read from it are kept next to it; if
 	 * keeping them fails they are read from the package again when needed.
 	 *
+	 * The package's attestation is replaced with it: signed by this
+	 * installation's key when one is configured (HostingAttestation), and
+	 * removed otherwise, so an attestation never describes an older package.
+	 * A type that requires attestation refuses the upload, before anything
+	 * is stored, when no key is configured.
+	 *
 	 * @param UploadedFile $file The uploaded file.
 	 * @param string $name The app slug, or a name to make a new slug from.
 	 * @param bool $update Whether this updates an existing app. A new app
@@ -271,8 +281,10 @@ abstract class Repository {
 
 			$tmp_path  = (string) $file->get_tmp_path();
 			$documents = $this->read_package_documents( $tmp_path );
+			$attested  = $this->attest_package( $type, $slug, $tmp_path );
 
 			$this->storage->put_package( $type, $slug, $tmp_path );
+			$this->store_attestation( $type, $slug, $attested );
 
 			foreach ( $documents as $document => $contents ) {
 				try {
@@ -285,6 +297,65 @@ abstract class Repository {
 			return $slug;
 		} catch ( Exception $e ) {
 			return $e;
+		}
+	}
+
+	/**
+	 * Attest a package before it is stored.
+	 *
+	 * @param string $type     App type.
+	 * @param string $slug     App slug.
+	 * @param string $tmp_path Absolute path of the package's local file.
+	 * @return array{checksums: string, signature: string}|null Null when no
+	 *         signing key is configured and the type does not require one.
+	 * @throws Exception 500 when the type requires attestation and it cannot be made.
+	 */
+	protected function attest_package( string $type, string $slug, string $tmp_path ) : ?array {
+		$required = HostedAppsRegistry::instance()->requires_attestation( $type );
+
+		if ( ! $required && ! $this->attestation->configured() ) {
+			return null;
+		}
+
+		try {
+			return $this->attestation->attest( $type, $slug, $tmp_path );
+		} catch ( \RuntimeException $e ) {
+			throw new Exception( 'attestation_unavailable', $e->getMessage(), [ 'status' => 500 ] );
+		}
+	}
+
+	/**
+	 * Replace the stored attestation of a package that was just stored.
+	 *
+	 * When it cannot be written, the old attestation is removed as well, so
+	 * clients never find one that describes another package.
+	 *
+	 * @param string     $type     App type.
+	 * @param string     $slug     App slug.
+	 * @param array|null $attested From attest_package(); null to remove the stored one.
+	 * @return void
+	 * @throws Exception 500 when the attestation cannot be written or the old one removed.
+	 */
+	protected function store_attestation( string $type, string $slug, ?array $attested ) : void {
+		try {
+			if ( null !== $attested ) {
+				$this->storage->put_attestation( $type, $slug, $attested );
+				return;
+			}
+
+			if ( null !== $this->storage->get_attestation( $type, $slug ) ) {
+				$this->storage->delete_attestation( $type, $slug );
+			}
+		} catch ( StorageException $e ) {
+			try {
+				if ( null !== $attested && null !== $this->storage->get_attestation( $type, $slug ) ) {
+					$this->storage->delete_attestation( $type, $slug );
+				}
+			} catch ( StorageException ) {
+				// Reported below; the old attestation no longer matches the package, so clients refuse it.
+			}
+
+			throw new Exception( 'attestation_error', sprintf( 'The package was stored but its attestation could not be updated: %s', $e->getMessage() ), [ 'status' => 500 ] );
 		}
 	}
 

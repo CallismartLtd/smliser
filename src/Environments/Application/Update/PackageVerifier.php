@@ -12,6 +12,7 @@ namespace SmartLicenseServer\Environments\Application\Update;
 
 use SmartLicenseServer\Environments\Application\Release\ReleaseSignature;
 use SmartLicenseServer\FileSystem\FileSystem;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 
 /**
  * Checks a release zip against its published checksums and their signature,
@@ -25,6 +26,10 @@ use SmartLicenseServer\FileSystem\FileSystem;
  *
  * A valid signature on the checksums and a matching hash of the zip prove
  * the package came from the holder of the signing key, unchanged.
+ *
+ * A hosting attestation (HostingAttestation) is checksums in the same
+ * format that also name the app they belong to; pass the expected identity
+ * to verify() so a signature for one app is never accepted for another.
  */
 final class PackageVerifier {
 
@@ -49,6 +54,8 @@ final class PackageVerifier {
 	 * @param string|null   $signature      Contents of the .sha256.sig file; null when there is none.
 	 * @param bool          $trust_unsigned Accept a package without a valid signature (or checksums).
 	 * @param callable|null $progress       Progress callback, see UpdateProgressTrait.
+	 * @param array{type: string, slug: string, artifact: string}|null $expected_identity
+	 *        The app a hosting attestation must name; null when the checksums are not an attestation.
 	 * @return array{warnings: string[], signed_by: ?string, sha256: string}
 	 *         Warnings about checks skipped because of $trust_unsigned; the label of the key that
 	 *         signed the checksums (null when unsigned); the zip's SHA-256.
@@ -76,8 +83,8 @@ final class PackageVerifier {
 			return $result;
 		}
 
-		if ( null !== $expected_identity && ! $this->matches_attestation_identity( $checksums, $expected_identity ) ) {
-			throw new UpdateException( 'The marketplace attestation does not match this hosted app and artifact.' );
+		if ( null !== $expected_identity && HostingAttestation::identity( $checksums ) !== $expected_identity ) {
+			throw new UpdateException( 'The hosting attestation does not name this hosted app and package.' );
 		}
 
 		$signer = null === $signature || ! $this->signature->configured() ? null : $this->signature->signer( $checksums, $signature );
@@ -111,25 +118,6 @@ final class PackageVerifier {
 		$this->report( $progress, 'verify', self::STATUS_OK, sprintf( '%s matches its published SHA-256 %s.', $name, $actual ) );
 
 		return $result;
-	}
-
-	/**
-	 * Check the identity header included in marketplace-signed checksum files.
-	 *
-	 * @param array{type: string, slug: string, artifact: string} $expected
-	 */
-	private function matches_attestation_identity( string $checksums, array $expected ) : bool {
-		$headers = [];
-		foreach ( preg_split( '/\R/', $checksums ) ?: [] as $line ) {
-			if ( 1 === preg_match( '/^# (type|slug|artifact): (.+)$/', trim( $line ), $match ) ) {
-				$headers[ $match[1] ] = $match[2];
-			}
-		}
-
-		return str_contains( $checksums, "# smliser-marketplace-attestation-v1\n" )
-			&& ( $headers['type'] ?? null ) === $expected['type']
-			&& ( $headers['slug'] ?? null ) === $expected['slug']
-			&& ( $headers['artifact'] ?? null ) === $expected['artifact'];
 	}
 
 	/**

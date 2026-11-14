@@ -32,7 +32,7 @@ final class OfficialHostedAppTypes implements ExtensionInterface {
 				'description'             => 'Upload themes for Smliser applications.',
 				'icon'                    => 'ti ti-palette',
 				'storage_dir'             => 'smliser-theme',
-				'marketplace_attestation' => true,
+				'requires_attestation'    => true,
 			]
 		);
 
@@ -45,7 +45,7 @@ final class OfficialHostedAppTypes implements ExtensionInterface {
 				'description'             => 'Upload extensions for Smliser applications.',
 				'icon'                    => 'ti ti-puzzle',
 				'storage_dir'             => 'smliser-extension',
-				'marketplace_attestation' => true,
+				'requires_attestation'    => true,
 			]
 		);
 	}

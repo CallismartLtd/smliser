@@ -33,7 +33,7 @@
 		{
 			id: 'canonical',
 			title: 'Package and documents',
-			kinds: [ 'package', 'manifest', 'document' ],
+			kinds: [ 'package', 'manifest', 'attestation', 'document' ],
 			note: 'Read-only. Upload a new version of the app to change these.',
 		},
 		{ id: 'assets', title: 'Assets', kinds: [ 'asset' ], note: '' },
@@ -54,6 +54,7 @@
 	const KIND_LABELS = {
 		package: 'Main package',
 		manifest: 'Manifest',
+		attestation: 'Hosting attestation',
 		document: 'Document',
 		asset: 'Asset',
 		artifact: 'Artifact',

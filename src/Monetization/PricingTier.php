@@ -467,7 +467,7 @@ class PricingTier extends DataStore {
 			}
 
 			$this->set_updated_at( $now );
-			static::cache_clear();
+			static::cache_invalidate();
 
 			return true;
 		} );
@@ -494,7 +494,7 @@ class PricingTier extends DataStore {
 				throw new DatabaseException( 'delete_failed', $db->get_last_error() );
 			}
 
-			static::cache_clear();
+			static::cache_invalidate();
 			return true;
 		} );
 	}

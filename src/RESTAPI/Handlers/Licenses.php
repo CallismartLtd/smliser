@@ -10,7 +10,6 @@
 namespace SmartLicenseServer\RESTAPI\Handlers;
 
 use SmartLicenseServer\Analytics\RepositoryAnalytics;
-use SmartLicenseServer\Core\Dates\DateDuration;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
 use SmartLicenseServer\Exceptions\Exception;
@@ -23,7 +22,46 @@ use SmartLicenseServer\HostedApps\HostedApplicationService;
 /**
  * Handles all the REST API for the license endpoints.
  */
+/**
+ * The license routes a licensed app calls from the site it runs on.
+ *
+ * Philosophy: the license credentials (service ID and license key) decide
+ * where a license is used; the site secret proves which site is calling; a
+ * download token proves that site recently proved both. The server keeps
+ * the license within its domain limit; the client keeps its token current.
+ *
+ *  - Activate: on a new domain, within the license's domain limit, returns
+ *    the domain's site secret (once) and a short-lived download token. On a
+ *    domain already active, the site secret is required and only a new
+ *    short-lived token is returned.
+ *  - Reauthenticate: exchanges a valid, unexpired token issued to the
+ *    calling domain for a longer-lived one; the old token is consumed. An
+ *    expired token is refused: the client activates again.
+ *  - Uninstall: frees a domain with the credentials alone, so a site that
+ *    lost its secret can be uninstalled and activated again. The domain's
+ *    tokens are revoked.
+ *  - Deactivate: an active domain, with its secret, deactivates the license
+ *    itself on every domain, e.g. when the license is compromised, until
+ *    its owner resolves it.
+ *
+ * Tokens are only issued while the license can be served, so renewing a
+ * license is its owner's business, never the client's.
+ */
 class Licenses {
+
+	/**
+	 * Lifetime of the token issued at activation, in seconds (2 days).
+	 *
+	 * @var int
+	 */
+	public const ACTIVATION_TOKEN_LIFETIME = 172800;
+
+	/**
+	 * Lifetime of the token issued at reauthentication, in seconds (2 weeks).
+	 *
+	 * @var int
+	 */
+	public const REAUTH_TOKEN_LIFETIME = 1209600;
 
 	/**
 	 * The header a site sends its site secret in, base64-encoded.
@@ -104,22 +142,10 @@ class Licenses {
 		$service_id  = $request->get( 'service_id' );
 		$license_key = $request->get( 'license_key' );
 		$domain      = $request->get( 'domain' );
-		
 		/** @var License $license */
 		$license = $request->get( 'smliser_resource' );
-
-		$token_lifetime = (int) DateDuration::fromDays( 2 )->toSeconds();
-
-		$response_data = [
-			'message' => sprintf( 'License has been activated for your domain "%s"', $domain ),
-			'data'    => [
-				'license_key'    => $license_key,
-				'service_id'     => $service_id,
-				'download_token' => smliser_generate_item_token( $license, $token_lifetime ),
-				'token_expiry'   => gmdate( 'Y-m-d', DownloadToken::expiry_for( $license, $token_lifetime ) ),
-				'license_expiry' => $license->get_end_date()?->format( 'Y-m-d' ) ?? \gmdate( 'Y-m-d', \strtotime( '+15 years' ) )
-			]
-		];
+		$host    = License::activation_host( (string) $domain );
+		$secret  = null;
 
 		if ( $license->is_new_domain( $domain ) ) {
 			$domain_secret      = 'sc_' . bin2hex( random_bytes( 32 ) );
@@ -134,7 +160,28 @@ class Licenses {
 				] );
 			}
 
-			$response_data['data']['site_secret'] = base64_encode( $domain_secret );
+			$secret = base64_encode( $domain_secret );
+		}
+
+		$token = smliser_generate_item_token( $license, self::ACTIVATION_TOKEN_LIFETIME, $host );
+
+		if ( false === $token ) {
+			return Response::error( new RequestException( 'download_token_error', 'The license is active on this domain, but a download token could not be issued. Activate again to get one.', [ 'status' => 500 ] ), 500 );
+		}
+
+		$response_data = [
+			'message' => sprintf( 'License has been activated for your domain "%s"', $domain ),
+			'data'    => [
+				'license_key'    => $license_key,
+				'service_id'     => $service_id,
+				'download_token' => $token,
+				'token_expiry'   => gmdate( 'Y-m-d', DownloadToken::expiry_for( $license, self::ACTIVATION_TOKEN_LIFETIME ) ),
+				'license_expiry' => $license->get_end_date()?->format( 'Y-m-d' ) ?? \gmdate( 'Y-m-d', \strtotime( '+15 years' ) )
+			]
+		];
+
+		if ( null !== $secret ) {
+			$response_data['data']['site_secret'] = $secret;
 		}
 
 		$response = new Response( 200, [], $response_data );
@@ -176,7 +223,7 @@ class Licenses {
 		}
 
 		if ( $license->is_deactivated() ) {
-			return new RequestException( 'license_error', 'License is already deactivated', ['status' => 200 ] );
+			return new RequestException( 'license_deactivated', 'The license is already deactivated. Its owner must resolve it.', [ 'status' => 409 ] );
 		}
 
 		$request->set( 'smliser_resource', $license );
@@ -240,13 +287,32 @@ class Licenses {
 	}
 
 	/**
-	 * License unistallation permission callback.
-	 * 
+	 * License uninstallation permission callback.
+	 *
+	 * Needs the license credentials and an active domain, but not the
+	 * domain's site secret: whoever holds the credentials decides where the
+	 * license is used, and a site that lost its secret must be able to free
+	 * its domain to activate again. Abuse is limited by LicenseMonitor.
+	 *
 	 * @param Request $request The REST Request Object.
 	 * @return RequestException|true
 	 */
-	public function uninstallation_permission( Request $request ) {
-		return $this->deactivation_permission( $request );
+	public function uninstallation_permission( Request $request ) : bool|RequestException {
+		$license = License::get_license( $request->get( 'service_id' ), $request->get( 'license_key' ) );
+
+		if ( ! $license ) {
+			return new RequestException( 'license_error', 'The license could not be found. The license key or service ID may be incorrect.', [ 'status' => 404 ] );
+		}
+
+		$domain = (string) $request->get( 'domain' );
+
+		if ( $license->is_new_domain( $domain ) ) {
+			return new RequestException( 'domain_not_active', sprintf( 'The license is not activated on %s.', $domain ), [ 'status' => 404 ] );
+		}
+
+		$request->set( 'smliser_resource', $license );
+
+		return true;
 	}
 
 	/**
@@ -269,6 +335,12 @@ class Licenses {
 		];
 
 		$removed       = $license->remove_activated_domain( $domain );
+
+		if ( $removed ) {
+			// A freed domain keeps no download access.
+			DownloadToken::revoke_for_activation( $license, License::activation_host( $domain ) );
+		}
+
 		$response_data = [
 			'data' => [
 				'license status' => $license->get_status(),
@@ -417,39 +489,57 @@ class Licenses {
 			return $domain_access;
 		}
 
-		$download_token = $request->get( 'download_token' );
-		$token          = smliser_verify_item_token( $download_token, $hosted_app );
+		$record = smliser_verify_item_token( (string) $request->get( 'download_token' ), $hosted_app );
 
-		if ( ! ( $token instanceof Exception ) ) {
-			$token->delete();
+		if ( $record instanceof Exception ) {
+			return 'download_token_expired' === $record->get_error_code()
+				? new RequestException( 'download_token_expired', 'The download token has expired. Activate the license on this domain again to get a new one.', [ 'status' => 401 ] )
+				: new RequestException( 'download_token_invalid', sprintf( '%s Activate the license on this domain again to get a new one.', $record->get_error_message() ), [ 'status' => 403 ] );
 		}
+
+		$host = License::activation_host( (string) $request->get( 'domain' ) );
+
+		if ( ! hash_equals( $record->get_license_key(), $license->get_license_key() ) || ! $record->belongs_to_host( $host ) ) {
+			return new RequestException( 'download_token_invalid', 'The download token was not issued to this license on this domain.', [ 'status' => 403 ] );
+		}
+
+		$request->set( 'download_token_record', $record );
 
 		return true;
 	}
 
 	/**
-	 * Re-issue a token for downloading a licensed application hosted on this repository.
-	 * 
-	 * -Note - This action is required before the expiration of the prevously issued token.
-	 * 
+	 * Exchange a valid download token for a longer-lived one.
+	 *
+	 * The token presented was verified by download_reauth_permission(); it
+	 * is consumed once the new one is issued, so each token is exchanged at
+	 * most once.
+	 *
 	 * @param Request $request.
 	 * @return Response
 	 */
 	public function app_download_reauth( Request $request ) {
 		/** @var License $license */
-		$license   = $request->get( 'smliser_resource' );
-		$two_weeks = (int) DateDuration::fromWeeks( 2 )->toSeconds();
-		
+		$license = $request->get( 'smliser_resource' );
+		/** @var DownloadToken $record */
+		$record  = $request->get( 'download_token_record' );
+		$token   = smliser_generate_item_token( $license, self::REAUTH_TOKEN_LIFETIME, $record->get_activation_host() );
+
+		if ( false === $token ) {
+			return Response::error( new RequestException( 'download_token_error', 'A new download token could not be issued. Your current token is still valid; try again later.', [ 'status' => 500 ] ), 500 );
+		}
+
+		$record->delete();
+
 		$response_data = [
 			'message' => 'Download token has been refreshed.',
 			'data'    => [
-				'download_token' => smliser_generate_item_token( $license, $two_weeks ),
-				'token_expiry'   => gmdate( 'Y-m-d', DownloadToken::expiry_for( $license, $two_weeks ) ),
+				'download_token' => $token,
+				'token_expiry'   => gmdate( 'Y-m-d', DownloadToken::expiry_for( $license, self::REAUTH_TOKEN_LIFETIME ) ),
 			]
 		];
 
-		$response = new Response( 200, [], $response_data );
-		return $response;
+		return new Response( 200, [], $response_data );
 	}
 
 	/**

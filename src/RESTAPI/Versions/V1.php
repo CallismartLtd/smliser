@@ -12,6 +12,10 @@ namespace SmartLicenseServer\RESTAPI\Versions;
 use SmartLicenseServer\RESTAPI\Handlers\BulkMessages;
 use SmartLicenseServer\RESTAPI\Handlers\HostedApps;
 use SmartLicenseServer\RESTAPI\Handlers\Licenses;
+use SmartLicenseServer\Environments\Application\Middlewares\LicenseActivationMonitorMiddleware;
+use SmartLicenseServer\Environments\Application\Middlewares\LicenseMonitorMiddleware;
+use SmartLicenseServer\Environments\Application\Middlewares\LicenseReauthMonitorMiddleware;
+use SmartLicenseServer\Environments\Application\Middlewares\LicenseUninstallMonitorMiddleware;
 use SmartLicenseServer\RESTAPI\Handlers\Licensing;
 use SmartLicenseServer\RESTAPI\Handlers\WPPlugins;
 use SmartLicenseServer\RESTAPI\Handlers\WPThemes;
@@ -254,6 +258,12 @@ class V1 implements RESTVersionInterface {
 	 *      Must return true to allow execution of the handler,
 	 *      or an error result to reject the request.
 	 *
+	 * - middleware (array)
+	 *      Middleware class names (MiddlewareInterface) run before the
+	 *      guard, outermost first, e.g. to rate-limit the route. Applied
+	 *      by the standalone environment; the WordPress environment does
+	 *      not run route middleware.
+	 *
 	 * - args (array)
 	 *      Definition of expected route parameters including type,
 	 *      validation rules, and sanitization callbacks.
@@ -275,6 +285,7 @@ class V1 implements RESTVersionInterface {
 	 *         methods: string|array<int, string>,
 	 *         handler: callable,
 	 *         guard?: callable,
+	 *         middleware?: array<int, class-string>,
 	 *         args?: array<string, array{
 	 *             required?: bool,
 	 *             type?: string,
@@ -294,8 +305,9 @@ class V1 implements RESTVersionInterface {
 				[
 					'route'    => self::LICENSE_ACTIVATION,
 					'methods'  => ['POST'],
-					'handler'  => [ Licenses::class, 'activation_response' ],
-					'guard'    => [ Licenses::class, 'activation_permission_callback' ],
+					'handler'    => [ Licenses::class, 'activation_response' ],
+					'guard'      => [ Licenses::class, 'activation_permission_callback' ],
+					'middleware' => [ LicenseActivationMonitorMiddleware::class ],
 					'args'     => self::get_license_activation_args(),
 					'category' => 'license',
 					'name'     => 'License Activation',
@@ -305,8 +317,9 @@ class V1 implements RESTVersionInterface {
 				[
 					'route'    => self::LICENSE_DEACTIVATION,
 					'methods'  => [ 'POST' ],
-					'handler'  => [ Licenses::class, 'deactivation_response' ],
-					'guard'    => [ Licenses::class, 'deactivation_permission' ],
+					'handler'    => [ Licenses::class, 'deactivation_response' ],
+					'guard'      => [ Licenses::class, 'deactivation_permission' ],
+					'middleware' => [ LicenseMonitorMiddleware::class ],
 					'args'     => self::get_license_deactivation_args(),
 					'category' => 'license',
 					'name'     => 'License Deactivation',
@@ -316,8 +329,9 @@ class V1 implements RESTVersionInterface {
 				[
 					'route'    => self::LICENSE_UNINSTALL,
 					'methods'  => [ 'POST' ],
-					'handler'  => [ Licenses::class, 'uninstallation_response' ],
-					'guard'    => [ Licenses::class, 'uninstallation_permission' ],
+					'handler'    => [ Licenses::class, 'uninstallation_response' ],
+					'guard'      => [ Licenses::class, 'uninstallation_permission' ],
+					'middleware' => [ LicenseUninstallMonitorMiddleware::class ],
 					'args'     => self::get_license_uninstallation_args(),
 					'category' => 'license',
 					'name'     => 'License Uninstallation',
@@ -327,8 +341,9 @@ class V1 implements RESTVersionInterface {
 				[
 					'route'    => self::LICENSE_VALIDITY,
 					'methods'  => ['POST'],
-					'handler'  => [ Licenses::class, 'validity_test_response' ],
-					'guard'    => [ Licenses::class, 'validity_test_permission' ],
+					'handler'    => [ Licenses::class, 'validity_test_response' ],
+					'guard'      => [ Licenses::class, 'validity_test_permission' ],
+					'middleware' => [ LicenseMonitorMiddleware::class ],
 					'args'     => self::get_license_validity_args(),
 					'category' => 'license',
 					'name'     => 'License Validity Test',
@@ -453,8 +468,9 @@ class V1 implements RESTVersionInterface {
 				[
 					'route'    => self::DOWNLOAD_TOKEN_REAUTH,
 					'methods'  => ['POST'],
-					'handler'  => [ Licenses::class, 'app_download_reauth' ],
-					'guard'    => [ Licenses::class, 'download_reauth_permission' ],
+					'handler'    => [ Licenses::class, 'app_download_reauth' ],
+					'guard'      => [ Licenses::class, 'download_reauth_permission' ],
+					'middleware' => [ LicenseReauthMonitorMiddleware::class ],
 					'args'     => self::get_download_reauth_args(),
 					'category' => 'license',
 					'name'     => 'Download Token Reauthentication',

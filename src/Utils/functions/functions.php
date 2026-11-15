@@ -1,7 +1,6 @@
 <?php
 /**
- * File name smliser-functions.php
- * Utility functions file
+ * Functions file.
  * 
  * @author Callistus
  * @since 0.2.0
@@ -105,14 +104,15 @@ function smliser_http_ua( bool $for_update = false ) : string {
 /**
  * Generate a download token for the given licensed item.
  * 
- * @param License $license  The License object associated with the item.
- * @param int     $expiry   Expiry duration in seconds (optional).
- * @return string|false     The signed, base64url-encoded token or false on failure.
+ * @param License     $license         The License object associated with the item.
+ * @param int         $expiry          Expiry duration in seconds (optional).
+ * @param string|null $activation_host Host of the activation the token is issued to; null outside an activation.
+ * @return string|false The signed, base64url-encoded token or false on failure.
  */
-function smliser_generate_item_token( License $license, int $expiry = 864000 ) {
+function smliser_generate_item_token( License $license, int $expiry = 864000, ?string $activation_host = null ) {
 	try {
 		// Create a new download token
-		$token = DownloadToken::create_token( $license, $expiry );
+		$token = DownloadToken::create_token( $license, $expiry, $activation_host );
 		return $token;
 	} catch ( Exception $e ) {
 		return false;

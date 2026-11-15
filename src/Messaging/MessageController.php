@@ -10,6 +10,7 @@
 namespace SmartLicenseServer\Messaging;
 
 use SmartLicenseServer\Cache\Cache;
+use SmartLicenseServer\Cache\CacheGroup;
 use SmartLicenseServer\Core\Response;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\URLManager;
@@ -139,7 +140,7 @@ class MessageController {
 			$response = ( new Response( 200, [], '' ) )
 				->set_header( 'Location', $url->url() );
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 			return $response;
 
 		} catch ( RequestException $e ) {

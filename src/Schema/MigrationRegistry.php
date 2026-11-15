@@ -44,6 +44,8 @@ final class MigrationRegistry {
 		Migrations\FlattenThemeAuthors::class,
 		// Schema 0.2.3.
 		Migrations\CreateAuthenticationTables::class,
+		// Schema 0.2.4.
+		Migrations\BindDownloadTokensToActivations::class,
 	];
 
 	/**

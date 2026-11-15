@@ -28,7 +28,9 @@ use SmartLicenseServer\SettingsAPI\Settings;
  * @method bool set( string $key, mixed $value, int $ttl = 0 ) Store a value in the cache.
  * @method bool delete( string $key ) Delete a cache entry by key.
  * @method bool has( string $key ) Check if a cache entry exists.
- * @method bool clear() Clear the entire cache.
+ * @method bool clear() Clear the entire cache, state included. Only for an
+ *         administrator's explicit "clear cache"; to invalidate data, use
+ *         group( CacheGroup::DATA )->invalidate().
  * @method mixed modify( string $key, callable $callback, int $ttl = 0, mixed $default = null ) Atomically read, modify, and rewrite a cached value via a callback.
  * @method int|bool increment( string $key, int $offset = 1, int $initial = 0, int $ttl = 0 ) Atomically increment a numeric cache value.
  * @method int|bool decrement( string $key, int $offset = 1, int $initial = 0, int $ttl = 0 ) Atomically decrement a numeric cache value.
@@ -50,6 +52,13 @@ final class Cache {
 	 * @var Cache|null
 	 */
 	private static ?Cache $instance = null;
+
+	/**
+	 * Groups handed out, by name.
+	 *
+	 * @var array<string, CacheGroup>
+	 */
+	private array $groups = [];
 
 	/**
 	 * Private constructor — use instance().
@@ -129,6 +138,23 @@ final class Cache {
 	 */
 	public static function reset_instance() : void {
 		self::$instance = null;
+	}
+
+	/*
+	|--------
+	| GROUPS
+	|--------
+	*/
+
+	/**
+	 * A named group of entries that can be invalidated together.
+	 *
+	 * @param string $name Group name, e.g. CacheGroup::DATA.
+	 * @return CacheGroup
+	 * @throws \InvalidArgumentException For an invalid name.
+	 */
+	public function group( string $name ) : CacheGroup {
+		return $this->groups[ $name ] ??= new CacheGroup( $this, $name );
 	}
 
 	/*

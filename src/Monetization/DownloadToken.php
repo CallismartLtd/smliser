@@ -63,6 +63,16 @@ class DownloadToken extends DataStore {
 	protected $expiry = 0;
 
 	/**
+	 * Host of the license activation the token was issued to.
+	 *
+	 * Null for a token issued outside an activation, such as one an
+	 * administrator issues for a license document.
+	 *
+	 * @var string|null
+	 */
+	protected ?string $activation_host = null;
+
+	/**
 	 * Class constructor.
 	 */
 	public function __construct() {}
@@ -205,6 +215,37 @@ class DownloadToken extends DataStore {
 		return $this->expiry;
 	}
 
+	/**
+	 * Set the host of the activation the token is issued to.
+	 *
+	 * @param string|null $host Lowercase host, e.g. "example.com"; null for none.
+	 * @return static
+	 */
+	public function set_activation_host( ?string $host ) : static {
+		$host                  = null === $host ? '' : strtolower( trim( $host ) );
+		$this->activation_host = '' === $host ? null : $host;
+		return $this;
+	}
+
+	/**
+	 * Get the host of the activation the token was issued to.
+	 *
+	 * @return string|null Null for a token issued outside an activation.
+	 */
+	public function get_activation_host() : ?string {
+		return $this->activation_host;
+	}
+
+	/**
+	 * Whether the token was issued to an activation on this host.
+	 *
+	 * @param string $host Lowercase host.
+	 * @return bool
+	 */
+	public function belongs_to_host( string $host ) : bool {
+		return null !== $this->activation_host && hash_equals( $this->activation_host, strtolower( trim( $host ) ) );
+	}
+
 	/*
 	|-----------------
 	| CRUD METHODS
@@ -222,8 +263,9 @@ class DownloadToken extends DataStore {
 		$data = [
 			'app_prop'    => $this->get_app_prop( 'view' ),
 			'license_key' => $this->license_key,
-			'token'       => $this->token,
-			'expiry'      => $this->expiry
+			'token'           => $this->token,
+			'expiry'          => $this->expiry,
+			'activation_host' => $this->activation_host,
 		];
 
 		if ( $this->id ) {
@@ -331,7 +373,8 @@ class DownloadToken extends DataStore {
 
 		$static->set_license_key( $data['license_key'] ?? '' )
 			->set_token( $data['token'] ?? '' )
-			->set_expiry( intval( $data['expiry'] ?? 0 ) );
+			->set_expiry( intval( $data['expiry'] ?? 0 ) )
+			->set_activation_host( isset( $data['activation_host'] ) ? (string) $data['activation_host'] : null );
 
 		return $static;
 	}
@@ -350,12 +393,13 @@ class DownloadToken extends DataStore {
 	 * be served (not issued, expired, suspended, revoked, deactivated) gets
 	 * no token.
 	 * 
-	 * @param License $license The license object.
-	 * @param int $expiry The token lifetime in seconds.
+	 * @param License     $license         The license object.
+	 * @param int         $expiry          The token lifetime in seconds.
+	 * @param string|null $activation_host Host of the activation the token is issued to; null outside an activation.
 	 * @throws \SmartLicenseServer\Exceptions\Exception
 	 * @return string
 	 */
-	public static function create_token( License $license, $expiry = 86400 ) : string {
+	public static function create_token( License $license, $expiry = 86400, ?string $activation_host = null ) : string {
 		// We cant issue token for a license that is not issued
 		if ( ! $license->is_issued() ) {
 			throw new Exception( 'download_token_error', 'This license must be issued to a hosted application first.', ['status' => 400] );
@@ -375,6 +419,7 @@ class DownloadToken extends DataStore {
 		$static->set_app_prop( $app_type, $app_slug );
 		$static->set_license_key( $license->get_license_key() );
 		$static->set_expiry( $expiry );
+		$static->set_activation_host( $activation_host );
 
 		$raw_token = static::generate_token();
 		$secret    = self::keyring_key( 'download_token' );
@@ -466,6 +511,28 @@ class DownloadToken extends DataStore {
 		}
 
 		return $static;
+	}
+
+	/**
+	 * Revoke every token issued to a license's activation on a host.
+	 *
+	 * @param License $license The license.
+	 * @param string  $host    Lowercase host of the activation.
+	 * @return bool False when the tokens could not be deleted.
+	 */
+	public static function revoke_for_activation( License $license, string $host ) : bool {
+		$host = strtolower( trim( $host ) );
+
+		if ( '' === $host ) {
+			return true;
+		}
+
+		$delete = static::query()
+			->delete( TableName::APP_DOWNLOAD_TOKENS->table() )
+			->where( 'license_key', '=', $license->get_license_key() )
+			->where( 'activation_host', '=', $host );
+
+		return false !== static::$DB->execute( $delete->build(), $delete->get_bindings() );
 	}
 
 	/**

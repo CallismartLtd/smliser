@@ -9,6 +9,10 @@
 namespace SmartLicenseServer\Cache;
 
 /**
+ * Caching for data stores: every entry is a copy of database data, kept in
+ * the data group (CacheGroup::DATA), so invalidating it never touches state
+ * other code keeps in the cache.
+ *
  * @property Cache $cache
  */
 trait CacheAwareTrait {
@@ -27,48 +31,57 @@ trait CacheAwareTrait {
 	}
 
 	/**
-	 * Retrieve a value from cache.
+	 * Retrieve a value from the data group.
 	 *
 	 * @param string $key
-	 * @return mixed|null
+	 * @return mixed The value, or false when not found.
 	 */
 	protected static function cache_get( string $key ) {
-		static::ensure_cache();
-		return static::$cache->get( $key );
+		return static::cache_group()->get( $key );
 	}
 
 	/**
-	 * Store a value in cache.
+	 * Store a value in the data group.
 	 *
 	 * @param string $key
 	 * @param mixed  $value
-	 * @param int    $ttl
+	 * @param int    $ttl Seconds to keep it; 0 for CacheGroup::FOREVER_TTL.
 	 * @return bool
 	 */
 	protected static function cache_set( string $key, $value, int $ttl = 0 ) : bool {
-		static::ensure_cache();
-		return static::$cache->set( $key, $value, $ttl );
+		return static::cache_group()->set( $key, $value, $ttl );
 	}
 
 	/**
-	 * Delete a cache entry.
+	 * Delete a value from the data group.
 	 *
 	 * @param string $key
 	 * @return bool
 	 */
 	protected static function cache_delete( string $key ) : bool {
-		static::ensure_cache();
-		return static::$cache->delete( $key );
+		return static::cache_group()->delete( $key );
 	}
 
 	/**
-	 * Clear the entire cache record
-	 * 
+	 * Invalidate every cached copy of data, after a write.
+	 *
+	 * Invalidates the whole data group, since cached entries combine data
+	 * from several tables. Nothing outside the group is touched.
+	 *
 	 * @return bool
 	 */
-	protected static function cache_clear() : bool {
+	protected static function cache_invalidate() : bool {
+		return static::cache_group()->invalidate();
+	}
+
+	/**
+	 * The data group.
+	 *
+	 * @return CacheGroup
+	 */
+	protected static function cache_group() : CacheGroup {
 		static::ensure_cache();
-		return static::$cache->clear();
+		return static::$cache->group( CacheGroup::DATA );
 	}
 
 	/**

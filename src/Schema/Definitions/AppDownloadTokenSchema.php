@@ -73,6 +73,13 @@ class AppDownloadTokenSchema implements DatabaseSchemaInterface {
 			Column::make( 'expiry' )
 				->type( ColumnType::INTEGER )
 				->required(),
+
+			// The host of the license activation the token was issued to;
+			// null for tokens an administrator issues outside an activation.
+			Column::make( 'activation_host' )
+				->type( ColumnType::VARCHAR )
+				->size( 255 )
+				->default( null ),
 		];
 	}
 
@@ -87,6 +94,8 @@ class AppDownloadTokenSchema implements DatabaseSchemaInterface {
 			Constraint::index( "{$prefx}expiry_index" )->on( 'expiry' ),
 
 			Constraint::index( "{$prefx}dtoken_index" )->on( 'token' ),
+
+			Constraint::index( "{$prefx}activation_index" )->on( 'license_key', 'activation_host' ),
 		];
 	}
 

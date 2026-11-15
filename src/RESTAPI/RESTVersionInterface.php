@@ -50,6 +50,12 @@ interface RESTVersionInterface {
 	 *      Must return true to allow execution of the handler,
 	 *      or an error result to reject the request.
 	 *
+	 * - middleware (array)
+	 *      Middleware class names (MiddlewareInterface) run before the
+	 *      guard, outermost first, e.g. to rate-limit the route. Applied
+	 *      by the standalone environment; the WordPress environment does
+	 *      not run route middleware.
+	 *
 	 * - args (array)
 	 *      Definition of expected route parameters including type,
 	 *      validation rules, and sanitization callbacks.
@@ -71,6 +77,7 @@ interface RESTVersionInterface {
 	 *         methods: string|array<int, string>,
 	 *         handler: callable,
 	 *         guard?: callable,
+	 *         middleware?: array<int, class-string>,
 	 *         args?: array<string, array{
 	 *             required?: bool,
 	 *             type?: string,

@@ -1177,7 +1177,7 @@ class License extends DataStore {
 			$this->set_updated_at( $now );
 		}
 
-		static::cache_clear();
+		static::cache_invalidate();
 
 		return $saved;
 	}
@@ -1259,7 +1259,7 @@ class License extends DataStore {
 		} );
 
 		if ( $deleted ) {
-			static::cache_clear();
+			static::cache_invalidate();
 		}
 
 		return $deleted;
@@ -1435,7 +1435,7 @@ class License extends DataStore {
 			return $e;
 		} finally {
 			$this->activations = null;
-			static::cache_clear();
+			static::cache_invalidate();
 		}
 
 		return true;
@@ -1457,7 +1457,7 @@ class License extends DataStore {
 		$deleted = static::$DB->delete( TableName::LICENSE_ACTIVATIONS->table(), [ 'license_id' => $this->id, 'host' => $host ] );
 
 		$this->activations = null;
-		static::cache_clear();
+		static::cache_invalidate();
 
 		return false !== $deleted && $deleted > 0;
 	}
@@ -1483,11 +1483,24 @@ class License extends DataStore {
 	}
 
 	/**
+	 * The host an activation on a domain is recorded under.
+	 *
+	 * Activations, and the download tokens issued to them, are keyed by
+	 * host, so "https://example.com/shop" and "example.com" are one domain.
+	 *
+	 * @param string|URL $domain The domain or URL.
+	 * @return string The lowercase host.
+	 */
+	public static function activation_host( string|URL $domain ) : string {
+		return strtolower( (string) self::ensure_domain( $domain )->get_host() );
+	}
+
+	/**
 	 * Helper method to ensure a given domain is a valid URL.
 	 * 
 	 * @param string|URL $domain
 	 */
-	private function ensure_domain( string|URL $domain ) : URL {
+	private static function ensure_domain( string|URL $domain ) : URL {
 		if ( ( $domain instanceof URL ) ) {
 			$url = $domain;
 			if ( ! $url->has_scheme() ) {
@@ -1500,7 +1513,7 @@ class License extends DataStore {
 		}
 
 		$url = URL::from( $domain );
-		return $this->ensure_domain( $url );
+		return self::ensure_domain( $url );
 	}
 
 	/**

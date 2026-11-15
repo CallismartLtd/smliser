@@ -16,6 +16,7 @@ use SmartLicenseServer\Background\Jobs\Apps\SendAppUpdatedEmailJob;
 use SmartLicenseServer\Background\Queue\JobQueue;
 use SmartLicenseServer\Background\Queue\QueueAwareTrait;
 use SmartLicenseServer\Cache\Cache;
+use SmartLicenseServer\Cache\CacheGroup;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
 use SmartLicenseServer\Core\URLManager;
@@ -222,7 +223,7 @@ class HostingController {
 				}
 			}
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			$data = [
 				'success' => true,
@@ -475,7 +476,7 @@ class HostingController {
 				}
 			}
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 			
 			return Response::json(
 				[ 'success' => true, 'result' => $result ],
@@ -547,7 +548,7 @@ class HostingController {
 				);
 			}
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			return Response::json(
 				[ 'success' => true, 'data' => [ 'message' => 'Asset deleted successfully.' ] ],
@@ -857,7 +858,7 @@ class HostingController {
 				] );
 			}
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			$data = [
 				'message'      => sprintf( '%s status changed from %s to %s', HostedAppsRegistry::instance()->get_app_type_label( $app_type ), $old_status, $status ),
@@ -904,7 +905,7 @@ class HostingController {
 				throw new RequestException( $result->get_error_code(), $result->get_error_message(), [ 'status' => (int) ( is_array( $data ) ? ( $data['status'] ?? 500 ) : 500 ) ] );
 			}
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			return Response::json( [ 'success' => true, 'data' => [ 'message' => sprintf( '%s is deleted for good.', $name ) ] ], 200 );
 
@@ -950,7 +951,7 @@ class HostingController {
 				throw new RequestException( $renamed->get_error_code(), $renamed->get_error_message(), [ 'status' => $renamed->get_error_data()['status'] ?? 500 ] );
 			}
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			$data = [
 				'message'      => sprintf( '%s renamed from "%s" to "%s".', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ), $app_slug, $new_slug ),
@@ -1164,7 +1165,7 @@ class HostingController {
 				->set_request( $request )
 				->set_header( 'Location', $url->url() );
 
-			$this->cache->clear();
+			$this->cache->group( CacheGroup::DATA )->invalidate();
 			return $response;
 
 		} catch ( Exception $e ) {

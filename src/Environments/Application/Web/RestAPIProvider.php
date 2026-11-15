@@ -48,7 +48,8 @@ use SmartLicenseServer\Security\CSRF\CSRF;
  *     authenticate()): a signed-in browser with a valid CSRF header, else a
  *     service account's bearer token, else a guest.
  *
- * A route's own guard then runs as route middleware, before its handler.
+ * A route's own middleware (its "middleware" key, outermost first) and then
+ * its guard run as route middleware, before its handler.
  */
 class RestAPIProvider implements RESTProviderInterface {
 
@@ -154,7 +155,8 @@ class RestAPIProvider implements RESTProviderInterface {
 				$router->add( pattern: '', methods: [ 'OPTIONS' ], handler: fn() : Response => $this->options( $this->index->allow( $namespace ), $this->index->version( $namespace ) ) );
 
 				foreach ( $config['routes'] as $route ) {
-					$middleware = [];
+					// The route's own middleware, then its guard.
+					$middleware = $route['middleware'] ?? [];
 
 					if ( isset( $route['guard'] ) ) {
 						$middleware[] = $this->guard_middleware( $route['guard'], $resolver );

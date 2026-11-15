@@ -292,7 +292,7 @@ class HostedApps extends DataStore {
 				
 				$response->set_body( $response_body );
 
-				static::cache_clear();
+				static::cache_invalidate();
 			}
 			
 			return $response;
@@ -334,7 +334,7 @@ class HostedApps extends DataStore {
 				$response->set_status_code( 204 );
 				
 				$response->set_body( '' );
-				static::cache_clear();
+				static::cache_invalidate();
 			}
 
 			return $response;
@@ -371,7 +371,7 @@ class HostedApps extends DataStore {
 				$response->set_status_code( 204 )
 					->set_body( '' );
 				
-				static::cache_clear();
+				static::cache_invalidate();
 			}
 
 			return $response;

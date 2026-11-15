@@ -337,7 +337,7 @@ class HostedApplicationService extends DataStore {
 	 * @param array{
 	 *   page?:   int,
 	 *   limit?:  int,
-	 *   status?: string,  One status (default active); "" for every status.
+	 *   status?: string,  // One status (default active); "" for every status.
 	 *   types?:  string[]
 	 * } $args
 	 * @return array{
@@ -647,7 +647,7 @@ class HostedApplicationService extends DataStore {
 			return new Exception( 'rename_failed', $e->getMessage(), [ 'status' => 500 ] );
 		}
 
-		static::cache_clear();
+		static::cache_invalidate();
 
 		return true;
 	}

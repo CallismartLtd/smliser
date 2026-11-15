@@ -63,6 +63,27 @@ final class HostingAttestation {
 	public const MARKETPLACE_PUBLIC_KEY = 'rs9am8LBRxNSqxIxhDo40OyFucyjxxER2NFpTwfhtvY=';
 
 	/**
+	 * No signing key is set: packages are served unsigned.
+	 *
+	 * @var string
+	 */
+	public const KEY_MISSING = 'missing';
+
+	/**
+	 * A signing key is set but is not a base64 Ed25519 secret key.
+	 *
+	 * @var string
+	 */
+	public const KEY_INVALID = 'invalid';
+
+	/**
+	 * A valid signing key is set: packages are signed.
+	 *
+	 * @var string
+	 */
+	public const KEY_CONFIGURED = 'configured';
+
+	/**
 	 * Constructor.
 	 *
 	 * @param FileSystem $fs Filesystem API.
@@ -81,6 +102,19 @@ final class HostingAttestation {
 	}
 
 	/**
+	 * The state of the signing key.
+	 *
+	 * @return string KEY_MISSING, KEY_INVALID or KEY_CONFIGURED.
+	 */
+	public function key_status() : string {
+		if ( '' === self::raw_key() ) {
+			return self::KEY_MISSING;
+		}
+
+		return null === $this->secret_key() ? self::KEY_INVALID : self::KEY_CONFIGURED;
+	}
+
+	/**
 	 * The configured key's public half, for app owners to pin in their apps.
 	 *
 	 * @return string|null Base64 Ed25519 public key; null when no valid key is configured.
@@ -89,6 +123,37 @@ final class HostingAttestation {
 		$key = $this->secret_key();
 
 		return null === $key ? null : base64_encode( sodium_crypto_sign_publickey_from_secretkey( $key ) );
+	}
+
+	/**
+	 * The configured key's fingerprint, for checking a copied key.
+	 *
+	 * @return string|null Null when no valid key is configured.
+	 */
+	public function fingerprint() : ?string {
+		$public_key = $this->public_key();
+
+		return null === $public_key ? null : self::fingerprint_of( $public_key );
+	}
+
+	/**
+	 * The fingerprint of a public key: "SHA256:" and the unpadded base64
+	 * SHA-256 of the raw key, the form OpenSSH uses for its keys.
+	 *
+	 * Short enough to read out or compare by eye against a copy published
+	 * somewhere other than this site.
+	 *
+	 * @param string $public_key Base64 Ed25519 public key.
+	 * @return string|null Null when it is not a base64 Ed25519 public key.
+	 */
+	public static function fingerprint_of( string $public_key ) : ?string {
+		$raw = base64_decode( trim( $public_key ), true );
+
+		if ( false === $raw || SODIUM_CRYPTO_SIGN_PUBLICKEYBYTES !== strlen( $raw ) ) {
+			return null;
+		}
+
+		return 'SHA256:' . rtrim( base64_encode( hash( 'sha256', $raw, true ) ), '=' );
 	}
 
 	/**
@@ -186,9 +251,20 @@ final class HostingAttestation {
 	 * @return string|null Null when it is missing or not an Ed25519 secret key.
 	 */
 	private function secret_key() : ?string {
-		$encoded = $_ENV[ self::ENV_KEY ] ?? getenv( self::ENV_KEY );
-		$key     = is_string( $encoded ) && '' !== trim( $encoded ) ? base64_decode( trim( $encoded ), true ) : false;
+		$encoded = self::raw_key();
+		$key     = '' === $encoded ? false : base64_decode( $encoded, true );
 
 		return false === $key || SODIUM_CRYPTO_SIGN_SECRETKEYBYTES !== strlen( $key ) ? null : $key;
+	}
+
+	/**
+	 * The signing key's value as set in the environment, trimmed.
+	 *
+	 * @return string Empty when it is not set.
+	 */
+	private static function raw_key() : string {
+		$encoded = $_ENV[ self::ENV_KEY ] ?? getenv( self::ENV_KEY );
+
+		return is_string( $encoded ) ? trim( $encoded ) : '';
 	}
 }

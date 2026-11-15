@@ -26,6 +26,8 @@ use SmartLicenseServer\Environments\Application\Theming\ThemeException;
 use SmartLicenseServer\Environments\Application\Theming\ThemeManager;
 use SmartLicenseServer\Environments\Application\Update\UpdateService;
 use SmartLicenseServer\FileSystem\FileSystem;
+use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 use SmartLicenseServer\Schema\SchemaRegistry;
 use SmartLicenseServer\Security\Permission\DefaultRoles;
 use SmartLicenseServer\Security\Permission\Role;
@@ -130,7 +132,9 @@ class SystemHealth {
 		protected CodeChangeDetector $code_changes,
 		protected BackgroundSetup $background,
 		protected ExtensionManager $extensions,
-		protected ThemeManager $themes
+		protected ThemeManager $themes,
+		protected HostingAttestation $attestation,
+		protected HostedAppsRegistry $registry
 	) {}
 
 	/*
@@ -1027,6 +1031,8 @@ class SystemHealth {
 				: 'Open the Schedules tab and review the error detail for each affected task.',
 		];
 
+		$checks[] = $this->package_signing_check();
+
 		return \array_merge(
 			$checks,
 			$this->installation_state_checks(),
@@ -1034,6 +1040,46 @@ class SystemHealth {
 			$this->update_health_checks(),
 			$this->module_health_checks()
 		);
+	}
+
+	/**
+	 * Check that the site signs the app packages it serves.
+	 *
+	 *  - a valid key: pass;
+	 *  - no key: warning, since packages are served unsigned; critical when
+	 *    an app type requires signing, since its uploads are refused;
+	 *  - a key that is not valid: critical, since it was meant to sign.
+	 *
+	 * @return array{id: string, label: string, status: string, message: string, recommendation: ?string}
+	 */
+	private function package_signing_check() : array {
+		$status   = $this->attestation->key_status();
+		$required = $this->registry->attestation_required_types();
+		$refused  = [] === $required ? '' : \sprintf( ' Uploads of %s are refused until it is.', \implode( ', ', \array_map( fn( string $type ) : string => $this->registry->get_app_type_label( $type, true ), $required ) ) );
+		$fix      = \sprintf( 'See Tools → Signing Key for how to set %s.', HostingAttestation::ENV_KEY );
+
+		return match ( $status ) {
+			HostingAttestation::KEY_CONFIGURED => $this->make_check(
+				'package_signing',
+				'Package Signing',
+				'pass',
+				\sprintf( 'App packages are signed. Key fingerprint: %s.', (string) $this->attestation->fingerprint() )
+			),
+			HostingAttestation::KEY_INVALID => $this->make_check(
+				'package_signing',
+				'Package Signing',
+				'critical',
+				\sprintf( '%s is set but is not a base64 Ed25519 secret key, so packages are stored unsigned.%s', HostingAttestation::ENV_KEY, $refused ),
+				$fix
+			),
+			default => $this->make_check(
+				'package_signing',
+				'Package Signing',
+				[] === $required ? 'warning' : 'critical',
+				\sprintf( 'No signing key is set, so apps cannot check that their updates came from this site.%s', $refused ),
+				$fix
+			),
+		};
 	}
 
 	/**

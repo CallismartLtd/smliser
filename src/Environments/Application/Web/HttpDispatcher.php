@@ -144,6 +144,8 @@ final class HttpDispatcher {
 			$this->pages->get( '{category:slug}', [CorePages::class, 'documentation'] );
 		} );
 
+		$this->pages->get( CorePages::SIGNING_KEY_PATH, [CorePages::class, 'signing_key'] );
+
 		$urlmanager = $this->container->get( URLManager::class );
 
 		/*

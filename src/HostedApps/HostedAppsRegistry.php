@@ -241,6 +241,15 @@ class HostedAppsRegistry extends AbstractRegistry {
 	}
 
 	/**
+	 * The app types whose main packages must carry a hosting attestation.
+	 *
+	 * @return string[]
+	 */
+	public function attestation_required_types() : array {
+		return array_values( array_filter( $this->app_types(), [ $this, 'requires_attestation' ] ) );
+	}
+
+	/**
 	 * Get the class string for a registered hosted app.
 	 *
 	 * @param string $type The unique type identifier for the app.

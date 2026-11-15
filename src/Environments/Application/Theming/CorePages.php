@@ -11,8 +11,11 @@ declare( strict_types = 1 );
 namespace SmartLicenseServer\Environments\Application\Theming;
 
 use SmartLicenseServer\Core\Request;
+use SmartLicenseServer\Core\URLManager;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 use SmartLicenseServer\RESTAPI\RESTProviderInterface;
 use SmartLicenseServer\RESTAPI\RouteCatalog;
+use SmartLicenseServer\RESTAPI\Versions\V1;
 
 /**
  * Page handlers of the app's own public pages.
@@ -24,11 +27,31 @@ use SmartLicenseServer\RESTAPI\RouteCatalog;
 final class CorePages {
 
 	/**
+	 * Path of the signing key page.
+	 *
+	 * @var string
+	 */
+	public const SIGNING_KEY_PATH = 'signing-key';
+
+	/**
+	 * Composer package of the update client that checks this site's signatures.
+	 *
+	 * @var string
+	 */
+	public const UPDATE_CLIENT_PACKAGE = 'callismart/smliser-update-client';
+
+	/**
 	 * Constructor.
 	 *
 	 * @param RESTProviderInterface $rest_provider The REST API, for the documentation page.
+	 * @param HostingAttestation    $attestation   The package signing key, for the signing key page.
+	 * @param URLManager            $urlmanager    The URL manager.
 	 */
-	public function __construct( private RESTProviderInterface $rest_provider ) {}
+	public function __construct(
+		private RESTProviderInterface $rest_provider,
+		private HostingAttestation $attestation,
+		private URLManager $urlmanager
+	) {}
 
 	/**
 	 * GET / — the home page.
@@ -116,6 +139,63 @@ final class CorePages {
 		return null === $category
 			? $view->set_title( 'API Documentation' )->set_description( 'Available REST API routes, grouped by version and category.' )
 			: $view->set_title( sprintf( 'API Documentation: %s', $categories[ $category ] ) )->set_description( sprintf( 'REST API routes in the "%s" category.', $categories[ $category ] ) );
+	}
+
+	/**
+	 * GET /signing-key — the public key this site signs packages with.
+	 *
+	 * For developers whose apps update from this site: they copy the key
+	 * into their app, which then accepts only packages this site signed.
+	 * The page shows the public half only, and has no machine-readable
+	 * form on purpose: an app that fetched the key at update time would
+	 * trust whoever controls the site at that moment.
+	 *
+	 * Template 'signing-key'. Data:
+	 *   bool        $signed         Whether this site signs the packages it serves.
+	 *   string|null $public_key     Base64 Ed25519 public key; null when not signed.
+	 *   string|null $fingerprint    "SHA256:..." fingerprint of the key; null when not signed.
+	 *   string      $api_root       This site's REST API root, for the example code.
+	 *   string      $client_package Composer package of the update client.
+	 *
+	 * A key that is set but invalid is shown as not signed; its details are
+	 * for the administrator (Tools > Signing Key), not visitors.
+	 *
+	 * @param Request $request
+	 * @return View
+	 */
+	public function signing_key( Request $request ) : View {
+		$public_key = $this->attestation->public_key();
+
+		return View::make(
+			'signing-key',
+			[
+				'signed'         => null !== $public_key,
+				'public_key'     => $public_key,
+				'fingerprint'    => $this->attestation->fingerprint(),
+				'api_root'       => $this->api_root(),
+				'client_package' => self::UPDATE_CLIENT_PACKAGE,
+			]
+		)
+			->set_title( 'Package Signing Key' )
+			->set_description( 'The public key apps use to check that the packages they download from this site are genuine.' );
+	}
+
+	/**
+	 * This site's REST API root for the version that has the release route.
+	 *
+	 * @return string E.g. "https://updates.example.com/smliser/v1".
+	 */
+	private function api_root() : string {
+		$namespace = 'v1';
+
+		foreach ( $this->rest_provider->version_instances() as $version ) {
+			if ( $version instanceof V1 ) {
+				$namespace = $version->namespace();
+				break;
+			}
+		}
+
+		return rtrim( $this->urlmanager->url( RESTProviderInterface::PREFIX . '/' . $namespace )->url(), '/' );
 	}
 
 	/**

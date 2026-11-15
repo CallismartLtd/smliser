@@ -22,6 +22,9 @@ use SmartLicenseServer\Environments\Application\Update\UpdateService;
 use SmartLicenseServer\Environments\Application\Health\SystemHealth;
 use SmartLicenseServer\Environments\Application\Maintenance\MaintenanceMode;
 use SmartLicenseServer\Background\BackgroundSetup;
+use SmartLicenseServer\Environments\Application\Theming\CorePages;
+use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\HostedApps\HostingAttestation;
 
 /**
  * The admin system operations page handler.
@@ -38,7 +41,9 @@ class ToolsPage implements AdminPageInterface {
 		protected UpdateService $updates,
 		protected BackgroundSetup $background,
 		protected SystemHealth $health,
-		protected MaintenanceMode $maintenance
+		protected MaintenanceMode $maintenance,
+		protected HostingAttestation $attestation,
+		protected HostedAppsRegistry $registry
 	) {
 		$this->register_assets();
 	}
@@ -183,6 +188,35 @@ class ToolsPage implements AdminPageInterface {
 		$this->locator->render( 'admin.contents.system.updates', $vars );
 	}
 	/**
+	 * Render the signing key page.
+	 *
+	 * Shows the public key the site signs every hosted app's package with,
+	 * its fingerprint and the public page developers copy it from; or, when
+	 * no valid key is set, what that means and how to set one. Read-only:
+	 * the key lives in the .env file, and the private half is never shown.
+	 *
+	 * @param Request $request
+	 * @return void
+	 */
+	public function signing_key_page( Request $request ) : void {
+		$signing = [
+			'status'         => $this->attestation->key_status(),
+			'env_key'        => HostingAttestation::ENV_KEY,
+			'public_key'     => $this->attestation->public_key(),
+			'fingerprint'    => $this->attestation->fingerprint(),
+			'public_url'     => $this->urlmanager->url( CorePages::SIGNING_KEY_PATH )->url(),
+			'required_types' => array_map(
+				fn( string $type ) : string => $this->registry->get_app_type_label( $type, true ),
+				$this->registry->attestation_required_types()
+			),
+		];
+		$page_handler = $this;
+
+		$vars = \compact( 'signing', 'page_handler', 'request' );
+		$this->locator->render( 'admin.contents.system.signing-key', $vars );
+	}
+
+	/**
 	 * Render the maintenance page.
 	 *
 	 * Shows whether the site is in maintenance and why, and switches
@@ -296,6 +330,12 @@ class ToolsPage implements AdminPageInterface {
 				'callback'   => [$this, 'maintenance_page'],
 				'visibility' => true
 			],
+			[
+				'title'      => 'Signing Key',
+				'slug'       => 'signing-key',
+				'callback'   => [$this, 'signing_key_page'],
+				'visibility' => true
+			],
 		];
 	}
 
@@ -317,6 +357,7 @@ class ToolsPage implements AdminPageInterface {
 			'health'      => 'Site Health',
 			'updates'     => 'Updates',
 			'maintenance' => 'Maintenance',
+			'signing-key' => 'Signing Key',
 			default       => ''
 		};
 

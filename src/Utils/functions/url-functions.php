@@ -30,8 +30,14 @@ function url( string $path = '', array $params = [] ) : URL {
  * @param string $url The URL to parse.
  * @return string The base website address.
  */
-function smliser_url_origin( string $url ) {
-	return URL::from( $url )->get_origin();
+function smliser_url_origin( string $url ) : string {
+	$url	= URL::from( $url );
+	
+	if ( ! $url->has_scheme() ) {
+		$url	= URL::from( $url->set_scheme( 'http' )->url() );
+	}
+
+	return (string) $url->get_origin();
 }
 
 /**

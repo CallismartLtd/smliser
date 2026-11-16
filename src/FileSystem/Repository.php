@@ -421,15 +421,26 @@ abstract class Repository {
 	 * @return string|null The contents, or null when it is not there.
 	 */
 	protected static function zip_entry( ZipArchive $zip, string $root, string $name ) : ?string {
-		$index = $zip->locateName( $root . '/' . $name, ZipArchive::FL_NOCASE );
+		// Normalize target search path and root prefix
+		$cleanRoot = strtolower( trim( str_replace( '\\', '/', $root ), '/' ) );
+		$searchPath = strtolower( trim( str_replace( '\\', '/', $root . '/' . $name ), '/' ) );
 
-		if ( false === $index ) {
-			return null;
+		for ( $i = 0; $i < $zip->numFiles; $i++ ) {
+			$stat = $zip->statIndex( $i );
+			if ( ! $stat ) {
+				continue;
+			}
+
+			$entryPath = strtolower( trim( str_replace( '\\', '/', $stat['name'] ), '/' ) );
+
+			// Strict guard: ensure it matches our exact path AND starts with our root folder
+			if ( $entryPath === $searchPath && str_starts_with( $entryPath, $cleanRoot . '/' ) ) {
+				$contents = $zip->getFromIndex( $i );
+				return false === $contents ? null : $contents;
+			}
 		}
 
-		$contents = $zip->getFromIndex( $index );
-
-		return false === $contents ? null : $contents;
+		return null;
 	}
 
 	/**

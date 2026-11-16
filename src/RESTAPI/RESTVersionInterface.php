@@ -57,9 +57,12 @@ interface RESTVersionInterface {
 	 *      not run route middleware.
 	 *
 	 * - args (array)
-	 *      Definition of expected route parameters including type,
-	 *      validation rules, and sanitization callbacks.
-	 *      Used by environment implementations to validate input.
+	 *      The route's parameters by name: required, type (string,
+	 *      integer, array or binary), description and default. The
+	 *      standalone environment enforces them before the guard (see
+	 *      RouteArguments): a request that breaks them is answered 400,
+	 *      and the handler receives each in its declared type. The API
+	 *      reference documents them.
 	 *
 	 * - category (string)
 	 *      Logical grouping identifier for the route, such as
@@ -80,7 +83,7 @@ interface RESTVersionInterface {
 	 *         middleware?: array<int, class-string>,
 	 *         args?: array<string, array{
 	 *             required?: bool,
-	 *             type?: string,
+	 *             type?: 'string'|'integer'|'array'|'binary',
 	 *             description?: string,
 	 *             default?: mixed
 	 *         }>,

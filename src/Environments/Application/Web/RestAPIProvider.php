@@ -19,6 +19,7 @@ use SmartLicenseServer\Exceptions\RequestException;
 use SmartLicenseServer\RESTAPI\RESTProviderInterface;
 use SmartLicenseServer\RESTAPI\RESTVersionInterface;
 use SmartLicenseServer\RESTAPI\RESTIndex;
+use SmartLicenseServer\RESTAPI\RouteArguments;
 use SmartLicenseServer\Routing\Router as CoreRouter;
 use SmartLicenseServer\Security\Authentication\AuthenticationResult;
 use SmartLicenseServer\Security\Authentication\ServiceAccountAuthenticator;
@@ -48,8 +49,13 @@ use SmartLicenseServer\Security\CSRF\CSRF;
  *     authenticate()): a signed-in browser with a valid CSRF header, else a
  *     service account's bearer token, else a guest.
  *
- * A route's own middleware (its "middleware" key, outermost first) and then
- * its guard run as route middleware, before its handler.
+ * Then, as route middleware before its handler:
+ *
+ *  4. The route's own middleware (its "middleware" key, outermost first).
+ *  5. Arguments: the request must keep the route's declared "args" (see
+ *     RouteArguments), or is answered 400. Running inside the route's own
+ *     middleware lets a monitor count malformed requests as failures.
+ *  6. The route's guard.
  */
 class RestAPIProvider implements RESTProviderInterface {
 
@@ -155,8 +161,9 @@ class RestAPIProvider implements RESTProviderInterface {
 				$router->add( pattern: '', methods: [ 'OPTIONS' ], handler: fn() : Response => $this->options( $this->index->allow( $namespace ), $this->index->version( $namespace ) ) );
 
 				foreach ( $config['routes'] as $route ) {
-					// The route's own middleware, then its guard.
-					$middleware = $route['middleware'] ?? [];
+					// The route's own middleware, its arguments, then its guard.
+					$middleware   = $route['middleware'] ?? [];
+					$middleware[] = $this->arguments_middleware( new RouteArguments( $route['args'] ?? [], $namespace . '/' . $route['route'] ) );
 
 					if ( isset( $route['guard'] ) ) {
 						$middleware[] = $this->guard_middleware( $route['guard'], $resolver );
@@ -310,6 +317,24 @@ class RestAPIProvider implements RESTProviderInterface {
 		}
 
 		return $next( $request );
+	}
+
+	/**
+	 * Wrap a route's declared arguments as route middleware.
+	 *
+	 * @param RouteArguments $arguments The route's arguments.
+	 * @return callable( Request, callable ): mixed
+	 */
+	protected function arguments_middleware( RouteArguments $arguments ) : callable {
+		return static function ( Request $request, callable $next ) use ( $arguments ) : mixed {
+			$result = $arguments->enforce( $request );
+
+			if ( true !== $result ) {
+				return Response::error( $result, 400 );
+			}
+
+			return $next( $request );
+		};
 	}
 
 	/**

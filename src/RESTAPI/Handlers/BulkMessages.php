@@ -31,9 +31,9 @@ class BulkMessages {
 		$page  = max( 1, (int) $request->get( 'page' ) );
 		$limit = max( 50, (int) $request->get( 'limit' ) );
 
-		// Normalize array inputs.
-		$app_slugs = (array) $request->get( 'slug' );
-		$app_types = (array) $request->get( 'type' );
+		// Normalize array inputs: the route's declared app_slugs and app_types.
+		$app_slugs = (array) $request->get( 'app_slugs' );
+		$app_types = (array) $request->get( 'app_types' );
 
 		// Remove empty strings or invalid entries.
 		$app_slugs = static::sanitize_deep( $app_slugs );

@@ -321,7 +321,7 @@ class Licenses {
 	 * @param Request $request The REST Request Object
 	 */
 	public function uninstallation_response( Request $request ) : Response {
-		$domain = smliser_url_origin( $request->get( 'domain' ) );
+		$domain = $request->get( 'domain' );
 		/** @var License $license */
 		$license       = $request->get( 'smliser_resource' );
 

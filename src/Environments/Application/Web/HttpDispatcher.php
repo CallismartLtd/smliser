@@ -382,6 +382,12 @@ final class HttpDispatcher {
 					);
 
 					$this->router->post(
+						pattern: 'license-uninstall-domain',
+						handler: [AppMonetization::class, 'handle_licensed_domain_removal_request'],
+						middleware: []
+					);
+
+					$this->router->post(
 						pattern: 'generate-app-download-token',
 						handler: [AppMonetization::class, 'handle_download_token_generation_request'],
 						middleware: []

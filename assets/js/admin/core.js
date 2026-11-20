@@ -766,21 +766,25 @@
 			}
 
 			const row    = e.target.closest( '[data-domain-value]' );
-			const domain = row?.dataset.domainValue;
+			const domain = row?.dataset.domainValue;			
 
 			if ( ! domain ) {
 				SmliserToast.show( 'Domain value was not found', 5000 );
 				return;
 			}
 
-			const url = smliserAjaxUrl( '', {
-				action: 'smliser_remove_licensed_domain',
-				license_id: queryParam.get( 'license_id' ),
-				domain,
-			}, { nonce: true } );
+			const payLoad	= new FormData();
+			payLoad.set( 'license_id', queryParam.get( 'id' ) );
+			payLoad.set( 'domain', domain );
+
+			const url = smliserAjaxUrl( 'license-uninstall-domain' );
 
 			try {
-				const response = await smliserFetchJSON( url, { credentials: 'same-origin' } );
+				const response = await smliserFetchJSON( url, { 
+					credentials: 'same-origin',
+					method: 'POST',
+					body: payLoad
+				});
 
 				if ( ! response.success ) {
 					throw new Error( response.data?.message ?? 'An error occurred' );

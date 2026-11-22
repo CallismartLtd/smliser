@@ -29,6 +29,7 @@ use SmartLicenseServer\Environments\Application\Release\ReleaseManifest;
 use SmartLicenseServer\Exceptions\DatabaseException;
 use SmartLicenseServer\FileSystem\FileSystem;
 use SmartLicenseServer\HostedApps\HostingAttestation;
+use SmartLicenseServer\I18n\I18n;
 use SmartLicenseServer\Schema\DatabaseAdapterRegistry;
 use SmartLicenseServer\Schema\MigrationRegistry;
 use SmartLicenseServer\Schema\SchemaRegistry;
@@ -37,6 +38,8 @@ use SmartLicenseServer\Security\Context\ContextServiceProvider;
 use SmartLicenseServer\Security\Owner;
 use SmartLicenseServer\Security\Permission\DefaultRoles;
 use SmartLicenseServer\Security\Permission\Role;
+use SmartLicenseServer\SettingsAPI\Settings;
+use SmartLicenseServer\SettingsAPI\UserSettings;
 
 /**
  * Provides the Unified API to install this application on a the server.
@@ -1015,6 +1018,59 @@ class AppInstaller {
 		) );
 
 		return $admin;
+	}
+
+	/**
+	 * Save the language chosen during installation as the site language.
+	 *
+	 * Needs the options table, so call it once the tables exist. Only an
+	 * installed language is saved; anything else leaves the site language
+	 * on automatic (detected from each visitor's browser).
+	 *
+	 * @param string $locale A locale code such as fr_FR.
+	 * @return bool Whether the setting was saved.
+	 * @throws DatabaseException When no database connection is active.
+	 */
+	public function save_site_language( string $locale ) : bool {
+		$this->assert_database_connection();
+
+		$code = $this->installed_language( $locale );
+
+		if ( null === $code ) {
+			return false;
+		}
+
+		return Settings::instance()->set( Settings::SITE_LOCALE, $code );
+	}
+
+	/**
+	 * Save the language chosen during installation as a user's language preference.
+	 *
+	 * @param User   $user   The user, typically the administrator just created.
+	 * @param string $locale A locale code such as fr_FR.
+	 * @return bool Whether the preference was saved.
+	 * @throws DatabaseException When no database connection is active.
+	 */
+	public function save_user_language( User $user, string $locale ) : bool {
+		$this->assert_database_connection();
+
+		$code = $this->installed_language( $locale );
+
+		if ( null === $code || ! $user->get_id() ) {
+			return false;
+		}
+
+		return UserSettings::for( $user )->set( UserSettings::LOCALE, $code );
+	}
+
+	/**
+	 * The installed locale code matching a requested locale.
+	 *
+	 * @param string $locale A locale code.
+	 * @return string|null Null when it is not a locale or has no translations installed.
+	 */
+	protected function installed_language( string $locale ) : ?string {
+		return ( new InstallerLanguage( I18n::translator()->available_locales() ) )->find( $locale )?->code();
 	}
 
 	/**

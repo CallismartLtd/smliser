@@ -18,6 +18,8 @@ use SmartLicenseServer\Environments\Application\Kernel\ExecutionHandlerInterface
 use SmartLicenseServer\Environments\Application\Web\DowntimeExecutionHandler;
 use SmartLicenseServer\Exceptions\DatabaseException;
 use SmartLicenseServer\FileSystem\FileSystem;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\LocaleResolver;
 
 /**
  * Execution handler for web requests while the application is in Installation mode.
@@ -49,6 +51,12 @@ use SmartLicenseServer\FileSystem\FileSystem;
  *
  * The application session is not used: SessionManager depends on
  * SMLISER_SECRET, which this installer writes. See InstallerSession.
+ *
+ * The installer's language is picked before anything else (see
+ * apply_locale() and InstallerLanguage), without the database: a choice made
+ * with the language picker (?lang=) is kept in the smliser_lang cookie and
+ * the installer session, and is saved as the site language and the
+ * administrator's language once the database exists.
  *
  * @package SmartLicenseServer\Environments\Application\Installation
  * @since 0.2.0
@@ -95,6 +103,13 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	private ?Response $response = null;
 
 	/**
+	 * The language explicitly chosen for the installer, if any.
+	 *
+	 * @var string|null
+	 */
+	private ?string $language = null;
+
+	/**
 	 * Class constructor.
 	 *
 	 * @param AppInstaller     $installer The application installer.
@@ -119,6 +134,8 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public function handle() : int {
+		$this->apply_locale();
+
 		try {
 			$response = $this->dispatch();
 		} catch ( \Throwable $e ) {
@@ -155,6 +172,54 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	| Routing
 	|----------
 	*/
+
+	/**
+	 * Switch the installer to the requested language.
+	 *
+	 * Precedence: ?lang= (the language picker), the owner's installer
+	 * session, the smliser_lang cookie, the browser's Accept-Language
+	 * header, then English. The database is never read: it may not exist yet.
+	 * A language picked with ?lang= is remembered in the cookie and, for the
+	 * owner, in the installer session.
+	 *
+	 * @return void
+	 */
+	private function apply_locale() : void {
+		try {
+			$translator = I18n::translator();
+			$language   = new InstallerLanguage( $translator->available_locales() );
+
+			$query  = $this->request->query( LocaleResolver::QUERY_PARAM );
+			$query  = is_string( $query ) ? $query : null;
+			$cookie = $this->request->cookie( LocaleResolver::COOKIE );
+			$cookie = is_string( $cookie ) ? $cookie : null;
+
+			$owner_cookie = $_COOKIE[ InstallerSession::COOKIE ] ?? null;
+			$is_owner     = $this->session->is_owner( is_string( $owner_cookie ) ? $owner_cookie : null );
+			$stored       = ( $is_owner ? $this->session->locale() : null ) ?? $cookie;
+
+			$choice = $language->choice( $query, $stored );
+			$locale = $language->resolve( $query, $stored, $this->request->get_header( 'Accept-Language' ) );
+
+			$translator->set_locale( $locale );
+			$this->language = $choice?->code();
+
+			if ( null !== $choice && null !== $language->find( $query ) ) {
+				$this->remember_language( $choice->code() );
+
+				if ( $is_owner ) {
+					$this->session->set_locale( $choice->code() );
+				}
+			}
+
+			if ( $language->has_choice() && $this->is_installer_path() ) {
+				$this->page->set_language_picker( $this->installer_url(), I18n::language_options(), $locale->code() );
+			}
+		} catch ( \Throwable $e ) {
+			// A broken catalog must never stop the installation: stay in English.
+			\smliser_log_error( '[WebInstaller] Could not apply the installer language: ' . $e->getMessage() );
+		}
+	}
 
 	/**
 	 * Route the request to the owner, the claim form or the visitor response.
@@ -319,6 +384,11 @@ final class WebInstaller implements ExecutionHandlerInterface {
 
 		$this->installer->begin_installation();
 		$this->set_cookie( $cookie );
+
+		// A language picked on the token form carries over into the new claim.
+		if ( null !== $this->language ) {
+			$this->session->set_locale( $this->language );
+		}
 
 		return $this->next();
 	}
@@ -830,9 +900,18 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		}
 
 		try {
-			$this->installer->create_admin( $name, $email, $password );
+			$admin = $this->installer->create_admin( $name, $email, $password );
 		} catch ( DatabaseException | \InvalidArgumentException $e ) {
 			return $this->render_step( $assessment, $values, [ $this->error( smliser__( 'The account could not be created.' ), $e->getMessage() ) ], 422 );
+		}
+
+		if ( null !== $this->language ) {
+			try {
+				$this->installer->save_user_language( $admin, $this->language );
+			} catch ( \Throwable $e ) {
+				// The account exists; the language can still be chosen in the dashboard.
+				\smliser_log_error( '[WebInstaller] Could not save the administrator\'s language: ' . $e->getMessage() );
+			}
 		}
 
 		if ( self::STEP_FINISH === $this->assess()['step'] ) {
@@ -850,6 +929,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	 * @return Response
 	 */
 	private function finish() : Response {
+		$this->save_site_language();
 		$this->installer->mark_installed();
 		$this->token->delete();
 		$this->session->release();
@@ -861,6 +941,27 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		$this->fs->rmdir( dirname( $this->lock_file() ) );
 
 		return $this->respond( $this->page->done( $this->base_path() . '/' ) );
+	}
+
+	/**
+	 * Save the language chosen in the installer as the site language.
+	 *
+	 * Nothing is saved when no language was picked, so the site keeps
+	 * detecting each visitor's language from the browser. A failure is only
+	 * logged: the setting can be changed later in the admin settings.
+	 *
+	 * @return void
+	 */
+	private function save_site_language() : void {
+		if ( null === $this->language ) {
+			return;
+		}
+
+		try {
+			$this->installer->save_site_language( $this->language );
+		} catch ( \Throwable $e ) {
+			\smliser_log_error( '[WebInstaller] Could not save the site language: ' . $e->getMessage() );
+		}
 	}
 
 	/**
@@ -1096,6 +1197,26 @@ final class WebInstaller implements ExecutionHandlerInterface {
 				'secure'   => $this->is_https(),
 				'httponly' => true,
 				'samesite' => 'Strict',
+			]
+		);
+	}
+
+	/**
+	 * Remember the chosen language in the browser, in the cookie the application also reads.
+	 *
+	 * @param string $locale A validated locale code.
+	 * @return void
+	 */
+	private function remember_language( string $locale ) : void {
+		setcookie(
+			LocaleResolver::COOKIE,
+			$locale,
+			[
+				'expires'  => time() + 365 * 86400,
+				'path'     => $this->base_path() . '/',
+				'secure'   => $this->is_https(),
+				'httponly' => false,
+				'samesite' => 'Lax',
 			]
 		);
 	}

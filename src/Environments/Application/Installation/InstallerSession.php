@@ -177,6 +177,35 @@ final class InstallerSession {
 	}
 
 	/**
+	 * Remember the language the owner chose for the installer.
+	 *
+	 * Kept with the claim, so it does not depend on the database (which may
+	 * not exist yet) and is saved as the site language at the end.
+	 *
+	 * @param string $locale A locale code, already validated by the caller.
+	 * @return void
+	 */
+	public function set_locale( string $locale ) : void {
+		$record = $this->active_record();
+
+		if ( null !== $record && ( $record['locale'] ?? null ) !== $locale ) {
+			$record['locale'] = $locale;
+			$this->write_json( $this->file, $record );
+		}
+	}
+
+	/**
+	 * The language the owner chose for the installer, if any.
+	 *
+	 * @return string|null A locale code, or null when none was chosen.
+	 */
+	public function locale() : ?string {
+		$locale = $this->active_record()['locale'] ?? null;
+
+		return is_string( $locale ) && '' !== $locale ? $locale : null;
+	}
+
+	/**
 	 * Get and clear the stored notices.
 	 *
 	 * @return array<int, array{type: string, message: string}>
@@ -221,7 +250,7 @@ final class InstallerSession {
 	/**
 	 * The stored claim when present and not stale.
 	 *
-	 * @return array{session: string, csrf: string, claimed_at: int, last_seen: int, flash?: array}|null
+	 * @return array{session: string, csrf: string, claimed_at: int, last_seen: int, flash?: array, locale?: string}|null
 	 */
 	private function active_record() : ?array {
 		$record = $this->read_json( $this->file ) ?: null;

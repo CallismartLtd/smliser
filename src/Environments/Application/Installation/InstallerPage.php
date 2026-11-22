@@ -11,6 +11,9 @@ declare( strict_types=1 );
 
 namespace SmartLicenseServer\Environments\Application\Installation;
 
+use SmartLicenseServer\I18n\Locale;
+use SmartLicenseServer\I18n\LocaleResolver;
+
 /**
  * Renders the web installer's pages.
  *
@@ -28,6 +31,31 @@ namespace SmartLicenseServer\Environments\Application\Installation;
  * @since 0.2.0
  */
 class InstallerPage {
+
+	/**
+	 * The language picker shown in the page header, or null to hide it.
+	 *
+	 * @var array{url: string, options: array<string, string>, current: string}|null
+	 */
+	protected ?array $language_picker = null;
+
+	/**
+	 * Show a language picker in the header of every page.
+	 *
+	 * The picker is a plain GET form that reloads the installer with
+	 * ?lang=<code>, so it works without JavaScript. It is not shown with
+	 * fewer than two languages.
+	 *
+	 * @param string                $url     Installer URL the picker submits to.
+	 * @param array<string, string> $options Locale code => native name (I18n::language_options()).
+	 * @param string                $current The active locale code.
+	 * @return void
+	 */
+	public function set_language_picker( string $url, array $options, string $current ) : void {
+		$this->language_picker = count( $options ) > 1
+			? [ 'url' => $url, 'options' => $options, 'current' => $current ]
+			: null;
+	}
 
 	/**
 	 * Stepper labels, keyed by step.
@@ -494,7 +522,7 @@ class InstallerPage {
 
 		return <<<HTML
 			<!DOCTYPE html>
-			<html lang="en">
+			<html {$this->language_attributes()}>
 			<head>
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -537,12 +565,13 @@ class InstallerPage {
 		}
 
 		$html = sprintf(
-			'<p class="eyebrow">%1$s installer</p>%2$s<h1 tabindex="-1">%3$s</h1><div class="alerts" aria-live="assertive">%4$s</div>%5$s',
+			'<div class="topbar"><p class="eyebrow">%1$s installer</p>%6$s</div>%2$s<h1 tabindex="-1">%3$s</h1><div class="alerts" aria-live="assertive">%4$s</div>%5$s',
 			$this->e( \SMLISER_APP_NAME ),
 			$this->stepper( $step ),
 			$this->e( $title ),
 			$alerts,
-			$body
+			$body,
+			$this->language_picker()
 		);
 
 		return [
@@ -637,6 +666,74 @@ class InstallerPage {
 				{$i18n[1]}
 			</form>
 			HTML;
+	}
+
+	/**
+	 * Render the language picker, or nothing when it is not enabled.
+	 *
+	 * A GET form: the query of the installer URL (e.g. "?install") is sent
+	 * as hidden fields, because browsers replace the action's query string
+	 * with the form's fields. The script submits it on change; without
+	 * JavaScript, the button does.
+	 *
+	 * @return string
+	 */
+	protected function language_picker() : string {
+		if ( null === $this->language_picker ) {
+			return '';
+		}
+
+		$url    = $this->language_picker['url'];
+		$path   = (string) strtok( $url, '?' );
+		$query  = (string) parse_url( $url, PHP_URL_QUERY );
+		$params = [];
+		$hidden = '';
+
+		parse_str( $query, $params );
+
+		foreach ( $params as $name => $value ) {
+			if ( LocaleResolver::QUERY_PARAM === $name || ! is_string( $value ) ) {
+				continue;
+			}
+
+			$hidden .= sprintf( '<input type="hidden" name="%1$s" value="%2$s">', $this->e( (string) $name ), $this->e( $value ) );
+		}
+
+		$options = '';
+
+		foreach ( $this->language_picker['options'] as $code => $name ) {
+			$code     = (string) $code;
+			$options .= sprintf(
+				'<option value="%1$s" lang="%2$s"%3$s>%4$s</option>',
+				$this->e( $code ),
+				$this->e( Locale::try_parse( $code )?->to_bcp47() ?? $code ),
+				$code === $this->language_picker['current'] ? ' selected' : '',
+				$this->e( $name )
+			);
+		}
+
+		$i18n = [
+			smliser_esc_html__( 'Language' ),
+			smliser_esc_html__( 'Change' ),
+		];
+
+		return <<<HTML
+			<form method="get" action="{$this->e( '' === $path ? '/' : $path )}" class="language" data-language-picker>
+				{$hidden}
+				<label for="installer-language" class="sr-only">{$i18n[0]}</label>
+				<select id="installer-language" name="lang">{$options}</select>
+				<noscript><button type="submit" class="btn btn-small">{$i18n[1]}</button></noscript>
+			</form>
+			HTML;
+	}
+
+	/**
+	 * The lang and dir attributes of the <html> element, for the active language.
+	 *
+	 * @return string
+	 */
+	protected function language_attributes() : string {
+		return \smliser_language_attributes();
 	}
 
 	/**
@@ -791,6 +888,9 @@ class InstallerPage {
 
 				document.addEventListener('change', (event) => {
 					if (event.target.name === 'db_driver') { syncDriver(); }
+					// The language picker reloads the installer in the chosen language.
+					const picker = event.target.closest('form[data-language-picker]');
+					if (picker) { picker.submit(); }
 				});
 
 				syncDriver();
@@ -833,7 +933,16 @@ class InstallerPage {
 				width: 100%; max-width: 600px; padding: 32px;
 				background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
 			}
-			.eyebrow { margin: 0 0 20px; color: var(--muted); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+			.eyebrow { margin: 0; color: var(--muted); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+			.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; margin: 0 0 20px; }
+			.language { display: flex; align-items: center; gap: 6px; margin: 0; }
+			.language select {
+				max-width: 100%; padding: 5px 8px; border: 1px solid var(--border); border-radius: 8px;
+				background: var(--bg); color: var(--ink); font: inherit; font-size: 13px;
+			}
+			.language select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+			.btn-small { padding: 5px 10px; font-size: 13px; }
+			.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 			h1 { margin: 24px 0 12px; font-size: 22px; line-height: 1.3; outline: none; }
 			p { margin: 0 0 14px; }
 			.lead { color: var(--ink); }
@@ -841,7 +950,7 @@ class InstallerPage {
 			code { padding: 1px 5px; border-radius: 5px; background: var(--bg); overflow-wrap: anywhere; }
 			pre { margin: 0 0 14px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); overflow-x: auto; }
 			pre code { padding: 0; background: none; }
-			.guide { margin: 0 0 14px; padding-left: 22px; }
+			.guide { margin: 0 0 14px; padding-inline-start: 22px; }
 			.guide li { margin-bottom: 6px; }
 			.more { margin: 0 0 14px; }
 			.more > summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 14px; }
@@ -902,7 +1011,7 @@ class InstallerPage {
 			@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2s; } }
 			.leave { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--border); }
 			.link { padding: 0; border: 0; background: none; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; }
-			.issues { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+			.issues { margin: 0; padding-inline-start: 20px; color: var(--muted); font-size: 14px; }
 			.tasks { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; border: 1px solid var(--border); border-radius: 10px; }
 			.tasks li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; }
 			.tasks li + li { border-top: 1px solid var(--border); }

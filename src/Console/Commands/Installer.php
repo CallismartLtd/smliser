@@ -19,8 +19,11 @@ use SmartLicenseServer\Console\ScriptName;
 use SmartLicenseServer\Environments\Application\Auth\FolderOwnership;
 use SmartLicenseServer\Environments\Application\Installation\AppInstaller;
 use SmartLicenseServer\Environments\Application\Installation\DatabaseSettings;
+use SmartLicenseServer\Environments\Application\Installation\InstallerLanguage;
 use SmartLicenseServer\Environments\Application\Installation\SetupToken;
 use SmartLicenseServer\Exceptions\DatabaseException;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\Locale;
 use SmartLicenseServer\Schema\SchemaRegistry;
 use SmartLicenseServer\Security\Actors\User;
 use SmartLicenseServer\Security\Context\ContextServiceProvider;
@@ -37,6 +40,23 @@ class Installer extends AbstractCommand {
 	 * How many times a question is asked again after an invalid answer.
 	 */
 	protected const MAX_ATTEMPTS = 5;
+
+	/**
+	 * The language chosen with --lang or at the language prompt.
+	 *
+	 * Null when none was chosen: the run stays in English and the site
+	 * language is left on automatic (detected from each visitor's browser).
+	 *
+	 * @var string|null
+	 */
+	protected ?string $language = null;
+
+	/**
+	 * Whether the language was already chosen in this run.
+	 *
+	 * @var bool
+	 */
+	protected bool $language_chosen = false;
 
 	public function __construct(
 		protected AppInstaller $installer,
@@ -105,6 +125,16 @@ class Installer extends AbstractCommand {
 			'                     link:assets    Rebuild public/assets and public/themes/default: recreate the links, or switch between',
 			'                                    link and copy based on what the server allows now.',
 			'                     make:roles     Install the default roles again over existing ones.',
+			'',
+			'   ' . smliser__( 'Language (run, make:admin):' ) . ' ',
+			'--lang=<locale>    ' . smliser__( 'The language of the installation, e.g. fr_FR. Saved as the site language (run)' ),
+			'                   ' . smliser__( 'and as the administrator\'s language. Without it, run asks when translations are installed;' ),
+			'                   ' . smliser__( 'pressing Enter keeps English and leaves the site language on automatic.' ),
+			'                   ' . sprintf(
+				/* translators: %s: comma-separated locale codes, e.g. "en_US, fr_FR". */
+				smliser__( 'Installed languages: %s.' ),
+				implode( ', ', ( new InstallerLanguage( I18n::translator()->available_locales() ) )->codes() )
+			),
 			'',
 			'   Full installation (run): ',
 			'--skip-admin       Do not create the administrator account now.',
@@ -194,6 +224,10 @@ class Installer extends AbstractCommand {
 		$timer = new Stopwatch();
 		$timer->start();
 
+		if ( 0 !== $this->choose_language( $input, true ) ) {
+			return 1;
+		}
+
 		$this->output->info( sprintf( 'Installing %s.', SMLISER_APP_NAME ) );
 		$this->output->writeln( 'Steps that are already done are checked and skipped, so you can stop and run this command again at any time.' );
 
@@ -257,6 +291,8 @@ class Installer extends AbstractCommand {
 			return 0;
 		}
 
+		$this->save_site_language();
+
 		if ( 0 !== $this->mark_installed( $input ) ) {
 			$this->output->error( sprintf( 'Resolve the issues above, then run `%s` again.', $this->command_prefix( 'run' ) ) );
 			return 1;
@@ -280,6 +316,118 @@ class Installer extends AbstractCommand {
 		}
 
 		return 0;
+	}
+
+	/**
+	 * Choose the language of this run, from --lang or, when $ask, by asking.
+	 *
+	 * The prompt is only shown when translations are installed. The chosen
+	 * language is used for the rest of the run and saved later as the site
+	 * language and the administrator's language.
+	 *
+	 * @param CommandInput $input
+	 * @param bool         $ask   Whether to ask when --lang is not given.
+	 * @return int 0 on success, 1 when --lang names a language that is not installed.
+	 */
+	protected function choose_language( CommandInput $input, bool $ask ) : int {
+		if ( $this->language_chosen ) {
+			return 0;
+		}
+
+		$translator = I18n::translator();
+		$languages  = new InstallerLanguage( $translator->available_locales() );
+		$locale     = null;
+
+		if ( $input->has_option( 'lang' ) ) {
+			$given  = $input->get_option( 'lang' );
+			$given  = is_string( $given ) ? trim( $given ) : '';
+			$locale = $languages->find( $given );
+
+			if ( null === $locale ) {
+				$this->output->error(
+					sprintf(
+						/* translators: 1: the value given with --lang, 2: comma-separated locale codes, e.g. "en_US, fr_FR". */
+						smliser__( 'The language "%1$s" is not installed. Use one of: %2$s.' ),
+						$given,
+						implode( ', ', $languages->codes() )
+					)
+				);
+				return 1;
+			}
+		} elseif ( $ask && $languages->has_choice() ) {
+			$locale = $this->ask_language();
+		}
+
+		$this->language_chosen = true;
+
+		if ( null === $locale ) {
+			return 0;
+		}
+
+		$translator->set_locale( $locale );
+		$this->language = $locale->code();
+
+		$this->output->success(
+			sprintf(
+				/* translators: 1: language name, 2: locale code, e.g. fr_FR. */
+				smliser__( 'Language: %1$s (%2$s).' ),
+				$locale->native_name(),
+				$locale->code()
+			)
+		);
+
+		return 0;
+	}
+
+	/**
+	 * Ask which of the installed languages to use.
+	 *
+	 * @return Locale|null The chosen language, or null when Enter was pressed (English, site language on automatic).
+	 */
+	protected function ask_language() : ?Locale {
+		$labels = [];
+		$codes  = [];
+		$number = 0;
+
+		foreach ( I18n::language_options() as $code => $name ) {
+			$number++;
+			$labels[ (string) $number ] = sprintf( '%1$s (%2$s)', $name, $code );
+			$codes[ (string) $number ]  = (string) $code;
+		}
+
+		$this->output->newline();
+		$this->output->writeln( smliser__( 'Choose the language of the installation. It is also saved as the site language and your account\'s language.' ) );
+
+		$choice = $this->io->choice( smliser__( 'Language number (press Enter for English)' ), $labels, null );
+		$key    = null === $choice ? false : array_search( $choice, $labels, true );
+
+		return false === $key ? null : Locale::try_parse( $codes[ $key ] );
+	}
+
+	/**
+	 * Save the chosen language as the site language, once the tables exist.
+	 *
+	 * Nothing is saved when no language was chosen. A failure is only a
+	 * warning: the site language can be changed later in the admin settings.
+	 *
+	 * @return void
+	 */
+	protected function save_site_language() : void {
+		if ( null === $this->language ) {
+			return;
+		}
+
+		try {
+			if ( $this->installer->save_site_language( $this->language ) ) {
+				/* translators: %s: locale code, e.g. fr_FR. */
+				$this->output->success( sprintf( smliser__( 'Site language set to %s.' ), $this->language ) );
+				return;
+			}
+		} catch ( \Throwable $e ) {
+			\smliser_log_error( '[installer] Could not save the site language: ' . $e->getMessage() );
+		}
+
+		$this->output->warning( smliser__( 'The site language could not be saved. Choose it later in the admin settings (General).' ) );
 	}
 
 	/**
@@ -998,6 +1146,11 @@ class Installer extends AbstractCommand {
 	 * @return int
 	 */
 	public function make_admin( CommandInput $input ) : int {
+		// --lang only; the run wizard has already asked.
+		if ( 0 !== $this->choose_language( $input, false ) ) {
+			return 1;
+		}
+
 		// Check before prompting: email lookups against a placeholder
 		// database would silently report every address as available.
 		if ( ! $this->ensure_database_connection() ) {
@@ -1133,6 +1286,19 @@ class Installer extends AbstractCommand {
 			$this->output->writeln(
 				sprintf( 'A welcome email is queued for %s.', $admin->get_email() )
 			);
+
+			if ( null !== $this->language ) {
+				try {
+					$saved = $this->installer->save_user_language( $admin, $this->language );
+				} catch ( \Throwable $e ) {
+					\smliser_log_error( '[installer] Could not save the administrator\'s language: ' . $e->getMessage() );
+					$saved = false;
+				}
+
+				if ( ! $saved ) {
+					$this->output->warning( smliser__( 'Your language could not be saved to your account. Choose it later in your preferences.' ) );
+				}
+			}
 
 			return 0;
 		} catch ( \Throwable $e ) {

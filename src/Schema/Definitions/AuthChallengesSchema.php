@@ -18,11 +18,11 @@ use SmartLicenseServer\Schema\TableName;
  */
 final class AuthChallengesSchema implements DatabaseSchemaInterface {
 	public static function get_label() : string {
-		return 'Authentication Challenges';
+		return smliser__( 'Authentication Challenges' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores short-lived authentication and factor-enrollment challenges.';
+		return smliser__( 'Stores short-lived authentication and factor-enrollment challenges.' );
 	}
 
 	public static function get_table_name() : string {

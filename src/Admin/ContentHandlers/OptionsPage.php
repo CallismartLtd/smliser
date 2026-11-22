@@ -677,13 +677,13 @@ class OptionsPage implements AdminPageInterface {
 		$section = $request->get( 'section' );
 
 		$title = match ( true ) {
-			'routes' === $tab                            => 'Page Routing',
-			'monetization' === $tab                      => 'Monetization Providers',
-			'email' === $tab && 'templates' === $section => 'Email Templates',
-			'email' === $tab                             => 'Email Providers',
-			'cache' === $tab && 'stats' === $section     => 'Cache Statistics',
-			'cache' === $tab                             => 'Cache Adapters',
-			default                                      => 'General Settings',
+			'routes' === $tab                            => smliser__( 'Page Routing' ),
+			'monetization' === $tab                      => smliser__( 'Monetization Providers' ),
+			'email' === $tab && 'templates' === $section => smliser__( 'Email Templates' ),
+			'email' === $tab                             => smliser__( 'Email Providers' ),
+			'cache' === $tab && 'stats' === $section     => smliser__( 'Cache Statistics' ),
+			'cache' === $tab                             => smliser__( 'Cache Adapters' ),
+			default                                      => smliser__( 'General Settings' ),
 		};
 
 		return [

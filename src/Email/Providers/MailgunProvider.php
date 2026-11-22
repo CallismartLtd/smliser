@@ -65,37 +65,37 @@ class MailgunProvider extends AbstractRestEmailProvider {
 		return [
 			'api_key' => [
 				'type'        => 'password',
-				'label'       => 'API Key',
+				'label'       => smliser__( 'API Key' ),
 				'required'    => true,
-				'description' => 'Your Mailgun private API key. Found under API Security in your Mailgun account.',
+				'description' => smliser__( 'Your Mailgun private API key. Found under API Security in your Mailgun account.' ),
 			],
 			'domain' => [
 				'type'        => 'text',
-				'label'       => 'Sending Domain',
+				'label'       => smliser__( 'Sending Domain' ),
 				'required'    => true,
-				'description' => 'Your verified Mailgun sending domain. e.g. mg.yourdomain.com',
+				'description' => smliser__( 'Your verified Mailgun sending domain. e.g. mg.yourdomain.com' ),
 			],
 			'region' => [
 				'type'     => 'select',
-				'label'    => 'API Region',
+				'label'    => smliser__( 'API Region' ),
 				'required' => false,
 				'options'  => [
-					'us' => 'US (default)',
+					'us' => smliser__( 'US (default)' ),
 					'eu' => 'EU',
 				],
-				'description' => 'Use EU region if your Mailgun account is hosted in Europe.',
+				'description' => smliser__( 'Use EU region if your Mailgun account is hosted in Europe.' ),
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => false,
-				'description' => 'Sender email address. Leave blank to use the global from email.',
+				'description' => smliser__( 'Sender email address. Leave blank to use the global from email.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Sender display name. Leave blank to use the global from name.',
+				'description' => smliser__( 'Sender display name. Leave blank to use the global from name.' ),
 			],
 		];
 	}
@@ -326,7 +326,7 @@ class MailgunProvider extends AbstractRestEmailProvider {
 		$data = $response->json() ?? [ 'message' => $response->body ];
 
 		if ( $response->is_error() ) {
-			$error = $data['message'] ?? 'Unknown Mailgun API error.';
+			$error = $data['message'] ?? smliser__( 'Unknown Mailgun API error.' );
 			throw new EmailTransportException(
 				"MailgunProvider: API returned HTTP {$response->status_code} — {$error}"
 			);

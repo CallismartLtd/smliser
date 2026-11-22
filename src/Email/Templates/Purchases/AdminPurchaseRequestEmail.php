@@ -42,11 +42,11 @@ class AdminPurchaseRequestEmail extends PurchaseRequestEmail {
 	}
 
 	protected function subject() : string {
-		return sprintf( 'New purchase request #%d to review', $this->request->get_id() );
+		return sprintf( smliser__( 'New purchase request #%d to review' ), $this->request->get_id() );
 	}
 
 	protected function preheader() : string {
-		return 'A buyer sent a payment receipt. Review it to issue the license.';
+		return smliser__( 'A buyer sent a payment receipt. Review it to issue the license.' );
 	}
 
 	protected function request_variables() : array {
@@ -58,15 +58,15 @@ class AdminPurchaseRequestEmail extends PurchaseRequestEmail {
 	}
 
 	public function label() : string {
-		return 'New Purchase Request (Admin)';
+		return smliser__( 'New Purchase Request (Admin)' );
 	}
 
 	public function description() : string {
-		return 'Sent to the admin email address when a buyer submits a purchase request with a payment receipt.';
+		return smliser__( 'Sent to the admin email address when a buyer submits a purchase request with a payment receipt.' );
 	}
 
 	public static function preview() : static {
-		return new static( static::preview_request(), 'admin@example.com', 'Demo Plugin — Yearly', 'https://example.com/admin/licenses/purchase-request?id=1024' );
+		return new static( static::preview_request(), 'admin@example.com', smliser__( 'Demo Plugin — Yearly' ), 'https://example.com/admin/licenses/purchase-request?id=1024' );
 	}
 
 	public function get_blocks() : array {
@@ -74,7 +74,7 @@ class AdminPurchaseRequestEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'A buyer sent a payment receipt. Check the payment, then approve the request to issue the license, or reject it.',
+				'content'   => smliser__( 'A buyer sent a payment receipt. Check the payment, then approve the request to issue the license, or reject it.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -82,11 +82,11 @@ class AdminPurchaseRequestEmail extends PurchaseRequestEmail {
 				'id'        => 'details',
 				'type'      => 'detail_card',
 				'rows'      => [
-					[ 'label' => 'Request', 'value' => '#{{request_id}}' ],
-					[ 'label' => 'Buyer', 'value' => '{{buyer_name}} ({{buyer_email}})' ],
-					[ 'label' => 'Product', 'value' => '{{product}}' ],
-					[ 'label' => 'Price', 'value' => '{{price}}' ],
-					[ 'label' => 'Payment reference', 'value' => '{{payment_reference}}' ],
+					[ 'label' => smliser__( 'Request' ), 'value' => '#{{request_id}}' ],
+					[ 'label' => smliser__( 'Buyer' ), 'value' => '{{buyer_name}} ({{buyer_email}})' ],
+					[ 'label' => smliser__( 'Product' ), 'value' => '{{product}}' ],
+					[ 'label' => smliser__( 'Price' ), 'value' => '{{price}}' ],
+					[ 'label' => smliser__( 'Payment reference' ), 'value' => '{{payment_reference}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -94,7 +94,7 @@ class AdminPurchaseRequestEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'button',
 				'type'      => 'button',
-				'label'     => 'Review the request',
+				'label'     => smliser__( 'Review the request' ),
 				'url'       => '{{review_url}}',
 				'editable'  => true,
 				'removable' => false,

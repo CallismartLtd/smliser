@@ -20,7 +20,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
     <div class="smliser-admin-table-body">
 
         <div>
-            <a href="<?php echo escUrl( smliser_get_current_url()->add_query_param( 'section', 'add-new' )->url() ); ?>" class="button action smliser-nav-btn"><?php printf( 'Add %s', escHtml( $type ) ); ?></a>
+            <a href="<?php echo escUrl( smliser_get_current_url()->add_query_param( 'section', 'add-new' )->url() ); ?>" class="button action smliser-nav-btn"><?php printf( smliser__( 'Add %s' ), escHtml( $type ) ); ?></a>
 
             <?php if ( $message = $request->get( 'message' ) ) : ?>
                 <div class="notice notice-info is-dismissible"><p><?php echo escHtml( $message ); ?></p></div>
@@ -47,11 +47,11 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
         <table class="smliser-table widefat striped">
             <thead class="<?php echo ( empty( $all ) ) ? 'smliser-hide': '' ?>">
                 <tr>
-                    <th>ID</th>
+                    <th><?php smliser_esc_html_e( 'ID' ); ?></th>
                     <th></th>
-                    <th>Name</th>
-                    <th>Date Created</th>
-                    <th>Last Updated</th>
+                    <th><?php smliser_esc_html_e( 'Name' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Date Created' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Last Updated' ); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -59,7 +59,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                     <tr>
                         <td colspan="5" class="align-center bg-white">
                             <?php printf(
-                            	'All %s all will be listed here',
+                            	smliser__( 'All %s all will be listed here' ),
                             	escHtml( smliser_pluralize( $type ) )
                             );?>
                         </td>
@@ -76,14 +76,14 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                             					->add_query_params(
                             						['section' => 'edit', 'id' => $entity->get_id()]
                             					)->url() );
-                    	?>">edit</a>
+                    	?>"><?php smliser_esc_html_e( 'edit' ); ?></a>
                                     <a href="#" role="button" class="smliser-delete-entity"
                                         data-args="
                                             <?php echo escAttr(
                                             	smliser_json_encode_attr( ['id' => $entity->get_id(), 'entity_type' => $entity->get_type()] ) );
                     	?>"
                                         >
-                                    delete</a>
+                                    <?php smliser_esc_html_e( 'delete' ); ?></a>
 
                                 </span>
                             </td>
@@ -92,7 +92,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                                     src="<?php
                     					echo escUrl( $avatar_manager->url( $entity->get_unique_identifier(), $entity->get_type() )->url() );
                     	?>"
-                                    alt="<?php printf( '%s avatar', $entity->get_display_name() ) ?>" 
+                                    alt="<?php printf( smliser__( '%s avatar' ), $entity->get_display_name() ) ?>" 
                                     width="32" height="32"
                                     loading="lazy" decoding="async">
                             </td>

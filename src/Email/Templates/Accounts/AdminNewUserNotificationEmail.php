@@ -21,7 +21,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'New User Signup Notification';
+		return smliser__( 'New User Signup Notification' );
 	}
 
 	protected function recipient() : string {
@@ -29,7 +29,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'A new user has registered on your platform.';
+		return smliser__( 'A new user has registered on your platform.' );
 	}
 
 	protected function variables() : array {
@@ -52,13 +52,25 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
 		$time         = \escHtml( $vars['{{signup_time}}'] );
 		$app_name     = \escHtml( $vars['{{app_name}}'] );
 
+		$i18n = [
+			smliser_esc_html__( 'New User Registration' ),
+			/* translators: %s: app name (formatted) */
+			sprintf( smliser_esc_html__( 'A new user has registered on %s.' ), '<strong>' . $app_name . '</strong>' ),
+			smliser_esc_html__( 'Full Name' ),
+			smliser_esc_html__( 'Email Address' ),
+			smliser_esc_html__( 'Account Type' ),
+			smliser_esc_html__( 'Signup Time' ),
+			smliser_esc_html__( 'IP Address' ),
+			smliser_esc_html__( 'This is an automated notification for administrative awareness.' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            New User Registration
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            A new user has registered on <strong>{$app_name}</strong>.
+            {$i18n[1]}
         </p>
 
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
@@ -70,7 +82,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
                         <tr>
                             <td style="padding:0 0 16px;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#94a3b8;">
-                                    Full Name
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;font-weight:600;">
                                     {$display_name}
@@ -81,7 +93,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
                         <tr>
                             <td style="padding:0 0 16px;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#94a3b8;">
-                                    Email Address
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;font-weight:600;">
                                     {$email}
@@ -92,7 +104,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
                         <tr>
                             <td style="padding:0 0 16px;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#94a3b8;">
-                                    Account Type
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;">
                                     {$type}
@@ -103,7 +115,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
                         <tr>
                             <td style="padding:0 0 16px;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#94a3b8;">
-                                    Signup Time
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;">
                                     {$time}
@@ -114,7 +126,7 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
                         <tr>
                             <td>
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;color:#94a3b8;">
-                                    IP Address
+                                    {$i18n[6]}
                                 </p>
                                 <p style="margin:0;font-size:14px;">
                                     {$ip}
@@ -128,17 +140,17 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0;font-size:14px;color:#64748b;">
-            This is an automated notification for administrative awareness.
+            {$i18n[7]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Admin: New User Signup';
+		return smliser__( 'Admin: New User Signup' );
 	}
 
 	public function description() : string {
-		return 'Sent to administrators when a new user account is created.';
+		return smliser__( 'Sent to administrators when a new user account is created.' );
 	}
 
 	public static function preview() : static {
@@ -161,14 +173,14 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
 			[
 				'id'        => 'heading',
 				'type'      => 'text',
-				'content'   => 'New User Registration',
+				'content'   => smliser__( 'New User Registration' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'A new user has registered on {{app_name}}.',
+				'content'   => smliser__( 'A new user has registered on {{app_name}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -176,11 +188,11 @@ class AdminNewUserNotificationEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Full Name',     'value' => '{{display_name}}' ],
-					[ 'label' => 'Email Address', 'value' => '{{email}}' ],
-					[ 'label' => 'Account Type',  'value' => '{{account_type}}' ],
-					[ 'label' => 'Signup Time',   'value' => '{{signup_time}}' ],
-					[ 'label' => 'IP Address',    'value' => '{{ip_address}}' ],
+					[ 'label' => smliser__( 'Full Name' ),     'value' => '{{display_name}}' ],
+					[ 'label' => smliser__( 'Email Address' ), 'value' => '{{email}}' ],
+					[ 'label' => smliser__( 'Account Type' ),  'value' => '{{account_type}}' ],
+					[ 'label' => smliser__( 'Signup Time' ),   'value' => '{{signup_time}}' ],
+					[ 'label' => smliser__( 'IP Address' ),    'value' => '{{ip_address}}' ],
 				],
 				'editable'  => true,
 				'removable' => true,

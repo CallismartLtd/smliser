@@ -85,7 +85,7 @@ final class ClientDashboardRegistry extends AbstractDashboardRegistry {
 		}
 
 		$this->add_top_menu( 'home_url', [
-			'title'      => 'Home',
+			'title'      => smliser__( 'Home' ),
 			'type'       => 'link',
 			'href'       => $this->urlmanager->url( '/' ),
 			'icon'       => 'ti ti-home',
@@ -93,7 +93,7 @@ final class ClientDashboardRegistry extends AbstractDashboardRegistry {
 		] );
 
 		$this->add_top_menu( 'admin_dashboard', [
-			'title'      => 'Admin',
+			'title'      => smliser__( 'Admin' ),
 			'type'       => 'link',
 			'href'       => $this->urlmanager->admin_url(),
 			'icon'       => 'ti ti-layout-dashboard',
@@ -101,7 +101,7 @@ final class ClientDashboardRegistry extends AbstractDashboardRegistry {
 		] );
 
 		$this->add_top_menu( 'logout_button', [
-			'title'      => 'Sign out',
+			'title'      => smliser__( 'Sign out' ),
 			'type'       => 'link',
 			'href'       => $this->urlmanager->logout_url(),
 			'icon'       => 'ti ti-logout',

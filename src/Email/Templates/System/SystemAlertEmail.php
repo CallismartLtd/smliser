@@ -102,9 +102,19 @@ class SystemAlertEmail extends EmailTemplate {
             CONTEXT
 			: '';
 
+		$i18n = [
+			/* translators: %s: app name */
+			sprintf( smliser_esc_html__( 'System Alert — %s' ), $app_name ),
+			smliser_esc_html__( 'Severity' ),
+			smliser_esc_html__( 'Occurred At' ),
+			smliser_esc_html__( 'Details' ),
+			/* translators: 1: app name (formatted), 2: support (formatted) */
+			sprintf( smliser_esc_html__( 'This is an automated alert from %1$s. If this issue requires support, contact us at %2$s.' ), '<strong>' . $app_name . '</strong>', '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            System Alert — {$app_name}
+            {$i18n[0]}
         </p>
 
         <!-- Severity banner -->
@@ -132,7 +142,7 @@ class SystemAlertEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Severity
+                                    {$i18n[1]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$severity}
@@ -141,7 +151,7 @@ class SystemAlertEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Occurred At
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$occurred_at}
@@ -152,7 +162,7 @@ class SystemAlertEmail extends EmailTemplate {
                             <td colspan="2" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Details
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
                                     {$alert_body}
@@ -166,26 +176,24 @@ class SystemAlertEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            This is an automated alert from <strong>{$app_name}</strong>.
-            If this issue requires support, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'System Alert';
+		return smliser__( 'System Alert' );
 	}
 	public function description() : string {
-		return 'Sent to the admin email address when a critical system event requires attention.';
+		return smliser__( 'Sent to the admin email address when a critical system event requires attention.' );
 	}
 	public static function preview() : static {
 		return new static(
 			'preview@example.com',
-			'Database Connection Failed',
-			'The system was unable to connect to the database after 3 consecutive attempts.',
+			smliser__( 'Database Connection Failed' ),
+			smliser__( 'The system was unable to connect to the database after 3 consecutive attempts.' ),
 			SystemAlertEmail::SEVERITY_CRITICAL,
-			"Error: SQLSTATE[HY000] [2002] Connection refused\n#0 /var/www/html/Database.php(42)"
+			smliser__( "Error: SQLSTATE[HY000] [2002] Connection refused\n#0 /var/www/html/Database.php(42)" )
 		);
 	}
 
@@ -194,7 +202,7 @@ class SystemAlertEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'System Alert — {{app_name}}',
+				'content'   => smliser__( 'System Alert — {{app_name}}' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -214,9 +222,9 @@ class SystemAlertEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Severity',    'value' => '{{severity}}' ],
-					[ 'label' => 'Occurred At', 'value' => '{{occurred_at}}' ],
-					[ 'label' => 'Details',     'value' => '{{alert_body}}' ],
+					[ 'label' => smliser__( 'Severity' ),    'value' => '{{severity}}' ],
+					[ 'label' => smliser__( 'Occurred At' ), 'value' => '{{occurred_at}}' ],
+					[ 'label' => smliser__( 'Details' ),     'value' => '{{alert_body}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -229,7 +237,7 @@ class SystemAlertEmail extends EmailTemplate {
 				'id'   => 'context',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Additional Context', 'value' => '{{context}}' ],
+					[ 'label' => smliser__( 'Additional Context' ), 'value' => '{{context}}' ],
 				],
 				'editable'  => false,
 				'removable' => true,
@@ -239,7 +247,7 @@ class SystemAlertEmail extends EmailTemplate {
 		$blocks[] = [
 			'id'        => 'closing',
 			'type'      => 'closing',
-			'content'   => 'This is an automated alert from {{app_name}}. If this issue requires support, contact us at {{support_email}}.',
+			'content'   => smliser__( 'This is an automated alert from {{app_name}}. If this issue requires support, contact us at {{support_email}}.' ),
 			'editable'  => true,
 			'removable' => false,
 		];

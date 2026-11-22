@@ -70,7 +70,7 @@ final class CorePages {
 				'app_version' => \SMLISER_VER,
 				'php_version' => \PHP_VERSION,
 			]
-		)->set_description( 'A database-agnostic application for privately hosting, licensing, updating, and distributing custom software, WordPress plugins, and themes.' );
+		)->set_description( smliser__( 'A database-agnostic application for privately hosting, licensing, updating, and distributing custom software, WordPress plugins, and themes.' ) );
 	}
 
 	/**
@@ -137,8 +137,8 @@ final class CorePages {
 		);
 
 		return null === $category
-			? $view->set_title( 'API Documentation' )->set_description( 'Available REST API routes, grouped by version and category.' )
-			: $view->set_title( sprintf( 'API Documentation: %s', $categories[ $category ] ) )->set_description( sprintf( 'REST API routes in the "%s" category.', $categories[ $category ] ) );
+			? $view->set_title( smliser__( 'API Documentation' ) )->set_description( smliser__( 'Available REST API routes, grouped by version and category.' ) )
+			: $view->set_title( sprintf( smliser__( 'API Documentation: %s' ), $categories[ $category ] ) )->set_description( sprintf( smliser__( 'REST API routes in the "%s" category.' ), $categories[ $category ] ) );
 	}
 
 	/**
@@ -176,8 +176,8 @@ final class CorePages {
 				'client_package' => self::UPDATE_CLIENT_PACKAGE,
 			]
 		)
-			->set_title( 'Package Signing Key' )
-			->set_description( 'The public key apps use to check that the packages they download from this site are genuine.' );
+			->set_title( smliser__( 'Package Signing Key' ) )
+			->set_description( smliser__( 'The public key apps use to check that the packages they download from this site are genuine.' ) );
 	}
 
 	/**
@@ -209,7 +209,7 @@ final class CorePages {
 	 */
 	public function not_found( Request $request ) : View {
 		return View::make( 'errors.404', [ 'path' => $request->path() ], 404 )
-			->set_title( 'Page not found' );
+			->set_title( smliser__( 'Page not found' ) );
 	}
 
 	/**
@@ -225,7 +225,7 @@ final class CorePages {
 	 */
 	public function method_not_allowed( Request $request, array $allowed ) : View {
 		return View::make( 'errors.405', [ 'method' => $request->method(), 'allowed' => $allowed ], 405 )
-			->set_title( 'Method not allowed' )
+			->set_title( smliser__( 'Method not allowed' ) )
 			->set_header( 'Allow', implode( ', ', $allowed ) );
 	}
 

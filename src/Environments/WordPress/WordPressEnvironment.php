@@ -466,7 +466,7 @@ class WordPressEnvironment extends Environment {
             <p>
                 <?php printf(
                 	/* translators: %s: plugin name */
-                	escHtml( '%s requires an update.' ) . ' <a id="smliser-update-btn" style="cursor:pointer;">' . escHtml( 'Click here to update now.' ) . '</a>',
+                	smliser_esc_html__( '%s requires an update.' ) . ' <a id="smliser-update-btn" style="cursor:pointer;">' . smliser_esc_html__( 'Click here to update now.' ) . '</a>',
                 	esc_html( SMLISER_APP_NAME )
                 );?>              
                 
@@ -508,17 +508,17 @@ class WordPressEnvironment extends Environment {
 
 		$schedules['smliser_every_minute'] = [
 			'interval' => MINUTE_IN_SECONDS,
-			'display'  => 'Every Minute',
+			'display'  => smliser__( 'Every Minute' ),
 		];
 
 		$schedules['smliser_three_minutely'] = [
 			'interval' => 3 * MINUTE_IN_SECONDS,
-			'display'  => 'Three Minutely',
+			'display'  => smliser__( 'Three Minutely' ),
 		];
 
 		$schedules['smliser_4_hourly'] = [
 			'interval' => 4 * HOUR_IN_SECONDS,
-			'display'  => 'Four Hourly',
+			'display'  => smliser__( 'Four Hourly' ),
 		];
 
 		return $schedules;

@@ -201,7 +201,7 @@ class Format {
 	public static function duration_ago( int|float $duration ) : string {
 
 		if ( ! is_numeric( $duration ) ) {
-			return 'Invalid duration';
+			return smliser__( 'Invalid duration' );
 		}
 
 		if ( $duration <= 0 ) {
@@ -262,7 +262,7 @@ class Format {
 			$start = new \DateTime( $start_date );
 			$end   = new \DateTime( $end_date );
 		} catch ( \Exception $e ) {
-			return 'Invalid date';
+			return smliser__( 'Invalid date' );
 		}
 
 		$interval = $start->diff( $end );

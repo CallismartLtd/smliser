@@ -41,7 +41,7 @@ class PaymentReceivedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Payment Received — Thank You';
+		return smliser__( 'Payment Received — Thank You' );
 	}
 
 	protected function recipient() : string {
@@ -73,14 +73,25 @@ class PaymentReceivedEmail extends EmailTemplate {
 		$description    = \escHtml( $vars['{{description}}'] );
 		$support        = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: recipient name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $recipient_name ),
+			smliser_esc_html__( 'Thank you for your payment. We have received it successfully and your account has been updated accordingly.' ),
+			smliser_esc_html__( 'Amount Paid' ),
+			smliser_esc_html__( 'Transaction ID' ),
+			smliser_esc_html__( 'Payment Date' ),
+			smliser_esc_html__( 'Description' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'Please keep this email as your receipt. If you have any questions about this payment, contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$recipient_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            Thank you for your payment. We have received it successfully
-            and your account has been updated accordingly.
+            {$i18n[1]}
         </p>
 
         <!-- Amount highlight -->
@@ -91,7 +102,7 @@ class PaymentReceivedEmail extends EmailTemplate {
                 <td align="center" style="padding:24px;">
                     <p style="margin:0 0 4px;font-size:12px;font-weight:700;
                                text-transform:uppercase;letter-spacing:0.08em;color:#166534;">
-                        Amount Paid
+                        {$i18n[2]}
                     </p>
                     <p style="margin:0;font-size:32px;font-weight:800;color:#166534;
                                letter-spacing:-0.02em;">
@@ -112,7 +123,7 @@ class PaymentReceivedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Transaction ID
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:13px;color:#1a1a2e;
                                            font-family:monospace;font-weight:600;">
@@ -122,7 +133,7 @@ class PaymentReceivedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Payment Date
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$payment_date}
@@ -133,7 +144,7 @@ class PaymentReceivedEmail extends EmailTemplate {
                             <td colspan="2" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Description
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
                                     {$description}
@@ -146,28 +157,26 @@ class PaymentReceivedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            Please keep this email as your receipt. If you have any questions about
-            this payment, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Payment Received';
+		return smliser__( 'Payment Received' );
 	}
 	public function description() : string {
-		return 'Sent when a payment is confirmed successfully.';
+		return smliser__( 'Sent when a payment is confirmed successfully.' );
 	}
 	public static function preview() : static {
 		return new static(
 			'preview@example.com',
-			'Jane Doe',
+			smliser__( 'Jane Doe' ),
 			'$49.00',
 			'USD',
 			'TXN-XXXXXXXXXXXX',
 			gmdate( 'D, d M Y' ),
-			'License renewal — My Awesome Plugin (Pro)'
+			smliser__( 'License renewal — My Awesome Plugin (Pro)' )
 		);
 	}
 
@@ -176,14 +185,14 @@ class PaymentReceivedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{recipient_name}},',
+				'content'   => smliser__( 'Hi {{recipient_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Thank you for your payment. We have received it successfully and your account has been updated accordingly.',
+				'content'   => smliser__( 'Thank you for your payment. We have received it successfully and your account has been updated accordingly.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -191,7 +200,7 @@ class PaymentReceivedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => 'Amount Paid: {{amount}} {{currency}}',
+				'content'   => smliser__( 'Amount Paid: {{amount}} {{currency}}' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -199,10 +208,10 @@ class PaymentReceivedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Transaction ID', 'value' => '{{transaction_id}}' ],
-					[ 'label' => 'Payment Date',   'value' => '{{payment_date}}' ],
-					[ 'label' => 'Amount',         'value' => '{{amount}} {{currency}}' ],
-					[ 'label' => 'Description',    'value' => '{{description}}' ],
+					[ 'label' => smliser__( 'Transaction ID' ), 'value' => '{{transaction_id}}' ],
+					[ 'label' => smliser__( 'Payment Date' ),   'value' => '{{payment_date}}' ],
+					[ 'label' => smliser__( 'Amount' ),         'value' => '{{amount}} {{currency}}' ],
+					[ 'label' => smliser__( 'Description' ),    'value' => '{{description}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -210,7 +219,7 @@ class PaymentReceivedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'Please keep this email as your receipt. If you have any questions about this payment, contact us at {{support_email}}.',
+				'content'   => smliser__( 'Please keep this email as your receipt. If you have any questions about this payment, contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

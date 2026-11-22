@@ -70,15 +70,27 @@ class OrganizationInviteEmail extends EmailTemplate {
 		$expires_in        = \escHtml( $vars['{{expires_in}}'] );
 		$support           = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: invitee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $invitee_name ),
+			/* translators: 1: inviter name (formatted), 2: organization name (formatted) */
+			sprintf( smliser_esc_html__( '%1$s has invited you to join %2$s. Accept the invitation below to get started.' ), '<strong>' . $inviter_name . '</strong>', '<strong>' . $organization_name . '</strong>' ),
+			/* translators: 1: opening <a> tag, 2: closing <a> tag */
+			sprintf( smliser_esc_html__( '%1$s Accept Invitation %2$s' ), '<a href="' . $invite_url . '" style="display:inline-block;padding:14px 32px;background-color:#6366f1; color:#ffffff;font-size:15px;font-weight:700;text-decoration:none; border-radius:8px;letter-spacing:0.01em;">', '</a>' ),
+			/* translators: 1: expires in (formatted), 2: closing <strong> tag, 3: inviter name (formatted) */
+			sprintf( smliser_esc_html__( '⚠ This invitation link will expire in %1$s hours%2$s. If it expires, please ask %3$s to send a new invitation.' ), '<strong>' . $expires_in, '</strong>', '<strong>' . $inviter_name . '</strong>' ),
+			smliser_esc_html__( 'If the button above does not work, copy and paste the link below into your browser:' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not expect this invitation or have any concerns, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$invitee_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            <strong>{$inviter_name}</strong> has invited you to join
-            <strong>{$organization_name}</strong>.
-            Accept the invitation below to get started.
+            {$i18n[1]}
         </p>
 
         <!-- Accept button -->
@@ -86,12 +98,7 @@ class OrganizationInviteEmail extends EmailTemplate {
                style="margin:0 0 24px;">
             <tr>
                 <td align="center">
-                    <a href="{$invite_url}"
-                       style="display:inline-block;padding:14px 32px;background-color:#6366f1;
-                              color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;
-                              border-radius:8px;letter-spacing:0.01em;">
-                        Accept Invitation
-                    </a>
+                    {$i18n[2]}
                 </td>
             </tr>
         </table>
@@ -103,10 +110,7 @@ class OrganizationInviteEmail extends EmailTemplate {
             <tr>
                 <td style="padding:14px 20px;">
                     <p style="margin:0;font-size:13px;color:#92400e;line-height:1.5;">
-                        &#9888;&nbsp; This invitation link will expire in
-                        <strong>{$expires_in} hours</strong>.
-                        If it expires, please ask <strong>{$inviter_name}</strong> to send
-                        a new invitation.
+                        {$i18n[3]}
                     </p>
                 </td>
             </tr>
@@ -114,28 +118,27 @@ class OrganizationInviteEmail extends EmailTemplate {
 
         <!-- Fallback URL -->
         <p style="margin:0 0 8px;font-size:13px;color:#64748b;line-height:1.6;">
-            If the button above does not work, copy and paste the link below into your browser:
+            {$i18n[4]}
         </p>
         <p style="margin:0 0 24px;font-size:12px;word-break:break-all;">
             <a href="{$invite_url}" style="color:#6366f1;text-decoration:none;">{$invite_url}</a>
         </p>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not expect this invitation or have any concerns, please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[5]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Organization Invite';
+		return smliser__( 'Organization Invite' );
 	}
 	public function description() : string {
-		return 'Sent when a user is invited to join an organization.';
+		return smliser__( 'Sent when a user is invited to join an organization.' );
 	}
 	public static function preview() : static {
 		$org = Owner::from_array( [ 'name' => 'Acme Corporation' ] );
-		return new static( $org, 'preview@example.com', 'Jane Doe', 'John Smith', 'https://example.com/invite?token=xxxx', 48 );
+		return new static( $org, 'preview@example.com', smliser__( 'Jane Doe' ), smliser__( 'John Smith' ), 'https://example.com/invite?token=xxxx', 48 );
 	}
 
 	public function get_blocks() : array {
@@ -143,21 +146,21 @@ class OrganizationInviteEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{invitee_name}},',
+				'content'   => smliser__( 'Hi {{invitee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => '{{inviter_name}} has invited you to join {{organization_name}}. Accept the invitation below to get started.',
+				'content'   => smliser__( '{{inviter_name}} has invited you to join {{organization_name}}. Accept the invitation below to get started.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'button',
 				'type'      => 'button',
-				'label'     => 'Accept Invitation',
+				'label'     => smliser__( 'Accept Invitation' ),
 				'url'       => '{{invite_url}}',
 				'editable'  => true,
 				'removable' => false,
@@ -166,21 +169,21 @@ class OrganizationInviteEmail extends EmailTemplate {
 				'id'        => 'expiry_notice',
 				'type'      => 'banner',
 				'tone'      => 'warning',
-				'content'   => 'This invitation link will expire in {{expires_in}} hours. If it expires, please ask {{inviter_name}} to send a new invitation.',
+				'content'   => smliser__( 'This invitation link will expire in {{expires_in}} hours. If it expires, please ask {{inviter_name}} to send a new invitation.' ),
 				'editable'  => true,
 				'removable' => true,
 			],
 			[
 				'id'        => 'fallback',
 				'type'      => 'text',
-				'content'   => 'If the button above does not work, copy and paste this link into your browser: {{invite_url}}',
+				'content'   => smliser__( 'If the button above does not work, copy and paste this link into your browser: {{invite_url}}' ),
 				'editable'  => true,
 				'removable' => true,
 			],
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not expect this invitation or have any concerns, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you did not expect this invitation or have any concerns, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

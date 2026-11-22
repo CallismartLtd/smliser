@@ -124,7 +124,7 @@ abstract class UpdateEmail extends EmailTemplate {
 		return [
 			'id'        => 'closing',
 			'type'      => 'closing',
-			'content'   => 'This is an automated message from {{app_name}} about its own software updates. Questions? Contact us at {{support_email}}.',
+			'content'   => smliser__( 'This is an automated message from {{app_name}} about its own software updates. Questions? Contact us at {{support_email}}.' ),
 			'editable'  => true,
 			'removable' => false,
 		];

@@ -27,11 +27,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class PurchaseRequestsSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Purchase Requests';
+		return smliser__( 'Purchase Requests' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores payment receipts buyers submit for review before a license is issued.';
+		return smliser__( 'Stores payment receipts buyers submit for review before a license is issued.' );
 	}
 
 	public static function get_table_name() : string {

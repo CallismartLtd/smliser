@@ -26,7 +26,7 @@
 				button.disabled = true;
 				try {
 					if ( ! window.PublicKeyCredential || ! navigator.credentials ) {
-						throw new Error( 'This browser does not support passkeys.' );
+						throw new Error( smliserI18n.__( 'This browser does not support passkeys.' ) );
 					}
 					const start = new FormData( form );
 					const setup = await smliserFetchJSON( form.dataset.startUrl, { method: 'POST', body: start } );
@@ -35,15 +35,15 @@
 					options.user.id = fromBase64Url( options.user.id );
 					(options.excludeCredentials || []).forEach( ( item ) => item.id = fromBase64Url( item.id ) );
 					const credential = await navigator.credentials.create( { publicKey: options } );
-					if ( ! credential ) throw new Error( 'Passkey setup was cancelled.' );
+					if ( ! credential ) throw new Error( smliserI18n.__( 'Passkey setup was cancelled.' ) );
 					const finish = new FormData();
 					finish.set( 'challenge', setup.challenge );
 					finish.set( 'credential', JSON.stringify( credentialJSON( credential ) ) );
 					const result = await smliserFetchJSON( form.dataset.finishUrl, { method: 'POST', body: finish } );
-					show( message, result.message || 'Passkey registered.' );
+					show( message, result.message || smliserI18n.__( 'Passkey registered.' ) );
 					if ( result.redirect ) window.location.assign( result.redirect );
 				} catch ( error ) {
-					show( message, error.message || 'Passkey registration failed.', true );
+					show( message, error.message || smliserI18n.__( 'Passkey registration failed.' ), true );
 				} finally {
 					button.disabled = false;
 				}
@@ -77,18 +77,18 @@
 					options.challenge = fromBase64Url( options.challenge );
 					( options.allowCredentials || [] ).forEach( ( item ) => item.id = fromBase64Url( item.id ) );
 					const credential = await navigator.credentials.get( { publicKey: options } );
-					if ( ! credential ) throw new Error( 'Passkey sign-in was cancelled.' );
+					if ( ! credential ) throw new Error( smliserI18n.__( 'Passkey sign-in was cancelled.' ) );
 					const finish = new FormData();
 					finish.set( 'challenge', setup.challenge );
 					finish.set( 'credential', JSON.stringify( credentialJSON( credential ) ) );
 					const result = await smliserFetchJSON( container.dataset.verifyUrl, { method: 'POST', body: finish } );
-					show( message, result.message || 'Signed in.' );
+					show( message, result.message || smliserI18n.__( 'Signed in.' ) );
 					if ( result.redirect ) {
 						redirecting = true;
 						window.location.assign( result.redirect );
 					}
 				} catch ( error ) {
-					show( message, error.message || 'Passkey sign-in failed.', true );
+					show( message, error.message || smliserI18n.__( 'Passkey sign-in failed.' ), true );
 				} finally {
 					button.disabled = redirecting;
 				}

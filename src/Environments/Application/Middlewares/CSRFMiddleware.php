@@ -53,11 +53,11 @@ class CSRFMiddleware implements MiddlewareInterface {
 		}
 
 		if ( ! $this->csrf->same_origin( $request, $this->urlmanager->url()->url() ) ) {
-			return $this->reject( $request, 'CROSS_SITE_REQUEST', 'This request did not come from this site.' );
+			return $this->reject( $request, 'CROSS_SITE_REQUEST', smliser__( 'This request did not come from this site.' ) );
 		}
 
 		if ( ! $this->csrf->verify_request( $request ) ) {
-			return $this->reject( $request, 'INVALID_CSRF_TOKEN', 'Your session security token is missing or has expired. Reload the page and try again.' );
+			return $this->reject( $request, 'INVALID_CSRF_TOKEN', smliser__( 'Your session security token is missing or has expired. Reload the page and try again.' ) );
 		}
 
 		return $next( $request );

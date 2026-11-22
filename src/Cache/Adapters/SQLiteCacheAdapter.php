@@ -459,7 +459,7 @@ class SQLiteCacheAdapter implements CacheAdapterInterface {
 	}
 
 	public static function get_name() : string {
-		return 'SQLite Cache';
+		return smliser__( 'SQLite Cache' );
 	}
 
 	/**
@@ -545,32 +545,32 @@ class SQLiteCacheAdapter implements CacheAdapterInterface {
 		return [
 			'db_filename' => [
 				'type'        => 'text',
-				'label'       => 'Cache File Name',
+				'label'       => smliser__( 'Cache File Name' ),
 				'required'    => false,
 				'default'     => $this->db_filename,
-				'description' => sprintf( 'The SQLite database file name(default: %s).', $this->db_filename ),
+				'description' => sprintf( smliser__( 'The SQLite database file name(default: %s).' ), $this->db_filename ),
 			],
 
 			'cache_dir' => [
 				'type'        => 'text',
-				'label'       => 'Cache Directory',
+				'label'       => smliser__( 'Cache Directory' ),
 				'required'    => true,
 				'default'     => rtrim( $this->base_dir, '/' ) . '/',
-				'description' => 'Absolute path to the directory where the SQLite cache database will be stored. Must be within the writable repository path.',
+				'description' => smliser__( 'Absolute path to the directory where the SQLite cache database will be stored. Must be within the writable repository path.' ),
 			],
 			'cache_memory' => [
 				'type'        => 'number',
-				'label'       => 'Cache Memory (MB)',
+				'label'       => smliser__( 'Cache Memory (MB)' ),
 				'required'    => false,
 				'default'     => $this->cache_memory,
-				'description' => 'Amount of memory SQLite can use for its page cache. Enter in megabytes(default: 4 MB).',
+				'description' => smliser__( 'Amount of memory SQLite can use for its page cache. Enter in megabytes(default: 4 MB).' ),
 			],
 			'storage_limit' => [
 				'type'        => 'number',
-				'label'       => 'Disk Storage Limit (MB)',
+				'label'       => smliser__( 'Disk Storage Limit (MB)' ),
 				'required'    => true,
 				'default'     => $this->storage_limit,
-				'description' => 'Maximum disk space the cache database is allowed to occupy. Once reached, further writes will fail until space is cleared.',
+				'description' => smliser__( 'Maximum disk space the cache database is allowed to occupy. Once reached, further writes will fail until space is cleared.' ),
 			],
 		];
 	}
@@ -623,18 +623,18 @@ class SQLiteCacheAdapter implements CacheAdapterInterface {
 			$sandbox->set_settings( $settings );
 
 			if ( empty( $sandbox->base_dir ) ) {
-				throw new CacheTestException( 'SQLite cache path is not configured.' );
+				throw new CacheTestException( smliser__( 'SQLite cache path is not configured.' ) );
 			}
 
 			if ( ! is_dir( $sandbox->base_dir ) ) {
 				throw new CacheTestException(
-					sprintf( 'SQLite cache directory does not exist: %s', $sandbox->base_dir )
+					sprintf( smliser__( 'SQLite cache directory does not exist: %s' ), $sandbox->base_dir )
 				);
 			}
 
 			if ( ! is_writable( $sandbox->base_dir ) ) {
 				throw new CacheTestException(
-					sprintf( 'SQLite cache directory is not writable: %s', $sandbox->base_dir )
+					sprintf( smliser__( 'SQLite cache directory is not writable: %s' ), $sandbox->base_dir )
 				);
 			}
 
@@ -644,7 +644,7 @@ class SQLiteCacheAdapter implements CacheAdapterInterface {
 			$sandbox->connect();
 
 			if ( ! isset( $sandbox->db ) ) {
-				throw new CacheTestException( 'Could not open SQLite database.' );
+				throw new CacheTestException( smliser__( 'Could not open SQLite database.' ) );
 			}
 
 			// Write → read → delete round-trip with an isolated probe key.
@@ -652,11 +652,11 @@ class SQLiteCacheAdapter implements CacheAdapterInterface {
 			$expected = '__ok__';
 
 			if ( ! $sandbox->set( $probe, $expected, 30 ) ) {
-				throw new CacheTestException( 'SQLite probe write failed.' );
+				throw new CacheTestException( smliser__( 'SQLite probe write failed.' ) );
 			}
 
 			if ( $sandbox->get( $probe ) !== $expected ) {
-				throw new CacheTestException( 'SQLite probe read returned unexpected value.' );
+				throw new CacheTestException( smliser__( 'SQLite probe read returned unexpected value.' ) );
 			}
 
 			$sandbox->delete( $probe );

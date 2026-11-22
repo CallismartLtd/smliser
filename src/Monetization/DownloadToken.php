@@ -402,7 +402,7 @@ class DownloadToken extends DataStore {
 	public static function create_token( License $license, $expiry = 86400, ?string $activation_host = null ) : string {
 		// We cant issue token for a license that is not issued
 		if ( ! $license->is_issued() ) {
-			throw new Exception( 'download_token_error', 'This license must be issued to a hosted application first.', ['status' => 400] );
+			throw new Exception( 'download_token_error', smliser__( 'This license must be issued to a hosted application first.' ), ['status' => 400] );
 		}
 
 		$servable = $license->can_serve_license( $license->get_app_id() );
@@ -439,7 +439,7 @@ class DownloadToken extends DataStore {
 
 
 		if ( ! $static->save() ) {
-			throw new Exception( 'download_token_error', 'Unable to save token in the database', ['status' => 500] );
+			throw new Exception( 'download_token_error', smliser__( 'Unable to save token in the database' ), ['status' => 500] );
 		}
 
 		$token = sprintf( '%s.%s', $encoded_payload, $signature );
@@ -461,7 +461,7 @@ class DownloadToken extends DataStore {
 
 		$parts = explode( '.', $decoded, 2 );
 		if ( 2 !== count( $parts ) ) {
-			throw new Exception( 'download_token_invalid', 'Malformed download token.', ['status' => 400] );
+			throw new Exception( 'download_token_invalid', smliser__( 'Malformed download token.' ), ['status' => 400] );
 		}
 
 		[$encoded_payload, $signature] = $parts;
@@ -469,21 +469,21 @@ class DownloadToken extends DataStore {
 		$secret = self::keyring_key( 'download_token' );
 
 		if ( ! hash_equals( hash_hmac( 'sha256', $encoded_payload, $secret ), $signature ) ) {
-			throw new Exception( 'download_token_invalid', 'Invalid download token signature.', ['status' => 403] );
+			throw new Exception( 'download_token_invalid', smliser__( 'Invalid download token signature.' ), ['status' => 403] );
 		}
 
 		$payload = json_decode( $encoded_payload, true );
 		if ( ! $payload || empty( $payload['token'] ) ) {
-			throw new Exception( 'download_token_invalid', 'Invalid download token payload.', ['status' => 400] );
+			throw new Exception( 'download_token_invalid', smliser__( 'Invalid download token payload.' ), ['status' => 400] );
 		}
 
 		$static = static::get_by_token( hash_hmac( 'sha256', $payload['token'], $secret ) );
 		if ( ! $static ) {
-			throw new Exception( 'download_token_invalid', 'Download token record not found.', ['status' => 404] );
+			throw new Exception( 'download_token_invalid', smliser__( 'Download token record not found.' ), ['status' => 404] );
 		}
 
 		if ( $static->is_expired() ) {
-			throw new Exception( 'download_token_expired', 'Download token has expired.', ['status' => 403] );
+			throw new Exception( 'download_token_expired', smliser__( 'Download token has expired.' ), ['status' => 403] );
 		}
 
 		$app_type = $app->get_type();
@@ -494,14 +494,14 @@ class DownloadToken extends DataStore {
 		$requested_app_prop = sprintf( '%s/%s', $app_type, $app_slug );
 
 		if ( ! \hash_equals( $token_app_prop, $requested_app_prop ) ) {
-			throw new Exception( 'download_token_invalid', 'Download token does not match requested app.', ['status' => 403] );
+			throw new Exception( 'download_token_invalid', smliser__( 'Download token does not match requested app.' ), ['status' => 403] );
 		}
 
 		// The license must still be servable when the token is used.
 		$license = License::get_by_key( $static->get_license_key() );
 
 		if ( ! $license ) {
-			throw new Exception( 'download_token_invalid', 'The license this download token was issued for no longer exists.', ['status' => 403] );
+			throw new Exception( 'download_token_invalid', smliser__( 'The license this download token was issued for no longer exists.' ), ['status' => 403] );
 		}
 
 		$servable = $license->can_serve_license( (int) $app->get_id() );

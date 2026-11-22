@@ -107,7 +107,7 @@ class SettingsController {
 				if ( in_array( $value, URLManagerInterface::RESERVED_URL_PREFIXES, true ) ) {
 					throw new RequestException(
 						'invalid_param',
-						sprintf( '"%s" cannot be used as the %s: it is reserved. Reserved: %s.', $value, $field['label'] ?? $key, implode( ', ', URLManagerInterface::RESERVED_URL_PREFIXES ) )
+						sprintf( smliser__( '"%s" cannot be used as the %s: it is reserved. Reserved: %s.' ), $value, $field['label'] ?? $key, implode( ', ', URLManagerInterface::RESERVED_URL_PREFIXES ) )
 					);
 				}
 
@@ -122,7 +122,7 @@ class SettingsController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => 'Routes has been updated.',
+					'message' => smliser__( 'Routes has been updated.' ),
 				],
 			] );
 
@@ -147,14 +147,14 @@ class SettingsController {
 			if ( ! $template_key ) {
 				throw new RequestException(
 					'required_param',
-					'Email template key is required.'
+					smliser__( 'Email template key is required.' )
 				);
 			}
 
 			if ( ! EmailTemplateRegistry::has( $template_key ) ) {
 				throw new RequestException(
 					'invalid_param',
-					'Email template key is invalid.'
+					smliser__( 'Email template key is invalid.' )
 				);
 			}
 
@@ -167,14 +167,14 @@ class SettingsController {
 			if ( ! $success ) {
 				throw new RequestException(
 					'server_error',
-					'Failed to update email template state. Please try again.'
+					smliser__( 'Failed to update email template state. Please try again.' )
 				);
 			}
 
 			$label   = EmailTemplateRegistry::entry( $template_key )['label'];
 			$message = $new_state
-				? sprintf( '%s email has been enabled.', $label )
-				: sprintf( '%s email has been disabled.', $label );
+				? sprintf( smliser__( '%s email has been enabled.' ), $label )
+				: sprintf( smliser__( '%s email has been disabled.' ), $label );
 
 
 			return Response::json( [
@@ -216,18 +216,18 @@ class SettingsController {
 			$styles_raw   = $request->get_file( 'styles' )?->get_contents() ?? '';
 
 			if ( ! $template_key ) {
-				throw new RequestException( 'required_param', 'Template key is required.' );
+				throw new RequestException( 'required_param', smliser__( 'Template key is required.' ) );
 			}
 
 			if ( ! EmailTemplateRegistry::has( $template_key ) ) {
-				throw new RequestException( 'invalid_param', 'Invalid template key.' );
+				throw new RequestException( 'invalid_param', smliser__( 'Invalid template key.' ) );
 			}
 
 			$blocks = json_decode( $blocks_raw, true );
 			$styles = json_decode( $styles_raw, true );
 
 			if ( ! is_array( $blocks ) || ! is_array( $styles ) ) {
-				throw new RequestException( 'invalid_param', 'Invalid blocks or styles data.' );
+				throw new RequestException( 'invalid_param', smliser__( 'Invalid blocks or styles data.' ) );
 			}
 
 			$html = EmailTemplateRegistry::preview( $template_key )
@@ -269,18 +269,18 @@ class SettingsController {
 			$styles_raw   = $request->get_file( 'styles' )?->get_contents() ?? '';
 
 			if ( ! $template_key ) {
-				throw new RequestException( 'required_param', 'Template key is required.' );
+				throw new RequestException( 'required_param', smliser__( 'Template key is required.' ) );
 			}
 
 			if ( ! EmailTemplateRegistry::has( $template_key ) ) {
-				throw new RequestException( 'invalid_param', 'Invalid template key.' );
+				throw new RequestException( 'invalid_param', smliser__( 'Invalid template key.' ) );
 			}
 
 			$blocks = json_decode( $blocks_raw, true );
 			$styles = json_decode( $styles_raw, true );
 
 			if ( ! is_array( $blocks ) || ! is_array( $styles ) ) {
-				throw new RequestException( 'invalid_param', 'Invalid blocks or styles data.' );
+				throw new RequestException( 'invalid_param', smliser__( 'Invalid blocks or styles data.' ) );
 			}
 
 			$preview = EmailTemplateRegistry::preview( $template_key );
@@ -289,7 +289,7 @@ class SettingsController {
 			if ( ! $preview->save_custom_template( $html ) ) {
 				throw new RequestException(
 					'server_error',
-					'Failed to save template. Please try again.'
+					smliser__( 'Failed to save template. Please try again.' )
 				);
 			}
 
@@ -329,11 +329,11 @@ class SettingsController {
 			$template_key = $request->get( 'template_key' );
 
 			if ( ! $template_key ) {
-				throw new RequestException( 'required_param', 'Template key is required.' );
+				throw new RequestException( 'required_param', smliser__( 'Template key is required.' ) );
 			}
 
 			if ( ! EmailTemplateRegistry::has( $template_key ) ) {
-				throw new RequestException( 'invalid_param', 'Invalid template key.' );
+				throw new RequestException( 'invalid_param', smliser__( 'Invalid template key.' ) );
 			}
 
 			$preview = EmailTemplateRegistry::preview( $template_key );
@@ -341,7 +341,7 @@ class SettingsController {
 			if ( ! $preview->reset_to_default() ) {
 				throw new RequestException(
 					'server_error',
-					'Failed to reset template. Please try again.'
+					smliser__( 'Failed to reset template. Please try again.' )
 				);
 			}
 

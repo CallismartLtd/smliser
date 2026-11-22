@@ -190,7 +190,7 @@ class Role extends DataStore {
 			if ( ! is_json( $capabilities ) ) {
 				throw new Exception(
 					'role_caps_invalid',
-					'Capabilities must be valid JSON or array'
+					smliser__( 'Capabilities must be valid JSON or array' )
 				);
 			}
 
@@ -393,7 +393,7 @@ class Role extends DataStore {
 	 */
 	public function save() : bool {
 		if ( ! $this->get_slug() ) {
-			throw new Exception( 'role_save_error', 'Role slug must be set' );
+			throw new Exception( 'role_save_error', smliser__( 'Role slug must be set' ) );
 		}
 
 		$result = (bool) static::$DB->transactional( function ( Database $db ) {

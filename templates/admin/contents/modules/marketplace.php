@@ -37,18 +37,18 @@ use SmartLicenseServer\Admin\ContentHandlers\ModulesPage;
 	<div class="smliser-modules-toolbar">
 		<form class="smliser-modules-search" method="get" action="<?php echo escUrl( $page_url ); ?>" role="search" data-marketplace-search>
 			<input type="hidden" name="<?php echo escAttr( ModulesPage::SECTION_VAR ); ?>" value="<?php echo escAttr( $section ); ?>">
-			<input type="search" name="search" class="smliser-form-input" value="<?php echo escAttr( $search ); ?>" placeholder="Search by name, slug or author" aria-label="Search the marketplace">
-			<button type="submit" class="smliser-btn smliser-btn-glass"><i class="ti ti-search"></i> Search</button>
+			<input type="search" name="search" class="smliser-form-input" value="<?php echo escAttr( $search ); ?>" placeholder="<?php smliser_esc_attr_e( 'Search by name, slug or author' ); ?>" aria-label="<?php smliser_esc_attr_e( 'Search the marketplace' ); ?>">
+			<button type="submit" class="smliser-btn smliser-btn-glass"><i class="ti ti-search"></i> <?php smliser_esc_html_e( 'Search' ); ?></button>
 		</form>
 		<p class="smliser-section-description">
 			<i class="ti ti-shield-check"></i>
-			Published by the update server and always signed: every package is verified before it is installed.
+			<?php smliser_esc_html_e( 'Published by the update server and always signed: every package is verified before it is installed.' ); ?>
 		</p>
 	</div>
 
 	<div data-marketplace-results aria-live="polite">
 		<noscript>
-			<p class="smliser-modules-empty"><i class="ti ti-brand-javascript"></i> JavaScript is needed to browse the marketplace.</p>
+			<p class="smliser-modules-empty"><i class="ti ti-brand-javascript"></i> <?php smliser_esc_html_e( 'JavaScript is needed to browse the marketplace.' ); ?></p>
 		</noscript>
 	</div>
 </div>

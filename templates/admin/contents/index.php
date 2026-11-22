@@ -28,8 +28,8 @@ defined( 'SMLISER_ROOT' ) || exit;
     		],
     		'actions' => [
     			[
-    				'title' => 'Settings',
-    				'label' => 'Settings',
+    				'title' => smliser__( 'Settings' ),
+    				'label' => smliser__( 'Settings' ),
     				'url'   => $urlmanager->admin_options_url(),
     				'icon'  => 'ti ti-settings'
     			]
@@ -40,7 +40,7 @@ defined( 'SMLISER_ROOT' ) || exit;
     <div class="smliser-admin-body">
         <div class="smliser-dashboard-hero">
             <div class="smliser-dashboard-hero_up">
-                <h2>Overview</h2>
+                <h2><?php smliser_esc_html_e( 'Overview' ); ?></h2>
             </div>
             <div class="smliser-dashboard-hero_down">
                 <?php foreach( $totals as $app_type => $value ) : ?>
@@ -50,7 +50,7 @@ defined( 'SMLISER_ROOT' ) || exit;
                         </div>
                         <div class="smliser-dashboard-hero_down-item-content">
                             <span><?php echo escHtml( $value ); ?></span>
-                            <span><?php echo escHtml( sprintf( 'Total %s', 'apps' === $app_type ? 'Apps' : HostedAppsRegistry::instance()->get_app_type_label( $app_type, true ) ) ); ?></span>
+                            <span><?php echo escHtml( sprintf( smliser__( 'Total %s' ), 'apps' === $app_type ? 'Apps' : HostedAppsRegistry::instance()->get_app_type_label( $app_type, true ) ) ); ?></span>
                         </div>
 
                     </div>
@@ -174,17 +174,17 @@ defined( 'SMLISER_ROOT' ) || exit;
                             <div class="smliser-logs-section">
                                 <h4>
                                     <i class="ti ti-activity"></i>
-                                    Recent Activity
+                                    <?php smliser_esc_html_e( 'Recent Activity' ); ?>
                                 </h4>
                                 <div class="smliser-logs-table-wrapper">
                                     <table class="smliser-logs-table">
                                         <thead>
                                             <tr>
-                                                <th>Time</th>
-                                                <th>Event</th>
-                                                <th>License ID</th>
-                                                <th>Website</th>
-                                                <th>IP Address</th>
+                                                <th><?php smliser_esc_html_e( 'Time' ); ?></th>
+                                                <th><?php smliser_esc_html_e( 'Event' ); ?></th>
+                                                <th><?php smliser_esc_html_e( 'License ID' ); ?></th>
+                                                <th><?php smliser_esc_html_e( 'Website' ); ?></th>
+                                                <th><?php smliser_esc_html_e( 'IP Address' ); ?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -310,20 +310,20 @@ function smliser_format_metric_label( string $key ) {
 	}
 
 	$labels = [
-		'active_installations'   => 'Active Installations',
-		'total_downloads'        => 'Total Downloads',
-		'total_accesses'         => 'Total Accesses',
-		'wpplugin_downloads'     => 'WordPress Plugin Downloads',
-		'wptheme_downloads'      => 'WordPress Theme Downloads',
-		'software_downloads'     => 'Software Downloads',
-		'wpplugin_installations' => 'WordPress Plugin Installations',
-		'wptheme_installations'  => 'WordPress Theme Installations',
-		'software_installations' => 'Software Installations',
+		'active_installations'   => smliser__( 'Active Installations' ),
+		'total_downloads'        => smliser__( 'Total Downloads' ),
+		'total_accesses'         => smliser__( 'Total Accesses' ),
+		'wpplugin_downloads'     => smliser__( 'WordPress Plugin Downloads' ),
+		'wptheme_downloads'      => smliser__( 'WordPress Theme Downloads' ),
+		'software_downloads'     => smliser__( 'Software Downloads' ),
+		'wpplugin_installations' => smliser__( 'WordPress Plugin Installations' ),
+		'wptheme_installations'  => smliser__( 'WordPress Theme Installations' ),
+		'software_installations' => smliser__( 'Software Installations' ),
 		'activations'            => 'Activations',
 		'deactivations'          => 'Deactivations',
 		'verifications'          => 'Verifications',
-		'top_downloads'          => 'Top Apps by Downloads',
-		'top_accesses'           => 'Top Apps by Client Accesses',
+		'top_downloads'          => smliser__( 'Top Apps by Downloads' ),
+		'top_accesses'           => smliser__( 'Top Apps by Client Accesses' ),
 	];
 	
 	if ( isset( $labels[ $key ] ) ) {

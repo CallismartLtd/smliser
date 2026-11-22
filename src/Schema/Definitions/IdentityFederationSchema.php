@@ -28,14 +28,14 @@ class IdentityFederationSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Identity Federation';
+		return smliser__( 'Identity Federation' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores federated identity mappings.';
+		return smliser__( 'Stores federated identity mappings.' );
 	}
 
 	/**

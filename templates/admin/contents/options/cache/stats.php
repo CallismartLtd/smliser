@@ -69,18 +69,18 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
                     <span class="smlcd-header__id"><?php echo escHtml( $adapter_id ); ?></span>
                 </div>
                 <span class="smlcd-badge smlcd-badge--active">
-                    <span class="smlcd-pulse"></span>Active
+                    <span class="smlcd-pulse"></span><?php smliser_esc_html_e( 'Active' ); ?>
                 </span>
                 <?php if ( ! $is_supported ) : ?>
                     <span class="smlcd-badge smlcd-badge--error">
-                        <i class="ti ti-alert-triangle"></i> Not Supported
+                        <i class="ti ti-alert-triangle"></i> <?php smliser_esc_html_e( 'Not Supported' ); ?>
                     </span>
                 <?php else: ?>
                     <span class="smlcd-badge smlcd-badge--<?php echo $is_active ? 'active' : 'error' ?>">
                         <?php if ( $is_active ) : ?>
-                            <i class="ti ti-check"></i> Connected
+                            <i class="ti ti-check"></i> <?php smliser_esc_html_e( 'Connected' ); ?>
                         <?php else: ?>
-                            <i class="ti ti-alert-triangle"></i> Not Connected
+                            <i class="ti ti-alert-triangle"></i> <?php smliser_esc_html_e( 'Not Connected' ); ?>
                         <?php endif; ?>
                     </span>
                 <?php endif; ?>
@@ -90,8 +90,8 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
             <div class="smlcd-header__actions">
                 <button type="button"
                         class="smlcd-btn smlcd-btn--ghost smlcd-refresh-btn"
-                        title="Refresh stats">
-                    <i class="ti ti-refresh"></i> Refresh
+                        title="<?php smliser_esc_attr_e( 'Refresh stats' ); ?>">
+                    <i class="ti ti-refresh"></i> <?php smliser_esc_html_e( 'Refresh' ); ?>
                 </button>
 
                 <?php if ( $supports_flush_expired ) : ?>
@@ -101,7 +101,7 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
                         	'slug'   => 'options-form/cache-flush-stale/',
                         	'method' => 'POST'
                         ] ) ); ?>'>
-                    <i class="ti ti-clock-off"></i> Flush Stale
+                    <i class="ti ti-clock-off"></i> <?php smliser_esc_html_e( 'Flush Stale' ); ?>
                 </button>
                 <?php endif; ?>
 
@@ -112,12 +112,12 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
                         	'slug'   => 'options-form/cache-flush/',
                         	'method' => 'POST'
                         ] ) ); ?>'>
-                    <i class="ti ti-trash"></i> Flush Cache
+                    <i class="ti ti-trash"></i> <?php smliser_esc_html_e( 'Flush Cache' ); ?>
                 </button>
 
                 <a href="<?php echo escUrl( smliser_get_current_url()->remove_query_param( 'section' )->url() ); ?>"
                    class="smlcd-btn smlcd-btn--secondary">
-                    <i class="ti ti-database-search"></i> Adapters
+                    <i class="ti ti-database-search"></i> <?php smliser_esc_html_e( 'Adapters' ); ?>
                 </a>
 
                 <a href="<?php
@@ -126,7 +126,7 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
 						->add_query_param( 'adapter', $adapter_id )->url()
 					); ?>"
                    class="smlcd-btn smlcd-btn--secondary">
-                    <i class="ti ti-settings"></i> Configuration
+                    <i class="ti ti-settings"></i> <?php smliser_esc_html_e( 'Configuration' ); ?>
                 </a>
             </div>
         </div>
@@ -135,7 +135,7 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
         <div class="smlcd-cards" id="smlcd-stat-cards">
 
             <div class="smlcd-card smlcd-card--<?php echo $hit_grade; ?>">
-                <div class="smlcd-card__label">Hit Rate</div>
+                <div class="smlcd-card__label"><?php smliser_esc_html_e( 'Hit Rate' ); ?></div>
                 <div class="smlcd-card__value">
                     <?php if ( null !== $hit_pct ) : ?>
                         <?php echo $hit_pct; ?><span class="smlcd-card__unit">%</span>
@@ -145,15 +145,15 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
                 </div>
                 <div class="smlcd-card__detail">
                     <?php if ( $tracks_hits ) : ?>
-                        <?php echo number_format( $hits ); ?> hits · <?php echo number_format( $misses ); ?> misses
+                        <?php echo number_format( $hits ); ?> <?php smliser_esc_html_e( 'hits ·' ); ?> <?php echo number_format( $misses ); ?> <?php smliser_esc_html_e( 'misses' ); ?>
                     <?php else : ?>
-                        Not tracked by this adapter
+                        <?php smliser_esc_html_e( 'Not tracked by this adapter' ); ?>
                     <?php endif; ?>
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--neutral">
-                <div class="smlcd-card__label">Total Requests</div>
+                <div class="smlcd-card__label"><?php smliser_esc_html_e( 'Total Requests' ); ?></div>
                 <div class="smlcd-card__value">
                     <?php if ( $tracks_hits ) : ?>
                         <?php echo number_format( $total_req ); ?>
@@ -163,28 +163,28 @@ $extra_display   = array_diff_key( $extra, array_flip( $shown_elsewhere ) );?>
                 </div>
                 <div class="smlcd-card__detail">
                     <?php if ( $tracks_hits ) : ?>
-                        Miss rate: <?php echo $miss_pct; ?>%
+                        <?php smliser_esc_html_e( 'Miss rate:' ); ?> <?php echo $miss_pct; ?>%
                     <?php else : ?>
-                        Not tracked by this adapter
+                        <?php smliser_esc_html_e( 'Not tracked by this adapter' ); ?>
                     <?php endif; ?>
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--neutral">
-                <div class="smlcd-card__label">Cached Entries</div>
+                <div class="smlcd-card__label"><?php smliser_esc_html_e( 'Cached Entries' ); ?></div>
                 <div class="smlcd-card__value"><?php echo number_format( $entries ); ?></div>
                 <div class="smlcd-card__detail">
                     <?php
 					$expired = (int) ( $extra['expired_entries'] ?? 0 );
 echo $expired > 0
 	? '<span class="smlcd-warn">' . number_format( $expired ) . ' expired</span>'
-	: 'All entries live';
+	: smliser__( 'All entries live' );
 ?>
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--<?php echo $mem_grade; ?>">
-                <div class="smlcd-card__label">Memory</div>
+                <div class="smlcd-card__label"><?php smliser_esc_html_e( 'Memory' ); ?></div>
                 <div class="smlcd-card__value">
                     <?php if ( null !== $mem_pct ) : ?>
                         <?php echo $mem_pct; ?><span class="smlcd-card__unit">%</span>
@@ -197,17 +197,17 @@ echo $expired > 0
                 <div class="smlcd-card__detail">
                     <?php if ( $has_mem_ceil ) : ?>
                         <?php echo escHtml( Format::bytes( $memory_used ) ); ?>
-                        of <?php echo escHtml( Format::bytes( $memory_total ) ); ?>
+                        <?php smliser_esc_html_e( 'of' ); ?> <?php echo escHtml( Format::bytes( $memory_total ) ); ?>
                     <?php elseif ( $memory_used > 0 ) : ?>
-                        <?php echo escHtml( Format::bytes( $memory_used ) ); ?> · No fixed ceiling
+                        <?php echo escHtml( Format::bytes( $memory_used ) ); ?> <?php smliser_esc_html_e( '· No fixed ceiling' ); ?>
                     <?php else : ?>
-                        Not reported
+                        <?php smliser_esc_html_e( 'Not reported' ); ?>
                     <?php endif; ?>
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--neutral">
-                <div class="smlcd-card__label">Uptime</div>
+                <div class="smlcd-card__label"><?php smliser_esc_html_e( 'Uptime' ); ?></div>
                 <div class="smlcd-card__value last-seen">
                     <?php if ( $uptime > 0 ) : ?>
                         <?php echo escHtml( Format::duration( $uptime, 'short' ) ); ?>
@@ -217,11 +217,11 @@ echo $expired > 0
                 </div>
                 <div class="smlcd-card__detail">
                     <?php if ( $uptime > 0 ) : ?>
-                        Since last restart
+                        <?php smliser_esc_html_e( 'Since last restart' ); ?>
                     <?php elseif ( 'runtime' === $adapter_id ) : ?>
-                        Request-scoped
+                        <?php smliser_esc_html_e( 'Request-scoped' ); ?>
                     <?php else : ?>
-                        Not reported
+                        <?php smliser_esc_html_e( 'Not reported' ); ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -232,8 +232,8 @@ echo $expired > 0
         <?php if ( $tracks_hits ) : ?>
         <div class="smlcd-perf" id="smlcd-perf">
             <div class="smlcd-perf__header">
-                <span class="smlcd-perf__title">Request Breakdown</span>
-                <span class="smlcd-perf__total"><?php echo number_format( $total_req ); ?> total</span>
+                <span class="smlcd-perf__title"><?php smliser_esc_html_e( 'Request Breakdown' ); ?></span>
+                <span class="smlcd-perf__total"><?php echo number_format( $total_req ); ?> <?php smliser_esc_html_e( 'total' ); ?></span>
             </div>
             <div class="smlcd-perf__bar-wrap">
                 <div class="smlcd-perf__bar">
@@ -248,12 +248,12 @@ echo $expired > 0
             <div class="smlcd-perf__legend">
                 <span class="smlcd-perf__legend-hit">
                     <span class="smlcd-perf__dot smlcd-perf__dot--hit"></span>
-                    Hits <strong><?php echo number_format( $hits ); ?></strong>
+                    <?php smliser_esc_html_e( 'Hits' ); ?> <strong><?php echo number_format( $hits ); ?></strong>
                     <em><?php echo $hit_pct; ?>%</em>
                 </span>
                 <span class="smlcd-perf__legend-miss">
                     <span class="smlcd-perf__dot smlcd-perf__dot--miss"></span>
-                    Misses <strong><?php echo number_format( $misses ); ?></strong>
+                    <?php smliser_esc_html_e( 'Misses' ); ?> <strong><?php echo number_format( $misses ); ?></strong>
                     <em><?php echo $miss_pct; ?>%</em>
                 </span>
                 <span class="smlcd-perf__rating smlcd-perf__rating--<?php
@@ -262,16 +262,16 @@ echo $hit_pct >= 80 ? 'excellent'
 	: ( $hit_pct >= 40 ? 'fair' : 'poor' ) );
         	?>">
                     <?php
-        		echo $hit_pct >= 80 ? 'Excellent'
-        			: ( $hit_pct >= 60 ? 'Good'
-        			: ( $hit_pct >= 40 ? 'Fair' : 'Poor' ) );
+        		echo $hit_pct >= 80 ? smliser__( 'Excellent' )
+        			: ( $hit_pct >= 60 ? smliser__( 'Good' )
+        			: ( $hit_pct >= 40 ? smliser__( 'Fair' ) : smliser__( 'Poor' ) ) );
         	?>
                 </span>
             </div>
 
             <?php if ( $has_mem_ceil ) : ?>
             <div class="smlcd-perf__mem">
-                <span class="smlcd-perf__mem-label">Memory pressure</span>
+                <span class="smlcd-perf__mem-label"><?php smliser_esc_html_e( 'Memory pressure' ); ?></span>
                 <div class="smlcd-perf__mem-track">
                     <div class="smlcd-perf__mem-fill smlcd-perf__mem-fill--<?php echo $mem_grade; ?>"
                         style="width: <?php echo min( $mem_pct, 100 ); ?>%"></div>
@@ -286,8 +286,8 @@ echo $hit_pct >= 80 ? 'excellent'
         <?php if ( ! empty( $extra_display ) ) : ?>
         <div class="smlcd-extra" id="smlcd-extra">
             <div class="smlcd-extra__header">
-                <span class="smlcd-extra__title">Additional Details</span>
-                <span class="smlcd-extra__subtitle"><?php echo escHtml( $adapter_name ); ?>-specific metrics</span>
+                <span class="smlcd-extra__title"><?php smliser_esc_html_e( 'Additional Details' ); ?></span>
+                <span class="smlcd-extra__subtitle"><?php echo escHtml( $adapter_name ); ?><?php smliser_esc_html_e( '-specific metrics' ); ?></span>
             </div>
             <dl class="smlcd-extra__list">
                 <?php foreach ( $extra_display as $key => $value ) : ?>

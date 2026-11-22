@@ -56,7 +56,7 @@ final class ContextSwitch {
 		};
 
 		if ( null === $subject ) {
-			return $this->answer( false, 'Choose who to act for.', 400 );
+			return $this->answer( false, smliser__( 'Choose who to act for.' ), 400 );
 		}
 
 		$result = $this->identity->switch_context( $subject );
@@ -70,7 +70,7 @@ final class ContextSwitch {
 		return Response::json(
 			[
 				'success'  => true,
-				'message'  => sprintf( 'You now act for %s.', $subject instanceof User ? 'yourself' : $subject->get_display_name() ),
+				'message'  => sprintf( smliser__( 'You now act for %s.' ), $subject instanceof User ? 'yourself' : $subject->get_display_name() ),
 				'redirect' => $this->urlmanager->client_dashboard_url()->url(),
 			],
 			200

@@ -17,7 +17,7 @@ use SmartLicenseServer\Schema\TableName;
 /** Clear broken links while retaining before/after values for an exact rollback. */
 final class ClearBrokenAppLinks extends AbstractMigration implements ReversibleMigrationInterface {
 	public static function get_description() : string {
-		return 'Clear app download links saved without the app slug, and empty author profile URLs';
+		return smliser__( 'Clear app download links saved without the app slug, and empty author profile URLs' );
 	}
 
 	public function up() : void {

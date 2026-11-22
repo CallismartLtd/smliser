@@ -44,7 +44,7 @@ class CleanExpiredTokensJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Deletes expired download tokens from the token table.';
+		return smliser__( 'Deletes expired download tokens from the token table.' );
 	}
 
 	/**

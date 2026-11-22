@@ -187,7 +187,11 @@ class Translator implements TranslatorInterface {
 	 */
 	public function available_locales( string $domain = self::DEFAULT_DOMAIN ) : array {
 		$locales = [ Locale::DEFAULT ];
-		$pattern = '/^' . preg_quote( $domain, '/' ) . '-([A-Za-z0-9_]+)\.(?:' . implode( '|', array_map( static fn ( CatalogLoaderInterface $l ) : string => preg_quote( $l->extension(), '/' ), $this->loaders ) ) . ')$/';
+
+		// Only compiled catalogs make a language available: a .po file may be
+		// an untranslated starter, and offering it would show English.
+		$compiled = array_filter( $this->loaders, static fn ( CatalogLoaderInterface $l ) : bool => 'po' !== $l->extension() );
+		$pattern  = '/^' . preg_quote( $domain, '/' ) . '-([A-Za-z0-9_]+)\.(?:' . implode( '|', array_map( static fn ( CatalogLoaderInterface $l ) : string => preg_quote( $l->extension(), '/' ), $compiled ) ) . ')$/';
 
 		foreach ( $this->directories( $domain ) as $directory ) {
 			foreach ( @scandir( $directory ) ?: [] as $file ) {

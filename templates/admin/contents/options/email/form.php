@@ -35,7 +35,7 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
     <?php smliser_print_admin_content_header( $menu_args ); ?>
     <?php if ( ! $provider ) : ?>
         <?php printf(
-        	smliser_not_found_container( 'The email provider "%s" does not exists. <a href="%s">Go Back</a>' ),
+        	smliser_not_found_container( smliser__( 'The email provider "%s" does not exists. <a href="%s">Go Back</a>' ) ),
         	$provider_key,
         	$current_url
         ); ?>
@@ -80,9 +80,9 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                 <?php endforeach; ?>
 
                 <div class="smliser-form-label-row">
-                    <strong id="set-as-default-label">Make Default <?php
+                    <strong id="set-as-default-label"><?php smliser_esc_html_e( 'Make Default' ); ?> <?php
                 			smliser_render_field_help_icon(
-                				'Set this email provider as the default provider for all mailing operations.',
+                				smliser__( 'Set this email provider as the default provider for all mailing operations.' ),
                 				'set-as-default-label'
                 			) ?>
                     </strong>
@@ -94,7 +94,7 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                 </div>
 
                 <div class="smliser-form-label-row submit-row">
-                    <button type="submit" class="smliser-submit-button">Save</button>                    
+                    <button type="submit" class="smliser-submit-button"><?php smliser_esc_html_e( 'Save' ); ?></button>                    
                 </div>
                 <span class="smliser-spinner"></span>
             </div>

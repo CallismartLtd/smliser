@@ -106,8 +106,8 @@ final class RepositoryPages {
 		$types  = $this->types();
 		$search = $this->search_term( $request );
 		$view   = View::make( 'repository.index' )
-			->set_title( 'Repository' )
-			->set_description( sprintf( 'Browse the %s hosted on this server.', $this->list_labels( $types ) ) )
+			->set_title( smliser__( 'Repository' ) )
+			->set_description( sprintf( smliser__( 'Browse the %s hosted on this server.' ), $this->list_labels( $types ) ) )
 			->set( 'types', $types )
 			->set( 'search', $search );
 
@@ -119,7 +119,7 @@ final class RepositoryPages {
 			}
 
 			return $view
-				->set_title( sprintf( 'Search results for "%s"', $search ) )
+				->set_title( sprintf( smliser__( 'Search results for "%s"' ), $search ) )
 				->set( 'sections', [] )
 				->set( 'apps', $apps )
 				->set( 'pagination', $pagination );
@@ -172,7 +172,7 @@ final class RepositoryPages {
 
 		return View::make( 'repository.type' )
 			->set_title( '' === $search ? $type['plural'] : sprintf( '%s matching "%s"', $type['plural'], $search ) )
-			->set_description( sprintf( 'Browse the %s hosted on this server.', $type['plural'] ) )
+			->set_description( sprintf( smliser__( 'Browse the %s hosted on this server.' ), $type['plural'] ) )
 			->set( 'types', $types )
 			->set( 'search', $search )
 			->set( 'type', $type )

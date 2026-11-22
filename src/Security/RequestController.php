@@ -61,13 +61,13 @@ class RequestController {
 			$entity = $request->get( 'entity' );
 
 			if ( ! $entity ) {
-				throw new RequestException( 'required_param', 'Please provide the security entity.' );
+				throw new RequestException( 'required_param', smliser__( 'Please provide the security entity.' ) );
 			}
 
 			$class = ContextServiceProvider::get_entity_classname( $entity );
 
 			if ( ! $class ) {
-				throw new RequestException( 'required_param', 'This provided security entity is not supported.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'This provided security entity is not supported.' ), ['status' => 400] );
 			}
 
 			$id         = $request->get( 'id' );
@@ -80,7 +80,7 @@ class RequestController {
 			$self_method = "save_{$entity}";
 
 			if ( ! method_exists( __CLASS__, $self_method ) ) {
-				throw new RequestException( 'internal_server_error', sprintf( 'Internal save method for "%s" does not exist.', $entity ), ['status' => 500] );
+				throw new RequestException( 'internal_server_error', sprintf( smliser__( 'Internal save method for "%s" does not exist.' ), $entity ), ['status' => 500] );
 			}
 
 			$result = self::$self_method( $ent_object, $request );
@@ -92,7 +92,7 @@ class RequestController {
 			$data = [
 				'success' => true,
 				'data'    => [
-					'message'   => sprintf( '%s saved successfully.', ucwords( str_replace( '_', ' ', $entity ) ) ),
+					'message'   => sprintf( smliser__( '%s saved successfully.' ), ucwords( str_replace( '_', ' ', $entity ) ) ),
 					'entity_id' => $ent_object->get_id(),
 					'entity'    => $entity
 				]
@@ -127,13 +127,13 @@ class RequestController {
 			$entity = $request->get( 'entity_type' );
 
 			if ( ! $entity ) {
-				throw new RequestException( 'required_param', 'Please provide the security entity.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'Please provide the security entity.' ), ['status' => 400] );
 			}
 
 			$class = ContextServiceProvider::get_entity_classname( $entity );
 
 			if ( ! $class ) {
-				throw new RequestException( 'invalid_param', 'The provided security entity is not supported.', ['status' => 400] );
+				throw new RequestException( 'invalid_param', smliser__( 'The provided security entity is not supported.' ), ['status' => 400] );
 			}
 
 			$permission_domain = match( strtolower( $entity ) ) {
@@ -145,7 +145,7 @@ class RequestController {
 			};
 
 			if ( ! $permission_domain ) {
-				throw new RequestException( 'invalid_param', 'Invalid or unsupported permission domain.', ['status' => 400] );
+				throw new RequestException( 'invalid_param', smliser__( 'Invalid or unsupported permission domain.' ), ['status' => 400] );
 			}
 
 			$cap = sprintf( 'security.%s.delete', $permission_domain );
@@ -156,7 +156,7 @@ class RequestController {
 			$entity_name = ucwords( str_replace( '_', ' ', $permission_domain ) );
 
 			if ( ! $ent_object ) {
-				throw new RequestException( 'not_found', sprintf( '%s does not exist in the database.', $entity_name ), ['status' => 404] );
+				throw new RequestException( 'not_found', sprintf( smliser__( '%s does not exist in the database.' ), $entity_name ), ['status' => 404] );
 			}
 
 			$actor = $this->guard->principal()->get_actor();
@@ -166,7 +166,7 @@ class RequestController {
 				ContextServiceProvider::assert_can_delete_user( $ent_object, $actor );
 			} elseif ( $ent_object->get_id() === $actor->get_id() && get_class( $ent_object ) === get_class( $actor ) ) {
 				// A service account cannot delete itself either.
-				throw new RequestException( 'precondition_failed', 'You cannot delete your own active identity.', [ 'status' => 409 ] );
+				throw new RequestException( 'precondition_failed', smliser__( 'You cannot delete your own active identity.' ), [ 'status' => 409 ] );
 			}
 
 			// Execution
@@ -175,7 +175,7 @@ class RequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message'   => sprintf( '%s deleted successfully.', $entity_name ),
+					'message'   => sprintf( smliser__( '%s deleted successfully.' ), $entity_name ),
 					'entity_id' => $ent_object->get_id(),
 					'entity'    => $entity
 				]
@@ -198,7 +198,7 @@ class RequestController {
 			$email = $request->get( 'email' );
 
 			if ( empty( $email ) || ! is_email( $email ) ) {
-				throw new RequestException( 'required_param', 'Please provide a valid email address.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'Please provide a valid email address.' ), ['status' => 400] );
 			}
 
 			if ( ! $user->exists() && User::email_exists( $email ) ) {
@@ -225,7 +225,7 @@ class RequestController {
 			$status       = $request->get( 'status' );
 
 			if ( ! in_array( $status, User::get_allowed_statuses(), true ) ) {
-				throw new RequestException( 'invalid_user_status', 'The status provided is not allowed.', ['status' => 400] );
+				throw new RequestException( 'invalid_user_status', smliser__( 'The status provided is not allowed.' ), ['status' => 400] );
 			}
 
 			// Before anything is written: the edit must not lock administrators out.
@@ -243,16 +243,16 @@ class RequestController {
 			$password_2 = (string) $request->get( 'password_2', '' );
 
 			if ( $password_1 !== $password_2 ) {
-				throw new RequestException( 'password_mismatch', 'Password mismatch, please check and try again.', ['status' => 400] );
+				throw new RequestException( 'password_mismatch', smliser__( 'Password mismatch, please check and try again.' ), ['status' => 400] );
 			}
 
 			if ( strlen( $password_1 ) > 128 ) {
-				throw new RequestException( 'password_too_long', 'Password exceeds maximum length.', ['status' => 400] );
+				throw new RequestException( 'password_too_long', smliser__( 'Password exceeds maximum length.' ), ['status' => 400] );
 			}
 
 			if ( ! $user->exists() && ( empty( $password_1 ) || empty( $password_2 ) ) ) {
 
-				throw new RequestException( 'required_param', 'Please provide new user passwords.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'Please provide new user passwords.' ), ['status' => 400] );
 
 			}
 
@@ -260,7 +260,7 @@ class RequestController {
 				$password_hash = password_hash( $password_1, PASSWORD_ARGON2ID );
 
 				if ( $user->exists() && password_verify( $password_1, $user->get_password_hash() ) ) {
-					throw new RequestException( 'same_password', 'Cannot reuse old password, please use new ones.', ['status' => 409] );
+					throw new RequestException( 'same_password', smliser__( 'Cannot reuse old password, please use new ones.' ), ['status' => 409] );
 				}
 
 				$user->set_password_hash( $password_hash );
@@ -273,7 +273,7 @@ class RequestController {
 				->set_status( $status );
 			
 			if ( ! $user->save() ) {
-				throw new RequestException( 'database_error', 'Unable to save user', ['status' => 500] );
+				throw new RequestException( 'database_error', smliser__( 'Unable to save user' ), ['status' => 500] );
 			}
 			
 			// User email change affects their hashed avatar.
@@ -327,26 +327,26 @@ class RequestController {
 			$display_name = $request->get( 'display_name' );
 
 			if ( empty( $display_name ) || ! is_string( $display_name ) ) {
-				throw new RequestException( 'required_param', 'Please provide a valid service account display name.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'Please provide a valid service account display name.' ), ['status' => 400] );
 			}
 
 			$status = $request->get( 'status' );
 
 			if ( ! in_array( $status, ServiceAccount::get_allowed_statuses(), true ) ) {
-				throw new RequestException( 'invalid_service_account_status', 'The status provided is not allowed.', ['status' => 400] );
+				throw new RequestException( 'invalid_service_account_status', smliser__( 'The status provided is not allowed.' ), ['status' => 400] );
 			}
 
 			$owner_id = $this->sanitize_int( $request->get( 'owner_id', 0 ) );
 			$owner    = Owner::get_by_id( $owner_id );
 			
 			if ( ! $owner || ! $owner->exists() ) {
-				throw new RequestException( 'owner_not_found', 'The resource owner for this service account was not found.', ['status' => 400] );
+				throw new RequestException( 'owner_not_found', smliser__( 'The resource owner for this service account was not found.' ), ['status' => 400] );
 			}
 
 			$subject = ContextServiceProvider::get_owner_subject( $owner );
 
 			if ( $request->isEmpty( 'role_slug' ) ) {
-				throw new RequestException( 'required_param', 'Please select a role for this service account', [ 'status' => 400 ] );
+				throw new RequestException( 'required_param', smliser__( 'Please select a role for this service account' ), [ 'status' => 400 ] );
 			}
 
 			$uid = $sa_acc->exists() ? $sa_acc->get_unique_identifier() : null;
@@ -366,7 +366,7 @@ class RequestController {
 			}
 
 			if ( ! $sa_acc->save() ) {
-				throw new RequestException( 'database_error', 'Unable to save service account', ['status' => 500] );
+				throw new RequestException( 'database_error', smliser__( 'Unable to save service account' ), ['status' => 500] );
 			}
 
 			// Unique ID change affects their hashed avatar.
@@ -425,13 +425,13 @@ class RequestController {
 			$display_name = $request->get( 'display_name' );
 
 			if ( empty( $display_name ) || ! is_string( $display_name ) ) {
-				throw new RequestException( 'required_param', 'Please provide a valid organization name.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'Please provide a valid organization name.' ), ['status' => 400] );
 			}
 
 			$status = $request->get( 'status' );
 
 			if ( ! in_array( $status, Organization::get_allowed_statuses(), true ) ) {
-				throw new RequestException( 'invalid_organization_status', 'The status provided is not allowed.', ['status' => 400] );
+				throw new RequestException( 'invalid_organization_status', smliser__( 'The status provided is not allowed.' ), ['status' => 400] );
 			}
 
 			$uid = $organization ? $organization->get_unique_identifier() : null;
@@ -450,7 +450,7 @@ class RequestController {
 			$organization->set_display_name( $display_name )->set_status( $status );
 			
 			if ( ! $organization->save() ) {
-				throw new RequestException( 'database_error', 'Unable to save organization', ['status' => 500] );
+				throw new RequestException( 'database_error', smliser__( 'Unable to save organization' ), ['status' => 500] );
 			}
 
 			// Slug change affects their hashed avatar.
@@ -500,7 +500,7 @@ class RequestController {
 			$role      = Role::get_by_slug( $role_slug );
 
 			if ( ! $role ) {
-				throw new RequestException( 'bad_request', 'Member must have a valid role.', ['status' => 400] );
+				throw new RequestException( 'bad_request', smliser__( 'Member must have a valid role.' ), ['status' => 400] );
 			}
 
 			$status = (string) $request->get( 'status' );
@@ -508,7 +508,7 @@ class RequestController {
 			if ( ! $status || ! in_array( $status, OrganizationMember::get_allowed_statuses(), true ) ) {
 				throw new RequestException(
 					'bad_request',
-					sprintf( 'The member status must be one of %s', \implode( ',', OrganizationMember::get_allowed_statuses() ) ),
+					sprintf( smliser__( 'The member status must be one of %s' ), \implode( ',', OrganizationMember::get_allowed_statuses() ) ),
 					['status' => 400]
 				);
 			}
@@ -517,7 +517,7 @@ class RequestController {
 			$organization = Organization::get_by_id( $org_id );
 
 			if ( ! $organization ) {
-				throw new RequestException( 'bad_request', 'The member must belong to an existing organization.', ['status' => 400] );
+				throw new RequestException( 'bad_request', smliser__( 'The member must belong to an existing organization.' ), ['status' => 400] );
 			}
 
 			$member_id = $this->sanitize_int( $request->get( 'member_id' ) );
@@ -525,7 +525,7 @@ class RequestController {
 			$user = User::get_by_id( $member_id );
 
 			if ( ! $user ) {
-				throw new RequestException( 'bad_request', 'The member subject must be an existing user.', ['status' => 400] );
+				throw new RequestException( 'bad_request', smliser__( 'The member subject must be an existing user.' ), ['status' => 400] );
 			}
 		   
 			$id = $this->sanitize_int( $request->get( 'id' ) );
@@ -556,7 +556,7 @@ class RequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => 'Member saved successfully.',
+					'message' => smliser__( 'Member saved successfully.' ),
 					'member'  => [
 						'id'           => $member->get_id(),
 						'display_name' => $member->get_display_name(),
@@ -608,7 +608,7 @@ class RequestController {
 		if ( empty( $subject_id ) ) {
 			return new RequestException(
 				'required_param',
-				'Please provide a valid subject_id.',
+				smliser__( 'Please provide a valid subject_id.' ),
 				[ 'status' => 400 ]
 			);
 		}
@@ -620,7 +620,7 @@ class RequestController {
 		if ( empty( $owner_type ) || ! is_string( $owner_type ) || ! $is_valid_owner_type ) {
 			return new RequestException(
 				'required_param',
-				'Please provide a valid resource owner type.',
+				smliser__( 'Please provide a valid resource owner type.' ),
 				[ 'status' => 400 ]
 			);
 		}
@@ -639,7 +639,7 @@ class RequestController {
 		if ( empty( $owner_name ) || ! is_string( $owner_name ) ) {
 			return new RequestException(
 				'required_param',
-				'Please provide a valid resource owner name.',
+				smliser__( 'Please provide a valid resource owner name.' ),
 				[ 'status' => 400 ]
 			);
 		}
@@ -649,7 +649,7 @@ class RequestController {
 		if ( ! in_array( $status, Owner::get_allowed_statuses(), true ) ) {
 			return new RequestException(
 				'required_param',
-				'The status provided is not allowed.',
+				smliser__( 'The status provided is not allowed.' ),
 				[ 'status' => 400 ]
 			);
 		}
@@ -671,7 +671,7 @@ class RequestController {
 			if ( ! $owner->save() ) {
 				throw new RequestException(
 					'owner_save_error',
-					'Unable to save resource owner.',
+					smliser__( 'Unable to save resource owner.' ),
 					[ 'status' => 500 ]
 				);
 			}
@@ -737,7 +737,7 @@ class RequestController {
 			if ( ! $role->save() ) {
 				throw new RequestException(
 					'role_save_error',
-					'Unable to save role to the database.',
+					smliser__( 'Unable to save role to the database.' ),
 					[ 'status' => 500 ]
 				);
 			}
@@ -760,7 +760,7 @@ class RequestController {
 			$search_term = $request->get( 'search' );
 
 			if ( empty( $search_term ) ) {
-				throw new RequestException( 'required_param', 'Missing parameter "search".' );
+				throw new RequestException( 'required_param', smliser__( 'Missing parameter "search".' ) );
 			}
 
 			$types  = (array) $request->get( 'types', Owner::get_allowed_owner_types() );
@@ -803,7 +803,7 @@ class RequestController {
 			$search_term = $request->get( 'search' );
 
 			if ( empty( $search_term ) ) {
-				throw new RequestException( 'required_param', 'Missing parameter "search".' );
+				throw new RequestException( 'required_param', smliser__( 'Missing parameter "search".' ) );
 			}
 
 			$status = (string) $request->get( 'status', '' );
@@ -841,11 +841,11 @@ class RequestController {
 			$organization = Organization::get_by_id( $org_id );
 
 			if ( ! $organization ) {
-				throw new RequestException( 'error', 'The provided orgaization does exist.', ['status' => 400] );
+				throw new RequestException( 'error', smliser__( 'The provided orgaization does exist.' ), ['status' => 400] );
 			}
 
 			if ( ! $organization->is_member( $member_id ) ) {
-				throw new RequestException( 'error', 'The provided member does not belong to this organization, try refreshing the current page.', ['status' => 400] );
+				throw new RequestException( 'error', smliser__( 'The provided member does not belong to this organization, try refreshing the current page.' ), ['status' => 400] );
 			}
 
 			$member = $organization->get_members()->get( $member_id );
@@ -854,7 +854,7 @@ class RequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => sprintf( '%s has been successfully removed from %s.', $member->get_display_name(), $organization->get_display_name() )
+					'message' => sprintf( smliser__( '%s has been successfully removed from %s.' ), $member->get_display_name(), $organization->get_display_name() )
 				]
 			] );
 		} catch ( Exception $e ) {

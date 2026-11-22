@@ -91,19 +91,19 @@ final class UserAccounts {
 	 */
 	public function validate_password( #[\SensitiveParameter] string $password, #[\SensitiveParameter] string $confirm ) : ?RequestException {
 		if ( '' === $password ) {
-			return new RequestException( 'empty_password', 'Password must not be empty.', [ 'status' => 400 ] );
+			return new RequestException( 'empty_password', smliser__( 'Password must not be empty.' ), [ 'status' => 400 ] );
 		}
 
 		if ( strlen( $password ) < self::MIN_PASSWORD_LENGTH ) {
 			return new RequestException(
 				'weak_password',
-				sprintf( 'Password must be at least %d characters long.', self::MIN_PASSWORD_LENGTH ),
+				sprintf( smliser__( 'Password must be at least %d characters long.' ), self::MIN_PASSWORD_LENGTH ),
 				[ 'status' => 400 ]
 			);
 		}
 
 		if ( $password !== $confirm ) {
-			return new RequestException( 'password_mismatch', 'Passwords do not match.', [ 'status' => 400 ] );
+			return new RequestException( 'password_mismatch', smliser__( 'Passwords do not match.' ), [ 'status' => 400 ] );
 		}
 
 		return null;
@@ -122,11 +122,11 @@ final class UserAccounts {
 	 */
 	public function change_password( User $user, #[\SensitiveParameter] string $password ) : void {
 		if ( '' === $password ) {
-			throw new SecurityException( 'empty_password', 'New password cannot be empty.' );
+			throw new SecurityException( 'empty_password', smliser__( 'New password cannot be empty.' ) );
 		}
 
 		if ( ! $user->set_password_hash( $this->hash_password( $password ) )->save() ) {
-			throw new SecurityException( 'password_save_error', 'Unable to set new password', [ 'status' => 500 ] );
+			throw new SecurityException( 'password_save_error', smliser__( 'Unable to set new password' ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -154,7 +154,7 @@ final class UserAccounts {
 			->set_email( $email );
 
 		if ( ! $user->save() ) {
-			throw new RequestException( 'user_save_error', 'Unable to save user, try again.', [ 'status' => 500 ] );
+			throw new RequestException( 'user_save_error', smliser__( 'Unable to save user, try again.' ), [ 'status' => 500 ] );
 		}
 
 		return $user;
@@ -182,7 +182,7 @@ final class UserAccounts {
 			$user->set_email_verified_at( gmdate( 'Y-m-d H:i:s' ) );
 
 			if ( ! $user->save() ) {
-				throw new RequestException( 'user_save_error', 'Your email address could not be verified. Please try again.', [ 'status' => 500 ] );
+				throw new RequestException( 'user_save_error', smliser__( 'Your email address could not be verified. Please try again.' ), [ 'status' => 500 ] );
 			}
 		}
 
@@ -229,7 +229,7 @@ final class UserAccounts {
 		$role = Role::get_by_slug( $account_type );
 
 		if ( ! $role || ! $role->exists() ) {
-			throw new RequestException( 'invalid_account_type', 'The selected account type is invalid.', [ 'status' => 400 ] );
+			throw new RequestException( 'invalid_account_type', smliser__( 'The selected account type is invalid.' ), [ 'status' => 400 ] );
 		}
 
 		ContextServiceProvider::save_actor_role( $user, $role );

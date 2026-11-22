@@ -56,12 +56,12 @@ class EmailOtpEmail extends SecurityEmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return sprintf( 'Your code is %s. It expires in %d minutes.', $this->code, $this->expires_in );
+		return sprintf( smliser__( 'Your code is %s. It expires in %d minutes.' ), $this->code, $this->expires_in );
 	}
 
 	protected function summary() : string {
 		return sprintf(
-			'Use the code below to continue. It expires in %d minutes. Never share it with anyone.',
+			smliser__( 'Use the code below to continue. It expires in %d minutes. Never share it with anyone.' ),
 			$this->expires_in
 		);
 	}
@@ -82,7 +82,7 @@ class EmailOtpEmail extends SecurityEmailTemplate {
 				'id'        => 'code',
 				'type'      => 'detail_card',
 				'rows'      => [
-					[ 'label' => 'Verification code', 'value' => '{{otp_code}}' ],
+					[ 'label' => smliser__( 'Verification code' ), 'value' => '{{otp_code}}' ],
 				],
 				'editable'  => false,
 				'removable' => false,
@@ -91,7 +91,7 @@ class EmailOtpEmail extends SecurityEmailTemplate {
 	}
 
 	public function text() : string {
-		return sprintf( "Your verification code is %s.\n\n", $this->code ) . parent::text();
+		return sprintf( smliser__( "Your verification code is %s.\n\n" ), $this->code ) . parent::text();
 	}
 
 	/**
@@ -108,16 +108,16 @@ class EmailOtpEmail extends SecurityEmailTemplate {
 	}
 
 	public function label() : string {
-		return 'Email Verification Code';
+		return smliser__( 'Email Verification Code' );
 	}
 
 	public function description() : string {
-		return 'Sent with the one-time code used to sign in, or to enable or disable email two-factor authentication.';
+		return smliser__( 'Sent with the one-time code used to sign in, or to enable or disable email two-factor authentication.' );
 	}
 
 	public static function preview() : static {
 		[ $ip, $agent, $url ] = static::preview_context();
 
-		return new static( static::preview_user(), 'preview@example.com', '482913', 'Sign-in verification code', 10, $ip, $agent, $url );
+		return new static( static::preview_user(), 'preview@example.com', '482913', smliser__( 'Sign-in verification code' ), 10, $ip, $agent, $url );
 	}
 }

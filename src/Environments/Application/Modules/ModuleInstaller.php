@@ -301,7 +301,7 @@ abstract class ModuleInstaller {
 		$name = (string) $package->get_client_name();
 
 		if ( 1 !== preg_match( '/^[A-Za-z0-9][A-Za-z0-9._-]*\.zip$/i', $name ) ) {
-			throw $this->fail( sprintf( 'Upload the %s package as a .zip file whose name uses letters, digits, dots, hyphens and underscores.', static::NOUN ) );
+			throw $this->fail( sprintf( smliser__( 'Upload the %s package as a .zip file whose name uses letters, digits, dots, hyphens and underscores.' ), static::NOUN ) );
 		}
 
 		$dir = $this->work_path( 'upload-' . bin2hex( random_bytes( 6 ) ) );
@@ -312,7 +312,7 @@ abstract class ModuleInstaller {
 			$zip = $dir . '/' . $name;
 
 			if ( ! $this->fs->move( (string) $package->get_tmp_path(), $zip, true ) ) {
-				throw $this->fail( 'The uploaded package could not be stored; check the permissions of the storage folder.' );
+				throw $this->fail( smliser__( 'The uploaded package could not be stored; check the permissions of the storage folder.' ) );
 			}
 
 			return $this->install_zip( $zip, $this->uploaded_text( $checksums ), $this->uploaded_text( $signature ), $trust_unsigned, $replace );
@@ -345,7 +345,7 @@ abstract class ModuleInstaller {
 		}
 
 		if ( null !== $installed && version_compare( $latest['version'], $installed, '<=' ) ) {
-			$this->report( $progress, 'check', self::STATUS_OK, sprintf( 'The %s "%s" is up to date (%s).', static::NOUN, $slug, $installed ) );
+			$this->report( $progress, 'check', self::STATUS_OK, sprintf( smliser__( 'The %s "%s" is up to date (%s).' ), static::NOUN, $slug, $installed ) );
 			return null;
 		}
 
@@ -391,11 +391,11 @@ abstract class ModuleInstaller {
 		$this->assert_slug( $slug );
 
 		if ( ! $this->modules->is_installed( $slug ) ) {
-			throw $this->fail( sprintf( 'The %s "%s" is not installed.', static::NOUN, $slug ) );
+			throw $this->fail( sprintf( smliser__( 'The %s "%s" is not installed.' ), static::NOUN, $slug ) );
 		}
 
 		if ( self::SOURCE_MARKETPLACE !== ( $this->record( $slug )['source'] ?? null ) ) {
-			throw $this->fail( sprintf( 'The %s "%s" was not installed from the marketplace; install a newer package of it to update it.', static::NOUN, $slug ) );
+			throw $this->fail( sprintf( smliser__( 'The %s "%s" was not installed from the marketplace; install a newer package of it to update it.' ), static::NOUN, $slug ) );
 		}
 
 		return $this->install_from_marketplace( $slug, $progress );
@@ -501,7 +501,7 @@ abstract class ModuleInstaller {
 
 		return $this->locked( function () use ( $slug ) : array {
 			if ( ! $this->modules->is_installed( $slug ) ) {
-				throw $this->fail( sprintf( 'The %s "%s" is not installed.', static::NOUN, $slug ) );
+				throw $this->fail( sprintf( smliser__( 'The %s "%s" is not installed.' ), static::NOUN, $slug ) );
 			}
 
 			$this->assert_removable( $slug );
@@ -510,7 +510,7 @@ abstract class ModuleInstaller {
 			$path     = $this->modules->installed_dir() . '/' . $slug;
 
 			if ( ! $this->fs->delete( $path, true ) ) {
-				throw $this->fail( sprintf( 'Could not remove %s; check the permissions of the storage folder.', $path ) );
+				throw $this->fail( sprintf( smliser__( 'Could not remove %s; check the permissions of the storage folder.' ), $path ) );
 			}
 
 			$this->modules->forget( $slug );
@@ -588,10 +588,10 @@ abstract class ModuleInstaller {
 	 */
 	public static function describe_source( ?array $record ) : string {
 		return match ( true ) {
-			null === $record                                           => 'Copied in',
+			null === $record                                           => smliser__( 'Copied in' ),
 			self::SOURCE_MARKETPLACE === ( $record['source'] ?? null ) => 'Marketplace',
-			true === ( $record['trusted'] ?? false )                   => 'Upload (unsigned, trusted)',
-			default                                                    => 'Upload (signed)',
+			true === ( $record['trusted'] ?? false )                   => smliser__( 'Upload (unsigned, trusted)' ),
+			default                                                    => smliser__( 'Upload (signed)' ),
 		};
 	}
 
@@ -631,21 +631,21 @@ abstract class ModuleInstaller {
 					$previous = $this->installed_version( $module->slug );
 
 					if ( ! $replace ) {
-						throw $this->fail( sprintf( 'The %s "%s" is already installed (%s); update it, or replace it with this package.', static::NOUN, $module->slug, $previous ?? 'unknown version' ) );
+						throw $this->fail( sprintf( smliser__( 'The %s "%s" is already installed (%s); update it, or replace it with this package.' ), static::NOUN, $module->slug, $previous ?? 'unknown version' ) );
 					}
 
 					if ( null !== $previous && version_compare( $module->version, $previous, '<' ) ) {
-						throw $this->fail( sprintf( 'The package is version %s of "%s", older than the installed %s. Downgrades are not supported.', $module->version, $module->slug, $previous ) );
+						throw $this->fail( sprintf( smliser__( 'The package is version %s of "%s", older than the installed %s. Downgrades are not supported.' ), $module->version, $module->slug, $previous ) );
 					}
 				}
 
 				$record = $origin + [ 'version' => $module->version, 'installed_at' => gmdate( DATE_ATOM ) ];
 
 				if ( ! $this->fs->put_contents( $module->path . '/' . self::PACKAGE_RECORD, json_encode( $record, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) . "\n" ) ) {
-					throw $this->fail( 'Could not write the package record; check the permissions of the storage folder.' );
+					throw $this->fail( smliser__( 'Could not write the package record; check the permissions of the storage folder.' ) );
 				}
 
-				$this->report( $progress, 'stage', self::STATUS_OK, sprintf( 'The package holds %s %s; every check passed.', $module->name, $module->version ) );
+				$this->report( $progress, 'stage', self::STATUS_OK, sprintf( smliser__( 'The package holds %s %s; every check passed.' ), $module->name, $module->version ) );
 
 				$this->swap( $module->path, $live, $staging );
 				$this->modules->forget( $module->slug );
@@ -654,8 +654,8 @@ abstract class ModuleInstaller {
 				$warnings  = array_merge( $warnings, $this->publish( $installed ) );
 
 				$this->report( $progress, 'apply', self::STATUS_OK, null === $previous
-					? sprintf( 'Installed the %s "%s" %s.', static::NOUN, $installed->slug, $installed->version )
-					: sprintf( 'Replaced the %s "%s" %s with %s.', static::NOUN, $installed->slug, $previous, $installed->version ) );
+					? sprintf( smliser__( 'Installed the %s "%s" %s.' ), static::NOUN, $installed->slug, $installed->version )
+					: sprintf( smliser__( 'Replaced the %s "%s" %s with %s.' ), static::NOUN, $installed->slug, $previous, $installed->version ) );
 
 				return [ static::RESULT_KEY => $installed, 'previous' => $previous, 'record' => $record, 'warnings' => $warnings ];
 			} finally {
@@ -674,18 +674,18 @@ abstract class ModuleInstaller {
 	 */
 	private function extract( string $zip, string $target ) : string {
 		if ( ! class_exists( ZipArchive::class ) ) {
-			throw $this->fail( sprintf( 'The zip PHP extension is needed to install %ss.', static::NOUN ) );
+			throw $this->fail( sprintf( smliser__( 'The zip PHP extension is needed to install %ss.' ), static::NOUN ) );
 		}
 
 		$archive = new ZipArchive();
 
 		if ( true !== $archive->open( $zip, ZipArchive::RDONLY ) ) {
-			throw $this->fail( sprintf( 'Could not open %s as a zip archive.', basename( $zip ) ) );
+			throw $this->fail( sprintf( smliser__( 'Could not open %s as a zip archive.' ), basename( $zip ) ) );
 		}
 
 		try {
 			if ( $archive->numFiles < 1 || $archive->numFiles > static::MAX_FILES ) {
-				throw $this->fail( sprintf( 'A %s package holds 1 to %d entries; this one holds %d.', static::NOUN, static::MAX_FILES, $archive->numFiles ) );
+				throw $this->fail( sprintf( smliser__( 'A %s package holds 1 to %d entries; this one holds %d.' ), static::NOUN, static::MAX_FILES, $archive->numFiles ) );
 			}
 
 			$folder = null;
@@ -705,24 +705,24 @@ abstract class ModuleInstaller {
 					|| 1 !== preg_match( $this->slug_pattern(), $top )
 					|| ( null !== $folder && $top !== $folder )
 				) {
-					throw $this->fail( sprintf( 'The package holds an unexpected path (%s): a %s package holds one folder named after the %s. Nothing was installed.', $name, static::NOUN, static::NOUN ) );
+					throw $this->fail( sprintf( smliser__( 'The package holds an unexpected path (%s): a %s package holds one folder named after the %s. Nothing was installed.' ), $name, static::NOUN, static::NOUN ) );
 				}
 
 				$folder = $top;
 
 				if ( $archive->getExternalAttributesIndex( $i, $opsys, $attributes ) && ZipArchive::OPSYS_UNIX === $opsys && 0120000 === ( ( $attributes >> 16 ) & 0170000 ) ) {
-					throw $this->fail( sprintf( 'The package holds a link (%s); links are not allowed in a %s package.', $name, static::NOUN ) );
+					throw $this->fail( sprintf( smliser__( 'The package holds a link (%s); links are not allowed in a %s package.' ), $name, static::NOUN ) );
 				}
 
 				$bytes += (int) $stat['size'];
 
 				if ( $bytes > static::MAX_BYTES ) {
-					throw $this->fail( sprintf( 'The package unpacks to more than %d MB; a %s package must be smaller.', intdiv( static::MAX_BYTES, 1048576 ), static::NOUN ) );
+					throw $this->fail( sprintf( smliser__( 'The package unpacks to more than %d MB; a %s package must be smaller.' ), intdiv( static::MAX_BYTES, 1048576 ), static::NOUN ) );
 				}
 			}
 
 			if ( ! $archive->extractTo( $target ) ) {
-				throw $this->fail( sprintf( 'Could not extract %s; check the free disk space.', basename( $zip ) ) );
+				throw $this->fail( sprintf( smliser__( 'Could not extract %s; check the free disk space.' ), basename( $zip ) ) );
 			}
 
 			return (string) $folder;
@@ -748,11 +748,11 @@ abstract class ModuleInstaller {
 		}
 
 		if ( null !== $expected && ( $expected['slug'] !== $module->slug || $expected['version'] !== $module->version ) ) {
-			throw $this->fail( sprintf( 'The marketplace announced "%s" %s, but the package holds "%s" %s. Nothing was installed.', $expected['slug'], $expected['version'], $module->slug, $module->version ) );
+			throw $this->fail( sprintf( smliser__( 'The marketplace announced "%s" %s, but the package holds "%s" %s. Nothing was installed.' ), $expected['slug'], $expected['version'], $module->slug, $module->version ) );
 		}
 
 		if ( ! $module->supports( \SMLISER_VER ) ) {
-			throw $this->fail( sprintf( 'The %s "%s" %s requires app version %s or later; this is %s.', static::NOUN, $module->slug, $module->version, (string) $module->requires, \SMLISER_VER ) );
+			throw $this->fail( sprintf( smliser__( 'The %s "%s" %s requires app version %s or later; this is %s.' ), static::NOUN, $module->slug, $module->version, (string) $module->requires, \SMLISER_VER ) );
 		}
 
 		$this->check_staged_extra( $module );
@@ -785,11 +785,11 @@ abstract class ModuleInstaller {
 			$is_php    = [] !== array_intersect( array_slice( explode( '.', strtolower( $name ) ), 1 ), self::PHP_EXTENSIONS );
 
 			if ( $in_assets && in_array( strtolower( $name ), self::SERVER_FILES, true ) ) {
-				throw $this->fail( sprintf( 'The package holds the server configuration file %s in assets/; assets are served as they are, so it is not allowed.', $path ) );
+				throw $this->fail( sprintf( smliser__( 'The package holds the server configuration file %s in assets/; assets are served as they are, so it is not allowed.' ), $path ) );
 			}
 
 			if ( $in_assets && $is_php ) {
-				throw $this->fail( sprintf( 'The package holds the PHP file %s in assets/; assets are served as they are, so PHP is not allowed there.', $path ) );
+				throw $this->fail( sprintf( smliser__( 'The package holds the PHP file %s in assets/; assets are served as they are, so PHP is not allowed there.' ), $path ) );
 			}
 
 			if ( ! $in_assets && $is_php && null !== ( $refusal = $this->php_refusal( $path ) ) ) {
@@ -812,15 +812,15 @@ abstract class ModuleInstaller {
 		$had    = $this->fs->is_dir( $live );
 
 		if ( $had && ! $this->fs->rename( $live, $backup ) ) {
-			throw $this->fail( sprintf( 'Could not move the installed %s out of %s; check the permissions of the storage folder.', static::NOUN, $live ) );
+			throw $this->fail( sprintf( smliser__( 'Could not move the installed %s out of %s; check the permissions of the storage folder.' ), static::NOUN, $live ) );
 		}
 
 		if ( ! $this->fs->rename( $staged, $live ) ) {
 			if ( $had && ! $this->fs->rename( $backup, $live ) ) {
-				throw $this->fail( sprintf( 'Could not install the %s, nor put the previous one back: it is in %s. Move it back to %s by hand.', static::NOUN, $backup, $live ) );
+				throw $this->fail( sprintf( smliser__( 'Could not install the %s, nor put the previous one back: it is in %s. Move it back to %s by hand.' ), static::NOUN, $backup, $live ) );
 			}
 
-			throw $this->fail( sprintf( 'Could not move the %s into %s; check the permissions of the storage folder. The previous files are back.', static::NOUN, $live ) );
+			throw $this->fail( sprintf( smliser__( 'Could not move the %s into %s; check the permissions of the storage folder. The previous files are back.' ), static::NOUN, $live ) );
 		}
 	}
 
@@ -838,11 +838,11 @@ abstract class ModuleInstaller {
 				? $this->assets->refresh( $module->assets_dir(), $module->public_name() )
 				: $this->assets->unpublish( $module->public_name() );
 		} catch ( Throwable $e ) {
-			return [ sprintf( 'The %s assets could not be published: %s %s once the public folder is writable.', static::NOUN, $e->getMessage(), ucfirst( $this->publish_action() ) ) ];
+			return [ sprintf( smliser__( 'The %s assets could not be published: %s %s once the public folder is writable.' ), static::NOUN, $e->getMessage(), ucfirst( $this->publish_action() ) ) ];
 		}
 
 		return PublicAssets::KEPT === $result
-			? [ sprintf( 'public/%s holds files that were not published by this application, so the %s assets were not published there. Remove them and %s.', $module->public_name(), static::NOUN, $this->publish_action() ) ]
+			? [ sprintf( smliser__( 'public/%s holds files that were not published by this application, so the %s assets were not published there. Remove them and %s.' ), $module->public_name(), static::NOUN, $this->publish_action() ) ]
 			: [];
 	}
 
@@ -858,11 +858,11 @@ abstract class ModuleInstaller {
 		try {
 			$result = $this->assets->unpublish( $name );
 		} catch ( Throwable $e ) {
-			return [ sprintf( 'The published assets in public/%s could not be removed: %s', $name, $e->getMessage() ) ];
+			return [ sprintf( smliser__( 'The published assets in public/%s could not be removed: %s' ), $name, $e->getMessage() ) ];
 		}
 
 		return PublicAssets::KEPT === $result
-			? [ sprintf( 'public/%s holds files that were not published by this application; they were left in place.', $name ) ]
+			? [ sprintf( smliser__( 'public/%s holds files that were not published by this application; they were left in place.' ), $name ) ]
 			: [];
 	}
 
@@ -897,7 +897,7 @@ abstract class ModuleInstaller {
 	 */
 	protected function assert_slug( string $slug ) : void {
 		if ( 1 !== preg_match( $this->slug_pattern(), $slug ) ) {
-			throw $this->fail( sprintf( '"%s" is not a %s slug: use lowercase letters, digits and hyphens.', $slug, static::NOUN ) );
+			throw $this->fail( sprintf( smliser__( '"%s" is not a %s slug: use lowercase letters, digits and hyphens.' ), $slug, static::NOUN ) );
 		}
 
 		$reserved = $this->reserved_message( $slug );
@@ -946,12 +946,12 @@ abstract class ModuleInstaller {
 		$handle = @fopen( $this->work_path( 'lock' ), 'c' );
 
 		if ( false === $handle ) {
-			throw $this->fail( sprintf( 'Could not create the %s lock; check the permissions of the storage folder.', static::NOUN ) );
+			throw $this->fail( sprintf( smliser__( 'Could not create the %s lock; check the permissions of the storage folder.' ), static::NOUN ) );
 		}
 
 		if ( ! flock( $handle, LOCK_EX | LOCK_NB ) ) {
 			fclose( $handle );
-			throw $this->fail( sprintf( 'Another %s is being installed, updated or removed; try again in a moment.', static::NOUN ) );
+			throw $this->fail( sprintf( smliser__( 'Another %s is being installed, updated or removed; try again in a moment.' ), static::NOUN ) );
 		}
 
 		$this->lock = $handle;
@@ -984,7 +984,7 @@ abstract class ModuleInstaller {
 	 */
 	private function make_dir( string $dir ) : void {
 		if ( ! $this->fs->is_dir( $dir ) && ! $this->fs->mkdir( $dir ) ) {
-			throw $this->fail( sprintf( 'Could not create %s; check the permissions of the storage folder.', $dir ) );
+			throw $this->fail( sprintf( smliser__( 'Could not create %s; check the permissions of the storage folder.' ), $dir ) );
 		}
 	}
 

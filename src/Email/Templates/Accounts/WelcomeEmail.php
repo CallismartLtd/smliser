@@ -32,7 +32,7 @@ class WelcomeEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Welcome — Your Account is Ready';
+		return smliser__( 'Welcome — Your Account is Ready' );
 	}
 
 	protected function recipient() : string {
@@ -40,7 +40,7 @@ class WelcomeEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your account has been created successfully. Get started today.';
+		return smliser__( 'Your account has been created successfully. Get started today.' );
 	}
 
 	protected function variables() : array {
@@ -57,14 +57,24 @@ class WelcomeEmail extends EmailTemplate {
 		$app_name     = \escHtml( $vars['{{app_name}}'] );
 		$support      = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: display name */
+			sprintf( smliser_esc_html__( 'Welcome, %s!' ), $display_name ),
+			/* translators: %s: app name (formatted) */
+			sprintf( smliser_esc_html__( 'Your account on %s has been created successfully. You can now log in and start managing your licenses.' ), '<strong>' . $app_name . '</strong>' ),
+			smliser_esc_html__( 'Full Name' ),
+			smliser_esc_html__( 'Email Address' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not create this account or have any concerns, please contact us immediately at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Welcome, {$display_name}!
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            Your account on <strong>{$app_name}</strong> has been created successfully.
-            You can now log in and start managing your licenses.
+            {$i18n[1]}
         </p>
 
         <!-- Account details card -->
@@ -78,7 +88,7 @@ class WelcomeEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Full Name
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;color:#1a1a2e;font-weight:600;">
                                     {$display_name}
@@ -89,7 +99,7 @@ class WelcomeEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Email Address
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$email}
@@ -102,17 +112,16 @@ class WelcomeEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not create this account or have any concerns, please contact us immediately at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Welcome';
+		return smliser__( 'Welcome' );
 	}
 	public function description() : string {
-		return 'Sent when a new user account is created.';
+		return smliser__( 'Sent when a new user account is created.' );
 	}
 	public static function preview() : static {
 		$user = User::from_array( [
@@ -127,14 +136,14 @@ class WelcomeEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Welcome, {{display_name}}!',
+				'content'   => smliser__( 'Welcome, {{display_name}}!' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Your account on {{app_name}} has been created successfully. You can now log in and start managing your licenses.',
+				'content'   => smliser__( 'Your account on {{app_name}} has been created successfully. You can now log in and start managing your licenses.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -142,8 +151,8 @@ class WelcomeEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Full Name',      'value' => '{{display_name}}' ],
-					[ 'label' => 'Email Address',  'value' => '{{email}}' ],
+					[ 'label' => smliser__( 'Full Name' ),      'value' => '{{display_name}}' ],
+					[ 'label' => smliser__( 'Email Address' ),  'value' => '{{email}}' ],
 				],
 				'editable'  => true,
 				'removable' => true,
@@ -151,7 +160,7 @@ class WelcomeEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not create this account or have any concerns, please contact us immediately at {{support_email}}.',
+				'content'   => smliser__( 'If you did not create this account or have any concerns, please contact us immediately at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

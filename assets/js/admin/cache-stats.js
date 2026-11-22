@@ -132,12 +132,12 @@
         const expired     = extra.expired_entries ?? extra.expired_slots ?? 0;
 
         const uptimeStr   = uptime > 0 ? fmtDuration( uptime ) : null;
-        const uptimeSub   = uptime > 0 ? 'Since last restart'
-            : ( [ 'runtime', 'arraycache' ].includes( adapterId ) ? 'Request-scoped' : 'Not reported' );
+        const uptimeSub   = uptime > 0 ? smliserI18n.__( 'Since last restart' )
+            : ( [ 'runtime', 'arraycache' ].includes( adapterId ) ? smliserI18n.__( 'Request-scoped' ) : smliserI18n.__( 'Not reported' ) );
 
         container.innerHTML = `
             <div class="smlcd-card smlcd-card--${ hitGrade }">
-                <div class="smlcd-card__label">Hit Rate</div>
+                <div class="smlcd-card__label">${ smliserI18n.esc( smliserI18n.__( 'Hit Rate' ) ) }</div>
                 <div class="smlcd-card__value">
                     ${ hitPct !== null
                         ? `${ hitPct }<span class="smlcd-card__unit">%</span>`
@@ -145,35 +145,35 @@
                 </div>
                 <div class="smlcd-card__detail">
                     ${ tracksHits
-                        ? `${ hits.toLocaleString() } hits · ${ misses.toLocaleString() } misses`
-                        : 'Not tracked by this adapter' }
+                        ? smliserI18n.sprintf( smliserI18n.__( '%1$s hits · %2$s misses' ), hits.toLocaleString(), misses.toLocaleString() )
+                        : smliserI18n.__( 'Not tracked by this adapter' ) }
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--neutral">
-                <div class="smlcd-card__label">Total Requests</div>
+                <div class="smlcd-card__label">${ smliserI18n.esc( smliserI18n.__( 'Total Requests' ) ) }</div>
                 <div class="smlcd-card__value">
                     ${ tracksHits
                         ? `${ totalReq.toLocaleString() }`
                         : `<span class="smlcd-card__na">—</span>` }
                 </div>
                 <div class="smlcd-card__detail">
-                    ${ tracksHits ? `Miss rate: ${ missPct }%` : 'Not tracked by this adapter' }
+                    ${ tracksHits ? smliserI18n.sprintf( smliserI18n.__( 'Miss rate: %s%%' ), missPct ) : smliserI18n.__( 'Not tracked by this adapter' ) }
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--neutral">
-                <div class="smlcd-card__label">Cached Entries</div>
+                <div class="smlcd-card__label">${ smliserI18n.esc( smliserI18n.__( 'Cached Entries' ) ) }</div>
                 <div class="smlcd-card__value">${ entries.toLocaleString() }</div>
                 <div class="smlcd-card__detail">
                     ${ expired > 0
                         ? `<span class="smlcd-warn">${ expired.toLocaleString() } expired</span>`
-                        : 'All entries live' }
+                        : smliserI18n.__( 'All entries live' ) }
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--${ memGrade }">
-                <div class="smlcd-card__label">Memory</div>
+                <div class="smlcd-card__label">${ smliserI18n.esc( smliserI18n.__( 'Memory' ) ) }</div>
                 <div class="smlcd-card__value">
                     ${ memPct !== null
                         ? `${ memPct }<span class="smlcd-card__unit">%</span>`
@@ -185,13 +185,13 @@
                     ${ hasMemCeil
                         ? `${ fmtBytes( memUsed ) } of ${ fmtBytes( memTotal ) }`
                         : memUsed > 0
-                            ? `${ fmtBytes( memUsed ) } · No fixed ceiling`
-                            : 'Not reported' }
+                            ? smliserI18n.sprintf( smliserI18n.__( '%s · No fixed ceiling' ), fmtBytes( memUsed ) )
+                            : smliserI18n.__( 'Not reported' ) }
                 </div>
             </div>
 
             <div class="smlcd-card smlcd-card--neutral">
-                <div class="smlcd-card__label">Uptime</div>
+                <div class="smlcd-card__label">${ smliserI18n.esc( smliserI18n.__( 'Uptime' ) ) }</div>
                 <div class="smlcd-card__value">
                     ${ uptimeStr
                         ? escHtml( uptimeStr )
@@ -235,7 +235,7 @@
 
         const memRow = memPct !== null ? `
             <div class="smlcd-perf__mem">
-                <span class="smlcd-perf__mem-label">Memory pressure</span>
+                <span class="smlcd-perf__mem-label">${ smliserI18n.esc( smliserI18n.__( 'Memory pressure' ) ) }</span>
                 <div class="smlcd-perf__mem-track">
                     <div class="smlcd-perf__mem-fill smlcd-perf__mem-fill--${ memGrade }"
                          style="width:${ Math.min( memPct, 100 ) }%"></div>
@@ -245,7 +245,7 @@
 
         const html = `
             <div class="smlcd-perf__header">
-                <span class="smlcd-perf__title">Request Breakdown</span>
+                <span class="smlcd-perf__title">${ smliserI18n.esc( smliserI18n.__( 'Request Breakdown' ) ) }</span>
                 <span class="smlcd-perf__total">${ total.toLocaleString() } total</span>
             </div>
             <div class="smlcd-perf__bar-wrap">
@@ -257,11 +257,11 @@
             <div class="smlcd-perf__legend">
                 <span class="smlcd-perf__legend-hit">
                     <span class="smlcd-perf__dot smlcd-perf__dot--hit"></span>
-                    Hits <strong>${ hits.toLocaleString() }</strong> <em>${ hitPct }%</em>
+                    ${ smliserI18n.esc( smliserI18n.__( 'Hits' ) ) } <strong>${ hits.toLocaleString() }</strong> <em>${ hitPct }%</em>
                 </span>
                 <span class="smlcd-perf__legend-miss">
                     <span class="smlcd-perf__dot smlcd-perf__dot--miss"></span>
-                    Misses <strong>${ misses.toLocaleString() }</strong> <em>${ missPct }%</em>
+                    ${ smliserI18n.esc( smliserI18n.__( 'Misses' ) ) } <strong>${ misses.toLocaleString() }</strong> <em>${ missPct }%</em>
                 </span>
                 <span class="smlcd-perf__rating smlcd-perf__rating--${ rating }">${ ratingLabel }</span>
             </div>
@@ -287,8 +287,8 @@
         e.stopImmediatePropagation();
 
         const confirmed = await SmliserModal.confirm(
-            btn.dataset.confirm || 'Are you sure?',
-            'Confirm Action'
+            btn.dataset.confirm || smliserI18n.__( 'Are you sure?' ),
+            smliserI18n.__( 'Confirm Action' )
         );
         if ( ! confirmed ) return;
 

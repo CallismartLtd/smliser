@@ -29,17 +29,17 @@
 	const TASKS = [
 		{
 			id: 'remote_service_connection',
-			label: 'Update Server Connection',
+			label: smliserI18n.__( 'Update Server Connection' ),
 			run: () => requestChecks( 'remote-service' ),
 		},
 		{
 			id: 'cache_persistence',
-			label: 'Cache Persistence',
+			label: smliserI18n.__( 'Cache Persistence' ),
 			run: runCachePersistence,
 		},
 		{
 			id: 'database_connection',
-			label: 'Database Connection',
+			label: smliserI18n.__( 'Database Connection' ),
 			run: () => requestChecks( 'database' ),
 		},
 	];
@@ -90,7 +90,7 @@
 
 		removeFooter( panel );
 		setPanelState( panel, 'pending', SPINNER, '…' );
-		list.replaceChildren( ...TASKS.map( ( task ) => buildMessageItem( 'pending', SPINNER, 'Running…', task.label ) ) );
+		list.replaceChildren( ...TASKS.map( ( task ) => buildMessageItem( 'pending', SPINNER, smliserI18n.__( 'Running…' ), task.label ) ) );
 
 		const results = await Promise.all( TASKS.map( runTask ) );
 		const checks  = results.flatMap( ( result ) => result.checks );
@@ -121,8 +121,8 @@
 					id: task.id,
 					label: task.label,
 					status: 'warning',
-					message: error?.message || 'This check could not run.',
-					recommendation: 'Run the checks again. If this keeps failing, check the server error log.',
+					message: error?.message || smliserI18n.__( 'This check could not run.' ),
+					recommendation: smliserI18n.__( 'Run the checks again. If this keeps failing, check the server error log.' ),
 				} ],
 			};
 		}
@@ -143,7 +143,7 @@
 		}
 
 		if ( 'string' !== typeof seed?.token || '' === seed.token ) {
-			throw { message: 'The server returned an unexpected response.' };
+			throw { message: smliserI18n.__( 'The server returned an unexpected response.' ) };
 		}
 
 		return requestChecks( 'cache-verify', { token: seed.token } );
@@ -166,7 +166,7 @@
 		const body = await getJSON( path, query );
 
 		if ( ! Array.isArray( body?.checks ) ) {
-			throw { message: 'The server returned an unexpected response.' };
+			throw { message: smliserI18n.__( 'The server returned an unexpected response.' ) };
 		}
 
 		return body.checks.map( normalizeCheck );
@@ -229,7 +229,7 @@
 
 		return {
 			id: String( raw.id ?? `async-${ index }` ),
-			label: String( raw.label ?? 'Unnamed check' ),
+			label: String( raw.label ?? smliserI18n.__( 'Unnamed check' ) ),
 			status,
 			message: String( raw.message ?? '' ),
 			recommendation: 'string' === typeof raw.recommendation && '' !== raw.recommendation
@@ -292,7 +292,7 @@
 		setPanelState( panel, worst, iconFor( worst ), String( checks.length ) );
 
 		if ( 0 === checks.length ) {
-			list.replaceChildren( buildMessageItem( 'pass', iconFor( 'pass' ), 'No additional checks were returned.' ) );
+			list.replaceChildren( buildMessageItem( 'pass', iconFor( 'pass' ), smliserI18n.__( 'No additional checks were returned.' ) ) );
 		} else {
 			list.replaceChildren( ...checks.map( ( check ) => buildCheckItem( check ) ) );
 		}
@@ -371,10 +371,10 @@
 		const button = el( 'button', 'smliser-btn smliser-btn-glass smliser-health-retry' );
 
 		button.type = 'button';
-		button.append( el( 'i', 'ti ti-refresh' ), document.createTextNode( 'Run again' ) );
+		button.append( el( 'i', 'ti ti-refresh' ), document.createTextNode( smliserI18n.__( 'Run again' ) ) );
 		button.addEventListener( 'click', () => run( panel ), { once: true } );
 
-		footer.append( el( 'span', 'smliser-health-async-time', `Last checked ${ formatAge( time ) }` ), button );
+		footer.append( el( 'span', 'smliser-health-async-time', smliserI18n.sprintf( smliserI18n.__( 'Last checked %s' ), formatAge( time ) ) ), button );
 
 		removeFooter( panel );
 		panel.querySelector( '.smliser-diagnostics-panel-body' ).append( footer );
@@ -422,7 +422,7 @@
 		state.displayed = next;
 
 		if ( escalated ) {
-			SmliserToast.show( `Additional checks found ${ statuses.filter( isProblem ).length } issue(s).`, {
+			SmliserToast.show( smliserI18n.sprintf( smliserI18n.__( 'Additional checks found %s issue(s).' ), statuses.filter( isProblem ).length ), {
 				type: 'critical' === next ? 'error' : 'warning',
 			} );
 		}

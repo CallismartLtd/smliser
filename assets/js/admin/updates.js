@@ -78,7 +78,7 @@
 			done( response?.data?.message || 'Done.', 'success' );
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'The request failed.', { type: 'error' } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'The request failed.' ), { type: 'error' } );
 		}
 	}
 
@@ -97,10 +97,10 @@
 			const response = await post( 'auto', new FormData( form ), TIMEOUT_MS );
 
 			restore();
-			SmliserToast.show( response?.data?.message || 'Saved.', { type: 'success' } );
+			SmliserToast.show( response?.data?.message || smliserI18n.__( 'Saved.' ), { type: 'success' } );
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'The setting could not be saved.', { type: 'error' } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'The setting could not be saved.' ), { type: 'error' } );
 		}
 	}
 
@@ -129,7 +129,7 @@
 	 */
 	async function poll( started ) {
 		if ( Date.now() - started > POLL_GIVE_UP_MS ) {
-			SmliserToast.show( 'The update has not finished after 20 minutes. Check that the queue worker is running, or run `smliser update status` from the console.', { type: 'warning' } );
+			SmliserToast.show( smliserI18n.__( 'The update has not finished after 20 minutes. Check that the queue worker is running, or run `smliser update status` from the console.' ), { type: 'warning' } );
 			return;
 		}
 
@@ -140,7 +140,7 @@
 			const overview = response?.data?.overview;
 
 			if ( overview && ! overview.in_progress && ! overview.queued ) {
-				done( overview.attempt && ! overview.attempt.ok ? 'The update did not complete; see the history below.' : 'The update has ended.', overview.attempt && ! overview.attempt.ok ? 'warning' : 'success' );
+				done( overview.attempt && ! overview.attempt.ok ? smliserI18n.__( 'The update did not complete; see the history below.' ) : smliserI18n.__( 'The update has ended.' ), overview.attempt && ! overview.attempt.ok ? 'warning' : 'success' );
 				return;
 			}
 		} catch ( error ) {

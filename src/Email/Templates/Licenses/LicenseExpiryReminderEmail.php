@@ -63,9 +63,20 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
 		$days_left     = \escHtml( $vars['{{days_left}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			/* translators: 1: days left (formatted), 2: closing <strong> tag, 3: end date (formatted) */
+			sprintf( smliser_esc_html__( '⚠ Your license expires in %1$s day(s)%2$s on %3$s. Renew now to avoid any interruption to your service.' ), '<strong>' . $days_left, '</strong>', '<strong>' . $end_date . '</strong>' ),
+			smliser_esc_html__( 'License Key' ),
+			smliser_esc_html__( 'Expiry Date' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you have already renewed or have any questions, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <!-- Urgency banner -->
@@ -75,9 +86,7 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#92400e;line-height:1.5;">
-                        &#9888;&nbsp; Your license expires in <strong>{$days_left} day(s)</strong>
-                        on <strong>{$end_date}</strong>.
-                        Renew now to avoid any interruption to your service.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -94,7 +103,7 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    License Key
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;color:#1a1a2e;
                                            font-family:monospace;font-weight:700;letter-spacing:0.05em;">
@@ -106,7 +115,7 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Expiry Date
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$end_date}
@@ -119,17 +128,16 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you have already renewed or have any questions, please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Expiry Reminder';
+		return smliser__( 'License Expiry Reminder' );
 	}
 	public function description() : string {
-		return 'Sent a set number of days before a license is due to expire.';
+		return smliser__( 'Sent a set number of days before a license is due to expire.' );
 	}
 	public static function preview() : static {
 		$license = License::from_array( [
@@ -145,7 +153,7 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -153,7 +161,7 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'warning',
-				'content'   => 'Your license expires in {{days_left}} day(s) on {{end_date}}. Renew now to avoid any interruption to your service.',
+				'content'   => smliser__( 'Your license expires in {{days_left}} day(s) on {{end_date}}. Renew now to avoid any interruption to your service.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -161,9 +169,9 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'License Key',   'value' => '{{license_key}}' ],
-					[ 'label' => 'Expiry Date',   'value' => '{{end_date}}' ],
-					[ 'label' => 'Days Remaining', 'value' => '{{days_left}}' ],
+					[ 'label' => smliser__( 'License Key' ),   'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Expiry Date' ),   'value' => '{{end_date}}' ],
+					[ 'label' => smliser__( 'Days Remaining' ), 'value' => '{{days_left}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -171,7 +179,7 @@ class LicenseExpiryReminderEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you have already renewed or have any questions, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you have already renewed or have any questions, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

@@ -235,32 +235,32 @@ abstract class Repository {
 	public function upload_zip( UploadedFile $file, string $name, bool $update = false ) : string|Exception {
 		try {
 			if ( ! $file->is_upload_successful() ) {
-				throw new Exception( 'invalid_file', 'No file uploaded.', [ 'status' => 400 ] );
+				throw new Exception( 'invalid_file', smliser__( 'No file uploaded.' ), [ 'status' => 400 ] );
 			}
 
 			if ( '' === trim( $name ) ) {
-				throw new Exception( 'invalid_filename', 'The new filename cannot be empty.', [ 'status' => 400 ] );
+				throw new Exception( 'invalid_filename', smliser__( 'The new filename cannot be empty.' ), [ 'status' => 400 ] );
 			}
 
 			if ( ! $file->is_uploaded_file() ) {
-				throw new Exception( 'invalid_temp_file', 'The temporary file is not valid.', [ 'status' => 400 ] );
+				throw new Exception( 'invalid_temp_file', smliser__( 'The temporary file is not valid.' ), [ 'status' => 400 ] );
 			}
 
 			if ( 'zip' !== $file->get_canonical_extension() ) {
-				throw new Exception( 'invalid_file_type', 'The application archive file must be in ZIP format.', [ 'status' => 400 ] );
+				throw new Exception( 'invalid_file_type', smliser__( 'The application archive file must be in ZIP format.' ), [ 'status' => 400 ] );
 			}
 
 			$slug = static::slug_from( $name );
 			$type = $this->app_type();
 
 			if ( '' === $slug || ! AppFile::is_segment( $slug ) ) {
-				throw new Exception( 'invalid_filename', sprintf( 'No valid slug can be made from "%s".', $name ), [ 'status' => 400 ] );
+				throw new Exception( 'invalid_filename', sprintf( smliser__( 'No valid slug can be made from "%s".' ), $name ), [ 'status' => 400 ] );
 			}
 
 			if ( ! $update && $this->storage->has_app( $type, $slug ) ) {
 				throw new Exception(
 					'app_slug_exists',
-					sprintf( 'The slug "%s" is not available, you can change the %s name and try again.', $slug, $type ),
+					sprintf( smliser__( 'The slug "%s" is not available, you can change the %s name and try again.' ), $slug, $type ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -269,12 +269,12 @@ abstract class Repository {
 				throw $update
 					? new Exception(
 						'app_in_trash',
-						sprintf( 'This %s is in the trash. Restore it before uploading a new version.', $type ),
+						sprintf( smliser__( 'This %s is in the trash. Restore it before uploading a new version.' ), $type ),
 						[ 'status' => 400 ]
 					)
 					: new Exception(
 						'app_slug_exists',
-						sprintf( 'The slug "%s" belongs to a %s in the trash. Restore or permanently delete it, or change the %s name and try again.', $slug, $type, $type ),
+						sprintf( smliser__( 'The slug "%s" belongs to a %s in the trash. Restore or permanently delete it, or change the %s name and try again.' ), $slug, $type, $type ),
 						[ 'status' => 400 ]
 					);
 			}
@@ -355,7 +355,7 @@ abstract class Repository {
 				// Reported below; the old attestation no longer matches the package, so clients refuse it.
 			}
 
-			throw new Exception( 'attestation_error', sprintf( 'The package was stored but its attestation could not be updated: %s', $e->getMessage() ), [ 'status' => 500 ] );
+			throw new Exception( 'attestation_error', sprintf( smliser__( 'The package was stored but its attestation could not be updated: %s' ), $e->getMessage() ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -371,7 +371,7 @@ abstract class Repository {
 		$zip = new ZipArchive();
 
 		if ( true !== $zip->open( $zip_path ) ) {
-			throw new Exception( 'zip_invalid', 'Uploaded ZIP could not be opened.', [ 'status' => 400 ] );
+			throw new Exception( 'zip_invalid', smliser__( 'Uploaded ZIP could not be opened.' ), [ 'status' => 400 ] );
 		}
 
 		try {
@@ -731,7 +731,7 @@ abstract class Repository {
 
 		try {
 			if ( ! $this->storage->has_app( $type, $slug ) ) {
-				throw new StorageException( StorageException::NOT_FOUND, sprintf( 'The %s "%s" does not exist.', $type, $slug ), $type, $slug );
+				throw new StorageException( StorageException::NOT_FOUND, sprintf( smliser__( 'The %s "%s" does not exist.' ), $type, $slug ), $type, $slug );
 			}
 		} catch ( StorageException $e ) {
 			$result['failed']['system'] = $e->get_error_message();
@@ -743,17 +743,17 @@ abstract class Repository {
 			$has_error = false;
 
 			if ( ! $file->is_upload_successful() ) {
-				$result['failed'][ $file->get_name() ]['partial_upload'] = 'Upload was not success.';
+				$result['failed'][ $file->get_name() ]['partial_upload'] = smliser__( 'Upload was not success.' );
 				$has_error = true;
 			}
 
 			if ( ! $file->is_uploaded_file() ) {
-				$result['failed'][ $file->get_name() ]['invalid_http_upload'] = 'File is not a valid HTTP uploaded file.';
+				$result['failed'][ $file->get_name() ]['invalid_http_upload'] = smliser__( 'File is not a valid HTTP uploaded file.' );
 				$has_error = true;
 			}
 
 			if ( ! $file->is_moveable() ) {
-				$result['failed'][ $file->get_name() ]['filesystem_error'] = 'Asset cannot be reliably moved to the repository.';
+				$result['failed'][ $file->get_name() ]['filesystem_error'] = smliser__( 'Asset cannot be reliably moved to the repository.' );
 				$has_error = true;
 			}
 
@@ -772,7 +772,7 @@ abstract class Repository {
 
 			try {
 				if ( in_array( $stored, $this->asset_names( $slug ), true ) ) {
-					throw new Exception( 'asset_exists', sprintf( 'An asset named "%s" already exists.', $stored ), [ 'status' => 409 ] );
+					throw new Exception( 'asset_exists', sprintf( smliser__( 'An asset named "%s" already exists.' ), $stored ), [ 'status' => 409 ] );
 				}
 
 				$this->storage->put_asset( $type, $slug, $stored, (string) $file->get_tmp_path() );
@@ -803,7 +803,7 @@ abstract class Repository {
 
 		try {
 			if ( ! $this->storage->has_app( $type, $app_slug ) ) {
-				throw new StorageException( StorageException::NOT_FOUND, sprintf( 'The %s "%s" does not exist.', $type, $app_slug ), $type, $app_slug );
+				throw new StorageException( StorageException::NOT_FOUND, sprintf( smliser__( 'The %s "%s" does not exist.' ), $type, $app_slug ), $type, $app_slug );
 			}
 
 			if ( ! $file->is_moveable() ) {
@@ -887,13 +887,13 @@ abstract class Repository {
 		$ext = FileSystemHelper::get_canonical_extension( $filename );
 
 		if ( ! $ext ) {
-			return new Exception( 'repo_error', 'The extension for the for this image could not be trusted.', [ 'status' => 400 ] );
+			return new Exception( 'repo_error', smliser__( 'The extension for the for this image could not be trusted.' ), [ 'status' => 400 ] );
 		}
 
 		if ( ! in_array( $ext, static::ALLOWED_IMAGE_EXTENSIONS, true ) ) {
 			return new Exception(
 				'file_ext_error',
-				sprintf( 'Icon file must be one of: %s', implode( ', ', static::ALLOWED_IMAGE_EXTENSIONS ) ),
+				sprintf( smliser__( 'Icon file must be one of: %s' ), implode( ', ', static::ALLOWED_IMAGE_EXTENSIONS ) ),
 			);
 		}
 
@@ -901,7 +901,7 @@ abstract class Repository {
 		$is_malicious  = (bool) preg_match( '/<(script|php|eval|iframe|object|embed|form|input|button|link|style)[^>]*>/i', $image_content );
 
 		if ( $is_malicious ) {
-			return new Exception( 'malicious_content', 'Potentially malicious content detected in the image.' );
+			return new Exception( 'malicious_content', smliser__( 'Potentially malicious content detected in the image.' ) );
 		}
 
 		return true;
@@ -1017,13 +1017,13 @@ abstract class Repository {
 			$app_slug = (string) ( $data['app_slug'] ?? '' );
 
 			if ( '' === $app_slug ) {
-				throw new FileSystemException( 'App slug is required to upload artifact.' );
+				throw new FileSystemException( smliser__( 'App slug is required to upload artifact.' ) );
 			}
 
 			$file = $data['file'] ?? null;
 
 			if ( ! $file || ! $file->is_upload_successful() ) {
-				throw new FileSystemException( 'Artifact file was not uploaded' );
+				throw new FileSystemException( smliser__( 'Artifact file was not uploaded' ) );
 			}
 
 			if ( ! $file->is_moveable() ) {
@@ -1050,7 +1050,7 @@ abstract class Repository {
 				if ( ! in_array( $filename, $existing, true ) ) {
 					throw new Exception(
 						'resource_not_found',
-						sprintf( 'The artifact "%s" does not exist.', $filename ),
+						sprintf( smliser__( 'The artifact "%s" does not exist.' ), $filename ),
 						[ 'status' => 404 ]
 					);
 				}
@@ -1060,7 +1060,7 @@ abstract class Repository {
 			if ( $new_filename !== $filename && in_array( $new_filename, $existing, true ) ) {
 				throw new Exception(
 					'artifact_exists',
-					sprintf( 'An artifact named "%s" already exists. Edit that artifact to replace it, or choose another name.', $new_filename ),
+					sprintf( smliser__( 'An artifact named "%s" already exists. Edit that artifact to replace it, or choose another name.' ), $new_filename ),
 					[ 'status' => 409 ]
 				);
 			}
@@ -1104,14 +1104,14 @@ abstract class Repository {
 			if ( ! $artifact ) {
 				throw new Exception(
 					'resource_not_found',
-					sprintf( 'The artifact file with name "%s" cannot be renamed to "%s" because it does not exist.', $artifact_filename, $new_filename ),
+					sprintf( smliser__( 'The artifact file with name "%s" cannot be renamed to "%s" because it does not exist.' ), $artifact_filename, $new_filename ),
 					[ 'status' => 404 ]
 				);
 			}
 
 			// The main package is listed with the artifacts but managed by upload_zip().
 			if ( AppFile::PACKAGE === $artifact['file']->kind ) {
-				throw new Exception( 'invalid_input', 'The main application package cannot be renamed as an artifact.', [ 'status' => 400 ] );
+				throw new Exception( 'invalid_input', smliser__( 'The main application package cannot be renamed as an artifact.' ), [ 'status' => 400 ] );
 			}
 
 			// The name is used exactly as given, extension included.
@@ -1120,7 +1120,7 @@ abstract class Repository {
 			if ( $new_filename !== $artifact_filename && null !== $this->get_artifact( $app_slug, $new_filename ) ) {
 				throw new Exception(
 					'artifact_exists',
-					sprintf( 'An artifact named "%s" already exists.', $new_filename ),
+					sprintf( smliser__( 'An artifact named "%s" already exists.' ), $new_filename ),
 					[ 'status' => 409 ]
 				);
 			}
@@ -1200,13 +1200,13 @@ abstract class Repository {
 			if ( ! $artifact ) {
 				throw new Exception(
 					'resource_not_found',
-					sprintf( 'The artifact file "%s" does not exist.', $artifact_filename ),
+					sprintf( smliser__( 'The artifact file "%s" does not exist.' ), $artifact_filename ),
 					[ 'status' => 404 ]
 				);
 			}
 
 			if ( AppFile::PACKAGE === $artifact['file']->kind ) {
-				throw new Exception( 'invalid_input', 'The main application package cannot be deleted as an artifact.', [ 'status' => 400 ] );
+				throw new Exception( 'invalid_input', smliser__( 'The main application package cannot be deleted as an artifact.' ), [ 'status' => 400 ] );
 			}
 
 			$this->storage->delete_artifact( $this->app_type(), $app_slug, $artifact_filename );

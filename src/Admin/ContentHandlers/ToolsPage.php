@@ -278,7 +278,7 @@ class ToolsPage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Tools',
+			'title'      => smliser__( 'Tools' ),
 			'icon'       => 'ti ti-tool',
 			'handler'    => $this,
 			'slug'       => 'tools',
@@ -289,49 +289,49 @@ class ToolsPage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'Schedules',
+				'title'      => smliser__( 'Schedules' ),
 				'slug'       => 'schedules',
 				'callback'   => [$this, 'schedules_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'Queue Monitor',
+				'title'      => smliser__( 'Queue Monitor' ),
 				'slug'       => 'queues',
 				'callback'   => [$this, 'queues_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'Background Processing',
+				'title'      => smliser__( 'Background Processing' ),
 				'slug'       => 'background',
 				'callback'   => [$this, 'background_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'System Diagnostics',
+				'title'      => smliser__( 'System Diagnostics' ),
 				'slug'       => 'diagnostics',
 				'callback'   => [$this, 'system_diagnostics_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'Site Health',
+				'title'      => smliser__( 'Site Health' ),
 				'slug'       => 'health',
 				'callback'   => [$this, 'site_health_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'Updates',
+				'title'      => smliser__( 'Updates' ),
 				'slug'       => 'updates',
 				'callback'   => [$this, 'updates_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'Maintenance',
+				'title'      => smliser__( 'Maintenance' ),
 				'slug'       => 'maintenance',
 				'callback'   => [$this, 'maintenance_page'],
 				'visibility' => true
 			],
 			[
-				'title'      => 'Signing Key',
+				'title'      => smliser__( 'Signing Key' ),
 				'slug'       => 'signing-key',
 				'callback'   => [$this, 'signing_key_page'],
 				'visibility' => true
@@ -351,20 +351,20 @@ class ToolsPage implements AdminPageInterface {
 	public function get_top_menu_args( Request $request ) : array {
 		$tab   = $request->get( 'tab' ) ?? $request->route_param( 'tab' );
 		$title = match( $tab ) {
-			'queues'      => 'Queue Monitor',
-			'background'  => 'Background Processing',
-			'diagnostics' => 'System Diagnostics',
-			'health'      => 'Site Health',
-			'updates'     => 'Updates',
-			'maintenance' => 'Maintenance',
-			'signing-key' => 'Signing Key',
+			'queues'      => smliser__( 'Queue Monitor' ),
+			'background'  => smliser__( 'Background Processing' ),
+			'diagnostics' => smliser__( 'System Diagnostics' ),
+			'health'      => smliser__( 'Site Health' ),
+			'updates'     => smliser__( 'Updates' ),
+			'maintenance' => smliser__( 'Maintenance' ),
+			'signing-key' => smliser__( 'Signing Key' ),
 			default       => ''
 		};
 
 		return [
 			'breadcrumbs' => [
 				[
-					'label' => 'Schedules',
+					'label' => smliser__( 'Schedules' ),
 					'url'   => $this->urlmanager->admin_tools_page_url(),
 					'icon'  => 'ti ti-home',
 				],

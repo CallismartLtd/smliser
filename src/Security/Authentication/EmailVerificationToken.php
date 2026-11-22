@@ -75,7 +75,7 @@ final class EmailVerificationToken {
 		$decoded = static::base64url_decode( $token );
 
 		if ( ! $decoded || ! str_contains( $decoded, '.' ) ) {
-			return [ 'valid' => false, 'reason' => 'This verification link is not valid.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'This verification link is not valid.' ) ];
 		}
 
 		// Split at the last dot: the email in the payload has dots, the hex signature none.
@@ -84,27 +84,27 @@ final class EmailVerificationToken {
 		$signature = substr( $decoded, $split + 1 );
 
 		if ( ! hash_equals( static::hmac_hash( $payload, $this->derive_key( 'email_verification' ), 'sha256' ), $signature ) ) {
-			return [ 'valid' => false, 'reason' => 'This verification link is not valid.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'This verification link is not valid.' ) ];
 		}
 
 		$data = json_decode( $payload, true );
 
 		if ( ! is_array( $data ) || empty( $data['id'] ) || empty( $data['email'] ) || ! isset( $data['timestamp'] ) ) {
-			return [ 'valid' => false, 'reason' => 'This verification link is not valid.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'This verification link is not valid.' ) ];
 		}
 
 		if ( (int) $data['timestamp'] + self::TTL_HOURS * 3600 < time() ) {
-			return [ 'valid' => false, 'reason' => 'This verification link has expired. Ask for a new one.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'This verification link has expired. Ask for a new one.' ) ];
 		}
 
 		$user = User::get_by_id( (int) $data['id'] );
 
 		if ( ! $user ) {
-			return [ 'valid' => false, 'reason' => 'The account for this link no longer exists.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'The account for this link no longer exists.' ) ];
 		}
 
 		if ( strtolower( $user->get_email() ) !== (string) $data['email'] ) {
-			return [ 'valid' => false, 'reason' => 'This link was sent to an email address the account no longer uses.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'This link was sent to an email address the account no longer uses.' ) ];
 		}
 
 		return [ 'valid' => true, 'user' => $user ];

@@ -81,17 +81,17 @@
 			} );
 		} catch ( error ) {
 			busy( button, false );
-			say( form, error?.message || 'The request failed. Please try again.', 'error' );
+			say( form, error?.message || smliserI18n.__( 'The request failed. Please try again.' ), 'error' );
 			return;
 		}
 
 		if ( ! response?.success ) {
 			busy( button, false );
-			say( form, response?.message || response?.data?.message || 'The request failed. Please try again.', 'error' );
+			say( form, response?.message || response?.data?.message || smliserI18n.__( 'The request failed. Please try again.' ), 'error' );
 			return;
 		}
 
-		say( form, response.message || response.data?.message || 'Done.', 'success' );
+		say( form, response.message || response.data?.message || smliserI18n.__( 'Done.' ), 'success' );
 
 		const redirect = response.redirect || response.data?.redirect;
 

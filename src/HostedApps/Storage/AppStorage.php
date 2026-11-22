@@ -376,7 +376,7 @@ final class AppStorage implements AppStorageAdapterInterface {
 		}
 
 		if ( '' !== $slug ) {
-			throw new StorageException( StorageException::INVALID_PATH, 'Browsing an app needs its type.', '', $slug );
+			throw new StorageException( StorageException::INVALID_PATH, smliser__( 'Browsing an app needs its type.' ), '', $slug );
 		}
 
 		$adapters = [ $this->default ];

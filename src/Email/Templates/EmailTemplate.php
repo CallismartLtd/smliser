@@ -278,7 +278,7 @@ abstract class EmailTemplate {
 			'header_color'  => '#ffffff',
 			'body_bg'       => '#f4f6f8',
 			'card_bg'       => '#ffffff',
-			'card_shadow'   => '0 2px 8px rgba(0,0,0,0.06)',
+			'card_shadow'   => smliser__( '0 2px 8px rgba(0,0,0,0.06)' ),
 			'accent'        => '#6366f1',
 			'text_primary'  => '#334155',
 			'text_muted'    => '#64748b',
@@ -646,7 +646,7 @@ abstract class EmailTemplate {
 	 * @return string
 	 */
 	protected function render_button_block( array $block ) : string {
-		$label  = \escHtml( $block['label'] ?? 'Click Here' );
+		$label  = \escHtml( $block['label'] ?? smliser__( 'Click Here' ) );
 		$url    = \escHtml( $block['url'] ?? '#' );
 		$accent = $this->styles['accent'];
 
@@ -741,7 +741,7 @@ abstract class EmailTemplate {
 		$footer    = $this->render_footer();
 		$body_bg   = $this->styles['body_bg'] ?? '#f4f6f8';
 		$card_bg   = $this->styles['card_bg'] ?? '#ffffff';
-		$shadow    = $this->styles['card_shadow'] ?? '0 2px 8px rgba(0,0,0,0.06)';
+		$shadow    = $this->styles['card_shadow'] ?? smliser__( '0 2px 8px rgba(0,0,0,0.06)' );
 
 		$html = <<<HTML
         <!DOCTYPE html>
@@ -887,6 +887,11 @@ abstract class EmailTemplate {
             SUPPORT
 			: '';
 
+		$i18n = [
+			/* translators: %s: year, app name */
+			sprintf( smliser_esc_html__( '© %s. All rights reserved.' ), $year . ' ' . $app_name ),
+		];
+
 		return <<<HTML
         <tr>
             <td style="background-color:{$bg};padding:24px 40px;
@@ -896,7 +901,7 @@ abstract class EmailTemplate {
                     <tr>
                         <td style="font-size:12px;color:{$color};line-height:1.6;">
                             <p style="margin:0 0 4px 0;">
-                                &copy; {$year} {$app_name}. All rights reserved.
+                                {$i18n[0]}
                             </p>
                             {$support_line}
                         </td>

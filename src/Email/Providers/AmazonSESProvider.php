@@ -77,7 +77,7 @@ class AmazonSESProvider extends AbstractRestEmailProvider {
 	}
 
 	public static function get_name() : string {
-		return 'Amazon SES';
+		return smliser__( 'Amazon SES' );
 	}
 
 	/*
@@ -90,21 +90,21 @@ class AmazonSESProvider extends AbstractRestEmailProvider {
 		return [
 			'access_key' => [
 				'type'        => 'text',
-				'label'       => 'AWS Access Key ID',
+				'label'       => smliser__( 'AWS Access Key ID' ),
 				'required'    => true,
-				'description' => 'Your AWS IAM Access Key ID with SES send permissions.',
+				'description' => smliser__( 'Your AWS IAM Access Key ID with SES send permissions.' ),
 			],
 			'secret_key' => [
 				'type'        => 'password',
-				'label'       => 'AWS Secret Access Key',
+				'label'       => smliser__( 'AWS Secret Access Key' ),
 				'required'    => true,
-				'description' => 'Your AWS IAM Secret Access Key.',
+				'description' => smliser__( 'Your AWS IAM Secret Access Key.' ),
 			],
 			'region' => [
 				'type'        => 'select',
-				'label'       => 'AWS Region',
+				'label'       => smliser__( 'AWS Region' ),
 				'required'    => true,
-				'description' => 'AWS region where your SES is configured. e.g. us-east-1',
+				'description' => smliser__( 'AWS region where your SES is configured. e.g. us-east-1' ),
 				'options'     => \array_combine(
 					static::SUPPORTED_REGIONS,
 					array_map(
@@ -115,21 +115,21 @@ class AmazonSESProvider extends AbstractRestEmailProvider {
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => false,
-				'description' => 'Default sender email address(must be verified in Amazon SES). Leave blank to use the global from email.',
+				'description' => smliser__( 'Default sender email address(must be verified in Amazon SES). Leave blank to use the global from email.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Sender display name. Leave blank to use the global from name',
+				'description' => smliser__( 'Sender display name. Leave blank to use the global from name' ),
 			],
 			'configuration_set' => [
 				'type'        => 'text',
-				'label'       => 'Configuration Set Name',
+				'label'       => smliser__( 'Configuration Set Name' ),
 				'required'    => false,
-				'description' => 'Optional SES configuration set for tracking and event publishing.',
+				'description' => smliser__( 'Optional SES configuration set for tracking and event publishing.' ),
 			],
 		];
 	}
@@ -453,7 +453,7 @@ class AmazonSESProvider extends AbstractRestEmailProvider {
 		if ( $response->is_error() ) {
 			// SES v2 error shape: {'__type': 'ErrorType', 'message': '...'}
 			$type    = $data['__type'] ?? 'Error';
-			$message = $data['message'] ?? 'Unknown Amazon SES error.';
+			$message = $data['message'] ?? smliser__( 'Unknown Amazon SES error.' );
 			throw new EmailTransportException(
 				"AmazonSESProvider: API returned HTTP {$response->status_code} ({$type}) — {$message}"
 			);

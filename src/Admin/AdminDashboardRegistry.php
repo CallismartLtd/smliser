@@ -64,13 +64,13 @@ final class AdminDashboardRegistry extends AbstractDashboardRegistry {
 			'attributes' => [
 				'id'         => 'dashboard-theme-toggle',
 				'class'      => 'dashboard-theme-toggle',
-				'aria-label' => 'Toggle theme',
+				'aria-label' => smliser__( 'Toggle theme' ),
 			],
 			'visibility' => true,
 		] );
 		
 		$this->add_top_menu( 'client_dashboard', [
-			'title'      => 'Client Dashboard',
+			'title'      => smliser__( 'Client Dashboard' ),
 			'type'       => 'link',
 			'href'       => $this->urlmanager->client_dashboard_url(),
 			'visibility' => true,
@@ -81,7 +81,7 @@ final class AdminDashboardRegistry extends AbstractDashboardRegistry {
 		] );
 
 		$this->add_top_menu( 'home_url', [
-			'title'      => 'Home',
+			'title'      => smliser__( 'Home' ),
 			'type'       => 'link',
 			'href'       => $this->urlmanager->url( '/' ),
 			'visibility' => true,
@@ -92,7 +92,7 @@ final class AdminDashboardRegistry extends AbstractDashboardRegistry {
 		] );
 
 		$this->add_top_menu( 'logout_button', [
-			'title'      => 'Logout',
+			'title'      => smliser__( 'Logout' ),
 			'type'       => 'link',
 			'href'       => $this->urlmanager->logout_url(),
 			'visibility' => true,

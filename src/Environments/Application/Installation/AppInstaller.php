@@ -909,15 +909,15 @@ class AppInstaller {
 		$errors = [];
 
 		if ( '' === trim( $name ) ) {
-			$errors['name'] = 'Enter your name.';
+			$errors['name'] = smliser__( 'Enter your name.' );
 		}
 
 		if ( false === filter_var( trim( $email ), FILTER_VALIDATE_EMAIL ) ) {
-			$errors['email'] = 'Enter a valid email address, for example you@example.com.';
+			$errors['email'] = smliser__( 'Enter a valid email address, for example you@example.com.' );
 		}
 
 		if ( mb_strlen( $password ) < static::MIN_ADMIN_PASSWORD_LENGTH ) {
-			$errors['password'] = sprintf( 'The password must be at least %d characters long.', static::MIN_ADMIN_PASSWORD_LENGTH );
+			$errors['password'] = sprintf( smliser__( 'The password must be at least %d characters long.' ), static::MIN_ADMIN_PASSWORD_LENGTH );
 		}
 
 		return $errors;
@@ -1101,23 +1101,23 @@ class AppInstaller {
 
 		// Checked on disk: $_ENV can outlive a deleted .env in long-lived workers.
 		if ( ! $this->fs->is_file( \SMLISER_ROOT . '.env' ) ) {
-			$issues[] = sprintf( 'Missing .env file: %s', \SMLISER_ROOT . '.env' );
+			$issues[] = sprintf( smliser__( 'Missing .env file: %s' ), \SMLISER_ROOT . '.env' );
 		} elseif ( null === $this->read_app_url() ) {
-			$issues[] = sprintf( 'The site address (%s) is not set in the .env file.', static::APP_URL_KEY );
+			$issues[] = sprintf( smliser__( 'The site address (%s) is not set in the .env file.' ), static::APP_URL_KEY );
 		}
 
 		foreach ( $this->required_directories as $name => $dir ) {
 			if ( ! $this->fs->is_dir( $dir ) ) {
-				$issues[] = sprintf( 'Missing directory: %s (%s)', $name, $dir );
+				$issues[] = sprintf( smliser__( 'Missing directory: %s (%s)' ), $name, $dir );
 			}
 		}
 
 		foreach ( $this->missing_public_assets() as $path ) {
-			$issues[] = sprintf( 'The public assets are not published: %s', $path );
+			$issues[] = sprintf( smliser__( 'The public assets are not published: %s' ), $path );
 		}
 
 		if ( ! $this->has_database_connection() ) {
-			$issues[] = 'No database connection is configured.';
+			$issues[] = smliser__( 'No database connection is configured.' );
 			return $issues;
 		}
 
@@ -1130,7 +1130,7 @@ class AppInstaller {
 
 		foreach ( $this->schema->get_all_tables() as $table ) {
 			if ( ! $inspector->table_exists( $table->get_name() ) ) {
-				$issues[]       = sprintf( 'Missing table: %s', $table->get_name() );
+				$issues[]       = sprintf( smliser__( 'Missing table: %s' ), $table->get_name() );
 				$missing_tables = true;
 			}
 		}
@@ -1139,13 +1139,13 @@ class AppInstaller {
 		if ( ! $missing_tables ) {
 			foreach ( array_keys( DefaultRoles::all() ) as $slug ) {
 				if ( ! $this->role_exists( $slug ) ) {
-					$issues[] = sprintf( 'Missing default role: %s', $slug );
+					$issues[] = sprintf( smliser__( 'Missing default role: %s' ), $slug );
 				}
 			}
 		}
 
 		if ( ! $this->has_users() ) {
-			$issues[] = 'No user account exists.';
+			$issues[] = smliser__( 'No user account exists.' );
 		}
 
 		return $issues;
@@ -1216,17 +1216,17 @@ class AppInstaller {
 		try {
 			$manifest = ReleaseManifest::load( $this->fs, \SMLISER_ROOT );
 		} catch ( \RuntimeException $e ) {
-			return [ 'passed' => false, 'errors' => [ $e->getMessage() . ' Upload the release again.' ], 'warnings' => [] ];
+			return [ 'passed' => false, 'errors' => [ $e->getMessage() . smliser__( ' Upload the release again.' ) ], 'warnings' => [] ];
 		}
 
 		if ( null === $manifest ) {
-			$result['warnings'][] = 'There is no manifest.json, so the application files cannot be verified. This is expected for a source checkout.';
+			$result['warnings'][] = smliser__( 'There is no manifest.json, so the application files cannot be verified. This is expected for a source checkout.' );
 			return $result;
 		}
 
 		if ( \SMLISER_VER !== $manifest->version ) {
 			$result['passed']   = false;
-			$result['errors'][] = sprintf( 'manifest.json is for version %s, but the code is version %s: files from two releases are mixed. Upload one release completely.', $manifest->version, \SMLISER_VER );
+			$result['errors'][] = sprintf( smliser__( 'manifest.json is for version %s, but the code is version %s: files from two releases are mixed. Upload one release completely.' ), $manifest->version, \SMLISER_VER );
 		}
 
 		$check = $manifest->verify( $this->fs, \SMLISER_ROOT, $progress );
@@ -1234,7 +1234,7 @@ class AppInstaller {
 		if ( ! $check->passed() ) {
 			$result['passed'] = false;
 			array_push( $result['errors'], ...$check->messages() );
-			$result['errors'][] = 'The upload is incomplete or damaged. Upload the release again (FTP clients should use binary mode).';
+			$result['errors'][] = smliser__( 'The upload is incomplete or damaged. Upload the release again (FTP clients should use binary mode).' );
 		}
 
 		return $result;

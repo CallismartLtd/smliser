@@ -57,7 +57,7 @@ final class JS {
 			'admin-dashboard-scripts' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/dashboard%s.js', $suffix ) ),
 				'dependencies' => [
-					'core-admin',
+					'i18n', 'core-admin',
 				],
 				'version'  => SMLISER_VER,
 				'footer'   => true,
@@ -74,7 +74,7 @@ final class JS {
 			],
 			'apps-uploader' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/apps-uploader%s.js', $suffix ) ),
-				'dependencies' => ['jquery', 'core-admin', 'json-editor'],
+				'dependencies' => [ 'i18n', 'jquery', 'core-admin', 'json-editor' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
@@ -92,19 +92,19 @@ final class JS {
 			],
 			'admin-repository' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/admin-repository%s.js', $suffix ) ),
-				'dependencies' => ['jquery', 'core-admin'],
+				'dependencies' => [ 'i18n', 'jquery', 'core-admin' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'repository-browser' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/repository-browser%s.js', $suffix ) ),
-				'dependencies' => ['core-admin', 'modal', 'toast'],
+				'dependencies' => [ 'i18n', 'core-admin', 'modal', 'toast' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'role-builder' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/role-builder%s.js', $suffix ) ),
-				'dependencies' => ['jquery'],
+				'dependencies' => [ 'i18n', 'jquery' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
@@ -117,31 +117,31 @@ final class JS {
 			// SmliserModal; plain JavaScript, so themed pages load it without jQuery.
 			'modal' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/modal%s.js', $suffix ) ),
-				'dependencies' => [],
+				'dependencies' => ['i18n'],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'json-editor' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/json-editor%s.js', $suffix ) ),
-				'dependencies' => ['jquery', 'core-admin', 'modal'],
+				'dependencies' => [ 'i18n', 'jquery', 'core-admin', 'modal' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'datetime-picker' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/datetime-picker%s.js', $suffix ) ),
-				'dependencies' => [],
+				'dependencies' => ['i18n'],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'email-editor' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/email-editor%s.js', $suffix ) ),
-				'dependencies' => ['jquery', 'core-admin', 'modal'],
+				'dependencies' => [ 'i18n', 'jquery', 'core-admin', 'modal' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'cache-stats' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/cache-stats%s.js', $suffix ) ),
-				'dependencies' => ['jquery', 'core-admin', 'modal'],
+				'dependencies' => [ 'i18n', 'jquery', 'core-admin', 'modal' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
@@ -174,13 +174,13 @@ final class JS {
 			// Enhances input[type="file"][data-smliser-uploader] into a drop zone (View::UPLOADER_ASSET).
 			'smliser-uploader' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/smliser-uploader%s.js', $suffix ) ),
-				'dependencies' => [],
+				'dependencies' => ['i18n'],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
 			'toast' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/toast%s.js', $suffix ) ),
-				'dependencies' => [],
+				'dependencies' => ['i18n'],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
@@ -195,46 +195,46 @@ final class JS {
 
 			'site-health' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/site-health%s.js', $suffix ) ),
-				'dependencies' => ['core-admin'],
+				'dependencies' => [ 'i18n', 'core-admin' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
 
 			'updates' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/updates%s.js', $suffix ) ),
-				'dependencies' => ['core-admin'],
+				'dependencies' => [ 'i18n', 'core-admin' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
 
 			'background' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/background%s.js', $suffix ) ),
-				'dependencies' => ['core-admin'],
+				'dependencies' => [ 'i18n', 'core-admin' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
 
 			'background-setup' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/background-setup%s.js', $suffix ) ),
-				'dependencies' => ['core-admin'],
+				'dependencies' => [ 'i18n', 'core-admin' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
 			'maintenance' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/maintenance%s.js', $suffix ) ),
-				'dependencies' => ['core-admin', 'modal', 'toast'],
+				'dependencies' => [ 'i18n', 'core-admin', 'modal', 'toast' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
 			'modules' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/modules%s.js', $suffix ) ),
-				'dependencies' => ['core-admin', 'modal', 'toast'],
+				'dependencies' => [ 'i18n', 'core-admin', 'modal', 'toast' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
 			'support-report' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/support-report%s.js', $suffix ) ),
-				'dependencies' => ['core-admin'],
+				'dependencies' => [ 'i18n', 'core-admin' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],

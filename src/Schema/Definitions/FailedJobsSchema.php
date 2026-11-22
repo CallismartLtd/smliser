@@ -33,14 +33,14 @@ class FailedJobsSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Failed Jobs';
+		return smliser__( 'Failed Jobs' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores failed jobs.';
+		return smliser__( 'Stores failed jobs.' );
 	}
 
 	/**

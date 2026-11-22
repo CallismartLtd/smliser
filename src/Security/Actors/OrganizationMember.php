@@ -202,7 +202,7 @@ class OrganizationMember implements ActorInterface {
 
 	public function get_display_name() : string {
 		$this->load_user();
-		return $this->user?->get_display_name() ?? 'Invalid Member';
+		return $this->user?->get_display_name() ?? smliser__( 'Invalid Member' );
 	}
 	/**
 	 * {@inheritdoc}

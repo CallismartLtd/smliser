@@ -128,7 +128,7 @@ function smliser_generate_item_token( License $license, int $expiry = 864000, ?s
  */
 function smliser_verify_item_token( string $client_token, HostedAppsInterface $app ) : DownloadToken|Exception {
 	if ( empty( $client_token ) ) {
-		return new Exception( 'empty_token', 'Download token cannot be empty' );
+		return new Exception( 'empty_token', smliser__( 'Download token cannot be empty' ) );
 	}
 
 	try {

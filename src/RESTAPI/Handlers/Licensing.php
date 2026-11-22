@@ -142,11 +142,11 @@ class Licensing {
 		$tier         = PricingTier::get_by_id( (int) $request->get( 'tier_id', 0 ) );
 
 		if ( '' === $external_ref ) {
-			return $this->error( 'missing_external_ref', 'external_ref, your reference for the sale, is required.', 400 );
+			return $this->error( 'missing_external_ref', smliser__( 'external_ref, your reference for the sale, is required.' ), 400 );
 		}
 
 		if ( ! $tier || $tier->get_provider_id() !== $channel ) {
-			return $this->error( 'tier_not_found', 'No pricing tier with this ID is sold by your store.', 404 );
+			return $this->error( 'tier_not_found', smliser__( 'No pricing tier with this ID is sold by your store.' ), 404 );
 		}
 
 		$starts_at = $this->parse_date( $request->get( 'starts_at', '' ) );
@@ -183,14 +183,14 @@ class Licensing {
 		$external_ref = trim( (string) $request->get( 'external_ref', '' ) );
 
 		if ( '' === $external_ref ) {
-			return $this->error( 'missing_external_ref', 'Give the external_ref of the sale.', 400 );
+			return $this->error( 'missing_external_ref', smliser__( 'Give the external_ref of the sale.' ), 400 );
 		}
 
 		$license = License::get_by_source( $this->channel(), $external_ref );
 
 		return $license
 			? Response::json( [ 'license' => $this->license_to_array( $license ) ] )
-			: $this->error( 'license_not_found', 'Your store has no license for this reference.', 404 );
+			: $this->error( 'license_not_found', smliser__( 'Your store has no license for this reference.' ), 404 );
 	}
 
 	/**
@@ -204,7 +204,7 @@ class Licensing {
 
 		return $license
 			? Response::json( [ 'license' => $this->license_to_array( $license ) ] )
-			: $this->error( 'license_not_found', 'Your store has no license with this ID.', 404 );
+			: $this->error( 'license_not_found', smliser__( 'Your store has no license with this ID.' ), 404 );
 	}
 
 	/**
@@ -225,7 +225,7 @@ class Licensing {
 		$license = $this->own_license( $request );
 
 		if ( ! $license ) {
-			return $this->error( 'license_not_found', 'Your store has no license with this ID.', 404 );
+			return $this->error( 'license_not_found', smliser__( 'Your store has no license with this ID.' ), 404 );
 		}
 
 		$terms = [];
@@ -265,7 +265,7 @@ class Licensing {
 			$status = (string) $request->get( 'status', '' );
 
 			if ( License::STATUS_REVOKED === $status && ! $this->principal()->can( 'monetization.license.revoke' ) ) {
-				return Response::error( new RequestException( 'unauthorized_scope', 'Revoking a license needs the monetization.license.revoke capability.', [ 'status' => 403 ] ), 403 );
+				return Response::error( new RequestException( 'unauthorized_scope', smliser__( 'Revoking a license needs the monetization.license.revoke capability.' ), [ 'status' => 403 ] ), 403 );
 			}
 
 			$result = $this->licensing->set_status( $license, $status );
@@ -299,7 +299,7 @@ class Licensing {
 		}
 
 		if ( ! ( $principal->get_actor() instanceof ServiceAccount ) ) {
-			return new RequestException( 'unauthorized_scope', 'The Licensing API is for stores, which authenticate with a service account.', [ 'status' => 403 ] );
+			return new RequestException( 'unauthorized_scope', smliser__( 'The Licensing API is for stores, which authenticate with a service account.' ), [ 'status' => 403 ] );
 		}
 
 		return $principal->can_any( $capabilities ) ? true : new RequestException( 'unauthorized_scope' );
@@ -354,7 +354,7 @@ class Licensing {
 		try {
 			return ( new DateTimeImmutable( (string) $value, new DateTimeZone( 'UTC' ) ) )->setTimezone( new DateTimeZone( 'UTC' ) );
 		} catch ( \Throwable ) {
-			return new Exception( 'invalid_date', sprintf( '"%s" is not a date.', (string) $value ), [ 'status' => 400 ] );
+			return new Exception( 'invalid_date', sprintf( smliser__( '"%s" is not a date.' ), (string) $value ), [ 'status' => 400 ] );
 		}
 	}
 

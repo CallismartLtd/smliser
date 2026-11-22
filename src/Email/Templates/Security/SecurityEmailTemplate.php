@@ -114,7 +114,7 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 	*/
 
 	protected function subject() : string {
-		return 'Security alert: ' . $this->action();
+		return smliser__( 'Security alert: ' ) . $this->action();
 	}
 
 	protected function recipient() : string {
@@ -122,7 +122,7 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return $this->action() . ' on your account. If this was not you, secure your account now.';
+		return $this->action() . smliser__( ' on your account. If this was not you, secure your account now.' );
 	}
 
 	/**
@@ -186,7 +186,7 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{display_name}},',
+				'content'   => smliser__( 'Hi {{display_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -203,10 +203,10 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 				'id'        => 'details',
 				'type'      => 'detail_card',
 				'rows'      => [
-					[ 'label' => 'Action',     'value' => '{{action}}' ],
-					[ 'label' => 'Time',       'value' => '{{occurred_at}}' ],
-					[ 'label' => 'IP address', 'value' => '{{ip_address}}' ],
-					[ 'label' => 'Device',     'value' => '{{device}}' ],
+					[ 'label' => smliser__( 'Action' ),     'value' => '{{action}}' ],
+					[ 'label' => smliser__( 'Time' ),       'value' => '{{occurred_at}}' ],
+					[ 'label' => smliser__( 'IP address' ), 'value' => '{{ip_address}}' ],
+					[ 'label' => smliser__( 'Device' ),     'value' => '{{device}}' ],
 				],
 				'editable'  => false,
 				'removable' => false,
@@ -214,14 +214,14 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 			[
 				'id'        => 'wasnt_you',
 				'type'      => 'text',
-				'content'   => "Wasn't you? Someone else may have access to your account. Secure it now by resetting your password, then review your sign-in methods.",
+				'content'   => smliser__( "Wasn't you? Someone else may have access to your account. Secure it now by resetting your password, then review your sign-in methods." ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'secure_account',
 				'type'      => 'button',
-				'label'     => "This wasn't me — secure my account",
+				'label'     => smliser__( "This wasn't me — secure my account" ),
 				'url'       => '{{secure_url}}',
 				'editable'  => true,
 				'removable' => false,
@@ -229,7 +229,7 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If this was you, no action is needed. Questions? Contact us at {{support_email}}.',
+				'content'   => smliser__( 'If this was you, no action is needed. Questions? Contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -251,7 +251,7 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 		$agent = trim( $this->user_agent );
 
 		if ( '' === $agent || 'unknown' === $agent ) {
-			return 'Unknown device';
+			return smliser__( 'Unknown device' );
 		}
 
 		return \smliser_parse_user_agent( $agent );

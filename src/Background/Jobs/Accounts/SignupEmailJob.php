@@ -52,7 +52,7 @@ class SignupEmailJob implements JobHandlerInterface {
 		if ( ! $user ) {
 			return [
 				'success' => false,
-				'message' => 'User does not exist.'
+				'message' => smliser__( 'User does not exist.' )
 			];
 		}
 
@@ -84,13 +84,13 @@ class SignupEmailJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Signup Email';
+		return smliser__( 'Send Signup Email' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asyncronously send welcome email to newly registered users.';
+		return smliser__( 'Asyncronously send welcome email to newly registered users.' );
 	}
 }

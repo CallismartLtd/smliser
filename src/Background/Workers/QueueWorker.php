@@ -290,7 +290,7 @@ class QueueWorker implements WorkerInterface {
 	 */
 	protected function format_error( \Throwable $e ) : string {
 		return sprintf(
-			'%s: %s in %s on line %d',
+			smliser__( '%s: %s in %s on line %d' ),
 			get_class( $e ),
 			$e->getMessage(),
 			$e->getFile(),

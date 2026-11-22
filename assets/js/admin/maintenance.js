@@ -42,11 +42,11 @@
 		const again  = '1' === form.dataset.active;
 		const paused = ! form.querySelector( '[name="keep_background"]' )?.checked;
 		const ok     = await SmliserModal.confirm( {
-			title: again ? 'Change maintenance' : 'Turn maintenance on',
+			title: again ? smliserI18n.__( 'Change maintenance' ) : smliserI18n.__( 'Turn maintenance on' ),
 			message: again
-				? 'Apply these settings? Earlier bypass links stop working; this browser keeps access.'
-				: `Visitors will get the maintenance page${ paused ? ', and scheduled tasks and queued jobs will wait' : '' }. This browser keeps access. Continue?`,
-			confirmText: again ? 'Apply' : 'Turn on',
+				? smliserI18n.__( 'Apply these settings? Earlier bypass links stop working; this browser keeps access.' )
+				: `Visitors will get the maintenance page${ paused ? smliserI18n.__( ', and scheduled tasks and queued jobs will wait' ) : '' }. This browser keeps access. Continue?`,
+			confirmText: again ? smliserI18n.__( 'Apply' ) : smliserI18n.__( 'Turn on' ),
 			danger: true,
 		} );
 
@@ -64,7 +64,7 @@
 			window.location.reload();
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'Maintenance mode could not be switched on.', { type: 'error' } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'Maintenance mode could not be switched on.' ), { type: 'error' } );
 		}
 	}
 
@@ -93,11 +93,11 @@
 				return;
 			}
 
-			SmliserToast.show( response?.data?.message || 'Done.', { type: 'success' } );
+			SmliserToast.show( response?.data?.message || smliserI18n.__( 'Done.' ), { type: 'success' } );
 			setTimeout( () => window.location.reload(), 1200 );
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'The request failed.', { type: 'error' } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'The request failed.' ), { type: 'error' } );
 		}
 	}
 
@@ -110,7 +110,7 @@
 	 */
 	async function showBypass( message, url ) {
 		if ( ! url ) {
-			SmliserToast.show( message || 'Done.', { type: 'success' } );
+			SmliserToast.show( message || smliserI18n.__( 'Done.' ), { type: 'success' } );
 			return;
 		}
 
@@ -118,13 +118,13 @@
 		const copied = navigator.clipboard?.writeText( url ).then( () => true, () => false ) ?? Promise.resolve( false );
 
 		await SmliserModal.alert( {
-			title: 'Bypass link',
+			title: smliserI18n.__( 'Bypass link' ),
 			type: 'success',
 			message: `<p>${ escape( message || '' ) }</p>`
-				+ '<p>Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now.</p>'
+				+ '<p>' + smliserI18n.esc( smliserI18n.__( 'Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now.' ) ) + '</p>'
 				+ `<p><code style="word-break: break-all;">${ escape( url ) }</code></p>`
-				+ `<p>${ await copied ? 'Copied to the clipboard.' : 'Copy it before closing this message.' }</p>`,
-			buttonText: 'Done',
+				+ `<p>${ await copied ? smliserI18n.__( 'Copied to the clipboard.' ) : smliserI18n.__( 'Copy it before closing this message.' ) }</p>`,
+			buttonText: smliserI18n.__( 'Done' ),
 		} );
 	}
 

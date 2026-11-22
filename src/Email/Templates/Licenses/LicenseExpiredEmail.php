@@ -32,7 +32,7 @@ class LicenseExpiredEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Your License Has Expired';
+		return smliser__( 'Your License Has Expired' );
 	}
 
 	protected function recipient() : string {
@@ -40,7 +40,7 @@ class LicenseExpiredEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your license has expired. Renew now to restore access.';
+		return smliser__( 'Your license has expired. Renew now to restore access.' );
 	}
 
 	protected function variables() : array {
@@ -59,9 +59,19 @@ class LicenseExpiredEmail extends EmailTemplate {
 		$end_date      = \escHtml( $vars['{{end_date}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			/* translators: %s: end date (formatted) */
+			sprintf( smliser_esc_html__( '❌ Your license expired on %s. Access to associated features may be restricted until you renew.' ), '<strong>' . $end_date . '</strong>' ),
+			smliser_esc_html__( 'Expired License Key' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'To renew your license or if you have any questions, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <!-- Expired banner -->
@@ -71,8 +81,7 @@ class LicenseExpiredEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#991b1b;line-height:1.5;">
-                        &#10060;&nbsp; Your license expired on <strong>{$end_date}</strong>.
-                        Access to associated features may be restricted until you renew.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -86,7 +95,7 @@ class LicenseExpiredEmail extends EmailTemplate {
                 <td style="padding:24px;">
                     <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                        Expired License Key
+                        {$i18n[2]}
                     </p>
                     <p style="margin:0;font-size:15px;color:#1a1a2e;
                                font-family:monospace;font-weight:700;letter-spacing:0.05em;">
@@ -97,17 +106,16 @@ class LicenseExpiredEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            To renew your license or if you have any questions, please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[3]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Expired';
+		return smliser__( 'License Expired' );
 	}
 	public function description() : string {
-		return 'Sent when a license has passed its expiry date.';
+		return smliser__( 'Sent when a license has passed its expiry date.' );
 	}
 	public static function preview() : static {
 		$license = License::from_array( [
@@ -123,7 +131,7 @@ class LicenseExpiredEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -131,7 +139,7 @@ class LicenseExpiredEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'error',
-				'content'   => 'Your license expired on {{end_date}}. Access to associated features may be restricted until you renew.',
+				'content'   => smliser__( 'Your license expired on {{end_date}}. Access to associated features may be restricted until you renew.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -139,8 +147,8 @@ class LicenseExpiredEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Expired License Key', 'value' => '{{license_key}}' ],
-					[ 'label' => 'Expired On',          'value' => '{{end_date}}' ],
+					[ 'label' => smliser__( 'Expired License Key' ), 'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Expired On' ),          'value' => '{{end_date}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -148,7 +156,7 @@ class LicenseExpiredEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'To renew your license or if you have any questions, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'To renew your license or if you have any questions, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

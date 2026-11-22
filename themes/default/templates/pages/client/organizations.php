@@ -15,42 +15,42 @@
 
 ?>
 <?php if ( $invitation_missing ) : ?>
-	<div class="notice" data-state="error" role="alert">This invitation has expired or was revoked. Ask the organization for a new one.</div>
+	<div class="notice" data-state="error" role="alert"><?php smliser_esc_html_e( 'This invitation has expired or was revoked. Ask the organization for a new one.' ); ?></div>
 <?php endif; ?>
 
 <?php if ( null !== $invitation ) : ?>
 	<section class="record record-highlight" aria-labelledby="invitation-title">
 		<div class="record-head">
-			<h3 id="invitation-title"><?php echo escHtml( sprintf( 'Join %s', $invitation['organization'] ) ); ?></h3>
+			<h3 id="invitation-title"><?php echo escHtml( sprintf( smliser__( 'Join %s' ), $invitation['organization'] ) ); ?></h3>
 			<span class="badge"><?php echo escHtml( $invitation['role'] ); ?></span>
 		</div>
-		<p><?php echo escHtml( sprintf( '%s invited %s to join %s as %s. The invitation is valid until %s.', $invitation['inviter'], $invitation['email'], $invitation['organization'], $invitation['role'], $invitation['expires'] ) ); ?></p>
+		<p><?php echo escHtml( sprintf( smliser__( '%s invited %s to join %s as %s. The invitation is valid until %s.' ), $invitation['inviter'], $invitation['email'], $invitation['organization'], $invitation['role'], $invitation['expires'] ) ); ?></p>
 
 		<?php if ( $invitation['for_you'] ) : ?>
 			<div class="record-actions">
 				<form method="post" action="<?php echo escUrl( $actions['accept'] ); ?>" data-smliser-form>
 					<input type="hidden" name="token" value="<?php echo escAttr( $invitation['token'] ); ?>">
 					<div class="notice" data-smliser-form-message hidden></div>
-					<button type="submit" class="btn btn-accent">Join <?php echo escHtml( $invitation['organization'] ); ?></button>
+					<button type="submit" class="btn btn-accent"><?php smliser_esc_html_e( 'Join' ); ?> <?php echo escHtml( $invitation['organization'] ); ?></button>
 				</form>
-				<form method="post" action="<?php echo escUrl( $actions['decline'] ); ?>" data-smliser-form data-confirm="<?php echo escAttr( sprintf( 'Decline the invitation to %s?', $invitation['organization'] ) ); ?>" data-confirm-label="Decline">
+				<form method="post" action="<?php echo escUrl( $actions['decline'] ); ?>" data-smliser-form data-confirm="<?php echo escAttr( sprintf( smliser__( 'Decline the invitation to %s?' ), $invitation['organization'] ) ); ?>" data-confirm-label="Decline">
 					<input type="hidden" name="token" value="<?php echo escAttr( $invitation['token'] ); ?>">
 					<div class="notice" data-smliser-form-message hidden></div>
-					<button type="submit" class="btn">Decline</button>
+					<button type="submit" class="btn"><?php smliser_esc_html_e( 'Decline' ); ?></button>
 				</form>
 			</div>
 		<?php else : ?>
-			<div class="notice" data-state="error" role="alert"><?php echo escHtml( sprintf( 'This invitation is for %s. Sign out, then sign in or sign up with that address to answer it.', $invitation['email'] ) ); ?></div>
+			<div class="notice" data-state="error" role="alert"><?php echo escHtml( sprintf( smliser__( 'This invitation is for %s. Sign out, then sign in or sign up with that address to answer it.' ), $invitation['email'] ) ); ?></div>
 		<?php endif; ?>
 	</section>
 <?php endif; ?>
 
-<p class="dash-lead">Organizations you belong to. Switch to one to work for it; what you can do there depends on your role.</p>
+<p class="dash-lead"><?php smliser_esc_html_e( 'Organizations you belong to. Switch to one to work for it; what you can do there depends on your role.' ); ?></p>
 
 <?php if ( [] === $organizations ) : ?>
 	<div class="cell">
-		<h3>No organizations yet</h3>
-		<p><?php echo escHtml( $can_create ? 'Create one below, or join one when you are invited.' : 'You join an organization when one of its administrators invites you.' ); ?></p>
+		<h3><?php smliser_esc_html_e( 'No organizations yet' ); ?></h3>
+		<p><?php echo escHtml( $can_create ? smliser__( 'Create one below, or join one when you are invited.' ) : smliser__( 'You join an organization when one of its administrators invites you.' ) ); ?></p>
 	</div>
 <?php else : ?>
 	<ul class="records">
@@ -59,17 +59,17 @@
 				<div class="record-head">
 					<h3><?php echo escHtml( $organization['name'] ); ?></h3>
 					<?php if ( $organization['current'] ) : ?>
-						<span class="badge" data-tone="success">You act for it</span>
+						<span class="badge" data-tone="success"><?php smliser_esc_html_e( 'You act for it' ); ?></span>
 					<?php endif; ?>
 				</div>
 
 				<dl class="record-facts">
 					<div>
-						<dt>Your role</dt>
+						<dt><?php smliser_esc_html_e( 'Your role' ); ?></dt>
 						<dd><?php echo escHtml( $organization['role'] ); ?></dd>
 					</div>
 					<div>
-						<dt>Status</dt>
+						<dt><?php smliser_esc_html_e( 'Status' ); ?></dt>
 						<dd><?php echo escHtml( $organization['status'] ); ?></dd>
 					</div>
 				</dl>
@@ -79,14 +79,14 @@
 						<form method="post" action="<?php echo escUrl( $actions['switch'] ); ?>" data-smliser-form>
 							<input type="hidden" name="context" value="<?php echo escAttr( $organization['context'] ); ?>">
 							<div class="notice" data-smliser-form-message hidden></div>
-							<button type="submit" class="btn btn-small btn-accent">Switch to it</button>
+							<button type="submit" class="btn btn-small btn-accent"><?php smliser_esc_html_e( 'Switch to it' ); ?></button>
 						</form>
 					<?php endif; ?>
 					<form method="post" action="<?php echo escUrl( $actions['leave'] ); ?>" data-smliser-form
-						data-confirm="<?php echo escAttr( sprintf( 'Leave %s? You will need a new invitation to come back.', $organization['name'] ) ); ?>" data-confirm-label="Leave" data-confirm-danger>
+						data-confirm="<?php echo escAttr( sprintf( smliser__( 'Leave %s? You will need a new invitation to come back.' ), $organization['name'] ) ); ?>" data-confirm-label="Leave" data-confirm-danger>
 						<input type="hidden" name="organization_id" value="<?php echo escAttr( (string) $organization['id'] ); ?>">
 						<div class="notice" data-smliser-form-message hidden></div>
-						<button type="submit" class="btn btn-small">Leave</button>
+						<button type="submit" class="btn btn-small"><?php smliser_esc_html_e( 'Leave' ); ?></button>
 					</form>
 				</div>
 			</li>
@@ -96,15 +96,15 @@
 
 <?php if ( $can_create ) : ?>
 	<section class="dash-section" aria-labelledby="create-organization">
-		<h2 id="create-organization">Create an organization</h2>
-		<p class="muted">You will run it as its Organization Administrator, and can invite others to it.</p>
+		<h2 id="create-organization"><?php smliser_esc_html_e( 'Create an organization' ); ?></h2>
+		<p class="muted"><?php smliser_esc_html_e( 'You will run it as its Organization Administrator, and can invite others to it.' ); ?></p>
 		<form class="dash-form" method="post" action="<?php echo escUrl( $actions['create'] ); ?>" data-smliser-form>
 			<div class="notice" data-smliser-form-message hidden></div>
 			<label class="field">
-				<span class="field-label">Name</span>
+				<span class="field-label"><?php smliser_esc_html_e( 'Name' ); ?></span>
 				<input type="text" name="name" maxlength="100" required>
 			</label>
-			<button type="submit" class="btn btn-accent">Create organization</button>
+			<button type="submit" class="btn btn-accent"><?php smliser_esc_html_e( 'Create organization' ); ?></button>
 		</form>
 	</section>
 <?php endif; ?>

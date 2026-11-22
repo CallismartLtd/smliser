@@ -345,8 +345,8 @@ class Response {
 	public function send_headers() : void {
 		if ( headers_sent( $file, $line ) ) {
 			\smliser_abort_request(
-				'Unable to start download. Headers already sent.',
-				'Headers Sent',
+				smliser__( 'Unable to start download. Headers already sent.' ),
+				smliser__( 'Headers Sent' ),
 				['status' => 500]
 			);
 			return;
@@ -823,6 +823,12 @@ class Response {
 			$actions = '<button type="button" class="btn btn-accent" data-action="retry">Try again</button>' . $actions;
 		}
 
+		$i18n = [
+			/* translators: 1: code, 2: safe reason */
+			sprintf( smliser_esc_html__( 'HTTP %1$s — %2$s' ), $code, $safe_reason ),
+			'HTTP/1.1 ' . $code . ' ' . $safe_reason,
+		];
+
 		return <<<HTML
 			<!DOCTYPE html>
 			<html lang="en">
@@ -830,7 +836,7 @@ class Response {
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<meta name="color-scheme" content="light dark">
-				<title>HTTP {$code} — {$safe_reason}</title>
+				<title>{$i18n[0]}</title>
 
 				<style>
 					:root {
@@ -1019,7 +1025,7 @@ class Response {
 					</div>
 				</main>
 
-				<footer>HTTP/1.1 {$code} {$safe_reason}</footer>
+				<footer>{$i18n[1]}</footer>
 
 				<script nonce="{$safe_nonce}">
 					document.querySelectorAll( '[data-action]' ).forEach( function ( button ) {

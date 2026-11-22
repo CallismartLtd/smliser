@@ -19,11 +19,11 @@ use Callismart\DBPrism\Utils\DefaultColumnValue;
 class RolesSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Roles';
+		return smliser__( 'Roles' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores roles.';
+		return smliser__( 'Stores roles.' );
 	}
 
 	public static function get_table_name() : string {

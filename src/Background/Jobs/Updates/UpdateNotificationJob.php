@@ -113,13 +113,13 @@ class UpdateNotificationJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Update Notification';
+		return smliser__( 'Send Update Notification' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Emails the site administration address when an update is available, installed automatically, or failed.';
+		return smliser__( 'Emails the site administration address when an update is available, installed automatically, or failed.' );
 	}
 }

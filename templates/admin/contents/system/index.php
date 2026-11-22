@@ -35,31 +35,31 @@ $menu_args = $page_handler->get_top_menu_args( $request );
         <div class="smliser-tools-actions" id="smliser-background-actions">
             <span class="smliser-section-description">
                 <i class="ti ti-info-circle"></i>
-                Tasks normally run from cron (`schedule run` every minute). Use these buttons to run them now; nothing runs while the application is being updated.
+                <?php smliser_esc_html_e( 'Tasks normally run from cron (`schedule run` every minute). Use these buttons to run them now; nothing runs while the application is being updated.' ); ?>
             </span>
             <button
                 type="button"
                 class="smliser-btn smliser-btn-glass"
                 data-bg-action="schedule/run"
-                data-confirm="Run every task that is due now? Each runs in this request."
-            ><i class="ti ti-player-play"></i> Run due tasks</button>
+                data-confirm="<?php smliser_esc_attr_e( 'Run every task that is due now? Each runs in this request.' ); ?>"
+            ><i class="ti ti-player-play"></i> <?php smliser_esc_html_e( 'Run due tasks' ); ?></button>
 
         </div>
         <table class="smliser-table widefat striped">
             <thead class="<?php echo empty( $tasks ) ? 'smliser-hide': ''; ?>">
                 <tr>
-                    <th>Task ID</th>
-                    <th>Label</th>
-                    <th>Last Ran</th>
-                    <th>Next Run</th>
-                    <th>State</th>
-                    <th>Action</th>
+                    <th><?php smliser_esc_html_e( 'Task ID' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Label' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Last Ran' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Next Run' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'State' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Action' ); ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ( empty( $tasks ) ) : ?>
                     <tr>
-                        <td class="empty-state" colspan="6">No scheduled tasks registered.</td>
+                        <td class="empty-state" colspan="6"><?php smliser_esc_html_e( 'No scheduled tasks registered.' ); ?></td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ( $tasks as $data ) :
@@ -84,9 +84,9 @@ $menu_args = $page_handler->get_top_menu_args( $request );
                                     class="smliser-btn-glass"
                                     data-bg-action="schedule/run"
                                     data-task-id="<?php echo escAttr( $task->get_id() ); ?>"
-                                    data-confirm="<?php echo escAttr( sprintf( 'Run "%s" now?', $task->get_label() ) ); ?>"
-                                    title="Run this task now, whether or not it is due"
-                                ><i class="ti ti-player-play"></i> Run now</button>
+                                    data-confirm="<?php echo escAttr( sprintf( smliser__( 'Run "%s" now?' ), $task->get_label() ) ); ?>"
+                                    title="<?php smliser_esc_attr_e( 'Run this task now, whether or not it is due' ); ?>"
+                                ><i class="ti ti-player-play"></i> <?php smliser_esc_html_e( 'Run now' ); ?></button>
 
                                 <?php if ( 'ERROR' === $status ) : ?>
                                     <button
@@ -94,7 +94,7 @@ $menu_args = $page_handler->get_top_menu_args( $request );
                                         class="smliser-btn-glass smliser-view-detail"
                                         data-title="Error &mdash; <?php echo escAttr( (string) $task->get_label() ); ?>"
                                         data-content="<?php echo escAttr( $encode_for_modal( $state['last_error'] ) ); ?>"
-                                    >View error</button>
+                                    ><?php smliser_esc_html_e( 'View error' ); ?></button>
                                 <?php endif; ?>
                             </td>
                         </tr>

@@ -58,21 +58,21 @@ class BrevoProvider extends AbstractRestEmailProvider {
 		return [
 			'api_key' => [
 				'type'        => 'password',
-				'label'       => 'API Key',
+				'label'       => smliser__( 'API Key' ),
 				'required'    => true,
-				'description' => 'Your Brevo API key. Found under SMTP & API in your Brevo account.',
+				'description' => smliser__( 'Your Brevo API key. Found under SMTP & API in your Brevo account.' ),
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => false,
-				'description' => 'Sender email address(must be a verified sender in Brevo). Leave blank to use the global from email.',
+				'description' => smliser__( 'Sender email address(must be a verified sender in Brevo). Leave blank to use the global from email.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Sender display name. Leave blank to use the global from name.',
+				'description' => smliser__( 'Sender display name. Leave blank to use the global from name.' ),
 			],
 		];
 	}
@@ -275,7 +275,7 @@ class BrevoProvider extends AbstractRestEmailProvider {
 		$data = $response->json() ?? [];
 
 		if ( $response->is_error() ) {
-			$error = $data['message'] ?? $data['code'] ?? 'Unknown Brevo API error.';
+			$error = $data['message'] ?? $data['code'] ?? smliser__( 'Unknown Brevo API error.' );
 			throw new EmailTransportException(
 				"BrevoProvider: API returned HTTP {$response->status_code} — {$error}"
 			);

@@ -27,14 +27,14 @@ class MonetizationSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Monetization';
+		return smliser__( 'Monetization' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores monetization settings.';
+		return smliser__( 'Stores monetization settings.' );
 	}
 
 	/**

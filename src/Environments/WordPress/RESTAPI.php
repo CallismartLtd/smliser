@@ -296,7 +296,7 @@ class RESTAPI implements RESTProviderInterface {
 		if ( ! $result->is_authenticated() ) {
 			return new RequestException(
 				$result->error_code ?? 'rest_authentication_failed',
-				$result->message ?? 'The API key could not be verified.',
+				$result->message ?? smliser__( 'The API key could not be verified.' ),
 				[ 'status' => AuthenticationResult::STATUS_UNAUTHORIZED === $result->status ? 403 : 401 ]
 			);
 		}
@@ -329,7 +329,7 @@ class RESTAPI implements RESTProviderInterface {
 			return $result;
 		}
 
-		return new WP_Error( 'rest_https_required', 'The REST API requires a secure (HTTPS) connection.', [ 'status' => 403 ] );
+		return new WP_Error( 'rest_https_required', smliser__( 'The REST API requires a secure (HTTPS) connection.' ), [ 'status' => 403 ] );
 	}
 
 	/**
@@ -373,7 +373,7 @@ class RESTAPI implements RESTProviderInterface {
 				return null === $description
 					? new WP_Error(
 						'rest_unknown_category',
-						sprintf( 'There is no "%s" category in %s.', $category, $namespace ),
+						sprintf( smliser__( 'There is no "%s" category in %s.' ), $category, $namespace ),
 						[ 'status' => 404, 'categories' => $this->index->catalog( $namespace )->categories() ]
 					)
 					: $this->description( $description, $this->index->allow( $namespace ) );

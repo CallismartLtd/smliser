@@ -21,20 +21,20 @@ $principal = $guard->get_principal();
 
 if ( ! $principal ) {
 	smliser_abort_request(
-		'Access Denied. You must be logged into a valid administrator account to view this page.',
-		'🛑 401 - Authentication Required',
+		smliser__( 'Access Denied. You must be logged into a valid administrator account to view this page.' ),
+		smliser__( '🛑 401 - Authentication Required' ),
 		[
 			'status'    => 401,
 			'link_url'  => $urlmanager->login_url()->add_query_param( 'redirect_url', smliser_get_current_url()->url() )->url(),
-			'link_text' => 'Login',
+			'link_text' => smliser__( 'Login' ),
 		]
 	);
 }
 
 if ( ! $principal->is( 'system_admin' ) ) {
 	smliser_abort_request(
-		'Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]',
-		'🚫 403 - Access Denied',
+		smliser__( 'Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]' ),
+		smliser__( '🚫 403 - Access Denied' ),
 		[
 			'status'    => 403,
 			'back_link' => true
@@ -111,7 +111,7 @@ if ( $current_submenu ) {
 
 if ( ! $callback ) {
 	$callback = function() {
-		echo smliser_not_found_container( 'No registered handler for this page.' );
+		echo smliser_not_found_container( smliser__( 'No registered handler for this page.' ) );
 	};
 }
 

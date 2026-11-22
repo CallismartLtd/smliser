@@ -31,26 +31,34 @@ class InstallerPage {
 
 	/**
 	 * Stepper labels, keyed by step.
+	 *
+	 * @return array<string, string>
 	 */
-	protected const STEPS = [
-		'access'   => 'Access',
-		'database' => 'Database',
-		'setup'    => 'Setup',
-		'admin'    => 'Administrator',
-		'finish'   => 'Finish',
-	];
+	protected static function steps() : array {
+		return [
+			'access'   => smliser__( 'Access' ),
+			'database' => smliser__( 'Database' ),
+			'setup'    => smliser__( 'Setup' ),
+			'admin'    => smliser__( 'Administrator' ),
+			'finish'   => smliser__( 'Finish' ),
+		];
+	}
 
 	/**
 	 * Setup tasks the script runs one by one, keyed by task with display labels.
+	 *
+	 * @return array<string, string>
 	 */
-	public const SETUP_TASKS = [
-		'site_url'    => 'Save the site address',
-		'directories' => 'Create the storage folders',
-		'assets'      => 'Publish the public assets',
-		'tables'      => 'Create the database tables',
-		'roles'       => 'Install the default roles',
-		'htaccess'    => 'Write the web server rules (.htaccess)',
-	];
+	public static function setup_tasks() : array {
+		return [
+			'site_url'    => smliser__( 'Save the site address' ),
+			'directories' => smliser__( 'Create the storage folders' ),
+			'assets'      => smliser__( 'Publish the public assets' ),
+			'tables'      => smliser__( 'Create the database tables' ),
+			'roles'       => smliser__( 'Install the default roles' ),
+			'htaccess'    => smliser__( 'Write the web server rules (.htaccess)' ),
+		];
+	}
 
 	/*
 	|--------
@@ -72,31 +80,48 @@ class InstallerPage {
 		$dir     = $this->e( dirname( $token_path ) . '/' );
 		$file    = $this->e( basename( $token_path ) );
 
+		$i18n = [
+			/* translators: %s: app */
+			sprintf( smliser_esc_html__( 'Welcome! Setting up %s takes a few minutes. First, confirm that this is your server, so nobody else can take over the installation.' ), $app ),
+			/* translators: 1: opening <strong> tag, 2: closing <strong> tag */
+			sprintf( smliser_esc_html__( 'Open your hosting control panel’s %1$sFile Manager%2$s, or connect with your FTP client.' ), '<strong>', '</strong>' ),
+			/* translators: 1: app, 2: dir (formatted) */
+			sprintf( smliser_esc_html__( 'Go to the folder you uploaded %1$s to, then open %2$s.' ), $app, '<code>' . $dir . '</code>' ),
+			/* translators: 1: file (formatted), 2: opening <code> tag, 3: closing <code> tag */
+			sprintf( smliser_esc_html__( 'Open %1$s and copy the value after %2$s"token":%3$s — the 32 letters and numbers between the quotes.' ), '<code>' . $file . '</code>', '<code>', '</code>' ),
+			smliser_esc_html__( 'Have terminal (SSH) access instead?' ),
+			/* translators: %s: app */
+			sprintf( smliser_esc_html__( 'Run this in the folder you uploaded %s to, and copy the line it prints:' ), $app ),
+			'<code>php smliser installer token</code>',
+			smliser_esc_html__( 'Start installation' ),
+			smliser_esc_html__( 'While you install, visitors see a short “setting things up” notice.' ),
+		];
+
 		$body = <<<HTML
-			<p class="lead">Welcome! Setting up {$app} takes a few minutes. First, confirm that this is your server, so nobody else can take over the installation.</p>
+			<p class="lead">{$i18n[0]}</p>
 			<ol class="guide">
-				<li>Open your hosting control panel&rsquo;s <strong>File Manager</strong>, or connect with your FTP client.</li>
-				<li>Go to the folder you uploaded {$app} to, then open <code>{$dir}</code>.</li>
-				<li>Open <code>{$file}</code> and copy the value after <code>"token":</code> &mdash; the 32 letters and numbers between the quotes.</li>
+				<li>{$i18n[1]}</li>
+				<li>{$i18n[2]}</li>
+				<li>{$i18n[3]}</li>
 			</ol>
 			<details class="more">
-				<summary>Have terminal (SSH) access instead?</summary>
-				<p>Run this in the folder you uploaded {$app} to, and copy the line it prints:</p>
-				<pre><code>php smliser installer token</code></pre>
+				<summary>{$i18n[4]}</summary>
+				<p>{$i18n[5]}</p>
+				<pre>{$i18n[6]}</pre>
 			</details>
 			<form method="post" action="{$this->e( $action_url )}" class="form" data-async data-busy-label="Checking&hellip;">
 				{$this->field(
 			'setup_token',
-			'Setup token',
+			smliser__( 'Setup token' ),
 			'<input id="setup_token" name="setup_token" type="text" autocomplete="off" spellcheck="false" autocapitalize="off" required autofocus>',
-			'The token is valid for 24 hours and is deleted when the installation finishes.'
+			smliser__( 'The token is valid for 24 hours and is deleted when the installation finishes.' )
 		)}
-				<div class="actions"><button type="submit" class="btn btn-accent">Start installation</button></div>
+				<div class="actions"><button type="submit" class="btn btn-accent">{$i18n[7]}</button></div>
 			</form>
-			<p class="hint">While you install, visitors see a short &ldquo;setting things up&rdquo; notice.</p>
+			<p class="hint">{$i18n[8]}</p>
 			HTML;
 
-		return $this->page( 'access', 'Install ' . \SMLISER_APP_NAME, $body, $notices );
+		return $this->page( 'access', smliser__( 'Install ' ) . \SMLISER_APP_NAME, $body, $notices );
 	}
 
 	/**
@@ -147,80 +172,88 @@ class InstallerPage {
 		// Keep Advanced open when it holds values, so they (and their errors) stay visible.
 		$advanced_open = ( '' !== (string) ( $values['db_prefix'] ?? '' ) || '' !== (string) ( $values['db_charset'] ?? '' ) ) ? ' open' : '';
 
-		$charset_help = 'How text is stored and sent. Leave empty for the recommended value (' . implode( ', ', $charset_hint ) . '), which supports every language and emoji. Change it only if your host requires another.';
+		$charset_help = smliser__( 'How text is stored and sent. Leave empty for the recommended value (' ) . implode( ', ', $charset_hint ) . smliser__( '), which supports every language and emoji. Change it only if your host requires another.' );
 		$app          = $this->e( \SMLISER_APP_NAME );
 
+		$i18n = [
+			/* translators: 1: app, 2: opening <strong> tag, 3: closing <strong> tag */
+			sprintf( smliser_esc_html__( '%1$s stores its data in a database. Create an empty database and a database user in your hosting control panel (often under %2$sMySQL Databases%3$s), then enter the details here.' ), $app, '<strong>', '</strong>' ),
+			smliser_esc_html__( 'Nothing is saved until the connection works.' ),
+			smliser_esc_html__( 'Database type' ),
+			smliser_esc_html__( 'Advanced' ),
+		];
+
 		$fields = <<<HTML
-			<p class="lead">{$app} stores its data in a database. Create an empty database and a database user in your hosting control panel (often under <strong>MySQL Databases</strong>), then enter the details here.</p>
-			<p class="hint">Nothing is saved until the connection works.</p>
+			<p class="lead">{$i18n[0]}</p>
+			<p class="hint">{$i18n[1]}</p>
 			<fieldset class="field">
-				<legend>Database type</legend>
+				<legend>{$i18n[2]}</legend>
 				<div class="choices">{$options}</div>
 			</fieldset>
 			{$this->field(
 			'db_name',
-			'Database name',
+			smliser__( 'Database name' ),
 			"<input id=\"db_name\" name=\"db_name\" type=\"text\" value=\"{$v( 'db_name' )}\" autocomplete=\"off\" spellcheck=\"false\" required>",
 			'<span class="net-only">The name of the empty database you created, for example <code>myaccount_licenses</code>. Some hosts add your account name in front.</span><span class="sqlite-only">The database file name, for example <code>smliser</code>. <code>.db</code> is added when there is no extension. The file is created if it does not exist.</span>'
 		)}
 			<div class="grid net-only">
 				{$this->field(
 			'db_host',
-			'Server address',
+			smliser__( 'Server address' ),
 			"<input id=\"db_host\" name=\"db_host\" type=\"text\" value=\"{$v( 'db_host' )}\" placeholder=\"localhost\" autocomplete=\"off\" spellcheck=\"false\">",
-			'Usually <code>localhost</code>. Your host lists it if the database is on another server.',
+			smliser__( 'Usually <code>localhost</code>. Your host lists it if the database is on another server.' ),
 			true
 		)}
 				{$this->field(
 			'db_port',
-			'Port',
+			smliser__( 'Port' ),
 			"<input id=\"db_port\" name=\"db_port\" type=\"text\" inputmode=\"numeric\" value=\"{$v( 'db_port' )}\" placeholder=\"{$this->e( $port_ph )}\">",
-			'Leave empty for the standard port (' . $this->e( implode( ', ', $port_hint ) ) . ').',
+			smliser__( 'Leave empty for the standard port (' ) . $this->e( implode( ', ', $port_hint ) ) . ').',
 			true
 		)}
 			</div>
 			<div class="grid net-only">
 				{$this->field(
 			'db_user',
-			'Database username',
+			smliser__( 'Database username' ),
 			"<input id=\"db_user\" name=\"db_user\" type=\"text\" value=\"{$v( 'db_user' )}\" autocomplete=\"off\" spellcheck=\"false\">",
-			'The database user you created and gave access to this database.'
+			smliser__( 'The database user you created and gave access to this database.' )
 		)}
 				{$this->field(
 			'db_password',
-			'Database password',
+			smliser__( 'Database password' ),
 			'<input id="db_password" name="db_password" type="password" autocomplete="new-password">',
-			'The password of that database user. It is stored in the <code>.env</code> file.'
+			smliser__( 'The password of that database user. It is stored in the <code>.env</code> file.' )
 		)}
 			</div>
 			{$this->field(
 			'db_path',
-			'Database folder',
+			smliser__( 'Database folder' ),
 			"<input id=\"db_path\" name=\"db_path\" type=\"text\" value=\"{$v( 'db_path' )}\" placeholder=\"{$this->e( $sqlite_dir )}\" spellcheck=\"false\">",
-			'The folder that holds the database file. Leave empty to use the application&rsquo;s storage folder. Keep it outside your public web folder.',
+			smliser__( 'The folder that holds the database file. Leave empty to use the application&rsquo;s storage folder. Keep it outside your public web folder.' ),
 			true,
 			'sqlite-only'
 		)}
 			{$this->field(
 			'db_encryption_key',
-			'Encryption key',
+			smliser__( 'Encryption key' ),
 			'<input id="db_encryption_key" name="db_encryption_key" type="password" autocomplete="off">',
-			'Encrypts the database file. Only works when your server&rsquo;s SQLite supports encryption; leave empty if unsure.',
+			smliser__( 'Encrypts the database file. Only works when your server&rsquo;s SQLite supports encryption; leave empty if unsure.' ),
 			true,
 			'sqlite-only'
 		)}
 			<details class="more"{$advanced_open}>
-				<summary>Advanced</summary>
+				<summary>{$i18n[3]}</summary>
 				{$this->field(
 			'db_prefix',
-			'Table prefix',
+			smliser__( 'Table prefix' ),
 			"<input id=\"db_prefix\" name=\"db_prefix\" type=\"text\" value=\"{$v( 'db_prefix' )}\" placeholder=\"smliser_\" spellcheck=\"false\">",
-			'Added to the start of every table name, so the database can be shared with other applications. Leave empty for <code>smliser_</code>.',
+			smliser__( 'Added to the start of every table name, so the database can be shared with other applications. Leave empty for <code>smliser_</code>.' ),
 			true
 		)}
 				{$this->field(
 			'db_charset',
-			'Character set',
+			smliser__( 'Character set' ),
 			"<input id=\"db_charset\" name=\"db_charset\" type=\"text\" value=\"{$v( 'db_charset' )}\" placeholder=\"{$this->e( $charset_ph )}\" spellcheck=\"false\" autocomplete=\"off\">",
 			$charset_help,
 			true,
@@ -231,8 +264,8 @@ class InstallerPage {
 
 		return $this->page(
 			'database',
-			'Connect your database',
-			$this->form( $context, 'database', $fields, 'Test connection and continue', 'Connecting&hellip;' ),
+			smliser__( 'Connect your database' ),
+			$this->form( $context, 'database', $fields, smliser__( 'Test connection and continue' ), smliser__( 'Connecting&hellip;' ) ),
 			$context['notices']
 		);
 	}
@@ -247,7 +280,7 @@ class InstallerPage {
 	 */
 	public function setup( array $context, array $issues, string $app_url ) : array {
 		$tasks = '';
-		foreach ( static::SETUP_TASKS as $task => $label ) {
+		foreach ( static::setup_tasks() as $task => $label ) {
 			$tasks .= sprintf(
 				'<li data-task="%1$s" data-state="pending"><span class="mark" aria-hidden="true"></span><span class="task-body"><span class="task-label">%2$s</span><span class="task-detail"></span></span></li>',
 				$this->e( $task ),
@@ -263,17 +296,17 @@ class InstallerPage {
 		$fields = '<p class="lead">The database is connected. The installer now prepares everything the application needs. Anything that already exists is kept as it is, so it is safe to run this again.</p>'
 			. $this->field(
 				'app_url',
-				'Site address',
+				smliser__( 'Site address' ),
 				'<input id="app_url" name="app_url" type="text" inputmode="url" autocomplete="url" value="' . $this->e( $app_url ) . '" placeholder="https://licenses.example.com" spellcheck="false" required>',
-				'The web address people use to reach this site, detected from your browser. Change it only if it is wrong, for example to use <code>https://</code> or your final domain. Links in emails and API responses use it.'
+				smliser__( 'The web address people use to reach this site, detected from your browser. Change it only if it is wrong, for example to use <code>https://</code> or your final domain. Links in emails and API responses use it.' )
 			)
 			. '<ul class="tasks" aria-live="polite">' . $tasks . '</ul>'
 			. ( '' === $missing ? '' : '<details class="more"><summary>What is still missing</summary><ul class="issues">' . $missing . '</ul></details>' );
 
 		return $this->page(
 			'setup',
-			'Prepare the application',
-			$this->form( $context, 'setup', $fields, 'Run setup', 'Setting up&hellip;', true ),
+			smliser__( 'Prepare the application' ),
+			$this->form( $context, 'setup', $fields, smliser__( 'Run setup' ), smliser__( 'Setting up&hellip;' ), true ),
 			$context['notices']
 		);
 	}
@@ -290,40 +323,44 @@ class InstallerPage {
 		$name  = $this->e( (string) ( $values['admin_name'] ?? '' ) );
 		$email = $this->e( (string) ( $values['admin_email'] ?? '' ) );
 
+		$i18n = [
+			smliser_esc_html__( 'Create your administrator account. You will use it to sign in and manage everything else, including other users.' ),
+		];
+
 		$fields = <<<HTML
-			<p class="lead">Create your administrator account. You will use it to sign in and manage everything else, including other users.</p>
+			<p class="lead">{$i18n[0]}</p>
 			{$this->field(
 			'admin_name',
-			'Your name',
+			smliser__( 'Your name' ),
 			"<input id=\"admin_name\" name=\"admin_name\" type=\"text\" autocomplete=\"name\" value=\"{$name}\" required>",
-			'Shown to other users of the dashboard.'
+			smliser__( 'Shown to other users of the dashboard.' )
 		)}
 			{$this->field(
 			'admin_email',
-			'Email address',
+			smliser__( 'Email address' ),
 			"<input id=\"admin_email\" name=\"admin_email\" type=\"email\" autocomplete=\"email\" value=\"{$email}\" required>",
-			'You sign in with this address, and password resets are sent to it.'
+			smliser__( 'You sign in with this address, and password resets are sent to it.' )
 		)}
 			<div class="grid">
 				{$this->field(
 			'admin_password',
-			'Password',
+			smliser__( 'Password' ),
 			"<input id=\"admin_password\" name=\"admin_password\" type=\"password\" autocomplete=\"new-password\" minlength=\"{$min_length}\" required>",
 			"At least {$min_length} characters. A short phrase is easier to remember and harder to guess."
 		)}
 				{$this->field(
 			'admin_password_confirm',
-			'Confirm password',
+			smliser__( 'Confirm password' ),
 			"<input id=\"admin_password_confirm\" name=\"admin_password_confirm\" type=\"password\" autocomplete=\"new-password\" minlength=\"{$min_length}\" required>",
-			'Type the same password again.'
+			smliser__( 'Type the same password again.' )
 		)}
 			</div>
 			HTML;
 
 		return $this->page(
 			'admin',
-			'Create your administrator account',
-			$this->form( $context, 'admin', $fields, 'Create account and finish', 'Creating account&hellip;' ),
+			smliser__( 'Create your administrator account' ),
+			$this->form( $context, 'admin', $fields, smliser__( 'Create account and finish' ), smliser__( 'Creating account&hellip;' ) ),
 			$context['notices']
 		);
 	}
@@ -337,13 +374,13 @@ class InstallerPage {
 	public function finish( array $context ) : array {
 		return $this->page(
 			'finish',
-			'Ready to go',
+			smliser__( 'Ready to go' ),
 			$this->form(
 				$context,
 				'finish',
 				'<p class="lead">Everything is in place. Finishing records the installation, closes this installer and opens the site to everyone.</p>',
-				'Finish installation',
-				'Finishing&hellip;'
+				smliser__( 'Finish installation' ),
+				smliser__( 'Finishing&hellip;' )
 			),
 			$context['notices']
 		);
@@ -358,16 +395,24 @@ class InstallerPage {
 	public function done( string $home_url ) : array {
 		$app       = $this->e( \SMLISER_APP_NAME );
 		$login_url = rtrim( $home_url, '/' ) . '/auth/';
+		$i18n = [
+			/* translators: %s: app */
+			sprintf( smliser_esc_html__( '%s is installed and open to visitors. Sign in with the administrator account you just created.' ), $app ),
+			smliser_esc_html__( 'The installer is closed and the setup token has been deleted.' ),
+			/* translators: 1: opening <a> tag, 2: app (formatted), 3: closing <a> tag */
+			sprintf( smliser_esc_html__( '%1$sOpen %2$sSign in%3$s' ), '<a class="btn btn-accent" href="' . $this->e( $home_url ) . '">', $app . '</a>' . '
+	' . '<a class="btn" href="' . $this->e( $login_url ) . '">', '</a>' ),
+		];
+
 		$body      = <<<HTML
-			<p class="lead">{$app} is installed and open to visitors. Sign in with the administrator account you just created.</p>
-			<p class="hint">The installer is closed and the setup token has been deleted.</p>
+			<p class="lead">{$i18n[0]}</p>
+			<p class="hint">{$i18n[1]}</p>
 			<div class="actions">
-				<a class="btn btn-accent" href="{$this->e( $home_url )}">Open {$app}</a>
-				<a class="btn" href="{$this->e( $login_url )}">Sign in</a>
+				{$i18n[2]}
 			</div>
 			HTML;
 
-		return $this->page( 'done', 'Installation complete', $body );
+		return $this->page( 'done', smliser__( 'Installation complete' ), $body );
 	}
 
 	/**
@@ -378,14 +423,23 @@ class InstallerPage {
 	 */
 	public function not_set_up( string $start_url ) : array {
 		$app  = $this->e( \SMLISER_APP_NAME );
+		$i18n = [
+			/* translators: %s: app */
+			sprintf( smliser_esc_html__( '%s has been uploaded to this server but has not been set up yet.' ), $app ),
+			smliser_esc_html__( 'If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP).' ),
+			/* translators: 1: opening <a> tag, 2: closing <a> tag */
+			sprintf( smliser_esc_html__( '%1$sStart setup%2$s' ), '<a class="btn btn-accent" href="' . $this->e( $start_url ) . '">', '</a>' ),
+			smliser_esc_html__( 'Not the owner? This site is not ready yet; please check back later.' ),
+		];
+
 		$body = <<<HTML
-			<p class="lead">{$app} has been uploaded to this server but has not been set up yet.</p>
-			<p>If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP).</p>
-			<div class="actions"><a class="btn btn-accent" href="{$this->e( $start_url )}">Start setup</a></div>
-			<p class="hint">Not the owner? This site is not ready yet; please check back later.</p>
+			<p class="lead">{$i18n[0]}</p>
+			<p>{$i18n[1]}</p>
+			<div class="actions">{$i18n[2]}</div>
+			<p class="hint">{$i18n[3]}</p>
 			HTML;
 
-		return $this->page( '', 'This site is not set up yet', $body );
+		return $this->page( '', smliser__( 'This site is not set up yet' ), $body );
 	}
 
 	/**
@@ -395,7 +449,7 @@ class InstallerPage {
 	 * @return array{title: string, html: string}
 	 */
 	public function failure( string $message ) : array {
-		return $this->page( '', 'Something went wrong', '<p class="lead">' . $this->e( $message ) . '</p>' );
+		return $this->page( '', smliser__( 'Something went wrong' ), '<p class="lead">' . $this->e( $message ) . '</p>' );
 	}
 
 	/**
@@ -413,11 +467,11 @@ class InstallerPage {
 
 		return $this->page(
 			'',
-			'This server is not ready yet',
+			smliser__( 'This server is not ready yet' ),
 			'<p class="lead">Before setting anything up, the installer checked this server and the uploaded files. These problems would stop '
-				. $this->e( \SMLISER_APP_NAME ) . ' from working:</p>'
+				. $this->e( \SMLISER_APP_NAME ) . smliser__( ' from working:</p>' )
 				. '<ul class="issues">' . $items . '</ul>'
-				. '<p>Fix them, then reload this page.</p>'
+				. smliser__( '<p>Fix them, then reload this page.</p>' )
 		);
 	}
 	
@@ -433,6 +487,11 @@ class InstallerPage {
 		$title = $this->e( $page['title'] );
 		$nonce = $this->e( $nonce );
 
+		$i18n = [
+			/* translators: 1: title, 2: app */
+			sprintf( smliser_esc_html__( '%1$s · %2$s installer' ), $title, $app ),
+		];
+
 		return <<<HTML
 			<!DOCTYPE html>
 			<html lang="en">
@@ -441,7 +500,7 @@ class InstallerPage {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<meta name="color-scheme" content="light dark">
 				<meta name="robots" content="noindex, nofollow">
-				<title>{$title} · {$app} installer</title>
+				<title>{$i18n[0]}</title>
 				<style>{$this->styles()}</style>
 			</head>
 			<body>
@@ -558,6 +617,12 @@ class InstallerPage {
 		$csrf  = $this->e( $context['csrf'] );
 		$extra = $tasks ? ' data-tasks' : '';
 
+		$i18n = [
+			smliser_esc_html__( 'Leave the installer' ),
+			/* translators: 1: opening <span> tag, 2: closing <span> tag */
+			sprintf( smliser_esc_html__( '%1$sLets someone else continue with the setup token. Your progress is kept.%2$s' ), '<span class="hint">', '</span>' ),
+		];
+
 		return <<<HTML
 			<form method="post" action="{$url}" class="form" data-async{$extra} data-busy-label="{$busy_label}">
 				<input type="hidden" name="_csrf" value="{$csrf}">
@@ -568,8 +633,8 @@ class InstallerPage {
 			<form method="post" action="{$url}" class="leave" data-async data-busy-label="Leaving&hellip;">
 				<input type="hidden" name="_csrf" value="{$csrf}">
 				<input type="hidden" name="action" value="release">
-				<button type="submit" class="link">Leave the installer</button>
-				<span class="hint">Lets someone else continue with the setup token. Your progress is kept.</span>
+				<button type="submit" class="link">{$i18n[0]}</button>
+				{$i18n[1]}
 			</form>
 			HTML;
 	}
@@ -585,7 +650,7 @@ class InstallerPage {
 			return '';
 		}
 
-		$keys     = array_keys( static::STEPS );
+		$keys     = array_keys( static::steps() );
 		$position = 'done' === $current ? count( $keys ) : array_search( $current, $keys, true );
 		$items    = '';
 
@@ -597,7 +662,7 @@ class InstallerPage {
 				$state,
 				$aria,
 				$index + 1,
-				$this->e( static::STEPS[ $key ] )
+				$this->e( static::steps()[ $key ] )
 			);
 		}
 

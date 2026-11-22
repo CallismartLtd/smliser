@@ -27,14 +27,14 @@ class AnalyticsDailySchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Analytics Daily';
+		return smliser__( 'Analytics Daily' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores daily analytics aggregates.';
+		return smliser__( 'Stores daily analytics aggregates.' );
 	}
 
 	/**

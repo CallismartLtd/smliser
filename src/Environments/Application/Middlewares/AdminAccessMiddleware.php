@@ -36,7 +36,7 @@ class AdminAccessMiddleware implements MiddlewareInterface {
 			if ( $request->wantsJson() ) {
 				return Response::json( [
 					'success' => false,
-					'message' => 'Unauthenticated access. Please log in to continue.',
+					'message' => smliser__( 'Unauthenticated access. Please log in to continue.' ),
 					'code'    => 'UNAUTHENTICATED',
 				], 401 );
 			}
@@ -72,7 +72,7 @@ class AdminAccessMiddleware implements MiddlewareInterface {
 			if ( $request->wantsJson() ) {
 				return Response::json( [
 					'success' => false,
-					'message' => 'Unauthorized access. System admin privileges required.',
+					'message' => smliser__( 'Unauthorized access. System admin privileges required.' ),
 					'code'    => 'UNAUTHORIZED',
 				], 403 );
 			}

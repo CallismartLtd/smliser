@@ -35,19 +35,19 @@ $suspended = 'suspended' === $app['status'];
 
 	<dl class="record-facts">
 		<div>
-			<dt>Slug</dt>
+			<dt><?php smliser_esc_html_e( 'Slug' ); ?></dt>
 			<dd><code><?php echo escHtml( $app['slug'] ); ?></code></dd>
 		</div>
 		<div>
-			<dt>Version</dt>
+			<dt><?php smliser_esc_html_e( 'Version' ); ?></dt>
 			<dd><?php echo escHtml( '' !== $app['version'] ? $app['version'] : '—' ); ?></dd>
 		</div>
 		<div>
-			<dt>Uploaded</dt>
+			<dt><?php smliser_esc_html_e( 'Uploaded' ); ?></dt>
 			<dd><?php echo escHtml( $app['created'] ); ?></dd>
 		</div>
 		<div>
-			<dt>Updated</dt>
+			<dt><?php smliser_esc_html_e( 'Updated' ); ?></dt>
 			<dd><?php echo escHtml( $app['updated'] ); ?></dd>
 		</div>
 	</dl>
@@ -55,27 +55,27 @@ $suspended = 'suspended' === $app['status'];
 	<div class="record-actions">
 		<a class="btn btn-small" href="<?php echo escUrl( $list_url ); ?>">
 			<i class="ti ti-arrow-left" aria-hidden="true"></i>
-			<span>Your apps</span>
+			<span><?php smliser_esc_html_e( 'Your apps' ); ?></span>
 		</a>
 		<?php if ( 'active' === $app['status'] ) : ?>
 			<a class="btn btn-small" href="<?php echo escUrl( $app['public_url'] ); ?>" target="_blank" rel="noopener">
 				<i class="ti ti-external-link" aria-hidden="true"></i>
-				<span>Public page</span>
+				<span><?php smliser_esc_html_e( 'Public page' ); ?></span>
 			</a>
 		<?php endif; ?>
 	</div>
 </div>
 
 <?php if ( $suspended ) : ?>
-	<div class="notice" data-state="error" role="status">This app is suspended by the site's administrators, so it is not offered. Contact them to have the suspension lifted.</div>
+	<div class="notice" data-state="error" role="status"><?php smliser_esc_html_e( 'This app is suspended by the site\'s administrators, so it is not offered. Contact them to have the suspension lifted.' ); ?></div>
 <?php elseif ( $in_trash ) : ?>
-	<div class="notice" data-state="error" role="status">This app is in the trash. It is deleted for good after a while, unless you restore it.</div>
+	<div class="notice" data-state="error" role="status"><?php smliser_esc_html_e( 'This app is in the trash. It is deleted for good after a while, unless you restore it.' ); ?></div>
 <?php endif; ?>
 
 <?php if ( $can['update'] && ! $in_trash ) : ?>
 	<section class="dash-section" aria-labelledby="details-title">
-		<h2 id="details-title">Details</h2>
-		<p class="muted">Upload a new zip file to publish a new version; its version and requirements are read from the package.</p>
+		<h2 id="details-title"><?php smliser_esc_html_e( 'Details' ); ?></h2>
+		<p class="muted"><?php smliser_esc_html_e( 'Upload a new zip file to publish a new version; its version and requirements are read from the package.' ); ?></p>
 		<form class="dash-form dash-form-wide" method="post" action="<?php echo escUrl( $actions['save'] ); ?>" enctype="multipart/form-data" data-smliser-form>
 			<input type="hidden" name="app_type" value="<?php echo escAttr( $app['type'] ); ?>">
 			<input type="hidden" name="app_id" value="<?php echo escAttr( (string) $app['id'] ); ?>">
@@ -92,32 +92,32 @@ $suspended = 'suspended' === $app['status'];
 			<?php endforeach; ?>
 
 			<div class="field">
-				<span class="field-label">New version <span class="muted">(optional)</span></span>
-				<input type="file" name="app_zip_file" accept=".zip" data-smliser-uploader data-max-size="<?php echo escAttr( (string) $max_size ); ?>" data-label="Drop the new zip file here, or choose it">
-				<span class="field-hint">Leave empty to keep the current version.</span>
+				<span class="field-label"><?php smliser_esc_html_e( 'New version' ); ?> <span class="muted"><?php smliser_esc_html_e( '(optional)' ); ?></span></span>
+				<input type="file" name="app_zip_file" accept=".zip" data-smliser-uploader data-max-size="<?php echo escAttr( (string) $max_size ); ?>" data-label="<?php smliser_esc_attr_e( 'Drop the new zip file here, or choose it' ); ?>">
+				<span class="field-hint"><?php smliser_esc_html_e( 'Leave empty to keep the current version.' ); ?></span>
 			</div>
 
 			<div class="field">
-				<span class="field-label">app.json <span class="muted">(optional)</span></span>
-				<input type="file" name="app_json_file" accept=".json,application/json" data-smliser-uploader data-label="Drop an app.json file here, or choose it">
-				<span class="field-hint">Replaces the app's manifest.</span>
+				<span class="field-label">app.json <span class="muted"><?php smliser_esc_html_e( '(optional)' ); ?></span></span>
+				<input type="file" name="app_json_file" accept=".json,application/json" data-smliser-uploader data-label="<?php smliser_esc_attr_e( 'Drop an app.json file here, or choose it' ); ?>">
+				<span class="field-hint"><?php smliser_esc_html_e( 'Replaces the app\'s manifest.' ); ?></span>
 			</div>
 
-			<button type="submit" class="btn btn-accent">Save changes</button>
+			<button type="submit" class="btn btn-accent"><?php smliser_esc_html_e( 'Save changes' ); ?></button>
 		</form>
 	</section>
 <?php endif; ?>
 
 <?php if ( [] !== $assets && ! $in_trash && ( $can['upload_assets'] || $can['delete_assets'] ) ) : ?>
 	<section class="dash-section" aria-labelledby="images-title">
-		<h2 id="images-title">Images</h2>
+		<h2 id="images-title"><?php smliser_esc_html_e( 'Images' ); ?></h2>
 
 		<?php foreach ( $assets as $group ) : ?>
 			<div class="asset-group">
 				<h3 class="dash-subheading"><?php echo escHtml( $group['label'] ); ?></h3>
 
 				<?php if ( [] === $group['items'] ) : ?>
-					<p class="muted">None yet.</p>
+					<p class="muted"><?php smliser_esc_html_e( 'None yet.' ); ?></p>
 				<?php else : ?>
 					<ul class="asset-grid">
 						<?php foreach ( $group['items'] as $item ) : ?>
@@ -128,12 +128,12 @@ $suspended = 'suspended' === $app['status'];
 								<span class="asset-name"><?php echo escHtml( $item['name'] ); ?></span>
 								<?php if ( $can['delete_assets'] ) : ?>
 									<form method="post" action="<?php echo escUrl( $actions['asset_delete'] ); ?>" data-smliser-form
-										data-confirm="<?php echo escAttr( sprintf( 'Delete %s?', $item['name'] ) ); ?>" data-confirm-label="Delete" data-confirm-danger>
+										data-confirm="<?php echo escAttr( sprintf( smliser__( 'Delete %s?' ), $item['name'] ) ); ?>" data-confirm-label="Delete" data-confirm-danger>
 										<input type="hidden" name="app_type" value="<?php echo escAttr( $app['type'] ); ?>">
 										<input type="hidden" name="app_slug" value="<?php echo escAttr( $app['slug'] ); ?>">
 										<input type="hidden" name="asset_name" value="<?php echo escAttr( $item['name'] ); ?>">
 										<div class="notice" data-smliser-form-message hidden></div>
-										<button type="submit" class="btn btn-small">Delete</button>
+										<button type="submit" class="btn btn-small"><?php smliser_esc_html_e( 'Delete' ); ?></button>
 									</form>
 								<?php endif; ?>
 							</li>
@@ -151,9 +151,9 @@ $suspended = 'suspended' === $app['status'];
 							<?php if ( '' !== $group['hint'] ) : ?>
 								<span class="field-hint"><?php echo escHtml( $group['hint'] ); ?></span>
 							<?php endif; ?>
-							<input type="file" name="asset_file[]" accept="image/png,image/jpeg,image/gif,image/webp" multiple required data-smliser-uploader data-max-size="<?php echo escAttr( (string) $max_size ); ?>" data-label="<?php echo escAttr( sprintf( 'Drop %s images here, or choose them', strtolower( $group['label'] ) ) ); ?>">
+							<input type="file" name="asset_file[]" accept="image/png,image/jpeg,image/gif,image/webp" multiple required data-smliser-uploader data-max-size="<?php echo escAttr( (string) $max_size ); ?>" data-label="<?php echo escAttr( sprintf( smliser__( 'Drop %s images here, or choose them' ), strtolower( $group['label'] ) ) ); ?>">
 						</div>
-						<button type="submit" class="btn btn-small"><?php echo escHtml( sprintf( 'Add %s', strtolower( $group['label'] ) ) ); ?></button>
+						<button type="submit" class="btn btn-small"><?php echo escHtml( sprintf( smliser__( 'Add %s' ), strtolower( $group['label'] ) ) ); ?></button>
 					</form>
 				<?php endif; ?>
 			</div>
@@ -163,7 +163,7 @@ $suspended = 'suspended' === $app['status'];
 
 <?php if ( ! $suspended && ( $can['change_status'] || $can['delete'] ) ) : ?>
 	<section class="dash-section dash-danger" aria-labelledby="status-title">
-		<h2 id="status-title">Status</h2>
+		<h2 id="status-title"><?php smliser_esc_html_e( 'Status' ); ?></h2>
 
 		<?php if ( $in_trash ) : ?>
 			<div class="record-actions">
@@ -173,46 +173,46 @@ $suspended = 'suspended' === $app['status'];
 						<input type="hidden" name="app_slug" value="<?php echo escAttr( $app['slug'] ); ?>">
 						<input type="hidden" name="app_status" value="active">
 						<div class="notice" data-smliser-form-message hidden></div>
-						<button type="submit" class="btn btn-accent">Restore</button>
+						<button type="submit" class="btn btn-accent"><?php smliser_esc_html_e( 'Restore' ); ?></button>
 					</form>
 				<?php endif; ?>
 				<?php if ( $can['delete'] ) : ?>
 					<form method="post" action="<?php echo escUrl( $actions['delete'] ); ?>" data-smliser-form
-						data-confirm="<?php echo escAttr( sprintf( 'Delete %s for good? Its files go too, and this cannot be undone.', $app['name'] ) ); ?>" data-confirm-label="Delete for good" data-confirm-danger>
+						data-confirm="<?php echo escAttr( sprintf( smliser__( 'Delete %s for good? Its files go too, and this cannot be undone.' ), $app['name'] ) ); ?>" data-confirm-label="Delete for good" data-confirm-danger>
 						<input type="hidden" name="app_type" value="<?php echo escAttr( $app['type'] ); ?>">
 						<input type="hidden" name="app_slug" value="<?php echo escAttr( $app['slug'] ); ?>">
 						<div class="notice" data-smliser-form-message hidden></div>
-						<button type="submit" class="btn">Delete for good</button>
+						<button type="submit" class="btn"><?php smliser_esc_html_e( 'Delete for good' ); ?></button>
 					</form>
 				<?php endif; ?>
 			</div>
 		<?php else : ?>
 			<?php if ( $can['change_status'] ) : ?>
-				<p class="muted">An inactive app is not offered for download or sale.</p>
+				<p class="muted"><?php smliser_esc_html_e( 'An inactive app is not offered for download or sale.' ); ?></p>
 				<form class="inline-form" method="post" action="<?php echo escUrl( $actions['status'] ); ?>" data-smliser-form>
 					<input type="hidden" name="app_type" value="<?php echo escAttr( $app['type'] ); ?>">
 					<input type="hidden" name="app_slug" value="<?php echo escAttr( $app['slug'] ); ?>">
 					<label>
-						<span class="screen-reader-text">Status</span>
+						<span class="screen-reader-text"><?php smliser_esc_html_e( 'Status' ); ?></span>
 						<select name="app_status">
 							<?php foreach ( $statuses as $key => $label ) : ?>
 								<option value="<?php echo escAttr( $key ); ?>"<?php echo $key === $app['status'] ? ' selected' : ''; ?>><?php echo escHtml( $label ); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</label>
-					<button type="submit" class="btn btn-small">Change status</button>
+					<button type="submit" class="btn btn-small"><?php smliser_esc_html_e( 'Change status' ); ?></button>
 					<div class="notice" data-smliser-form-message hidden></div>
 				</form>
 			<?php endif; ?>
 			<?php if ( $can['delete'] && $can['change_status'] ) : ?>
 				<div class="record-actions">
 					<form method="post" action="<?php echo escUrl( $actions['status'] ); ?>" data-smliser-form
-						data-confirm="<?php echo escAttr( sprintf( 'Move %s to the trash? It stops being offered, and is deleted for good after a while unless you restore it.', $app['name'] ) ); ?>" data-confirm-label="Move to trash" data-confirm-danger>
+						data-confirm="<?php echo escAttr( sprintf( smliser__( 'Move %s to the trash? It stops being offered, and is deleted for good after a while unless you restore it.' ), $app['name'] ) ); ?>" data-confirm-label="Move to trash" data-confirm-danger>
 						<input type="hidden" name="app_type" value="<?php echo escAttr( $app['type'] ); ?>">
 						<input type="hidden" name="app_slug" value="<?php echo escAttr( $app['slug'] ); ?>">
 						<input type="hidden" name="app_status" value="trash">
 						<div class="notice" data-smliser-form-message hidden></div>
-						<button type="submit" class="btn">Move to trash</button>
+						<button type="submit" class="btn"><?php smliser_esc_html_e( 'Move to trash' ); ?></button>
 					</form>
 				</div>
 			<?php endif; ?>

@@ -205,10 +205,10 @@ class Dispatcher implements RequestDispatcherInterface {
 		if ( ! $request->hasValue( 'app_slug_filename' ) ) {
 			smliser_abort_request(
 				sprintf(
-					'%s file not found.',
+					smliser__( '%s file not found.' ),
 					$app_type
 				),
-				'File Not Found',
+				smliser__( 'File Not Found' ),
 				[ 'response' => 404 ]
 			);
 		}
@@ -220,10 +220,10 @@ class Dispatcher implements RequestDispatcherInterface {
 		if ( '' !== $ext && 'zip' !== $ext ) {
 			smliser_abort_request(
 				sprintf(
-					'%s file extension must be ".zip".',
+					smliser__( '%s file extension must be ".zip".' ),
 					$app_type
 				),
-				'Bad Request',
+				smliser__( 'Bad Request' ),
 				[ 'response' => 400 ]
 			);
 		}
@@ -270,7 +270,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		if ( ! wp_verify_nonce( $download_token, 'smliser_download_token' ) ) {
 			smliser_abort_request(
 				__( 'Expired download link, please refresh current page.', 'smliser' ),
-				'Expired Link',
+				smliser__( 'Expired Link' ),
 				[ 'response' => 400 ]
 			);
 		}
@@ -278,7 +278,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			smliser_abort_request(
 				__( 'You are not authorized to perform this action.', 'smliser' ),
-				'Unauthorized Download',
+				smliser__( 'Unauthorized Download' ),
 				[ 'response' => 403 ]
 			);
 		}
@@ -289,7 +289,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		if ( empty( $type ) ) {
 			smliser_abort_request(
 				__( 'Please specify the download type.', 'smliser' ),
-				'Download Type Missing',
+				smliser__( 'Download Type Missing' ),
 				[ 'response' => 400 ]
 			);
 		}
@@ -336,7 +336,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		if ( $path instanceof Exception ) {
 			smliser_abort_request(
 				__( 'Please provide a valid file path', 'smliser' ),
-				'Bad Request',
+				smliser__( 'Bad Request' ),
 				[ 'response' => 400 ]
 			);
 		}
@@ -352,7 +352,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		static::guard( $request, 'manage_options' );
 
 		$image_url = $request->get( 'image_url' )
-			?: smliser_abort_request( 'Image URL is required' );
+			?: smliser_abort_request( smliser__( 'Image URL is required' ) );
 
 		$file_request = new FileRequest( [
 			'asset_url'  => $image_url,
@@ -433,7 +433,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		}
 
 		$context = $request->get( 'context' )
-			?? smliser_abort_request( 'Bulk action context is required', 'Context Required', [ 'status_code' => 400 ] );
+			?? smliser_abort_request( smliser__( 'Bulk action context is required' ), smliser__( 'Context Required' ), [ 'status_code' => 400 ] );
 
 		$handler = static::resolve_bulk_action_controller( $context );
 
@@ -489,7 +489,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		$repo_version = smliser_settings()->get( 'smliser_repo_version', 0 );
 
 		if ( version_compare( $repo_version, SMLISER_VER, '>' ) ) {
-			smliser_send_json_error( [ 'message' => 'No upgrade needed' ] );
+			smliser_send_json_error( [ 'message' => smliser__( 'No upgrade needed' ) ] );
 		}
 
 		if ( Installer::install() ) {
@@ -500,7 +500,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		
 		$data = \smliser_safe_json_encode( [
 			'message' => sprintf(
-				'The repository has been migrated from version "%s" to version "%s".',
+				smliser__( 'The repository has been migrated from version "%s" to version "%s".' ),
 				$repo_version,
 				SMLISER_VER
 			)
@@ -571,7 +571,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		$entity = $request->get( 'entity' );
 
 		if ( ! $entity ) {
-			smliser_send_json_error( [ 'message' => 'Please provide security entity.' ], 400 );
+			smliser_send_json_error( [ 'message' => smliser__( 'Please provide security entity.' ) ], 400 );
 		}
 
 		$method   = 'organization_member' === $entity ? 'save_organization_member' : 'save_entity';
@@ -584,7 +584,7 @@ class Dispatcher implements RequestDispatcherInterface {
 		static::guard( $request, 'super_admin' );
 
 		if ( ! $request->hasValue( 'entity_type' ) ) {
-			smliser_send_json_error( [ 'message' => 'Please provide security entity type.' ], 400 );
+			smliser_send_json_error( [ 'message' => smliser__( 'Please provide security entity type.' ) ], 400 );
 		}
 
 		// Core controller expects 'entity' key.
@@ -759,7 +759,7 @@ class Dispatcher implements RequestDispatcherInterface {
 				return [ MessageController::class, 'bulk_message_action' ];
 			default:
 				return function() use ( $context ) {
-					smliser_abort_request( sprintf( 'Bulk action cannot be handled for "%s"', $context ) );
+					smliser_abort_request( sprintf( smliser__( 'Bulk action cannot be handled for "%s"' ), $context ) );
 				};
 		}
 	}

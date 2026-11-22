@@ -406,9 +406,9 @@ class Installer extends AbstractCommand {
 	 * @return array<string, string> The answers.
 	 */
 	protected function ask_database( array $values, bool $password_saved = false ) : array {
-		$labels   = array_map( static fn ( array $driver ) : string => "{$driver['label']}. {$driver['help']}", DatabaseSettings::DRIVERS );
+		$labels   = array_map( static fn ( array $driver ) : string => "{$driver['label']}. {$driver['help']}", DatabaseSettings::drivers() );
 		$previous = (string) ( $values['driver'] ?? '' );
-		$current  = isset( DatabaseSettings::DRIVERS[ $previous ] ) ? $previous : 'mysql';
+		$current  = isset( DatabaseSettings::drivers()[ $previous ] ) ? $previous : 'mysql';
 
 		$this->output->newline();
 
@@ -443,13 +443,13 @@ class Installer extends AbstractCommand {
 		}
 
 		$values['host']   = $this->ask( 'Server address', $values['host'] ?? '' ?: DatabaseSettings::DEFAULT_HOST );
-		$values['port']   = $this->ask( 'Port', $values['port'] ?? '' ?: (string) DatabaseSettings::DRIVERS[ $driver ]['port'] );
+		$values['port']   = $this->ask( 'Port', $values['port'] ?? '' ?: (string) DatabaseSettings::drivers()[ $driver ]['port'] );
 		$values['dbname'] = $this->ask( 'Database name', $values['dbname'] ?? '', true );
 
 		$values['username'] = $this->ask( 'Username', $values['username'] ?? '' );
 		$values['password'] = $this->io->secret( $password_saved ? 'Password (press Enter to keep the saved one): ' : 'Password: ' );
 
-		$charset = $values['charset'] ?? '' ?: (string) DatabaseSettings::DRIVERS[ $driver ]['charset'];
+		$charset = $values['charset'] ?? '' ?: (string) DatabaseSettings::drivers()[ $driver ]['charset'];
 
 		if ( $this->io->confirm( sprintf( 'Change the table prefix (%s) or character set (%s)? Most sites keep them.', $prefix, $charset ), false ) ) {
 			$prefix  = $this->ask( 'Table prefix', $prefix );
@@ -553,7 +553,7 @@ class Installer extends AbstractCommand {
 	 * @return string
 	 */
 	protected function driver_label( string $driver ) : string {
-		return DatabaseSettings::DRIVERS[ $driver ]['label'] ?? $driver;
+		return DatabaseSettings::drivers()[ $driver ]['label'] ?? $driver;
 	}
 
 	public function run( CommandInput $input ) : int {

@@ -10,11 +10,11 @@
  */
 
 ?>
-<p class="dash-lead"><?php echo escHtml( sprintf( 'Welcome back, %s.', $name ) ); ?></p>
+<p class="dash-lead"><?php echo escHtml( sprintf( smliser__( 'Welcome back, %s.' ), $name ) ); ?></p>
 
 <div class="cells">
 	<div class="cell">
-		<h3>Account</h3>
+		<h3><?php smliser_esc_html_e( 'Account' ); ?></h3>
 		<p><?php echo escHtml( $name ); ?></p>
 		<?php if ( '' !== $email ) : ?>
 			<code><?php echo escHtml( $email ); ?></code>
@@ -22,13 +22,13 @@
 	</div>
 
 	<div class="cell">
-		<h3>Role</h3>
+		<h3><?php smliser_esc_html_e( 'Role' ); ?></h3>
 		<p><?php echo escHtml( $role ); ?></p>
 	</div>
 
 	<div class="cell">
-		<h3>API</h3>
-		<p>Your software talks to this server through the REST API.</p>
+		<h3><?php smliser_esc_html_e( 'API' ); ?></h3>
+		<p><?php smliser_esc_html_e( 'Your software talks to this server through the REST API.' ); ?></p>
 		<code><a href="<?php echo escUrl( $this->url( 'documentation' )->url() ); ?>">Documentation</a></code>
 	</div>
 </div>

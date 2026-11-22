@@ -57,13 +57,13 @@ class MfaResetEmailJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send MFA Reset Email';
+		return smliser__( 'Send MFA Reset Email' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously send a notification email when 2FA is reset by an administrator.';
+		return smliser__( 'Asynchronously send a notification email when 2FA is reset by an administrator.' );
 	}
 }

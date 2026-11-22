@@ -90,13 +90,13 @@ class LogClientAccessJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Log Client Access';
+		return smliser__( 'Log Client Access' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously writes an analytics log entry and updates the app lifetime access counter.';
+		return smliser__( 'Asynchronously writes an analytics log entry and updates the app lifetime access counter.' );
 	}
 }

@@ -23,15 +23,15 @@ unset( $args['breadcrumbs'][0] ); // Remove the home link.
 \array_unshift(
 	$args['actions'],
 	[
-		'title' => 'Add New License',
-		'label' => 'Add New',
+		'title' => smliser__( 'Add New License' ),
+		'label' => smliser__( 'Add New' ),
 		'url'   => $add_url,
 		'icon'  => 'ti ti-plus',
 	],
 
 	[
-		'title' => 'View Activity Logs',
-		'label' => 'Activity Logs',
+		'title' => smliser__( 'View Activity Logs' ),
+		'label' => smliser__( 'Activity Logs' ),
 		'url'   => $urlmanager->admin_license_page_url( 'logs' ),
 		'icon'  => 'ti ti-activity',
 	]
@@ -46,23 +46,23 @@ unset( $args['breadcrumbs'][0] ); // Remove the home link.
         <?php endif; ?>
 
         <?php if ( empty( $licenses ) ) : ?>
-            <?php echo sanitize_html( smliser_not_found_container( 'All licenses will appear here' ) ); ?>
+            <?php echo sanitize_html( smliser_not_found_container( smliser__( 'All licenses will appear here' ) ) ); ?>
         <?php else : ?>
             <form id="smliser-bulk-action-form" method="post">
             
                 <div class="smliser-actions-wrapper">
                     <div class="smliser-bulk-actions">
                         <select name="bulk_action" id="smliser-bulk-action" class="smliser-bulk-action-select" required>
-                            <option value=""><?php echo escHtml( 'Bulk Actions' ); ?></option>
-                            <option value=""><?php echo escHtml( 'Auto Calc' ); ?></option>
-                            <option value="Deactivated"><?php echo escHtml( 'Deactivate' ); ?></option>
-                            <option value="Suspended"><?php echo escHtml( 'Suspend' ); ?></option>
-                            <option value="Revoked"><?php echo escHtml( 'Revoke' ); ?></option>
-                            <option value="delete"><?php echo escHtml( 'Delete' ); ?></option>
+                            <option value=""><?php echo smliser_esc_html__( 'Bulk Actions' ); ?></option>
+                            <option value=""><?php echo smliser_esc_html__( 'Auto Calc' ); ?></option>
+                            <option value="Deactivated"><?php echo smliser_esc_html__( 'Deactivate' ); ?></option>
+                            <option value="Suspended"><?php echo smliser_esc_html__( 'Suspend' ); ?></option>
+                            <option value="Revoked"><?php echo smliser_esc_html__( 'Revoke' ); ?></option>
+                            <option value="delete"><?php echo smliser_esc_html__( 'Delete' ); ?></option>
                         </select>
-                        <button type="submit" class="button action smliser-bulk-action-button"><?php echo escHtml( 'Apply' ); ?></button>
+                        <button type="submit" class="button action smliser-bulk-action-button"><?php echo smliser_esc_html__( 'Apply' ); ?></button>
                     </div>
-                    <a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'search' )->url() ); ?>" class="smliser-btn smliser-surface-btn">Search Licenses</a>
+                    <a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'search' )->url() ); ?>" class="smliser-btn smliser-surface-btn"><?php smliser_esc_html_e( 'Search Licenses' ); ?></a>
                 </div>
             
                 <input type="hidden" name="action" value="smliser_bulk_action">
@@ -71,12 +71,12 @@ unset( $args['breadcrumbs'][0] ); // Remove the home link.
                     <thead>
                     <tr>
                         <th><input type="checkbox" id="smliser-select-all"></th>
-                        <th><?php echo escHtml( 'License ID' ); ?></th>
-                        <th><?php echo escHtml( 'Licensee Name' ); ?></th>
-                        <th><?php echo escHtml( 'License Key' ); ?></th>
-                        <th><?php echo escHtml( 'Service ID' ); ?></th>
-                        <th><?php echo escHtml( 'Licensed App' ); ?></th>
-                        <th><?php echo escHtml( 'Status' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'License ID' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Licensee Name' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'License Key' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Service ID' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Licensed App' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Status' ); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -91,11 +91,11 @@ unset( $args['breadcrumbs'][0] ); // Remove the home link.
                                         <a href="<?php echo
                         					escUrl( $urlmanager->admin_license_page_url(
                         						'edit',['id' => $license->get_id()]
-                        					)->url() ); ?>">edit</a>|
+                        					)->url() ); ?>"><?php smliser_esc_html_e( 'edit' ); ?></a>|
                                         <a href="<?php echo
                         					escUrl( $urlmanager->admin_license_page_url(
                         						'view', ['id' => $license->get_id()]
-                        					)->url() ); ?>">view</a>
+                        					)->url() ); ?>"><?php smliser_esc_html_e( 'view' ); ?></a>
                                     </p>
                                 </td>
                             
@@ -105,14 +105,14 @@ unset( $args['breadcrumbs'][0] ); // Remove the home link.
                                         <div class="smliser-license-obfuscation_data">
                                             <span class="smliser-license-input">
                                                 <input type="text" id="<?php echo escHtml( $license->get_id() ); ?>" value="<?php echo escHtml( $license->get_license_key() ) ?>" readonly class="smliser-license-text" />
-                                                <span class="ti ti-copy copy-key smliser-tooltip" title="copy license key"></span>
+                                                <span class="ti ti-copy copy-key smliser-tooltip" title="<?php smliser_esc_attr_e( 'copy license key' ); ?>"></span>
                                             </span>
 
                                             <span class="smliser-obfuscated-license-text">
                                                 <?php echo $license->get_partial_key(); ?>
                                             </span>
                                         </div>
-                                        <input type="checkbox" id="<?php echo intval( microtime( true ) ); ?>" class="smliser-licence-key-visibility-toggle smliser-tooltip" title="toggle visibility">
+                                        <input type="checkbox" id="<?php echo intval( microtime( true ) ); ?>" class="smliser-licence-key-visibility-toggle smliser-tooltip" title="<?php smliser_esc_attr_e( 'toggle visibility' ); ?>">
                                     </div>
                                 </td>
                                 <td><?php echo escHtml( $license->get_service_id() ); ?></td>

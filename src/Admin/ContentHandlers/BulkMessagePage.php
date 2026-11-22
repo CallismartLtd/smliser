@@ -111,16 +111,16 @@ class BulkMessagePage implements AdminPageInterface {
 	protected function get_menu_args( Request $request ) : array {
 		$tab   = $request->get( 'tab' ) ?? $request->route_param( 'tab' );
 		$title = match( $tab ) {
-			'edit'        => 'Edit Bulk Message',
-			'compose-new' => 'Compose Bulk Message',
-			'search'      => 'Search Bulk Messages',
-			default       => 'Bulk Messages'
+			'edit'        => smliser__( 'Edit Bulk Message' ),
+			'compose-new' => smliser__( 'Compose Bulk Message' ),
+			'search'      => smliser__( 'Search Bulk Messages' ),
+			default       => smliser__( 'Bulk Messages' )
 		};
 		
 		return [
 			'breadcrumbs' => [
 				[
-					'label' => 'Bulk Messages',
+					'label' => smliser__( 'Bulk Messages' ),
 					'url'   => $this->urlmanager->admin_broadcasts_page_url(),
 					'icon'  => 'ti ti-home-filled'
 				],
@@ -131,8 +131,8 @@ class BulkMessagePage implements AdminPageInterface {
 			],
 			'actions' => [
 				[
-					'title'  => 'Compose new message',
-					'label'  => 'Compose New',
+					'title'  => smliser__( 'Compose new message' ),
+					'label'  => smliser__( 'Compose New' ),
 					'url'    => $this->urlmanager->admin_broadcasts_page_url( 'compose-new' ),
 					'icon'   => 'ti ti-plus',
 					'active' => 'compose-new' === $tab
@@ -157,25 +157,25 @@ class BulkMessagePage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'All messages',
+				'title'      => smliser__( 'All messages' ),
 				'slug'       => 'index',
 				'callback'   => [ $this, 'dashboard'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Compose New',
+				'title'      => smliser__( 'Compose New' ),
 				'slug'       => 'compose-new',
 				'callback'   => [ $this, 'message_editor'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Search Messages',
+				'title'      => smliser__( 'Search Messages' ),
 				'slug'       => 'search',
 				'callback'   => [$this, 'search_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Edit Message',
+				'title'      => smliser__( 'Edit Message' ),
 				'slug'       => 'edit',
 				'callback'   => [$this, 'message_editor'],
 				'visibility' => false,
@@ -189,7 +189,7 @@ class BulkMessagePage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Broadcasts',
+			'title'      => smliser__( 'Broadcasts' ),
 			'slug'       => 'broadcasts',
 			'handler'    => $this,
 			'icon'       => 'ti ti-message-code',

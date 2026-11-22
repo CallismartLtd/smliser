@@ -31,7 +31,7 @@ use SmartLicenseServer\Security\Permission\DefaultRoles;
  * Rules:
  * - Invitations need a cache that keeps values between requests
  *   (Cache::is_persistent()); otherwise inviting is refused with
- *   NOT_PERSISTENT_MESSAGE, which asks the user to contact the site
+ *   not_persistent_message(), which asks the user to contact the site
  *   administrator.
  * - One pending invitation per address per organization: inviting the
  *   address again replaces it. A member's address cannot be invited.
@@ -64,9 +64,11 @@ class OrganizationInvitations {
 	/**
 	 * Why invitations cannot be sent on a cache that forgets everything between requests.
 	 *
-	 * @var string
+	 * @return string
 	 */
-	public const NOT_PERSISTENT_MESSAGE = 'Invitations cannot be sent on this site at the moment: its cache does not keep anything between requests, so an invitation would be lost as soon as it was made. Ask the site administrator to set up a persistent cache adapter (Redis, Memcached, APCu or SQLite).';
+	public static function not_persistent_message() : string {
+		return smliser__( 'Invitations cannot be sent on this site at the moment: its cache does not keep anything between requests, so an invitation would be lost as soon as it was made. Ask the site administrator to set up a persistent cache adapter (Redis, Memcached, APCu or SQLite).' );
+	}
 
 	/**
 	 * @param Cache    $cache     Where invitations are kept.
@@ -97,21 +99,21 @@ class OrganizationInvitations {
 	 */
 	public function invite( Organization $organization, User $by, string $email, string $role_slug, bool $is_member = false ) : array|Exception {
 		if ( ! $this->is_available() ) {
-			return new Exception( 'invitations_unavailable', self::NOT_PERSISTENT_MESSAGE, [ 'status' => 503 ] );
+			return new Exception( 'invitations_unavailable', self::not_persistent_message(), [ 'status' => 503 ] );
 		}
 
 		$email = strtolower( trim( $email ) );
 
 		if ( false === filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-			return new Exception( 'invalid_email', 'Enter a valid email address.', [ 'status' => 400, 'field_id' => 'email' ] );
+			return new Exception( 'invalid_email', smliser__( 'Enter a valid email address.' ), [ 'status' => 400, 'field_id' => 'email' ] );
 		}
 
 		if ( ! in_array( $role_slug, DefaultRoles::ORGANIZATION_ROLES, true ) ) {
-			return new Exception( 'invalid_role', 'Choose a role for the person you invite.', [ 'status' => 400, 'field_id' => 'role' ] );
+			return new Exception( 'invalid_role', smliser__( 'Choose a role for the person you invite.' ), [ 'status' => 400, 'field_id' => 'role' ] );
 		}
 
 		if ( $is_member ) {
-			return new Exception( 'already_member', sprintf( '%s is already a member of %s.', $email, $organization->get_display_name() ), [ 'status' => 409, 'field_id' => 'email' ] );
+			return new Exception( 'already_member', sprintf( smliser__( '%s is already a member of %s.' ), $email, $organization->get_display_name() ), [ 'status' => 409, 'field_id' => 'email' ] );
 		}
 
 		// Inviting the address again replaces its pending invitation.
@@ -134,7 +136,7 @@ class OrganizationInvitations {
 		];
 
 		if ( ! $this->cache->set( $this->invitation_key( $invitation['id'] ), $invitation, self::TTL_HOURS * 3600 ) ) {
-			return new Exception( 'invitation_not_saved', 'The invitation could not be saved. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'invitation_not_saved', smliser__( 'The invitation could not be saved. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		$this->cache->modify(
@@ -175,7 +177,7 @@ class OrganizationInvitations {
 		$invitation = $this->get( $id );
 
 		if ( ! $invitation || $invitation['organization_id'] !== (int) $organization->get_id() ) {
-			return new Exception( 'invitation_not_found', 'This invitation has expired or was revoked.', [ 'status' => 404 ] );
+			return new Exception( 'invitation_not_found', smliser__( 'This invitation has expired or was revoked.' ), [ 'status' => 404 ] );
 		}
 
 		return $this->invite( $organization, $by, $invitation['email'], $invitation['role'] );

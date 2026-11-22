@@ -38,7 +38,7 @@ $current_url                     = smliser_get_current_url()->remove_query_param
 
     <?php if ( ! $provider ) : ?>
         <?php printf(
-        	smliser_not_found_container( 'The email provider "%s" does not exists. <a href="%s">Go Back</a>' ),
+        	smliser_not_found_container( smliser__( 'The email provider "%s" does not exists. <a href="%s">Go Back</a>' ) ),
         	$provider_key,
         	$current_url
         ); ?>
@@ -57,7 +57,7 @@ $current_url                     = smliser_get_current_url()->remove_query_param
                     <?php smliser_render_input_field( $option ); ?>
                 <?php endforeach; ?>
             </div>
-            <button type="submit" class="button">Save</button>
+            <button type="submit" class="button"><?php smliser_esc_html_e( 'Save' ); ?></button>
         </form>
     <?php endif; ?>
 </div>

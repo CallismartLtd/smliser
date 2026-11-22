@@ -34,7 +34,7 @@ class LicenseActivatedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'License Activated Successfully';
+		return smliser__( 'License Activated Successfully' );
 	}
 
 	protected function recipient() : string {
@@ -63,13 +63,24 @@ class LicenseActivatedEmail extends EmailTemplate {
 		$end_date      = \escHtml( $vars['{{end_date}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			smliser_esc_html__( 'Your license has been successfully activated on the domain below.' ),
+			smliser_esc_html__( 'Activated Domain' ),
+			smliser_esc_html__( 'License Key' ),
+			smliser_esc_html__( 'License Expires' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not activate this license or do not recognize the domain above, please contact us immediately at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            Your license has been successfully activated on the domain below.
+            {$i18n[1]}
         </p>
 
         <!-- Activation details card -->
@@ -84,7 +95,7 @@ class LicenseActivatedEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Activated Domain
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;color:#1a1a2e;font-weight:600;">
                                     {$domain}
@@ -95,7 +106,7 @@ class LicenseActivatedEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    License Key
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;
                                            font-family:monospace;font-weight:600;letter-spacing:0.05em;">
@@ -107,7 +118,7 @@ class LicenseActivatedEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    License Expires
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$end_date}
@@ -121,19 +132,17 @@ class LicenseActivatedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not activate this license or do not recognize the domain above,
-            please contact us immediately at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[5]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Activated';
+		return smliser__( 'License Activated' );
 	}
 
 	public function description() : string {
-		return 'Sent when a license is successfully activated on a domain.';
+		return smliser__( 'Sent when a license is successfully activated on a domain.' );
 	}
 	
 	public static function preview() : static {
@@ -150,14 +159,14 @@ class LicenseActivatedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Your license has been successfully activated on the domain below.',
+				'content'   => smliser__( 'Your license has been successfully activated on the domain below.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -165,9 +174,9 @@ class LicenseActivatedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Activated Domain', 'value' => '{{domain}}' ],
-					[ 'label' => 'License Key',      'value' => '{{license_key}}' ],
-					[ 'label' => 'License Expires',  'value' => '{{end_date}}' ],
+					[ 'label' => smliser__( 'Activated Domain' ), 'value' => '{{domain}}' ],
+					[ 'label' => smliser__( 'License Key' ),      'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'License Expires' ),  'value' => '{{end_date}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -175,7 +184,7 @@ class LicenseActivatedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not activate this license or do not recognize the domain above, please contact us immediately at {{support_email}}.',
+				'content'   => smliser__( 'If you did not activate this license or do not recognize the domain above, please contact us immediately at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

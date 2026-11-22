@@ -73,7 +73,7 @@
 			await navigator.clipboard.writeText( text );
 
 			button.dataset.label ??= button.textContent;
-			button.textContent     = 'Copied!';
+			button.textContent     = smliserI18n.__( 'Copied!' );
 
 			setTimeout( () => {
 				button.textContent = button.dataset.label;
@@ -97,13 +97,13 @@
 	 */
 	function buildSecretDelivery( { warning, label, identifier, secret, info, downloadLabel } ) {
 		const body = el( 'div', { className: 'smliser-api-key-delivery' },
-			el( 'div', { className: 'smliser-api-key-warning' }, el( 'strong', { textContent: 'Important: ' } ), warning ),
+			el( 'div', { className: 'smliser-api-key-warning' }, el( 'strong', { textContent: smliserI18n.__( 'Important: ' ) } ), warning ),
 			el( 'span', { className: 'smliser-api-key-label' }, label, el( 'code', { textContent: String( identifier ) } ) ),
 			el( 'div', { className: 'smliser-api-key-display', textContent: secret } ),
 		);
 
 		const downloadBtn = el( 'button', { type: 'button', className: 'button', textContent: downloadLabel } );
-		const copyBtn     = el( 'button', { type: 'button', className: 'smliser-copy-btn', textContent: 'Copy Key' } );
+		const copyBtn     = el( 'button', { type: 'button', className: 'smliser-copy-btn', textContent: smliserI18n.__( 'Copy Key' ) } );
 		const infoText    = el( 'span', { textContent: info } );
 		const btnGroup    = el( 'div', {}, downloadBtn, copyBtn );
 		const footer      = el( 'div', { className: 'smliser-modal-footer-api-actions' }, infoText, btnGroup );
@@ -205,7 +205,7 @@
 
 			smliserSearchSecurityEntities( usersSearch, {
 				entityType: 'owner_subjects',
-				placeholder: 'Search users...',
+				placeholder: smliserI18n.__( 'Search users...' ),
 				types: [ 'individual' ],
 			} );
 		}
@@ -213,14 +213,14 @@
 		if ( ownerSubjectSearch ) {
 			smliserSearchSecurityEntities( ownerSubjectSearch, {
 				entityType: 'owner_subjects',
-				placeholder: 'Search for users or organizations...',
+				placeholder: smliserI18n.__( 'Search for users or organizations...' ),
 			} );
 		}
 
 		if ( ownersSearch ) {
 			smliserSearchSecurityEntities( ownersSearch, {
 				entityType: 'resource_owners',
-				placeholder: 'Search for resource owners...',
+				placeholder: smliserI18n.__( 'Search for resource owners...' ),
 			} );
 		}
 	}
@@ -277,7 +277,7 @@
 				passwordField.type = reveal ? 'text' : 'password';
 				btn.querySelector( '.smliser-eye-show' ).style.display = reveal ? 'none' : 'block';
 				btn.querySelector( '.smliser-eye-hide' ).style.display = reveal ? 'block' : 'none';
-				btn.setAttribute( 'aria-label', reveal ? 'Hide password' : 'Show password' );
+				btn.setAttribute( 'aria-label', reveal ? smliserI18n.__( 'Hide password' ) : smliserI18n.__( 'Show password' ) );
 			} );
 
 			// Fields render disabled so browsers don't autofill them; unlock after a beat.
@@ -325,7 +325,7 @@
 						credentials: 'same-origin',
 					} );
 
-					await SmliserModal.success( response?.data?.message ?? 'Success', 'Saved' );
+					await SmliserModal.success( response?.data?.message ?? smliserI18n.__( 'Success' ), smliserI18n.__( 'Saved' ) );
 				} catch ( error ) {
 					await SmliserModal.error( error.message, error.statusText || 'Error' );
 				} finally {
@@ -395,14 +395,14 @@
 
 			const openFullscreen = async () => {
 				if ( ! imageHolder?.requestFullscreen ) {
-					SmliserToast.show( 'Fullscreen not supported by your browser.', 3000 );
+					SmliserToast.show( smliserI18n.__( 'Fullscreen not supported by your browser.' ), 3000 );
 					return;
 				}
 
 				try {
 					await imageHolder.requestFullscreen();
 				} catch ( error ) {
-					SmliserToast.show( `Error attempting to enable fullscreen: ${ error.message }`, 3000 );
+					SmliserToast.show( smliserI18n.sprintf( smliserI18n.__( 'Error attempting to enable fullscreen: %s' ), error.message ), 3000 );
 				}
 			};
 
@@ -452,12 +452,12 @@
 
 				if ( ! image?.type.startsWith( 'image/' ) ) {
 					clearImagePreview();
-					SmliserToast.show( 'Please upload an image.', 3000 );
+					SmliserToast.show( smliserI18n.__( 'Please upload an image.' ), 3000 );
 					return;
 				}
 
 				if ( image.size > MAX_SIZE ) {
-					SmliserToast.show( 'File is too large. Maximum size is 2MB.', 3000 );
+					SmliserToast.show( smliserI18n.__( 'File is too large. Maximum size is 2MB.' ), 3000 );
 					fileInput.value = '';
 					return;
 				}
@@ -564,7 +564,7 @@
 		deleteBtn.addEventListener( 'click', async ( e ) => {
 			e.preventDefault();
 
-			const confirmed = await SmliserModal.confirm( 'You are about to delete this license, be careful action cannot be reversed' );
+			const confirmed = await SmliserModal.confirm( smliserI18n.__( 'You are about to delete this license, be careful action cannot be reversed' ) );
 
 			if ( ! confirmed ) {
 				return;
@@ -577,10 +577,10 @@
 				} );
 
 				if ( ! response.success ) {
-					throw new Error( response.data?.message ?? 'Unable to delete license' );
+					throw new Error( response.data?.message ?? smliserI18n.__( 'Unable to delete license' ) );
 				}
 
-				await SmliserModal.success( response.data?.message ?? 'Deleted successfully' );
+				await SmliserModal.success( response.data?.message ?? smliserI18n.__( 'Deleted successfully' ) );
 
 				if ( response.data?.redirect ) {
 					window.location.href = new URL( response.data.location ).href;
@@ -613,8 +613,8 @@
 
 		form.innerHTML = `
 			<input type="hidden" name="license_id">
-			<em>Download tokens allow clients to download the application monetized under this license without exposing the primary license key. If expiry is not set, the token will be valid for 24 hours by default.</em>
-			<label for="expiryDate" class="smliser-form-label-row">Token Expiry (optional)
+			<em>${ smliserI18n.esc( smliserI18n.__( 'Download tokens allow clients to download the application monetized under this license without exposing the primary license key. If expiry is not set, the token will be valid for 24 hours by default.' ) ) }</em>
+			<label for="expiryDate" class="smliser-form-label-row">${ smliserI18n.esc( smliserI18n.__( 'Token Expiry (optional)' ) ) }
 				<input type="datetime-local" name="expiry" id="expiryDate" class="smliser-input" smliser-date-picker="date">
 			</label>
 		`;
@@ -623,10 +623,10 @@
 
 		const footer = el( 'div', { className: 'smliser-dialog-buttons' } );
 
-		footer.innerHTML = `<button type="submit" class="smliser-btn" form="${ form.id }">Generate Token</button>`;
+		footer.innerHTML = `<button type="submit" class="smliser-btn" form="${ form.id }">${ smliserI18n.esc( smliserI18n.__( 'Generate Token' ) ) }</button>`;
 
 		const modal = new SmliserModal( {
-			title: appName ? `Generate Download Token for ${ appName }` : 'Generate Download Token',
+			title: appName ? smliserI18n.sprintf( smliserI18n.__( 'Generate Download Token for %s' ), appName ) : smliserI18n.__( 'Generate Download Token' ),
 			body: form,
 			showCloseButton: true,
 			closeOnBackdropClick: false,
@@ -662,7 +662,7 @@
 				} );
 
 				if ( ! response.success ) {
-					throw new Error( response.data?.message ?? 'Unable to generate download token' );
+					throw new Error( response.data?.message ?? smliserI18n.__( 'Unable to generate download token' ) );
 				}
 
 				const {
@@ -678,12 +678,12 @@
 				}
 
 				const delivery = buildSecretDelivery( {
-					warning: 'Copy this token now. For security, it will not be shown to you again.',
-					label: 'License ID: ',
+					warning: smliserI18n.__( 'Copy this token now. For security, it will not be shown to you again.' ),
+					label: smliserI18n.__( 'License ID: ' ),
 					identifier: licenseId,
 					secret: token,
-					info: `License issued to: ${ licensee ?? 'N/A' }`,
-					downloadLabel: 'Download License File',
+					info: smliserI18n.sprintf( smliserI18n.__( 'License issued to: %s' ), licensee ?? 'N/A' ),
+					downloadLabel: smliserI18n.__( 'Download License File' ),
 				} );
 
 				delivery.downloadBtn.addEventListener( 'click', async () => {
@@ -708,7 +708,7 @@
 
 				modal.setBody( delivery.body )
 					.setFooter( delivery.footer )
-					.setTitle( 'Download Token Generated' );
+					.setTitle( smliserI18n.__( 'Download Token Generated' ) );
 
 				modal.open().then( () => delivery.downloadBtn.focus() );
 				modal.on( 'afterClose', () => window.location.reload() );
@@ -759,7 +759,7 @@
 				return;
 			}
 
-			const confirmed = await SmliserModal.confirm( 'Are you sure you want to remove this domain?' );
+			const confirmed = await SmliserModal.confirm( smliserI18n.__( 'Are you sure you want to remove this domain?' ) );
 
 			if ( ! confirmed ) {
 				return;
@@ -769,7 +769,7 @@
 			const domain = row?.dataset.domainValue;			
 
 			if ( ! domain ) {
-				SmliserToast.show( 'Domain value was not found', 5000 );
+				SmliserToast.show( smliserI18n.__( 'Domain value was not found' ), 5000 );
 				return;
 			}
 
@@ -787,10 +787,10 @@
 				});
 
 				if ( ! response.success ) {
-					throw new Error( response.data?.message ?? 'An error occurred' );
+					throw new Error( response.data?.message ?? smliserI18n.__( 'An error occurred' ) );
 				}
 
-				SmliserToast.show( response.data?.message ?? 'Success', 5000 );
+				SmliserToast.show( response.data?.message ?? smliserI18n.__( 'Success' ), 5000 );
 				fadeOutAndRemove( row );
 			} catch ( error ) {
 				SmliserToast.show( error.message, 5000 );
@@ -819,7 +819,7 @@
 				} );
 
 				if ( ! response.success ) {
-					throw new Error( response.data?.message ?? response.message ?? 'Unable to save license' );
+					throw new Error( response.data?.message ?? response.message ?? smliserI18n.__( 'Unable to save license' ) );
 				}
 
 				await SmliserModal.success( response.data?.message ?? response.message );
@@ -869,11 +869,11 @@
 				const data = await smliserFetchJSON( smliserAjaxUrl( '', { action: 'smliser_upgrade' }, { nonce: true } ) );
 
 				SmliserToast.show(
-					data.data?.message || ( data.success ? 'Upgrade successful!' : 'An error occurred' ),
+					data.data?.message || ( data.success ? smliserI18n.__( 'Upgrade successful!' ) : smliserI18n.__( 'An error occurred' ) ),
 					5000
 				);
 			} catch ( error ) {
-				SmliserToast.show( error.message || 'An unexpected error occurred', 5000 );
+				SmliserToast.show( error.message || smliserI18n.__( 'An unexpected error occurred' ), 5000 );
 			}
 		} );
 	}
@@ -886,13 +886,13 @@
 				const args = StringUtils.JSONparse( btn.getAttribute( 'data-action-args' ) );
 
 				if ( ! args ) {
-					SmliserToast.show( 'App data not found', 5000 );
+					SmliserToast.show( smliserI18n.__( 'App data not found' ), 5000 );
 					return;
 				}
 
 				if ( 'trash' === args.status ) {
 					const confirmed = await SmliserModal.confirm(
-						`You are about to trash this ${ args.type }, it will be automatically deleted after 60 days. Are you sure you want to proceed?`
+						smliserI18n.sprintf( smliserI18n.__( 'You are about to trash this %s, it will be automatically deleted after 60 days. Are you sure you want to proceed?' ), args.type )
 					);
 
 					if ( ! confirmed ) {
@@ -912,7 +912,7 @@
 					});
 
 					if ( ! response.success ) {
-						throw new Error( response.data?.message ?? 'Request failed' );
+						throw new Error( response.data?.message ?? smliserI18n.__( 'Request failed' ) );
 					}
 
 					SmliserToast.show( `Success: ${ response.data.message }`, 3000 );
@@ -964,7 +964,7 @@
 			if ( anyMatch ) {
 				notFound?.remove();
 			} else if ( ! notFound ) {
-				tableBody.insertAdjacentHTML( 'beforeend', '<tr class="smliser-not-found"><td colspan="7">No results found</td></tr>' );
+				tableBody.insertAdjacentHTML( 'beforeend', '<tr class="smliser-not-found"><td colspan="7">' + smliserI18n.esc( smliserI18n.__( 'No results found' ) ) + '</td></tr>' );
 			}
 		} );
 	}
@@ -1051,7 +1051,7 @@
 			table.tBodies[ 0 ].innerHTML = `
 				<tr class="no-results">
 					<td colspan="${ colCount }" style="text-align: center; padding: 20px; background-color: #ffffff">
-						No ${ label } found
+						${ smliserI18n.esc( smliserI18n.__( 'No' ) ) } ${ label } found
 					</td>
 				</tr>`;
 		};
@@ -1070,7 +1070,7 @@
 				deleteBtn.style.pointerEvents = 'none';
 
 				try {
-					const confirmed = await SmliserModal.confirm( 'Are you sure to delete' );
+					const confirmed = await SmliserModal.confirm( smliserI18n.__( 'Are you sure to delete' ) );
 
 					if ( ! confirmed ) {
 						deleteBtn.focus();
@@ -1084,10 +1084,10 @@
 					} );
 
 					if ( ! result.success ) {
-						throw new Error( result.data?.message ?? 'Unable to delete' );
+						throw new Error( result.data?.message ?? smliserI18n.__( 'Unable to delete' ) );
 					}
 
-					await SmliserModal.success( result.data?.message || 'Deleted' );
+					await SmliserModal.success( result.data?.message || smliserI18n.__( 'Deleted' ) );
 
 					const tableRow = deleteBtn.closest( 'tr' );
 					const table    = tableRow?.closest( 'table' );
@@ -1118,7 +1118,7 @@
 		}
 
 		Object.assign( Chart.defaults.font, {
-			family: "'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', Roboto, sans-serif",
+			family: '\'Inter\', \'-apple-system\', \'BlinkMacSystemFont\', \'Segoe UI\', Roboto, sans-serif',
 			size: 12,
 		} );
 
@@ -1172,7 +1172,7 @@
 
 		const requireField = ( field ) => {
 			if ( ! field.value.trim() ) {
-				flagInvalid( field, `${ field.getAttribute( 'field-name' ) || 'This field' } is required.` );
+				flagInvalid( field, `${ field.getAttribute( 'field-name' ) || smliserI18n.__( 'This field' ) } is required.` );
 			}
 		};
 
@@ -1209,20 +1209,20 @@
 				const submitBtn = el( 'button', {
 					type: 'submit',
 					className: 'button smliser-nav-btn',
-					innerHTML: '<span class="ti ti-cloud"></span> Save',
+					innerHTML: '<span class="ti ti-cloud"></span> ' + smliserI18n.esc( smliserI18n.__( 'Save' ) ),
 				} );
 
 				submitBtn.setAttribute( 'form', tierForm.id );
 				editor.classList.remove( 'smliser-hide' );
 
 				editorModal = new SmliserModal( {
-					title: 'Add Pricing Tier',
+					title: smliserI18n.__( 'Add Pricing Tier' ),
 					body: editor,
 					footer: submitBtn,
 				} );
 			}
 
-			editorModal.setTitle( isEdit ? 'Edit Pricing Tier' : 'Add Pricing Tier' );
+			editorModal.setTitle( isEdit ? smliserI18n.__( 'Edit Pricing Tier' ) : smliserI18n.__( 'Add Pricing Tier' ) );
 			editorModal.open();
 		};
 
@@ -1284,7 +1284,7 @@
 					return;
 				}
 
-				const confirmed = await SmliserModal.confirm( `Are you sure you want to delete tier "${ tier.name }"?` );
+				const confirmed = await SmliserModal.confirm( smliserI18n.sprintf( smliserI18n.__( 'Are you sure you want to delete tier "%s"?' ), tier.name ) );
 
 				if ( ! confirmed ) {
 					return;
@@ -1300,11 +1300,11 @@
 					const response = await smliserFetchJSON( smliserAjaxUrl( 'pricing-tier' ), { method: 'DELETE', body: payLoad } );
 
 					if ( ! response.success ) {
-						SmliserToast.show( response.data?.message || 'Delete failed', 6000 );
+						SmliserToast.show( response.data?.message || smliserI18n.__( 'Delete failed' ), 6000 );
 						return;
 					}
 
-					SmliserToast.show( response.data?.message || 'Tier deleted', 6000 );
+					SmliserToast.show( response.data?.message || smliserI18n.__( 'Tier deleted' ), 6000 );
 
 					// A tier that licenses were issued from is archived, not deleted.
 					if ( response.data?.archived ) {
@@ -1316,11 +1316,11 @@
 
 					fadeOutAndRemove( table?.querySelector( `tr.tier-row-${ CSS.escape( String( tier.id ) ) }` ), () => {
 						if ( ! table.querySelectorAll( 'tr' ).length ) {
-							table.innerHTML = '<tr><td>No pricing tiers has been set</td></tr>';
+							table.innerHTML = '<tr><td>' + smliserI18n.esc( smliserI18n.__( 'No pricing tiers has been set' ) ) + '</td></tr>';
 						}
 					} );
 				} catch ( error ) {
-					SmliserToast.show( error.message || 'Delete failed', 6000 );
+					SmliserToast.show( error.message || smliserI18n.__( 'Delete failed' ), 6000 );
 				}
 			},
 
@@ -1346,12 +1346,12 @@
 					} );
 
 					if ( ! response.success ) {
-						throw new Error( response.data?.message || 'Update failed' );
+						throw new Error( response.data?.message || smliserI18n.__( 'Update failed' ) );
 					}
 
-					SmliserToast.show( response.data?.message || 'Monetization updated', 3000 );
+					SmliserToast.show( response.data?.message || smliserI18n.__( 'Monetization updated' ), 3000 );
 				} catch ( error ) {
-					SmliserToast.show( error.message || 'An unexpected error occurred', 6000 );
+					SmliserToast.show( error.message || smliserI18n.__( 'An unexpected error occurred' ), 6000 );
 					input.checked = ! input.checked;
 				}
 			},
@@ -1406,12 +1406,12 @@
 				const response = await smliserFetchJSON( smliserAjaxUrl( 'save-monetization' ), { method: 'POST', body: payLoad } );
 
 				if ( response.success ) {
-					SmliserToast.show( response.data?.message || 'Operation successful', 3000 );
+					SmliserToast.show( response.data?.message || smliserI18n.__( 'Operation successful' ), 3000 );
 					setTimeout( () => window.location.reload(), 3000 );
 					return;
 				}
 
-				const message = response.data?.message || 'An unknown error occurred.';
+				const message = response.data?.message || smliserI18n.__( 'An unknown error occurred.' );
 
 				if ( response.data?.field_id ) {
 					highlightErrorField( response.data.field_id, message );
@@ -1423,7 +1423,7 @@
 					highlightErrorField( error.field, error.message );
 				}
 
-				SmliserToast.show( error.message || 'An unexpected error occurred', 6000 );
+				SmliserToast.show( error.message || smliserI18n.__( 'An unexpected error occurred' ), 6000 );
 			} finally {
 				removeSpinner( spinner );
 			}
@@ -1532,12 +1532,12 @@
 			const messageBody = form.querySelector( '#message-body' );
 
 			if ( ! subject.value.trim() ) {
-				flagInvalid( subject, 'Message subject is required.' );
+				flagInvalid( subject, smliserI18n.__( 'Message subject is required.' ) );
 			}
 
 			if ( ! messageBody.value.trim() ) {
 				editor?.notificationManager.open( {
-					text: 'Message body cannot be empty.',
+					text: smliserI18n.__( 'Message body cannot be empty.' ),
 					type: 'error',
 					timeout: 5000,
 				} );
@@ -1567,10 +1567,10 @@
 				} );
 
 				if ( ! response.success ) {
-					throw new Error( response.data?.message || 'An unknown error occurred.' );
+					throw new Error( response.data?.message || smliserI18n.__( 'An unknown error occurred.' ) );
 				}
 
-				await SmliserModal.success( response.data?.message || 'Message saved successfully' );
+				await SmliserModal.success( response.data?.message || smliserI18n.__( 'Message saved successfully' ) );
 
 				if ( response.data?.redirect_url ) {
 					window.location.href = new URL( response.data.redirect_url ).href;
@@ -1623,12 +1623,12 @@
 	 */
 	function showApiKeyModal( apiKey, redirectUrl ) {
 		const delivery = buildSecretDelivery( {
-			warning: 'Save this key now. For security, it will not be shown to you again.',
-			label: 'Identifier: ',
+			warning: smliserI18n.__( 'Save this key now. For security, it will not be shown to you again.' ),
+			label: smliserI18n.__( 'Identifier: ' ),
 			identifier: apiKey.identifier,
 			secret: apiKey.api_key,
 			info: `For: ${ apiKey.display_name }`,
-			downloadLabel: 'Download Key',
+			downloadLabel: smliserI18n.__( 'Download Key' ),
 		} );
 
 		delivery.downloadBtn.addEventListener( 'click', () => {
@@ -1650,7 +1650,7 @@
 		} );
 
 		const modal = new SmliserModal( {
-			title: 'API Key Generated',
+			title: smliserI18n.__( 'API Key Generated' ),
 			body: delivery.body,
 			footer: delivery.footer,
 		} );
@@ -1738,10 +1738,10 @@
 				const message = response?.data?.message;
 
 				if ( ! response.success ) {
-					throw new Error( message ?? 'Request failed.' );
+					throw new Error( message ?? smliserI18n.__( 'Request failed.' ) );
 				}
 
-				await SmliserModal.success( message ?? 'Request was successful, but no response message.' );
+				await SmliserModal.success( message ?? smliserI18n.__( 'Request was successful, but no response message.' ) );
 				processAfterEntitySave( response );
 			} catch ( error ) {
 				await SmliserModal.error( error.message );
@@ -1777,10 +1777,10 @@
 
 			if ( deleteBtn ) {
 				const confirmed = await SmliserModal.confirm( {
-					confirmText: 'Yes',
-					cancelText: 'No',
-					message: 'Are you sure you want to remove the selected member from this organization?',
-					title: 'Confirm Member Removal',
+					confirmText: smliserI18n.__( 'Yes' ),
+					cancelText: smliserI18n.__( 'No' ),
+					message: smliserI18n.__( 'Are you sure you want to remove the selected member from this organization?' ),
+					title: smliserI18n.__( 'Confirm Member Removal' ),
 				} );
 
 				if ( ! confirmed ) {
@@ -1800,7 +1800,7 @@
 					const message  = response?.data?.message;
 
 					if ( ! response?.success ) {
-						throw new Error( message ?? 'Unable to remove member' );
+						throw new Error( message ?? smliserI18n.__( 'Unable to remove member' ) );
 					}
 
 					fadeOutAndRemove( clicked.closest( 'li.smliser-org-member' ) );
@@ -1864,9 +1864,9 @@
 	function initEmailTemplateToggles() {
 		const STATES = {
 			// Template is now enabled: offer to disable.
-			enabled: { border: '1px solid #fecaca', background: '#fef2f2', color: '#991b1b', icon: [ 'ti-eye', 'ti-eye-off' ], label: 'Disable', title: 'Disable this template' },
+			enabled: { border: '1px solid #fecaca', background: '#fef2f2', color: '#991b1b', icon: [ 'ti-eye', 'ti-eye-off' ], label: smliserI18n.__( 'Disable' ), title: smliserI18n.__( 'Disable this template' ) },
 			// Template is now disabled: offer to enable.
-			disabled: { border: '1px solid #bbf7d0', background: '#f0fdf4', color: '#166534', icon: [ 'ti-eye-off', 'ti-eye' ], label: 'Enable', title: 'Enable this template' },
+			disabled: { border: '1px solid #bbf7d0', background: '#f0fdf4', color: '#166534', icon: [ 'ti-eye-off', 'ti-eye' ], label: smliserI18n.__( 'Enable' ), title: smliserI18n.__( 'Enable this template' ) },
 		};
 
 		document.querySelectorAll( '.smliser-template-toggle' ).forEach( ( btn ) => {
@@ -1890,7 +1890,7 @@
 						return;
 					}
 
-					await SmliserModal.success( response.data?.message || 'Success' );
+					await SmliserModal.success( response.data?.message || smliserI18n.__( 'Success' ) );
 
 					const { border, background, color, icon, label, title } = STATES[ enabling ? 'enabled' : 'disabled' ];
 
@@ -1967,7 +1967,7 @@
 
 			requiredFields.forEach( ( input ) => {
 				if ( ! input.value.trim() ) {
-					flagInvalid( input, `${ input.getAttribute( 'field_name' ) } is required.` );
+					flagInvalid( input, smliserI18n.sprintf( smliserI18n.__( '%s is required.' ), input.getAttribute( 'field_name' ) ) );
 					hasError = true;
 				}
 			} );
@@ -1978,9 +1978,9 @@
 			}
 
 			try {
-				const result = await runCacheAdapterRequest( testBtn, 'options-form/cache-test-adapter', new FormData( form ), 'Something went wrong!' );
+				const result = await runCacheAdapterRequest( testBtn, 'options-form/cache-test-adapter', new FormData( form ), smliserI18n.__( 'Something went wrong!' ) );
 
-				await SmliserModal.success( result.data?.message || 'Test passed' );
+				await SmliserModal.success( result.data?.message || smliserI18n.__( 'Test passed' ) );
 			} catch ( error ) {
 				await SmliserModal.error( error.message, 'Test Failed' );
 			}
@@ -1989,7 +1989,7 @@
 		resetBtn?.addEventListener( 'click', async ( e ) => {
 			e.preventDefault();
 
-			const confirmed = await SmliserModal.confirm( 'Are you sure you want to reset the cache adapter to default settings?' );
+			const confirmed = await SmliserModal.confirm( smliserI18n.__( 'Are you sure you want to reset the cache adapter to default settings?' ) );
 
 			if ( ! confirmed ) {
 				return;
@@ -2000,9 +2000,9 @@
 			payLoad.set( 'adapter_id', queryParam.get( 'adapter' ) ?? '' );
 
 			try {
-				const result = await runCacheAdapterRequest( resetBtn, 'options-form/cache-reset-adapter', payLoad, 'Something went wrong!' );
+				const result = await runCacheAdapterRequest( resetBtn, 'options-form/cache-reset-adapter', payLoad, smliserI18n.__( 'Something went wrong!' ) );
 
-				await SmliserModal.success( result.data?.message || 'Reset successful' );
+				await SmliserModal.success( result.data?.message || smliserI18n.__( 'Reset successful' ) );
 				window.location.reload();
 			} catch ( error ) {
 				await SmliserModal.error( error.message, 'Reset Failed' );
@@ -2023,7 +2023,7 @@
 	 */
 	function openQueueDetails( trigger ) {
 		const modal = new SmliserModal( {
-			title: trigger.dataset.title || 'Detail',
+			title: trigger.dataset.title || smliserI18n.__( 'Detail' ),
 			// Content is raw text, not HTML.
 			body: el( 'pre', { className: 'smliser-detail-modal-content', textContent: trigger.dataset.content || '' } ),
 			width: '640px',

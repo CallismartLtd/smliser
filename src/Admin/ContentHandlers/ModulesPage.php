@@ -224,7 +224,7 @@ class ModulesPage implements AdminPageInterface {
 					description: $theme->getMessage(),
 					badges: [ [ 'Broken', 'danger' ] ],
 					meta: $this->record_meta( $record ),
-					actions: [ $this->action( 'remove', 'Remove', 'ti ti-trash', \sprintf( 'Remove the broken theme "%s" and its files?', $slug ), true ) ]
+					actions: [ $this->action( 'remove', smliser__( 'Remove' ), 'ti ti-trash', \sprintf( smliser__( 'Remove the broken theme "%s" and its files?' ), $slug ), true ) ]
 				);
 				continue;
 			}
@@ -259,8 +259,8 @@ class ModulesPage implements AdminPageInterface {
 					badges: [ [ 'Broken', 'danger' ] ],
 					meta: $this->record_meta( $record ),
 					actions: $this->extensions->is_enabled( $slug )
-						? [ $this->action( 'disable', 'Disable', 'ti ti-player-pause', \sprintf( 'Disable the broken extension "%s"?', $slug ) ) ]
-						: [ $this->action( 'remove', 'Remove', 'ti ti-trash', \sprintf( 'Remove the broken extension "%s" and its files?', $slug ), true ) ]
+						? [ $this->action( 'disable', smliser__( 'Disable' ), 'ti ti-player-pause', \sprintf( smliser__( 'Disable the broken extension "%s"?' ), $slug ) ) ]
+						: [ $this->action( 'remove', smliser__( 'Remove' ), 'ti ti-trash', \sprintf( smliser__( 'Remove the broken extension "%s" and its files?' ), $slug ), true ) ]
 				);
 				continue;
 			}
@@ -335,7 +335,7 @@ class ModulesPage implements AdminPageInterface {
 	 */
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Modules',
+			'title'      => smliser__( 'Modules' ),
 			'icon'       => 'ti ti-puzzle',
 			'handler'    => $this,
 			'slug'       => 'modules',
@@ -349,19 +349,19 @@ class ModulesPage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'Themes',
+				'title'      => smliser__( 'Themes' ),
 				'slug'       => 'themes',
 				'callback'   => [ $this, 'themes_page' ],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Extensions',
+				'title'      => smliser__( 'Extensions' ),
 				'slug'       => 'extensions',
 				'callback'   => [ $this, 'extensions_page' ],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Marketplace',
+				'title'      => smliser__( 'Marketplace' ),
 				'slug'       => 'marketplace',
 				'callback'   => [ $this, 'marketplace_page' ],
 				'visibility' => true,
@@ -403,29 +403,29 @@ class ModulesPage implements AdminPageInterface {
 		}
 
 		if ( null !== $parent ) {
-			$badges[] = [ \sprintf( 'Child of %s', $parent ), 'info' ];
+			$badges[] = [ \sprintf( smliser__( 'Child of %s' ), $parent ), 'info' ];
 		}
 
 		if ( [] !== $children ) {
-			$badges[] = [ \sprintf( 'Parent of %s', \implode( ', ', $children ) ), 'info' ];
+			$badges[] = [ \sprintf( smliser__( 'Parent of %s' ), \implode( ', ', $children ) ), 'info' ];
 		}
 
 		if ( ! $theme->supports( \SMLISER_VER ) ) {
-			$badges[] = [ \sprintf( 'Needs app %s', $theme->requires ), 'warning' ];
+			$badges[] = [ \sprintf( smliser__( 'Needs app %s' ), $theme->requires ), 'warning' ];
 		}
 
-		$badges[] = [ $builtin ? 'Built in' : ThemeInstaller::describe_source( $record ), 'muted' ];
+		$badges[] = [ $builtin ? smliser__( 'Built in' ) : ThemeInstaller::describe_source( $record ), 'muted' ];
 
 		if ( ! $is_on && $theme->supports( \SMLISER_VER ) ) {
-			$actions[] = $this->action( 'activate', 'Activate', 'ti ti-player-play' );
+			$actions[] = $this->action( 'activate', smliser__( 'Activate' ), 'ti ti-player-play' );
 		}
 
 		if ( ThemeInstaller::SOURCE_MARKETPLACE === ( $record['source'] ?? null ) ) {
-			$actions[] = $this->action( 'update', 'Update', 'ti ti-download', \sprintf( 'Update %s from the marketplace? Its files are replaced with the latest version.', $theme->name ) );
+			$actions[] = $this->action( 'update', smliser__( 'Update' ), 'ti ti-download', \sprintf( smliser__( 'Update %s from the marketplace? Its files are replaced with the latest version.' ), $theme->name ) );
 		}
 
 		if ( ! $builtin && ! $is_on && [] === $children ) {
-			$actions[] = $this->action( 'remove', 'Remove', 'ti ti-trash', \sprintf( 'Remove %s and its files?', $theme->name ), true );
+			$actions[] = $this->action( 'remove', smliser__( 'Remove' ), 'ti ti-trash', \sprintf( smliser__( 'Remove %s and its files?' ), $theme->name ), true );
 		}
 
 		return $this->card(
@@ -462,21 +462,21 @@ class ModulesPage implements AdminPageInterface {
 		$meta       = '' !== $extension->author ? [ [ 'ti ti-user', $extension->author ] ] : [];
 
 		if ( $enabled ) {
-			$badges[] = null === $skipped ? [ 'Enabled', 'active' ] : [ 'Not loading', 'danger' ];
+			$badges[] = null === $skipped ? [ 'Enabled', 'active' ] : [ smliser__( 'Not loading' ), 'danger' ];
 		} else {
 			$badges[] = [ 'Disabled', 'muted' ];
 		}
 
 		if ( ! $supported ) {
-			$badges[] = [ \sprintf( 'Needs app %s', $extension->requires ), 'warning' ];
+			$badges[] = [ \sprintf( smliser__( 'Needs app %s' ), $extension->requires ), 'warning' ];
 		}
 
 		if ( [] !== $missing ) {
-			$badges[] = [ \sprintf( 'Needs %s enabled', \implode( ', ', $missing ) ), 'warning' ];
+			$badges[] = [ \sprintf( smliser__( 'Needs %s enabled' ), \implode( ', ', $missing ) ), 'warning' ];
 		}
 
 		if ( [] !== $dependents ) {
-			$badges[] = [ \sprintf( 'Required by %s', \implode( ', ', $dependents ) ), 'info' ];
+			$badges[] = [ \sprintf( smliser__( 'Required by %s' ), \implode( ', ', $dependents ) ), 'info' ];
 		}
 
 		$badges[] = [ ExtensionInstaller::describe_source( $record ), 'muted' ];
@@ -486,19 +486,19 @@ class ModulesPage implements AdminPageInterface {
 		}
 
 		if ( $enabled && [] === $dependents ) {
-			$actions[] = $this->action( 'disable', 'Disable', 'ti ti-player-pause', \sprintf( 'Disable %s? It stops loading from the next request on.', $extension->name ) );
+			$actions[] = $this->action( 'disable', smliser__( 'Disable' ), 'ti ti-player-pause', \sprintf( smliser__( 'Disable %s? It stops loading from the next request on.' ), $extension->name ) );
 		}
 
 		if ( ! $enabled && $supported && [] === $missing ) {
-			$actions[] = $this->action( 'enable', 'Enable', 'ti ti-player-play', \sprintf( 'Enable "%s" %s?', $extension->name, 'extension' ) );
+			$actions[] = $this->action( 'enable', smliser__( 'Enable' ), 'ti ti-player-play', \sprintf( smliser__( 'Enable "%s" %s?' ), $extension->name, 'extension' ) );
 		}
 
 		if ( ExtensionInstaller::SOURCE_MARKETPLACE === ( $record['source'] ?? null ) ) {
-			$actions[] = $this->action( 'update', 'Update', 'ti ti-download', \sprintf( 'Update %s from the marketplace? Its files are replaced with the latest version.', $extension->name ) );
+			$actions[] = $this->action( 'update', smliser__( 'Update' ), 'ti ti-download', \sprintf( smliser__( 'Update %s from the marketplace? Its files are replaced with the latest version.' ), $extension->name ) );
 		}
 
 		if ( ! $enabled ) {
-			$actions[] = $this->action( 'remove', 'Remove', 'ti ti-trash', \sprintf( 'Remove %s and its files?', $extension->name ), true );
+			$actions[] = $this->action( 'remove', smliser__( 'Remove' ), 'ti ti-trash', \sprintf( smliser__( 'Remove %s and its files?' ), $extension->name ), true );
 		}
 
 		return $this->card(
@@ -529,9 +529,9 @@ class ModulesPage implements AdminPageInterface {
 		$meta = [];
 
 		if ( \is_string( $record['signed_by'] ?? null ) ) {
-			$meta[] = [ 'ti ti-shield-check', \sprintf( 'Signed by the "%s" key', $record['signed_by'] ) ];
+			$meta[] = [ 'ti ti-shield-check', \sprintf( smliser__( 'Signed by the "%s" key' ), $record['signed_by'] ) ];
 		} elseif ( true === ( $record['trusted'] ?? false ) ) {
-			$meta[] = [ 'ti ti-shield-x', 'Unsigned; installed as trusted' ];
+			$meta[] = [ 'ti ti-shield-x', smliser__( 'Unsigned; installed as trusted' ) ];
 		}
 
 		if ( \is_string( $record['installed_at'] ?? null ) && false !== \strtotime( $record['installed_at'] ) ) {
@@ -598,7 +598,7 @@ class ModulesPage implements AdminPageInterface {
 		return [
 			'breadcrumbs' => [
 				[
-					'label' => 'Modules',
+					'label' => smliser__( 'Modules' ),
 					'url'   => $this->urlmanager->admin_url( 'modules' )->url(),
 					'icon'  => 'ti ti-puzzle',
 				],

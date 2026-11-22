@@ -133,7 +133,7 @@ class FolderOwnership {
 		$script = \implode(
 			'; ',
 			\array_map(
-				static fn ( string $path ) : string => "(Get-Acl -LiteralPath '" . \str_replace( "'", "''", $path ) . "').Owner",
+				static fn ( string $path ) : string => smliser__( "(Get-Acl -LiteralPath '" ) . \str_replace( "'", "''", $path ) . "').Owner",
 				$paths
 			)
 		);

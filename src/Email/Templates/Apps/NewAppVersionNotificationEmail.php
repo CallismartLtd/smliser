@@ -68,14 +68,26 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
 		$license_key   = \escHtml( $vars['{{license_key}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			/* translators: %s: app name (formatted) */
+			sprintf( smliser_esc_html__( 'A new version of %s is now available. Your active license entitles you to this update.' ), '<strong>' . $app_name . '</strong>' ),
+			smliser_esc_html__( 'Application' ),
+			smliser_esc_html__( 'Type' ),
+			smliser_esc_html__( 'New Version' ),
+			smliser_esc_html__( 'Your License Key' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'To download the update, use your license key through the standard update mechanism on your site. If you need help, contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            A new version of <strong>{$app_name}</strong> is now available.
-            Your active license entitles you to this update.
+            {$i18n[1]}
         </p>
 
         <!-- App details card -->
@@ -89,7 +101,7 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Application
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_name}
@@ -98,7 +110,7 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Type
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_type}
@@ -109,7 +121,7 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 0 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    New Version
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:700;">
                                     {$app_version}
@@ -118,7 +130,7 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
                             <td width="50%" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Your License Key
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:13px;color:#334155;
                                            font-family:monospace;font-weight:600;letter-spacing:0.05em;">
@@ -132,18 +144,16 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            To download the update, use your license key through the standard update
-            mechanism on your site. If you need help, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'New Application Version Available';
+		return smliser__( 'New Application Version Available' );
 	}
 	public function description() : string {
-		return 'Sent to licensees when an application they hold a license for is updated.';
+		return smliser__( 'Sent to licensees when an application they hold a license for is updated.' );
 	}
 	public static function preview() : static {
 		$app = Software::from_array_minimal( [
@@ -165,14 +175,14 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'A new version of {{app_name}} is now available. Your active license entitles you to this update.',
+				'content'   => smliser__( 'A new version of {{app_name}} is now available. Your active license entitles you to this update.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -180,10 +190,10 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Application',      'value' => '{{app_name}}' ],
-					[ 'label' => 'Type',             'value' => '{{app_type}}' ],
-					[ 'label' => 'New Version',      'value' => '{{app_version}}' ],
-					[ 'label' => 'Your License Key', 'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Application' ),      'value' => '{{app_name}}' ],
+					[ 'label' => smliser__( 'Type' ),             'value' => '{{app_type}}' ],
+					[ 'label' => smliser__( 'New Version' ),      'value' => '{{app_version}}' ],
+					[ 'label' => smliser__( 'Your License Key' ), 'value' => '{{license_key}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -191,7 +201,7 @@ class NewAppVersionNotificationEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'To download the update, use your license key through the standard update mechanism on your site. If you need help, contact us at {{support_email}}.',
+				'content'   => smliser__( 'To download the update, use your license key through the standard update mechanism on your site. If you need help, contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

@@ -19,7 +19,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
     <div class="smliser-admin-table-body">
 
         <div>
-            <a href="<?php echo escUrl( smliser_get_current_url()->add_query_param( 'section', 'add-new' )->url() ); ?>" class="button action smliser-nav-btn">Add Owner</a>
+            <a href="<?php echo escUrl( smliser_get_current_url()->add_query_param( 'section', 'add-new' )->url() ); ?>" class="button action smliser-nav-btn"><?php smliser_esc_html_e( 'Add Owner' ); ?></a>
 
             <?php if ( $message = $request->get( 'message' ) ) : ?>
                 <div class="notice notice-info is-dismissible"><p><?php echo escHtml( $message ); ?></p></div>
@@ -28,7 +28,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
 
         <p>
             <i class="ti ti-info-square-rounded" style="font-size: 1.2em; color: #0073aa;"></i>
-            Resource owners are individual users or organizations that own or host resources in this repository.
+            <?php smliser_esc_html_e( 'Resource owners are individual users or organizations that own or host resources in this repository.' ); ?>
         </p>
 
 
@@ -49,16 +49,16 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
         <table class="smliser-table widefat striped">
             <thead class="<?php echo ( empty( $owners ) ) ? 'hidden': '' ?>">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Status</th>
+                    <th><?php smliser_esc_html_e( 'ID' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Name' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Type' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Status' ); ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ( empty( $owners ) ) : ?>
                     <tr>
-                        <td colspan="4" class="align-center bg-white">All resource owners will be listed here</td>
+                        <td colspan="4" class="align-center bg-white"><?php smliser_esc_html_e( 'All resource owners will be listed here' ); ?></td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ( $owners as $owner ) : ?>
@@ -66,8 +66,8 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                             <td>
                                 <?php echo escHtml( $owner->get_id() ); ?>
                                 <span class="smliser-edit-link">
-                                    <a href="<?php echo escUrl( smliser_get_current_url()->add_query_params( ['section' => 'edit', 'id' => $owner->get_id()] )->url() ); ?>">edit</a>
-                                    <a href="#" role="button" class="smliser-delete-entity" data-args="<?php echo escAttr( smliser_json_encode_attr( ['id' => $owner->get_id(), 'entity_type' => 'owner'] ) ); ?>">Delete</a>
+                                    <a href="<?php echo escUrl( smliser_get_current_url()->add_query_params( ['section' => 'edit', 'id' => $owner->get_id()] )->url() ); ?>"><?php smliser_esc_html_e( 'edit' ); ?></a>
+                                    <a href="#" role="button" class="smliser-delete-entity" data-args="<?php echo escAttr( smliser_json_encode_attr( ['id' => $owner->get_id(), 'entity_type' => 'owner'] ) ); ?>"><?php smliser_esc_html_e( 'Delete' ); ?></a>
                                 </span>
                             </td>
                             <td><?php echo escHtml( $owner->get_name() ); ?></td>

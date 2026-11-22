@@ -219,7 +219,7 @@ class RestAPIProvider implements RESTProviderInterface {
 			return Response::json(
 				[
 					'code'       => 'rest_unknown_category',
-					'message'    => sprintf( 'There is no "%s" category in %s.', $category, $namespace ),
+					'message'    => sprintf( smliser__( 'There is no "%s" category in %s.' ), $category, $namespace ),
 					'categories' => $this->index->catalog( $namespace )->categories(),
 				],
 				404
@@ -391,7 +391,7 @@ class RestAPIProvider implements RESTProviderInterface {
 			return true;
 		}
 
-		return new RequestException( 'rest_https_required', 'The REST API requires a secure (HTTPS) connection.', [ 'status' => 403 ] );
+		return new RequestException( 'rest_https_required', smliser__( 'The REST API requires a secure (HTTPS) connection.' ), [ 'status' => 403 ] );
 	}
 
 	/**
@@ -443,7 +443,7 @@ class RestAPIProvider implements RESTProviderInterface {
 		if ( ! $result->is_authenticated() ) {
 			return new RequestException(
 				$result->error_code ?? 'rest_authentication_failed',
-				$result->message ?? 'The API key could not be verified.',
+				$result->message ?? smliser__( 'The API key could not be verified.' ),
 				[ 'status' => AuthenticationResult::STATUS_UNAUTHORIZED === $result->status ? 403 : 401 ]
 			);
 		}

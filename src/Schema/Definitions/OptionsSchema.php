@@ -27,14 +27,14 @@ class OptionsSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Options';
+		return smliser__( 'Options' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores global configuration.';
+		return smliser__( 'Stores global configuration.' );
 	}
 
 	/**

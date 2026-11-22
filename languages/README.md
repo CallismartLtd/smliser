@@ -7,4 +7,10 @@ with Smart License Server.
 - `smliser-<locale>.po` — a translation (for example `smliser-fr_FR.po`).
 - `*.l10n.php`, `*.mo` — compiled from the `.po` files by `smliser i18n compile`.
 
+Starter files, ready to translate, are included for Spanish (`es_ES`), French
+(`fr_FR`), German (`de_DE`), Brazilian Portuguese (`pt_BR`), Simplified
+Chinese (`zh_CN`) and Arabic (`ar`). A language becomes selectable once its
+file is compiled; until then it is not offered. Start another language with
+`smliser i18n init <locale>`.
+
 To contribute a language, see [docs/i18n.md](../docs/i18n.md#adding-a-language).

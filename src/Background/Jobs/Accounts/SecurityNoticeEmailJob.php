@@ -64,13 +64,13 @@ class SecurityNoticeEmailJob implements JobHandlerInterface {
 		$email = $this->make_email( $user, $payload );
 
 		if ( null === $email ) {
-			return [ 'success' => false, 'message' => 'Unknown security notice.' ];
+			return [ 'success' => false, 'message' => smliser__( 'Unknown security notice.' ) ];
 		}
 
 		$message = $email->to_message();
 
 		if ( null === $message ) {
-			return [ 'success' => false, 'message' => sprintf( 'The "%s" template is disabled.', $email->label() ) ];
+			return [ 'success' => false, 'message' => sprintf( smliser__( 'The "%s" template is disabled.' ), $email->label() ) ];
 		}
 
 		return $this->mailer->send( $message )->to_array();
@@ -107,13 +107,13 @@ class SecurityNoticeEmailJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Security Notice Email';
+		return smliser__( 'Send Security Notice Email' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled.';
+		return smliser__( 'Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled.' );
 	}
 }

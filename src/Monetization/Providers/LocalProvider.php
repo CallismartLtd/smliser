@@ -54,7 +54,7 @@ class LocalProvider implements MonetizationProviderInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_name() : string {
-		return 'Manual payment';
+		return smliser__( 'Manual payment' );
 	}
 
 	/**
@@ -79,16 +79,16 @@ class LocalProvider implements MonetizationProviderInterface {
 		return [
 			'price' => [
 				'type'        => 'text',
-				'label'       => 'Price',
+				'label'       => smliser__( 'Price' ),
 				'default'     => '',
-				'description' => 'The price as buyers read it, e.g. "₦25,000 / year". Shown as is; buyers pay this amount.',
+				'description' => smliser__( 'The price as buyers read it, e.g. "₦25,000 / year". Shown as is; buyers pay this amount.' ),
 				'required'    => true,
 			],
 			'payment_instructions' => [
 				'type'        => 'textarea',
-				'label'       => 'Payment instructions',
+				'label'       => smliser__( 'Payment instructions' ),
 				'default'     => '',
-				'description' => 'How to pay, shown on the purchase page: e.g. the bank, account name and account number. Buyers then upload their receipt.',
+				'description' => smliser__( 'How to pay, shown on the purchase page: e.g. the bank, account name and account number. Buyers then upload their receipt.' ),
 				'required'    => true,
 			],
 		];
@@ -102,11 +102,11 @@ class LocalProvider implements MonetizationProviderInterface {
 		$instructions = trim( strip_tags( str_replace( "\r\n", "\n", (string) ( $input['payment_instructions'] ?? '' ) ) ) );
 
 		if ( '' === $price ) {
-			return new Exception( 'missing_price', 'Enter the price buyers pay for this tier.', [ 'status' => 400, 'field_id' => 'price' ] );
+			return new Exception( 'missing_price', smliser__( 'Enter the price buyers pay for this tier.' ), [ 'status' => 400, 'field_id' => 'price' ] );
 		}
 
 		if ( '' === $instructions ) {
-			return new Exception( 'missing_payment_instructions', 'Tell buyers how to pay for this tier.', [ 'status' => 400, 'field_id' => 'payment_instructions' ] );
+			return new Exception( 'missing_payment_instructions', smliser__( 'Tell buyers how to pay for this tier.' ), [ 'status' => 400, 'field_id' => 'payment_instructions' ] );
 		}
 
 		return [

@@ -32,7 +32,7 @@ class LicenseRenewedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Your License Has Been Renewed';
+		return smliser__( 'Your License Has Been Renewed' );
 	}
 
 	protected function recipient() : string {
@@ -40,7 +40,7 @@ class LicenseRenewedEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your license has been renewed successfully. Find your updated details inside.';
+		return smliser__( 'Your license has been renewed successfully. Find your updated details inside.' );
 	}
 
 	protected function variables() : array {
@@ -59,9 +59,20 @@ class LicenseRenewedEmail extends EmailTemplate {
 		$end_date      = \escHtml( $vars['{{end_date}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			/* translators: %s: end date (formatted) */
+			sprintf( smliser_esc_html__( '✓ Your license has been renewed successfully. Your new expiry date is %s.' ), '<strong>' . $end_date . '</strong>' ),
+			smliser_esc_html__( 'License Key' ),
+			smliser_esc_html__( 'New Expiry Date' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'Thank you for renewing. If you have any questions, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <!-- Success banner -->
@@ -71,8 +82,7 @@ class LicenseRenewedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#166534;line-height:1.5;">
-                        &#10003;&nbsp; Your license has been renewed successfully.
-                        Your new expiry date is <strong>{$end_date}</strong>.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -89,7 +99,7 @@ class LicenseRenewedEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    License Key
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;color:#1a1a2e;
                                            font-family:monospace;font-weight:700;letter-spacing:0.05em;">
@@ -101,7 +111,7 @@ class LicenseRenewedEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    New Expiry Date
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$end_date}
@@ -114,17 +124,16 @@ class LicenseRenewedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            Thank you for renewing. If you have any questions, please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Renewed';
+		return smliser__( 'License Renewed' );
 	}
 	public function description() : string {
-		return 'Sent when a license is successfully renewed.';
+		return smliser__( 'Sent when a license is successfully renewed.' );
 	}
 	public static function preview() : static {
 		$license = License::from_array( [
@@ -140,7 +149,7 @@ class LicenseRenewedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -148,7 +157,7 @@ class LicenseRenewedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => 'Your license has been renewed successfully. Your new expiry date is {{end_date}}.',
+				'content'   => smliser__( 'Your license has been renewed successfully. Your new expiry date is {{end_date}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -156,8 +165,8 @@ class LicenseRenewedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'License Key',     'value' => '{{license_key}}' ],
-					[ 'label' => 'New Expiry Date', 'value' => '{{end_date}}' ],
+					[ 'label' => smliser__( 'License Key' ),     'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'New Expiry Date' ), 'value' => '{{end_date}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -165,7 +174,7 @@ class LicenseRenewedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'Thank you for renewing. If you have any questions, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'Thank you for renewing. If you have any questions, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

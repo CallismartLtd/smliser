@@ -27,7 +27,7 @@ $menu_args = $page_handler->get_menu_args( $request ); ?>
         <div class="notice notice-warning">
             <p>
                 <i class="ti ti-alert-hexagon-filled"></i>
-                <strong>Caution:</strong> Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated.
+                <strong><?php smliser_esc_html_e( 'Caution:' ); ?></strong> <?php smliser_esc_html_e( 'Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated.' ); ?>
             </p>
         </div>
 
@@ -39,6 +39,6 @@ $menu_args = $page_handler->get_menu_args( $request ); ?>
                 <?php smliser_render_input_field( $field ); ?>
             <?php endforeach; ?>
         </div>
-        <button type="submit" class="smliser-submit-button" style="width: 100px;">Save</button>
+        <button type="submit" class="smliser-submit-button" style="width: 100px;"><?php smliser_esc_html_e( 'Save' ); ?></button>
     </form>
 </div>

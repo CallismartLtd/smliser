@@ -47,7 +47,7 @@ final class PurchasesPage implements ClientPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'My purchases',
+			'title'      => smliser__( 'My purchases' ),
 			'slug'       => 'purchases',
 			'handler'    => $this,
 			'icon'       => 'ti ti-receipt',
@@ -90,7 +90,7 @@ final class PurchasesPage implements ClientPageInterface {
 				'status_key'    => $purchase->get_status(),
 				'submitted'     => $this->format_date( $purchase->get_created_at() ),
 				'decided'       => $purchase->is_pending() ? '' : $this->format_date( $purchase->get_reviewed_at() ),
-				'message_label' => PurchaseRequest::STATUS_APPROVED === $purchase->get_status() ? 'Message from the seller' : 'Reason',
+				'message_label' => PurchaseRequest::STATUS_APPROVED === $purchase->get_status() ? smliser__( 'Message from the seller' ) : smliser__( 'Reason' ),
 				'message'       => $purchase->is_pending() ? '' : $purchase->get_review_note(),
 				'license_url'   => $purchase->get_license_id() ? $this->urlmanager->client_dashboard_url( 'licenses' )->url() : '',
 				'receipt'       => $purchase->get_receipt_name(),

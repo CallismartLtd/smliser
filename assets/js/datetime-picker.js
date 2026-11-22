@@ -297,14 +297,14 @@ class CallismartDatePicker {
             ? `cdp-display-input ${origClasses}`
             : 'cdp-display-input';
 
-        this.#displayInput.setAttribute('aria-label', el.getAttribute('aria-label') || el.getAttribute('placeholder') || 'Date picker');
+        this.#displayInput.setAttribute('aria-label', el.getAttribute('aria-label') || el.getAttribute('placeholder') || smliserI18n.__( 'Date picker' ));
         this.#displayInput.setAttribute('aria-controls', `${this.#id}-popup`);
         this.#displayInput.setAttribute('aria-expanded', 'false');
         this.#displayInput.setAttribute('aria-haspopup', 'dialog');
         this.#displayInput.setAttribute('role', 'combobox');
         this.#displayInput.setAttribute('aria-autocomplete', 'none');
         this.#displayInput.readOnly = true;
-        this.#displayInput.placeholder = el.placeholder || (this.#withTime ? 'Select date & time' : 'Select date');
+        this.#displayInput.placeholder = el.placeholder || (this.#withTime ? smliserI18n.__( 'Select date & time' ) : smliserI18n.__( 'Select date' ));
 
         if (el.id) {
             this.#displayInput.id = el.id;
@@ -317,13 +317,13 @@ class CallismartDatePicker {
         this.#iconBtn = this.#makeButton(
             'cdp-icon-btn',
             CallismartDatePicker.#calendarIconSVG(),
-            'Open date picker',
+            smliserI18n.__( 'Open date picker' ),
         );
         this.#iconBtn.setAttribute('tabindex', '-1');
         this.#iconBtn.setAttribute('aria-hidden', 'true');
         this.#wrapper.appendChild(this.#iconBtn);
 
-        this.#clearBtn = this.#makeButton('cdp-clear-btn', '&times;', 'Clear date');
+        this.#clearBtn = this.#makeButton('cdp-clear-btn', '&times;', smliserI18n.__( 'Clear date' ));
         this.#clearBtn.setAttribute('tabindex', '-1');
         this.#clearBtn.style.display = 'none';
         this.#wrapper.appendChild(this.#clearBtn);
@@ -333,7 +333,7 @@ class CallismartDatePicker {
         this.#popup.id = `${this.#id}-popup`;
         this.#popup.setAttribute('role', 'dialog');
         this.#popup.setAttribute('aria-modal', 'true');
-        this.#popup.setAttribute('aria-label', 'Date picker dialog');
+        this.#popup.setAttribute('aria-label', smliserI18n.__( 'Date picker dialog' ));
 
         const usePopover = !this.#opts.inline && typeof this.#popup.showPopover === 'function';
         if (usePopover) {
@@ -513,15 +513,15 @@ class CallismartDatePicker {
         const header = document.createElement('div');
         header.className = 'cdp-header';
 
-        const prevBtn = this.#makeButton('cdp-nav-btn cdp-prev', '&#8249;', 'Previous month', () => this.#navigate(-1));
-        const nextBtn = this.#makeButton('cdp-nav-btn cdp-next', '&#8250;', 'Next month', () => this.#navigate(1));
+        const prevBtn = this.#makeButton('cdp-nav-btn cdp-prev', '&#8249;', smliserI18n.__( 'Previous month' ), () => this.#navigate(-1));
+        const nextBtn = this.#makeButton('cdp-nav-btn cdp-next', '&#8250;', smliserI18n.__( 'Next month' ), () => this.#navigate(1));
 
         const title = document.createElement('div');
         title.className = 'cdp-header-title';
 
         this.#monthSel = document.createElement('select');
         this.#monthSel.className = 'cdp-month-select';
-        this.#monthSel.setAttribute('aria-label', 'Month');
+        this.#monthSel.setAttribute('aria-label', smliserI18n.__( 'Month' ));
         CallismartDatePicker.#MONTHS_FULL.forEach((name, i) => {
             const opt = document.createElement('option');
             opt.value = i;
@@ -536,7 +536,7 @@ class CallismartDatePicker {
 
         this.#yearSel = document.createElement('select');
         this.#yearSel.className = 'cdp-year-select';
-        this.#yearSel.setAttribute('aria-label', 'Year');
+        this.#yearSel.setAttribute('aria-label', smliserI18n.__( 'Year' ));
         const curY = new Date().getFullYear();
         const minY = this.#opts.min
             ? CallismartDatePicker.#parseISO(this.#opts.min).getFullYear()
@@ -674,7 +674,7 @@ class CallismartDatePicker {
 
         const label = document.createElement('div');
         label.className = 'cdp-time-label';
-        label.textContent = 'Time';
+        label.textContent = smliserI18n.__( 'Time' );
         label.setAttribute('aria-hidden', 'true');
 
         const controls = document.createElement('div');

@@ -114,7 +114,7 @@ final class RouteArguments {
 			};
 
 			if ( null === $typed ) {
-				return new RequestException( 'invalid_parameter_type', sprintf( 'The "%s" parameter must be %s.', $name, self::describe( (string) $type ) ), [ 'status' => 400, 'param' => $name ] );
+				return new RequestException( 'invalid_parameter_type', sprintf( smliser__( 'The "%s" parameter must be %s.' ), $name, self::describe( (string) $type ) ), [ 'status' => 400, 'param' => $name ] );
 			}
 
 			if ( $typed !== $value ) {
@@ -205,7 +205,7 @@ final class RouteArguments {
 	private static function missing( string $name, string $slug = 'required_param' ) : RequestException {
 		$what = 'required_file' === $slug ? 'file' : 'parameter';
 
-		return new RequestException( $slug, sprintf( 'The "%s" %s is required.', $name, $what ), [ 'status' => 400, 'param' => $name ] );
+		return new RequestException( $slug, sprintf( smliser__( 'The "%s" %s is required.' ), $name, $what ), [ 'status' => 400, 'param' => $name ] );
 	}
 
 	/**

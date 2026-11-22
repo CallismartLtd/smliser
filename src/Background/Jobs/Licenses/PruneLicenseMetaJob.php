@@ -44,7 +44,7 @@ class PruneLicenseMetaJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Deletes orphaned rows from the license meta table.';
+		return smliser__( 'Deletes orphaned rows from the license meta table.' );
 	}
 
 	/**

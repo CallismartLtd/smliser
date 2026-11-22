@@ -413,45 +413,45 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 	}
 
 	public static function get_name() : string {
-		return 'Redis Cache';
+		return smliser__( 'Redis Cache' );
 	}
 
 	public function get_settings_schema() : array {
 		return [
 			'hostname' => [
 				'type'        => 'text',
-				'label'       => 'Server Host',
+				'label'       => smliser__( 'Server Host' ),
 				'required'    => true,
 				'default'     => 'localhost',
-				'description' => 'Redis server hostname or IP address.',
+				'description' => smliser__( 'Redis server hostname or IP address.' ),
 			],
 			'port' => [
 				'type'        => 'number',
-				'label'       => 'Port',
+				'label'       => smliser__( 'Port' ),
 				'required'    => false,
 				'default'     => 6379,
-				'description' => 'Redis server port. Typically 6379.',
+				'description' => smliser__( 'Redis server port. Typically 6379.' ),
 			],
 			'password' => [
 				'type'        => 'password',
-				'label'       => 'Password',
+				'label'       => smliser__( 'Password' ),
 				'required'    => false,
 				'default'     => '',
-				'description' => 'Leave blank if the server has no AUTH configured.',
+				'description' => smliser__( 'Leave blank if the server has no AUTH configured.' ),
 			],
 			'database' => [
 				'type'        => 'number',
-				'label'       => 'Database Index',
+				'label'       => smliser__( 'Database Index' ),
 				'required'    => false,
 				'default'     => 0,
-				'description' => 'Redis logical database index (0–15). Defaults to 0.',
+				'description' => smliser__( 'Redis logical database index (0–15). Defaults to 0.' ),
 			],
 			'prefix' => [
 				'type'        => 'text',
-				'label'       => 'Key Prefix',
+				'label'       => smliser__( 'Key Prefix' ),
 				'required'    => false,
 				'default'     => '',
-				'description' => 'Optional string prepended to every key to avoid collisions in shared environments.',
+				'description' => smliser__( 'Optional string prepended to every key to avoid collisions in shared environments.' ),
 			],
 		];
 	}
@@ -582,7 +582,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 	public function test( array $settings = [] ) : bool {
 		if ( ! $this->is_supported() ) {
 			throw new CacheTestException(
-				'The Redis extension is not available on this server.'
+				smliser__( 'The Redis extension is not available on this server.' )
 			);
 		}
 
@@ -598,7 +598,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 			if ( ! $sandbox->connect( $hostname, $port, 1.0 ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not connect to Redis at %s:%d. Check that the server is running and the host/port are correct.',
+						smliser__( 'Could not connect to Redis at %s:%d. Check that the server is running and the host/port are correct.' ),
 						$hostname,
 						$port
 					)
@@ -608,7 +608,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 			if ( '' !== $password && ! $sandbox->auth( $password ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Redis authentication failed for %s:%d. Check your password.',
+						smliser__( 'Redis authentication failed for %s:%d. Check your password.' ),
 						$hostname,
 						$port
 					)
@@ -618,7 +618,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 			if ( 0 !== $database && ! $sandbox->select( $database ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not select Redis database %d on %s:%d. The database index may be out of range.',
+						smliser__( 'Could not select Redis database %d on %s:%d. The database index may be out of range.' ),
 						$database,
 						$hostname,
 						$port
@@ -633,7 +633,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 			if ( ! $sandbox->setex( $probe, 10, $payload ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not write probe key to Redis at %s:%d. The server may be read-only or out of memory.',
+						smliser__( 'Could not write probe key to Redis at %s:%d. The server may be read-only or out of memory.' ),
 						$hostname,
 						$port
 					)
@@ -646,7 +646,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 			if ( false === $raw ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not read probe key from Redis at %s:%d — key was not found immediately after writing.',
+						smliser__( 'Could not read probe key from Redis at %s:%d — key was not found immediately after writing.' ),
 						$hostname,
 						$port
 					)
@@ -655,7 +655,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 
 			if ( $raw !== $payload ) {
 				throw new CacheTestException(
-					'Probe read returned unexpected data — the value was corrupted in transit.'
+					smliser__( 'Probe read returned unexpected data — the value was corrupted in transit.' )
 				);
 			}
 
@@ -663,7 +663,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 			if ( ! $sandbox->del( $probe ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not delete probe key from Redis at %s:%d.',
+						smliser__( 'Could not delete probe key from Redis at %s:%d.' ),
 						$hostname,
 						$port
 					)
@@ -677,7 +677,7 @@ class RedisCacheAdapter implements CacheAdapterInterface {
 		} catch ( \RedisException $e ) {
 			throw new CacheTestException(
 				sprintf(
-					'Redis error on %s:%d — %s',
+					smliser__( 'Redis error on %s:%d — %s' ),
 					$hostname,
 					$port,
 					$e->getMessage()

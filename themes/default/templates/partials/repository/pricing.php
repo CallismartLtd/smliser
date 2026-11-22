@@ -13,7 +13,7 @@
 
 ?>
 <section class="app-section" id="pricing">
-	<h2>Pricing</h2>
+	<h2><?php smliser_esc_html_e( 'Pricing' ); ?></h2>
 	<ul class="pricing">
 		<?php foreach ( $tiers as $tier ) : ?>
 			<li class="pricing-tier">
@@ -22,16 +22,16 @@
 					<p class="pricing-price"><?php echo escHtml( $tier['price'] ); ?></p>
 				<?php endif; ?>
 				<ul class="pricing-terms">
-					<li><?php echo escHtml( sprintf( 'License term: %s', $tier['term_label'] ) ); ?></li>
-					<li><?php echo escHtml( -1 === $tier['max_sites'] ? 'Unlimited sites' : sprintf( '%d %s', $tier['max_sites'], 1 === $tier['max_sites'] ? 'site' : 'sites' ) ); ?></li>
+					<li><?php echo escHtml( sprintf( smliser__( 'License term: %s' ), $tier['term_label'] ) ); ?></li>
+					<li><?php echo escHtml( -1 === $tier['max_sites'] ? smliser__( 'Unlimited sites' ) : sprintf( '%d %s', $tier['max_sites'], 1 === $tier['max_sites'] ? 'site' : 'sites' ) ); ?></li>
 					<?php foreach ( $tier['features'] as $feature ) : ?>
 						<li><?php echo escHtml( $feature ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 				<?php if ( '' !== $tier['checkout_url'] ) : ?>
-					<a class="btn btn-accent btn-block" href="<?php echo escUrl( $tier['checkout_url'] ); ?>" rel="noopener">Buy</a>
+					<a class="btn btn-accent btn-block" href="<?php echo escUrl( $tier['checkout_url'] ); ?>" rel="noopener"><?php smliser_esc_html_e( 'Buy' ); ?></a>
 				<?php else : ?>
-					<p class="muted pricing-note">Contact the seller to buy this option.</p>
+					<p class="muted pricing-note"><?php smliser_esc_html_e( 'Contact the seller to buy this option.' ); ?></p>
 				<?php endif; ?>
 			</li>
 		<?php endforeach; ?>

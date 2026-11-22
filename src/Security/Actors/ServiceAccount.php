@@ -277,7 +277,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( is_null( $this->new_api_key_data ) ) {
 			throw new Exception(
 				'no_new_api_key',
-				'No new API key data available.',
+				smliser__( 'No new API key data available.' ),
 				[ 'status' => 400 ]
 			);
 		}
@@ -653,7 +653,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( 3 !== count( $parts ) ) {
 			throw new \SmartLicenseServer\Exceptions\Exception(
 				'malformed_payload',
-				'Malformed API key',
+				smliser__( 'Malformed API key' ),
 				['status' => 400]
 			);
 		}
@@ -666,7 +666,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( ! hash_equals( $known_hash, $signature ) ) {
 			throw new \SmartLicenseServer\Exceptions\Exception(
 				'signature_mismatch',
-				'Invalid API key signature',
+				smliser__( 'Invalid API key signature' ),
 				['status' => 403]
 			);
 		}
@@ -677,7 +677,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( ! is_array( $payload ) || empty( $payload['sa_id'] ) ) {
 			throw new \SmartLicenseServer\Exceptions\Exception(
 				'invalid_payload',
-				'Invalid API key payload',
+				smliser__( 'Invalid API key payload' ),
 				['status' => 400]
 			);
 		}
@@ -689,7 +689,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( ! $sa ) {
 			throw new Exception(
 				'invalid_credentials',
-				'Invalid api key credentials.',
+				smliser__( 'Invalid api key credentials.' ),
 				['status' => 401]
 			);
 		}
@@ -697,7 +697,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( ! $sa->can_authenticate() ) {
 			throw new \SmartLicenseServer\Exceptions\Exception(
 				'service_account_disabled',
-				'Service account not active',
+				smliser__( 'Service account not active' ),
 				['status' => 403]
 			);
 		}
@@ -706,7 +706,7 @@ class ServiceAccount extends DataStore implements ActorInterface {
 		if ( ! self::verify_password( $raw_key, $sa->get_api_key_hash() ) ) {
 			throw new \SmartLicenseServer\Exceptions\Exception(
 				'key_mismatch',
-				'API cannot be verified.',
+				smliser__( 'API cannot be verified.' ),
 				['status' => 403]
 			);
 		}

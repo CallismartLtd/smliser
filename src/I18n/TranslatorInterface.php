@@ -67,8 +67,8 @@ interface TranslatorInterface {
 	public function add_directory( string $domain, string $directory ) : void;
 
 	/**
-	 * Locales that have at least one translation file for a domain, plus the
-	 * source locale.
+	 * Locales that have a compiled translation file (.l10n.php or .mo) for a
+	 * domain, plus the source locale. Uncompiled .po files do not count.
 	 *
 	 * @return array<int, string> Locale codes.
 	 */

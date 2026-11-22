@@ -80,13 +80,13 @@ class PasswordResetJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Password Reset Email';
+		return smliser__( 'Send Password Reset Email' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asyncronously send password reset emails.';
+		return smliser__( 'Asyncronously send password reset emails.' );
 	}
 }

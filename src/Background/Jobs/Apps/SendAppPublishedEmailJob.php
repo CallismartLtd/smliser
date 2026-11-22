@@ -41,7 +41,7 @@ class SendAppPublishedEmailJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Sends a notification email to the app owner when a new app is published.';
+		return smliser__( 'Sends a notification email to the app owner when a new app is published.' );
 	}
 
 	/**

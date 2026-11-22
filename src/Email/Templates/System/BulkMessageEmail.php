@@ -61,9 +61,16 @@ class BulkMessageEmail extends EmailTemplate {
 		// message_body is admin-authored HTML — not escaped so formatting is preserved.
 		$message_body = $vars['{{message_body}}'];
 
+		$i18n = [
+			/* translators: %s: recipient name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $recipient_name ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you have any questions regarding this message, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$recipient_name},
+            {$i18n[0]}
         </p>
 
         <!-- Message body -->
@@ -72,23 +79,22 @@ class BulkMessageEmail extends EmailTemplate {
         </div>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you have any questions regarding this message, please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[1]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Bulk Message';
+		return smliser__( 'Bulk Message' );
 	}
 	public function description() : string {
-		return 'Sent for admin-initiated bulk messages to licensees.';
+		return smliser__( 'Sent for admin-initiated bulk messages to licensees.' );
 	}
 	public static function preview() : static {
 		return new static(
 			'preview@example.com',
-			'Jane Doe',
-			'Important Update Regarding Your License',
+			smliser__( 'Jane Doe' ),
+			smliser__( 'Important Update Regarding Your License' ),
 			'<p>We wanted to let you know about some important changes coming to your license plan next month.</p><p>Please review the details on our website and contact support if you have any questions.</p>'
 		);
 	}
@@ -98,7 +104,7 @@ class BulkMessageEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{recipient_name}},',
+				'content'   => smliser__( 'Hi {{recipient_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -112,7 +118,7 @@ class BulkMessageEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you have any questions regarding this message, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you have any questions regarding this message, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => true,
 			],

@@ -89,25 +89,25 @@ final class Theme implements Module {
 		$file   = $path . '/' . self::MANIFEST;
 
 		if ( ! $fs->is_file( $file ) ) {
-			throw new ThemeException( sprintf( 'The theme "%s" has no %s.', $folder, self::MANIFEST ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" has no %s.' ), $folder, self::MANIFEST ) );
 		}
 
 		$json     = $fs->get_contents( $file );
 		$manifest = false === $json ? null : json_decode( $json, true );
 
 		if ( ! is_array( $manifest ) ) {
-			throw new ThemeException( sprintf( 'The %s of the theme "%s" is not valid JSON.', self::MANIFEST, $folder ) );
+			throw new ThemeException( sprintf( smliser__( 'The %s of the theme "%s" is not valid JSON.' ), self::MANIFEST, $folder ) );
 		}
 
 		foreach ( [ 'slug', 'name', 'version' ] as $key ) {
 			if ( ! isset( $manifest[ $key ] ) || ! is_string( $manifest[ $key ] ) || '' === trim( $manifest[ $key ] ) ) {
-				throw new ThemeException( sprintf( 'The %s of the theme "%s" needs a "%s".', self::MANIFEST, $folder, $key ) );
+				throw new ThemeException( sprintf( smliser__( 'The %s of the theme "%s" needs a "%s".' ), self::MANIFEST, $folder, $key ) );
 			}
 		}
 
 		foreach ( [ 'requires', 'parent', 'description', 'author' ] as $key ) {
 			if ( isset( $manifest[ $key ] ) && ! is_string( $manifest[ $key ] ) ) {
-				throw new ThemeException( sprintf( 'The "%s" of the theme "%s" must be a string.', $key, $folder ) );
+				throw new ThemeException( sprintf( smliser__( 'The "%s" of the theme "%s" must be a string.' ), $key, $folder ) );
 			}
 		}
 
@@ -115,19 +115,19 @@ final class Theme implements Module {
 		$parent = isset( $manifest['parent'] ) && '' !== $manifest['parent'] ? $manifest['parent'] : null;
 
 		if ( 1 !== preg_match( self::SLUG_PATTERN, $slug ) ) {
-			throw new ThemeException( sprintf( 'The theme slug "%s" is invalid: use lowercase letters, digits and hyphens.', $slug ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme slug "%s" is invalid: use lowercase letters, digits and hyphens.' ), $slug ) );
 		}
 
 		if ( $slug !== $folder ) {
-			throw new ThemeException( sprintf( 'The theme slug "%s" does not match its folder "%s".', $slug, $folder ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme slug "%s" does not match its folder "%s".' ), $slug, $folder ) );
 		}
 
 		if ( null !== $parent && ( $parent === $slug || 1 !== preg_match( self::SLUG_PATTERN, $parent ) ) ) {
-			throw new ThemeException( sprintf( 'The parent "%s" of the theme "%s" is invalid.', $parent, $slug ) );
+			throw new ThemeException( sprintf( smliser__( 'The parent "%s" of the theme "%s" is invalid.' ), $parent, $slug ) );
 		}
 
 		if ( ! $fs->is_dir( $path . '/templates' ) ) {
-			throw new ThemeException( sprintf( 'The theme "%s" has no templates folder.', $slug ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" has no templates folder.' ), $slug ) );
 		}
 
 		return new self(

@@ -27,10 +27,10 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
     <?php smliser_print_admin_content_header( $menu_args ); ?>
 
     <div class="smliser-providers-grid">
-        <h2 class="smliser-section-title">Cache Adapters</h2>
+        <h2 class="smliser-section-title"><?php smliser_esc_html_e( 'Cache Adapters' ); ?></h2>
         <div class="notice notice-info" style="margin: 10px;">
             <p class="smliser-section-description">
-                Configure the cache adapter you want to use for object caching.
+                <?php smliser_esc_html_e( 'Configure the cache adapter you want to use for object caching.' ); ?>
             </p>            
         </div>
 
@@ -52,7 +52,7 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                         </span>
 
                         <?php if ( $is_default ) : ?>
-                            <span class="smliser-provider-card__badge">&#10003; Active</span>
+                            <span class="smliser-provider-card__badge"><?php smliser_esc_html_e( '✓ Active' ); ?></span>
                         <?php endif; ?>
                     </div>
 
@@ -60,18 +60,18 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                         <?php if ( empty( $provider->get_settings_schema() ) && $provider->is_supported() ) : ?>
                             <a href="<?php echo escUrl( $provider_url->url() ); ?>"
                                 class="smliser-button smliser-button--secondary">
-                                Check
+                                <?php smliser_esc_html_e( 'Check' ); ?>
                             </a>
                         <?php elseif( ! empty( $provider->get_settings_schema() ) && $provider->is_supported() ): ?>
                             <a href="<?php echo escUrl( $provider_url->url() ); ?>"
                                 class="smliser-button smliser-button--secondary">
-                                Configure</a>
+                                <?php smliser_esc_html_e( 'Configure' ); ?></a>
                         <?php endif; ?>
 
                         <?php if ( ! $provider->is_supported() ) : ?>
                             <span>
                                 <i class="ti ti-cancel"></i>
-                                Not supported
+                                <?php smliser_esc_html_e( 'Not supported' ); ?>
                             </span>
                         <?php endif; ?>
                     </div>

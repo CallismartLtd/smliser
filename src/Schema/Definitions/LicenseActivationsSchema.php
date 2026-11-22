@@ -25,11 +25,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class LicenseActivationsSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'License Activations';
+		return smliser__( 'License Activations' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores the domains each license is activated on.';
+		return smliser__( 'Stores the domains each license is activated on.' );
 	}
 
 	public static function get_table_name() : string {

@@ -22,9 +22,9 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
 <div class="smliser-admin-page">
     <?php smliser_print_admin_content_header( $menu_args ); ?>
     <div class="smliser-options-heading">
-        <h2 class="smliser-section-title">Global Email Configuration</h2>
+        <h2 class="smliser-section-title"><?php smliser_esc_html_e( 'Global Email Configuration' ); ?></h2>
         <p class="smliser-section-description">
-            Configure the global default options for sending emails.
+            <?php smliser_esc_html_e( 'Configure the global default options for sending emails.' ); ?>
         </p> 
     </div>
     
@@ -36,9 +36,9 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
             <?php endforeach; ?>
 
             <div class="smliser-form-label-row">
-                <span>Save Defaults</span>
+                <span><?php smliser_esc_html_e( 'Save Defaults' ); ?></span>
                 <span>
-                    <button type="submit" id="save_email_settings" class="smliser-submit-button">Save</button>
+                    <button type="submit" id="save_email_settings" class="smliser-submit-button"><?php smliser_esc_html_e( 'Save' ); ?></button>
                 </span>
             </div>
             <span class="smliser-spinner"></span>
@@ -46,11 +46,10 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
     </form>
 
     <div class="smliser-providers-grid">
-        <h2 class="smliser-section-title">Email Providers</h2>
+        <h2 class="smliser-section-title"><?php smliser_esc_html_e( 'Email Providers' ); ?></h2>
         <div class="notice notice-info" style="margin: 10px;">
             <p class="smliser-section-description">
-                Configure the email provider you want to use for outgoing system emails.
-                The active provider is determined by the Default Email Provider setting above.
+                <?php smliser_esc_html_e( 'Configure the email provider you want to use for outgoing system emails. The active provider is determined by the Default Email Provider setting above.' ); ?>
             </p>            
         </div>
 
@@ -72,19 +71,19 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                         </span>
 
                         <?php if ( $is_default ) : ?>
-                            <span class="smliser-provider-card__badge">&#10003; Active</span>
+                            <span class="smliser-provider-card__badge"><?php smliser_esc_html_e( '✓ Active' ); ?></span>
                         <?php endif; ?>
                     </div>
 
                     <div class="smliser-provider-card__actions">
                         <a href="<?php echo escUrl( $provider_url->url() ); ?>"
                         class="smliser-button smliser-button--secondary">
-                            Configure
+                            <?php smliser_esc_html_e( 'Configure' ); ?>
                         </a>
                     </div>
                     <?php if ( 'php_mail' === $provider_id ) : ?>
                         <p class="smliser-provider-card__notice">
-                            Not recommended for production use.
+                            <?php smliser_esc_html_e( 'Not recommended for production use.' ); ?>
                         </p>
                     <?php endif; ?>
                 </div>
@@ -93,10 +92,9 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
     </div>
 
     <div class="smliser-test-email" id="send-test-email">
-        <h2 class="smliser-section-title">Send Test Email</h2>
+        <h2 class="smliser-section-title"><?php smliser_esc_html_e( 'Send Test Email' ); ?></h2>
         <p class="smliser-section-description">
-            Send a test email through any configured provider to verify it is
-            working correctly. The provider must have its settings configure and saved before testing.
+            <?php smliser_esc_html_e( 'Send a test email through any configured provider to verify it is working correctly. The provider must have its settings configure and saved before testing.' ); ?>
         </p>
 
         <form action="" class="smliser-options-form" id="smliser-test-email-form" data-slug="email-provider-test">
@@ -105,8 +103,8 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
             <div class="smliser-options-form_body">
 
                 <?php smliser_render_input_field( [
-                	'label' => 'Provider',
-                	'help'  => 'Select the provider you want to test.',
+                	'label' => smliser__( 'Provider' ),
+                	'help'  => smliser__( 'Select the provider you want to test.' ),
                 	'input' => [
                 		'type'    => 'select',
                 		'name'    => 'provider_id',
@@ -120,8 +118,8 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                 ] ); ?>
 
                 <?php smliser_render_input_field( [
-                	'label' => 'Send To',
-                	'help'  => 'Email address to deliver the test message to.',
+                	'label' => smliser__( 'Send To' ),
+                	'help'  => smliser__( 'Email address to deliver the test message to.' ),
                 	'input' => [
                 		'type'  => 'text',
                 		'name'  => 'test_email',
@@ -136,7 +134,7 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
 
                 <div class="smliser-form-label-row">
                     <span style="text-align: right;">
-                        <button type="submit" id="send_test_email" class="smliser-submit-button">Send Test Email</button>
+                        <button type="submit" id="send_test_email" class="smliser-submit-button"><?php smliser_esc_html_e( 'Send Test Email' ); ?></button>
                     </span>
                 </div>
 

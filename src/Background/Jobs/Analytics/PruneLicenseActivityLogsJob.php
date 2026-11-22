@@ -80,13 +80,13 @@ class PruneLicenseActivityLogsJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Prune License Activity Logs';
+		return smliser__( 'Prune License Activity Logs' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Removes license activity log entries older than the configured retention window.';
+		return smliser__( 'Removes license activity log entries older than the configured retention window.' );
 	}
 }

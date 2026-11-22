@@ -81,7 +81,7 @@ final class AuthPages {
 	 * @return View
 	 */
 	public function sign_in( Request $request ) : View {
-		return $this->form_page( 'auth.sign-in', 'Sign in', 'form/login' )
+		return $this->form_page( 'auth.sign-in', smliser__( 'Sign in' ), 'form/login' )
 			->set( 'redirect_url', $this->redirect_url( $request ) )
 			->set( 'passkey_options_url', $this->urls->login_url( 'form/passkey/options' )->url() )
 			->set( 'passkey_verify_url', $this->urls->login_url( 'form/passkey/verify' )->url() )
@@ -113,7 +113,7 @@ final class AuthPages {
 			'email_action'       => $this->urls->login_url( 'form/mfa/email' )->url(),
 			'verify_action'      => $this->urls->login_url( 'form/mfa/verify' )->url(),
 		] )
-			->set_title( 'Verify your sign-in' )
+			->set_title( smliser__( 'Verify your sign-in' ) )
 			->set_header( 'Cache-Control', 'no-store' )
 			->set_header( 'Referrer-Policy', 'no-referrer' )
 			->add_script( View::FORMS_SCRIPT );
@@ -136,7 +136,7 @@ final class AuthPages {
 		// ?email= fills the address in, e.g. from the email that delivers a purchased license.
 		$email = trim( (string) $request->get( 'email', '' ) );
 
-		return $this->form_page( 'auth.sign-up', 'Create an account', 'form/signup' )
+		return $this->form_page( 'auth.sign-up', smliser__( 'Create an account' ), 'form/signup' )
 			->set( 'email', false !== filter_var( $email, FILTER_VALIDATE_EMAIL ) ? $email : '' )
 			->set( 'terms_url', (string) $this->settings->get( Settings::TERMS_URL, '' ) )
 			->set( 'privacy_url', (string) $this->settings->get( Settings::PRIVACY_POLICY_URL, '' ) )
@@ -165,7 +165,7 @@ final class AuthPages {
 	 * @return View
 	 */
 	public function forgot_password( Request $request ) : View {
-		return $this->form_page( 'auth.forgot-password', 'Reset your password', 'form/forgot-password' );
+		return $this->form_page( 'auth.forgot-password', smliser__( 'Reset your password' ), 'form/forgot-password' );
 	}
 
 	/**
@@ -188,7 +188,7 @@ final class AuthPages {
 		$check = '' === $key ? [ 'valid' => false ] : $this->reset_tokens->verify( $key );
 		$valid = (bool) $check['valid'];
 
-		return $this->form_page( 'auth.reset-password', 'Choose a new password', 'form/reset-password' )
+		return $this->form_page( 'auth.reset-password', smliser__( 'Choose a new password' ), 'form/reset-password' )
 			->set( 'valid', $valid )
 			->set( 'token', $valid ? $key : '' )
 			->set( 'email', $valid ? (string) $check['user']->get_email() : '' )
@@ -215,7 +215,7 @@ final class AuthPages {
 	 */
 	public function verify_email( Request $request ) : View {
 		$key      = (string) $request->get( 'key', '', false );
-		$check    = '' === $key ? [ 'valid' => false, 'reason' => 'This verification link is not valid.' ] : $this->verify_tokens->verify( $key );
+		$check    = '' === $key ? [ 'valid' => false, 'reason' => smliser__( 'This verification link is not valid.' ) ] : $this->verify_tokens->verify( $key );
 		$verified = false;
 		$linked   = 0;
 		$reason   = (string) ( $check['reason'] ?? '' );
@@ -231,7 +231,7 @@ final class AuthPages {
 
 		$current = $this->guard->get_principal()?->get_actor();
 
-		return $this->form_page( 'auth.verify-email', $verified ? 'Email verified' : 'Verify your email', 'form/resend-verification' )
+		return $this->form_page( 'auth.verify-email', $verified ? smliser__( 'Email verified' ) : smliser__( 'Verify your email' ), 'form/resend-verification' )
 			->set( 'verified', $verified )
 			->set( 'email', $verified ? (string) $check['user']->get_email() : '' )
 			->set( 'linked', $linked )
@@ -268,7 +268,7 @@ final class AuthPages {
 				'everywhere' => null === $principal && '1' === (string) $request->get( 'everywhere', '' ),
 			]
 		)
-			->set_title( 'Signed out' )
+			->set_title( smliser__( 'Signed out' ) )
 			->set_header( 'Cache-Control', 'no-store' );
 	}
 

@@ -119,7 +119,7 @@ final class ThemeContext {
 	 */
 	public function partial( string $name, array $data = [] ) : void {
 		if ( 1 !== preg_match( self::PARTIAL_PATTERN, $name ) ) {
-			throw new ThemeException( sprintf( '"%s" is not a valid partial name.', $name ) );
+			throw new ThemeException( sprintf( smliser__( '"%s" is not a valid partial name.' ), $name ) );
 		}
 
 		echo $this->capture( $this->locate( 'partials/' . str_replace( '.', '/', $name ) . '.php' ), $data ); // phpcs:ignore -- template output.
@@ -341,7 +341,7 @@ final class ThemeContext {
 		$path = ltrim( $path, '/' );
 
 		if ( '' === $path || str_contains( $path, '\\' ) || in_array( '..', explode( '/', $path ), true ) ) {
-			throw new ThemeException( sprintf( '"%s" is not a valid theme asset path.', $path ) );
+			throw new ThemeException( sprintf( smliser__( '"%s" is not a valid theme asset path.' ), $path ) );
 		}
 
 		foreach ( $this->chain as $theme ) {
@@ -350,7 +350,7 @@ final class ThemeContext {
 			}
 		}
 
-		throw new ThemeException( sprintf( 'No theme in the chain of "%s" has the asset "%s".', $this->theme()->slug, $path ) );
+		throw new ThemeException( sprintf( smliser__( 'No theme in the chain of "%s" has the asset "%s".' ), $this->theme()->slug, $path ) );
 	}
 
 	/**
@@ -369,7 +369,7 @@ final class ThemeContext {
 			}
 		}
 
-		throw new ThemeException( sprintf( 'No theme in the chain of "%s" has the template "%s".', $this->theme()->slug, $relative ) );
+		throw new ThemeException( sprintf( smliser__( 'No theme in the chain of "%s" has the template "%s".' ), $this->theme()->slug, $relative ) );
 	}
 
 	/**

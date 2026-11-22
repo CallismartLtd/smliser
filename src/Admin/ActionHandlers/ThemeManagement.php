@@ -53,7 +53,7 @@ class ThemeManagement {
 		return $this->run( function () use ( $request ) : Response {
 			$theme = $this->themes->activate( $this->slug( $request ) );
 
-			return $this->ok( \sprintf( '%s now renders the public pages.', $theme->name ) );
+			return $this->ok( \sprintf( smliser__( '%s now renders the public pages.' ), $theme->name ) );
 		} );
 	}
 
@@ -73,7 +73,7 @@ class ThemeManagement {
 			$result = $this->installer->install_from_marketplace( $slug );
 
 			if ( null === $result ) {
-				return $this->ok( \sprintf( 'The theme "%s" is already the latest version.', $slug ) );
+				return $this->ok( \sprintf( smliser__( 'The theme "%s" is already the latest version.' ), $slug ) );
 			}
 
 			return $this->installed( $result, '1' === (string) $request->get( 'activate', '' ) );
@@ -96,7 +96,7 @@ class ThemeManagement {
 			$package = $request->get_file( 'package' );
 
 			if ( null === $package ) {
-				return $this->fail( 'Choose the theme package (.zip) to upload.', 400 );
+				return $this->fail( smliser__( 'Choose the theme package (.zip) to upload.' ), 400 );
 			}
 
 			$result = $this->installer->install_upload(
@@ -125,7 +125,7 @@ class ThemeManagement {
 			$result = $this->installer->update( $slug );
 
 			return null === $result
-				? $this->ok( \sprintf( 'The theme "%s" is up to date.', $slug ) )
+				? $this->ok( \sprintf( smliser__( 'The theme "%s" is up to date.' ), $slug ) )
 				: $this->installed( $result, false );
 		} );
 	}
@@ -145,10 +145,10 @@ class ThemeManagement {
 			$failed    = \count( \array_filter( $updates, static fn ( array $u ) : bool => null !== $u['error'] ) );
 
 			$message = match ( true ) {
-				[] === $updates => 'No installed theme comes from the marketplace.',
-				$failed > 0     => \sprintf( 'The marketplace could not be asked about %d theme(s); see the Version column.', $failed ),
-				$available > 0  => \sprintf( '%d theme update(s) available.', $available ),
-				default         => 'Every marketplace theme is up to date.',
+				[] === $updates => smliser__( 'No installed theme comes from the marketplace.' ),
+				$failed > 0     => \sprintf( smliser__( 'The marketplace could not be asked about %d theme(s); see the Version column.' ), $failed ),
+				$available > 0  => \sprintf( smliser__( '%d theme update(s) available.' ), $available ),
+				default         => smliser__( 'Every marketplace theme is up to date.' ),
 			};
 
 			return $this->ok( $message, [ 'updates' => $updates ] );
@@ -175,7 +175,7 @@ class ThemeManagement {
 			);
 
 			return $this->ok(
-				'The marketplace was read.',
+				smliser__( 'The marketplace was read.' ),
 				[
 					'modules'    => $listing[ ThemeInstaller::LIST_KEY ],
 					'pagination' => $listing['pagination'],
@@ -197,7 +197,7 @@ class ThemeManagement {
 			$slug     = $this->slug( $request );
 			$warnings = $this->installer->remove_theme( $slug );
 
-			return $this->ok( \sprintf( 'The theme "%s" was removed.', $slug ), [ 'warnings' => $warnings ] );
+			return $this->ok( \sprintf( smliser__( 'The theme "%s" was removed.' ), $slug ), [ 'warnings' => $warnings ] );
 		} );
 	}
 
@@ -218,7 +218,7 @@ class ThemeManagement {
 				$lines[] = \sprintf( '%s: %s', $slug, $result );
 			}
 
-			return $this->ok( [] === $lines ? 'No theme is installed.' : 'Theme assets published: ' . \implode( '; ', $lines ) . '.' );
+			return $this->ok( [] === $lines ? smliser__( 'No theme is installed.' ) : smliser__( 'Theme assets published: ' ) . \implode( '; ', $lines ) . '.' );
 		} );
 	}
 
@@ -238,7 +238,7 @@ class ThemeManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( null === $principal || ! $principal->is( 'system_admin' ) ) {
-			return $this->fail( 'Only system administrators can manage themes.', 403 );
+			return $this->fail( smliser__( 'Only system administrators can manage themes.' ), 403 );
 		}
 
 		try {
@@ -259,12 +259,12 @@ class ThemeManagement {
 	private function installed( array $result, bool $activate ) : Response {
 		$theme   = $result['theme'];
 		$message = null === $result['previous']
-			? \sprintf( 'Installed %s %s.', $theme->name, $theme->version )
-			: \sprintf( 'Updated %s from %s to %s.', $theme->name, $result['previous'], $theme->version );
+			? \sprintf( smliser__( 'Installed %s %s.' ), $theme->name, $theme->version )
+			: \sprintf( smliser__( 'Updated %s from %s to %s.' ), $theme->name, $result['previous'], $theme->version );
 
 		if ( $activate ) {
 			$this->themes->activate( $theme->slug );
-			$message .= ' It now renders the public pages.';
+			$message .= smliser__( ' It now renders the public pages.' );
 		}
 
 		return $this->ok( $message, [ 'warnings' => $result['warnings'] ] );
@@ -281,7 +281,7 @@ class ThemeManagement {
 		$slug = \trim( (string) $request->get( 'slug', '' ) );
 
 		if ( '' === $slug ) {
-			throw new ThemeException( 'Name the theme (its slug).' );
+			throw new ThemeException( smliser__( 'Name the theme (its slug).' ) );
 		}
 
 		return $slug;

@@ -83,10 +83,10 @@
 
 				try {
 					await writeClipboard( code.textContent );
-					SmliserToast.show( 'Copied.', { type: 'success' } );
+					SmliserToast.show( smliserI18n.__( 'Copied.' ), { type: 'success' } );
 				} catch ( error ) {
 					selectText( code );
-					SmliserToast.show( 'Your browser blocked copying. Press Ctrl+C (Cmd+C) to copy the selected text.', { type: 'warning' } );
+					SmliserToast.show( smliserI18n.__( 'Your browser blocked copying. Press Ctrl+C (Cmd+C) to copy the selected text.' ), { type: 'warning' } );
 				}
 			} );
 		} );
@@ -117,7 +117,7 @@
 		area.remove();
 
 		if ( ! copied ) {
-			throw new Error( 'Copy command was refused.' );
+			throw new Error( smliserI18n.__( 'Copy command was refused.' ) );
 		}
 	}
 
@@ -169,14 +169,14 @@
 				renderOverview( page, body?.overview );
 				renderRunners( page, body?.runners || [] );
 				renderBadges( page, body?.mode ?? null );
-				setChecked( `Checked at ${ new Date().toLocaleTimeString() }. Refreshes every 30 seconds while the page is open.` );
+				setChecked( smliserI18n.sprintf( smliserI18n.__( 'Checked at %s. Refreshes every 30 seconds while the page is open.' ), new Date().toLocaleTimeString() ) );
 
 				if ( manual ) {
-					SmliserToast.show( 'Status refreshed.', { type: 'success' } );
+					SmliserToast.show( smliserI18n.__( 'Status refreshed.' ), { type: 'success' } );
 				}
 			} catch ( error ) {
 				if ( manual ) {
-					SmliserToast.show( error?.message || 'The status could not be loaded.', { type: 'error' } );
+					SmliserToast.show( error?.message || smliserI18n.__( 'The status could not be loaded.' ), { type: 'error' } );
 				}
 			} finally {
 				busy = false;

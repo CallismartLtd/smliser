@@ -22,15 +22,15 @@ $args = $page_handler->get_menu_args( $request );
 \array_unshift(
 	$args['actions'],
 	[
-		'title' => 'Add New License',
-		'label' => 'Add New',
+		'title' => smliser__( 'Add New License' ),
+		'label' => smliser__( 'Add New' ),
 		'url'   => $add_url,
 		'icon'  => 'ti ti-plus',
 	],
 
 	[
-		'title' => 'View Activity Logs',
-		'label' => 'Activity Logs',
+		'title' => smliser__( 'View Activity Logs' ),
+		'label' => smliser__( 'Activity Logs' ),
 		'url'   => $urlmanager->admin_license_page_url( 'logs' ),
 		'icon'  => 'ti ti-activity',
 	]
@@ -44,25 +44,25 @@ $args = $page_handler->get_menu_args( $request );
                 <input type="hidden" name="page" value="<?php echo escAttr( $request->get( 'page' ) ) ?>">
                 <input type="hidden" name="tab" value="<?php echo escAttr( $request->get( 'tab' ) ) ?>">
                 
-                <input type="search" name="search_term" value="<?php echo escHtml( $request->get( 'search_term', '' ) ) ?>" id="smliser-license-search-input" placeholder="Search licenses...">
-                <button type="submit" class="button smliser-btn">Search</button>
+                <input type="search" name="search_term" value="<?php echo escHtml( $request->get( 'search_term', '' ) ) ?>" id="smliser-license-search-input" placeholder="<?php smliser_esc_attr_e( 'Search licenses...' ); ?>">
+                <button type="submit" class="button smliser-btn"><?php smliser_esc_html_e( 'Search' ); ?></button>
             </form>
             
         <table class="smliser-table widefat striped">
             <thead class="<?php printf( '%s', empty( $licenses ) ? 'smliser-hide' : '' ) ?>">
                 <tr>
-                    <th><?php echo escHtml( 'License ID' ); ?></th>
-                    <th><?php echo escHtml( 'Licensee Name' ); ?></th>
-                    <th><?php echo escHtml( 'License Key' ); ?></th>
-                    <th><?php echo escHtml( 'Service ID' ); ?></th>
-                    <th><?php echo escHtml( 'Licensed App' ); ?></th>
-                    <th><?php echo escHtml( 'Status' ); ?></th>
+                    <th><?php echo smliser_esc_html__( 'License ID' ); ?></th>
+                    <th><?php echo smliser_esc_html__( 'Licensee Name' ); ?></th>
+                    <th><?php echo smliser_esc_html__( 'License Key' ); ?></th>
+                    <th><?php echo smliser_esc_html__( 'Service ID' ); ?></th>
+                    <th><?php echo smliser_esc_html__( 'Licensed App' ); ?></th>
+                    <th><?php echo smliser_esc_html__( 'Status' ); ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ( empty( $licenses ) ) : ?>
                     <tr>
-                        <td class="align-center bg-white">No licenses found.</td>
+                        <td class="align-center bg-white"><?php smliser_esc_html_e( 'No licenses found.' ); ?></td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ( $licenses as $license ) :
@@ -72,9 +72,9 @@ $args = $page_handler->get_menu_args( $request );
                                 <?php echo escHtml( $license->get_id() ); ?>
                                 <p class="smliser-edit-link">
                                     <a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'edit', [ 'id' => $license->get_id()] )->url() ); ?>">
-                                        edit</a> | 
+                                        <?php smliser_esc_html_e( 'edit' ); ?></a> | 
                                     <a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'view', ['id' => $license->get_id()] )->url() ); ?>">
-                                        view</a>
+                                        <?php smliser_esc_html_e( 'view' ); ?></a>
                                 </p>
                             </td>
                         
@@ -84,14 +84,14 @@ $args = $page_handler->get_menu_args( $request );
                                     <div class="smliser-license-obfuscation_data">
                                         <span class="smliser-license-input">
                                             <input type="text" id="<?php echo escHtml( $license->get_id() ); ?>" value="<?php echo escHtml( $license->get_license_key() ) ?>" readonly class="smliser-license-text" />
-                                            <span class="ti ti-copy copy-key smliser-tooltip" title="copy license key"></span>
+                                            <span class="ti ti-copy copy-key smliser-tooltip" title="<?php smliser_esc_attr_e( 'copy license key' ); ?>"></span>
                                         </span>
 
                                         <span class="smliser-obfuscated-license-text">
                                             <?php echo $license->get_partial_key(); ?>
                                         </span>
                                     </div>
-                                    <input type="checkbox" id="<?php echo intval( microtime( true ) ); ?>" class="smliser-licence-key-visibility-toggle smliser-tooltip" title="toggle visibility">
+                                    <input type="checkbox" id="<?php echo intval( microtime( true ) ); ?>" class="smliser-licence-key-visibility-toggle smliser-tooltip" title="<?php smliser_esc_attr_e( 'toggle visibility' ); ?>">
                                 </div>
                             </td>
                             <td><?php echo escHtml( $license->get_service_id() ); ?></td>

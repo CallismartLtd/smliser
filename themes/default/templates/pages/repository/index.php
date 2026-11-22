@@ -21,10 +21,10 @@
 <?php $this->partial( 'repository.toolbar', [ 'types' => $types, 'search' => $search, 'current' => null ] ); ?>
 
 <?php if ( '' !== $search ) : ?>
-	<?php $this->partial( 'repository.cards', [ 'apps' => $apps, 'empty' => 'Nothing matches your search.' ] ); ?>
+	<?php $this->partial( 'repository.cards', [ 'apps' => $apps, 'empty' => smliser__( 'Nothing matches your search.' ) ] ); ?>
 	<?php $this->partial( 'repository.pagination', [ 'pagination' => $pagination ] ); ?>
 <?php elseif ( [] === $sections ) : ?>
-	<p class="muted">Nothing is hosted here yet.</p>
+	<p class="muted"><?php smliser_esc_html_e( 'Nothing is hosted here yet.' ); ?></p>
 <?php else : ?>
 	<?php foreach ( $sections as $section ) : ?>
 		<section class="repo-section">
@@ -32,7 +32,7 @@
 				<h2><?php echo escHtml( $section['type']['plural'] ); ?> <span class="repo-count"><?php echo escHtml( (string) $section['type']['count'] ); ?></span></h2>
 
 				<?php if ( $section['type']['count'] > count( $section['apps'] ) ) : ?>
-					<a class="btn btn-small" href="<?php echo escUrl( $section['type']['url'] ); ?>"><?php echo escHtml( sprintf( 'All %s', $section['type']['plural'] ) ); ?></a>
+					<a class="btn btn-small" href="<?php echo escUrl( $section['type']['url'] ); ?>"><?php echo escHtml( sprintf( smliser__( 'All %s' ), $section['type']['plural'] ) ); ?></a>
 				<?php endif; ?>
 			</div>
 

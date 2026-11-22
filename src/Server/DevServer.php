@@ -269,7 +269,7 @@ final class DevServer {
 	 */
 	public function run_attached( ServerConfig $config, callable $on_line, ?callable $on_started = null ) : array {
 		if ( null !== $config->workers && $config->workers > 1 && '\\' === DIRECTORY_SEPARATOR ) {
-			throw new ServerException( 'Server workers are not available on Windows.' );
+			throw new ServerException( smliser__( 'Server workers are not available on Windows.' ) );
 		}
 
 		$php = $this->php();
@@ -289,7 +289,7 @@ final class DevServer {
 		);
 
 		if ( ! is_resource( $process ) ) {
-			throw new ServerException( 'The server process could not be started.' );
+			throw new ServerException( smliser__( 'The server process could not be started.' ) );
 		}
 
 		// The server never reads input; closing stdin gives it an immediate EOF.
@@ -327,30 +327,30 @@ final class DevServer {
 	 */
 	public function start( ServerConfig $config ) : ServerInfo {
 		if ( '\\' === DIRECTORY_SEPARATOR ) {
-			throw new ServerException( 'A background server needs Linux or macOS. On Windows, run the server in its own terminal.' );
+			throw new ServerException( smliser__( 'A background server needs Linux or macOS. On Windows, run the server in its own terminal.' ) );
 		}
 
 		$running = $this->status();
 
 		if ( null !== $running ) {
-			throw new ServerException( sprintf( 'A server is already running at %s (process %d).', $running->config->url(), $running->pid ) );
+			throw new ServerException( sprintf( smliser__( 'A server is already running at %s (process %d).' ), $running->config->url(), $running->pid ) );
 		}
 
 		$setsid = Process::find_executable( 'setsid' );
 
 		if ( null === $setsid ) {
-			throw new ServerException( 'A background server needs the setsid utility, which this system does not provide.' );
+			throw new ServerException( smliser__( 'A background server needs the setsid utility, which this system does not provide.' ) );
 		}
 
 		$php   = $this->php();
 		$probe = $this->probe( $config->host, $config->port );
 
 		if ( self::HOST_UNAVAILABLE === $probe ) {
-			throw new ServerException( sprintf( 'This machine cannot listen on %s.', $config->host ) );
+			throw new ServerException( sprintf( smliser__( 'This machine cannot listen on %s.' ), $config->host ) );
 		}
 
 		if ( self::PORT_IN_USE === $probe ) {
-			throw new ServerException( sprintf( 'Port %d is already in use on %s.', $config->port, $config->host ) );
+			throw new ServerException( sprintf( smliser__( 'Port %d is already in use on %s.' ), $config->port, $config->host ) );
 		}
 
 		$log = $this->prepare_log();
@@ -368,7 +368,7 @@ final class DevServer {
 		);
 
 		if ( ! is_resource( $process ) ) {
-			throw new ServerException( 'The server process could not be started.' );
+			throw new ServerException( smliser__( 'The server process could not be started.' ) );
 		}
 
 		$pid = (int) proc_get_status( $process )['pid'];
@@ -377,8 +377,8 @@ final class DevServer {
 			$tail = $this->log_tail();
 
 			throw new ServerException(
-				sprintf( 'The server did not start listening. See %s.', $log )
-				. ( [] === $tail ? '' : PHP_EOL . 'Last log lines:' . PHP_EOL . implode( PHP_EOL, $tail ) )
+				sprintf( smliser__( 'The server did not start listening. See %s.' ), $log )
+				. ( [] === $tail ? '' : PHP_EOL . smliser__( 'Last log lines:' ) . PHP_EOL . implode( PHP_EOL, $tail ) )
 			);
 		}
 
@@ -387,7 +387,7 @@ final class DevServer {
 		// A server nothing can find again would have to be hunted down by hand.
 		if ( ! $this->fs->put_contents( $this->state_path(), (string) json_encode( $info->to_array(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) ) ) {
 			$this->signal( $pid, self::SIGTERM, true );
-			throw new ServerException( sprintf( 'The server was started but could not be recorded in %s, so it was stopped again.', $this->state_path() ) );
+			throw new ServerException( sprintf( smliser__( 'The server was started but could not be recorded in %s, so it was stopped again.' ), $this->state_path() ) );
 		}
 
 		return $info;
@@ -411,13 +411,13 @@ final class DevServer {
 
 		if ( ! $this->wait_until_gone( $info->pid, self::STOP_WAIT ) ) {
 			if ( ! $force ) {
-				throw new ServerException( sprintf( 'The server (process %d) did not stop within %d seconds. Stop it anyway with force.', $info->pid, self::STOP_WAIT ) );
+				throw new ServerException( sprintf( smliser__( 'The server (process %d) did not stop within %d seconds. Stop it anyway with force.' ), $info->pid, self::STOP_WAIT ) );
 			}
 
 			$this->signal( $info->pid, self::SIGKILL, true );
 
 			if ( ! $this->wait_until_gone( $info->pid, self::KILL_WAIT ) ) {
-				throw new ServerException( sprintf( 'The server (process %d) could not be stopped.', $info->pid ) );
+				throw new ServerException( sprintf( smliser__( 'The server (process %d) could not be stopped.' ), $info->pid ) );
 			}
 		}
 
@@ -442,7 +442,7 @@ final class DevServer {
 		$config ??= $this->status()?->config;
 
 		if ( null === $config ) {
-			throw new ServerException( 'No server is running, so there is no address to restart it at.' );
+			throw new ServerException( smliser__( 'No server is running, so there is no address to restart it at.' ) );
 		}
 
 		$this->stop();
@@ -530,7 +530,7 @@ final class DevServer {
 		$php = PhpCli::find();
 
 		if ( null === $php ) {
-			throw new ServerException( 'No PHP command-line binary could be started (proc_open may be disabled).' );
+			throw new ServerException( smliser__( 'No PHP command-line binary could be started (proc_open may be disabled).' ) );
 		}
 
 		return $php;
@@ -591,7 +591,7 @@ final class DevServer {
 		$directory = dirname( $log );
 
 		if ( ! $this->fs->is_dir( $directory ) && ! $this->fs->mkdir( $directory ) && ! $this->fs->is_dir( $directory ) ) {
-			throw new ServerException( sprintf( 'The log directory %s could not be created.', $directory ) );
+			throw new ServerException( sprintf( smliser__( 'The log directory %s could not be created.' ), $directory ) );
 		}
 
 		if ( $this->fs->is_file( $log ) && (int) $this->fs->filesize( $log ) > self::LOG_LIMIT ) {

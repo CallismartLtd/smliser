@@ -43,7 +43,7 @@ $menu_args = $page_handler->get_top_menu_args( $request );
 
 $menu_args['actions'] = [
 	[
-		'label'  => sprintf( 'Failed Jobs (%d)', $failed_count ),
+		'label'  => sprintf( smliser__( 'Failed Jobs (%d)' ), $failed_count ),
 		'url'    => $urlmanager->admin_tools_page_url( 'queues' )->add_query_param( 'section', 'failed' ),
 		'icon'   => 'ti ti-clock-exclamation',
 		'active' => 'failed' === $request->query( 'section' )
@@ -54,7 +54,7 @@ if ( 'failed' === $request->query( 'section' ) ) {
 	$menu_args['breadcrumbs'][1]['url']  = $urlmanager->admin_tools_page_url( 'queues' );
 	$menu_args['breadcrumbs'][1]['icon'] = 'ti ti-clock';
 	$menu_args['breadcrumbs'][]          = [
-		'label' => 'Failed Jobs'
+		'label' => smliser__( 'Failed Jobs' )
 	];
 }
 
@@ -93,7 +93,7 @@ if ( 'failed' === $request->query( 'section' ) ) {
         <div class="smliser-tools-actions" id="smliser-background-actions">
             <div class="smliser-section-description">
                 <i class="ti ti-info-circle"></i>
-                <span>Jobs normally run in the queue worker (`queue work`). "Process queue" runs them in this request; it is refused while an update is queued or being installed.</span>
+                <span><?php smliser_esc_html_e( 'Jobs normally run in the queue worker (`queue work`). "Process queue" runs them in this request; it is refused while an update is queued or being installed.' ); ?></span>
             </div>
             <div class="smliser-button-container">
                 <?php if ( ! $is_failed ) : ?>
@@ -101,29 +101,29 @@ if ( 'failed' === $request->query( 'section' ) ) {
                         type="button"
                         class="smliser-btn smliser-btn-glass"
                         data-bg-action="queue/process"
-                        data-confirm="Process queued jobs now, for up to 20 seconds, in this request?"
-                    ><i class="ti ti-player-play"></i> Process queue</button>
+                        data-confirm="<?php smliser_esc_attr_e( 'Process queued jobs now, for up to 20 seconds, in this request?' ); ?>"
+                    ><i class="ti ti-player-play"></i> <?php smliser_esc_html_e( 'Process queue' ); ?></button>
                     <button
                         type="button"
                         class="smliser-btn smliser-btn-glass"
                         data-bg-action="queue/release-stale"
-                        data-confirm="Put jobs that have been running for more than 5 minutes back in the queue? Only do this if no worker is still running them."
-                    ><i class="ti ti-refresh-alert"></i> Release stale jobs</button>
+                        data-confirm="<?php smliser_esc_attr_e( 'Put jobs that have been running for more than 5 minutes back in the queue? Only do this if no worker is still running them.' ); ?>"
+                    ><i class="ti ti-refresh-alert"></i> <?php smliser_esc_html_e( 'Release stale jobs' ); ?></button>
                     <button
                         type="button"
                         class="smliser-btn smliser-btn-glass"
                         data-bg-action="queue/purge"
                         data-days="7"
-                        data-confirm="Delete completed jobs older than 7 days?"
-                    ><i class="ti ti-trash"></i> Purge completed</button>
+                        data-confirm="<?php smliser_esc_attr_e( 'Delete completed jobs older than 7 days?' ); ?>"
+                    ><i class="ti ti-trash"></i> <?php smliser_esc_html_e( 'Purge completed' ); ?></button>
                 <?php else : ?>
                     <button
                         type="button"
                         class="smliser-btn smliser-btn-glass"
                         data-bg-action="queue/purge-failed"
                         data-days="<?php echo escAttr( (string) $log_rentention ); ?>"
-                        data-confirm="<?php echo escAttr( sprintf( 'Delete failed job records older than %d days? They are the audit trail of past failures.', $log_rentention ) ); ?>"
-                    ><i class="ti ti-trash"></i> Purge failed records</button>
+                        data-confirm="<?php echo escAttr( sprintf( smliser__( 'Delete failed job records older than %d days? They are the audit trail of past failures.' ), $log_rentention ) ); ?>"
+                    ><i class="ti ti-trash"></i> <?php smliser_esc_html_e( 'Purge failed records' ); ?></button>
                 <?php endif; ?>            
             </div>
         </div>
@@ -131,28 +131,28 @@ if ( 'failed' === $request->query( 'section' ) ) {
         <table class="smliser-table widefat striped">
             <thead class="<?php echo empty( $jobs ) ? 'smliser-hide' : ''; ?>">
                 <tr>
-                    <th>ID</th>
-                    <th>Job Class</th>
-                    <th>Queue</th>
+                    <th><?php smliser_esc_html_e( 'ID' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Job Class' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Queue' ); ?></th>
                     <?php if ( $is_failed ) : ?>
-                        <th>Priority</th>
-                        <th>Attempts</th>
-                        <th>Created</th>
-                        <th>Failed At</th>
-                        <th>Error</th>
+                        <th><?php smliser_esc_html_e( 'Priority' ); ?></th>
+                        <th><?php smliser_esc_html_e( 'Attempts' ); ?></th>
+                        <th><?php smliser_esc_html_e( 'Created' ); ?></th>
+                        <th><?php smliser_esc_html_e( 'Failed At' ); ?></th>
+                        <th><?php smliser_esc_html_e( 'Error' ); ?></th>
                     <?php else : ?>
-                        <th>Status</th>
-                        <th>Attempts</th>
-                        <th>Available At</th>
+                        <th><?php smliser_esc_html_e( 'Status' ); ?></th>
+                        <th><?php smliser_esc_html_e( 'Attempts' ); ?></th>
+                        <th><?php smliser_esc_html_e( 'Available At' ); ?></th>
                     <?php endif; ?>
-                    <th>Result</th>
+                    <th><?php smliser_esc_html_e( 'Result' ); ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ( empty( $jobs ) ) : ?>
                     <tr>
                         <td class="empty-state" colspan="<?php echo $is_failed ? 8 : 7; ?>">
-                            <?php echo $is_failed ? 'No failed jobs recorded.' : 'No queued job registered.'; ?>
+                            <?php echo $is_failed ? smliser__( 'No failed jobs recorded.' ) : smliser__( 'No queued job registered.' ); ?>
                         </td>
                     </tr>
                 <?php else : ?>
@@ -188,7 +188,7 @@ if ( 'failed' === $request->query( 'section' ) ) {
                                             class="smliser-btn-link smliser-view-detail"
                                             data-title="Error &mdash; Job #<?php echo escAttr( (string) $job->get( JobDTO::KEY_ID ) ); ?>"
                                             data-content="<?php echo escAttr( $encode_for_modal( $error_message ) ); ?>"
-                                        >View</button>
+                                        ><?php smliser_esc_html_e( 'View' ); ?></button>
                                     <?php endif; ?>
                                 </td>
                             <?php else : ?>
@@ -216,7 +216,7 @@ if ( 'failed' === $request->query( 'section' ) ) {
                                         class="smliser-btn-link smliser-view-detail"
                                         data-title="Result &mdash; Job #<?php echo escAttr( (string) $job->get( JobDTO::KEY_ID ) ); ?>"
                                         data-content="<?php echo escAttr( $encode_for_modal( $result ) ); ?>"
-                                    >View</button>
+                                    ><?php smliser_esc_html_e( 'View' ); ?></button>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -226,7 +226,7 @@ if ( 'failed' === $request->query( 'section' ) ) {
         </table>
         <span class="smliser-section-description">
             <i class="ti ti-info-circle"></i>
-            <?php printf( 'These records are automatically purged after %d days', $log_rentention ); ?>
+            <?php printf( smliser__( 'These records are automatically purged after %d days' ), $log_rentention ); ?>
         </span>
     </div>
 </div>

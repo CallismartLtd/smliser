@@ -24,11 +24,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class RoleAssignmentSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Role Assignments';
+		return smliser__( 'Role Assignments' );
 	}
 
 	public static function get_description() : string {
-		return 'Maps roles to principals.';
+		return smliser__( 'Maps roles to principals.' );
 	}
 
 	public static function get_table_name() : string {

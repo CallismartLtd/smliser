@@ -61,7 +61,7 @@ class PurchaseReview {
 			$notify = $request->has( 'notify_buyer' );
 			$note   = $this->requests->add_note( $purchase, $reviewer, (string) $request->get( 'note', '' ), $notify );
 
-			return $note instanceof Exception ? $note : ( $notify ? 'Note saved and emailed to the buyer.' : 'Note saved.' );
+			return $note instanceof Exception ? $note : ( $notify ? smliser__( 'Note saved and emailed to the buyer.' ) : smliser__( 'Note saved.' ) );
 		} );
 	}
 
@@ -77,7 +77,7 @@ class PurchaseReview {
 
 			return $license instanceof Exception
 				? $license
-				: sprintf( 'Approved. License #%d was issued and is being emailed to %s.', $license->get_id(), $purchase->get_buyer_email() );
+				: sprintf( smliser__( 'Approved. License #%d was issued and is being emailed to %s.' ), $license->get_id(), $purchase->get_buyer_email() );
 		} );
 	}
 
@@ -91,7 +91,7 @@ class PurchaseReview {
 		return $this->run( $request, function ( PurchaseRequest $purchase, int $reviewer ) use ( $request ) {
 			$result = $this->requests->reject( $purchase, $reviewer, (string) $request->get( 'reason', '' ) );
 
-			return $result instanceof Exception ? $result : sprintf( 'Rejected. The reason is being emailed to %s.', $purchase->get_buyer_email() );
+			return $result instanceof Exception ? $result : sprintf( smliser__( 'Rejected. The reason is being emailed to %s.' ), $purchase->get_buyer_email() );
 		} );
 	}
 
@@ -117,7 +117,7 @@ class PurchaseReview {
 		) ) ) ) );
 
 		if ( [] === $ids ) {
-			return $this->failure( new Exception( 'no_selection', 'Select the purchase requests to delete.', [ 'status' => 400 ] ) );
+			return $this->failure( new Exception( 'no_selection', smliser__( 'Select the purchase requests to delete.' ), [ 'status' => 400 ] ) );
 		}
 
 		$deleted = 0;
@@ -152,8 +152,8 @@ class PurchaseReview {
 			[
 				'success'  => true,
 				'message'  => [] === $errors
-					? sprintf( 'Deleted %d %s.', $deleted, $plural )
-					: sprintf( 'Deleted %d %s. Not deleted: %s', $deleted, $plural, implode( ' ', $errors ) ),
+					? sprintf( smliser__( 'Deleted %d %s.' ), $deleted, $plural )
+					: sprintf( smliser__( 'Deleted %d %s. Not deleted: %s' ), $deleted, $plural, implode( ' ', $errors ) ),
 				'redirect' => $this->urlmanager->admin_license_page_url( 'purchase-requests', $args )->url(),
 			],
 			200
@@ -177,7 +177,7 @@ class PurchaseReview {
 		$purchase = PurchaseRequest::get_by_id( (int) $request->get( 'request_id', 0 ) );
 
 		if ( ! $purchase ) {
-			return $this->failure( new Exception( 'request_not_found', 'This purchase request does not exist.', [ 'status' => 404 ] ) );
+			return $this->failure( new Exception( 'request_not_found', smliser__( 'This purchase request does not exist.' ), [ 'status' => 404 ] ) );
 		}
 
 		$result = $action( $purchase, (int) $this->guard->get_principal()?->get_actor()->get_id() );

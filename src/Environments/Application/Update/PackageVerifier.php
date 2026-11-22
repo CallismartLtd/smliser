@@ -67,24 +67,24 @@ final class PackageVerifier {
 		$actual = $this->fs->is_file( $zip ) ? hash_file( 'sha256', $zip ) : false;
 
 		if ( false === $actual ) {
-			throw new UpdateException( sprintf( '%s could not be read for verification.', $name ) );
+			throw new UpdateException( sprintf( smliser__( '%s could not be read for verification.' ), $name ) );
 		}
 
 		$result = [ 'warnings' => [], 'signed_by' => null, 'sha256' => $actual ];
 
 		if ( null === $checksums ) {
 			if ( ! $trust_unsigned ) {
-				throw new UpdateException( sprintf( 'No checksums file was found for %s, so the package cannot be verified.', $name ) );
+				throw new UpdateException( sprintf( smliser__( 'No checksums file was found for %s, so the package cannot be verified.' ), $name ) );
 			}
 
-			$result['warnings'][] = 'The package has no checksums file; only the file list inside it was checked.';
-			$this->report( $progress, 'verify', self::STATUS_WARNING, sprintf( '%s has no checksums file (accepted: --trust-unsigned). SHA-256 %s.', $name, $actual ) );
+			$result['warnings'][] = smliser__( 'The package has no checksums file; only the file list inside it was checked.' );
+			$this->report( $progress, 'verify', self::STATUS_WARNING, sprintf( smliser__( '%s has no checksums file (accepted: --trust-unsigned). SHA-256 %s.' ), $name, $actual ) );
 
 			return $result;
 		}
 
 		if ( null !== $expected_identity && HostingAttestation::identity( $checksums ) !== $expected_identity ) {
-			throw new UpdateException( 'The hosting attestation does not name this hosted app and package.' );
+			throw new UpdateException( smliser__( 'The hosting attestation does not name this hosted app and package.' ) );
 		}
 
 		$signer = null === $signature || ! $this->signature->configured() ? null : $this->signature->signer( $checksums, $signature );
@@ -93,29 +93,29 @@ final class PackageVerifier {
 			if ( ! $trust_unsigned ) {
 				throw new UpdateException(
 					$this->signature->configured()
-						? 'The package signature is missing or invalid; it may not come from the publisher. Nothing was changed.'
-						: 'This installation has no release signing keys, so it cannot verify any package.'
+						? smliser__( 'The package signature is missing or invalid; it may not come from the publisher. Nothing was changed.' )
+						: smliser__( 'This installation has no release signing keys, so it cannot verify any package.' )
 				);
 			}
 
-			$result['warnings'][] = 'The package signature was not verified (--trust-unsigned).';
-			$this->report( $progress, 'verify', self::STATUS_WARNING, 'The checksums are not signed by a release key (accepted: --trust-unsigned).' );
+			$result['warnings'][] = smliser__( 'The package signature was not verified (--trust-unsigned).' );
+			$this->report( $progress, 'verify', self::STATUS_WARNING, smliser__( 'The checksums are not signed by a release key (accepted: --trust-unsigned).' ) );
 		} else {
 			$result['signed_by'] = $signer;
-			$this->report( $progress, 'verify', self::STATUS_OK, sprintf( 'Checksums signature is valid (signed by %s).', $this->describe_key( $signer ) ) );
+			$this->report( $progress, 'verify', self::STATUS_OK, sprintf( smliser__( 'Checksums signature is valid (signed by %s).' ), $this->describe_key( $signer ) ) );
 		}
 
 		$expected = self::parse( $checksums )[ $name ] ?? null;
 
 		if ( null === $expected ) {
-			throw new UpdateException( sprintf( 'The checksums file does not list %s.', $name ) );
+			throw new UpdateException( sprintf( smliser__( 'The checksums file does not list %s.' ), $name ) );
 		}
 
 		if ( ! hash_equals( $expected, $actual ) ) {
-			throw new UpdateException( sprintf( '%s does not match its published checksum; the download may be damaged. Nothing was changed.', $name ) );
+			throw new UpdateException( sprintf( smliser__( '%s does not match its published checksum; the download may be damaged. Nothing was changed.' ), $name ) );
 		}
 
-		$this->report( $progress, 'verify', self::STATUS_OK, sprintf( '%s matches its published SHA-256 %s.', $name, $actual ) );
+		$this->report( $progress, 'verify', self::STATUS_OK, sprintf( smliser__( '%s matches its published SHA-256 %s.' ), $name, $actual ) );
 
 		return $result;
 	}

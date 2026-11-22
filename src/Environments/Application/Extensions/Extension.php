@@ -130,25 +130,25 @@ final class Extension implements Module {
 		$file   = $path . '/' . self::MANIFEST;
 
 		if ( ! $fs->is_file( $file ) ) {
-			throw new ExtensionException( sprintf( 'The extension "%s" has no %s.', $folder, self::MANIFEST ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension "%s" has no %s.' ), $folder, self::MANIFEST ) );
 		}
 
 		$json     = $fs->get_contents( $file );
 		$manifest = false === $json ? null : json_decode( $json, true );
 
 		if ( ! is_array( $manifest ) ) {
-			throw new ExtensionException( sprintf( 'The %s of the extension "%s" is not valid JSON.', self::MANIFEST, $folder ) );
+			throw new ExtensionException( sprintf( smliser__( 'The %s of the extension "%s" is not valid JSON.' ), self::MANIFEST, $folder ) );
 		}
 
 		foreach ( [ 'slug', 'name', 'version', 'entry', 'namespace' ] as $key ) {
 			if ( ! isset( $manifest[ $key ] ) || ! is_string( $manifest[ $key ] ) || '' === trim( $manifest[ $key ] ) ) {
-				throw new ExtensionException( sprintf( 'The %s of the extension "%s" needs a "%s".', self::MANIFEST, $folder, $key ) );
+				throw new ExtensionException( sprintf( smliser__( 'The %s of the extension "%s" needs a "%s".' ), self::MANIFEST, $folder, $key ) );
 			}
 		}
 
 		foreach ( [ 'source', 'requires', 'description', 'author' ] as $key ) {
 			if ( isset( $manifest[ $key ] ) && ! is_string( $manifest[ $key ] ) ) {
-				throw new ExtensionException( sprintf( 'The "%s" of the extension "%s" must be a string.', $key, $folder ) );
+				throw new ExtensionException( sprintf( smliser__( 'The "%s" of the extension "%s" must be a string.' ), $key, $folder ) );
 			}
 		}
 
@@ -158,23 +158,23 @@ final class Extension implements Module {
 		$source    = isset( $manifest['source'] ) && '' !== $manifest['source'] ? $manifest['source'] : self::DEFAULT_SOURCE;
 
 		if ( 1 !== preg_match( self::SLUG_PATTERN, $slug ) ) {
-			throw new ExtensionException( sprintf( 'The extension slug "%s" is invalid: use lowercase letters, digits and hyphens.', $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension slug "%s" is invalid: use lowercase letters, digits and hyphens.' ), $slug ) );
 		}
 
 		if ( $slug !== $folder ) {
-			throw new ExtensionException( sprintf( 'The extension slug "%s" does not match its folder "%s".', $slug, $folder ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension slug "%s" does not match its folder "%s".' ), $slug, $folder ) );
 		}
 
 		$depends = [];
 
 		if ( isset( $manifest['depends'] ) ) {
 			if ( ! is_array( $manifest['depends'] ) ) {
-				throw new ExtensionException( sprintf( 'The "depends" of the extension "%s" must be a list of extension slugs.', $slug ) );
+				throw new ExtensionException( sprintf( smliser__( 'The "depends" of the extension "%s" must be a list of extension slugs.' ), $slug ) );
 			}
 
 			foreach ( $manifest['depends'] as $dependency ) {
 				if ( ! is_string( $dependency ) || 1 !== preg_match( self::SLUG_PATTERN, $dependency ) || $dependency === $slug ) {
-					throw new ExtensionException( sprintf( 'The "depends" of the extension "%s" has an invalid slug.', $slug ) );
+					throw new ExtensionException( sprintf( smliser__( 'The "depends" of the extension "%s" has an invalid slug.' ), $slug ) );
 				}
 
 				$depends[] = $dependency;
@@ -184,33 +184,33 @@ final class Extension implements Module {
 		}
 
 		if ( 1 !== preg_match( self::NAMESPACE_PATTERN, $namespace ) ) {
-			throw new ExtensionException( sprintf( 'The namespace "%s" of the extension "%s" is invalid: it must end with a backslash.', $namespace, $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The namespace "%s" of the extension "%s" is invalid: it must end with a backslash.' ), $namespace, $slug ) );
 		}
 
 		if ( 0 === stripos( $namespace, self::RESERVED_NAMESPACE ) ) {
-			throw new ExtensionException( sprintf( 'The namespace "%s" of the extension "%s" is reserved by the app.', $namespace, $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The namespace "%s" of the extension "%s" is reserved by the app.' ), $namespace, $slug ) );
 		}
 
 		if ( 1 !== preg_match( self::CLASS_PATTERN, $entry ) || 0 !== strncmp( $entry, $namespace, strlen( $namespace ) ) ) {
-			throw new ExtensionException( sprintf( 'The entry class "%s" of the extension "%s" must be a class inside the namespace "%s".', $entry, $slug, $namespace ) );
+			throw new ExtensionException( sprintf( smliser__( 'The entry class "%s" of the extension "%s" must be a class inside the namespace "%s".' ), $entry, $slug, $namespace ) );
 		}
 
 		if ( 1 !== preg_match( self::SOURCE_PATTERN, $source ) ) {
-			throw new ExtensionException( sprintf( 'The source folder "%s" of the extension "%s" is invalid: use a relative folder.', $source, $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The source folder "%s" of the extension "%s" is invalid: use a relative folder.' ), $source, $slug ) );
 		}
 
 		if ( 'assets' === explode( '/', $source )[0] ) {
-			throw new ExtensionException( sprintf( 'The source folder of the extension "%s" cannot be assets/: assets are published in public/ and must not hold PHP.', $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The source folder of the extension "%s" cannot be assets/: assets are published in public/ and must not hold PHP.' ), $slug ) );
 		}
 
 		if ( ! $fs->is_dir( $path . '/' . $source ) ) {
-			throw new ExtensionException( sprintf( 'The extension "%s" has no "%s" source folder.', $slug, $source ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension "%s" has no "%s" source folder.' ), $slug, $source ) );
 		}
 
 		$entry_file = $path . '/' . $source . '/' . str_replace( '\\', '/', substr( $entry, strlen( $namespace ) ) ) . '.php';
 
 		if ( ! $fs->is_file( $entry_file ) ) {
-			throw new ExtensionException( sprintf( 'The entry class "%s" of the extension "%s" was not found at %s.', $entry, $slug, $entry_file ) );
+			throw new ExtensionException( sprintf( smliser__( 'The entry class "%s" of the extension "%s" was not found at %s.' ), $entry, $slug, $entry_file ) );
 		}
 
 		return new self(

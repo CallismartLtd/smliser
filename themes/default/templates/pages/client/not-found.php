@@ -11,7 +11,7 @@
 
 ?>
 <div class="cell">
-	<h3>Not found</h3>
+	<h3><?php smliser_esc_html_e( 'Not found' ); ?></h3>
 	<p><?php echo escHtml( $message ); ?></p>
 	<a class="btn" href="<?php echo escUrl( $back_url ); ?>"><?php echo escHtml( $back_label ); ?></a>
 </div>

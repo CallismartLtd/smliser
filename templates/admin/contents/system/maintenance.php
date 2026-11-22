@@ -36,29 +36,29 @@ $when = static function ( ?string $iso ) : string {
 	MaintenanceFlag::REASON_UPDATE === $reason => [
 		'pending',
 		'ti ti-loader-2 smliser-health-spin',
-		'An update holds maintenance mode',
-		'The site is in maintenance while an update is installed or finished. The update ends it; see the Updates page.',
+		smliser__( 'An update holds maintenance mode' ),
+		smliser__( 'The site is in maintenance while an update is installed or finished. The update ends it; see the Updates page.' ),
 	],
 	MaintenanceFlag::REASON_INSTALLATION === $reason => [
 		'pending',
 		'ti ti-loader-2 smliser-health-spin',
-		'An installation holds maintenance mode',
-		'The site is in maintenance while it is being installed.',
+		smliser__( 'An installation holds maintenance mode' ),
+		smliser__( 'The site is in maintenance while it is being installed.' ),
 	],
 	$operator => [
 		'warning',
 		'ti ti-barrier-block',
-		'Maintenance mode is on',
+		smliser__( 'Maintenance mode is on' ),
 		sprintf(
-			'Visitors get the maintenance page%s. You are using the site through the bypass.',
+			smliser__( 'Visitors get the maintenance page%s. You are using the site through the bypass.' ),
 			$status['background_paused'] ? ', and scheduled tasks and queued jobs wait' : ''
 		),
 	],
 	default => [
 		'pass',
 		'ti ti-circle-check',
-		'The site is open',
-		'Switch maintenance mode on before a database backup or import, a server move, or other work that needs the site quiet.',
+		smliser__( 'The site is open' ),
+		smliser__( 'Switch maintenance mode on before a database backup or import, a server move, or other work that needs the site quiet.' ),
 	],
 };
 
@@ -83,7 +83,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 				<summary class="smliser-diagnostics-panel-summary">
 					<span class="smliser-diagnostics-panel-summary-left">
 						<span class="smliser-diagnostics-panel-icon"><i class="ti ti-info-circle"></i></span>
-						<span class="smliser-diagnostics-panel-title">Current maintenance</span>
+						<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Current maintenance' ); ?></span>
 					</span>
 					<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 				</summary>
@@ -93,9 +93,9 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 						$rows = [
 							'Since'           => $when( $status['since'] ),
 							'Switched on by'  => $status['by'] ?? '—',
-							'Visitors read'   => '' === $status['message'] ? 'The default maintenance notice.' : $status['message'],
+							'Visitors read'   => '' === $status['message'] ? smliser__( 'The default maintenance notice.' ) : $status['message'],
 							'Retry-After'     => $status['retry_after'] > 0 ? $status['retry_after'] . ' seconds' : 'Default',
-							'Background work' => $status['background_paused'] ? 'Paused until maintenance ends.' : 'Running.',
+							'Background work' => $status['background_paused'] ? smliser__( 'Paused until maintenance ends.' ) : 'Running.',
 						];
 			?>
 						<?php foreach ( $rows as $label => $value ) : ?>
@@ -110,12 +110,12 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 
 					<?php if ( $operator ) : ?>
 						<div class="smliser-health-async-footer">
-							<span class="smliser-health-async-time">The bypass link lets another browser in; a new link stops the earlier ones.</span>
-							<button type="button" class="smliser-btn smliser-btn-glass" data-maintenance-action="bypass" data-confirm="Make a new bypass link? Earlier links stop working; this browser keeps access.">
-								<i class="ti ti-link"></i> New bypass link
+							<span class="smliser-health-async-time"><?php smliser_esc_html_e( 'The bypass link lets another browser in; a new link stops the earlier ones.' ); ?></span>
+							<button type="button" class="smliser-btn smliser-btn-glass" data-maintenance-action="bypass" data-confirm="<?php smliser_esc_attr_e( 'Make a new bypass link? Earlier links stop working; this browser keeps access.' ); ?>">
+								<i class="ti ti-link"></i> <?php smliser_esc_html_e( 'New bypass link' ); ?>
 							</button>
-							<button type="button" class="smliser-btn smliser-btn-glass" data-maintenance-action="disable" data-confirm="Open the site to visitors again?">
-								<i class="ti ti-lock-open"></i> Turn maintenance off
+							<button type="button" class="smliser-btn smliser-btn-glass" data-maintenance-action="disable" data-confirm="<?php smliser_esc_attr_e( 'Open the site to visitors again?' ); ?>">
+								<i class="ti ti-lock-open"></i> <?php smliser_esc_html_e( 'Turn maintenance off' ); ?>
 							</button>
 						</div>
 					<?php endif; ?>
@@ -129,7 +129,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 				<summary class="smliser-diagnostics-panel-summary">
 					<span class="smliser-diagnostics-panel-summary-left">
 						<span class="smliser-diagnostics-panel-icon"><i class="ti ti-barrier-block"></i></span>
-						<span class="smliser-diagnostics-panel-title"><?php echo escHtml( $status['active'] ? 'Change maintenance' : 'Switch maintenance on' ); ?></span>
+						<span class="smliser-diagnostics-panel-title"><?php echo escHtml( $status['active'] ? smliser__( 'Change maintenance' ) : smliser__( 'Switch maintenance on' ) ); ?></span>
 					</span>
 					<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 				</summary>
@@ -138,13 +138,13 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 						<ul class="smliser-health-checks">
 							<li class="smliser-health-check">
 								<label class="smliser-health-check-body">
-									<span class="smliser-health-check-header"><span class="smliser-health-check-label">Message for visitors</span></span>
-									<input type="text" name="message" class="smliser-form-input" maxlength="500" value="<?php echo escAttr( $status['message'] ); ?>" placeholder="<?php echo escAttr( sprintf( '%s is undergoing scheduled maintenance. Please try again shortly.', \SMLISER_APP_NAME ) ); ?>">
+									<span class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Message for visitors' ); ?></span></span>
+									<input type="text" name="message" class="smliser-form-input" maxlength="500" value="<?php echo escAttr( $status['message'] ); ?>" placeholder="<?php echo escAttr( sprintf( smliser__( '%s is undergoing scheduled maintenance. Please try again shortly.' ), \SMLISER_APP_NAME ) ); ?>">
 								</label>
 							</li>
 							<li class="smliser-health-check">
 								<label class="smliser-health-check-body">
-									<span class="smliser-health-check-header"><span class="smliser-health-check-label">Ask visitors to retry after (seconds)</span></span>
+									<span class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Ask visitors to retry after (seconds)' ); ?></span></span>
 									<input type="number" name="retry_after" class="smliser-form-input" min="0" step="1" value="<?php echo escAttr( (string) ( $status['retry_after'] > 0 ? $status['retry_after'] : BootModeResolver::DEFAULT_RETRY_AFTER ) ); ?>">
 								</label>
 							</li>
@@ -152,16 +152,16 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 								<label class="smliser-health-check-body">
 									<span class="smliser-health-check-header">
 										<input type="checkbox" name="keep_background" value="1" <?php echo $status['active'] && ! $status['background_paused'] ? 'checked' : ''; ?>>
-										<span class="smliser-health-check-label">Keep background work running</span>
+										<span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Keep background work running' ); ?></span>
 									</span>
-									<span class="smliser-health-check-message">By default, scheduled tasks and queued jobs wait, so nothing writes to the database during a backup or an import.</span>
+									<span class="smliser-health-check-message"><?php smliser_esc_html_e( 'By default, scheduled tasks and queued jobs wait, so nothing writes to the database during a backup or an import.' ); ?></span>
 								</label>
 							</li>
 						</ul>
 						<div class="smliser-health-async-footer">
-							<span class="smliser-health-async-time">This browser keeps access; you get a bypass link for others. The console works throughout.</span>
+							<span class="smliser-health-async-time"><?php smliser_esc_html_e( 'This browser keeps access; you get a bypass link for others. The console works throughout.' ); ?></span>
 							<button type="submit" class="smliser-btn smliser-btn-glass">
-								<i class="ti ti-barrier-block"></i> <?php echo escHtml( $status['active'] ? 'Apply' : 'Turn maintenance on' ); ?>
+								<i class="ti ti-barrier-block"></i> <?php echo escHtml( $status['active'] ? 'Apply' : smliser__( 'Turn maintenance on' ) ); ?>
 							</button>
 						</div>
 					</form>

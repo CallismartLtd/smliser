@@ -38,7 +38,7 @@ class RasterizeReceiptJob implements JobHandlerInterface {
 		$request = PurchaseRequest::get_by_id( (int) ( $payload['request_id'] ?? 0 ) );
 
 		if ( ! $request ) {
-			return [ 'success' => false, 'message' => 'The purchase request does not exist.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The purchase request does not exist.' ) ];
 		}
 
 		$pages = $this->requests->render_receipt_pages( $request );
@@ -47,20 +47,20 @@ class RasterizeReceiptJob implements JobHandlerInterface {
 			return [ 'success' => false, 'message' => $pages->get_error_message() ];
 		}
 
-		return [ 'success' => true, 'message' => sprintf( '%d page(s) rendered.', $pages ) ];
+		return [ 'success' => true, 'message' => sprintf( smliser__( '%d page(s) rendered.' ), $pages ) ];
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Render PDF Receipt';
+		return smliser__( 'Render PDF Receipt' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Render the pages of a PDF payment receipt to images, so reviewers see it the same in every browser.';
+		return smliser__( 'Render the pages of a PDF payment receipt to images, so reviewers see it the same in every browser.' );
 	}
 }

@@ -49,7 +49,7 @@ class NotifyAppUpdateJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Sends new version notification emails to all active licensees of an app.';
+		return smliser__( 'Sends new version notification emails to all active licensees of an app.' );
 	}
 
 	/**

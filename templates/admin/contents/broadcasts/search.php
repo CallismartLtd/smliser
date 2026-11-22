@@ -26,24 +26,24 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                 <input type="hidden" name="page" value="smliser-broadcasts">
                 <input type="hidden" name="tab" value="search">
                 
-                <input type="search" name="msg_search" value="<?php echo $request->query( 'msg_search' ) ?>" id="smliser-msg-search-input" placeholder="Search messages">
-                <button type="submit" class="button smliser-btn">Search</button>
+                <input type="search" name="msg_search" value="<?php echo $request->query( 'msg_search' ) ?>" id="smliser-msg-search-input" placeholder="<?php smliser_esc_attr_e( 'Search messages' ); ?>">
+                <button type="submit" class="button smliser-btn"><?php smliser_esc_html_e( 'Search' ); ?></button>
             </form>
 
             <table class="smliser-table widefat striped">
                 <thead class="<?php printf( '%s', empty( $messages ) ? 'smliser-hide' : '' ) ?>">
                     <tr>
                         <th><?php echo escHtml( 'ID' ); ?></th>
-                        <th><?php echo escHtml( 'Message ID' ); ?></th>
-                        <th><?php echo escHtml( 'Subject' ); ?></th>
-                        <th><?php echo escHtml( 'Body' ); ?></th>
-                        <th><?php echo escHtml( 'Apps' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Message ID' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Subject' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Body' ); ?></th>
+                        <th><?php echo smliser_esc_html__( 'Apps' ); ?></th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php if ( empty( $messages ) ) : ?>
-                        <tr><td colspan="6" class="align-center"><?php echo escHtml( 'No messages found.' ); ?></td></tr>
+                        <tr><td colspan="6" class="align-center"><?php echo smliser_esc_html__( 'No messages found.' ); ?></td></tr>
                     <?php else: ?>
                     
                         <?php foreach ( $messages as $message ) : ?>        
@@ -51,7 +51,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                                 <td class="smliser-edit-row">
                                     <?php echo escHtml( $message->get_id() ); ?>
                                     <p class="smliser-edit-link">
-                                        <a href="<?php echo escUrl( $urlmanager->admin_broadcasts_page_url( 'edit', ['msg_id' => $message->get_message_id()] )->url() ); ?>">Edit</a>
+                                        <a href="<?php echo escUrl( $urlmanager->admin_broadcasts_page_url( 'edit', ['msg_id' => $message->get_message_id()] )->url() ); ?>"><?php smliser_esc_html_e( 'Edit' ); ?></a>
                                     </p>
                                 </td>
                             

@@ -27,14 +27,14 @@ class BulkMessagesAppsSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Bulk Messages Apps';
+		return smliser__( 'Bulk Messages Apps' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Maps messages to applications.';
+		return smliser__( 'Maps messages to applications.' );
 	}
 
 	/**

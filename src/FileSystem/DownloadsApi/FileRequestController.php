@@ -127,7 +127,7 @@ class FileRequestController {
 			if ( '' === $artifact_filename ) {
 				throw new FileRequestException(
 					'missing_file_parameter',
-					'Artifact file name is required.'
+					smliser__( 'Artifact file name is required.' )
 				);
 			}
 
@@ -497,13 +497,13 @@ class FileRequestController {
 			$asset_url = $request->get( 'asset_url' );
 
 			if ( ! $asset_url ) {
-				throw new FileRequestException( 'missing_parameter', 'Asset URL is required.', ['status' => 400] );
+				throw new FileRequestException( 'missing_parameter', smliser__( 'Asset URL is required.' ), ['status' => 400] );
 			}
 
 			$url = URL::from( $asset_url );
 
 			if ( ! $url->is_valid() ) {
-				throw new FileRequestException( 'malformed_request', 'The provided URL is not valid.' );
+				throw new FileRequestException( 'malformed_request', smliser__( 'The provided URL is not valid.' ) );
 			}
 			
 			$file       = smliser_download_url( $asset_url );
@@ -533,7 +533,7 @@ class FileRequestController {
 			$file_path = $request->get( 'file_path' );
 
 			if ( ! $file_path ) {
-				throw new FileRequestException( 'missing_parameter', 'File path is required.', ['status' => 400] );
+				throw new FileRequestException( 'missing_parameter', smliser__( 'File path is required.' ), ['status' => 400] );
 			}
 
 			$sanitized_path = FileSystemHelper::sanitize_path( $file_path );

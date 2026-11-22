@@ -56,18 +56,18 @@ class Controller {
 			$features    = preg_split( '/[,\r\n]+/', (string) $request->get( 'features', '' ) ) ?: [];
 
 			$app_type = $request->get( 'app_type' )
-				?: throw new RequestException( 'missing_app_type', 'Item type is required', [ 'field_id' => 'app_type', 'status' => 400 ] );
+				?: throw new RequestException( 'missing_app_type', smliser__( 'Item type is required' ), [ 'field_id' => 'app_type', 'status' => 400 ] );
 
 			$tier_name = $request->get( 'tier_name' )
-				?: throw new RequestException( 'missing_tier_name', 'Tier name is required', [ 'field_id' => 'tier_name', 'status' => 400 ] );
+				?: throw new RequestException( 'missing_tier_name', smliser__( 'Tier name is required' ), [ 'field_id' => 'tier_name', 'status' => 400 ] );
 
 			$term_unit = $request->get( 'term_unit' )
-				?: throw new RequestException( 'missing_term_unit', 'Choose the license term', [ 'field_id' => 'term_unit', 'status' => 400 ] );
+				?: throw new RequestException( 'missing_term_unit', smliser__( 'Choose the license term' ), [ 'field_id' => 'term_unit', 'status' => 400 ] );
 
 			$provider = '' === $provider_id ? null : $this->registry->get_provider( $provider_id );
 
 			if ( '' !== $provider_id && ( ! $provider || $provider::get_id() !== $provider_id ) ) {
-				throw new RequestException( 'invalid_provider', 'The selected monetization provider does not exist.', [ 'field_id' => 'provider_id', 'status' => 400 ] );
+				throw new RequestException( 'invalid_provider', smliser__( 'The selected monetization provider does not exist.' ), [ 'field_id' => 'provider_id', 'status' => 400 ] );
 			}
 
 			$app = HostedApplicationService::get_app_by_id( $app_type, $app_id );
@@ -94,7 +94,7 @@ class Controller {
 			if ( $tier_id ) {
 				// Only a tier of this app's monetization can be edited here.
 				$pricing_tier = $monetization->get_tier( $tier_id )
-					?? throw new RequestException( 'resource_not_found', 'This app has no such pricing tier.', [ 'status' => 404 ] );
+					?? throw new RequestException( 'resource_not_found', smliser__( 'This app has no such pricing tier.' ), [ 'status' => 404 ] );
 
 				$this->check_permissions( 'monetization.pricing.update' );
 			} else {
@@ -142,12 +142,12 @@ class Controller {
 			}
 
 			if ( $saved ) {
-				$response_data = [ 'success' => true, 'data' => [ 'message' => 'Saved' ] ];
+				$response_data = [ 'success' => true, 'data' => [ 'message' => smliser__( 'Saved' ) ] ];
 				return ( new Response( 200, [], smliser_safe_json_encode( $response_data ) ) )
 					->set_header( 'Content-Type', 'application/json; charset=utf-8' );
 			}
 
-			throw new RequestException( 'save_failed', 'Something went wrong during data persistence.', [ 'status' => 500 ] );
+			throw new RequestException( 'save_failed', smliser__( 'Something went wrong during data persistence.' ), [ 'status' => 500 ] );
 
 		} catch ( RequestException $e ) {
 			return ( new Response() )
@@ -187,13 +187,13 @@ class Controller {
 			if ( $app ) $this->check_app_ownership( $app );
 			
 			$tier = $monetization->get_tier( $tier_id )
-				?? throw new RequestException( 'resource_not_found', 'This app has no such pricing tier.', [ 'status' => 404 ] );
+				?? throw new RequestException( 'resource_not_found', smliser__( 'This app has no such pricing tier.' ), [ 'status' => 404 ] );
 
 			// A tier that licenses were issued from is archived, not deleted.
 			if ( $tier->has_licenses() ) {
 				$tier->set_status( PricingTier::STATUS_ARCHIVED )->save();
 
-				$response_data = [ 'success' => true, 'data' => [ 'message' => 'Licenses were issued from this pricing tier, so it was archived instead: it issues no new licenses.', 'archived' => true ] ];
+				$response_data = [ 'success' => true, 'data' => [ 'message' => smliser__( 'Licenses were issued from this pricing tier, so it was archived instead: it issues no new licenses.' ), 'archived' => true ] ];
 				return ( new Response( 200, [], smliser_safe_json_encode( $response_data ) ) )
 					->set_header( 'Content-Type', 'application/json; charset=utf-8' );
 			}
@@ -203,7 +203,7 @@ class Controller {
 			if ( ! $deleted ) {
 				throw new RequestException( 'internal_server_error', __( 'Failed to delete the pricing tier, please try again.', 'smliser' ), ['status' => 500] );
 			}
-			$response_data = [ 'success' => true, 'data' => [ 'message' => 'Pricing tier deleted successfully.'] ];
+			$response_data = [ 'success' => true, 'data' => [ 'message' => smliser__( 'Pricing tier deleted successfully.' )] ];
 			return ( new Response( 200, [], smliser_safe_json_encode( $response_data ) ) )
 				->set_header( 'Content-Type', 'application/json; charset=utf-8' );
 
@@ -288,7 +288,7 @@ class Controller {
 			$license_exists = $license?->exists() ?? false;
 
 			if ( ! $license ) {
-				throw new RequestException( 'resource_not_found', 'This license does not exist.', [ 'status' => 404 ] );
+				throw new RequestException( 'resource_not_found', smliser__( 'This license does not exist.' ), [ 'status' => 404 ] );
 			}
 
 			if ( $license_exists ) {
@@ -304,12 +304,12 @@ class Controller {
 			}
 
 			if ( '' === $license->get_licensee_email() ) {
-				throw new RequestException( 'missing_email', 'The licensee email is required.', [ 'field_id' => 'licensee_email', 'status' => 400 ] );
+				throw new RequestException( 'missing_email', smliser__( 'The licensee email is required.' ), [ 'field_id' => 'licensee_email', 'status' => 400 ] );
 			}
 
 			if ( '' !== $app_type && '' !== $app_slug ) {
 				$app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug )
-					?? throw new RequestException( 'app_not_found', sprintf( 'The %s "%s" does not exist.', $app_type, $app_slug ), [ 'status' => 404 ] );
+					?? throw new RequestException( 'app_not_found', sprintf( smliser__( 'The %s "%s" does not exist.' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 
 				$this->check_app_ownership( $app );
 				$this->check_permissions( 'monetization.license.issue' );
@@ -330,20 +330,20 @@ class Controller {
 				->set_features( preg_split( '/[,\r\n]+/', (string) $request->get( 'features', '' ) ) ?: [] );
 
 			if ( ! $license->save() ) {
-				throw new RequestException( 'license_error', 'Unable to save the license' );
+				throw new RequestException( 'license_error', smliser__( 'Unable to save the license' ) );
 			}
 
 			$request->set( 'license', $license );
 
 			$url = $this->urlmanager->admin_license_page_url( 'edit', [
 				'id'      => $license->get_id(),
-				'message' => 'Saved',
+				'message' => smliser__( 'Saved' ),
 				
 			] );
 
 			$response_data = [
 				'success'      => true,
-				'message'      => sprintf( 'License %s successfully.', $license_exists ? 'Updated' : 'Created' ),
+				'message'      => sprintf( smliser__( 'License %s successfully.' ), $license_exists ? 'Updated' : 'Created' ),
 				'license'      => $license->to_array(),
 				'redirect_url' => $url->url()
 			];
@@ -415,7 +415,7 @@ class Controller {
 			$provider_id = $request->get( 'provider_id', null );
 
 			if ( ! $provider_id || ! $this->registry->has( $provider_id ) ) {
-				throw new RequestException( 'access_restricted', sprintf( 'The provider "%s" is not supported.', $provider_id ?? 'Unknown' ), [ 'status' => 403] );
+				throw new RequestException( 'access_restricted', sprintf( smliser__( 'The provider "%s" is not supported.' ), $provider_id ?? 'Unknown' ), [ 'status' => 403] );
 			}
 
 			$provider        = $this->registry->get_provider( $provider_id );
@@ -429,7 +429,7 @@ class Controller {
 				}
 			}
 
-			$response_data = [ 'success' => true, 'data' => [ 'message' => 'Saved' ] ];
+			$response_data = [ 'success' => true, 'data' => [ 'message' => smliser__( 'Saved' ) ] ];
 			return Response::json( $response_data );
 			
 		} catch ( RequestException $e ) {
@@ -475,7 +475,7 @@ class Controller {
 			}
 
 			$removed = $license->remove_activated_domain( $domain );
-			$message = $removed ? \sprintf( 'The domain "%s" has been uninstalled', $domain ) : \sprintf( 'Unable to uninstall "%s"', $domain );
+			$message = $removed ? \sprintf( smliser__( 'The domain "%s" has been uninstalled' ), $domain ) : \sprintf( smliser__( 'Unable to uninstall "%s"' ), $domain );
 			
 
 			$response_data = [ 'success' => true, 'data' => [ 'message' => $message ] ];
@@ -499,13 +499,13 @@ class Controller {
 			$license_id = $request->get( 'license_id' );
 
 			if ( ! $license_id ) {
-				throw new RequestException( 'required_param', 'License ID is required.' );
+				throw new RequestException( 'required_param', smliser__( 'License ID is required.' ) );
 			}
 
 			$license = License::get_by_id( $license_id );
 
 			if ( ! $license ) {
-				throw new RequestException( 'resource_not_found', 'This license does not exist.' );
+				throw new RequestException( 'resource_not_found', smliser__( 'This license does not exist.' ) );
 			}
 
 			$default_expiry = (int) DateDuration::fromDays( 10 )->toSeconds();
@@ -553,7 +553,7 @@ class Controller {
 			$license    = License::get_by_id( $license_id );
 
 			if ( ! $license ) {
-				throw new RequestException( 'resource_not_found', 'License was not found', ['status' => 404] );
+				throw new RequestException( 'resource_not_found', smliser__( 'License was not found' ), ['status' => 404] );
 			}
 
 			$success = true;
@@ -562,7 +562,7 @@ class Controller {
 				$success = false;
 			}
 
-			$message  = $success ? 'License was deleted' : 'Unable to delete license';
+			$message  = $success ? smliser__( 'License was deleted' ) : smliser__( 'Unable to delete license' );
 			$location = $this->urlmanager->admin_license_page_url()
 				->add_query_params( [
 					'success' => $success,

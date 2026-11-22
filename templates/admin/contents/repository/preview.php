@@ -82,7 +82,7 @@ defined( 'SMLISER_ROOT' ) || exit;
                         <div class="smliser-card-icon">
                             <i class="ti ti-photo"></i>
                         </div>
-                        <h2 class="smliser-card-title"><?php echo escHtml( 'Visual Preview' ); ?></h2>
+                        <h2 class="smliser-card-title"><?php echo smliser_esc_html__( 'Visual Preview' ); ?></h2>
                     </div>
                     
                     <div class="smliser-screenshot-gallery">
@@ -93,7 +93,7 @@ defined( 'SMLISER_ROOT' ) || exit;
             	?>
                             <h3 class="smliser-gallery-preview_title"><?php echo escHtml( $first_title ); ?></h3>
                             <div class="smliser-gallery-preview_image">
-                                <img class="smliser-request-fullscreen" src="<?php echo escUrl( current( $first_image )?: $urlmanager->assets_url( 'images/no-image.svg' ) ); ?>" alt="image" title="Double click for fullscreen">
+                                <img class="smliser-request-fullscreen" src="<?php echo escUrl( current( $first_image )?: $urlmanager->assets_url( 'images/no-image.svg' ) ); ?>" alt="<?php smliser_esc_attr_e( 'image' ); ?>" title="<?php smliser_esc_attr_e( 'Double click for fullscreen' ); ?>">
                             </div>
                         </div>
                         
@@ -102,7 +102,7 @@ defined( 'SMLISER_ROOT' ) || exit;
                                 <h3><?php echo escHtml( $title ); ?></h3>
                                 <?php foreach( $data as $image_url ) : ?>
                                     <ul class="smliser-gallery-list-container_ul">
-                                        <li><img class="repo-image-preview" src="<?php echo escUrl( $image_url ); ?>" alt="<?php echo escAttr( $title ); ?>" data-repo-image-title="<?php echo escHtml( $title ); ?>" title="Preview"></li>
+                                        <li><img class="repo-image-preview" src="<?php echo escUrl( $image_url ); ?>" alt="<?php echo escAttr( $title ); ?>" data-repo-image-title="<?php echo escHtml( $title ); ?>" title="<?php smliser_esc_attr_e( 'Preview' ); ?>"></li>
                                     </ul>
                                 <?php endforeach; ?>                            
                             <?php endforeach; ?>                            
@@ -119,7 +119,7 @@ defined( 'SMLISER_ROOT' ) || exit;
                         <div class="smliser-card-icon">
                             <i class="ti ti-download"></i>
                         </div>
-                        <h2 class="smliser-card-title"><?php echo escHtml( 'Installation' ); ?></h2>
+                        <h2 class="smliser-card-title"><?php echo smliser_esc_html__( 'Installation' ); ?></h2>
                     </div>
                     <div class="smliser-card-content">
                         <?php echo sanitize_html( $template_content['Installation'] ); ?>
@@ -134,7 +134,7 @@ defined( 'SMLISER_ROOT' ) || exit;
                         <div class="smliser-card-icon">
                             <i class="ti ti-clock-edit"></i>
                         </div>
-                        <h2 class="smliser-card-title"><?php echo escHtml( 'Changelog' ); ?></h2>
+                        <h2 class="smliser-card-title"><?php echo smliser_esc_html__( 'Changelog' ); ?></h2>
                     </div>
                     <div class="smliser-card-content smliser-changelog">
                         <?php echo sanitize_html( $template_content['Changelog'] ); ?>

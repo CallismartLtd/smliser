@@ -506,11 +506,11 @@ class HostedApplicationService extends DataStore {
 			$app = static::get_app_by_slug( $app_type, $app_slug );
 
 			if ( AppStorage::instance()->has_app( $app_type, $app_slug ) || ( null !== $app && AbstractHostedApp::STATUS_TRASH !== $app->get_status() ) ) {
-				return new Exception( 'app_not_in_trash', 'Only an app in the trash can be deleted for good. Move it to the trash first.', [ 'status' => 409 ] );
+				return new Exception( 'app_not_in_trash', smliser__( 'Only an app in the trash can be deleted for good. Move it to the trash first.' ), [ 'status' => 409 ] );
 			}
 
 			if ( null !== $app && ! $app->delete() ) {
-				return new Exception( 'delete_failed', 'The app could not be deleted. Please try again.', [ 'status' => 500 ] );
+				return new Exception( 'delete_failed', smliser__( 'The app could not be deleted. Please try again.' ), [ 'status' => 500 ] );
 			}
 
 			$purged = HostedAppsRegistry::instance()->get_app_type_directory_class( $app_type )?->purge( $app_slug );
@@ -564,15 +564,15 @@ class HostedApplicationService extends DataStore {
 
 		try {
 			if ( ! $app->exists() ) {
-				throw new Exception( 'app_not_found', sprintf( 'The %s does not exist.', $type ), [ 'status' => 404 ] );
+				throw new Exception( 'app_not_found', sprintf( smliser__( 'The %s does not exist.' ), $type ), [ 'status' => 404 ] );
 			}
 
 			if ( AbstractHostedApp::STATUS_TRASH === $app->get_status() ) {
-				throw new Exception( 'app_in_trash', sprintf( 'This %s is in the trash. Restore it before renaming it.', $type ), [ 'status' => 400 ] );
+				throw new Exception( 'app_in_trash', sprintf( smliser__( 'This %s is in the trash. Restore it before renaming it.' ), $type ), [ 'status' => 400 ] );
 			}
 
 			if ( $new_slug === $old_slug ) {
-				throw new Exception( 'slug_unchanged', sprintf( 'The %s already has the slug "%s".', $type, $new_slug ), [ 'status' => 400 ] );
+				throw new Exception( 'slug_unchanged', sprintf( smliser__( 'The %s already has the slug "%s".' ), $type, $new_slug ), [ 'status' => 400 ] );
 			}
 
 			$canonical = Repository::slug_from( $new_slug );
@@ -581,8 +581,8 @@ class HostedApplicationService extends DataStore {
 				throw new Exception(
 					'invalid_slug',
 					'' !== $canonical && AppFile::is_segment( $canonical )
-						? sprintf( '"%s" is not a valid slug. Did you mean "%s"?', $new_slug, $canonical )
-						: sprintf( '"%s" is not a valid slug.', $new_slug ),
+						? sprintf( smliser__( '"%s" is not a valid slug. Did you mean "%s"?' ), $new_slug, $canonical )
+						: sprintf( smliser__( '"%s" is not a valid slug.' ), $new_slug ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -590,7 +590,7 @@ class HostedApplicationService extends DataStore {
 			$repo_class = static::get_app_repository_class( $type );
 
 			if ( null === $repo_class ) {
-				throw new Exception( 'repo_error', sprintf( 'No repository is registered for the app type "%s".', $type ), [ 'status' => 500 ] );
+				throw new Exception( 'repo_error', sprintf( smliser__( 'No repository is registered for the app type "%s".' ), $type ), [ 'status' => 500 ] );
 			}
 
 			static::$DB->transactional( function( Database $db ) use ( $app, $type, $old_slug, $new_slug, $repo_class ) {
@@ -602,7 +602,7 @@ class HostedApplicationService extends DataStore {
 				$row   = $db->get_row( $lock->build(), $lock->get_bindings() );
 
 				if ( ! $row || $old_slug !== $row['slug'] ) {
-					throw new Exception( 'app_changed', sprintf( 'The %s was changed or deleted while renaming it. Reload it and try again.', $type ), [ 'status' => 409 ] );
+					throw new Exception( 'app_changed', sprintf( smliser__( 'The %s was changed or deleted while renaming it. Reload it and try again.' ), $type ), [ 'status' => 409 ] );
 				}
 
 				$used_by = static::slug_used_by( $db, $type, $table, $new_slug, $repo_class );
@@ -610,7 +610,7 @@ class HostedApplicationService extends DataStore {
 				if ( null !== $used_by ) {
 					throw new Exception(
 						'app_slug_exists',
-						sprintf( 'The slug "%s" is not available: %s.', $new_slug, $used_by ),
+						sprintf( smliser__( 'The slug "%s" is not available: %s.' ), $new_slug, $used_by ),
 						[ 'status' => 409 ]
 					);
 				}

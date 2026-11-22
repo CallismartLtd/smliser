@@ -223,14 +223,14 @@ class CliErrorHandler extends AbstractErrorHandler {
 
 		// Debug mode: Stack Trace & Exception Chain
 		if ( $this->isDebug() ) {
-			$output .= PHP_EOL . $this->style( 'Stack Trace:', self::COLOR_BOLD . self::COLOR_YELLOW ) . PHP_EOL;
+			$output .= PHP_EOL . $this->style( smliser__( 'Stack Trace:' ), self::COLOR_BOLD . self::COLOR_YELLOW ) . PHP_EOL;
 			$output .= $this->formatStackTrace( $exception->getTraceAsString() ) . PHP_EOL;
 
 			// Render Previous Exception Chain
 			$previous = $exception->getPrevious();
 			while ( $previous ) {
 				$output .= $this->rule( '-' );
-				$output .= $this->style( 'Caused by: ', self::COLOR_YELLOW ) . $this->style( get_class( $previous ), self::COLOR_BOLD ) . PHP_EOL;
+				$output .= $this->style( smliser__( 'Caused by: ' ), self::COLOR_YELLOW ) . $this->style( get_class( $previous ), self::COLOR_BOLD ) . PHP_EOL;
 				$output .= $previous->getMessage() . PHP_EOL;
 				$output .= $this->style( sprintf( 'at %s:%d', $previous->getFile(), $previous->getLine() ), self::COLOR_GRAY ) . PHP_EOL;
 				

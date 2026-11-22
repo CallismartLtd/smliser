@@ -90,9 +90,20 @@ class AppOwnershipChangedEmail extends EmailTemplate {
 				"Ownership of <strong>{$app_name}</strong> has been transferred to <strong>{$new_owner}</strong>. You no longer have owner-level access."
 			];
 
+		$i18n = [
+			/* translators: %s: recipient name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $recipient_name ),
+			smliser_esc_html__( 'Application' ),
+			smliser_esc_html__( 'Type' ),
+			smliser_esc_html__( 'Previous Owner' ),
+			smliser_esc_html__( 'New Owner' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not expect this change or believe it was made in error, please contact us immediately at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$recipient_name},
+            {$i18n[0]}
         </p>
 
         <!-- Ownership banner -->
@@ -120,7 +131,7 @@ class AppOwnershipChangedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Application
+                                    {$i18n[1]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_name}
@@ -129,7 +140,7 @@ class AppOwnershipChangedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Type
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_type}
@@ -140,7 +151,7 @@ class AppOwnershipChangedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 0 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Previous Owner
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$previous_owner}
@@ -149,7 +160,7 @@ class AppOwnershipChangedEmail extends EmailTemplate {
                             <td width="50%" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    New Owner
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:700;">
                                     {$new_owner}
@@ -162,18 +173,16 @@ class AppOwnershipChangedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not expect this change or believe it was made in error,
-            please contact us immediately at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[5]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Application Ownership Changed';
+		return smliser__( 'Application Ownership Changed' );
 	}
 	public function description() : string {
-		return 'Sent to both the previous and new owner when application ownership is transferred.';
+		return smliser__( 'Sent to both the previous and new owner when application ownership is transferred.' );
 	}
 	public static function preview() : static {
 		$app = WPPlugin::from_array_minimal( [
@@ -181,13 +190,13 @@ class AppOwnershipChangedEmail extends EmailTemplate {
 			'type' => 'wpplugin',
 			'slug' => 'my-awesome-plugin',
 		] );
-		return new static( $app, 'preview@example.com', 'Jane Doe', 'John Smith', 'Jane Doe', true );
+		return new static( $app, 'preview@example.com', smliser__( 'Jane Doe' ), smliser__( 'John Smith' ), smliser__( 'Jane Doe' ), true );
 	}
 
 	public function get_blocks() : array {
 		$banner_content = $this->is_new_owner
-			? 'You are now the owner of {{app_name}}. You have full control over this application.'
-			: 'Ownership of {{app_name}} has been transferred to {{new_owner}}. You no longer have owner-level access.';
+			? smliser__( 'You are now the owner of {{app_name}}. You have full control over this application.' )
+			: smliser__( 'Ownership of {{app_name}} has been transferred to {{new_owner}}. You no longer have owner-level access.' );
 
 		$banner_tone = $this->is_new_owner ? 'success' : 'warning';
 
@@ -195,7 +204,7 @@ class AppOwnershipChangedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{recipient_name}},',
+				'content'   => smliser__( 'Hi {{recipient_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -211,10 +220,10 @@ class AppOwnershipChangedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Application',     'value' => '{{app_name}}' ],
-					[ 'label' => 'Type',            'value' => '{{app_type}}' ],
-					[ 'label' => 'Previous Owner',  'value' => '{{previous_owner}}' ],
-					[ 'label' => 'New Owner',       'value' => '{{new_owner}}' ],
+					[ 'label' => smliser__( 'Application' ),     'value' => '{{app_name}}' ],
+					[ 'label' => smliser__( 'Type' ),            'value' => '{{app_type}}' ],
+					[ 'label' => smliser__( 'Previous Owner' ),  'value' => '{{previous_owner}}' ],
+					[ 'label' => smliser__( 'New Owner' ),       'value' => '{{new_owner}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -222,7 +231,7 @@ class AppOwnershipChangedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not expect this change or believe it was made in error, please contact us immediately at {{support_email}}.',
+				'content'   => smliser__( 'If you did not expect this change or believe it was made in error, please contact us immediately at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

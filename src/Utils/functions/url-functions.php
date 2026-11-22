@@ -83,7 +83,7 @@ function smliser_download_url( string|URL $url, int $timeout = 30, bool $autocle
 		$url = is_string( $url ) ? URL::from( $url ) : $url;
 		// Validate URL.
 		if ( ! $url->is_valid() ) {
-			throw new FileRequestException( 'invalid_url', 'Invalid URL provided.' );
+			throw new FileRequestException( 'invalid_url', smliser__( 'Invalid URL provided.' ) );
 		}
 
 		$url     = $url->url();

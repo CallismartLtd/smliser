@@ -162,7 +162,7 @@ class SmliserJsonEditor {
                     data = JSON.parse( textValue );
                 } catch (e) {
                     data = {};
-                    this._handleError( 'Invalid JSON in textarea', e );
+                    this._handleError( smliserI18n.__( 'Invalid JSON in textarea' ), e );
                 }
             }
         }
@@ -177,7 +177,7 @@ class SmliserJsonEditor {
         this.container.id           = this.id;
         this.container.tabIndex     = "0";
         this.container.setAttribute( 'role', 'application' );
-        this.container.setAttribute( 'aria-label', 'JSON Editor' );
+        this.container.setAttribute( 'aria-label', smliserI18n.__( 'JSON Editor' ) );
 
         if ( this.options.title || this.options.description ) {
             this._buildHeader();
@@ -230,32 +230,32 @@ class SmliserJsonEditor {
         this.toolbar            = document.createElement( 'div' );
         this.toolbar.className  = 'json-editor-toolbar';
         this.toolbar.setAttribute( 'role', 'toolbar' );
-        this.toolbar.setAttribute( 'aria-label', 'Editor toolbar' );
+        this.toolbar.setAttribute( 'aria-label', smliserI18n.__( 'Editor toolbar' ) );
 
         // NOTE: All buttons use type="button" to prevent accidental form submission
         const toolbarHTML = `
             <div class="toolbar-toggle-row">
-                <button type="button" class="toolbar-toggle-btn" aria-label="Toggle toolbar" title="Toggle toolbar" aria-controls="${this.id}-toolbar-collapsible" aria-expanded="true">
+                <button type="button" class="toolbar-toggle-btn" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Toggle toolbar' ) ) }" title="${ smliserI18n.esc( smliserI18n.__( 'Toggle toolbar' ) ) }" aria-controls="${this.id}-toolbar-collapsible" aria-expanded="true">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                         <path d="M2 4h12M2 8h12M2 12h12"/>
                     </svg>
-                    <span class="toolbar-toggle-label">Tools</span>
+                    <span class="toolbar-toggle-label">${ smliserI18n.esc( smliserI18n.__( 'Tools' ) ) }</span>
                 </button>
-                <div class="toolbar-mode-inline" role="radiogroup" aria-label="Editor view">
-                    <button type="button" class="toolbar-btn ${this.currentMode === 'tree' ? 'active' : ''}" data-action="mode-tree" title="Tree view" role="radio" aria-checked="${this.currentMode === 'tree'}">
+                <div class="toolbar-mode-inline" role="radiogroup" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Editor view' ) ) }">
+                    <button type="button" class="toolbar-btn ${this.currentMode === 'tree' ? 'active' : ''}" data-action="mode-tree" title="${ smliserI18n.esc( smliserI18n.__( 'Tree view' ) ) }" role="radio" aria-checked="${this.currentMode === 'tree'}">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
                             <rect x="2" y="2" width="5" height="3" rx="0.5"/>
                             <rect x="2" y="7" width="5" height="3" rx="0.5"/>
                             <rect x="9" y="7" width="5" height="3" rx="0.5"/>
                             <path d="M4.5 5v2M4.5 7h4.5M9 7v2.5"/>
                         </svg>
-                        <span>Tree</span>
+                        <span>${ smliserI18n.esc( smliserI18n.__( 'Tree' ) ) }</span>
                     </button>
-                    <button type="button" class="toolbar-btn ${this.currentMode === 'code' ? 'active' : ''}" data-action="mode-code" title="Code view" role="radio" aria-checked="${this.currentMode === 'code'}">
+                    <button type="button" class="toolbar-btn ${this.currentMode === 'code' ? 'active' : ''}" data-action="mode-code" title="${ smliserI18n.esc( smliserI18n.__( 'Code view' ) ) }" role="radio" aria-checked="${this.currentMode === 'code'}">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                             <path d="M5 4L2 8l3 4M11 4l3 4-3 4M9 2L7 14"/>
                         </svg>
-                        <span>Code</span>
+                        <span>${ smliserI18n.esc( smliserI18n.__( 'Code' ) ) }</span>
                     </button>
                 </div>
             </div>
@@ -263,95 +263,95 @@ class SmliserJsonEditor {
             <div class="toolbar-collapsible" id="${this.id}-toolbar-collapsible">
                 <div class="toolbar-inner">
                     <div class="toolbar-group">
-                        <button type="button" class="toolbar-btn" data-action="import" title="Import JSON (Ctrl+O)" aria-label="Import JSON">
+                        <button type="button" class="toolbar-btn" data-action="import" title="${ smliserI18n.esc( smliserI18n.__( 'Import JSON (Ctrl+O)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Import JSON' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M8 3v7m0-7l-3 3m3-3l3 3"/><path d="M2 12v2h12v-2"/>
                             </svg>
-                            <span>Import</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Import' ) ) }</span>
                         </button>
-                        <button type="button" class="toolbar-btn" data-action="export" title="Export JSON (Ctrl+S)" aria-label="Export JSON">
+                        <button type="button" class="toolbar-btn" data-action="export" title="${ smliserI18n.esc( smliserI18n.__( 'Export JSON (Ctrl+S)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Export JSON' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M8 11V3m0 8l-3-3m3 3l3-3"/><path d="M2 14h12"/>
                             </svg>
-                            <span>Export</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Export' ) ) }</span>
                         </button>
                     </div>
 
                     <div class="toolbar-group">
-                        <button type="button" class="toolbar-btn" data-action="copy" title="Copy JSON to clipboard (Ctrl+C)" aria-label="Copy JSON">
+                        <button type="button" class="toolbar-btn" data-action="copy" title="${ smliserI18n.esc( smliserI18n.__( 'Copy JSON to clipboard (Ctrl+C)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Copy JSON' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <rect x="5" y="5" width="9" height="10" rx="1"/><path d="M3 11V3a1 1 0 0 1 1-1h6"/>
                             </svg>
-                            <span>Copy</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Copy' ) ) }</span>
                         </button>
                     </div>
 
                     <div class="toolbar-group">
-                        <button type="button" class="toolbar-btn" data-action="undo" title="Undo (Ctrl+Z)" aria-label="Undo" ${!this.options.enableUndo ? 'disabled' : ''}>
+                        <button type="button" class="toolbar-btn" data-action="undo" title="${ smliserI18n.esc( smliserI18n.__( 'Undo (Ctrl+Z)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Undo' ) ) }" ${!this.options.enableUndo ? 'disabled' : ''}>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M4 8h8a3 3 0 0 1 0 6H9"/><path d="M4 8l3-3M4 8l3 3"/>
                             </svg>
-                            <span>Undo</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Undo' ) ) }</span>
                         </button>
-                        <button type="button" class="toolbar-btn" data-action="redo" title="Redo (Ctrl+Y)" aria-label="Redo" ${!this.options.enableUndo ? 'disabled' : ''}>
+                        <button type="button" class="toolbar-btn" data-action="redo" title="${ smliserI18n.esc( smliserI18n.__( 'Redo (Ctrl+Y)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Redo' ) ) }" ${!this.options.enableUndo ? 'disabled' : ''}>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M12 8H4a3 3 0 0 0 0 6h3"/><path d="M12 8l-3-3M12 8l-3 3"/>
                             </svg>
-                            <span>Redo</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Redo' ) ) }</span>
                         </button>
                     </div>
 
                     <div class="toolbar-group">
-                        <button type="button" class="toolbar-btn" data-action="format" title="Format JSON (prettify)" aria-label="Format JSON">
+                        <button type="button" class="toolbar-btn" data-action="format" title="${ smliserI18n.esc( smliserI18n.__( 'Format JSON (prettify)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Format JSON' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M2 4h12M2 8h9M2 12h12"/>
                             </svg>
-                            <span>Format</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Format' ) ) }</span>
                         </button>
-                        <button type="button" class="toolbar-btn" data-action="compact" title="Compact JSON (minify)" aria-label="Compact JSON">
+                        <button type="button" class="toolbar-btn" data-action="compact" title="${ smliserI18n.esc( smliserI18n.__( 'Compact JSON (minify)' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Compact JSON' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M2 5h12M2 8h12M2 11h12"/>
                             </svg>
-                            <span>Compact</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Compact' ) ) }</span>
                         </button>
-                        <button type="button" class="toolbar-btn ${this.options.sortKeys ? 'active' : ''}" data-action="sort" title="Sort keys alphabetically" aria-label="Sort keys" aria-pressed="${this.options.sortKeys}">
+                        <button type="button" class="toolbar-btn ${this.options.sortKeys ? 'active' : ''}" data-action="sort" title="${ smliserI18n.esc( smliserI18n.__( 'Sort keys alphabetically' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Sort keys' ) ) }" aria-pressed="${this.options.sortKeys}">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                                 <path d="M4 3v10m0 0l-2-2m2 2l2-2"/><path d="M12 13V3m0 0L10 5m2-2l2 2"/>
                             </svg>
-                            <span>Sort</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Sort' ) ) }</span>
                         </button>
                     </div>
 
                     <div class="toolbar-group">
-                        <button type="button" class="toolbar-btn" data-action="expand-all" title="Expand all nodes" aria-label="Expand all">
+                        <button type="button" class="toolbar-btn" data-action="expand-all" title="${ smliserI18n.esc( smliserI18n.__( 'Expand all nodes' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Expand all' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
                                 <path d="M8 3v10M3 8h10"/>
                             </svg>
-                            <span>Expand</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Expand' ) ) }</span>
                         </button>
-                        <button type="button" class="toolbar-btn" data-action="collapse-all" title="Collapse all nodes" aria-label="Collapse all">
+                        <button type="button" class="toolbar-btn" data-action="collapse-all" title="${ smliserI18n.esc( smliserI18n.__( 'Collapse all nodes' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Collapse all' ) ) }">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
                                 <path d="M3 8h10"/>
                             </svg>
-                            <span>Collapse</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Collapse' ) ) }</span>
                         </button>
-                        <button type="button" class="toolbar-btn" data-action="theme" title="Toggle light/dark theme" aria-label="Toggle theme" aria-pressed="${this.options.theme === 'dark'}">
+                        <button type="button" class="toolbar-btn" data-action="theme" title="${ smliserI18n.esc( smliserI18n.__( 'Toggle light/dark theme' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Toggle theme' ) ) }" aria-pressed="${this.options.theme === 'dark'}">
                             <svg width="16" height="16" viewBox="0 0 16 16" class="theme-icon" fill="none" stroke="currentColor" stroke-width="1.5">
                                 ${this._getThemeIconSVG()}
                             </svg>
                         </button>
-                        <button type="button" class="toolbar-btn" data-action="fullscreen" title="Toggle fullscreen" aria-label="Enter fullscreen" aria-pressed="false">
+                        <button type="button" class="toolbar-btn" data-action="fullscreen" title="${ smliserI18n.esc( smliserI18n.__( 'Toggle fullscreen' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Enter fullscreen' ) ) }" aria-pressed="false">
                             <svg width="16" height="16" viewBox="0 0 16 16" class="fullscreen-icon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                 ${this._getFullscreenIconSVG()}
                             </svg>
-                            <span>Fullscreen</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'Fullscreen' ) ) }</span>
                         </button>
                     </div>
 
                     ${this.options.enableSearch ? `
                     <div class="toolbar-group toolbar-search">
-                        <label class="sje-visually-hidden" for="${this.id}-search-input">Search keys or values</label>
-                        <input type="search" id="${this.id}-search-input" class="toolbar-search-input" placeholder="Search keys or values…" aria-label="Search JSON">
+                        <label class="sje-visually-hidden" for="${this.id}-search-input">${ smliserI18n.esc( smliserI18n.__( 'Search keys or values' ) ) }</label>
+                        <input type="search" id="${this.id}-search-input" class="toolbar-search-input" placeholder="${ smliserI18n.esc( smliserI18n.__( 'Search keys or values…' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Search JSON' ) ) }">
                     </div>
                     ` : ''}
                 </div>
@@ -396,7 +396,7 @@ class SmliserJsonEditor {
         this.treeView           = document.createElement( 'div' );
         this.treeView.className = 'json-editor-tree-view';
         this.treeView.setAttribute( 'role', 'tree' );
-        this.treeView.setAttribute( 'aria-label', 'JSON tree view' );
+        this.treeView.setAttribute( 'aria-label', smliserI18n.__( 'JSON tree view' ) );
         viewsContainer.appendChild( this.treeView );
 
         this.codeView           = document.createElement( 'div' );
@@ -406,8 +406,8 @@ class SmliserJsonEditor {
         codeTextarea.className  = 'json-editor-code-textarea';
         codeTextarea.id         = `${this.id}-code-textarea`;
         codeTextarea.setAttribute( 'spellcheck', 'false' );
-        codeTextarea.setAttribute( 'aria-label', 'JSON code editor' );
-        codeTextarea.placeholder = 'Enter or paste JSON here…';
+        codeTextarea.setAttribute( 'aria-label', smliserI18n.__( 'JSON code editor' ) );
+        codeTextarea.placeholder = smliserI18n.__( 'Enter or paste JSON here…' );
         if ( this.options.readOnly ) {
             codeTextarea.readOnly = true;
         }
@@ -588,7 +588,7 @@ class SmliserJsonEditor {
         const file = files[0];
 
         if ( ! file.type.includes( 'application/json' ) && ! file.name.endsWith( '.json' ) ) {
-            this._handleError( 'Please drop a valid JSON file' );
+            this._handleError( smliserI18n.__( 'Please drop a valid JSON file' ) );
             return;
         }
 
@@ -644,7 +644,7 @@ class SmliserJsonEditor {
 
         // Drag handle — only shown on draggable non-root nodes
         if ( isDraggable ) {
-            headerHTML += `<span class="tree-drag-handle" title="Drag to reorder" aria-hidden="true">
+            headerHTML += `<span class="tree-drag-handle" title="${ smliserI18n.esc( smliserI18n.__( 'Drag to reorder' ) ) }" aria-hidden="true">
                 <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
                     <circle cx="3" cy="2.5" r="1.2"/><circle cx="7" cy="2.5" r="1.2"/>
                     <circle cx="3" cy="7"   r="1.2"/><circle cx="7" cy="7"   r="1.2"/>
@@ -686,7 +686,7 @@ class SmliserJsonEditor {
             // Edit key — only for non-root object properties (not array indexes)
             if ( ! isRootNode && ! parentIsArray ) {
                 headerHTML += `
-                    <button type="button" class="tree-action-btn" data-action="edit-key" title="Rename key" aria-label="Rename key">
+                    <button type="button" class="tree-action-btn" data-action="edit-key" title="${ smliserI18n.esc( smliserI18n.__( 'Rename key' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Rename key' ) ) }">
                         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                             <path d="M9 2l3 3-6 6H3V8z"/><path d="M7 4l3 3"/>
                         </svg>
@@ -696,7 +696,7 @@ class SmliserJsonEditor {
 
             // Edit value
             headerHTML += `
-                <button type="button" class="tree-action-btn" data-action="edit" title="Edit value" aria-label="Edit value">
+                <button type="button" class="tree-action-btn" data-action="edit" title="${ smliserI18n.esc( smliserI18n.__( 'Edit value' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Edit value' ) ) }">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                         <path d="M2 10l5.5-5.5 2 2L4 12H2z"/><path d="M8.5 3.5l2 2"/>
                     </svg>
@@ -706,7 +706,7 @@ class SmliserJsonEditor {
             // Delete — not on root
             if ( ! isRootNode ) {
                 headerHTML += `
-                    <button type="button" class="tree-action-btn delete" data-action="delete" title="Delete" aria-label="Delete">
+                    <button type="button" class="tree-action-btn delete" data-action="delete" title="${ smliserI18n.esc( smliserI18n.__( 'Delete' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Delete' ) ) }">
                         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                             <path d="M3 3l8 8M11 3l-8 8"/>
                         </svg>
@@ -717,7 +717,7 @@ class SmliserJsonEditor {
             // Add child — only for expandable nodes
             if ( isExpandable ) {
                 headerHTML += `
-                    <button type="button" class="tree-action-btn add" data-action="add" title="Add item" aria-label="Add item">
+                    <button type="button" class="tree-action-btn add" data-action="add" title="${ smliserI18n.esc( smliserI18n.__( 'Add item' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Add item' ) ) }">
                         <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
                             <path d="M7 2v10M2 7h10"/>
                         </svg>
@@ -871,21 +871,21 @@ class SmliserJsonEditor {
 
     async _editNodeKey( path, currentKey ) {
         const newKey = await this.dialog.prompt({
-            title: 'Rename Property',
-            message: 'Enter new property name:',
+            title: smliserI18n.__( 'Rename Property' ),
+            message: smliserI18n.__( 'Enter new property name:' ),
             defaultValue: currentKey,
             placeholder: 'propertyName',
             required: true,
             validator: (value) => {
-                if ( ! value.trim() ) return 'Property name is required';
+                if ( ! value.trim() ) return smliserI18n.__( 'Property name is required' );
                 if ( !/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(value) ) {
-                    return 'Invalid property name (use letters, numbers, _ or $)';
+                    return smliserI18n.__( 'Invalid property name (use letters, numbers, _ or $)' );
                 }
                 const parentPath = path.split('.').slice( 0, -1 ).join('.');
                 const parent     = this._getValueAtPath( parentPath );
                 if ( parent && typeof parent === 'object' && ! Array.isArray( parent ) ) {
                     if ( value !== currentKey && value in parent ) {
-                        return 'Property name already exists';
+                        return smliserI18n.__( 'Property name already exists' );
                     }
                 }
                 return null;
@@ -923,18 +923,18 @@ class SmliserJsonEditor {
 
             bodyContent.innerHTML = `
                 <div class="edit-field">
-                    <label class="edit-label" for="${typeId}">Type</label>
+                    <label class="edit-label" for="${typeId}">${ smliserI18n.esc( smliserI18n.__( 'Type' ) ) }</label>
                     <select class="edit-type-select" id="${typeId}">
-                        <option value="string"  ${currentType === 'string'  ? 'selected' : ''}>String</option>
-                        <option value="number"  ${currentType === 'number'  ? 'selected' : ''}>Number</option>
-                        <option value="boolean" ${currentType === 'boolean' ? 'selected' : ''}>Boolean</option>
-                        <option value="null"    ${currentType === 'null'    ? 'selected' : ''}>Null</option>
-                        <option value="array"   ${currentType === 'array'   ? 'selected' : ''}>Array</option>
-                        <option value="object"  ${currentType === 'object'  ? 'selected' : ''}>Object</option>
+                        <option value="string"  ${currentType === 'string'  ? 'selected' : ''}>${ smliserI18n.esc( smliserI18n.__( 'String' ) ) }</option>
+                        <option value="number"  ${currentType === 'number'  ? 'selected' : ''}>${ smliserI18n.esc( smliserI18n.__( 'Number' ) ) }</option>
+                        <option value="boolean" ${currentType === 'boolean' ? 'selected' : ''}>${ smliserI18n.esc( smliserI18n.__( 'Boolean' ) ) }</option>
+                        <option value="null"    ${currentType === 'null'    ? 'selected' : ''}>${ smliserI18n.esc( smliserI18n.__( 'Null' ) ) }</option>
+                        <option value="array"   ${currentType === 'array'   ? 'selected' : ''}>${ smliserI18n.esc( smliserI18n.__( 'Array' ) ) }</option>
+                        <option value="object"  ${currentType === 'object'  ? 'selected' : ''}>${ smliserI18n.esc( smliserI18n.__( 'Object' ) ) }</option>
                     </select>
                 </div>
                 <div class="edit-field edit-value-field">
-                    <label class="edit-label" for="${valueId}">Value</label>
+                    <label class="edit-label" for="${valueId}">${ smliserI18n.esc( smliserI18n.__( 'Value' ) ) }</label>
                     <div class="edit-value-container">
                         ${valueInputHTML}
                     </div>
@@ -948,12 +948,12 @@ class SmliserJsonEditor {
             const cancelBtn         = document.createElement( 'button' );
             cancelBtn.type          = 'button';
             cancelBtn.className     = 'sje-btn sje-btn-secondary';
-            cancelBtn.textContent   = 'Cancel';
+            cancelBtn.textContent   = smliserI18n.__( 'Cancel' );
 
             const saveBtn           = document.createElement( 'button' );
             saveBtn.type            = 'button';
             saveBtn.className       = 'sje-btn sje-btn-primary';
-            saveBtn.textContent     = 'Save';
+            saveBtn.textContent     = smliserI18n.__( 'Save' );
 
             footerContent.appendChild( cancelBtn );
             footerContent.appendChild( saveBtn );
@@ -1028,7 +1028,7 @@ class SmliserJsonEditor {
                 </select>`;
 
             case 'null':
-                return `<input type="text" class="edit-input edit-null-input"${idAttr} value="null" readonly title="Null has no editable value"/>`;
+                return `<input type="text" class="edit-input edit-null-input"${idAttr} value="null" readonly title="${ smliserI18n.esc( smliserI18n.__( 'Null has no editable value' ) ) }"/>`;
 
             case 'number':
                 return `<input type="number" class="edit-input"${idAttr} value="${value !== '' ? value : 0}" step="any"/>`;
@@ -1066,23 +1066,23 @@ class SmliserJsonEditor {
             case 'string':  return input;
             case 'number':
                 const num = Number( input );
-                if ( isNaN( num ) ) throw new Error( 'Invalid number' );
+                if ( isNaN( num ) ) throw new Error( smliserI18n.__( 'Invalid number' ) );
                 return num;
             case 'boolean':
                 // From the dropdown the value is already 'true' or 'false' string
                 if ( input === 'true'  || input === true  ) return true;
                 if ( input === 'false' || input === false ) return false;
-                throw new Error( 'Invalid boolean — use the dropdown to select true or false' );
+                throw new Error( smliserI18n.__( 'Invalid boolean — use the dropdown to select true or false' ) );
             case 'null':    return null;
             case 'array':
             case 'object':  return JSON.parse( input );
-            default:        throw new Error( 'Unknown type' );
+            default:        throw new Error( smliserI18n.__( 'Unknown type' ) );
         }
     }
 
     async _deleteNode( path ) {
         const confirmed = await this.dialog.confirm({
-            message: 'Delete this item?',
+            message: smliserI18n.__( 'Delete this item?' ),
             danger: true
         });
 
@@ -1113,12 +1113,12 @@ class SmliserJsonEditor {
 
     async _promptForKey() {
         return await this.dialog.prompt({
-            title: 'New Property',
-            message: 'Enter property name:',
+            title: smliserI18n.__( 'New Property' ),
+            message: smliserI18n.__( 'Enter property name:' ),
             placeholder: 'propertyName',
             validator: ( value ) => {
-                if ( ! value.trim() ) return 'Property name is required';
-                if ( !/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test( value ) ) return 'Invalid property name';
+                if ( ! value.trim() ) return smliserI18n.__( 'Property name is required' );
+                if ( !/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test( value ) ) return smliserI18n.__( 'Invalid property name' );
                 return null;
             }
         });
@@ -1135,10 +1135,10 @@ class SmliserJsonEditor {
         const keysItem  = this.statusBar.querySelector( '.status-keys' );
 
         if ( this.isValid ) {
-            validItem.innerHTML = '<span class="status-icon">✓</span> Valid JSON';
+            validItem.innerHTML = '<span class="status-icon">✓</span> ' + smliserI18n.esc( smliserI18n.__( 'Valid JSON' ) );
             validItem.className = 'status-item status-valid valid';
         } else {
-            validItem.innerHTML = '<span class="status-icon">✗</span> Invalid JSON';
+            validItem.innerHTML = '<span class="status-icon">✗</span> ' + smliserI18n.esc( smliserI18n.__( 'Invalid JSON' ) );
             validItem.className = 'status-item status-valid invalid';
             validItem.title     = this.validationErrors.join( ', ' );
         }
@@ -1302,7 +1302,7 @@ class SmliserJsonEditor {
         toast.innerHTML = `
             <span class="sje-toast-icon" aria-hidden="true">${this._getNotificationIcon( type )}</span>
             <span class="sje-toast-message">${this._escapeHtml( message )}</span>
-            <button type="button" class="sje-toast-close" aria-label="Dismiss notification">
+            <button type="button" class="sje-toast-close" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Dismiss notification' ) ) }">
                 <svg width="10" height="10" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
             </button>
         `;
@@ -1373,7 +1373,7 @@ class SmliserJsonEditor {
             const closeBtn        = document.createElement( 'button' );
             closeBtn.type         = 'button';
             closeBtn.className    = 'sje-dialog-close';
-            closeBtn.setAttribute( 'aria-label', 'Close dialog' );
+            closeBtn.setAttribute( 'aria-label', smliserI18n.__( 'Close dialog' ) );
             closeBtn.innerHTML    = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>`;
             closeBtn.addEventListener( 'click', () => close() );
             header.appendChild( closeBtn );
@@ -1466,7 +1466,7 @@ class SmliserJsonEditor {
             const cancelBtn       = document.createElement( 'button' );
             cancelBtn.type        = 'button';
             cancelBtn.className   = 'sje-btn sje-btn-secondary';
-            cancelBtn.textContent = 'Cancel';
+            cancelBtn.textContent = smliserI18n.__( 'Cancel' );
 
             const okBtn       = document.createElement( 'button' );
             okBtn.type        = 'button';
@@ -1490,7 +1490,7 @@ class SmliserJsonEditor {
                 const value = input.value;
 
                 if ( required && ! value.trim() ) {
-                    showError( 'This field is required' );
+                    showError( smliserI18n.__( 'This field is required' ) );
                     return;
                 }
 
@@ -1600,7 +1600,7 @@ class SmliserJsonEditor {
             const parsed = JSON.parse( jsonString );
             return await this.setData( parsed );
         } catch (e) {
-            this._handleError( 'Invalid JSON string', e );
+            this._handleError( smliserI18n.__( 'Invalid JSON string' ), e );
         }
     }
 
@@ -1622,20 +1622,20 @@ class SmliserJsonEditor {
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                             <path d="M3 2h6l4 4v8H3z"/><path d="M9 2v4h4"/>
                         </svg>
-                        From File
+                        ${ smliserI18n.esc( smliserI18n.__( 'From File' ) ) }
                     </button>
                     <button type="button" class="sje-tab" id="${dialogUid}-tab-url" data-tab="url" role="tab" aria-selected="false" aria-controls="${dialogUid}-panel-url">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                             <path d="M6 8a3 3 0 0 0 4.5.5l2-2a3 3 0 0 0-4.24-4.24l-1.14 1.13"/>
                             <path d="M10 8a3 3 0 0 0-4.5-.5l-2 2a3 3 0 0 0 4.24 4.24l1.13-1.13"/>
                         </svg>
-                        From URL
+                        ${ smliserI18n.esc( smliserI18n.__( 'From URL' ) ) }
                     </button>
                     <button type="button" class="sje-tab" id="${dialogUid}-tab-paste" data-tab="paste" role="tab" aria-selected="false" aria-controls="${dialogUid}-panel-paste">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
                             <path d="M5.5 2h5M5.5 2a1 1 0 0 0-1 1v1h7V3a1 1 0 0 0-1-1m-5 0a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1"/><rect x="3" y="4" width="10" height="11" rx="1"/>
                         </svg>
-                        Paste JSON
+                        ${ smliserI18n.esc( smliserI18n.__( 'Paste JSON' ) ) }
                     </button>
                 </div>
 
@@ -1646,30 +1646,30 @@ class SmliserJsonEditor {
                                 <path d="M16 6v14m0-14l-5 5m5-5l5 5"/>
                                 <path d="M4 22v2a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-2"/>
                             </svg>
-                            <p>Drop a <strong>.json</strong> file here</p>
+                            <p>${ smliserI18n.esc( smliserI18n.__( 'Drop a' ) ) } <strong>.json</strong> ${ smliserI18n.esc( smliserI18n.__( 'file here' ) ) }</p>
                             <span>or</span>
-                            <button type="button" class="sje-browse-btn">Browse files…</button>
-                            <input type="file" id="${fileInputId}" class="sje-file-input" accept=".json,application/json" style="display:none" aria-label="Choose a JSON file to import">
+                            <button type="button" class="sje-browse-btn">${ smliserI18n.esc( smliserI18n.__( 'Browse files…' ) ) }</button>
+                            <input type="file" id="${fileInputId}" class="sje-file-input" accept=".json,application/json" style="display:none" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Choose a JSON file to import' ) ) }">
                         </div>
                     </div>
 
                     <div class="sje-panel" id="${dialogUid}-panel-url" data-panel="url" role="tabpanel" aria-labelledby="${dialogUid}-tab-url">
                         <div class="sje-url-field">
-                            <label class="edit-label" for="${urlId}">JSON endpoint URL</label>
-                            <input type="url" id="${urlId}" class="edit-input sje-url-input" placeholder="https://api.example.com/data.json">
-                            <p class="sje-hint">The URL must return a valid JSON response. CORS must be enabled on the server.</p>
+                            <label class="edit-label" for="${urlId}">${ smliserI18n.esc( smliserI18n.__( 'JSON endpoint URL' ) ) }</label>
+                            <input type="url" id="${urlId}" class="edit-input sje-url-input" placeholder="${ smliserI18n.esc( smliserI18n.__( 'https://api.example.com/data.json' ) ) }">
+                            <p class="sje-hint">${ smliserI18n.esc( smliserI18n.__( 'The URL must return a valid JSON response. CORS must be enabled on the server.' ) ) }</p>
                         </div>
                         <div class="sje-fetch-status" role="status" aria-live="polite" style="display:none"></div>
                     </div>
 
                     <div class="sje-panel" id="${dialogUid}-panel-paste" data-panel="paste" role="tabpanel" aria-labelledby="${dialogUid}-tab-paste">
-                        <label class="edit-label" for="${pasteId}">Paste or type JSON</label>
-                        <textarea id="${pasteId}" class="edit-input edit-textarea sje-paste-input" rows="8" spellcheck="false" placeholder='{ "key": "value" }'></textarea>
+                        <label class="edit-label" for="${pasteId}">${ smliserI18n.esc( smliserI18n.__( 'Paste or type JSON' ) ) }</label>
+                        <textarea id="${pasteId}" class="edit-input edit-textarea sje-paste-input" rows="8" spellcheck="false" placeholder='${ smliserI18n.esc( smliserI18n.__( '{ "key": "value" }' ) ) }'></textarea>
                         <button type="button" class="sje-clipboard-btn">
                             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <path d="M5.5 2h5M5.5 2a1 1 0 0 0-1 1v1h7V3a1 1 0 0 0-1-1m-5 0a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1"/><rect x="3" y="4" width="10" height="11" rx="1"/>
                             </svg>
-                            Paste from clipboard
+                            ${ smliserI18n.esc( smliserI18n.__( 'Paste from clipboard' ) ) }
                         </button>
                     </div>
                 </div>
@@ -1679,12 +1679,12 @@ class SmliserJsonEditor {
             const footer     = document.createElement( 'div' );
             footer.className = 'sje-dialog-buttons';
             const cancelBtn  = document.createElement( 'button' );
-            cancelBtn.type   = 'button'; cancelBtn.className = 'sje-btn sje-btn-secondary'; cancelBtn.textContent = 'Cancel';
+            cancelBtn.type   = 'button'; cancelBtn.className = 'sje-btn sje-btn-secondary'; cancelBtn.textContent = smliserI18n.__( 'Cancel' );
             const importBtn  = document.createElement( 'button' );
-            importBtn.type   = 'button'; importBtn.className = 'sje-btn sje-btn-primary'; importBtn.textContent = 'Import';
+            importBtn.type   = 'button'; importBtn.className = 'sje-btn sje-btn-primary'; importBtn.textContent = smliserI18n.__( 'Import' );
             footer.appendChild( cancelBtn ); footer.appendChild( importBtn );
 
-            const modal = this.dialog.open({ title: 'Import JSON', body, footer, width: '520px' });
+            const modal = this.dialog.open({ title: smliserI18n.__( 'Import JSON' ), body, footer, width: '520px' });
 
             // Tab switching
             const tabs   = body.querySelectorAll( '.sje-tab' );
@@ -1729,7 +1729,7 @@ class SmliserJsonEditor {
                     body.querySelector( '.sje-paste-input' ).value = text;
                     clearError();
                 } catch {
-                    showError( 'Clipboard access denied — paste manually into the box.' );
+                    showError( smliserI18n.__( 'Clipboard access denied — paste manually into the box.' ) );
                 }
             });
 
@@ -1739,38 +1739,38 @@ class SmliserJsonEditor {
                 try {
                     if ( activeTab === 'file' ) {
                         const file = fileInput.files[0] || dropZone._selectedFile;
-                        if ( ! file ) { showError( 'Please select or drop a JSON file.' ); return; }
+                        if ( ! file ) { showError( smliserI18n.__( 'Please select or drop a JSON file.' ) ); return; }
                         const text   = await file.text();
                         const parsed = JSON.parse( text );
                         await modal.close();
                         await this.setData( parsed );
-                        if ( this.options.verbose ) this.notification.success( `Imported "${file.name}" successfully` );
+                        if ( this.options.verbose ) this.notification.success( smliserI18n.sprintf( smliserI18n.__( 'Imported "%s" successfully' ), file.name ) );
 
                     } else if ( activeTab === 'url' ) {
                         const url = body.querySelector( '.sje-url-input' ).value.trim();
-                        if ( ! url ) { showError( 'Please enter a URL.' ); return; }
+                        if ( ! url ) { showError( smliserI18n.__( 'Please enter a URL.' ) ); return; }
                         const statusEl = body.querySelector( '.sje-fetch-status' );
-                        statusEl.textContent = 'Fetching…'; statusEl.style.display = 'block';
+                        statusEl.textContent = smliserI18n.__( 'Fetching…' ); statusEl.style.display = 'block';
                         importBtn.disabled   = true;
                         const res    = await fetch( url );
                         if ( ! res.ok ) throw new Error( `HTTP ${res.status} ${res.statusText}` );
                         const parsed = await res.json();
                         await modal.close();
                         await this.setData( parsed );
-                        if ( this.options.verbose ) this.notification.success( 'Imported from URL successfully' );
+                        if ( this.options.verbose ) this.notification.success( smliserI18n.__( 'Imported from URL successfully' ) );
 
                     } else if ( activeTab === 'paste' ) {
                         const raw = body.querySelector( '.sje-paste-input' ).value.trim();
-                        if ( ! raw ) { showError( 'Please paste or type some JSON.' ); return; }
+                        if ( ! raw ) { showError( smliserI18n.__( 'Please paste or type some JSON.' ) ); return; }
                         const parsed = JSON.parse( raw );
                         await modal.close();
                         await this.setData( parsed );
-                        if ( this.options.verbose ) this.notification.success( 'JSON imported successfully' );
+                        if ( this.options.verbose ) this.notification.success( smliserI18n.__( 'JSON imported successfully' ) );
                     }
                     resolve( true );
                 } catch (err) {
                     importBtn.disabled = false;
-                    showError( err.message || 'Failed to import JSON.' );
+                    showError( err.message || smliserI18n.__( 'Failed to import JSON.' ) );
                 }
             });
 
@@ -1816,41 +1816,41 @@ class SmliserJsonEditor {
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                             <path d="M8 11V3m0 8l-3-3m3 3l3-3"/><path d="M2 14h12"/>
                         </svg>
-                        Download
+                        ${ smliserI18n.esc( smliserI18n.__( 'Download' ) ) }
                     </button>
                     <button type="button" class="sje-tab" id="${dialogUid}-tab-copy" data-tab="copy" role="tab" aria-selected="false" aria-controls="${dialogUid}-panel-copy">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
                             <rect x="5" y="5" width="9" height="10" rx="1"/><path d="M3 11V3a1 1 0 0 1 1-1h6"/>
                         </svg>
-                        Copy
+                        ${ smliserI18n.esc( smliserI18n.__( 'Copy' ) ) }
                     </button>
                 </div>
 
                 <div class="sje-tab-panels">
                     <div class="sje-panel active" id="${dialogUid}-panel-download" data-panel="download" role="tabpanel" aria-labelledby="${dialogUid}-tab-download">
                         <div class="edit-field">
-                            <label class="edit-label" for="${filenameId}">Filename</label>
+                            <label class="edit-label" for="${filenameId}">${ smliserI18n.esc( smliserI18n.__( 'Filename' ) ) }</label>
                             <input type="text" id="${filenameId}" class="edit-input sje-filename-input" value="${this._escapeHtml(currentFilename)}" placeholder="data.json">
                         </div>
                         <div class="edit-field">
-                            <label class="edit-label" for="${formatId}">Format</label>
+                            <label class="edit-label" for="${formatId}">${ smliserI18n.esc( smliserI18n.__( 'Format' ) ) }</label>
                             <select id="${formatId}" class="edit-input sje-format-select">
-                                <option value="pretty">Pretty-printed (indented)</option>
-                                <option value="compact">Compact (minified)</option>
+                                <option value="pretty">${ smliserI18n.esc( smliserI18n.__( 'Pretty-printed (indented)' ) ) }</option>
+                                <option value="compact">${ smliserI18n.esc( smliserI18n.__( 'Compact (minified)' ) ) }</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="sje-panel" id="${dialogUid}-panel-copy" data-panel="copy" role="tabpanel" aria-labelledby="${dialogUid}-tab-copy">
                         <div class="edit-field">
-                            <label class="edit-label" for="${copyFormatId}">Format</label>
+                            <label class="edit-label" for="${copyFormatId}">${ smliserI18n.esc( smliserI18n.__( 'Format' ) ) }</label>
                             <select id="${copyFormatId}" class="edit-input sje-copy-format-select">
-                                <option value="pretty">Pretty-printed (indented)</option>
-                                <option value="compact">Compact (minified)</option>
+                                <option value="pretty">${ smliserI18n.esc( smliserI18n.__( 'Pretty-printed (indented)' ) ) }</option>
+                                <option value="compact">${ smliserI18n.esc( smliserI18n.__( 'Compact (minified)' ) ) }</option>
                             </select>
                         </div>
                         <div class="edit-field">
-                            <label class="edit-label" for="${previewId}">Preview</label>
+                            <label class="edit-label" for="${previewId}">${ smliserI18n.esc( smliserI18n.__( 'Preview' ) ) }</label>
                             <textarea id="${previewId}" class="edit-input edit-textarea sje-copy-preview" rows="6" readonly spellcheck="false"></textarea>
                         </div>
                     </div>
@@ -1861,12 +1861,12 @@ class SmliserJsonEditor {
             const footer    = document.createElement( 'div' );
             footer.className = 'sje-dialog-buttons';
             const cancelBtn = document.createElement( 'button' );
-            cancelBtn.type  = 'button'; cancelBtn.className = 'sje-btn sje-btn-secondary'; cancelBtn.textContent = 'Cancel';
+            cancelBtn.type  = 'button'; cancelBtn.className = 'sje-btn sje-btn-secondary'; cancelBtn.textContent = smliserI18n.__( 'Cancel' );
             const actionBtn = document.createElement( 'button' );
-            actionBtn.type  = 'button'; actionBtn.className = 'sje-btn sje-btn-primary'; actionBtn.textContent = 'Download';
+            actionBtn.type  = 'button'; actionBtn.className = 'sje-btn sje-btn-primary'; actionBtn.textContent = smliserI18n.__( 'Download' );
             footer.appendChild( cancelBtn ); footer.appendChild( actionBtn );
 
-            const modal = this.dialog.open({ title: 'Export JSON', body, footer, width: '480px' });
+            const modal = this.dialog.open({ title: smliserI18n.__( 'Export JSON' ), body, footer, width: '480px' });
 
             const tabs    = body.querySelectorAll( '.sje-tab' );
             const panels  = body.querySelectorAll( '.sje-panel' );
@@ -1889,7 +1889,7 @@ class SmliserJsonEditor {
                     activeTab = tab.dataset.tab;
                     tabs.forEach(  t => { t.classList.toggle( 'active', t.dataset.tab === activeTab ); t.setAttribute('aria-selected', t.dataset.tab === activeTab); });
                     panels.forEach( p => p.classList.toggle( 'active', p.dataset.panel === activeTab ) );
-                    actionBtn.textContent = activeTab === 'download' ? 'Download' : 'Copy to Clipboard';
+                    actionBtn.textContent = activeTab === 'download' ? smliserI18n.__( 'Download' ) : smliserI18n.__( 'Copy to Clipboard' );
                 });
             });
 
@@ -1912,12 +1912,12 @@ class SmliserJsonEditor {
                         const fmt = body.querySelector( '.sje-copy-format-select' ).value;
                         await navigator.clipboard.writeText( getJSON( fmt ) );
                         await modal.close();
-                        if ( this.options.verbose ) this.notification.success( 'Copied to clipboard' );
+                        if ( this.options.verbose ) this.notification.success( smliserI18n.__( 'Copied to clipboard' ) );
                     }
                     resolve( true );
                 } catch (err) {
                     const errDiv = body.querySelector( '.sje-dialog-error' );
-                    errDiv.textContent = err.message || 'Export failed.';
+                    errDiv.textContent = err.message || smliserI18n.__( 'Export failed.' );
                     errDiv.style.display = 'block';
                 }
             });
@@ -1933,9 +1933,9 @@ class SmliserJsonEditor {
             const text   = await file.text();
             const parsed = JSON.parse( text );
             await this.setData( parsed );
-            if ( this.options.verbose ) this.notification.success( 'File imported successfully' );
+            if ( this.options.verbose ) this.notification.success( smliserI18n.__( 'File imported successfully' ) );
         } catch (err) {
-            this._handleError( 'Failed to parse or load JSON file', err );
+            this._handleError( smliserI18n.__( 'Failed to parse or load JSON file' ), err );
             throw err;
         }
     }
@@ -1958,9 +1958,9 @@ class SmliserJsonEditor {
         const jsonString = await this.getJSON( true );
         try {
             await navigator.clipboard.writeText( jsonString );
-            if ( this.options.verbose ) this.notification.success( 'Copied to clipboard' );
+            if ( this.options.verbose ) this.notification.success( smliserI18n.__( 'Copied to clipboard' ) );
         } catch (e) {
-            this._handleError( 'Failed to copy to clipboard', e );
+            this._handleError( smliserI18n.__( 'Failed to copy to clipboard' ), e );
         }
     }
 
@@ -1968,11 +1968,11 @@ class SmliserJsonEditor {
         try {
             const text    = await navigator.clipboard.readText();
             const success = await this.setJSON( text );
-            if ( success && this.options.verbose ) this.notification.success( 'Pasted from clipboard' );
+            if ( success && this.options.verbose ) this.notification.success( smliserI18n.__( 'Pasted from clipboard' ) );
         } catch (e) {
             const msg = e?.name === 'NotAllowedError'
-                ? 'Clipboard permission blocked. Please allow access or paste manually.'
-                : 'Failed to paste from clipboard';
+                ? smliserI18n.__( 'Clipboard permission blocked. Please allow access or paste manually.' )
+                : smliserI18n.__( 'Failed to paste from clipboard' );
             this._handleError( msg, e );
         }
     }
@@ -2069,7 +2069,7 @@ class SmliserJsonEditor {
         const toggleBtn = this.toolbar?.querySelector( '.toolbar-toggle-btn' );
         if ( toggleBtn ) {
             toggleBtn.setAttribute( 'aria-expanded', String( ! this.toolbarCollapsed ) );
-            toggleBtn.title = this.toolbarCollapsed ? 'Show toolbar' : 'Hide toolbar';
+            toggleBtn.title = this.toolbarCollapsed ? smliserI18n.__( 'Show toolbar' ) : smliserI18n.__( 'Hide toolbar' );
         }
     }
 
@@ -2093,8 +2093,8 @@ class SmliserJsonEditor {
         const btn = this.toolbar?.querySelector( '[data-action="fullscreen"]' );
         if ( btn ) {
             btn.setAttribute( 'aria-pressed', String( this.isFullscreen ) );
-            btn.setAttribute( 'aria-label', this.isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen' );
-            btn.title = this.isFullscreen ? 'Exit fullscreen (Esc)' : 'Toggle fullscreen';
+            btn.setAttribute( 'aria-label', this.isFullscreen ? smliserI18n.__( 'Exit fullscreen' ) : smliserI18n.__( 'Enter fullscreen' ) );
+            btn.title = this.isFullscreen ? smliserI18n.__( 'Exit fullscreen (Esc)' ) : smliserI18n.__( 'Toggle fullscreen' );
 
             const icon = btn.querySelector( '.fullscreen-icon' );
             if ( icon ) icon.innerHTML = this._getFullscreenIconSVG();

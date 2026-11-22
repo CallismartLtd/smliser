@@ -56,27 +56,27 @@ class PostmarkProvider extends AbstractRestEmailProvider {
 		return [
 			'server_token' => [
 				'type'        => 'password',
-				'label'       => 'Server API Token',
+				'label'       => smliser__( 'Server API Token' ),
 				'required'    => true,
-				'description' => 'Your Postmark Server API Token. Found under your server\'s API Tokens tab.',
+				'description' => smliser__( 'Your Postmark Server API Token. Found under your server\'s API Tokens tab.' ),
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => false,
-				'description' => 'Default sender email address(Must be a verified Sender Signature in Postmark). Leave blank to use the global from email.',
+				'description' => smliser__( 'Default sender email address(Must be a verified Sender Signature in Postmark). Leave blank to use the global from email.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Sender display name. Leave blank to use the global from name.',
+				'description' => smliser__( 'Sender display name. Leave blank to use the global from name.' ),
 			],
 			'message_stream' => [
 				'type'        => 'text',
-				'label'       => 'Message Stream',
+				'label'       => smliser__( 'Message Stream' ),
 				'required'    => false,
-				'description' => 'Postmark message stream ID. Defaults to "outbound" if not specified.',
+				'description' => smliser__( 'Postmark message stream ID. Defaults to "outbound" if not specified.' ),
 			],
 		];
 	}
@@ -310,7 +310,7 @@ class PostmarkProvider extends AbstractRestEmailProvider {
 		$data = $response->json() ?? [];
 
 		if ( $response->is_error() ) {
-			$error = $data['Message'] ?? 'Unknown Postmark API error.';
+			$error = $data['Message'] ?? smliser__( 'Unknown Postmark API error.' );
 			$code  = $data['ErrorCode'] ?? $response->status_code;
 			throw new EmailTransportException(
 				"PostmarkProvider: API returned HTTP {$response->status_code} (ErrorCode: {$code}) — {$error}"
@@ -320,7 +320,7 @@ class PostmarkProvider extends AbstractRestEmailProvider {
 		// Guard against a 200 response that still carries a non-zero ErrorCode.
 		$error_code = (int) ( $data['ErrorCode'] ?? 0 );
 		if ( 0 !== $error_code ) {
-			$error = $data['Message'] ?? 'Unknown Postmark API error.';
+			$error = $data['Message'] ?? smliser__( 'Unknown Postmark API error.' );
 			throw new EmailTransportException(
 				"PostmarkProvider: send rejected (ErrorCode: {$error_code}) — {$error}"
 			);

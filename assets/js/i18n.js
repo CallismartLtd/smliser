@@ -157,6 +157,14 @@
 	}
 
 	/**
+	 * Escape text for HTML (element content or a quoted attribute). Use it on
+	 * translations inserted with innerHTML.
+	 */
+	function esc( text ) {
+		return String( text ).replace( /[&<>"']/g, ( c ) => ( { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' } )[ c ] );
+	}
+
+	/**
 	 * Format a number for the active locale.
 	 */
 	function formatNumber( value, options ) {
@@ -247,6 +255,7 @@
 		_n,
 		_nx,
 		sprintf,
+		esc,
 		formatNumber,
 	} );
 }( window, document ) );

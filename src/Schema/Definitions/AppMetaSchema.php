@@ -24,11 +24,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class AppMetaSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'App Meta';
+		return smliser__( 'App Meta' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores key-value metadata for hosted apps.';
+		return smliser__( 'Stores key-value metadata for hosted apps.' );
 	}
 
 	public static function get_table_name() : string {

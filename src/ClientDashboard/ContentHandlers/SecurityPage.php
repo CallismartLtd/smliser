@@ -37,7 +37,7 @@ final class SecurityPage implements ClientPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Security',
+			'title'      => smliser__( 'Security' ),
 			'slug'       => 'security',
 			'handler'    => $this,
 			'icon'       => 'ti ti-shield-lock',
@@ -115,7 +115,7 @@ final class SecurityPage implements ClientPageInterface {
 				'passkey_revoke'  => $this->urls->client_dashboard_url( 'json/security/passkey/revoke' )->url(),
 			],
 		] )
-			->set_title( 'Account security' )
+			->set_title( smliser__( 'Account security' ) )
 			->set_header( 'Cache-Control', 'no-store' )
 			->set_header( 'Referrer-Policy', 'no-referrer' )
 			->add_script( View::FORMS_SCRIPT )

@@ -19,16 +19,16 @@ $tones = [
 ];
 ?>
 <div class="dash-toolbar">
-	<p class="dash-lead">The apps you host here, for whoever you act for.</p>
+	<p class="dash-lead"><?php smliser_esc_html_e( 'The apps you host here, for whoever you act for.' ); ?></p>
 	<?php if ( '' !== $new_url ) : ?>
 		<a class="btn btn-accent" href="<?php echo escUrl( $new_url ); ?>">
 			<i class="ti ti-upload" aria-hidden="true"></i>
-			<span>Upload an app</span>
+			<span><?php smliser_esc_html_e( 'Upload an app' ); ?></span>
 		</a>
 	<?php endif; ?>
 </div>
 
-<nav class="dash-filters" aria-label="Filter by status">
+<nav class="dash-filters" aria-label="<?php smliser_esc_attr_e( 'Filter by status' ); ?>">
 	<?php foreach ( $filters as $filter ) : ?>
 		<a href="<?php echo escUrl( $filter['url'] ); ?>"<?php echo $filter['current'] ? ' aria-current="page"' : ''; ?>><?php echo escHtml( $filter['label'] ); ?></a>
 	<?php endforeach; ?>
@@ -36,8 +36,8 @@ $tones = [
 
 <?php if ( [] === $apps ) : ?>
 	<div class="cell">
-		<h3><?php echo escHtml( '' === $status ? 'No apps yet' : 'No apps here' ); ?></h3>
-		<p><?php echo escHtml( '' === $status ? ( '' !== $new_url ? 'Upload a plugin, theme or software package to host it here.' : 'Apps uploaded for this account appear here.' ) : 'No app has this status.' ); ?></p>
+		<h3><?php echo escHtml( '' === $status ? smliser__( 'No apps yet' ) : smliser__( 'No apps here' ) ); ?></h3>
+		<p><?php echo escHtml( '' === $status ? ( '' !== $new_url ? smliser__( 'Upload a plugin, theme or software package to host it here.' ) : smliser__( 'Apps uploaded for this account appear here.' ) ) : smliser__( 'No app has this status.' ) ); ?></p>
 	</div>
 <?php else : ?>
 	<ul class="records">
@@ -46,7 +46,7 @@ $tones = [
 				<div class="record-head">
 					<div>
 						<h3><a href="<?php echo escUrl( $app['url'] ); ?>"><?php echo escHtml( $app['name'] ); ?></a></h3>
-						<span class="muted"><?php echo escHtml( sprintf( '%s · %s · updated %s', $app['type'], $app['slug'], $app['updated'] ) ); ?></span>
+						<span class="muted"><?php echo escHtml( sprintf( smliser__( '%s · %s · updated %s' ), $app['type'], $app['slug'], $app['updated'] ) ); ?></span>
 					</div>
 					<span class="badge" data-tone="<?php echo escAttr( $tones[ $app['status'] ] ?? 'neutral' ); ?>"><?php echo escHtml( $app['status_label'] ); ?></span>
 				</div>

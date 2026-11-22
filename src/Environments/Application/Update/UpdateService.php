@@ -154,7 +154,7 @@ final class UpdateService {
 		$last = $this->state->update_section( InstallationState::UPDATE_CHECK );
 
 		if ( ! $refresh && null !== $last && time() - strtotime( (string) ( $last['checked_at'] ?? '' ) ) < self::CHECK_TTL ) {
-			$this->report( $progress, 'check', self::STATUS_INFO, sprintf( 'Using the check made at %s.', $last['checked_at'] ?? '' ) );
+			$this->report( $progress, 'check', self::STATUS_INFO, sprintf( smliser__( 'Using the check made at %s.' ), $last['checked_at'] ?? '' ) );
 			return $this->with_availability( $last );
 		}
 
@@ -170,7 +170,7 @@ final class UpdateService {
 		try {
 			$this->state->set_update_section( InstallationState::UPDATE_CHECK, $check );
 		} catch ( \RuntimeException $e ) {
-			$check['error'] = trim( $check['error'] . ' The result could not be saved: ' . $e->getMessage() );
+			$check['error'] = trim( $check['error'] . smliser__( ' The result could not be saved: ' ) . $e->getMessage() );
 		}
 
 		return $this->with_availability( $check );
@@ -202,11 +202,11 @@ final class UpdateService {
 		$problems = [];
 
 		if ( ! $this->signature->configured() ) {
-			$problems['keys'] = 'No release signing keys are configured, so no package can be verified.';
+			$problems['keys'] = smliser__( 'No release signing keys are configured, so no package can be verified.' );
 		}
 
 		if ( ! class_exists( \ZipArchive::class ) ) {
-			$problems['zip'] = 'The zip PHP extension is not enabled.';
+			$problems['zip'] = smliser__( 'The zip PHP extension is not enabled.' );
 		}
 
 		if ( ! \is_cli() ) {
@@ -217,20 +217,20 @@ final class UpdateService {
 			$path = $this->root . $dir;
 
 			if ( $this->fs->exists( $path ) && ! $this->fs->is_writable( $path ) ) {
-				$problems[ 'writable:' . ( '' === $dir ? '.' : $dir ) ] = sprintf( 'PHP cannot write to %s; the files are owned by another user.', '' === $dir ? 'the application folder' : $dir . '/' );
+				$problems[ 'writable:' . ( '' === $dir ? '.' : $dir ) ] = sprintf( smliser__( 'PHP cannot write to %s; the files are owned by another user.' ), '' === $dir ? 'the application folder' : $dir . '/' );
 			}
 		}
 
 		$free = @disk_free_space( $this->root );
 
 		if ( false !== $free && $free < self::MIN_FREE_BYTES ) {
-			$problems['disk'] = sprintf( 'Only %d MB of disk space is free; an update needs at least %d MB.', (int) ( $free / 1048576 ), (int) ( self::MIN_FREE_BYTES / 1048576 ) );
+			$problems['disk'] = sprintf( smliser__( 'Only %d MB of disk space is free; an update needs at least %d MB.' ), (int) ( $free / 1048576 ), (int) ( self::MIN_FREE_BYTES / 1048576 ) );
 		}
 
 		$stage = $this->updater->status()['stage'] ?? null;
 
 		if ( Updater::STAGE_APPLYING === $stage || Updater::STAGE_SWAPPED === $stage ) {
-			$problems['unfinished'] = 'A previous update is not finished. Finish it or roll it back first.';
+			$problems['unfinished'] = smliser__( 'A previous update is not finished. Finish it or roll it back first.' );
 		}
 
 		return $problems;
@@ -256,7 +256,7 @@ final class UpdateService {
 
 			if ( $seconds > 0 && $seconds < self::MIN_WEB_SECONDS ) {
 				$problems['time'] = sprintf(
-					'Web requests may only run for %d seconds (max_execution_time) and the limit cannot be raised; updating from the web needs %d. Update from the console or the queue worker, or raise the limit.',
+					smliser__( 'Web requests may only run for %d seconds (max_execution_time) and the limit cannot be raised; updating from the web needs %d. Update from the console or the queue worker, or raise the limit.' ),
 					$seconds,
 					self::MIN_WEB_SECONDS
 				);
@@ -271,7 +271,7 @@ final class UpdateService {
 
 			if ( $memory > 0 && $memory < self::MIN_WEB_MEMORY ) {
 				$problems['memory'] = sprintf(
-					'Web requests may only use %d MB of memory (memory_limit) and the limit cannot be raised; updating from the web needs %d MB.',
+					smliser__( 'Web requests may only use %d MB of memory (memory_limit) and the limit cannot be raised; updating from the web needs %d MB.' ),
 					(int) ( $memory / 1048576 ),
 					(int) ( self::MIN_WEB_MEMORY / 1048576 )
 				);
@@ -323,7 +323,7 @@ final class UpdateService {
 		if ( null !== $package ) {
 			$source = (string) ( realpath( $package ) ?: $package );
 
-			$this->report( $progress, 'download', self::STATUS_INFO, sprintf( 'Using the local package %s.', $source ) );
+			$this->report( $progress, 'download', self::STATUS_INFO, sprintf( smliser__( 'Using the local package %s.' ), $source ) );
 
 			$verified = $this->verifier->verify( $package, $this->sibling( $package, '.sha256' ), $this->sibling( $package, '.sha256.sig' ), $trust_unsigned, $progress );
 
@@ -353,7 +353,7 @@ final class UpdateService {
 			$zip    = (string) $ready['zip'];
 			$origin = ['source' => (string) ( $ready['source'] ?? '' ), 'sha256' => (string) $ready['sha256'], 'signed_by' => $ready['signed_by'] ?? null];
 
-			$this->report( $progress, 'download', self::STATUS_OK, sprintf( 'Reusing %s, verified by the dry run of %s (downloaded from %s).', $zip, $ready['prepared_at'] ?? '?', '' !== $origin['source'] ? $origin['source'] : 'the update server' ) );
+			$this->report( $progress, 'download', self::STATUS_OK, sprintf( smliser__( 'Reusing %s, verified by the dry run of %s (downloaded from %s).' ), $zip, $ready['prepared_at'] ?? '?', '' !== $origin['source'] ? $origin['source'] : 'the update server' ) );
 		} else {
 			$download = $this->server->download( (string) $check['latest'], $this->updater->downloads_dir(), false, $progress );
 			$zip      = $download['zip'];
@@ -447,7 +447,7 @@ final class UpdateService {
 	 */
 	public function set_auto_mode( string $mode ) : void {
 		if ( ! in_array( $mode, [ self::AUTO_OFF, self::AUTO_SECURITY, self::AUTO_ALL ], true ) ) {
-			throw new UpdateException( sprintf( 'Unknown automatic update mode "%s"; use off, security or all.', $mode ) );
+			throw new UpdateException( sprintf( smliser__( 'Unknown automatic update mode "%s"; use off, security or all.' ), $mode ) );
 		}
 
 		$this->settings->set( self::SETTING_AUTO, $mode );
@@ -492,7 +492,7 @@ final class UpdateService {
 			$this->quietly(
 				fn() => $this->notify_failed(
 					'install',
-					"Automatic updates cannot install this release on this server:\n" . implode( "\n", $blockers ),
+					smliser__( "Automatic updates cannot install this release on this server:\n" ) . implode( "\n", $blockers ),
 					[ 'version' => $check['latest'] ],
 					$check,
 					'blocked:' . implode( ',', array_keys( $blockers ) )
@@ -632,8 +632,8 @@ final class UpdateService {
 				'new_version'     => $version,
 				'security'        => $security,
 				'detail'          => self::AUTO_OFF === $mode
-					? 'Automatic updates are off on this site, so it will not be installed automatically.'
-					: 'Automatic updates on this site install security releases only, so this release will not be installed automatically.',
+					? smliser__( 'Automatic updates are off on this site, so it will not be installed automatically.' )
+					: smliser__( 'Automatic updates on this site install security releases only, so this release will not be installed automatically.' ),
 			]
 		);
 
@@ -731,7 +731,7 @@ final class UpdateService {
 				'current_version' => \SMLISER_VER,
 				'new_version'     => $version,
 				'security'        => $version === ( $check['latest'] ?? null ) && ! empty( $check['security'] ),
-				'detail'          => '' !== $output ? $output : 'The update ended without output.',
+				'detail'          => '' !== $output ? $output : smliser__( 'The update ended without output.' ),
 			]
 		);
 

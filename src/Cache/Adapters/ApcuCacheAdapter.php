@@ -255,7 +255,7 @@ class ApcuCacheAdapter implements CacheAdapterInterface {
 	}
 
 	public static function get_name() : string {
-		return 'APCu Cache';
+		return smliser__( 'APCu Cache' );
 	}
 
 	public function get_settings_schema() : array {
@@ -338,7 +338,7 @@ class ApcuCacheAdapter implements CacheAdapterInterface {
 	public function test( array $settings = [] ) : bool {
 		if ( ! $this->enabled ) {
 			throw new CacheTestException(
-				'APCu is not available. Ensure the APCu extension is installed and apc.enabled (or apc.enable_cli for CLI environments) is set to 1 in your php.ini.'
+				smliser__( 'APCu is not available. Ensure the APCu extension is installed and apc.enabled (or apc.enable_cli for CLI environments) is set to 1 in your php.ini.' )
 			);
 		}
 
@@ -347,7 +347,7 @@ class ApcuCacheAdapter implements CacheAdapterInterface {
 		try {
 			if ( ! \apcu_store( $probe, 1, 10 ) ) {
 				throw new CacheTestException(
-					'APCu probe write failed. Shared memory may be full or misconfigured.'
+					smliser__( 'APCu probe write failed. Shared memory may be full or misconfigured.' )
 				);
 			}
 
@@ -356,13 +356,13 @@ class ApcuCacheAdapter implements CacheAdapterInterface {
 
 			if ( ! $fetched ) {
 				throw new CacheTestException(
-					'APCu probe read failed — the key was not found immediately after writing.'
+					smliser__( 'APCu probe read failed — the key was not found immediately after writing.' )
 				);
 			}
 
 			if ( 1 !== $value ) {
 				throw new CacheTestException(
-					'APCu probe read returned unexpected data — the stored value was corrupted.'
+					smliser__( 'APCu probe read returned unexpected data — the stored value was corrupted.' )
 				);
 			}
 
@@ -371,7 +371,7 @@ class ApcuCacheAdapter implements CacheAdapterInterface {
 			throw $e;
 		} catch ( \Throwable $e ) {
 			throw new CacheTestException(
-				sprintf( 'Unexpected error while testing APCu — %s', $e->getMessage() ),
+				sprintf( smliser__( 'Unexpected error while testing APCu — %s' ), $e->getMessage() ),
 				0,
 				$e
 			);

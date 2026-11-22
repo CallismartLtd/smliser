@@ -40,11 +40,11 @@ class PurchaseRequestMessageEmail extends PurchaseRequestEmail {
 	}
 
 	protected function subject() : string {
-		return sprintf( 'About your purchase request #%d', $this->request->get_id() );
+		return sprintf( smliser__( 'About your purchase request #%d' ), $this->request->get_id() );
 	}
 
 	protected function preheader() : string {
-		return 'A message about your purchase request.';
+		return smliser__( 'A message about your purchase request.' );
 	}
 
 	protected function request_variables() : array {
@@ -52,15 +52,15 @@ class PurchaseRequestMessageEmail extends PurchaseRequestEmail {
 	}
 
 	public function label() : string {
-		return 'Purchase Request Message';
+		return smliser__( 'Purchase Request Message' );
 	}
 
 	public function description() : string {
-		return 'Sent to a buyer when a reviewer emails them a note while processing their purchase request.';
+		return smliser__( 'Sent to a buyer when a reviewer emails them a note while processing their purchase request.' );
 	}
 
 	public static function preview() : static {
-		return new static( static::preview_request(), 'jane@example.com', 'Demo Plugin — Yearly', "The receipt you sent is hard to read.\nPlease reply to this email with a clearer copy." );
+		return new static( static::preview_request(), 'jane@example.com', smliser__( 'Demo Plugin — Yearly' ), smliser__( "The receipt you sent is hard to read.\nPlease reply to this email with a clearer copy." ) );
 	}
 
 	public function get_blocks() : array {
@@ -68,14 +68,14 @@ class PurchaseRequestMessageEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{buyer_name}},',
+				'content'   => smliser__( 'Hi {{buyer_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'We have a message about your purchase request #{{request_id}} for {{product}}:',
+				'content'   => smliser__( 'We have a message about your purchase request #{{request_id}} for {{product}}:' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -83,7 +83,7 @@ class PurchaseRequestMessageEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'To answer, contact us at {{support_email}} and mention request #{{request_id}}.',
+				'content'   => smliser__( 'To answer, contact us at {{support_email}} and mention request #{{request_id}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

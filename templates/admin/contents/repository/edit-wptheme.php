@@ -8,11 +8,11 @@
 
 defined( 'SMLISER_ROOT' ) || exit;
 
-$title        = sprintf( 'Edit WordPress Theme: %s', $app->get_name() );
+$title        = sprintf( smliser__( 'Edit WordPress Theme: %s' ), $app->get_name() );
 $other_fields = [
 	[
 		'label' => __( 'Required PHP Version', 'smliser' ),
-		'help'  => 'Use theme style.css file to edit the minimum PHP version required to install this theme.',
+		'help'  => smliser__( 'Use theme style.css file to edit the minimum PHP version required to install this theme.' ),
 		'input' => [
 			'type'  => 'text',
 			'name'  => 'app_required_php_version',
@@ -27,7 +27,7 @@ $other_fields = [
 
 	[
 		'label' => __( 'Required WordPress Version', 'smliser' ),
-		'help'  => 'Use theme style.css file to edit the minimum WordPress version required to install this theme.',
+		'help'  => smliser__( 'Use theme style.css file to edit the minimum WordPress version required to install this theme.' ),
 		'input' => [
 			'type'  => 'text',
 			'name'  => 'app_required_wp_version',
@@ -42,7 +42,7 @@ $other_fields = [
 
 	[
 		'label' => __( 'Tested WordPress Version', 'smliser' ),
-		'help'  => 'Use theme style.css file to edit the WordPress version the theme has been tested up to.',
+		'help'  => smliser__( 'Use theme style.css file to edit the WordPress version the theme has been tested up to.' ),
 		'input' => [
 			'type'  => 'text',
 			'name'  => 'app_tested_wp_version',
@@ -143,13 +143,13 @@ $screenshots = $app->get_screenshots();
 
 $assets = [
 	'screenshot' => [
-		'title'  => 'Screenshot',
+		'title'  => smliser__( 'Screenshot' ),
 		'images' => $app->get_screenshot_url() ? [$app->get_screenshot_url()] : [],
 		'total'  => $app->get_screenshot_url() ? 1 : 0
 	],
 
 	'screenshots' => [
-		'title'  => 'Additional Screenshots',
+		'title'  => smliser__( 'Additional Screenshots' ),
 		'images' => $screenshots,
 		'total'  => count( array_filter( $screenshots ) )
 	],

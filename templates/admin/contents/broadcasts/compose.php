@@ -20,7 +20,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
     <?php if ( ! $message && $request->has( 'msg_id' ) ) : ?>
         <?php echo smliser_not_found_container(
         	sprintf(
-        		'Invalid or deleted message. <a href="%s">Go Back</a>',
+        		smliser__( 'Invalid or deleted message. <a href="%s">Go Back</a>' ),
         		$urlmanager->admin_broadcasts_page_url()->url()
         	)
         ); // phpcs:ignore ?>
@@ -28,7 +28,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
         <form class="smliser-compose-message-container" data-slug="broadcast-save">
             <div class="smliser-compose-message-container_left">
                 <div class="smliser-compose-message-form-row">
-                    <label for="subject"><?php echo escHtml( 'Subject' ); ?></label>
+                    <label for="subject"><?php echo smliser_esc_html__( 'Subject' ); ?></label>
                     <input type="text" name="subject" value="<?php echo escAttr( $message?->get_subject()?: '' ); ?>" id="subject" class="smliser-form-input">
                 </div>
 
@@ -41,8 +41,8 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
             </div>
             <div class="smliser-compose-message-container_right">
                 <div class="smliser-compose-message-form-row">
-                    <label for="smliser-app-select"><?php echo escHtml( 'Choose App(s)' ); ?></label>
-                    <select id="smliser-app-select" name="associated_apps[]" title="<?php echo escHtml( 'Select a hosted application to associate this message with.' ); ?>" multiple>
+                    <label for="smliser-app-select"><?php echo smliser_esc_html__( 'Choose App(s)' ); ?></label>
+                    <select id="smliser-app-select" name="associated_apps[]" title="<?php echo smliser_esc_html__( 'Select a hosted application to associate this message with.' ); ?>" multiple>
                         <?php if ( $message ) : ?>
                             <?php foreach ( $message->get_associated_apps() as $type => $slugs ) : ?>
                                 <optgroup label="<?php echo escHtml( \SmartLicenseServer\HostedApps\HostedAppsRegistry::instance()->get_app_type_label( $type, true ) ); ?>">
@@ -60,7 +60,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                     </select>
                 </div>
                 <input type="hidden" name="message_id" value="<?php echo escAttr( $message?->get_id() ?: 0 ); ?>">
-                <button type="submit" class="button" title="<?php echo escHtml( 'Update this message' ); ?>"><?php printf( '%s', $message ? 'Update' : 'Publish' ); ?></button>
+                <button type="submit" class="button" title="<?php echo smliser_esc_html__( 'Update this message' ); ?>"><?php printf( '%s', $message ? 'Update' : 'Publish' ); ?></button>
             </div>
         </form>
     <?php endif; ?>

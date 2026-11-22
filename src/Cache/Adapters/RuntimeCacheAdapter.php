@@ -202,7 +202,7 @@ class RuntimeCacheAdapter implements CacheAdapterInterface {
 	}
 
 	public static function get_name() : string {
-		return 'Runtime Cache';
+		return smliser__( 'Runtime Cache' );
 	}
 
 	public function get_settings_schema() : array {
@@ -286,21 +286,21 @@ class RuntimeCacheAdapter implements CacheAdapterInterface {
 			$probe   = '__smliser_runtime_probe_' . \uniqid( '', true );
 
 			if ( ! $sandbox->set( $probe, 1, 10 ) ) {
-				throw new CacheTestException( 'Runtime cache probe write failed unexpectedly.' );
+				throw new CacheTestException( smliser__( 'Runtime cache probe write failed unexpectedly.' ) );
 			}
 
 			$value = $sandbox->get( $probe );
 
 			if ( 1 !== $value ) {
-				throw new CacheTestException( 'Runtime cache probe read returned unexpected data.' );
+				throw new CacheTestException( smliser__( 'Runtime cache probe read returned unexpected data.' ) );
 			}
 
 			if ( ! $sandbox->delete( $probe ) ) {
-				throw new CacheTestException( 'Runtime cache probe delete failed unexpectedly.' );
+				throw new CacheTestException( smliser__( 'Runtime cache probe delete failed unexpectedly.' ) );
 			}
 
 			if ( $sandbox->has( $probe ) ) {
-				throw new CacheTestException( 'Runtime cache probe key still exists after deletion.' );
+				throw new CacheTestException( smliser__( 'Runtime cache probe key still exists after deletion.' ) );
 			}
 
 			return true;
@@ -308,7 +308,7 @@ class RuntimeCacheAdapter implements CacheAdapterInterface {
 			throw $e;
 		} catch ( Throwable $e ) {
 			throw new CacheTestException(
-				sprintf( 'Unexpected error while testing Runtime cache — %s', $e->getMessage() ),
+				sprintf( smliser__( 'Unexpected error while testing Runtime cache — %s' ), $e->getMessage() ),
 				0,
 				$e
 			);

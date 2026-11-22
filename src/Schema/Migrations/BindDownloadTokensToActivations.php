@@ -42,7 +42,7 @@ final class BindDownloadTokensToActivations extends AbstractMigration implements
 	private const INDEX = 'smliser_app_tokenschema_activation_index';
 
 	public static function get_description() : string {
-		return 'Bind download tokens to the license activation they were issued to';
+		return smliser__( 'Bind download tokens to the license activation they were issued to' );
 	}
 
 	public function up() : void {

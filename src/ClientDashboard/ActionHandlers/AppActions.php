@@ -69,7 +69,7 @@ final class AppActions {
 		if ( $is_new ) {
 			// A new app goes to the owner acting; without one there is no one to own it.
 			if ( null === $this->owner_id() ) {
-				return $this->failure( new RequestException( 'unauthorized_scope', 'Switch to an account or organization that can host apps first.', [ 'status' => 403 ] ) );
+				return $this->failure( new RequestException( 'unauthorized_scope', smliser__( 'Switch to an account or organization that can host apps first.' ), [ 'status' => 403 ] ) );
 			}
 
 			$request->remove( 'app_slug' );
@@ -160,7 +160,7 @@ final class AppActions {
 
 		$count = count( (array) ( $result['uploaded'] ?? [] ) );
 
-		return $this->success( 1 === $count ? 'The image is uploaded.' : sprintf( '%d images are uploaded.', $count ), $this->app_url( $app ) );
+		return $this->success( 1 === $count ? smliser__( 'The image is uploaded.' ) : sprintf( smliser__( '%d images are uploaded.' ), $count ), $this->app_url( $app ) );
 	}
 
 	/**
@@ -246,7 +246,7 @@ final class AppActions {
 		$owner_id = $this->owner_id();
 
 		if ( null === $app || null === $owner_id || $app->get_owner_id() !== $owner_id ) {
-			return new RequestException( 'resource_not_found', 'This app does not exist.', [ 'status' => 404 ] );
+			return new RequestException( 'resource_not_found', smliser__( 'This app does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		return $app;
@@ -280,7 +280,7 @@ final class AppActions {
 		}
 
 		$body    = $response->get_body();
-		$message = is_array( $body ) ? (string) ( $body['data']['message'] ?? 'Done.' ) : 'Done.';
+		$message = is_array( $body ) ? (string) ( $body['data']['message'] ?? 'Done.' ) : smliser__( 'Done.' );
 
 		return $this->success( $message, $redirect );
 	}

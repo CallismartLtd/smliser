@@ -254,7 +254,7 @@ class SmliserToast {
 			const closeButton = document.createElement( 'button' );
 			closeButton.type = 'button';
 			closeButton.classList.add( 'smliser-toast__close' );
-			closeButton.setAttribute( 'aria-label', 'Dismiss notification' );
+			closeButton.setAttribute( 'aria-label', smliserI18n.__( 'Dismiss notification' ) );
 			closeButton.innerHTML = '&times;';
 			closeButton.addEventListener( 'click', () => SmliserToast.dismiss( toast ) );
 

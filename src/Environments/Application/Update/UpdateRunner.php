@@ -179,12 +179,12 @@ final class UpdateRunner {
 		$php = PhpCli::find();
 
 		if ( null === $php ) {
-			$this->report( $progress, 'finish', self::STATUS_WARNING, 'This server cannot start a new PHP process; the update finishes on the next request to the site.' );
+			$this->report( $progress, 'finish', self::STATUS_WARNING, smliser__( 'This server cannot start a new PHP process; the update finishes on the next request to the site.' ) );
 
 			return [ 'status' => self::PENDING, 'finish' => [ 'method' => 'next_boot' ] ];
 		}
 
-		$this->report( $progress, 'finish', self::STATUS_INFO, sprintf( 'Finishing with the new version (%s %ssmliser update finish).', $php, $this->root ) );
+		$this->report( $progress, 'finish', self::STATUS_INFO, sprintf( smliser__( 'Finishing with the new version (%s %ssmliser update finish).' ), $php, $this->root ) );
 
 		$result = $this->run_finish_process( $php, $passthrough );
 		$stage  = $this->updater->status()['stage'] ?? null;
@@ -341,7 +341,7 @@ final class UpdateRunner {
 		$held = $this->updater->holds_lock();
 
 		if ( ! $held && ! $this->updater->lock() ) {
-			throw new UpdateException( 'Another update is running. Try again once it has ended.' );
+			throw new UpdateException( smliser__( 'Another update is running. Try again once it has ended.' ) );
 		}
 
 		try {
@@ -374,7 +374,7 @@ final class UpdateRunner {
 		}
 
 		if ( ! is_resource( $process ) ) {
-			return [ 'exit_code' => -1, 'output' => 'The finish process could not be started.' ];
+			return [ 'exit_code' => -1, 'output' => smliser__( 'The finish process could not be started.' ) ];
 		}
 
 		isset( $pipes[0] ) && fclose( $pipes[0] );
@@ -418,7 +418,7 @@ final class UpdateRunner {
 		$applied = $this->installer->migrator()->migrate();
 
 		if ( [] === $applied ) {
-			$this->report( $progress, 'finish', self::STATUS_INFO, 'No migration was pending: the database already has every registered migration.' );
+			$this->report( $progress, 'finish', self::STATUS_INFO, smliser__( 'No migration was pending: the database already has every registered migration.' ) );
 			return;
 		}
 
@@ -445,7 +445,7 @@ final class UpdateRunner {
 		try {
 			$this->installer->refresh_public_assets();
 		} catch ( Throwable $e ) {
-			$this->report( $progress, 'finish', self::STATUS_WARNING, sprintf( 'The public assets could not be republished: %s Run `smliser installer link:assets --force`.', $e->getMessage() ) );
+			$this->report( $progress, 'finish', self::STATUS_WARNING, sprintf( smliser__( 'The public assets could not be republished: %s Run `smliser installer link:assets --force`.' ), $e->getMessage() ) );
 		}
 	}
 

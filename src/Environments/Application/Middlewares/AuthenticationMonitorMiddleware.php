@@ -101,7 +101,7 @@ abstract class AuthenticationMonitorMiddleware implements MiddlewareInterface {
 	protected function blocked_response() : Response {
 
 		return Response::json(
-			[ 'success' => false, 'code' => 'too_many_attempts', 'message' => 'Too many attempts. Please wait and try again.' ],
+			[ 'success' => false, 'code' => 'too_many_attempts', 'message' => smliser__( 'Too many attempts. Please wait and try again.' ) ],
 			429,
 			[ 'Retry-After' => (string) AuthenticationMonitor::WINDOW_SECONDS ]
 		);

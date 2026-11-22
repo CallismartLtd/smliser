@@ -96,8 +96,16 @@ final class TranslatorTest extends TestCase {
 		$this->assertSame( 'en_US', $t->get_locale()->code() );
 	}
 
-	public function test_available_locales() : void {
-		$this->assertSame( [ 'en_US', 'fr', 'fr_FR' ], $this->translator()->available_locales() );
+	public function test_available_locales_counts_only_compiled_catalogs() : void {
+		$this->assertSame( [ 'en_US' ], $this->translator()->available_locales(), '.po files alone do not offer a language' );
+
+		copy( __DIR__ . '/fixtures/smliser-fr_FR.po', $this->tmp . '/smliser-fr_FR.po' );
+		( new CatalogCompiler() )->compile( $this->tmp . '/smliser-fr_FR.po' );
+
+		$translator = $this->translator();
+		$translator->add_directory( 'smliser', $this->tmp );
+
+		$this->assertSame( [ 'en_US', 'fr_FR' ], $translator->available_locales() );
 	}
 
 	public function test_missing_listener() : void {

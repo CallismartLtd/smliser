@@ -326,7 +326,7 @@ class HttpErrorHandler extends AbstractErrorHandler {
 				'padding'       => '20px',
 				'border-radius' => '8px',
 				'border'        => '1px solid #e9ecef',
-				'box-shadow'    => '0 4px 12px rgba(0, 0, 0, 0.05)',
+				'box-shadow'    => smliser__( '0 4px 12px rgba(0, 0, 0, 0.05)' ),
 				'overflow-wrap' => 'anywhere',
 				'max-width'     => '90%'
 			],
@@ -473,12 +473,12 @@ class HttpErrorHandler extends AbstractErrorHandler {
 		$out .= \escHtml( $message ) . $nl . $nl;
 		$out .= 'File: ' . \escHtml( $file ) . $nl;
 		$out .= 'Line: ' . $line . $nl;
-		$out .= $nl . 'Stack Trace:' . $nl;
+		$out .= $nl . smliser__( 'Stack Trace:' ) . $nl;
 		$out .= \escHtml( $this->error_object->getTraceAsString() ) . $nl;
 
 		$previous = $this->error_object->getPrevious();
 		if ( $previous ) {
-			$out .= $nl . 'Caused by: ' . get_class( $previous ) . $nl;
+			$out .= $nl . smliser__( 'Caused by: ' ) . get_class( $previous ) . $nl;
 			$out .= \escHtml( $previous->getMessage() ) . $nl;
 			$out .= \escHtml( $previous->getTraceAsString() ) . $nl;
 		}

@@ -43,7 +43,7 @@ class SendAppStatusChangedEmailJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Sends a notification email to the app owner when an app status changes.';
+		return smliser__( 'Sends a notification email to the app owner when an app status changes.' );
 	}
 
 	/**

@@ -25,13 +25,13 @@ defined( 'SMLISER_ROOT' ) || exit;
 $menu_args = [
 	'breadcrumbs' => [
 		[
-			'title' => 'Repository',
-			'label' => 'Repository',
+			'title' => smliser__( 'Repository' ),
+			'label' => smliser__( 'Repository' ),
 			'url'   => $urlmanager->admin_repo_url()->url()
 		],
 
 		[
-			'title' => sprintf( '%s Repository', HostedAppsRegistry::instance()->get_app_type_label( (string) $type ) ),
+			'title' => sprintf( smliser__( '%s Repository' ), HostedAppsRegistry::instance()->get_app_type_label( (string) $type ) ),
 			'label' => HostedAppsRegistry::instance()->get_app_type_label( (string) $type, true ),
 			'url'   => $urlmanager->admin_repo_url()->add_query_param( 'type', $type )->url()
 		],
@@ -43,8 +43,8 @@ $menu_args = [
 
 	'actions' => [
 		[
-			'title' => 'Upload New Application',
-			'label' => 'Upload New',
+			'title' => smliser__( 'Upload New Application' ),
+			'label' => smliser__( 'Upload New' ),
 			'url'   => $add_url->url(),
 			'icon'  => 'ti ti-upload',
 		],
@@ -113,7 +113,7 @@ if ( ! $current_url->has_query_param( 'status' ) || ( $current_url->has_query_pa
             		escUrl( $add_url->url() )
             	);
             else:
-            	$message = 'No app found matching this status';
+            	$message = smliser__( 'No app found matching this status' );
             endif; ?>
                 <?php echo smliser_not_found_container( $message ); ?>       
         <?php else: ?>
@@ -122,15 +122,15 @@ if ( ! $current_url->has_query_param( 'status' ) || ( $current_url->has_query_pa
                 <div class="smliser-actions-wrapper">
                     <div class="smliser-bulk-actions">
                         <select name="bulk_action" id="smliser-bulk-action" class="smliser-bulk-action-select" required>
-                            <option value=""><?php echo escHtml( 'Bulk Actions' ); ?></option>
+                            <option value=""><?php echo smliser_esc_html__( 'Bulk Actions' ); ?></option>
                             <?php foreach ( AbstractHostedApp::get_statuses() as $status_key => $status_label ) : ?>
                                 <?php if ( $status === $status_key ) : continue; endif; ?>
                                 <option value="<?php echo escAttr( $status_key ); ?>"><?php echo escHtml( $status_label ); ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button type="submit" class="button action smliser-bulk-action-button"><?php echo escHtml( 'Apply' ); ?></button>
+                        <button type="submit" class="button action smliser-bulk-action-button"><?php echo smliser_esc_html__( 'Apply' ); ?></button>
                     </div>
-                    <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'search' )->url() ); ?>" class="smliser-btn smliser-surface-btn">Search Repository</a>
+                    <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'search' )->url() ); ?>" class="smliser-btn smliser-surface-btn"><?php smliser_esc_html_e( 'Search Repository' ); ?></a>
                 </div>
             
                 <input type="hidden" name="action" value="smliser_bulk_action">
@@ -140,14 +140,14 @@ if ( ! $current_url->has_query_param( 'status' ) || ( $current_url->has_query_pa
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="smliser-select-all"></th>
-                            <th><?php echo escHtml( 'APP ID' ); ?></th>
-                            <th><?php echo escHtml( 'App Name' ); ?></th>
-                            <th><?php echo escHtml( 'App Author' ); ?></th>
-                            <th><?php echo escHtml( 'App Type' ); ?></th>
-                            <th><?php echo escHtml( 'Version' ); ?></th>
-                            <th><?php echo escHtml( 'Slug' ); ?></th>
-                            <th><?php echo escHtml( 'Status' ); ?></th>
-                            <th><?php echo escHtml( 'Last Updated' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'APP ID' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'App Name' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'App Author' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'App Type' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Version' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Slug' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Status' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Last Updated' ); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,9 +157,9 @@ if ( ! $current_url->has_query_param( 'status' ) || ( $current_url->has_query_pa
                                 <td class="smliser-edit-row">
                                     <?php echo intval( $app->get_id() ); ?>
                                     <div class="smliser-edit-link">
-                                        <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'edit', [ 'app_id' => $app->get_id(), 'type' => $app->get_type() ] )->url() ); ?>">edit</a> 
+                                        <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'edit', [ 'app_id' => $app->get_id(), 'type' => $app->get_type() ] )->url() ); ?>"><?php smliser_esc_html_e( 'edit' ); ?></a> 
                                         |
-                                        <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'view', [ 'app_id' => $app->get_id(), 'type' => $app->get_type() ] )->url() ); ?>">view</a>
+                                        <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'view', [ 'app_id' => $app->get_id(), 'type' => $app->get_type() ] )->url() ); ?>"><?php smliser_esc_html_e( 'view' ); ?></a>
                                     </div>
                                 </td>
                                 <td><?php echo escHtml( $app->get_name() ); ?></td>

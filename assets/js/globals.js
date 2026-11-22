@@ -225,7 +225,7 @@
 		try {
 			return await parseBody( response, responseType, contentType );
 		} catch ( error ) {
-			throw new SmliserFetchError( 'The server response could not be read.', {
+			throw new SmliserFetchError( smliserI18n.__( 'The server response could not be read.' ), {
 				code: 'parse_error',
 				status: response.status,
 				statusText: response.statusText,
@@ -291,7 +291,7 @@
 	 * @return {Promise<SmliserFetchError>}
 	 */
 	async function toHttpError( response, contentType ) {
-		let message = `HTTP Error ${ response.status }: ${ response.statusText }`;
+		let message = smliserI18n.sprintf( smliserI18n.__( 'HTTP Error %1$s: %2$s' ), response.status, response.statusText );
 		let field   = null;
 		let code    = null;
 
@@ -331,30 +331,30 @@
 	 */
 	function toNetworkError( error ) {
 		let code    = 'request_failed';
-		let message = error?.message || 'An unexpected error occurred';
+		let message = error?.message || smliserI18n.__( 'An unexpected error occurred' );
 
 		if ( 'TimeoutError' === error?.name ) {
 			code    = 'timeout';
-			message = 'The request timed out.';
+			message = smliserI18n.__( 'The request timed out.' );
 		} else if ( 'AbortError' === error?.name ) {
 			code    = 'aborted';
-			message = 'The request was aborted.';
+			message = smliserI18n.__( 'The request was aborted.' );
 		} else if ( error instanceof TypeError ) {
 			// The request never reached the server.
 			if ( ! navigator.onLine ) {
 				code    = 'offline';
-				message = 'You appear to be offline. Please check your connection.';
+				message = smliserI18n.__( 'You appear to be offline. Please check your connection.' );
 			} else {
 				// Online but still a TypeError: almost always DNS or CORS.
 				code    = 'network_error';
-				message = 'Server unreachable (DNS or Connection Refused).';
+				message = smliserI18n.__( 'Server unreachable (DNS or Connection Refused).' );
 			}
 		}
 
 		return new SmliserFetchError( message, {
 			code,
 			status: 0,
-			statusText: 'Network Error',
+			statusText: smliserI18n.__( 'Network Error' ),
 			cause: error,
 		} );
 	}
@@ -489,7 +489,7 @@
 		const response = await fetch( url, options );
 
 		if ( ! response.ok ) {
-			throw new Error( `Download failed: ${ response.status } ${ response.statusText } (${ response.url || url })` );
+			throw new Error( smliserI18n.sprintf( smliserI18n.__( 'Download failed: %1$s %2$s (%3$s)' ), response.status, response.statusText, response.url || url ) );
 		}
 
 		const blob     = await response.blob();
@@ -526,7 +526,7 @@
 			await navigator.clipboard.writeText( text );
 
 			const suffix = text.length > 0 && text.length < 50 ? `: ${ text }` : '';
-			SmliserToast.show( `Copied to clipboard${ suffix }`, 3000 );
+			SmliserToast.show( smliserI18n.sprintf( smliserI18n.__( 'Copied to clipboard%s' ), suffix ), 3000 );
 
 			return true;
 		} catch ( error ) {
@@ -590,7 +590,7 @@
 		}
 
 		jQuery( selectEl ).select2( {
-			placeholder: 'Search apps',
+			placeholder: smliserI18n.__( 'Search apps' ),
 			ajax: {
 				url: smliser_var.app_search_api,
 				dataType: 'json',
@@ -652,7 +652,7 @@
 				processResults: ( data, params ) => ( {
 					results: groupByType( Array.isArray( data.items ) ? data.items : [], ( entity ) => ( {
 						id: `${ entity.type }:${ entity.id }`,
-						text: entity.name ?? entity.display_name ?? 'No name',
+						text: entity.name ?? entity.display_name ?? smliserI18n.__( 'No name' ),
 						type: entity.type,
 						avatar: entity.avatar,
 					} ) ),
@@ -894,10 +894,10 @@
 			} );
 
 			if ( ! result.success ) {
-				throw new Error( result.data?.message || 'Operation failed' );
+				throw new Error( result.data?.message || smliserI18n.__( 'Operation failed' ) );
 			}
 
-			SmliserModal.success( result.data?.message || 'Action completed!', 'Success' );
+			SmliserModal.success( result.data?.message || smliserI18n.__( 'Action completed!' ), smliserI18n.__( 'Success' ) );
 			document.dispatchEvent( new CustomEvent( 'smliser:action_success', { detail: { button, args, result } } ) );
 		} catch ( error ) {
 			SmliserModal.error( error.message, 'Error' );

@@ -53,8 +53,8 @@ class UpdateFailedEmail extends UpdateEmail {
 	 */
 	protected function subject() : string {
 		return 'rollback' === $this->action
-			? sprintf( 'Restoring %s %s failed', \SMLISER_APP_NAME, $this->new_version )
-			: sprintf( '%s to %s %s failed', $this->security ? 'Security update' : 'Update', \SMLISER_APP_NAME, $this->new_version );
+			? sprintf( smliser__( 'Restoring %s %s failed' ), \SMLISER_APP_NAME, $this->new_version )
+			: sprintf( smliser__( '%s to %s %s failed' ), $this->security ? 'Security update' : 'Update', \SMLISER_APP_NAME, $this->new_version );
 	}
 
 	/**
@@ -62,8 +62,8 @@ class UpdateFailedEmail extends UpdateEmail {
 	 */
 	protected function preheader() : string {
 		return 'rollback' === $this->action
-			? 'The rollback did not complete. Check the Updates page.'
-			: sprintf( 'The update to %s did not complete. Check the Updates page to see where the site stands.', $this->new_version );
+			? smliser__( 'The rollback did not complete. Check the Updates page.' )
+			: sprintf( smliser__( 'The update to %s did not complete. Check the Updates page to see where the site stands.' ), $this->new_version );
 	}
 
 	/**
@@ -84,14 +84,14 @@ class UpdateFailedEmail extends UpdateEmail {
 	 * {@inheritdoc}
 	 */
 	public function label() : string {
-		return 'Update Failed';
+		return smliser__( 'Update Failed' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function description() : string {
-		return 'Sent to the site administration email when a queued update or rollback did not complete.';
+		return smliser__( 'Sent to the site administration email when a queued update or rollback did not complete.' );
 	}
 
 	/**
@@ -104,7 +104,7 @@ class UpdateFailedEmail extends UpdateEmail {
 			'0.4.2',
 			true,
 			'https://example.com/admin/tools/updates',
-			"Checking for the latest version...\nThe package signature is missing or invalid; it may not come from the publisher. Nothing was changed."
+			smliser__( "Checking for the latest version...\nThe package signature is missing or invalid; it may not come from the publisher. Nothing was changed." )
 		);
 	}
 
@@ -116,7 +116,7 @@ class UpdateFailedEmail extends UpdateEmail {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'An update on {{app_name}} needs your attention',
+				'content'   => smliser__( 'An update on {{app_name}} needs your attention' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -131,16 +131,16 @@ class UpdateFailedEmail extends UpdateEmail {
 			[
 				'id'      => 'next',
 				'type'    => 'text',
-				'content' => 'The Updates page shows which version the site is running now and what to do next. The end of the update output is below.',
+				'content' => smliser__( 'The Updates page shows which version the site is running now and what to do next. The end of the update output is below.' ),
 			],
 			[
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Version Before', 'value' => '{{current_version}}' ],
-					[ 'label' => 'Target Version', 'value' => '{{new_version}}' ],
-					[ 'label' => 'Release Type', 'value' => '{{release_type}}' ],
-					[ 'label' => 'Occurred At', 'value' => '{{occurred_at}}' ],
+					[ 'label' => smliser__( 'Version Before' ), 'value' => '{{current_version}}' ],
+					[ 'label' => smliser__( 'Target Version' ), 'value' => '{{new_version}}' ],
+					[ 'label' => smliser__( 'Release Type' ), 'value' => '{{release_type}}' ],
+					[ 'label' => smliser__( 'Occurred At' ), 'value' => '{{occurred_at}}' ],
 				],
 			],
 			[
@@ -151,7 +151,7 @@ class UpdateFailedEmail extends UpdateEmail {
 			[
 				'id'    => 'button',
 				'type'  => 'button',
-				'label' => 'Open the Updates Page',
+				'label' => smliser__( 'Open the Updates Page' ),
 				'url'   => '{{updates_url}}',
 			],
 			$this->closing_block(),

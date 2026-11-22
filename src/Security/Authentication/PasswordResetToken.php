@@ -81,35 +81,35 @@ final class PasswordResetToken {
 		$decoded = static::base64url_decode( $token );
 
 		if ( ! $decoded || ! str_contains( $decoded, '.' ) ) {
-			return [ 'valid' => false, 'reason' => 'Invalid token format' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'Invalid token format' ) ];
 		}
 
 		[ $payload, $signature ] = explode( '.', $decoded, 2 );
 
 		if ( ! hash_equals( static::hmac_hash( $payload, $this->derive_key(), 'sha256' ), $signature ) ) {
-			return [ 'valid' => false, 'reason' => 'Invalid signature' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'Invalid signature' ) ];
 		}
 
 		$data = json_decode( $payload, true );
 
 		if ( ! is_array( $data ) || empty( $data['id'] ) || ! isset( $data['timestamp'] ) ) {
-			return [ 'valid' => false, 'reason' => 'Invalid payload' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'Invalid payload' ) ];
 		}
 
 		if ( (int) $data['timestamp'] + self::TTL_MINUTES * 60 < time() ) {
-			return [ 'valid' => false, 'reason' => 'Token expired' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'Token expired' ) ];
 		}
 
 		$stored = $this->cache->get( $this->key( (int) $data['id'] ) );
 
 		if ( ! is_string( $stored ) || ! hash_equals( $stored, hash( 'sha256', $token ) ) ) {
-			return [ 'valid' => false, 'reason' => 'Token already used or invalidated' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'Token already used or invalidated' ) ];
 		}
 
 		$user = User::get_by_id( (int) $data['id'] );
 
 		if ( ! $user ) {
-			return [ 'valid' => false, 'reason' => 'User no longer exists.' ];
+			return [ 'valid' => false, 'reason' => smliser__( 'User no longer exists.' ) ];
 		}
 
 		return [ 'valid' => true, 'user' => $user ];

@@ -76,14 +76,14 @@ class WPDBAdapter extends MysqliAdapter {
 
 		if ( null === $dbh ) {
 			// wpdb keeps connection errors out of last_error; mysqli still has the cause.
-			$reason           = $this->wpdb->last_error ?: mysqli_connect_error() ?: 'no reason given.';
-			$this->last_error = 'WordPress could not connect to the database: ' . $reason;
+			$reason           = $this->wpdb->last_error ?: mysqli_connect_error() ?: smliser__( 'no reason given.' );
+			$this->last_error = smliser__( 'WordPress could not connect to the database: ' ) . $reason;
 			return false;
 		}
 
 		if ( ! $dbh instanceof mysqli ) {
 			$this->last_error = sprintf(
-				'WPDBAdapter needs WordPress on MySQL or MariaDB through mysqli; this wpdb connects with %s.',
+				smliser__( 'WPDBAdapter needs WordPress on MySQL or MariaDB through mysqli; this wpdb connects with %s.' ),
 				get_debug_type( $dbh )
 			);
 			return false;

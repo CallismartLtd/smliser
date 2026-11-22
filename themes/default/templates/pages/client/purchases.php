@@ -18,15 +18,15 @@ $tones = [
 	'rejected' => 'failure',
 ];
 ?>
-<p class="dash-lead">Purchases you paid for by transfer, and what became of them.</p>
+<p class="dash-lead"><?php smliser_esc_html_e( 'Purchases you paid for by transfer, and what became of them.' ); ?></p>
 
 <?php if ( [] === $purchases ) : ?>
 	<div class="cell">
-		<h3>No purchases yet</h3>
+		<h3><?php smliser_esc_html_e( 'No purchases yet' ); ?></h3>
 		<p>
 			<?php echo escHtml( $verified
-				? 'When you buy a license and send your payment receipt, it appears here while it is reviewed.'
-				: 'When you buy a license and send your payment receipt, it appears here while it is reviewed. Verify your email address to see purchases made with it before you signed in.' ); ?>
+				? smliser__( 'When you buy a license and send your payment receipt, it appears here while it is reviewed.' )
+				: smliser__( 'When you buy a license and send your payment receipt, it appears here while it is reviewed. Verify your email address to see purchases made with it before you signed in.' ) ); ?>
 		</p>
 	</div>
 <?php else : ?>
@@ -35,20 +35,20 @@ $tones = [
 			<li class="record">
 				<div class="record-head">
 					<h3><?php echo escHtml( $purchase['product'] ); ?></h3>
-					<span class="badge" data-tone="<?php echo escAttr( $tones[ $purchase['status_key'] ] ?? 'neutral' ); ?>"><?php echo escHtml( 'pending' === $purchase['status_key'] ? 'Awaiting review' : $purchase['status'] ); ?></span>
+					<span class="badge" data-tone="<?php echo escAttr( $tones[ $purchase['status_key'] ] ?? 'neutral' ); ?>"><?php echo escHtml( 'pending' === $purchase['status_key'] ? smliser__( 'Awaiting review' ) : $purchase['status'] ); ?></span>
 				</div>
 
 				<dl class="record-facts">
 					<div>
-						<dt>Request</dt>
+						<dt><?php smliser_esc_html_e( 'Request' ); ?></dt>
 						<dd>#<?php echo escHtml( (string) $purchase['id'] ); ?></dd>
 					</div>
 					<div>
-						<dt>Price</dt>
+						<dt><?php smliser_esc_html_e( 'Price' ); ?></dt>
 						<dd><?php echo escHtml( $purchase['price'] ); ?></dd>
 					</div>
 					<div>
-						<dt>Sent</dt>
+						<dt><?php smliser_esc_html_e( 'Sent' ); ?></dt>
 						<dd><?php echo escHtml( $purchase['submitted'] ); ?></dd>
 					</div>
 					<?php if ( '' !== $purchase['decided'] ) : ?>
@@ -59,7 +59,7 @@ $tones = [
 					<?php endif; ?>
 					<?php if ( '' !== $purchase['receipt'] ) : ?>
 						<div>
-							<dt>Receipt</dt>
+							<dt><?php smliser_esc_html_e( 'Receipt' ); ?></dt>
 							<dd><?php echo escHtml( $purchase['receipt'] ); ?></dd>
 						</div>
 					<?php endif; ?>
@@ -73,7 +73,7 @@ $tones = [
 				<?php endif; ?>
 
 				<?php if ( [] !== $purchase['notes'] ) : ?>
-					<ol class="record-notes" aria-label="Messages about this purchase">
+					<ol class="record-notes" aria-label="<?php smliser_esc_attr_e( 'Messages about this purchase' ); ?>">
 						<?php foreach ( $purchase['notes'] as $note ) : ?>
 							<li>
 								<span class="muted"><?php echo escHtml( $note['date'] ); ?></span>
@@ -87,7 +87,7 @@ $tones = [
 					<div class="record-actions">
 						<a class="btn btn-small" href="<?php echo escUrl( $purchase['license_url'] ); ?>">
 							<i class="ti ti-certificate" aria-hidden="true"></i>
-							<span>See your license</span>
+							<span><?php smliser_esc_html_e( 'See your license' ); ?></span>
 						</a>
 					</div>
 				<?php endif; ?>

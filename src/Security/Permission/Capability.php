@@ -18,110 +18,112 @@ final class Capability {
 	/**
 	 * Capability definitions grouped by domain.
 	 *
-	 * @var array<string, array<string, string>>
+	 * @return array<string, array<string, string>>
 	 */
-	protected static array $capabilities = [
+	protected static function definitions() : array {
+		return [
 
-		/**
-		 * Hosted Applications (Plugin, Theme, Software).
-		 */
-		'hosted_apps' => [
-			'hosted_apps.create'        => 'Create hosted applications',
-			'hosted_apps.update'        => 'Update hosted application details',
-			'hosted_apps.delete'        => 'Delete hosted applications',
-			'hosted_apps.change_status' => 'Change hosted application status',
-			'hosted_apps.upload_assets' => 'Upload application assets',
-			'hosted_apps.edit_assets'   => 'Edit application assets',
-			'hosted_apps.delete_assets' => 'Delete application assets',
-			'hosted_apps.access_files'  => 'Access application package files',
-		],
+			/**
+			 * Hosted Applications (Plugin, Theme, Software).
+			 */
+			'hosted_apps' => [
+				'hosted_apps.create'        => smliser__( 'Create hosted applications' ),
+				'hosted_apps.update'        => smliser__( 'Update hosted application details' ),
+				'hosted_apps.delete'        => smliser__( 'Delete hosted applications' ),
+				'hosted_apps.change_status' => smliser__( 'Change hosted application status' ),
+				'hosted_apps.upload_assets' => smliser__( 'Upload application assets' ),
+				'hosted_apps.edit_assets'   => smliser__( 'Edit application assets' ),
+				'hosted_apps.delete_assets' => smliser__( 'Delete application assets' ),
+				'hosted_apps.access_files'  => smliser__( 'Access application package files' ),
+			],
 
-		/**
-		 * Monetization & Licensing
-		 */
-		'monetization' => [
-			'monetization.create'         => 'Create app monetization',
-			'monetization.update'         => 'Update app monetization',
-			'monetization.delete'         => 'Delete app monetization',
-			'monetization.change_status'  => 'Change the status of app monetization',
-			'monetization.pricing.create' => 'Create monetization pricing tiers',
-			'monetization.pricing.update' => 'Update monetization pricing tiers',
-			'monetization.pricing.delete' => 'Delete monetization pricing tiers',
+			/**
+			 * Monetization & Licensing
+			 */
+			'monetization' => [
+				'monetization.create'         => smliser__( 'Create app monetization' ),
+				'monetization.update'         => smliser__( 'Update app monetization' ),
+				'monetization.delete'         => smliser__( 'Delete app monetization' ),
+				'monetization.change_status'  => smliser__( 'Change the status of app monetization' ),
+				'monetization.pricing.create' => smliser__( 'Create monetization pricing tiers' ),
+				'monetization.pricing.update' => smliser__( 'Update monetization pricing tiers' ),
+				'monetization.pricing.delete' => smliser__( 'Delete monetization pricing tiers' ),
 
-			'monetization.license.create'           => 'Create licenses',
-			'monetization.license.update'           => 'Update licenses',
-			'monetization.license.revoke'           => 'Revoke licenses',
-			'monetization.license.deactivate'       => 'Deactivate licenses',
-			'monetization.license.delete'           => 'Delete licenses',
-			'monetization.license.issue'            => 'Issue licenses',
-			'monetization.license.uninstall_domain' => 'Uninstall domain from license',
-		],
+				'monetization.license.create'           => smliser__( 'Create licenses' ),
+				'monetization.license.update'           => smliser__( 'Update licenses' ),
+				'monetization.license.revoke'           => smliser__( 'Revoke licenses' ),
+				'monetization.license.deactivate'       => smliser__( 'Deactivate licenses' ),
+				'monetization.license.delete'           => smliser__( 'Delete licenses' ),
+				'monetization.license.issue'            => smliser__( 'Issue licenses' ),
+				'monetization.license.uninstall_domain' => smliser__( 'Uninstall domain from license' ),
+			],
 
-		/**
-		 * Repository & Downloads
-		 */
-		'repository' => [
-			'repository.view'     => 'View repository contents',
-			'repository.download' => 'Download application packages',
-		],
+			/**
+			 * Repository & Downloads
+			 */
+			'repository' => [
+				'repository.view'     => smliser__( 'View repository contents' ),
+				'repository.download' => smliser__( 'Download application packages' ),
+			],
 
-		/**
-		 * Analytics & Reporting
-		 */
-		'analytics' => [
-			'analytics.view' => 'View analytics data',
-		],
+			/**
+			 * Analytics & Reporting
+			 */
+			'analytics' => [
+				'analytics.view' => smliser__( 'View analytics data' ),
+			],
 
-		/**
-		 * Messaging
-		 */
-		'messaging' => [
-			'messaging.send_bulk' => 'Send bulk messages',
-		],
+			/**
+			 * Messaging
+			 */
+			'messaging' => [
+				'messaging.send_bulk' => smliser__( 'Send bulk messages' ),
+			],
 
-		/**
-		 * Security & Identity Management
-		 */
-		'security' => [
-			'security.owner.create' => 'Create owners',
-			'security.owner.update' => 'Update owners',
-			'security.owner.delete' => 'Delete owners',
-			'security.owner.view'   => 'View owners',
+			/**
+			 * Security & Identity Management
+			 */
+			'security' => [
+				'security.owner.create' => smliser__( 'Create owners' ),
+				'security.owner.update' => smliser__( 'Update owners' ),
+				'security.owner.delete' => smliser__( 'Delete owners' ),
+				'security.owner.view'   => smliser__( 'View owners' ),
 
-			'security.organization.create'         => 'Create organizations',
-			'security.organization.update'         => 'Update organizations',
-			'security.organization.delete'         => 'Delete organizations',
-			'security.organization.view'           => 'View organizations',
-			'security.organization.add_members'    => 'Add members to organizations',
-			'security.organization.update_members' => 'Update organization members',
-			'security.organization.remove_members' => 'Remove members from organizations',
+				'security.organization.create'         => smliser__( 'Create organizations' ),
+				'security.organization.update'         => smliser__( 'Update organizations' ),
+				'security.organization.delete'         => smliser__( 'Delete organizations' ),
+				'security.organization.view'           => smliser__( 'View organizations' ),
+				'security.organization.add_members'    => smliser__( 'Add members to organizations' ),
+				'security.organization.update_members' => smliser__( 'Update organization members' ),
+				'security.organization.remove_members' => smliser__( 'Remove members from organizations' ),
 
-			'security.user.create' => 'Create users',
-			'security.user.update' => 'Update users',
-			'security.user.delete' => 'Delete users',
-			'security.user.view'   => 'View users',
-			'security.user.invite' => 'Invite users',
+				'security.user.create' => smliser__( 'Create users' ),
+				'security.user.update' => smliser__( 'Update users' ),
+				'security.user.delete' => smliser__( 'Delete users' ),
+				'security.user.view'   => smliser__( 'View users' ),
+				'security.user.invite' => smliser__( 'Invite users' ),
 
-			'security.service_account.create' => 'Create service accounts',
-			'security.service_account.update' => 'Update service accounts',
-			'security.service_account.delete' => 'Delete service accounts',
-			'security.service_account.view'   => 'View service accounts',
+				'security.service_account.create' => smliser__( 'Create service accounts' ),
+				'security.service_account.update' => smliser__( 'Update service accounts' ),
+				'security.service_account.delete' => smliser__( 'Delete service accounts' ),
+				'security.service_account.view'   => smliser__( 'View service accounts' ),
 
-			'security.role.create' => 'Create roles',
-			'security.role.update' => 'Update roles',
-			'security.role.delete' => 'Delete roles',
-			'security.role.assign' => 'Assign roles',
+				'security.role.create' => smliser__( 'Create roles' ),
+				'security.role.update' => smliser__( 'Update roles' ),
+				'security.role.delete' => smliser__( 'Delete roles' ),
+				'security.role.assign' => smliser__( 'Assign roles' ),
 
-			'security.capability.assign' => 'Assign capabilities to roles',
-		],
-	];
+				'security.capability.assign' => smliser__( 'Assign capabilities to roles' ),
+			],
+		];
+	}
 
 	/**
 	 * Cached flattened capability list.
 	 *
 	 * @var array<string, string>|null
 	 */
-	private static ?array $flatCache = null;
+	private static array $flatCache = [];
 
 	/**
 	 * Prevent instantiation.
@@ -134,11 +136,10 @@ final class Capability {
 	 * @return array<string, string> Flat list [ capability_slug => description ]
 	 */
 	public static function all() : array {
-		if ( null === self::$flatCache ) {
-			self::$flatCache = array_merge( ...array_values( self::$capabilities ) );
-		}
+		// Descriptions follow the current language, so cache per locale.
+		$locale = smliser_get_locale();
 
-		return self::$flatCache;
+		return self::$flatCache[ $locale ] ??= array_merge( ...array_values( self::definitions() ) );
 	}
 
 	/**
@@ -172,7 +173,7 @@ final class Capability {
 	 * @return array<string, string>
 	 */
 	public static function by_domain( string $domain ) : array {
-		return self::$capabilities[ $domain ] ?? [];
+		return self::definitions()[ $domain ] ?? [];
 	}
 
 	/**
@@ -181,7 +182,7 @@ final class Capability {
 	 * @return array<string, array<string, string>>
 	 */
 	public static function get_caps() : array {
-		return self::$capabilities;
+		return self::definitions();
 	}
 
 	/**
@@ -190,6 +191,6 @@ final class Capability {
 	 * @return string[]
 	 */
 	public static function domains() : array {
-		return array_keys( self::$capabilities );
+		return array_keys( self::definitions() );
 	}
 }

@@ -206,7 +206,7 @@ final class UploadedFile {
 	public function get_error_message() : string {
 
 		if ( ! $this->exists() ) {
-			return sprintf( 'No %s was uploaded.', $this->key );
+			return sprintf( smliser__( 'No %s was uploaded.' ), $this->key );
 		}
 
 		return $this->interpret_upload_error(
@@ -446,11 +446,11 @@ final class UploadedFile {
 		$safe_directory = FileSystemHelper::join_path( $directory );
 
 		if ( '' === $safe_directory ) {
-			throw new Exception( 'malicious_directory', 'The provided directory name is not safe.' );
+			throw new Exception( 'malicious_directory', smliser__( 'The provided directory name is not safe.' ) );
 		}
 
 		if ( ! $this->fs->is_dir( $safe_directory ) && ! $this->fs->mkdir( $safe_directory, SMLISER_DIR_PERMISSION ) ) {
-			throw new Exception( 'filesystem_error', 'Unable to created destination directory.' );
+			throw new Exception( 'filesystem_error', smliser__( 'Unable to created destination directory.' ) );
 		}
 
 		$filename    = $filename ? FileSystemHelper::remove_extension( $filename ) : $this->get_name( false );
@@ -458,9 +458,9 @@ final class UploadedFile {
 		$destination = sprintf( '%s.%s', $path, $this->get_canonical_extension() );
 
 		if ( ! $this->fs->move( $this->get_tmp_path(), $destination, $overwrite ) ) {
-			$message = 'Failed to move uploaded file';
+			$message = smliser__( 'Failed to move uploaded file' );
 			if ( ! $overwrite ) {
-				$message .= ' likely due to duplicate file entry';
+				$message .= smliser__( ' likely due to duplicate file entry' );
 			}
 
 			$message .= '.';

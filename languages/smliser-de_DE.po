@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
 "POT-Creation-Date: 2026-11-22 22:22+0000\n"
-"PO-Revision-Date: 2026-11-22 22:22+0000\n"
+"PO-Revision-Date: 2026-11-22 22:52+0000\n"
 "Language-Team: Deutsch (Deutschland)\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -15,348 +15,348 @@ msgstr ""
 #: themes/default/templates/pages/auth/verify-email.php:20
 #, php-format
 msgid " %d %s issued to this address %s now in your account."
-msgstr ""
+msgstr " %d %s, an diese Adresse %s ausgestellt, jetzt in Ihrem Konto."
 
 #: src/Environments/Application/Health/SystemHealth.php:498 templates/admin/contents/system/updates.php:140
 msgid " (security release)"
-msgstr ""
+msgstr " (Sicherheitsversion)"
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:135
 msgid " An update started; the remaining tasks stay due."
-msgstr ""
+msgstr " Ein Update wurde gestartet; die übrigen Aufgaben bleiben fällig."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:295
 msgid " It is enabled and loads from the next request on."
-msgstr ""
+msgstr " Sie ist aktiviert und wird ab der nächsten Anfrage geladen."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:267
 msgid " It now renders the public pages."
-msgstr ""
+msgstr " Es stellt jetzt die öffentlichen Seiten dar."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:297
 msgid " It was not enabled: "
-msgstr ""
+msgstr " Sie wurde nicht aktiviert: "
 
 #: templates/admin/contents/license/logs.php:67
 msgid " Item"
-msgstr ""
+msgstr " Element"
 
 #: templates/admin/contents/system/signing-key.php:28
 #, php-format
 msgid " New packages of these types are refused until a valid key is set: %s."
-msgstr ""
+msgstr " Neue Pakete dieser Typen werden abgelehnt, bis ein gültiger Schlüssel festgelegt ist: %s."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:175
 msgid " Password resets, email OTPs and rate limiting cannot work reliably."
-msgstr ""
+msgstr " Passwort-Zurücksetzungen, E-Mail-Einmalcodes und Ratenbegrenzung können nicht zuverlässig funktionieren."
 
 #: src/Core/Container/Container.php:449
 msgid " Scalar and built-in constructor dependencies must be "
-msgstr ""
+msgstr " Skalare und eingebaute Konstruktorabhängigkeiten müssen "
 
 #: src/Core/Container/Container.php:439
 msgid " The default value cannot be injected automatically; "
-msgstr ""
+msgstr " Der Standardwert kann nicht automatisch injiziert werden; "
 
 #: src/Environments/Application/Update/UpdateService.php:173
 msgid " The result could not be saved: "
-msgstr ""
+msgstr " Das Ergebnis konnte nicht gespeichert werden: "
 
 #: src/Core/Container/Container.php:419
 msgid " Union-typed dependencies must be explicitly registered."
-msgstr ""
+msgstr " Abhängigkeiten mit Union-Typen müssen explizit registriert werden."
 
 #: src/Environments/Application/Installation/AppInstaller.php:1219
 msgid " Upload the release again."
-msgstr ""
+msgstr " Laden Sie die Version erneut hoch."
 
 #: src/Environments/Application/Health/SystemHealth.php:1058
 #, php-format
 msgid " Uploads of %s are refused until it is."
-msgstr ""
+msgstr " Uploads von %s werden abgelehnt, bis dies der Fall ist."
 
 #: src/Environments/Application/Installation/InstallerPage.php:472
 msgid " from working:</p>"
-msgstr ""
+msgstr " funktionieren:</p>"
 
 #: src/Core/UploadedFile.php:463
 msgid " likely due to duplicate file entry"
-msgstr ""
+msgstr " wahrscheinlich wegen eines doppelten Dateieintrags"
 
 #: src/Email/Templates/Security/SecurityEmailTemplate.php:125
 msgid " on your account. If this was not you, secure your account now."
-msgstr ""
+msgstr " in Ihrem Konto. Wenn Sie das nicht waren, sichern Sie Ihr Konto jetzt."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:236
 msgid " two-factor authentication is disabled."
-msgstr ""
+msgstr " Zwei-Faktor-Authentifizierung ist deaktiviert."
 
 #: src/SettingsAPI/SettingsController.php:110
 #, php-format
 msgid "\"%s\" cannot be used as the %s: it is reserved. Reserved: %s."
-msgstr ""
+msgstr "„%s“ kann nicht als %s verwendet werden: Es ist reserviert. Reserviert: %s."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:1187
 #, php-format
 msgid "\"%s\" could not be listed."
-msgstr ""
+msgstr "„%s“ konnte nicht aufgelistet werden."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:1100
 #, php-format
 msgid "\"%s\" could not be read."
-msgstr ""
+msgstr "„%s“ konnte nicht gelesen werden."
 
 #: assets/js/admin/apps-uploader.js:915
 #, javascript-format
 msgid "\"%s\" has been converted to PNG."
-msgstr ""
+msgstr "„%s“ wurde in PNG umgewandelt."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:900
 #, php-format
 msgid "\"%s\" is not a %s slug: use lowercase letters, digits and hyphens."
-msgstr ""
+msgstr "„%s“ ist kein %s-Slug: Verwenden Sie Kleinbuchstaben, Ziffern und Bindestriche."
 
 #: src/RESTAPI/Handlers/Licensing.php:357
 #, php-format
 msgid "\"%s\" is not a date."
-msgstr ""
+msgstr "„%s“ ist kein Datum."
 
 #: src/HostedApps/Storage/AppFile.php:192
 #, php-format
 msgid "\"%s\" is not a valid app slug."
-msgstr ""
+msgstr "„%s“ ist kein gültiger App-Slug."
 
 #: src/HostedApps/Storage/AppFile.php:188 src/HostedApps/Storage/AppFile.php:205
 #, php-format
 msgid "\"%s\" is not a valid app type."
-msgstr ""
+msgstr "„%s“ ist kein gültiger App-Typ."
 
 #: src/Email/RequestController.php:250
 #, php-format
 msgid "\"%s\" is not a valid email address."
-msgstr ""
+msgstr "„%s“ ist keine gültige E-Mail-Adresse."
 
 #: src/HostedApps/Storage/AppFile.php:220
 #, php-format
 msgid "\"%s\" is not a valid file name."
-msgstr ""
+msgstr "„%s“ ist kein gültiger Dateiname."
 
 #: src/Environments/Application/Theming/ThemeContext.php:122
 #, php-format
 msgid "\"%s\" is not a valid partial name."
-msgstr ""
+msgstr "„%s“ ist kein gültiger Partial-Name."
 
 #: src/HostedApps/HostedApplicationService.php:585
 #, php-format
 msgid "\"%s\" is not a valid slug."
-msgstr ""
+msgstr "„%s“ ist kein gültiger Slug."
 
 #: src/HostedApps/HostedApplicationService.php:584
 #, php-format
 msgid "\"%s\" is not a valid slug. Did you mean \"%s\"?"
-msgstr ""
+msgstr "„%s“ ist kein gültiger Slug. Meinten Sie „%s“?"
 
 #: src/Environments/Application/Theming/ThemeContext.php:344
 #, php-format
 msgid "\"%s\" is not a valid theme asset path."
-msgstr ""
+msgstr "„%s“ ist kein gültiger Pfad zu einer Theme-Ressource."
 
 #: src/HostedApps/Storage/AppFile.php:97
 #, php-format
 msgid "\"%s\" is not an app file kind."
-msgstr ""
+msgstr "„%s“ ist keine App-Dateiart."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:131
 #, php-format
 msgid "\"%s\" ran successfully."
-msgstr ""
+msgstr "„%s“ wurde erfolgreich ausgeführt."
 
 #: templates/admin/contents/options/email/editor.php:310
 msgid "#f8fafc"
-msgstr ""
+msgstr "#f8fafc"
 
 #: templates/admin/contents/options/email/editor.php:221
 msgid "#ffffff"
-msgstr ""
+msgstr "#ffffff"
 
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:79
 #, php-format
 msgid "%1$s Accept Invitation %2$s"
-msgstr ""
+msgstr "%1$s Einladung annehmen %2$s"
 
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:78
 #, php-format
 msgid "%1$s Reset My Password %2$s"
-msgstr ""
+msgstr "%1$s Mein Passwort zurücksetzen %2$s"
 
 #. translators: 1: banner icon, 2: app name (formatted), 3: old status (formatted), 4: new status (formatted)
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:87
 #, php-format
 msgid "%1$s The status of %2$s has been changed from %3$s to %4$s."
-msgstr ""
+msgstr "%1$s Der Status von %2$s wurde von %3$s zu %4$s geändert."
 
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:68
 #, php-format
 msgid "%1$s Verify My Email %2$s"
-msgstr ""
+msgstr "%1$s Meine E-Mail bestätigen %2$s"
 
 #. translators: 1: Plugin name, 2: Number of affected directories
 #: src/Environments/WordPress/WordPressEnvironment.php:430
 #, php-format
 msgid "%1$s detected a filesystem permission problem in %2$d directory."
 msgid_plural "%1$s detected filesystem permission problems in %2$d directories."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s hat ein Dateisystem-Berechtigungsproblem in %2$d Verzeichnis festgestellt."
+msgstr[1] "%1$s hat Dateisystem-Berechtigungsprobleme in %2$d Verzeichnissen festgestellt."
 
 #. translators: 1: inviter name (formatted), 2: organization name (formatted)
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:77
 #, php-format
 msgid "%1$s has invited you to join %2$s. Accept the invitation below to get started."
-msgstr ""
+msgstr "%1$s hat Sie eingeladen, %2$s beizutreten. Nehmen Sie die Einladung unten an, um loszulegen."
 
 #: assets/js/admin/cache-stats.js:148
 #, javascript-format
 msgid "%1$s hits · %2$s misses"
-msgstr ""
+msgstr "%1$s Treffer · %2$s Fehlzugriffe"
 
 #: assets/js/smliser-uploader.js:262
 #, javascript-format
 msgid "%1$s is larger than %2$s."
-msgstr ""
+msgstr "%1$s ist größer als %2$s."
 
 #: assets/js/smliser-uploader.js:260
 #, javascript-format
 msgid "%1$s is not an accepted type (%2$s)."
-msgstr ""
+msgstr "%1$s ist kein zulässiger Typ (%2$s)."
 
 #. translators: 1: app, 2: opening <strong> tag, 3: closing <strong> tag
 #: src/Environments/Application/Installation/InstallerPage.php:180
 #, php-format
 msgid "%1$s stores its data in a database. Create an empty database and a database user in your hosting control panel (often under %2$sMySQL Databases%3$s), then enter the details here."
-msgstr ""
+msgstr "%1$s speichert seine Daten in einer Datenbank. Erstellen Sie in Ihrem Hosting-Kontrollpanel eine leere Datenbank und einen Datenbankbenutzer (oft unter %2$sMySQL-Datenbanken%3$s) und geben Sie die Daten dann hier ein."
 
 #: assets/js/admin/apps-uploader.js:1233
 #, javascript-format
 msgid "%1$s uploaded, %2$s failed. See details above."
-msgstr ""
+msgstr "%1$s hochgeladen, %2$s fehlgeschlagen. Details siehe oben."
 
 #. translators: 1: application name, 2: version number.
 #: themes/default/templates/partials/footer.php:13
 #, php-format
 msgid "%1$s v%2$s"
-msgstr ""
+msgstr "%1$s v%2$s"
 
 #. translators: 1: title, 2: app
 #: src/Environments/Application/Installation/InstallerPage.php:492
 #, php-format
 msgid "%1$s · %2$s installer"
-msgstr ""
+msgstr "%1$s · %2$s-Installationsprogramm"
 
 #. translators: 1: opening <span> tag, 2: closing <span> tag
 #: src/Environments/Application/Installation/InstallerPage.php:623
 #, php-format
 msgid "%1$sLets someone else continue with the setup token. Your progress is kept.%2$s"
-msgstr ""
+msgstr "%1$sErmöglicht jemand anderem, mit dem Einrichtungstoken fortzufahren. Ihr Fortschritt bleibt erhalten.%2$s"
 
 #. translators: 1: opening <a> tag, 2: app (formatted), 3: closing <a> tag
 #: src/Environments/Application/Installation/InstallerPage.php:403
 #, php-format
 msgid "%1$sOpen %2$sSign in%3$s"
-msgstr ""
+msgstr "%1$sÖffnen %2$sAnmelden%3$s"
 
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Environments/Application/Installation/InstallerPage.php:431
 #, php-format
 msgid "%1$sStart setup%2$s"
-msgstr ""
+msgstr "%1$sEinrichtung starten%2$s"
 
 #: src/Environments/Application/Installation/WebInstaller.php:702
 #, php-format
 msgid "%d already existed"
-msgstr ""
+msgstr "%d bereits vorhanden"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:174
 #, php-format
 msgid "%d extension update(s) available."
-msgstr ""
+msgstr "%d Erweiterungs-Update(s) verfügbar."
 
 #: src/Environments/Application/Health/SystemHealth.php:996
 #, php-format
 msgid "%d failed job(s) in the archive."
-msgstr ""
+msgstr "%d fehlgeschlagene(r) Job(s) im Archiv."
 
 #: src/Environments/Application/Release/ReleaseCheck.php:48
 #, php-format
 msgid "%d file(s) are missing: %s"
-msgstr ""
+msgstr "%d Datei(en) fehlen: %s"
 
 #: src/Environments/Application/Release/ReleaseCheck.php:52
 #, php-format
 msgid "%d file(s) do not match the release: %s"
-msgstr ""
+msgstr "%d Datei(en) stimmen nicht mit der Version überein: %s"
 
 #: src/ClientDashboard/ActionHandlers/AppActions.php:163
 #, php-format
 msgid "%d images are uploaded."
-msgstr ""
+msgstr "%d Bilder wurden hochgeladen."
 
 #: src/Environments/Application/Health/SystemHealth.php:1226
 #, php-format
 msgid "%d job(s) are ready to run but have not been picked up; the oldest has waited since %s. Emails, notifications and updates are delayed until a worker takes them."
-msgstr ""
+msgstr "%d Job(s) sind bereit, wurden aber nicht übernommen; der älteste wartet seit %s. E-Mails, Benachrichtigungen und Updates verzögern sich, bis ein Worker sie übernimmt."
 
 #: src/Environments/Application/Health/SystemHealth.php:1009
 #, php-format
 msgid "%d job(s) currently in a running state."
-msgstr ""
+msgstr "%d Job(s) werden gerade ausgeführt."
 
 #: src/Environments/Application/Health/SystemHealth.php:403
 #, php-format
 msgid "%d job(s) ready to run; the oldest since %s"
-msgstr ""
+msgstr "%d Job(s) bereit; der älteste seit %s"
 
 #: src/Environments/Application/Health/SystemHealth.php:455 src/Environments/Application/Health/SystemHealth.php:471
 #, php-format
 msgid "%d of %d missing (%s)"
-msgstr ""
+msgstr "%d von %d fehlen (%s)"
 
 #: src/Environments/Application/Health/SystemHealth.php:1252
 #, php-format
 msgid "%d of %d scheduled tasks are more than %d minutes overdue: %s."
-msgstr ""
+msgstr "%d von %d geplanten Aufgaben sind mehr als %d Minuten überfällig: %s."
 
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:50
 #, php-format
 msgid "%d page(s) rendered."
-msgstr ""
+msgstr "%d Seite(n) gerendert."
 
 #: themes/default/templates/pages/client/security.php:158
 #, php-format
 msgid "%d recovery codes remain."
-msgstr ""
+msgstr "%d Wiederherstellungscodes verbleiben."
 
 #: themes/default/templates/pages/client/security.php:33
 #, php-format
 msgid "%d registered"
-msgstr ""
+msgstr "%d registriert"
 
 #: src/Environments/Application/Health/SystemHealth.php:1028
 #, php-format
 msgid "%d scheduled task(s) recorded an error on their last run."
-msgstr ""
+msgstr "%d geplante Aufgabe(n) haben bei der letzten Ausführung einen Fehler gemeldet."
 
 #: src/Background/BackgroundSetup.php:516
 #, php-format
 msgid "%d task(s), %d job(s) in %ss"
-msgstr ""
+msgstr "%d Aufgabe(n), %d Job(s) in %ss"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:150
 #, php-format
 msgid "%d theme update(s) available."
-msgstr ""
+msgstr "%d Theme-Update(s) verfügbar."
 
 #: src/HostedApps/HostingAttestation.php:210
 #, php-format
@@ -367,517 +367,522 @@ msgid ""
 "# artifact: %s\n"
 "%s  %s\n"
 msgstr ""
+"%s\n"
+"# type: %s\n"
+"# slug: %s\n"
+"# artifact: %s\n"
+"%s  %s\n"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:35
 #, php-format
 msgid "%s %s is available"
-msgstr ""
+msgstr "%s %s ist verfügbar"
 
 #: src/Environments/Application/Health/SystemHealth.php:1423
 #, php-format
 msgid "%s %s is the latest version (checked %s)."
-msgstr ""
+msgstr "%s %s ist die neueste Version (geprüft %s)."
 
 #: templates/admin/contents/system/updates.php:87
 #, php-format
 msgid "%s %s is the latest version."
-msgstr ""
+msgstr "%s %s ist die neueste Version."
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:84 src/Admin/ActionHandlers/UpdateManagement.php:166
 #, php-format
 msgid "%s %s is up to date."
-msgstr ""
+msgstr "%s %s ist auf dem neuesten Stand."
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:152
 #, php-format
 msgid "%s %s is up to date. Check for updates first, or reinstall."
-msgstr ""
+msgstr "%s %s ist auf dem neuesten Stand. Suchen Sie zuerst nach Updates oder installieren Sie neu."
 
 #: src/Background/Jobs/Updates/ApplyUpdateJob.php:90 src/Background/Jobs/Updates/ApplyUpdateJob.php:109
 #, php-format
 msgid "%s %s is up to date; nothing was installed."
-msgstr ""
+msgstr "%s %s ist auf dem neuesten Stand; es wurde nichts installiert."
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:121
 #, php-format
 msgid "%s %s is up to date; nothing would be installed."
-msgstr ""
+msgstr "%s %s ist auf dem neuesten Stand; es würde nichts installiert."
 
 #: src/Environments/Application/Health/SystemHealth.php:769
 #, php-format
 msgid "%s (application directory only — database size could not be determined)"
-msgstr ""
+msgstr "%s (nur Anwendungsverzeichnis — die Datenbankgröße konnte nicht ermittelt werden)"
 
 #: themes/default/templates/pages/client/organization.php:27
 #, php-format
 msgid "%s (you)"
-msgstr ""
+msgstr "%s (Sie)"
 
 #: src/RESTAPI/Handlers/Licenses.php:497
 #, php-format
 msgid "%s Activate the license on this domain again to get a new one."
-msgstr ""
+msgstr "%s Aktivieren Sie die Lizenz auf dieser Domain erneut, um eine neue zu erhalten."
 
 #: templates/admin/contents/repository/uploader.php:80
 #, php-format
 msgid "%s Assets"
-msgstr ""
+msgstr "%s-Ressourcen"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:716
 #, php-format
 msgid "%s Distributable Artifacts"
-msgstr ""
+msgstr "Verteilbare Artefakte von %s"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:431
 #, php-format
 msgid "%s Member in %s "
-msgstr ""
+msgstr "%s-Mitglied in %s "
 
 #: templates/admin/contents/repository/index.php:34
 #, php-format
 msgid "%s Repository"
-msgstr ""
+msgstr "%s-Repository"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:587
 #, php-format
 msgid "%s Resource Owner"
-msgstr ""
+msgstr "%s-Ressourceninhaber"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:741
 #, php-format
 msgid "%s Service Account"
-msgstr ""
+msgstr "%s-Dienstkonto"
 
 #: src/Environments/Application/Release/ReleaseCheck.php:69
 #, php-format
 msgid "%s and %d more"
-msgstr ""
+msgstr "%s und %d weitere"
 
 #: src/Environments/Application/Health/SiteProbe.php:133
 #, php-format
 msgid "%s answered %d %s in %s%s."
-msgstr ""
+msgstr "%s antwortete mit %d %s in %s%s."
 
 #: templates/admin/contents/accounts/principals.php:95
 #, php-format
 msgid "%s avatar"
-msgstr ""
+msgstr "Avatar von %s"
 
 #: src/Cache/CacheRequestController.php:245
 #, php-format
 msgid "%s cache cleared successfully."
-msgstr ""
+msgstr "%s-Cache erfolgreich geleert."
 
 #: src/Cache/CacheRequestController.php:126
 #, php-format
 msgid "%s connection test passed successfully."
-msgstr ""
+msgstr "%s-Verbindungstest erfolgreich bestanden."
 
 #: src/Security/Organizations/OrganizationService.php:192
 #, php-format
 msgid "%s could not be added. Please try again."
-msgstr ""
+msgstr "%s konnte nicht hinzugefügt werden. Bitte versuchen Sie es erneut."
 
 #: src/Environments/Application/Update/PackageVerifier.php:70
 #, php-format
 msgid "%s could not be read for verification."
-msgstr ""
+msgstr "%s konnte zur Überprüfung nicht gelesen werden."
 
 #: src/Security/RequestController.php:178
 #, php-format
 msgid "%s deleted successfully."
-msgstr ""
+msgstr "%s erfolgreich gelöscht."
 
 #: src/Environments/Application/Health/SiteProbe.php:127
 #, php-format
 msgid "%s did not answer: %s."
-msgstr ""
+msgstr "%s hat nicht geantwortet: %s."
 
 #: src/Security/RequestController.php:159
 #, php-format
 msgid "%s does not exist in the database."
-msgstr ""
+msgstr "%s existiert nicht in der Datenbank."
 
 #: src/Environments/Application/Health/SystemHealth.php:966
 #, php-format
 msgid "%s does not exist."
-msgstr ""
+msgstr "%s existiert nicht."
 
 #: src/Environments/Application/Update/PackageVerifier.php:115
 #, php-format
 msgid "%s does not match its published checksum; the download may be damaged. Nothing was changed."
-msgstr ""
+msgstr "%s stimmt nicht mit der veröffentlichten Prüfsumme überein; der Download ist möglicherweise beschädigt. Es wurde nichts geändert."
 
 #: src/SettingsAPI/SettingsController.php:177
 #, php-format
 msgid "%s email has been disabled."
-msgstr ""
+msgstr "Die E-Mail „%s“ wurde deaktiviert."
 
 #: src/SettingsAPI/SettingsController.php:176
 #, php-format
 msgid "%s email has been enabled."
-msgstr ""
+msgstr "Die E-Mail „%s“ wurde aktiviert."
 
 #: src/Environments/Application/Health/SystemHealth.php:967
 #, php-format
 msgid "%s exists but is not readable."
-msgstr ""
+msgstr "%s existiert, ist aber nicht lesbar."
 
 #: src/Environments/Application/Health/SystemHealth.php:968
 #, php-format
 msgid "%s exists but is not writable."
-msgstr ""
+msgstr "%s existiert, ist aber nicht beschreibbar."
 
 #: src/Environments/WordPress/Dispatcher.php:223
 #, php-format
 msgid "%s file extension must be \".zip\"."
-msgstr ""
+msgstr "Die Dateierweiterung von %s muss „.zip“ sein."
 
 #: src/Environments/WordPress/Dispatcher.php:208
 #, php-format
 msgid "%s file not found."
-msgstr ""
+msgstr "%s-Datei nicht gefunden."
 
 #: src/Security/RequestController.php:857
 #, php-format
 msgid "%s has been successfully removed from %s."
-msgstr ""
+msgstr "%s wurde erfolgreich aus %s entfernt."
 
 #. translators: %s: app
 #: src/Environments/Application/Installation/InstallerPage.php:428
 #, php-format
 msgid "%s has been uploaded to this server but has not been set up yet."
-msgstr ""
+msgstr "%s wurde auf diesen Server hochgeladen, ist aber noch nicht eingerichtet."
 
 #: src/Environments/Application/Update/PackageVerifier.php:81
 #, php-format
 msgid "%s has no checksums file (accepted: --trust-unsigned). SHA-256 %s."
-msgstr ""
+msgstr "%s hat keine Prüfsummendatei (akzeptiert: --trust-unsigned). SHA-256 %s."
 
 #: themes/default/templates/pages/client/organizations.php:27
 #, php-format
 msgid "%s invited %s to join %s as %s. The invitation is valid until %s."
-msgstr ""
+msgstr "%s hat %s eingeladen, %s als %s beizutreten. Die Einladung ist gültig bis %s."
 
 #: src/Security/Organizations/OrganizationInvitations.php:116
 #, php-format
 msgid "%s is already a member of %s."
-msgstr ""
+msgstr "%s ist bereits Mitglied von %s."
 
 #: src/Environments/Application/Update/Updater.php:430
 #, php-format
 msgid "%s is being restored. Please try again in a few minutes."
-msgstr ""
+msgstr "%s wird wiederhergestellt. Bitte versuchen Sie es in einigen Minuten erneut."
 
 #: src/Environments/Application/Update/Updater.php:242
 #, php-format
 msgid "%s is being updated. Please try again in a few minutes."
-msgstr ""
+msgstr "%s wird aktualisiert. Bitte versuchen Sie es in einigen Minuten erneut."
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:93
 #, php-format
 msgid "%s is created. You now act for it."
-msgstr ""
+msgstr "%s wurde erstellt. Sie handeln jetzt in seinem Namen."
 
 #: src/Environments/Application/Health/SystemHealth.php:1166
 #, php-format
 msgid "%s is damaged or unreadable. Updates and the installer refuse to change it."
-msgstr ""
+msgstr "%s ist beschädigt oder nicht lesbar. Updates und das Installationsprogramm verweigern Änderungen daran."
 
 #: src/HostedApps/HostingController.php:910
 #, php-format
 msgid "%s is deleted for good."
-msgstr ""
+msgstr "%s ist endgültig gelöscht."
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:231
 #, php-format
 msgid "%s is deleted."
-msgstr ""
+msgstr "%s ist gelöscht."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:62
 #, php-format
 msgid "%s is enabled and loads from the next request on."
-msgstr ""
+msgstr "%s ist aktiviert und wird ab der nächsten Anfrage geladen."
 
 #. translators: %s: app
 #: src/Environments/Application/Installation/InstallerPage.php:400
 #, php-format
 msgid "%s is installed and open to visitors. Sign in with the administrator account you just created."
-msgstr ""
+msgstr "%s ist installiert und für Besucher geöffnet. Melden Sie sich mit dem soeben erstellten Administratorkonto an."
 
 #: src/Security/Organizations/OrganizationService.php:213 src/Security/Organizations/OrganizationService.php:251
 #, php-format
 msgid "%s is not a member of %s."
-msgstr ""
+msgstr "%s ist kein Mitglied von %s."
 
 #: src/Environments/Application/Update/Updater.php:157
 #, php-format
 msgid "%s is not a release package (it has no %s)."
-msgstr ""
+msgstr "%s ist kein Release-Paket (es hat kein %s)."
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:393
 #, php-format
 msgid "%s is not active at the moment."
-msgstr ""
+msgstr "%s ist derzeit nicht aktiv."
 
 #: themes/default/templates/pages/errors/405.php:16
 #, php-format
 msgid "%s is not supported here. This address accepts %s."
-msgstr ""
+msgstr "%s wird hier nicht unterstützt. Diese Adresse akzeptiert %s."
 
 #: src/Environments/Application/Health/SystemHealth.php:969
 #, php-format
 msgid "%s is readable and writable."
-msgstr ""
+msgstr "%s ist lesbar und beschreibbar."
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:275
 #, php-format
 msgid "%s is removed."
-msgstr ""
+msgstr "%s ist entfernt."
 
 #: assets/js/admin/core.js:1970
 #, javascript-format
 msgid "%s is required."
-msgstr ""
+msgstr "%s ist erforderlich."
 
 #: src/Environments/Application/Health/SystemHealth.php:1072
 #, php-format
 msgid "%s is set but is not a base64 Ed25519 secret key, so packages are stored unsigned.%s"
-msgstr ""
+msgstr "%s ist gesetzt, aber kein base64-kodierter geheimer Ed25519-Schlüssel, daher werden Pakete unsigniert gespeichert.%s"
 
 #: templates/admin/contents/system/signing-key.php:41
 #, php-format
 msgid "%s is set, but it is not a base64 Ed25519 secret key. Packages are stored unsigned.%s"
-msgstr ""
+msgstr "%s ist gesetzt, aber kein base64-kodierter geheimer Ed25519-Schlüssel. Pakete werden unsigniert gespeichert.%s"
 
 #: src/Environments/Application/Boot/BootModeResolver.php:125
 #, php-format
 msgid "%s is temporarily unavailable. Please try again shortly."
-msgstr ""
+msgstr "%s ist vorübergehend nicht verfügbar. Bitte versuchen Sie es in Kürze erneut."
 
 #: src/Background/BackgroundSetup.php:476
 #, php-format
 msgid "%s is the PHP %s command-line binary on this server, the same version this site runs on."
-msgstr ""
+msgstr "%s ist das PHP-%s-Kommandozeilenprogramm auf diesem Server, dieselbe Version, mit der diese Website läuft."
 
 #: src/Security/Organizations/OrganizationService.php:364
 #, php-format
 msgid "%s is the only Organization Administrator of %s. Make another member an Organization Administrator first."
-msgstr ""
+msgstr "%s ist der einzige Organisationsadministrator von %s. Machen Sie zuerst ein anderes Mitglied zum Organisationsadministrator."
 
 #: src/Security/Context/ContextServiceProvider.php:1076
 #, php-format
 msgid "%s is the only active system administrator. Make another user an active system administrator first."
-msgstr ""
+msgstr "%s ist der einzige aktive Systemadministrator. Machen Sie zuerst einen anderen Benutzer zum aktiven Systemadministrator."
 
 #: src/Environments/Application/Boot/BootModeResolver.php:245 templates/admin/contents/system/maintenance.php:142
 #, php-format
 msgid "%s is undergoing scheduled maintenance. Please try again shortly."
-msgstr ""
+msgstr "%s wird planmäßig gewartet. Bitte versuchen Sie es in Kürze erneut."
 
 #: themes/default/templates/pages/auth/verify-email.php:17
 #, php-format
 msgid "%s is verified."
-msgstr ""
+msgstr "%s ist bestätigt."
 
 #: src/Environments/Application/Update/PackageVerifier.php:118
 #, php-format
 msgid "%s matches its published SHA-256 %s."
-msgstr ""
+msgstr "%s stimmt mit seinem veröffentlichten SHA-256 %s überein."
 
 #: src/Environments/Application/Update/UpdateServer.php:369
 #, php-format
 msgid "%s needs a download token, which this installation cannot send yet."
-msgstr ""
+msgstr "%s benötigt ein Download-Token, das diese Installation noch nicht senden kann."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:56
 #, php-format
 msgid "%s now renders the public pages."
-msgstr ""
+msgstr "%s stellt jetzt die öffentlichen Seiten dar."
 
 #: templates/admin/contents/license/purchase-request.php:94
 #, php-format
 msgid "%s on %s by %s"
-msgstr ""
+msgstr "%s am %s von %s"
 
 #: src/Security/Organizations/OrganizationService.php:157
 #, php-format
 msgid "%s owns %d app(s), including any in the trash. Delete them, or move them to another owner, before deleting the organization."
-msgstr ""
+msgstr "%s besitzt %d App(s), einschließlich derer im Papierkorb. Löschen Sie sie oder übertragen Sie sie an einen anderen Inhaber, bevor Sie die Organisation löschen."
 
 #: src/HostedApps/HostingController.php:957
 #, php-format
 msgid "%s renamed from \"%s\" to \"%s\"."
-msgstr ""
+msgstr "%s umbenannt von „%s“ in „%s“."
 
 #: src/Email/EmailProvidersRegistry.php:118
 #, php-format
 msgid "%s requires %s on first bootstrap."
-msgstr ""
+msgstr "%s benötigt %s beim ersten Start."
 
 #. translators: %s: plugin name
 #: src/Environments/WordPress/WordPressEnvironment.php:469
 #, php-format
 msgid "%s requires an update."
-msgstr ""
+msgstr "%s erfordert ein Update."
 
 #: src/Environments/Application/Health/SystemHealth.php:1329
 #, php-format
 msgid "%s runs background work; it last ran %s ago."
-msgstr ""
+msgstr "%s führt Hintergrundarbeit aus; zuletzt vor %s."
 
 #: src/Security/RequestController.php:95
 #, php-format
 msgid "%s saved successfully."
-msgstr ""
+msgstr "%s erfolgreich gespeichert."
 
 #: src/Cache/CacheRequestController.php:166
 #, php-format
 msgid "%s settings reset successfully."
-msgstr ""
+msgstr "%s-Einstellungen erfolgreich zurückgesetzt."
 
 #: src/Cache/CacheRequestController.php:80 src/Email/RequestController.php:203
 #, php-format
 msgid "%s settings saved successfully."
-msgstr ""
+msgstr "%s-Einstellungen erfolgreich gespeichert."
 
 #. translators: %s: activation limit
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:76
 #, php-format
 msgid "%s site(s)"
-msgstr ""
+msgstr "%s Website(s)"
 
 #: src/HostedApps/HostingController.php:864
 #, php-format
 msgid "%s status changed from %s to %s"
-msgstr ""
+msgstr "Status von %s geändert von %s zu %s"
 
 #: src/Environments/WordPress/Installer.php:90
 #, php-format
 msgid "%s table exists, skipping"
-msgstr ""
+msgstr "Tabelle %s existiert, wird übersprungen"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:57
 #, php-format
 msgid "%s to %s %s failed"
-msgstr ""
+msgstr "%s nach %s %s fehlgeschlagen"
 
 #: templates/admin/contents/system/updates.php:274
 #, php-format
 msgid "%s to %s: %s (started %s%s)."
-msgstr ""
+msgstr "%s nach %s: %s (gestartet %s%s)."
 
 #: src/Environments/Application/Health/SystemHealth.php:507
 #, php-format
 msgid "%s to %s: %s (started %s)"
-msgstr ""
+msgstr "%s nach %s: %s (gestartet %s)"
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:34
 #, php-format
 msgid "%s was updated to %s"
-msgstr ""
+msgstr "%s wurde auf %s aktualisiert"
 
 #: themes/default/templates/pages/client/apps.php:49
 #, php-format
 msgid "%s · %s · updated %s"
-msgstr ""
+msgstr "%s · %s · aktualisiert %s"
 
 #: assets/js/admin/cache-stats.js:188
 #, javascript-format
 msgid "%s · No fixed ceiling"
-msgstr ""
+msgstr "%s · Keine feste Obergrenze"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:251
 #, php-format
 msgid "%s's role is changed."
-msgstr ""
+msgstr "Die Rolle von %s wurde geändert."
 
 #: src/Environments/Application/Health/SystemHealth.php:503
 #, php-format
 msgid "%s, by %s at %s"
-msgstr ""
+msgstr "%s, von %s um %s"
 
 #: src/Background/Workers/QueueWorker.php:293
 #, php-format
 msgid "%s: %s in %s on line %d"
-msgstr ""
+msgstr "%s: %s in %s in Zeile %d"
 
 #: assets/js/admin/support-report.js:216
 #, javascript-format
 msgid "(%s additional check(s) were still running when this report was generated.)"
-msgstr ""
+msgstr "(%s zusätzliche Prüfung(en) liefen noch, als dieser Bericht erstellt wurde.)"
 
 #: templates/admin/contents/repository/monetization.php:110
 msgid "(Archived)"
-msgstr ""
+msgstr "(Archiviert)"
 
 #: src/Environments/Application/Auth/FolderOwnership.php:136
 msgid "(Get-Acl -LiteralPath '"
-msgstr ""
+msgstr "(Get-Acl -LiteralPath '"
 
 #: themes/default/templates/pages/client/app-new.php:39 themes/default/templates/pages/client/app.php:95 themes/default/templates/pages/client/app.php:101
 msgid "(optional)"
-msgstr ""
+msgstr "(optional)"
 
 #: assets/js/admin/apps-uploader.js:1782
 msgid ") in"
-msgstr ""
+msgstr ") in"
 
 #: src/Environments/Application/Installation/InstallerPage.php:175
 msgid "), which supports every language and emoji. Change it only if your host requires another."
-msgstr ""
+msgstr "), die alle Sprachen und Emojis unterstützt. Ändern Sie sie nur, wenn Ihr Hoster eine andere verlangt."
 
 #: assets/js/admin/maintenance.js:48
 msgid ", and scheduled tasks and queued jobs will wait"
-msgstr ""
+msgstr ", und geplante Aufgaben sowie Jobs in der Warteschlange warten"
 
 #: themes/default/templates/pages/signing-key.php:62
 msgid ", which accepts only packages signed by the keys you give it:"
-msgstr ""
+msgstr ", das nur Pakete akzeptiert, die mit den von Ihnen angegebenen Schlüsseln signiert sind:"
 
 #: templates/admin/contents/repository/monetization.php:209
 msgid "-- Choose --"
-msgstr ""
+msgstr "-- Auswählen --"
 
 #: templates/admin/contents/options/cache/stats.php:290
 msgid "-specific metrics"
-msgstr ""
+msgstr "-spezifische Metriken"
 
 #: assets/js/admin/apps-uploader.js:586
 msgid ". Multiple files are supported where the asset limit allows."
-msgstr ""
+msgstr ". Mehrere Dateien werden im Rahmen des Ressourcenlimits unterstützt."
 
 #: templates/admin/contents/license/purchase-request.php:140
 msgid ". The decision is emailed to the buyer. A rejected request can still be approved later; an approval is final."
-msgstr ""
+msgstr ". Die Entscheidung wird dem Käufer per E-Mail mitgeteilt. Eine abgelehnte Anfrage kann später noch genehmigt werden; eine Genehmigung ist endgültig."
 
 #: templates/admin/contents/system/signing-key.php:149
 msgid ". Their packages are refused without a valid key."
-msgstr ""
+msgstr ". Ihre Pakete werden ohne gültigen Schlüssel abgelehnt."
 
 #: src/Email/Templates/EmailTemplate.php:281 src/Email/Templates/EmailTemplate.php:744
 msgid "0 2px 8px rgba(0,0,0,0.06)"
-msgstr ""
+msgstr "0 2px 8px rgba(0,0,0,0.06)"
 
 #: src/Exceptions/HttpErrorHandler.php:329
 msgid "0 4px 12px rgba(0, 0, 0, 0.05)"
-msgstr ""
+msgstr "0 4px 12px rgba(0, 0, 0, 0.05)"
 
 #: themes/default/templates/pages/client/security.php:61
 msgid "2Factor Authentication setup"
-msgstr ""
+msgstr "Einrichtung der Zwei-Faktor-Authentifizierung"
 
 #: src/Environments/Application/Installation/InstallerPage.php:474
 msgid "<p>Fix them, then reload this page.</p>"
-msgstr ""
+msgstr "<p>Beheben Sie diese und laden Sie die Seite dann neu.</p>"
 
 #: templates/admin/contents/broadcasts/index.php:28
 msgid "<span class=\"ti ti-email\"></span> All bulk messages with be listed here"
-msgstr ""
+msgstr "<span class=\"ti ti-email\"></span> Alle Massennachrichten werden hier aufgelistet"
 
 #: assets/js/admin/support-report.js:205
 msgid "== Health Checks =="
-msgstr ""
+msgstr "== Zustandsprüfungen =="
 
 #: assets/js/admin/support-report.js:230
 #, javascript-format
@@ -885,2589 +890,2594 @@ msgid ""
 "== System Diagnostics ==\n"
 "Could not be collected: %s\n"
 msgstr ""
+"== Systemdiagnose ==\n"
+"Konnte nicht erfasst werden: %s\n"
 
 #: assets/js/admin/repository-browser.js:953
 msgid "? This cannot be undone."
-msgstr ""
+msgstr "? Dies kann nicht rückgängig gemacht werden."
 
 #: src/HostedApps/Storage/AppFile.php:105
 #, php-format
 msgid "A %s file has no name."
-msgstr ""
+msgstr "Eine %s-Datei hat keinen Namen."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:688
 #, php-format
 msgid "A %s package holds 1 to %d entries; this one holds %d."
-msgstr ""
+msgstr "Ein %s-Paket enthält 1 bis %d Einträge; dieses enthält %d."
 
 #: src/Server/DevServer.php:330
 msgid "A background server needs Linux or macOS. On Windows, run the server in its own terminal."
-msgstr ""
+msgstr "Ein Hintergrundserver benötigt Linux oder macOS. Unter Windows starten Sie den Server in einem eigenen Terminal."
 
 #: src/Server/DevServer.php:342
 msgid "A background server needs the setsid utility, which this system does not provide."
-msgstr ""
+msgstr "Ein Hintergrundserver benötigt das Programm setsid, das dieses System nicht bereitstellt."
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:107
 msgid "A backup of version {{current_version}} is kept for {{backup_days}} days. If anything is wrong after the update, you can restore it from the Updates page."
-msgstr ""
+msgstr "Eine Sicherung der Version {{current_version}} wird {{backup_days}} Tage aufbewahrt. Wenn nach dem Update etwas nicht stimmt, können Sie sie auf der Seite „Updates“ wiederherstellen."
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:77
 msgid "A buyer sent a payment receipt. Check the payment, then approve the request to issue the license, or reject it."
-msgstr ""
+msgstr "Ein Käufer hat einen Zahlungsbeleg gesendet. Prüfen Sie die Zahlung und genehmigen Sie dann die Anfrage, um die Lizenz auszustellen, oder lehnen Sie sie ab."
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:49
 msgid "A buyer sent a payment receipt. Review it to issue the license."
-msgstr ""
+msgstr "Ein Käufer hat einen Zahlungsbeleg gesendet. Prüfen Sie ihn, um die Lizenz auszustellen."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:218
 msgid "A confirmation code could not be sent. Please try again."
-msgstr ""
+msgstr "Ein Bestätigungscode konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:220
 msgid "A confirmation code was sent to your verified email address."
-msgstr ""
+msgstr "Ein Bestätigungscode wurde an Ihre bestätigte E-Mail-Adresse gesendet."
 
 #: src/Exceptions/RequestException.php:243
 msgid "A database error occurred while handling the request."
-msgstr ""
+msgstr "Bei der Verarbeitung der Anfrage ist ein Datenbankfehler aufgetreten."
 
 #: src/Environments/Application/Theming/CorePages.php:73
 msgid "A database-agnostic application for privately hosting, licensing, updating, and distributing custom software, WordPress plugins, and themes."
-msgstr ""
+msgstr "Eine datenbankunabhängige Anwendung zum privaten Hosten, Lizenzieren, Aktualisieren und Verteilen eigener Software sowie von WordPress-Plugins und -Themes."
 
 #. translators: %s: the app type, e.g. plugin.
 #: templates/admin/contents/repository/edit-artifacts.php:35
 #, php-format
 msgid "A distributable artifact is a packaged version of your %s that is ready for deployment or sharing."
-msgstr ""
+msgstr "Ein verteilbares Artefakt ist eine gepackte Version Ihres %s, die zur Bereitstellung oder Weitergabe bereit ist."
 
 #: src/Exceptions/RequestException.php:248
 msgid "A file or directory operation failed unexpectedly."
-msgstr ""
+msgstr "Ein Datei- oder Verzeichnisvorgang ist unerwartet fehlgeschlagen."
 
 #: src/Exceptions/FileRequestException.php:162
 msgid "A file with the same name already exists in the target directory."
-msgstr ""
+msgstr "Im Zielverzeichnis existiert bereits eine Datei mit demselben Namen."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:607
 msgid "A link was sent a moment ago. Check your inbox, or try again in a minute."
-msgstr ""
+msgstr "Vor einem Moment wurde ein Link gesendet. Prüfen Sie Ihren Posteingang oder versuchen Sie es in einer Minute erneut."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:226
 #, php-format
 msgid "A live %s already has the slug \"%s\"."
-msgstr ""
+msgstr "Ein aktives %s hat bereits den Slug „%s“."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:289
 #, php-format
 msgid "A live or trashed %s already has the slug \"%s\"."
-msgstr ""
+msgstr "Ein aktives oder im Papierkorb befindliches %s hat bereits den Slug „%s“."
 
 #: src/Email/Templates/Purchases/PurchaseRequestMessageEmail.php:47
 msgid "A message about your purchase request."
-msgstr ""
+msgstr "Eine Nachricht zu Ihrer Kaufanfrage."
 
 #: src/RESTAPI/Handlers/Licenses.php:529
 msgid "A new download token could not be issued. Your current token is still valid; try again later."
-msgstr ""
+msgstr "Ein neues Download-Token konnte nicht ausgestellt werden. Ihr aktuelles Token ist weiterhin gültig; versuchen Sie es später erneut."
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:311
 #, php-format
 msgid "A new invitation is on its way to %s; the earlier link no longer works."
-msgstr ""
+msgstr "Eine neue Einladung ist unterwegs an %s; der frühere Link funktioniert nicht mehr."
 
 #: src/Email/Templates/Security/PasskeyAddedEmail.php:27
 msgid "A new passkey was added to your account. It can now be used to sign in without your password."
-msgstr ""
+msgstr "Ihrem Konto wurde ein neuer Passkey hinzugefügt. Er kann jetzt zur Anmeldung ohne Passwort verwendet werden."
 
 #. translators: %s: app name (formatted)
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:58
 #, php-format
 msgid "A new user has registered on %s."
-msgstr ""
+msgstr "Ein neuer Benutzer hat sich auf %s registriert."
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:32
 msgid "A new user has registered on your platform."
-msgstr ""
+msgstr "Ein neuer Benutzer hat sich auf Ihrer Plattform registriert."
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:183
 msgid "A new user has registered on {{app_name}}."
-msgstr ""
+msgstr "Ein neuer Benutzer hat sich auf {{app_name}} registriert."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:616
 #, php-format
 msgid "A new verification link is on its way to %s."
-msgstr ""
+msgstr "Ein neuer Bestätigungslink ist unterwegs an %s."
 
 #. translators: %s: app name (formatted)
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:75
 #, php-format
 msgid "A new version of %s is now available. Your active license entitles you to this update."
-msgstr ""
+msgstr "Eine neue Version von %s ist verfügbar. Ihre aktive Lizenz berechtigt Sie zu diesem Update."
 
 #: src/Email/Templates/Apps/AppUpdatedEmail.php:70 src/Email/Templates/Apps/AppUpdatedEmail.php:178
 msgid "A new version of your application is now live."
-msgstr ""
+msgstr "Eine neue Version Ihrer Anwendung ist jetzt live."
 
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:185
 msgid "A new version of {{app_name}} is now available. Your active license entitles you to this update."
-msgstr ""
+msgstr "Eine neue Version von {{app_name}} ist verfügbar. Ihre aktive Lizenz berechtigt Sie zu diesem Update."
 
 #: src/Exceptions/RequestException.php:59
 msgid "A parameter has an unexpected type or format."
-msgstr ""
+msgstr "Ein Parameter hat einen unerwarteten Typ oder ein unerwartetes Format."
 
 #: src/Email/Templates/Security/PasskeyRemovedEmail.php:27
 msgid "A passkey was removed from your account. It can no longer be used to sign in."
-msgstr ""
+msgstr "Ein Passkey wurde aus Ihrem Konto entfernt. Er kann nicht mehr zur Anmeldung verwendet werden."
 
 #: src/Environments/Application/Update/UpdateService.php:233 src/Environments/Application/Update/Updater.php:494
 msgid "A previous update is not finished. Finish it or roll it back first."
-msgstr ""
+msgstr "Ein vorheriges Update ist nicht abgeschlossen. Schließen Sie es zuerst ab oder machen Sie es rückgängig."
 
 #: templates/admin/contents/repository/monetization.php:165
 msgid "A pricing tier represents a specific license option for a hosted application."
-msgstr ""
+msgstr "Eine Preisstufe steht für eine bestimmte Lizenzoption einer gehosteten Anwendung."
 
 #: src/Monetization/LicensingService.php:65
 msgid "A provider reference needs a provider ID."
-msgstr ""
+msgstr "Eine Anbieterreferenz benötigt eine Anbieter-ID."
 
 #: src/Monetization/PurchaseRequestService.php:215
 msgid "A purchase request for this option from this email address is already awaiting review. You will get an email once it is reviewed."
-msgstr ""
+msgstr "Für diese Option liegt von dieser E-Mail-Adresse bereits eine Kaufanfrage zur Prüfung vor. Sie erhalten eine E-Mail, sobald sie geprüft wurde."
 
 #: src/Email/RequestController.php:243
 msgid "A recipient email address is required to send a test email."
-msgstr ""
+msgstr "Zum Senden einer Test-E-Mail ist eine Empfängeradresse erforderlich."
 
 #: src/Exceptions/RequestException.php:193
 msgid "A required precondition for this request was not met."
-msgstr ""
+msgstr "Eine erforderliche Vorbedingung für diese Anfrage wurde nicht erfüllt."
 
 #: src/Security/Context/ContextServiceProvider.php:885
 #, php-format
 msgid "A resource owner record for %s could not be made."
-msgstr ""
+msgstr "Für %s konnte kein Ressourceninhaber-Datensatz erstellt werden."
 
 #: src/Exceptions/RequestException.php:176
 msgid "A resource with the same unique identifier already exists."
-msgstr ""
+msgstr "Eine Ressource mit derselben eindeutigen Kennung existiert bereits."
 
 #: src/Server/DevServer.php:336
 #, php-format
 msgid "A server is already running at %s (process %d)."
-msgstr ""
+msgstr "Unter %s läuft bereits ein Server (Prozess %d)."
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:722
 msgid "A service account is a non-human account used by software, an application, server, or automated process to authenticate and access resources."
-msgstr ""
+msgstr "Ein Dienstkonto ist ein nicht-menschliches Konto, das von Software, einer Anwendung, einem Server oder einem automatisierten Prozess zur Authentifizierung und zum Zugriff auf Ressourcen verwendet wird."
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:51
 msgid "A single file; no database server needed. Good for small sites and testing."
-msgstr ""
+msgstr "Eine einzelne Datei; kein Datenbankserver nötig. Gut für kleine Websites und Tests."
 
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:85 src/Email/Templates/Apps/AppStatusChangedEmail.php:182
 msgid "A status update for your application."
-msgstr ""
+msgstr "Ein Status-Update zu Ihrer Anwendung."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:197
 #, php-format
 msgid "A trashed %s already has the slug \"%s\"; purge it first."
-msgstr ""
+msgstr "Ein %s im Papierkorb hat bereits den Slug „%s“; löschen Sie es zuerst endgültig."
 
 #: src/Exceptions/FileRequestException.php:111
 msgid "A valid token is required to access the license document file."
-msgstr ""
+msgstr "Für den Zugriff auf die Lizenzdokumentdatei ist ein gültiges Token erforderlich."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:168
 #, php-format
 msgid "A value written to the \"%s\" cache adapter in one request was gone in the next."
-msgstr ""
+msgstr "Ein Wert, der in einer Anfrage in den Cache-Adapter „%s“ geschrieben wurde, war in der nächsten verschwunden."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:69
 msgid "A verification code was sent to your email address."
-msgstr ""
+msgstr "Ein Bestätigungscode wurde an Ihre E-Mail-Adresse gesendet."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:233
 msgid "A verification code was sent to your verified email address."
-msgstr ""
+msgstr "Ein Bestätigungscode wurde an Ihre bestätigte E-Mail-Adresse gesendet."
 
 #: templates/admin/contents/modules/extensions.php:26
 msgid "A zip holding one folder named after the extension (extension.json, src/ and an optional assets/). PHP is allowed anywhere except assets/; links, server configuration files and paths outside the extension folder are refused."
-msgstr ""
+msgstr "Ein Zip mit einem nach der Erweiterung benannten Ordner (extension.json, src/ und optional assets/). PHP ist überall außer in assets/ erlaubt; Links, Server-Konfigurationsdateien und Pfade außerhalb des Erweiterungsordners werden abgelehnt."
 
 #: src/Cache/Adapters/ApcuCacheAdapter.php:258
 msgid "APCu Cache"
-msgstr ""
+msgstr "APCu-Cache"
 
 #: src/Cache/Adapters/ApcuCacheAdapter.php:341
 msgid "APCu is not available. Ensure the APCu extension is installed and apc.enabled (or apc.enable_cli for CLI environments) is set to 1 in your php.ini."
-msgstr ""
+msgstr "APCu ist nicht verfügbar. Stellen Sie sicher, dass die APCu-Erweiterung installiert ist und apc.enabled (bzw. apc.enable_cli für CLI-Umgebungen) in Ihrer php.ini auf 1 gesetzt ist."
 
 #: src/Cache/Adapters/ApcuCacheAdapter.php:359
 msgid "APCu probe read failed — the key was not found immediately after writing."
-msgstr ""
+msgstr "APCu-Testlesen fehlgeschlagen — der Schlüssel wurde direkt nach dem Schreiben nicht gefunden."
 
 #: src/Cache/Adapters/ApcuCacheAdapter.php:365
 msgid "APCu probe read returned unexpected data — the stored value was corrupted."
-msgstr ""
+msgstr "APCu-Testlesen lieferte unerwartete Daten — der gespeicherte Wert war beschädigt."
 
 #: src/Cache/Adapters/ApcuCacheAdapter.php:350
 msgid "APCu probe write failed. Shared memory may be full or misconfigured."
-msgstr ""
+msgstr "APCu-Testschreiben fehlgeschlagen. Der gemeinsame Speicher ist möglicherweise voll oder falsch konfiguriert."
 
 #: themes/default/templates/pages/client/overview.php:30
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: src/Environments/Application/Theming/CorePages.php:140
 msgid "API Documentation"
-msgstr ""
+msgstr "API-Dokumentation"
 
 #: src/Environments/Application/Theming/CorePages.php:141
 #, php-format
 msgid "API Documentation: %s"
-msgstr ""
+msgstr "API-Dokumentation: %s"
 
 #: src/Email/Providers/BrevoProvider.php:61 src/Email/Providers/MailgunProvider.php:68 src/Email/Providers/ResendProvider.php:59 src/Email/Providers/SendGridProvider.php:59
 msgid "API Key"
-msgstr ""
+msgstr "API-Schlüssel"
 
 #: assets/js/admin/core.js:1653
 msgid "API Key Generated"
-msgstr ""
+msgstr "API-Schlüssel erstellt"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:484
 msgid "API Rate Limit (Per Minute)"
-msgstr ""
+msgstr "API-Ratenlimit (pro Minute)"
 
 #: src/Email/Providers/MailgunProvider.php:80
 msgid "API Region"
-msgstr ""
+msgstr "API-Region"
 
 #: src/Security/Actors/ServiceAccount.php:709
 msgid "API cannot be verified."
-msgstr ""
+msgstr "API kann nicht überprüft werden."
 
 #: themes/default/templates/pages/home.php:13
 msgid "API documentation"
-msgstr ""
+msgstr "API-Dokumentation"
 
 #: src/Security/Authentication/ServiceAccountAuthenticator.php:40
 msgid "API key was not provided."
-msgstr ""
+msgstr "Es wurde kein API-Schlüssel angegeben."
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:812 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
 msgid "APP ID"
-msgstr ""
+msgstr "APP-ID"
 
 #: assets/js/admin/apps-uploader.js:1446
 msgid "APP JSON Editor"
-msgstr ""
+msgstr "APP-JSON-Editor"
 
 #: src/Email/Providers/AmazonSESProvider.php:93
 msgid "AWS Access Key ID"
-msgstr ""
+msgstr "AWS-Zugriffsschlüssel-ID"
 
 #: src/Email/Providers/AmazonSESProvider.php:105
 msgid "AWS Region"
-msgstr ""
+msgstr "AWS-Region"
 
 #: src/Email/Providers/AmazonSESProvider.php:99
 msgid "AWS Secret Access Key"
-msgstr ""
+msgstr "Geheimer AWS-Zugriffsschlüssel"
 
 #: src/Email/Providers/AmazonSESProvider.php:107
 msgid "AWS region where your SES is configured. e.g. us-east-1"
-msgstr ""
+msgstr "AWS-Region, in der Ihr SES konfiguriert ist, z. B. us-east-1"
 
 #: src/Email/Templates/Purchases/PurchaseRequestMessageEmail.php:43
 #, php-format
 msgid "About your purchase request #%d"
-msgstr ""
+msgstr "Zu Ihrer Kaufanfrage Nr. %d"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:559
 msgid "Absolute path to the directory where the SQLite cache database will be stored. Must be within the writable repository path."
-msgstr ""
+msgstr "Absoluter Pfad zum Verzeichnis, in dem die SQLite-Cache-Datenbank gespeichert wird. Muss innerhalb des beschreibbaren Repository-Pfads liegen."
 
 #: templates/admin/contents/options/email/editor.php:277
 msgid "Accent Color"
-msgstr ""
+msgstr "Akzentfarbe"
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:163
 msgid "Accept Invitation"
-msgstr ""
+msgstr "Einladung annehmen"
 
 #: src/Environments/Application/Installation/InstallerPage.php:39
 msgid "Access"
-msgstr ""
+msgstr "Zugriff"
 
 #: src/Exceptions/RequestException.php:107
 msgid "Access Denied"
-msgstr ""
+msgstr "Zugriff verweigert"
 
 #: templates/admin/index.php:24
 msgid "Access Denied. You must be logged into a valid administrator account to view this page."
-msgstr ""
+msgstr "Zugriff verweigert. Sie müssen mit einem gültigen Administratorkonto angemeldet sein, um diese Seite anzuzeigen."
 
 #: templates/admin/index.php:36
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
-msgstr ""
+msgstr "Zugriff verweigert. Sie müssen mit einem gültigen Administratorkonto angemeldet sein, um diese Seite anzuzeigen.[Erneut anmelden][Zur Startseite]"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1038
 msgid "Access Growth"
-msgstr ""
+msgstr "Zugriffswachstum"
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:86 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:222
 msgid "Access Until"
-msgstr ""
+msgstr "Zugriff bis"
 
 #: src/Security/Permission/Capability.php:37
 msgid "Access application package files"
-msgstr ""
+msgstr "Auf Dateien von Anwendungspaketen zugreifen"
 
 #: src/Exceptions/FileRequestException.php:128
 msgid "Access denied because the associated license has been revoked or suspended."
-msgstr ""
+msgstr "Zugriff verweigert, da die zugehörige Lizenz widerrufen oder gesperrt wurde."
 
 #: src/Exceptions/RequestException.php:108
 msgid "Access from your IP address has been blocked for security reasons."
-msgstr ""
+msgstr "Der Zugriff von Ihrer IP-Adresse wurde aus Sicherheitsgründen gesperrt."
 
 #: assets/js/admin/admin-repository.js:292
 msgid "Access/Download Ratio:"
-msgstr ""
+msgstr "Verhältnis Zugriffe/Downloads:"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:386
 msgid "Accesses"
-msgstr ""
+msgstr "Zugriffe"
 
 #: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:790
 msgid "Account Name"
-msgstr ""
+msgstr "Kontoname"
 
 #: templates/admin/contents/accounts/index.php:84
 msgid "Account Overview"
-msgstr ""
+msgstr "Kontoübersicht"
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:61 src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:193
 msgid "Account Type"
-msgstr ""
+msgstr "Kontotyp"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:573
 msgid "Account created successfully! Check your email to verify your account."
-msgstr ""
+msgstr "Konto erfolgreich erstellt! Prüfen Sie Ihre E-Mails, um Ihr Konto zu bestätigen."
 
 #: src/ClientDashboard/ContentHandlers/SecurityPage.php:118 themes/default/templates/pages/client/security.php:27
 msgid "Account security"
-msgstr ""
+msgstr "Kontosicherheit"
 
 #: themes/default/templates/pages/client/security.php:64
 msgid "Account security methods"
-msgstr ""
+msgstr "Sicherheitsmethoden des Kontos"
 
 #: themes/default/templates/pages/auth/sign-up.php:44
 msgid "Account type"
-msgstr ""
+msgstr "Kontotyp"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:1017
 msgid "Accounts"
-msgstr ""
+msgstr "Konten"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:895 src/Admin/ContentHandlers/AccessControlPage.php:942
 msgid "Accounts Overview"
-msgstr ""
+msgstr "Kontenübersicht"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:978
 msgid "Accounts overview"
-msgstr ""
+msgstr "Kontenübersicht"
 
 #: themes/default/templates/frames/client-dashboard.php:74 themes/default/templates/frames/client-dashboard.php:83
 msgid "Acting as"
-msgstr ""
+msgstr "Handelt als"
 
 #: src/Email/Templates/Security/SecurityEmailTemplate.php:206 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: templates/admin/contents/accounts/index.php:148
 msgid "Action Required:"
-msgstr ""
+msgstr "Handlung erforderlich:"
 
 #: assets/js/globals.js:900
 msgid "Action completed!"
-msgstr ""
+msgstr "Aktion abgeschlossen!"
 
 #: templates/admin/contents/options/email/templates.php:103
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:420
 msgid "Activate"
-msgstr ""
+msgstr "Aktivieren"
 
 #: templates/admin/contents/modules/themes.php:82
 msgid "Activate it once installed"
-msgstr ""
+msgstr "Nach der Installation aktivieren"
 
 #: themes/default/templates/pages/home.php:49
 msgid "Activate licenses, check updates and download releases from your software."
-msgstr ""
+msgstr "Aktivieren Sie Lizenzen, prüfen Sie auf Updates und laden Sie Releases aus Ihrer Software herunter."
 
 #: templates/admin/contents/modules/themes.php:83
 msgid "Activate this package after installing?"
-msgstr ""
+msgstr "Dieses Paket nach der Installation aktivieren?"
 
 #: src/Email/Templates/Licenses/LicenseActivatedEmail.php:70 src/Email/Templates/Licenses/LicenseActivatedEmail.php:177
 msgid "Activated Domain"
-msgstr ""
+msgstr "Aktivierte Domain"
 
 #: templates/admin/contents/license/view.php:211
 msgid "Activated on"
-msgstr ""
+msgstr "Aktiviert am"
 
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:74 src/Email/Templates/Licenses/LicenseIssuedEmail.php:193 src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:153
 msgid "Activation Limit"
-msgstr ""
+msgstr "Aktivierungslimit"
 
 #: src/RESTAPI/Handlers/Licenses.php:111
 msgid "Activation not allowed for unissued licenses."
-msgstr ""
+msgstr "Aktivierung für nicht ausgestellte Lizenzen nicht zulässig."
 
 #: templates/admin/contents/options/cache/stats.php:72
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:409 templates/admin/contents/index.php:313
 msgid "Active Installations"
-msgstr ""
+msgstr "Aktive Installationen"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:423
 msgid "Active Installations by Type (30 Days)"
-msgstr ""
+msgstr "Aktive Installationen nach Typ (30 Tage)"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1048
 msgid "Active Installs"
-msgstr ""
+msgstr "Aktive Installationen"
 
 #: src/Environments/Application/Health/SystemHealth.php:1140
 msgid "Active Theme"
-msgstr ""
+msgstr "Aktives Theme"
 
 #: src/Admin/ContentHandlers/LicensePage.php:492 templates/admin/contents/license/index.php:34 templates/admin/contents/license/search.php:33
 msgid "Activity Logs"
-msgstr ""
+msgstr "Aktivitätsprotokolle"
 
 #: src/Cache/CacheRequestController.php:158 src/Cache/CacheRequestController.php:321
 msgid "Adapter ID is required."
-msgstr ""
+msgstr "Die Adapter-ID ist erforderlich."
 
 #: templates/admin/contents/options/cache/stats.php:120
 msgid "Adapters"
-msgstr ""
+msgstr "Adapter"
 
 #: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:156
 #, php-format
 msgid "Add %s"
-msgstr ""
+msgstr "%s hinzufügen"
 
 #: templates/admin/contents/repository/edit-artifacts.php:110
 msgid "Add Artifact"
-msgstr ""
+msgstr "Artefakt hinzufügen"
 
 #: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:1120 templates/admin/contents/license/index.php:27
 #: templates/admin/contents/license/search.php:26
 msgid "Add New"
-msgstr ""
+msgstr "Neu hinzufügen"
 
 #: assets/js/admin/apps-uploader.js:1568
 msgid "Add New Artifact"
-msgstr ""
+msgstr "Neues Artefakt hinzufügen"
 
 #: templates/admin/contents/license/index.php:26 templates/admin/contents/license/search.php:25
 msgid "Add New License"
-msgstr ""
+msgstr "Neue Lizenz hinzufügen"
 
 #: templates/admin/contents/accounts/owners.php:22
 msgid "Add Owner"
-msgstr ""
+msgstr "Inhaber hinzufügen"
 
 #: assets/js/admin/core.js:1219 assets/js/admin/core.js:1225
 msgid "Add Pricing Tier"
-msgstr ""
+msgstr "Preisstufe hinzufügen"
 
 #: templates/admin/contents/license/purchase-request.php:191
 msgid "Add a note"
-msgstr ""
+msgstr "Notiz hinzufügen"
 
 #: themes/default/templates/pages/client/security.php:56
 msgid "Add a passkey"
-msgstr ""
+msgstr "Passkey hinzufügen"
 
 #: assets/js/admin/json-editor.js:720
 msgid "Add item"
-msgstr ""
+msgstr "Element hinzufügen"
 
 #: templates/admin/contents/accounts/access-control-form.php:233
 msgid "Add member"
-msgstr ""
+msgstr "Mitglied hinzufügen"
 
 #: src/Security/Permission/Capability.php:96
 msgid "Add members to organizations"
-msgstr ""
+msgstr "Mitglieder zu Organisationen hinzufügen"
 
 #: templates/admin/contents/repository/edit-artifacts.php:108
 msgid "Add new artifact"
-msgstr ""
+msgstr "Neues Artefakt hinzufügen"
 
 #: src/Admin/ContentHandlers/LicensePage.php:292
 msgid "Add new license"
-msgstr ""
+msgstr "Neue Lizenz hinzufügen"
 
 #: templates/admin/contents/accounts/access-control-form.php:230
 msgid "Add new member to organization"
-msgstr ""
+msgstr "Neues Mitglied zur Organisation hinzufügen"
 
 #: templates/admin/contents/license/purchase-request.php:198
 msgid "Add note"
-msgstr ""
+msgstr "Notiz hinzufügen"
 
 #: src/Environments/Application/Health/SystemHealth.php:1306
 #, php-format
 msgid "Add the scheduler cron job shown in %s under \"Server cron and queue worker\"."
-msgstr ""
+msgstr "Fügen Sie den Cronjob des Planers hinzu, der in %s unter „Server-Cron und Warteschlangen-Worker“ angezeigt wird."
 
 #: src/Environments/Application/Health/SystemHealth.php:1285
 msgid "Add the scheduler cron job shown in Tools > Background Processing, or use the combined `smliser cron` command."
-msgstr ""
+msgstr "Fügen Sie den Cronjob des Planers hinzu, der unter Werkzeuge > Hintergrundverarbeitung angezeigt wird, oder verwenden Sie den kombinierten Befehl `smliser cron`."
 
 #: src/Environments/Application/Installation/InstallerPage.php:251
 msgid "Added to the start of every table name, so the database can be shared with other applications. Leave empty for <code>smliser_</code>."
-msgstr ""
+msgstr "Wird jedem Tabellennamen vorangestellt, damit die Datenbank mit anderen Anwendungen geteilt werden kann. Leer lassen für <code>smliser_</code>."
 
 #: templates/admin/contents/system/health.php:151
 msgid "Additional Checks"
-msgstr ""
+msgstr "Zusätzliche Prüfungen"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:240
 msgid "Additional Context"
-msgstr ""
+msgstr "Zusätzlicher Kontext"
 
 #: templates/admin/contents/options/cache/stats.php:289
 msgid "Additional Details"
-msgstr ""
+msgstr "Zusätzliche Details"
 
 #: templates/admin/contents/repository/edit-wptheme.php:152
 msgid "Additional Screenshots"
-msgstr ""
+msgstr "Zusätzliche Screenshots"
 
 #: assets/js/admin/site-health.js:425
 #, javascript-format
 msgid "Additional checks found %s issue(s)."
-msgstr ""
+msgstr "Zusätzliche Prüfungen haben %s Problem(e) gefunden."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:126
 msgid "Additional verification could not be started. Please try again."
-msgstr ""
+msgstr "Die zusätzliche Bestätigung konnte nicht gestartet werden. Bitte versuchen Sie es erneut."
 
 #: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:596
 msgid "Admin URL Prefix"
-msgstr ""
+msgstr "Admin-URL-Präfix"
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:149
 msgid "Admin: New User Signup"
-msgstr ""
+msgstr "Admin: Neue Benutzerregistrierung"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:406
 msgid "Administration Email"
-msgstr ""
+msgstr "Administrations-E-Mail"
 
 #: src/Environments/Application/Installation/InstallerPage.php:42
 msgid "Administrator"
-msgstr ""
+msgstr "Administrator"
 
 #: src/Environments/Application/Installation/WebInstaller.php:842
 msgid "Administrator account created."
-msgstr ""
+msgstr "Administratorkonto erstellt."
 
 #: src/Environments/Application/Installation/InstallerPage.php:183
 msgid "Advanced"
-msgstr ""
+msgstr "Erweitert"
 
 #: templates/admin/contents/license/view.php:216 assets/js/modal.js:995
 msgid "Alert"
-msgstr ""
+msgstr "Warnung"
 
 #: themes/default/templates/pages/signing-key.php:46
 msgid "Algorithm"
-msgstr ""
+msgstr "Algorithmus"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:150 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
 #: themes/default/templates/partials/repository/toolbar.php:26
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: src/Environments/Application/Health/SystemHealth.php:470
 #, php-format
 msgid "All %d installed"
-msgstr ""
+msgstr "Alle %d installiert"
 
 #: src/Environments/Application/Health/SystemHealth.php:454
 #, php-format
 msgid "All %d present"
-msgstr ""
+msgstr "Alle %d vorhanden"
 
 #: themes/default/templates/pages/repository/index.php:35
 #, php-format
 msgid "All %s"
-msgstr ""
+msgstr "Alle %s"
 
 #: templates/admin/contents/accounts/principals.php:62
 #, php-format
 msgid "All %s all will be listed here"
-msgstr ""
+msgstr "Alle %s werden hier aufgelistet"
 
 #: templates/admin/contents/license/purchase-requests.php:24
 #, php-format
 msgid "All (%d)"
-msgstr ""
+msgstr "Alle (%d)"
 
 #: src/Email/Templates/Accounts/MfaResetEmail.php:64
 msgid "All active login sessions have been terminated across all your devices."
-msgstr ""
+msgstr "Alle aktiven Anmeldesitzungen wurden auf allen Ihren Geräten beendet."
 
 #: templates/admin/contents/system/health.php:80
 msgid "All critical and warning checks passed."
-msgstr ""
+msgstr "Alle kritischen und Warnprüfungen wurden bestanden."
 
 #: templates/admin/contents/options/cache/stats.php:181 assets/js/admin/cache-stats.js:171
 msgid "All entries live"
-msgstr ""
+msgstr "Alle Einträge gültig"
 
 #: templates/admin/contents/license/logs.php:53
 msgid "All license activation tasks will appear here."
-msgstr ""
+msgstr "Alle Lizenzaktivierungsaufgaben werden hier angezeigt."
 
 #: src/Admin/ContentHandlers/LicensePage.php:480
 msgid "All licenses"
-msgstr ""
+msgstr "Alle Lizenzen"
 
 #: templates/admin/contents/license/index.php:49
 msgid "All licenses will appear here"
-msgstr ""
+msgstr "Alle Lizenzen werden hier angezeigt"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:160
 msgid "All messages"
-msgstr ""
+msgstr "Alle Nachrichten"
 
 #: templates/admin/contents/license/logs.php:38
 msgid "All recent license activities will appear here."
-msgstr ""
+msgstr "Alle aktuellen Lizenzaktivitäten werden hier angezeigt."
 
 #: src/Environments/Application/Health/SystemHealth.php:492 templates/admin/contents/system/updates.php:94
 msgid "All releases"
-msgstr ""
+msgstr "Alle Releases"
 
 #: templates/admin/contents/accounts/owners.php:61
 msgid "All resource owners will be listed here"
-msgstr ""
+msgstr "Alle Ressourceninhaber werden hier aufgelistet"
 
 #: src/Environments/Application/Health/SystemHealth.php:1027
 msgid "All scheduled tasks last ran without error."
-msgstr ""
+msgstr "Alle geplanten Aufgaben liefen zuletzt fehlerfrei."
 
 #: assets/js/admin/repository-browser.js:290
 msgid "All types"
-msgstr ""
+msgstr "Alle Typen"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:436 src/Auth/ActionHandlers/AuthManagement.php:461
 msgid "Already logged out"
-msgstr ""
+msgstr "Bereits abgemeldet"
 
 #: themes/default/templates/pages/auth/signed-out.php:15
 msgid "Already signed out"
-msgstr ""
+msgstr "Bereits abgemeldet"
 
 #: templates/admin/contents/license/purchase-request.php:196
 msgid "Also email this note to the buyer ("
-msgstr ""
+msgstr "Diese Notiz auch per E-Mail an den Käufer senden ("
 
 #: src/Email/Providers/AmazonSESProvider.php:80
 msgid "Amazon SES"
-msgstr ""
+msgstr "Amazon SES"
 
 #: src/Email/Templates/Monetization/PaymentFailedEmail.php:103 src/Email/Templates/Monetization/PaymentFailedEmail.php:231 src/Email/Templates/Monetization/PaymentReceivedEmail.php:213
 msgid "Amount"
-msgstr ""
+msgstr "Betrag"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:80
 msgid "Amount Paid"
-msgstr ""
+msgstr "Gezahlter Betrag"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:203
 msgid "Amount Paid: {{amount}} {{currency}}"
-msgstr ""
+msgstr "Gezahlter Betrag: {{amount}} {{currency}}"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:566
 msgid "Amount of memory SQLite can use for its page cache. Enter in megabytes(default: 4 MB)."
-msgstr ""
+msgstr "Speichermenge, die SQLite für seinen Seitencache verwenden kann. In Megabyte angeben (Standard: 4 MB)."
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:259
 msgid "An account with this email address already exists. Sign in, or reset your password."
-msgstr ""
+msgstr "Ein Konto mit dieser E-Mail-Adresse existiert bereits. Melden Sie sich an oder setzen Sie Ihr Passwort zurück."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:1273
 msgid "An app directory could not be read."
-msgstr ""
+msgstr "Ein App-Verzeichnis konnte nicht gelesen werden."
 
 #: src/RESTAPI/Versions/V1.php:788
 msgid "An array of app slugs to filter by (eg., ['smart-woo-service-invoicing', 'woocommerce', 'astra']."
-msgstr ""
+msgstr "Ein Array von App-Slugs zum Filtern (z. B. ['smart-woo-service-invoicing', 'woocommerce', 'astra']."
 
 #: src/RESTAPI/Versions/V1.php:961
 msgid "An array of app slugs to filter by."
-msgstr ""
+msgstr "Ein Array von App-Slugs zum Filtern."
 
 #: src/RESTAPI/Versions/V1.php:793
 msgid "An array of app types to filter by (e.g., ['plugin', 'theme']); every registered app type when omitted. An unregistered type gets 400."
-msgstr ""
+msgstr "Ein Array von App-Typen zum Filtern (z. B. ['plugin', 'theme']); ohne Angabe alle registrierten App-Typen. Ein nicht registrierter Typ ergibt 400."
 
 #: src/RESTAPI/Versions/V1.php:966
 msgid "An array of app types to filter by (e.g., plugin, theme)."
-msgstr ""
+msgstr "Ein Array von App-Typen zum Filtern (z. B. plugin, theme)."
 
 #: src/FileSystem/Repository.php:1123
 #, php-format
 msgid "An artifact named \"%s\" already exists."
-msgstr ""
+msgstr "Ein Artefakt namens „%s“ existiert bereits."
 
 #: src/FileSystem/Repository.php:1063
 #, php-format
 msgid "An artifact named \"%s\" already exists. Edit that artifact to replace it, or choose another name."
-msgstr ""
+msgstr "Ein Artefakt namens „%s“ existiert bereits. Bearbeiten Sie dieses Artefakt, um es zu ersetzen, oder wählen Sie einen anderen Namen."
 
 #: src/FileSystem/Repository.php:775
 #, php-format
 msgid "An asset named \"%s\" already exists."
-msgstr ""
+msgstr "Eine Ressource namens „%s“ existiert bereits."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:102
 msgid "An authenticator app is already enabled."
-msgstr ""
+msgstr "Eine Authenticator-App ist bereits aktiviert."
 
 #: assets/js/admin/core.js:790 assets/js/admin/core.js:872
 msgid "An error occurred"
-msgstr ""
+msgstr "Ein Fehler ist aufgetreten"
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:275 src/Environments/WordPress/IdentityService.php:557
 msgid "An error occurred during signup, please try again."
-msgstr ""
+msgstr "Bei der Registrierung ist ein Fehler aufgetreten, bitte versuchen Sie es erneut."
 
 #: src/Exceptions/FileRequestException.php:191
 msgid "An error occurred while writing the file to disk."
-msgstr ""
+msgstr "Beim Schreiben der Datei auf die Festplatte ist ein Fehler aufgetreten."
 
 #: src/Exceptions/RequestException.php:262
 msgid "An external dependency or microservice failed to respond correctly."
-msgstr ""
+msgstr "Eine externe Abhängigkeit oder ein Microservice hat nicht korrekt geantwortet."
 
 #: themes/default/templates/pages/client/app.php:191
 msgid "An inactive app is not offered for download or sale."
-msgstr ""
+msgstr "Eine inaktive App wird nicht zum Download oder Verkauf angeboten."
 
 #: src/Environments/Application/Health/SystemHealth.php:1419
 msgid "An install is queued; make sure the queue worker is running."
-msgstr ""
+msgstr "Eine Installation steht in der Warteschlange; stellen Sie sicher, dass der Warteschlangen-Worker läuft."
 
 #: templates/admin/contents/system/maintenance.php:45
 msgid "An installation holds maintenance mode"
-msgstr ""
+msgstr "Eine Installation hält den Wartungsmodus"
 
 #: src/Environments/Application/Installation/WebInstaller.php:187
 #, php-format
 msgid "An installation is already in progress in another browser. If it was abandoned, the installer can be claimed again after %d minutes of inactivity."
-msgstr ""
+msgstr "In einem anderen Browser läuft bereits eine Installation. Wurde sie abgebrochen, kann das Installationsprogramm nach %d Minuten Inaktivität erneut übernommen werden."
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:297
 #, php-format
 msgid "An invitation is on its way to %s. It is valid for %d hours."
-msgstr ""
+msgstr "Eine Einladung ist unterwegs an %s. Sie ist %d Stunden gültig."
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:302
 msgid "An organization is an account that represents a group, business, or other entity under which users, service accounts, resources, and access policies can be managed collectively."
-msgstr ""
+msgstr "Eine Organisation ist ein Konto für eine Gruppe, ein Unternehmen oder eine andere Einheit, unter dem Benutzer, Dienstkonten, Ressourcen und Zugriffsrichtlinien gemeinsam verwaltet werden können."
 
 #: assets/js/admin/core.js:876 assets/js/admin/core.js:1354 assets/js/admin/core.js:1426 assets/js/globals.js:334
 msgid "An unexpected error occurred"
-msgstr ""
+msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
 #: src/Exceptions/FileRequestException.php:206
 msgid "An unexpected failure occurred while communicating with the application repository."
-msgstr ""
+msgstr "Bei der Kommunikation mit dem Anwendungs-Repository ist ein unerwarteter Fehler aufgetreten."
 
 #: src/Exceptions/AbstractErrorHandler.php:634
 msgid "An unexpected internal error occurred. Please contact system support if the issue persists."
-msgstr ""
+msgstr "Ein unerwarteter interner Fehler ist aufgetreten. Wenden Sie sich an den Systemsupport, falls das Problem weiterhin besteht."
 
 #: src/Exceptions/AbstractErrorHandler.php:201
 msgid "An unexpected internal error occurred. Please contact us if the issue persists."
-msgstr ""
+msgstr "Ein unerwarteter interner Fehler ist aufgetreten. Kontaktieren Sie uns, falls das Problem weiterhin besteht."
 
 #: src/Exceptions/FileRequestException.php:216
 msgid "An unexpected or undefined file error occurred during processing."
-msgstr ""
+msgstr "Bei der Verarbeitung ist ein unerwarteter oder undefinierter Dateifehler aufgetreten."
 
 #: src/Exceptions/RequestException.php:238
 msgid "An unexpected server error occurred while processing the request."
-msgstr ""
+msgstr "Bei der Verarbeitung der Anfrage ist ein unerwarteter Serverfehler aufgetreten."
 
 #: assets/js/admin/core.js:1414 assets/js/admin/core.js:1570
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "Ein unbekannter Fehler ist aufgetreten."
 
 #: src/Exceptions/AbstractErrorHandler.php:204
 msgid "An unknown fatal error occurred."
-msgstr ""
+msgstr "Ein unbekannter schwerwiegender Fehler ist aufgetreten."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:279
 msgid "An update has not finished: the files are installed but the finish step has not run. Run `smliser update finish` (or roll back) first."
-msgstr ""
+msgstr "Ein Update ist nicht abgeschlossen: Die Dateien sind installiert, aber der Abschlussschritt wurde nicht ausgeführt. Führen Sie zuerst `smliser update finish` aus (oder machen Sie es rückgängig)."
 
 #: templates/admin/contents/system/maintenance.php:39
 msgid "An update holds maintenance mode"
-msgstr ""
+msgstr "Ein Update hält den Wartungsmodus"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:83
 msgid "An update is available for {{app_name}}"
-msgstr ""
+msgstr "Für {{app_name}} ist ein Update verfügbar"
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:148
 msgid "An update is being installed."
-msgstr ""
+msgstr "Ein Update wird installiert."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:161
 msgid "An update is queued. It can only be installed by the queue worker running from the console (`queue work`), so the queue is not processed from here until it has run."
-msgstr ""
+msgstr "Ein Update steht in der Warteschlange. Es kann nur vom über die Konsole gestarteten Warteschlangen-Worker (`queue work`) installiert werden, daher wird die Warteschlange von hier aus nicht verarbeitet, bis es gelaufen ist."
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:119
 msgid "An update on {{app_name}} needs your attention"
-msgstr ""
+msgstr "Ein Update von {{app_name}} erfordert Ihre Aufmerksamkeit"
 
 #: src/Schema/Definitions/AnalyticsDailySchema.php:30
 msgid "Analytics Daily"
-msgstr ""
+msgstr "Tägliche Analysen"
 
 #: src/Schema/Definitions/AnalyticsLogsSchema.php:33
 msgid "Analytics Logs"
-msgstr ""
+msgstr "Analyseprotokolle"
 
 #: src/Core/UserAgent.php:662
 msgid "Android WebView"
-msgstr ""
+msgstr "Android WebView"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:954
 #, php-format
 msgid "Another %s is being installed, updated or removed; try again in a moment."
-msgstr ""
+msgstr "Ein anderes %s wird gerade installiert, aktualisiert oder entfernt; versuchen Sie es gleich erneut."
 
 #: src/Environments/Application/Installation/WebInstaller.php:317
 msgid "Another browser claimed the installer a moment ago."
-msgstr ""
+msgstr "Ein anderer Browser hat das Installationsprogramm vor einem Moment übernommen."
 
 #: src/Environments/Application/Update/UpdateRunner.php:344
 msgid "Another update is running. Try again once it has ended."
-msgstr ""
+msgstr "Ein anderes Update läuft. Versuchen Sie es erneut, sobald es beendet ist."
 
 #: themes/default/templates/pages/home.php:42
 msgid "Any database"
-msgstr ""
+msgstr "Beliebige Datenbank"
 
 #: templates/admin/contents/license/view.php:124
 msgid "App Attribute:"
-msgstr ""
+msgstr "App-Attribut:"
 
 #: templates/admin/contents/repository/index.php:145 templates/admin/contents/repository/search.php:46
 msgid "App Author"
-msgstr ""
+msgstr "App-Autor"
 
 #: src/Schema/Definitions/AppDownloadTokenSchema.php:30
 msgid "App Download Tokens"
-msgstr ""
+msgstr "App-Download-Tokens"
 
 #: templates/admin/contents/license/view.php:146
 msgid "App Info"
-msgstr ""
+msgstr "App-Info"
 
 #: src/Schema/Definitions/AppMetaSchema.php:27
 msgid "App Meta"
-msgstr ""
+msgstr "App-Metadaten"
 
 #: templates/admin/contents/repository/index.php:144 templates/admin/contents/repository/search.php:45
 msgid "App Name"
-msgstr ""
+msgstr "App-Name"
 
 #: templates/admin/contents/repository/monetization.php:41
 msgid "App Name:"
-msgstr ""
+msgstr "App-Name:"
 
 #: src/Exceptions/FileRequestException.php:139
 msgid "App Not Found"
-msgstr ""
+msgstr "App nicht gefunden"
 
 #: src/Exceptions/RequestException.php:185
 msgid "App Slug Conflict"
-msgstr ""
+msgstr "App-Slug-Konflikt"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1132
 msgid "App Storage"
-msgstr ""
+msgstr "App-Speicher"
 
 #: templates/admin/contents/repository/index.php:146 templates/admin/contents/repository/search.php:47
 msgid "App Type"
-msgstr ""
+msgstr "App-Typ"
 
 #: templates/admin/contents/repository/monetization.php:46
 msgid "App Type:"
-msgstr ""
+msgstr "App-Typ:"
 
 #: src/HostedApps/HostingController.php:85
 #, php-format
 msgid "App class for type \"%s\" not found."
-msgstr ""
+msgstr "App-Klasse für den Typ „%s“ nicht gefunden."
 
 #: assets/js/admin/core.js:889
 msgid "App data not found"
-msgstr ""
+msgstr "App-Daten nicht gefunden"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:765
 msgid "App monetization"
-msgstr ""
+msgstr "App-Monetarisierung"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:238
 msgid "App not found"
-msgstr ""
+msgstr "App nicht gefunden"
 
 #: src/Environments/Application/Health/SystemHealth.php:1066
 #, php-format
 msgid "App packages are signed. Key fingerprint: %s."
-msgstr ""
+msgstr "App-Pakete sind signiert. Schlüssel-Fingerabdruck: %s."
 
 #: src/FileSystem/Repository.php:1020
 msgid "App slug is required to upload artifact."
-msgstr ""
+msgstr "Zum Hochladen eines Artefakts ist der App-Slug erforderlich."
 
 #: themes/default/templates/partials/repository/toolbar.php:25
 msgid "App types"
-msgstr ""
+msgstr "App-Typen"
 
 #: templates/admin/contents/system/signing-key.php:147
 msgid "App types that must be signed"
-msgstr ""
+msgstr "App-Typen, die signiert sein müssen"
 
 #: templates/admin/contents/repository/edit-generic.php:50 templates/admin/contents/repository/edit-software.php:67 templates/admin/contents/repository/edit-wpplugin.php:98 templates/admin/contents/repository/edit-wptheme.php:124
 msgid "App.json File"
-msgstr ""
+msgstr "App.json-Datei"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:96 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:223 src/Email/Templates/Apps/AppStatusChangedEmail.php:88 src/Email/Templates/Apps/AppStatusChangedEmail.php:198
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:76 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:193
 msgid "Application"
-msgstr ""
+msgstr "Anwendung"
 
 #: templates/admin/contents/repository/monetization.php:38
 msgid "Application Details"
-msgstr ""
+msgstr "Anwendungsdetails"
 
 #: src/Email/Templates/Apps/AppPublishedEmail.php:69 src/Email/Templates/Apps/AppPublishedEmail.php:191 src/Email/Templates/Apps/AppUpdatedEmail.php:73 src/Email/Templates/Apps/AppUpdatedEmail.php:194
 msgid "Application Name"
-msgstr ""
+msgstr "Anwendungsname"
 
 #: src/Exceptions/RequestException.php:139
 msgid "Application Not Found"
-msgstr ""
+msgstr "Anwendung nicht gefunden"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:182
 msgid "Application Ownership Changed"
-msgstr ""
+msgstr "Anwendungsinhaber geändert"
 
 #: src/Email/Templates/Apps/AppPublishedEmail.php:155
 msgid "Application Published"
-msgstr ""
+msgstr "Anwendung veröffentlicht"
 
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:164
 msgid "Application Status Changed"
-msgstr ""
+msgstr "Anwendungsstatus geändert"
 
 #: src/Email/Templates/Apps/AppUpdatedEmail.php:158
 msgid "Application Updated"
-msgstr ""
+msgstr "Anwendung aktualisiert"
 
 #: src/HostedApps/HostingController.php:113
 msgid "Application author name is required."
-msgstr ""
+msgstr "Der Name des Anwendungsautors ist erforderlich."
 
 #: src/HostedApps/HostingController.php:107
 msgid "Application name is required."
-msgstr ""
+msgstr "Der Anwendungsname ist erforderlich."
 
 #: templates/admin/contents/broadcasts/index.php:38 templates/admin/contents/license/index.php:63 templates/admin/contents/repository/index.php:131 assets/js/admin/maintenance.js:49
 msgid "Apply"
-msgstr ""
+msgstr "Anwenden"
 
 #: src/Background/Jobs/Updates/ApplyUpdateJob.php:138
 msgid "Apply Update"
-msgstr ""
+msgstr "Update anwenden"
 
 #: assets/js/admin/maintenance.js:47
 msgid "Apply these settings? Earlier bypass links stop working; this browser keeps access."
-msgstr ""
+msgstr "Diese Einstellungen anwenden? Frühere Umgehungslinks funktionieren nicht mehr; dieser Browser behält den Zugriff."
 
 #: templates/admin/contents/license/purchase-request.php:152
 msgid "Approve after all and issue the license"
-msgstr ""
+msgstr "Doch genehmigen und Lizenz ausstellen"
 
 #: templates/admin/contents/license/purchase-request.php:152
 msgid "Approve and issue the license"
-msgstr ""
+msgstr "Genehmigen und Lizenz ausstellen"
 
 #: templates/admin/contents/license/purchase-requests.php:26
 #, php-format
 msgid "Approved (%d)"
-msgstr ""
+msgstr "Genehmigt (%d)"
 
 #: src/Admin/ActionHandlers/PurchaseReview.php:80
 #, php-format
 msgid "Approved. License #%d was issued and is being emailed to %s."
-msgstr ""
+msgstr "Genehmigt. Lizenz Nr. %d wurde ausgestellt und wird per E-Mail an %s gesendet."
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:81 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
 msgid "Apps"
-msgstr ""
+msgstr "Apps"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:178
 msgid "Apps Distribution by Status"
-msgstr ""
+msgstr "Verteilung der Apps nach Status"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:584
 msgid "Apps Updated"
-msgstr ""
+msgstr "Aktualisierte Apps"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:169
 msgid "Apps by Status"
-msgstr ""
+msgstr "Apps nach Status"
 
 #: themes/default/templates/pages/signing-key.php:72
 msgid "Apps that know only the old key refuse packages signed with a new one. When the site's owner announces a new key, ship an update of your app that trusts both the old and the new key before the switch, so your users keep receiving updates."
-msgstr ""
+msgstr "Apps, die nur den alten Schlüssel kennen, lehnen mit einem neuen signierte Pakete ab. Wenn der Betreiber der Website einen neuen Schlüssel ankündigt, veröffentlichen Sie vor dem Wechsel ein Update Ihrer App, das dem alten und dem neuen Schlüssel vertraut, damit Ihre Nutzer weiterhin Updates erhalten."
 
 #: templates/admin/contents/system/signing-key.php:172
 msgid "Apps that trust only the current key refuse every package signed with a new one. Publish the new public key first, give developers time to ship app updates that trust both keys, and only then switch."
-msgstr ""
+msgstr "Apps, die nur dem aktuellen Schlüssel vertrauen, lehnen jedes mit einem neuen signierte Paket ab. Veröffentlichen Sie zuerst den neuen öffentlichen Schlüssel, geben Sie Entwicklern Zeit, App-Updates zu veröffentlichen, die beiden Schlüsseln vertrauen, und wechseln Sie erst dann."
 
 #: themes/default/templates/pages/client/apps.php:40
 msgid "Apps uploaded for this account appear here."
-msgstr ""
+msgstr "Für dieses Konto hochgeladene Apps werden hier angezeigt."
 
 #: assets/js/admin/core.js:1073
 msgid "Are you sure to delete"
-msgstr ""
+msgstr "Möchten Sie wirklich löschen"
 
 #: assets/js/admin/apps-uploader.js:1510
 #, javascript-format
 msgid "Are you sure to delete  %s?"
-msgstr ""
+msgstr "Möchten Sie %s wirklich  löschen?"
 
 #: assets/js/admin/apps-uploader.js:1297
 #, javascript-format
 msgid "Are you sure you want to delete %s? This action cannot be reversed."
-msgstr ""
+msgstr "Möchten Sie %s wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden."
 
 #: assets/js/admin/core.js:1287
 #, javascript-format
 msgid "Are you sure you want to delete tier \"%s\"?"
-msgstr ""
+msgstr "Möchten Sie die Stufe „%s“ wirklich löschen?"
 
 #: assets/js/admin/dashboard.js:76
 msgid "Are you sure you want to logout?"
-msgstr ""
+msgstr "Möchten Sie sich wirklich abmelden?"
 
 #: assets/js/admin/core.js:1782
 msgid "Are you sure you want to remove the selected member from this organization?"
-msgstr ""
+msgstr "Möchten Sie das ausgewählte Mitglied wirklich aus dieser Organisation entfernen?"
 
 #: assets/js/admin/core.js:762
 msgid "Are you sure you want to remove this domain?"
-msgstr ""
+msgstr "Möchten Sie diese Domain wirklich entfernen?"
 
 #: assets/js/admin/core.js:1992
 msgid "Are you sure you want to reset the cache adapter to default settings?"
-msgstr ""
+msgstr "Möchten Sie den Cache-Adapter wirklich auf die Standardeinstellungen zurücksetzen?"
 
 #: assets/js/admin/cache-stats.js:290 assets/js/modal.js:883
 msgid "Are you sure?"
-msgstr ""
+msgstr "Sind Sie sicher?"
 
 #: assets/js/admin/json-editor.js:932
 msgid "Array"
-msgstr ""
+msgstr "Array"
 
 #: assets/js/admin/apps-uploader.js:1531
 msgid "Artifact File Name:"
-msgstr ""
+msgstr "Dateiname des Artefakts:"
 
 #: src/FileSystem/DownloadsApi/FileRequestController.php:130
 msgid "Artifact file name is required."
-msgstr ""
+msgstr "Der Dateiname des Artefakts ist erforderlich."
 
 #: src/FileSystem/Repository.php:1026
 msgid "Artifact file was not uploaded"
-msgstr ""
+msgstr "Die Artefaktdatei wurde nicht hochgeladen"
 
 #: assets/js/admin/apps-uploader.js:1707 assets/js/admin/apps-uploader.js:1754
 msgid "Artifact upload request failed with an unknown error."
-msgstr ""
+msgstr "Die Upload-Anfrage für das Artefakt ist mit einem unbekannten Fehler fehlgeschlagen."
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:361 templates/admin/contents/system/signing-key.php:141 assets/js/admin/repository-browser.js:40
 msgid "Artifacts"
-msgstr ""
+msgstr "Artefakte"
 
 #: themes/default/templates/pages/auth/reset-password.php:37
 msgid "Ask for a new link"
-msgstr ""
+msgstr "Neuen Link anfordern"
 
 #: templates/admin/contents/system/maintenance.php:147
 msgid "Ask visitors to retry after (seconds)"
-msgstr ""
+msgstr "Besucher bitten, es erneut zu versuchen nach (Sekunden)"
 
 #: src/Environments/Application/Update/UpdateServer.php:244
 #, php-format
 msgid "Asking %s for its %s apps."
-msgstr ""
+msgstr "Frage %s nach seinen %s-Apps."
 
 #: src/Environments/Application/Update/UpdateServer.php:139
 #, php-format
 msgid "Asking %s for the release."
-msgstr ""
+msgstr "Frage %s nach dem Release."
 
 #: src/FileSystem/DownloadsApi/FileRequestController.php:500
 msgid "Asset URL is required."
-msgstr ""
+msgstr "Die Ressourcen-URL ist erforderlich."
 
 #: assets/js/admin/apps-uploader.js:627
 msgid "Asset Uploader"
-msgstr ""
+msgstr "Ressourcen-Uploader"
 
 #: src/FileSystem/Repository.php:756
 msgid "Asset cannot be reliably moved to the repository."
-msgstr ""
+msgstr "Die Ressource kann nicht zuverlässig in das Repository verschoben werden."
 
 #: src/HostedApps/HostingController.php:554
 msgid "Asset deleted successfully."
-msgstr ""
+msgstr "Ressource erfolgreich gelöscht."
 
 #: assets/js/admin/repository-browser.js:577
 msgid "Asset type"
-msgstr ""
+msgstr "Ressourcentyp"
 
 #: assets/js/admin/repository-browser.js:39
 msgid "Assets"
-msgstr ""
+msgstr "Ressourcen"
 
 #: src/Security/Permission/Capability.php:116
 msgid "Assign capabilities to roles"
-msgstr ""
+msgstr "Rollen Berechtigungen zuweisen"
 
 #: src/Security/Permission/Capability.php:114
 msgid "Assign roles"
-msgstr ""
+msgstr "Rollen zuweisen"
 
 #: src/Background/Jobs/Analytics/LogLicenseActivityJob.php:75
 msgid "Asynchronously appends a license activity entry to the activity log."
-msgstr ""
+msgstr "Fügt asynchron einen Lizenzaktivitätseintrag zum Aktivitätsprotokoll hinzu."
 
 #: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:117
 msgid "Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled."
-msgstr ""
+msgstr "Benachrichtigt einen Benutzer asynchron, wenn ein Passkey oder eine Zwei-Faktor-Methode hinzugefügt, entfernt, aktiviert oder deaktiviert wird."
 
 #: src/Background/Jobs/Accounts/MfaResetEmailJob.php:67
 msgid "Asynchronously send a notification email when 2FA is reset by an administrator."
-msgstr ""
+msgstr "Sendet asynchron eine Benachrichtigungs-E-Mail, wenn die 2FA von einem Administrator zurückgesetzt wird."
 
 #: src/Background/Jobs/Accounts/EmailOtpJob.php:125
 msgid "Asynchronously send a one-time sign-in or two-factor confirmation code by email."
-msgstr ""
+msgstr "Sendet asynchron einen Einmal-Anmeldecode oder Zwei-Faktor-Bestätigungscode per E-Mail."
 
 #: src/Background/Jobs/Accounts/EmailVerificationJob.php:74
 msgid "Asynchronously send a user a link to verify their email address."
-msgstr ""
+msgstr "Sendet einem Benutzer asynchron einen Link zur Bestätigung seiner E-Mail-Adresse."
 
 #: src/Background/Jobs/Purchases/PurchaseRequestEmailJob.php:157
 msgid "Asynchronously send an email about a purchase request: receipt, admin notice, note, approval or rejection."
-msgstr ""
+msgstr "Sendet asynchron eine E-Mail zu einer Kaufanfrage: Beleg, Admin-Hinweis, Notiz, Genehmigung oder Ablehnung."
 
 #: src/Background/Jobs/Analytics/LogDownloadJob.php:93
 msgid "Asynchronously writes a download log entry and updates the app lifetime download counter."
-msgstr ""
+msgstr "Schreibt asynchron einen Download-Protokolleintrag und aktualisiert den Gesamt-Downloadzähler der App."
 
 #: src/Background/Jobs/Analytics/LogClientAccessJob.php:100
 msgid "Asynchronously writes an analytics log entry and updates the app lifetime access counter."
-msgstr ""
+msgstr "Schreibt asynchron einen Analyse-Protokolleintrag und aktualisiert den Gesamt-Zugriffszähler der App."
 
 #: src/Background/Jobs/Accounts/PasswordResetJob.php:90
 msgid "Asyncronously send password reset emails."
-msgstr ""
+msgstr "Sendet asynchron E-Mails zum Zurücksetzen des Passworts."
 
 #: src/Background/Jobs/Accounts/SignupEmailJob.php:94
 msgid "Asyncronously send welcome email to newly registered users."
-msgstr ""
+msgstr "Sendet asynchron eine Willkommens-E-Mail an neu registrierte Benutzer."
 
 #: themes/default/templates/pages/auth/sign-up.php:37
 msgid "At least 8 characters, with upper and lower case letters and numbers."
-msgstr ""
+msgstr "Mindestens 8 Zeichen, mit Groß- und Kleinbuchstaben und Ziffern."
 
 #: templates/admin/contents/system/queues.php:139 templates/admin/contents/system/queues.php:145
 msgid "Attempts"
-msgstr ""
+msgstr "Versuche"
 
 #: src/Schema/Definitions/AuthChallengesSchema.php:21
 msgid "Authentication Challenges"
-msgstr ""
+msgstr "Authentifizierungsanforderungen"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:649
 msgid "Authentication URL prefix"
-msgstr ""
+msgstr "Präfix der Authentifizierungs-URL"
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:200
 msgid "Authentication could not be completed."
-msgstr ""
+msgstr "Die Authentifizierung konnte nicht abgeschlossen werden."
 
 #: src/Exceptions/FileRequestException.php:99
 msgid "Authentication credentials are required for this resource but were not provided."
-msgstr ""
+msgstr "Für diese Ressource sind Anmeldedaten erforderlich, wurden aber nicht angegeben."
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:221 src/Security/Authentication/UserAuthenticator.php:105
 msgid "Authentication denied due to invalid role."
-msgstr ""
+msgstr "Authentifizierung aufgrund einer ungültigen Rolle verweigert."
 
 #: src/Exceptions/RequestException.php:66
 msgid "Authentication is required for this request but was not provided."
-msgstr ""
+msgstr "Für diese Anfrage ist eine Authentifizierung erforderlich, wurde aber nicht angegeben."
 
 #: themes/default/templates/pages/client/security.php:66 themes/default/templates/pages/client/security.php:116
 msgid "Authenticator app"
-msgstr ""
+msgstr "Authenticator-App"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
 msgid "Authenticator app enabled. Save these one-time recovery codes now: "
-msgstr ""
+msgstr "Authenticator-App aktiviert. Speichern Sie jetzt diese Einmal-Wiederherstellungscodes: "
 
 #: themes/default/templates/pages/client/security.php:146
 msgid "Authenticator code"
-msgstr ""
+msgstr "Authenticator-Code"
 
 #: themes/default/templates/pages/auth/mfa.php:42
 msgid "Authenticator code or recovery code"
-msgstr ""
+msgstr "Authenticator-Code oder Wiederherstellungscode"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:114
 msgid "Authenticator enrollment could not be started. Please try again."
-msgstr ""
+msgstr "Die Einrichtung der Authenticator-App konnte nicht gestartet werden. Bitte versuchen Sie es erneut."
 
 #: themes/default/templates/pages/client/security.php:125
 msgid "Authenticator or recovery code"
-msgstr ""
+msgstr "Authenticator- oder Wiederherstellungscode"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:270 themes/default/templates/pages/client/app-new.php:34
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:638
 msgid "Author Name"
-msgstr ""
+msgstr "Autorenname"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:652
 msgid "Author Profile URL"
-msgstr ""
+msgstr "Autorenprofil-URL"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:271 themes/default/templates/pages/client/app-new.php:39
 msgid "Author profile URL"
-msgstr ""
+msgstr "Autorenprofil-URL"
 
 #: templates/admin/contents/repository/monetization.php:59
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #: templates/admin/contents/license/index.php:57
 msgid "Auto Calc"
-msgstr ""
+msgstr "Auto-Berechnung"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:582
 msgid "Automatic (browser language)"
-msgstr ""
+msgstr "Automatisch (Browsersprache)"
 
 #: src/Admin/ContentHandlers/LicensePage.php:408
 msgid "Automatic Calculation"
-msgstr ""
+msgstr "Automatische Berechnung"
 
 #: src/Environments/Application/Health/SystemHealth.php:1441
 msgid "Automatic Updates"
-msgstr ""
+msgstr "Automatische Updates"
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:41
 #, php-format
 msgid "Automatic update from %s to %s completed. The previous version can be restored for %d days."
-msgstr ""
+msgstr "Automatisches Update von %s auf %s abgeschlossen. Die vorherige Version kann %d Tage lang wiederhergestellt werden."
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:217
 msgid "Automatic update setting saved."
-msgstr ""
+msgstr "Einstellung für automatische Updates gespeichert."
 
 #: templates/admin/contents/system/updates.php:57
 #, php-format
 msgid "Automatic update to %s queued %s; background processing installs it at its next run."
-msgstr ""
+msgstr "Automatisches Update auf %s %s in die Warteschlange gestellt; die Hintergrundverarbeitung installiert es beim nächsten Lauf."
 
 #: templates/admin/contents/system/updates.php:227
 msgid "Automatic updates"
-msgstr ""
+msgstr "Automatische Updates"
 
 #: src/Environments/Application/Update/UpdateService.php:635
 msgid "Automatic updates are off on this site, so it will not be installed automatically."
-msgstr ""
+msgstr "Automatische Updates sind auf dieser Website deaktiviert, daher wird es nicht automatisch installiert."
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:71
 msgid "Automatic updates are off on this site."
-msgstr ""
+msgstr "Automatische Updates sind auf dieser Website deaktiviert."
 
 #: src/Environments/Application/Health/SystemHealth.php:1443
 msgid "Automatic updates are off, so security releases are only installed when an administrator does it."
-msgstr ""
+msgstr "Automatische Updates sind deaktiviert, daher werden Sicherheitsversionen nur installiert, wenn ein Administrator dies tut."
 
 #: src/Environments/Application/Update/UpdateService.php:495
 msgid ""
 "Automatic updates cannot install this release on this server:\n"
 msgstr ""
+"Automatische Updates können diese Version auf diesem Server nicht installieren:\n"
 
 #: src/Environments/Application/Update/UpdateService.php:636
 msgid "Automatic updates on this site install security releases only, so this release will not be installed automatically."
-msgstr ""
+msgstr "Automatische Updates installieren auf dieser Website nur Sicherheitsversionen, daher wird diese Version nicht automatisch installiert."
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:107
 msgid "Available"
-msgstr ""
+msgstr "Verfügbar"
 
 #: templates/admin/contents/system/queues.php:146
 msgid "Available At"
-msgstr ""
+msgstr "Verfügbar um"
 
 #: src/Environments/Application/Theming/CorePages.php:140
 msgid "Available REST API routes, grouped by version and category."
-msgstr ""
+msgstr "Verfügbare REST-API-Routen, gruppiert nach Version und Kategorie."
 
 #: templates/admin/contents/accounts/access-control-form.php:83
 msgid "Avatar actions"
-msgstr ""
+msgstr "Avatar-Aktionen"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1028
 msgid "Avg Access/Day"
-msgstr ""
+msgstr "Ø Zugriffe/Tag"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:984
 msgid "Avg Downloads/Day"
-msgstr ""
+msgstr "Ø Downloads/Tag"
 
 #: themes/default/templates/pages/client/purchases.php:38
 msgid "Awaiting review"
-msgstr ""
+msgstr "Wartet auf Prüfung"
 
 #: templates/admin/contents/options/email/editor.php:84
 msgid "Back to Email Templates"
-msgstr ""
+msgstr "Zurück zu den E-Mail-Vorlagen"
 
 #: themes/default/templates/pages/auth/forgot-password.php:25 themes/default/templates/pages/auth/reset-password.php:41
 msgid "Back to sign in"
-msgstr ""
+msgstr "Zurück zur Anmeldung"
 
 #: templates/admin/contents/options/email/editor.php:199 templates/admin/contents/options/email/editor.php:233 templates/admin/contents/options/email/editor.php:301
 msgid "Background"
-msgstr ""
+msgstr "Hintergrund"
 
 #: src/Schema/Definitions/BackgroundJobsSchema.php:30
 msgid "Background Jobs"
-msgstr ""
+msgstr "Hintergrund-Jobs"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:304 src/Admin/ContentHandlers/ToolsPage.php:355 src/Environments/Application/Health/SystemHealth.php:1287 src/Environments/Application/Health/SystemHealth.php:1293
 #: src/Environments/Application/Health/SystemHealth.php:1303 src/Environments/Application/Health/SystemHealth.php:1312 src/Environments/Application/Health/SystemHealth.php:1326
 msgid "Background Processing"
-msgstr ""
+msgstr "Hintergrundverarbeitung"
 
 #: src/Environments/Application/Health/SystemHealth.php:1338
 msgid "Background Processing Reliability"
-msgstr ""
+msgstr "Zuverlässigkeit der Hintergrundverarbeitung"
 
 #: src/Environments/Application/Health/SystemHealth.php:1295
 msgid "Background processing has never run on this site. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them."
-msgstr ""
+msgstr "Die Hintergrundverarbeitung ist auf dieser Website noch nie gelaufen. Update-Prüfungen, Sicherheitsupdates, Lizenzabläufe, E-Mails und Bereinigung warten, bis ein Administrator sie ausführt."
 
 #: src/Environments/Application/Health/SystemHealth.php:1315
 #, php-format
 msgid "Background processing stopped: it last ran %s ago (%s). Scheduled tasks and queued jobs are waiting."
-msgstr ""
+msgstr "Die Hintergrundverarbeitung ist gestoppt: Sie lief zuletzt vor %s (%s). Geplante Aufgaben und Jobs in der Warteschlange warten."
 
 #: src/Environments/Application/Health/SystemHealth.php:1340
 msgid "Background work runs only when the external cron service calls the cron URL. If that service stops, so do updates and emails, and each call is limited like any web request."
-msgstr ""
+msgstr "Hintergrundarbeit läuft nur, wenn der externe Cron-Dienst die Cron-URL aufruft. Stoppt dieser Dienst, stoppen auch Updates und E-Mails, und jeder Aufruf ist wie jede Webanfrage begrenzt."
 
 #: templates/admin/contents/system/updates.php:307
 msgid "Backup"
-msgstr ""
+msgstr "Sicherung"
 
 #: src/Exceptions/RequestException.php:261
 msgid "Bad Gateway"
-msgstr ""
+msgstr "Fehlerhaftes Gateway"
 
 #: src/Environments/WordPress/Dispatcher.php:226 src/Environments/WordPress/Dispatcher.php:339
 msgid "Bad Request"
-msgstr ""
+msgstr "Ungültige Anfrage"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:130
 msgid "Banners"
-msgstr ""
+msgstr "Banner"
 
 #: themes/default/templates/pages/signing-key.php:61
 msgid "Before you ship, check that the fingerprint above matches the one the site's owner publishes elsewhere, such as on their own website. If this site were ever compromised, the key shown here could be replaced too."
-msgstr ""
+msgstr "Prüfen Sie vor der Veröffentlichung, ob der obige Fingerabdruck mit dem übereinstimmt, den der Betreiber der Website anderswo veröffentlicht, etwa auf seiner eigenen Website. Sollte diese Website je kompromittiert werden, könnte auch der hier angezeigte Schlüssel ersetzt werden."
 
 #: templates/admin/contents/repository/upload.php:50
 msgid "Before you upload"
-msgstr ""
+msgstr "Vor dem Hochladen"
 
 #: src/Background/BackgroundSetup.php:227
 msgid "Best"
-msgstr ""
+msgstr "Am besten"
 
 #: src/Schema/Migrations/BindDownloadTokensToActivations.php:45
 msgid "Bind download tokens to the license activation they were issued to"
-msgstr ""
+msgstr "Download-Tokens an die Lizenzaktivierung binden, für die sie ausgestellt wurden"
 
 #: templates/admin/contents/options/email/editor.php:181
 msgid "Block"
-msgstr ""
+msgstr "Block"
 
 #: templates/admin/contents/options/email/editor.php:366
 msgid "Block content..."
-msgstr ""
+msgstr "Blockinhalt..."
 
 #: templates/admin/contents/options/email/editor.php:442
 msgid "Blocks"
-msgstr ""
+msgstr "Blöcke"
 
 #: templates/admin/contents/broadcasts/index.php:52 templates/admin/contents/broadcasts/search.php:39 templates/admin/contents/options/email/editor.php:230
 msgid "Body"
-msgstr ""
+msgstr "Inhalt"
 
 #: assets/js/admin/json-editor.js:930
 msgid "Boolean"
-msgstr ""
+msgstr "Boolesch"
 
 #: templates/admin/contents/license/purchase-request.php:68 templates/admin/contents/license/purchase-requests.php:67
 msgid "Bought"
-msgstr ""
+msgstr "Gekauft"
 
 #: themes/default/templates/pages/repository/app.php:28
 msgid "Breadcrumb"
-msgstr ""
+msgstr "Brotkrümelnavigation"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:192
 msgid "Broadcasts"
-msgstr ""
+msgstr "Rundsendungen"
 
 #: assets/js/admin/json-editor.js:1651
 msgid "Browse files…"
-msgstr ""
+msgstr "Dateien durchsuchen…"
 
 #: src/HostedApps/ContentHandlers/RepositoryPages.php:110 src/HostedApps/ContentHandlers/RepositoryPages.php:175
 #, php-format
 msgid "Browse the %s hosted on this server."
-msgstr ""
+msgstr "Durchsuchen Sie die auf diesem Server gehosteten %s."
 
 #: themes/default/templates/pages/purchase.php:33
 msgid "Browse the repository"
-msgstr ""
+msgstr "Repository durchsuchen"
 
 #: src/HostedApps/Storage/AppStorage.php:379 src/HostedApps/Storage/DirectoryAppStorage.php:672
 msgid "Browsing an app needs its type."
-msgstr ""
+msgstr "Zum Durchsuchen einer App wird ihr Typ benötigt."
 
 #: src/Admin/ContentHandlers/ModulesPage.php:417
 msgid "Built in"
-msgstr ""
+msgstr "Integriert"
 
 #: templates/admin/contents/license/index.php:56 templates/admin/contents/repository/index.php:125
 msgid "Bulk Actions"
-msgstr ""
+msgstr "Massenaktionen"
 
 #: src/Email/Templates/System/BulkMessageEmail.php:88
 msgid "Bulk Message"
-msgstr ""
+msgstr "Massennachricht"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:117 src/Admin/ContentHandlers/BulkMessagePage.php:123 src/Schema/Definitions/BulkMessagesSchema.php:31
 msgid "Bulk Messages"
-msgstr ""
+msgstr "Massennachrichten"
 
 #: src/Schema/Definitions/BulkMessagesAppsSchema.php:30
 msgid "Bulk Messages Apps"
-msgstr ""
+msgstr "Apps der Massennachrichten"
 
 #: templates/admin/contents/broadcasts/index.php:35
 msgid "Bulk action"
-msgstr ""
+msgstr "Massenaktion"
 
 #: src/Environments/WordPress/Dispatcher.php:762
 #, php-format
 msgid "Bulk action cannot be handled for \"%s\""
-msgstr ""
+msgstr "Massenaktion kann für „%s“ nicht verarbeitet werden"
 
 #: src/Environments/WordPress/Dispatcher.php:436
 msgid "Bulk action context is required"
-msgstr ""
+msgstr "Kontext der Massenaktion ist erforderlich"
 
 #: templates/admin/contents/options/email/editor.php:397
 msgid "Button Label"
-msgstr ""
+msgstr "Schaltflächentext"
 
 #: templates/admin/contents/options/email/editor.php:405
 msgid "Button URL"
-msgstr ""
+msgstr "Schaltflächen-URL"
 
 #: templates/admin/contents/options/email/editor.php:280
 msgid "Buttons & Links"
-msgstr ""
+msgstr "Schaltflächen & Links"
 
 #: themes/default/templates/pages/purchase.php:44 themes/default/templates/partials/repository/pricing.php:32
 msgid "Buy"
-msgstr ""
+msgstr "Kaufen"
 
 #: src/Monetization/ContentHandlers/PurchasePages.php:103
 #, php-format
 msgid "Buy %s — %s"
-msgstr ""
+msgstr "%s kaufen — %s"
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:86 templates/admin/contents/license/purchase-request.php:61 templates/admin/contents/license/purchase-requests.php:66
 msgid "Buyer"
-msgstr ""
+msgstr "Käufer"
 
 #: templates/admin/contents/license/purchase-request.php:84
 msgid "Buyer's note"
-msgstr ""
+msgstr "Notiz des Käufers"
 
 #: themes/default/templates/pages/repository/app.php:42
 msgid "By"
-msgstr ""
+msgstr "Von"
 
 #: templates/admin/contents/system/maintenance.php:157
 msgid "By default, scheduled tasks and queued jobs wait, so nothing writes to the database during a backup or an import."
-msgstr ""
+msgstr "Standardmäßig warten geplante Aufgaben und Jobs in der Warteschlange, damit während einer Sicherung oder eines Imports nichts in die Datenbank schreibt."
 
 #: assets/js/admin/maintenance.js:121
 msgid "Bypass link"
-msgstr ""
+msgstr "Umgehungslink"
 
 #: src/Exceptions/RequestException.php:112
 msgid "CSRF Verification Failed"
-msgstr ""
+msgstr "CSRF-Prüfung fehlgeschlagen"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:724 src/Admin/ContentHandlers/OptionsPage.php:781
 msgid "Cache"
-msgstr ""
+msgstr "Cache"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:685 src/Admin/ContentHandlers/OptionsPage.php:723 templates/admin/contents/options/cache/index.php:30
 msgid "Cache Adapters"
-msgstr ""
+msgstr "Cache-Adapter"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:556
 msgid "Cache Directory"
-msgstr ""
+msgstr "Cache-Verzeichnis"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:548
 msgid "Cache File Name"
-msgstr ""
+msgstr "Cache-Dateiname"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:563
 msgid "Cache Memory (MB)"
-msgstr ""
+msgstr "Cache-Speicher (MB)"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:173 src/Admin/ActionHandlers/SystemManagement.php:184 src/Admin/ActionHandlers/SystemManagement.php:313 assets/js/admin/site-health.js:37
 msgid "Cache Persistence"
-msgstr ""
+msgstr "Cache-Persistenz"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:684 src/Admin/ContentHandlers/OptionsPage.php:730
 msgid "Cache Statistics"
-msgstr ""
+msgstr "Cache-Statistiken"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:731
 msgid "Cache Stats"
-msgstr ""
+msgstr "Cache-Statistik"
 
 #: templates/admin/contents/options/cache/stats.php:174 assets/js/admin/cache-stats.js:166
 msgid "Cached Entries"
-msgstr ""
+msgstr "Zwischengespeicherte Einträge"
 
 #: themes/default/templates/partials/footer.php:16
 msgid "Callismart"
-msgstr ""
+msgstr "Callismart"
 
 #: assets/js/admin/json-editor.js:951 assets/js/admin/json-editor.js:1469 assets/js/admin/json-editor.js:1682 assets/js/admin/json-editor.js:1864
 #: assets/js/admin/repository-browser.js:800 assets/js/modal.js:885 assets/js/modal.js:1110
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: themes/default/templates/pages/auth/mfa.php:56
 msgid "Cancel and sign in again"
-msgstr ""
+msgstr "Abbrechen und erneut anmelden"
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:85 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:221
 msgid "Cancelled On"
-msgstr ""
+msgstr "Gekündigt am"
 
 #: src/Security/RequestController.php:263
 msgid "Cannot reuse old password, please use new ones."
-msgstr ""
+msgstr "Ein altes Passwort kann nicht wiederverwendet werden, bitte verwenden Sie ein neues."
 
 #: src/Email/Providers/PHPMailProvider.php:76
 msgid "Cannot send email. No valid \"to\" recipient was provided."
-msgstr ""
+msgstr "E-Mail kann nicht gesendet werden. Es wurde kein gültiger „to“-Empfänger angegeben."
 
 #: src/Email/Providers/PHPMailProvider.php:68
 msgid "Cannot send email. The function \"mail()\" does not exist."
-msgstr ""
+msgstr "E-Mail kann nicht gesendet werden. Die Funktion „mail()“ existiert nicht."
 
 #: src/Email/Providers/PHPMailProvider.php:85
 msgid "Cannot send email. The resolved \"from\" address is invalid."
-msgstr ""
+msgstr "E-Mail kann nicht gesendet werden. Die ermittelte „from“-Adresse ist ungültig."
 
 #: assets/js/admin/apps-uploader.js:1366
 msgid "Canvas PNG export failed."
-msgstr ""
+msgstr "Canvas-PNG-Export fehlgeschlagen."
 
 #: assets/js/admin/role-builder.js:139
 msgid "Capabilities"
-msgstr ""
+msgstr "Berechtigungen"
 
 #: src/Security/Permission/Role.php:193
 msgid "Capabilities must be valid JSON or array"
-msgstr ""
+msgstr "Berechtigungen müssen gültiges JSON oder ein Array sein"
 
 #: themes/default/templates/pages/documentation.php:20
 msgid "Categories"
-msgstr ""
+msgstr "Kategorien"
 
 #: src/Exceptions/CliErrorHandler.php:233 src/Exceptions/HttpErrorHandler.php:481
 msgid "Caused by: "
-msgstr ""
+msgstr "Verursacht durch: "
 
 #: templates/admin/contents/options/routing.php:30
 msgid "Caution:"
-msgstr ""
+msgstr "Vorsicht:"
 
 #: src/Security/Permission/Capability.php:33
 msgid "Change hosted application status"
-msgstr ""
+msgstr "Status gehosteter Anwendungen ändern"
 
 #: templates/admin/contents/system/maintenance.php:132 assets/js/admin/maintenance.js:45
 msgid "Change maintenance"
-msgstr ""
+msgstr "Wartung ändern"
 
 #: themes/default/templates/pages/auth/reset-password.php:33
 msgid "Change password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: themes/default/templates/pages/client/organization.php:46
 msgid "Change role"
-msgstr ""
+msgstr "Rolle ändern"
 
 #: assets/js/admin/repository-browser.js:344 assets/js/admin/repository-browser.js:986 assets/js/admin/repository-browser.js:989
 msgid "Change slug"
-msgstr ""
+msgstr "Slug ändern"
 
 #: themes/default/templates/pages/client/app.php:203
 msgid "Change status"
-msgstr ""
+msgstr "Status ändern"
 
 #: src/Security/Permission/Capability.php:47
 msgid "Change the status of app monetization"
-msgstr ""
+msgstr "Status der App-Monetarisierung ändern"
 
 #: templates/admin/contents/repository/preview.php:137
 msgid "Changelog"
-msgstr ""
+msgstr "Änderungsprotokoll"
 
 #: templates/admin/contents/options/routing.php:30
 msgid "Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated."
-msgstr ""
+msgstr "Eine Änderung dieser Werte aktualisiert die öffentlichen URLs Ihrer gehosteten Anwendungen. Bestehende, mit Benutzern geteilte Links funktionieren möglicherweise nicht mehr, bis sie aktualisiert werden."
 
 #: src/Environments/Application/Installation/InstallerPage.php:256
 msgid "Character set"
-msgstr ""
+msgstr "Zeichensatz"
 
 #: templates/admin/contents/options/cache/index.php:63
 msgid "Check"
-msgstr ""
+msgstr "Prüfen"
 
 #: templates/admin/contents/system/background.php:75
 msgid "Check again"
-msgstr ""
+msgstr "Erneut prüfen"
 
 #: src/Background/Schedule/Scheduler.php:623
 msgid "Check for Updates"
-msgstr ""
+msgstr "Nach Updates suchen"
 
 #: themes/default/templates/pages/signing-key.php:62
 msgid "Check for and download updates with"
-msgstr ""
+msgstr "Updates suchen und herunterladen mit"
 
 #: templates/admin/contents/modules/extensions.php:125 templates/admin/contents/modules/themes.php:131
 msgid "Check for updates"
-msgstr ""
+msgstr "Nach Updates suchen"
 
 #: templates/admin/contents/system/updates.php:166
 msgid "Check now"
-msgstr ""
+msgstr "Jetzt prüfen"
 
 #: src/Environments/Application/Health/SystemHealth.php:1395
 msgid "Check outbound HTTPS access to the update server (see \"Update Server Connection\"), then use \"Check now\" on the Updates page."
-msgstr ""
+msgstr "Prüfen Sie den ausgehenden HTTPS-Zugriff auf den Update-Server (siehe „Verbindung zum Update-Server“) und verwenden Sie dann „Jetzt prüfen“ auf der Seite „Updates“."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:239
 msgid "Check outbound HTTPS access, DNS resolution, and the server's CA certificate bundle."
-msgstr ""
+msgstr "Prüfen Sie den ausgehenden HTTPS-Zugriff, die DNS-Auflösung und das CA-Zertifikatspaket des Servers."
 
 #: src/Environments/Application/Health/SystemHealth.php:1319
 #, php-format
 msgid "Check that the cron job or external service still runs. %s shows each runner's last run and the configuration for this server."
-msgstr ""
+msgstr "Prüfen Sie, ob der Cronjob oder der externe Dienst noch läuft. %s zeigt den letzten Lauf jedes Runners und die Konfiguration für diesen Server."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:226
 msgid "Check that the server firewall allows outbound HTTPS traffic and that DNS resolves the host."
-msgstr ""
+msgstr "Prüfen Sie, ob die Server-Firewall ausgehenden HTTPS-Verkehr erlaubt und das DNS den Host auflöst."
 
 #: src/Environments/Application/Health/SiteProbe.php:128
 msgid "Check that the web server and PHP are running, and read their error logs. This request is made from this server: if visitors can reach the site, DNS or a firewall inside the server may differ."
-msgstr ""
+msgstr "Prüfen Sie, ob Webserver und PHP laufen, und lesen Sie deren Fehlerprotokolle. Diese Anfrage erfolgt von diesem Server aus: Wenn Besucher die Website erreichen, können DNS oder eine Firewall innerhalb des Servers abweichen."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:290
 msgid "Check the adapter's connection settings (host, port, credentials) in the cache settings."
-msgstr ""
+msgstr "Prüfen Sie die Verbindungseinstellungen des Adapters (Host, Port, Zugangsdaten) in den Cache-Einstellungen."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:316
 msgid "Check the adapter's connection settings and that its backing service is running."
-msgstr ""
+msgstr "Prüfen Sie die Verbindungseinstellungen des Adapters und ob sein zugrunde liegender Dienst läuft."
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:227
 msgid "Check the details and try again."
-msgstr ""
+msgstr "Prüfen Sie die Angaben und versuchen Sie es erneut."
 
 #: templates/admin/contents/license/purchase-request.php:140
 msgid "Check the receipt against your account for"
-msgstr ""
+msgstr "Gleichen Sie den Beleg mit Ihrem Konto ab für"
 
 #: assets/js/admin/background-setup.js:172
 #, javascript-format
 msgid "Checked at %s. Refreshes every 30 seconds while the page is open."
-msgstr ""
+msgstr "Geprüft um %s. Aktualisiert sich alle 30 Sekunden, solange die Seite geöffnet ist."
 
 #: templates/admin/contents/system/updates.php:247
 msgid "Checked twice a day by the scheduler; installed by background processing."
-msgstr ""
+msgstr "Zweimal täglich vom Planer geprüft; von der Hintergrundverarbeitung installiert."
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:107
 msgid ""
 "Checking for the latest version...\n"
 "The package signature is missing or invalid; it may not come from the publisher. Nothing was changed."
 msgstr ""
+"Suche nach der neuesten Version...\n"
+"Die Paketsignatur fehlt oder ist ungültig; es stammt möglicherweise nicht vom Herausgeber. Es wurde nichts geändert."
 
 #: src/Monetization/Providers/RemoteProvider.php:94
 msgid "Checkout URL"
-msgstr ""
+msgstr "Checkout-URL"
 
 #: templates/admin/contents/modules/extensions.php:38 templates/admin/contents/modules/themes.php:40
 msgid "Checksums (.sha256)"
-msgstr ""
+msgstr "Prüfsummen (.sha256)"
 
 #: src/Environments/Application/Update/PackageVerifier.php:105
 #, php-format
 msgid "Checksums signature is valid (signed by %s)."
-msgstr ""
+msgstr "Die Prüfsummensignatur ist gültig (signiert von %s)."
 
 #: src/Admin/ContentHandlers/ModulesPage.php:406
 #, php-format
 msgid "Child of %s"
-msgstr ""
+msgstr "Untergeordnet zu %s"
 
 #: assets/js/modal.js:1298
 msgid "Choose"
-msgstr ""
+msgstr "Auswählen"
 
 #: templates/admin/contents/broadcasts/compose.php:44
 msgid "Choose App(s)"
-msgstr ""
+msgstr "App(s) auswählen"
 
 #: assets/js/admin/json-editor.js:1652
 msgid "Choose a JSON file to import"
-msgstr ""
+msgstr "Wählen Sie eine JSON-Datei zum Importieren"
 
 #: assets/js/smliser-uploader.js:165
 msgid "Choose a file"
-msgstr ""
+msgstr "Datei auswählen"
 
 #: src/Auth/ContentHandlers/AuthPages.php:191 themes/default/templates/pages/auth/reset-password.php:16
 msgid "Choose a new password"
-msgstr ""
+msgstr "Neues Passwort wählen"
 
 #: src/Security/Organizations/OrganizationInvitations.php:112
 msgid "Choose a role for the person you invite."
-msgstr ""
+msgstr "Wählen Sie eine Rolle für die eingeladene Person."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:196
 msgid "Choose a supported security factor."
-msgstr ""
+msgstr "Wählen Sie einen unterstützten Sicherheitsfaktor."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:267
 msgid "Choose a supported verification method."
-msgstr ""
+msgstr "Wählen Sie eine unterstützte Bestätigungsmethode."
 
 #: src/Monetization/Providers/RemoteProvider.php:111
 msgid "Choose an active service account of this app's owner."
-msgstr ""
+msgstr "Wählen Sie ein aktives Dienstkonto des Inhabers dieser App."
 
 #: assets/js/smliser-uploader.js:165
 msgid "Choose files"
-msgstr ""
+msgstr "Dateien auswählen"
 
 #: themes/default/templates/pages/client/security.php:28
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
-msgstr ""
+msgstr "Wählen Sie, wie Sie sich anmelden und wie Ihr Konto geschützt wird. Jede Methode wird vor der Aktivierung überprüft."
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:45
 msgid "Choose it if your host gave you a PostgreSQL database."
-msgstr ""
+msgstr "Wählen Sie diese Option, wenn Ihr Hoster Ihnen eine PostgreSQL-Datenbank gegeben hat."
 
 #: src/Security/Organizations/OrganizationService.php:398
 #, php-format
 msgid "Choose one of these roles: %s."
-msgstr ""
+msgstr "Wählen Sie eine dieser Rollen: %s."
 
 #: templates/admin/contents/repository/upload.php:45
 msgid "Choose the app type you want to upload to this repository. Before you proceed, there are a couple of things to keep in mind."
-msgstr ""
+msgstr "Wählen Sie den App-Typ, den Sie in dieses Repository hochladen möchten. Beachten Sie vorher einige Punkte."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:123
 msgid "Choose the extension package (.zip) to upload."
-msgstr ""
+msgstr "Wählen Sie das Erweiterungspaket (.zip) zum Hochladen."
 
 #: src/Monetization/Controller.php:65
 msgid "Choose the license term"
-msgstr ""
+msgstr "Lizenzlaufzeit wählen"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:99
 msgid "Choose the theme package (.zip) to upload."
-msgstr ""
+msgstr "Wählen Sie das Theme-Paket (.zip) zum Hochladen."
 
 #: src/ClientDashboard/ActionHandlers/ContextSwitch.php:59
 msgid "Choose who to act for."
-msgstr ""
+msgstr "Wählen Sie, für wen Sie handeln."
 
 #: src/Background/Schedule/Scheduler.php:590
 msgid "Clean Expired Download Tokens"
-msgstr ""
+msgstr "Abgelaufene Download-Tokens bereinigen"
 
 #: src/Background/Jobs/Purchases/CleanPurchaseReceiptsJob.php:90 src/Background/Schedule/Scheduler.php:606
 msgid "Clean Purchase Receipts"
-msgstr ""
+msgstr "Kaufbelege bereinigen"
 
 #: src/Background/Schedule/Scheduler.php:598
 msgid "Clean Trashed Apps"
-msgstr ""
+msgstr "Apps im Papierkorb bereinigen"
 
 #: templates/admin/contents/accounts/access-control-form.php:100 templates/admin/contents/repository/uploader.php:58 assets/js/admin/apps-uploader.js:1543
 msgid "Clear"
-msgstr ""
+msgstr "Leeren"
 
 #: src/Schema/Migrations/ClearBrokenAppLinks.php:20
 msgid "Clear app download links saved without the app slug, and empty author profile URLs"
-msgstr ""
+msgstr "App-Downloadlinks ohne App-Slug und leere Autorenprofil-URLs löschen"
 
 #: assets/js/datetime-picker.js:326
 msgid "Clear date"
-msgstr ""
+msgstr "Datum löschen"
 
 #: templates/admin/contents/accounts/access-control-form.php:97
 msgid "Clear selected avatar image"
-msgstr ""
+msgstr "Ausgewähltes Avatarbild entfernen"
 
 #: assets/js/admin/apps-uploader.js:597
 msgid "Clear selected image"
-msgstr ""
+msgstr "Ausgewähltes Bild entfernen"
 
 #: src/Email/Templates/EmailTemplate.php:649 templates/admin/contents/options/email/editor.php:401
 msgid "Click Here"
-msgstr ""
+msgstr "Hier klicken"
 
 #: templates/admin/contents/options/email/editor.php:341
 msgid "Click a block on the canvas to edit it here."
-msgstr ""
+msgstr "Klicken Sie auf einen Block auf der Arbeitsfläche, um ihn hier zu bearbeiten."
 
 #: src/Environments/WordPress/WordPressEnvironment.php:469
 msgid "Click here to update now."
-msgstr ""
+msgstr "Klicken Sie hier, um jetzt zu aktualisieren."
 
 #: templates/admin/contents/repository/upload.php:59
 msgid "Click one of the options below to start uploading your app."
-msgstr ""
+msgstr "Klicken Sie auf eine der Optionen unten, um mit dem Hochladen Ihrer App zu beginnen."
 
 #: templates/admin/contents/repository/edit-artifacts.php:92 assets/js/admin/apps-uploader.js:1850
 msgid "Click to copy"
-msgstr ""
+msgstr "Zum Kopieren klicken"
 
 #: assets/js/admin/apps-uploader.js:1048
 msgid "Click to preview"
-msgstr ""
+msgstr "Für Vorschau klicken"
 
 #: assets/js/admin/purchase-review.js:138
 msgid "Click to zoom"
-msgstr ""
+msgstr "Zum Vergrößern klicken"
 
 #: templates/admin/contents/system/health.php:244
 msgid "Click “Generate report” to build the report."
-msgstr ""
+msgstr "Klicken Sie auf „Bericht erstellen“, um den Bericht zu erstellen."
 
 #: assets/js/admin/admin-repository.js:130 assets/js/admin/admin-repository.js:433
 msgid "Client Access"
-msgstr ""
+msgstr "Client-Zugriff"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:360
 msgid "Client Accesses"
-msgstr ""
+msgstr "Client-Zugriffe"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:373
 msgid "Client Accesses Last 30 Days"
-msgstr ""
+msgstr "Client-Zugriffe der letzten 30 Tage"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:396
 msgid "Client Accesses This Week"
-msgstr ""
+msgstr "Client-Zugriffe diese Woche"
 
 #: src/Admin/AdminDashboardRegistry.php:73
 msgid "Client Dashboard"
-msgstr ""
+msgstr "Client-Dashboard"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:609
 msgid "Client Dashboard URL Prefix"
-msgstr ""
+msgstr "URL-Präfix des Client-Dashboards"
 
 #: templates/admin/contents/license/logs.php:44
 msgid "Client IP Address"
-msgstr ""
+msgstr "Client-IP-Adresse"
 
 #: assets/js/admin/json-editor.js:1732
 msgid "Clipboard access denied — paste manually into the box."
-msgstr ""
+msgstr "Zugriff auf die Zwischenablage verweigert — fügen Sie manuell in das Feld ein."
 
 #: assets/js/admin/json-editor.js:1974
 msgid "Clipboard permission blocked. Please allow access or paste manually."
-msgstr ""
+msgstr "Berechtigung für die Zwischenablage blockiert. Bitte erlauben Sie den Zugriff oder fügen Sie manuell ein."
 
 #: templates/admin/contents/options/email/editor.php:355 assets/js/admin/repository-browser.js:1175 assets/js/modal.js:1387
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: assets/js/modal.js:158
 #, javascript-format
 msgid "Close %s dialog"
-msgstr ""
+msgstr "Dialog %s schließen"
 
 #: assets/js/admin/json-editor.js:1376
 msgid "Close dialog"
-msgstr ""
+msgstr "Dialog schließen"
 
 #: assets/js/admin/json-editor.js:258
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #: assets/js/admin/json-editor.js:254
 msgid "Code view"
-msgstr ""
+msgstr "Codeansicht"
 
 #: assets/js/admin/json-editor.js:336
 msgid "Collapse"
-msgstr ""
+msgstr "Einklappen"
 
 #: assets/js/admin/json-editor.js:332
 msgid "Collapse all"
-msgstr ""
+msgstr "Alle einklappen"
 
 #: assets/js/admin/json-editor.js:332
 msgid "Collapse all nodes"
-msgstr ""
+msgstr "Alle Knoten einklappen"
 
 #: templates/admin/header.php:43
 msgid "Collapse menu"
-msgstr ""
+msgstr "Menü einklappen"
 
 #: src/Background/BackgroundSetup.php:393
 msgid "Command"
-msgstr ""
+msgstr "Befehl"
 
 #: themes/default/templates/pages/home.php:36
 msgid "Command line"
-msgstr ""
+msgstr "Kommandozeile"
 
 #: templates/admin/contents/license/logs.php:45
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 #: assets/js/admin/json-editor.js:315
 msgid "Compact"
-msgstr ""
+msgstr "Kompakt"
 
 #: assets/js/admin/json-editor.js:1839 assets/js/admin/json-editor.js:1849
 msgid "Compact (minified)"
-msgstr ""
+msgstr "Kompakt (minifiziert)"
 
 #: assets/js/admin/json-editor.js:311
 msgid "Compact JSON"
-msgstr ""
+msgstr "Kompaktes JSON"
 
 #: assets/js/admin/json-editor.js:311
 msgid "Compact JSON (minify)"
-msgstr ""
+msgstr "Kompaktes JSON (minifizieren)"
 
 #: src/Exceptions/AbstractErrorHandler.php:785
 msgid "Compile Error"
-msgstr ""
+msgstr "Kompilierfehler"
 
 #: src/Exceptions/AbstractErrorHandler.php:786
 msgid "Compile Warning"
-msgstr ""
+msgstr "Kompilierwarnung"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:115
 msgid "Compose Bulk Message"
-msgstr ""
+msgstr "Massennachricht verfassen"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:135 src/Admin/ContentHandlers/BulkMessagePage.php:166
 msgid "Compose New"
-msgstr ""
+msgstr "Neu verfassen"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:134
 msgid "Compose new message"
-msgstr ""
+msgstr "Neue Nachricht verfassen"
 
 #: templates/admin/contents/options/cache/stats.php:129
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
 #: src/Email/Providers/AmazonSESProvider.php:130
 msgid "Configuration Set Name"
-msgstr ""
+msgstr "Name des Konfigurationssatzes"
 
 #: templates/admin/contents/options/cache/index.php:68 templates/admin/contents/options/email/index.php:81 templates/admin/contents/options/monetization/monetization-providers.php:39
 msgid "Configure"
-msgstr ""
+msgstr "Konfigurieren"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:176
 msgid "Configure Redis, Memcached, APCu or SQLite as the cache adapter, and check that its backing service is running and not evicting keys."
-msgstr ""
+msgstr "Konfigurieren Sie Redis, Memcached, APCu oder SQLite als Cache-Adapter und prüfen Sie, ob sein Dienst läuft und keine Schlüssel verdrängt."
 
 #: templates/admin/contents/options/cache/index.php:33
 msgid "Configure the cache adapter you want to use for object caching."
-msgstr ""
+msgstr "Konfigurieren Sie den Cache-Adapter, den Sie für das Objekt-Caching verwenden möchten."
 
 #: templates/admin/contents/options/email/index.php:52
 msgid "Configure the email provider you want to use for outgoing system emails. The active provider is determined by the Default Email Provider setting above."
-msgstr ""
+msgstr "Konfigurieren Sie den E-Mail-Anbieter für ausgehende System-E-Mails. Der aktive Anbieter wird durch die Einstellung „Standard-E-Mail-Anbieter“ oben bestimmt."
 
 #: templates/admin/contents/options/email/index.php:27
 msgid "Configure the global default options for sending emails."
-msgstr ""
+msgstr "Konfigurieren Sie die globalen Standardoptionen für den E-Mail-Versand."
 
 #: assets/js/modal.js:882
 msgid "Confirm"
-msgstr ""
+msgstr "Bestätigen"
 
 #: assets/js/admin/cache-stats.js:291
 msgid "Confirm Action"
-msgstr ""
+msgstr "Aktion bestätigen"
 
 #: assets/js/admin/core.js:1783
 msgid "Confirm Member Removal"
-msgstr ""
+msgstr "Entfernen des Mitglieds bestätigen"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:209
 msgid "Confirm Password"
-msgstr ""
+msgstr "Passwort bestätigen"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:218
 msgid "Confirm passowrd"
-msgstr ""
+msgstr "Passwort bestätigen"
 
 #: src/Environments/Application/Installation/InstallerPage.php:353 themes/default/templates/pages/auth/reset-password.php:30 themes/default/templates/pages/auth/sign-up.php:40
 msgid "Confirm password"
-msgstr ""
+msgstr "Passwort bestätigen"
 
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
-msgstr ""
+msgstr "Bestätigen Sie, dass dies Ihre E-Mail-Adresse ist, um die Einrichtung Ihres Kontos abzuschließen."
 
 #: src/Exceptions/FileRequestException.php:161 src/Exceptions/RequestException.php:170
 msgid "Conflict"
-msgstr ""
+msgstr "Konflikt"
 
 #: src/Environments/Application/Installation/InstallerPage.php:267
 msgid "Connect your database"
-msgstr ""
+msgstr "Datenbank verbinden"
 
 #: templates/admin/contents/options/cache/stats.php:81
 msgid "Connected"
-msgstr ""
+msgstr "Verbunden"
 
 #: src/Environments/Application/Health/SystemHealth.php:220
 #, php-format
 msgid "Connected to %s%s."
-msgstr ""
+msgstr "Verbunden mit %s%s."
 
 #: src/Environments/Application/Installation/WebInstaller.php:623
 msgid "Connected. Your database settings were saved."
-msgstr ""
+msgstr "Verbunden. Ihre Datenbankeinstellungen wurden gespeichert."
 
 #: src/Environments/Application/Installation/InstallerPage.php:268
 msgid "Connecting&hellip;"
-msgstr ""
+msgstr "Verbinde&hellip;"
 
 #: src/Email/Providers/SMTPProvider.php:185
 msgid "Connection Timeout (seconds)"
-msgstr ""
+msgstr "Verbindungs-Timeout (Sekunden)"
 
 #: src/Environments/Application/Health/SystemHealth.php:1444
 msgid "Consider installing security releases automatically (Updates page)."
-msgstr ""
+msgstr "Erwägen Sie, Sicherheitsversionen automatisch zu installieren (Seite „Updates“)."
 
 #: themes/default/templates/partials/repository/pricing.php:34
 msgid "Contact the seller to buy this option."
-msgstr ""
+msgstr "Kontaktieren Sie den Verkäufer, um diese Option zu kaufen."
 
 #: templates/admin/contents/options/email/editor.php:362
 msgid "Content"
-msgstr ""
+msgstr "Inhalt"
 
 #: src/Exceptions/RequestException.php:212
 msgid "Content-Type header value must be multipart/form-data."
-msgstr ""
+msgstr "Der Wert des Content-Type-Headers muss multipart/form-data sein."
 
 #: src/Environments/WordPress/Dispatcher.php:436
 msgid "Context Required"
-msgstr ""
+msgstr "Kontext erforderlich"
 
 #: themes/default/templates/partials/auth/signed-in.php:16
 msgid "Continue"
-msgstr ""
+msgstr "Weiter"
 
 #: themes/default/assets/js/theme.js:66
 msgid "Copied"
-msgstr ""
+msgstr "Kopiert"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:591
 msgid "Copied in"
-msgstr ""
+msgstr "Kopiert in"
 
 #: assets/js/admin/json-editor.js:1915 assets/js/admin/json-editor.js:1961
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "In die Zwischenablage kopiert"
 
 #: assets/js/globals.js:529
 #, javascript-format
 msgid "Copied to clipboard%s"
-msgstr ""
+msgstr "In die Zwischenablage kopiert%s"
 
 #: assets/js/admin/maintenance.js:126
 msgid "Copied to the clipboard."
-msgstr ""
+msgstr "In die Zwischenablage kopiert."
 
 #: assets/js/admin/core.js:76
 msgid "Copied!"
-msgstr ""
+msgstr "Kopiert!"
 
 #: assets/js/admin/background-setup.js:86
 msgid "Copied."
-msgstr ""
+msgstr "Kopiert."
 
 #: templates/admin/contents/license/view.php:162 templates/admin/contents/license/view.php:168 templates/admin/contents/system/background.php:134 templates/admin/contents/system/signing-key.php:64
 #: themes/default/templates/partials/route.php:13 assets/js/admin/json-editor.js:285 assets/js/admin/json-editor.js:1825
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: assets/js/admin/json-editor.js:281
 msgid "Copy JSON"
-msgstr ""
+msgstr "JSON kopieren"
 
 #: assets/js/admin/json-editor.js:281
 msgid "Copy JSON to clipboard (Ctrl+C)"
-msgstr ""
+msgstr "JSON in die Zwischenablage kopieren (Strg+C)"
 
 #: assets/js/admin/core.js:106
 msgid "Copy Key"
-msgstr ""
+msgstr "Schlüssel kopieren"
 
 #: assets/js/admin/background-setup.js:120 assets/js/admin/support-report.js:373
 msgid "Copy command was refused."
-msgstr ""
+msgstr "Der Kopierbefehl wurde abgelehnt."
 
 #: assets/js/admin/maintenance.js:126
 msgid "Copy it before closing this message."
-msgstr ""
+msgstr "Kopieren Sie es, bevor Sie diese Meldung schließen."
 
 #: themes/default/templates/pages/client/licenses.php:46
 msgid "Copy key"
-msgstr ""
+msgstr "Schlüssel kopieren"
 
 #: templates/admin/contents/license/view.php:183
 msgid "Copy license key"
-msgstr ""
+msgstr "Lizenzschlüssel kopieren"
 
 #: themes/default/templates/pages/signing-key.php:60
 msgid "Copy the key above into your app's code. Do not make your app download the key when it checks for updates: a key fetched from the same place as the update proves nothing."
-msgstr ""
+msgstr "Kopieren Sie den obigen Schlüssel in den Code Ihrer App. Lassen Sie Ihre App den Schlüssel nicht bei der Update-Prüfung herunterladen: Ein Schlüssel, der vom selben Ort wie das Update stammt, beweist nichts."
 
 #: assets/js/admin/core.js:681
 msgid "Copy this token now. For security, it will not be shown to you again."
-msgstr ""
+msgstr "Kopieren Sie dieses Token jetzt. Aus Sicherheitsgründen wird es Ihnen nicht erneut angezeigt."
 
 #: assets/js/admin/json-editor.js:1892
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "In die Zwischenablage kopieren"
 
 #: src/Exceptions/AbstractErrorHandler.php:783
 msgid "Core Fatal Error"
-msgstr ""
+msgstr "Schwerwiegender Kernfehler"
 
 #: src/Exceptions/AbstractErrorHandler.php:784
 msgid "Core Warning"
-msgstr ""
+msgstr "Kernwarnung"
 
 #: src/Exceptions/FileRequestException.php:210
 msgid "Corrupt File"
-msgstr ""
+msgstr "Beschädigte Datei"
 
 #: src/Environments/Application/Update/Updater.php:281
 #, php-format
 msgid "Could not back up %s."
-msgstr ""
+msgstr "%s konnte nicht gesichert werden."
 
 #: templates/admin/contents/system/updates.php:80
 msgid "Could not check for updates"
-msgstr ""
+msgstr "Updates konnten nicht geprüft werden"
 
 #: assets/js/admin/modules.js:181
 #, javascript-format
 msgid "Could not check: %s"
-msgstr ""
+msgstr "Prüfung nicht möglich: %s"
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:601
 #, php-format
 msgid "Could not connect to Redis at %s:%d. Check that the server is running and the host/port are correct."
-msgstr ""
+msgstr "Verbindung zu Redis unter %s:%d nicht möglich. Prüfen Sie, ob der Server läuft und Host/Port korrekt sind."
 
 #: src/Environments/Application/Update/Updater.php:737
 #, php-format
 msgid "Could not create %s; check the permissions of the application folder."
-msgstr ""
+msgstr "%s konnte nicht erstellt werden; prüfen Sie die Berechtigungen des Anwendungsordners."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:987
 #, php-format
 msgid "Could not create %s; check the permissions of the storage folder."
-msgstr ""
+msgstr "%s konnte nicht erstellt werden; prüfen Sie die Berechtigungen des Speicherordners."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:949
 #, php-format
 msgid "Could not create the %s lock; check the permissions of the storage folder."
-msgstr ""
+msgstr "Die %s-Sperre konnte nicht erstellt werden; prüfen Sie die Berechtigungen des Speicherordners."
 
 #: src/Environments/Application/Update/Updater.php:782
 msgid "Could not create the update lock; check the permissions of the application folder."
-msgstr ""
+msgstr "Die Update-Sperre konnte nicht erstellt werden; prüfen Sie die Berechtigungen des Anwendungsordners."
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:658
 #, php-format
 msgid "Could not delete probe key from Memcached at %s:%d (result: %s)."
-msgstr ""
+msgstr "Testschlüssel konnte nicht aus Memcached unter %s:%d gelöscht werden (Ergebnis: %s)."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:666
 #, php-format
 msgid "Could not delete probe key from Redis at %s:%d."
-msgstr ""
+msgstr "Testschlüssel konnte nicht aus Redis unter %s:%d gelöscht werden."
 
 #: src/Cache/CacheRequestController.php:117
 #, php-format
 msgid "Could not establish a connection to %s. Please check your settings and try again."
-msgstr ""
+msgstr "Es konnte keine Verbindung zu %s hergestellt werden. Bitte prüfen Sie Ihre Einstellungen und versuchen Sie es erneut."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:725 src/Environments/Application/Update/Updater.php:688
 #, php-format
 msgid "Could not extract %s; check the free disk space."
-msgstr ""
+msgstr "%s konnte nicht entpackt werden; prüfen Sie den freien Speicherplatz."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:820
 #, php-format
 msgid "Could not install the %s, nor put the previous one back: it is in %s. Move it back to %s by hand."
-msgstr ""
+msgstr "Das %s konnte nicht installiert und das vorherige nicht zurückgelegt werden: Es befindet sich in %s. Verschieben Sie es manuell zurück nach %s."
 
 #: src/Environments/Application/Update/Updater.php:724
 #, php-format
 msgid "Could not move %s to %s."
-msgstr ""
+msgstr "%s konnte nicht nach %s verschoben werden."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:823
 #, php-format
 msgid "Could not move the %s into %s; check the permissions of the storage folder. The previous files are back."
-msgstr ""
+msgstr "Das %s konnte nicht nach %s verschoben werden; prüfen Sie die Berechtigungen des Speicherordners. Die vorherigen Dateien sind wiederhergestellt."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:815
 #, php-format
 msgid "Could not move the installed %s out of %s; check the permissions of the storage folder."
-msgstr ""
+msgstr "Das installierte %s konnte nicht aus %s verschoben werden; prüfen Sie die Berechtigungen des Speicherordners."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:683 src/Environments/Application/Update/Updater.php:668
 #, php-format
 msgid "Could not open %s as a zip archive."
-msgstr ""
+msgstr "%s konnte nicht als Zip-Archiv geöffnet werden."
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:647
 msgid "Could not open SQLite database."
-msgstr ""
+msgstr "SQLite-Datenbank konnte nicht geöffnet werden."
 
 #: src/Admin/ActionHandlers/SystemManagement.php:234
 #, php-format
 msgid "Could not reach the update server %s (%s), so automatic updates will fail: %s"
-msgstr ""
+msgstr "Der Update-Server %s (%s) ist nicht erreichbar, daher schlagen automatische Updates fehl: %s"
 
 #: src/Environments/Application/Update/UpdateServer.php:151 src/Environments/Application/Update/UpdateServer.php:256
 #, php-format
 msgid "Could not reach the update server: %s"
-msgstr ""
+msgstr "Der Update-Server ist nicht erreichbar: %s"
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:640
 #, php-format
 msgid "Could not read probe key from Memcached at %s:%d (result: %s)."
-msgstr ""
+msgstr "Testschlüssel konnte nicht aus Memcached unter %s:%d gelesen werden (Ergebnis: %s)."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:649
 #, php-format
 msgid "Could not read probe key from Redis at %s:%d — key was not found immediately after writing."
-msgstr ""
+msgstr "Testschlüssel konnte nicht aus Redis unter %s:%d gelesen werden — der Schlüssel wurde direkt nach dem Schreiben nicht gefunden."
 
 #: src/Environments/Application/Update/Updater.php:886
 msgid "Could not record the update progress: "
-msgstr ""
+msgstr "Der Update-Fortschritt konnte nicht gespeichert werden: "
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:513
 #, php-format
 msgid "Could not remove %s; check the permissions of the storage folder."
-msgstr ""
+msgstr "%s konnte nicht entfernt werden; prüfen Sie die Berechtigungen des Speicherordners."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:621
 #, php-format
 msgid "Could not select Redis database %d on %s:%d. The database index may be out of range."
-msgstr ""
+msgstr "Redis-Datenbank %d auf %s:%d konnte nicht ausgewählt werden. Der Datenbankindex liegt möglicherweise außerhalb des Bereichs."
 
 #: src/Environments/Application/ApplicationEnvironment.php:386
 msgid "Could not verify an existing installation: "
-msgstr ""
+msgstr "Eine vorhandene Installation konnte nicht überprüft werden: "
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:406 src/Environments/Application/Theming/ThemeManager.php:300 src/Environments/Application/Theming/ThemeManager.php:319
 #, php-format
 msgid "Could not write %s; check the permissions of the storage folder."
-msgstr ""
+msgstr "%s konnte nicht geschrieben werden; prüfen Sie die Berechtigungen des Speicherordners."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:636
 #, php-format
 msgid "Could not write probe key to Redis at %s:%d. The server may be read-only or out of memory."
-msgstr ""
+msgstr "Testschlüssel konnte nicht in Redis unter %s:%d geschrieben werden. Der Server ist möglicherweise schreibgeschützt oder hat keinen Speicher mehr."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:645
 msgid "Could not write the package record; check the permissions of the storage folder."
-msgstr ""
+msgstr "Der Paketdatensatz konnte nicht geschrieben werden; prüfen Sie die Berechtigungen des Speicherordners."
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:625
 #, php-format
 msgid "Could not write to Memcached at %s:%d (result: %s). Check that the server is running and accepting connections."
-msgstr ""
+msgstr "Schreiben in Memcached unter %s:%d nicht möglich (Ergebnis: %s). Prüfen Sie, ob der Server läuft und Verbindungen annimmt."
 
 #: templates/admin/contents/repository/edit-software.php:94
 msgid "Cover"
-msgstr ""
+msgstr "Titelbild"
 
 #: src/Environments/Application/Health/SystemHealth.php:973
 #, php-format
 msgid "Create %s if missing and ensure the web server process can read and write to it."
-msgstr ""
+msgstr "Erstellen Sie %s, falls es fehlt, und stellen Sie sicher, dass der Webserver-Prozess darin lesen und schreiben kann."
 
 #: src/Background/BackgroundSetup.php:413
 msgid "Create a cron job at an external service"
-msgstr ""
+msgstr "Cronjob bei einem externen Dienst einrichten"
 
 #: themes/default/templates/pages/auth/sign-up.php:61
 msgid "Create account"
-msgstr ""
+msgstr "Konto erstellen"
 
 #: src/Environments/Application/Installation/InstallerPage.php:363
 msgid "Create account and finish"
-msgstr ""
+msgstr "Konto erstellen und abschließen"
 
 #: src/Auth/ContentHandlers/AuthPages.php:139 themes/default/templates/pages/auth/sign-up.php:20
 msgid "Create an account"
-msgstr ""
+msgstr "Konto erstellen"
 
 #: themes/default/templates/pages/purchase.php:97
 msgid "Create an account for me, so I can find this license later."
-msgstr ""
+msgstr "Erstellen Sie ein Konto für mich, damit ich diese Lizenz später wiederfinde."
 
 #: themes/default/templates/pages/client/organizations.php:99
 msgid "Create an organization"
-msgstr ""
+msgstr "Organisation erstellen"
 
 #: src/Security/Permission/Capability.php:44
 msgid "Create app monetization"
-msgstr ""
+msgstr "App-Monetarisierung erstellen"
 
 #: src/Security/Permission/Capability.php:30
 msgid "Create hosted applications"
-msgstr ""
+msgstr "Gehostete Anwendungen erstellen"
 
 #: src/Security/Permission/Capability.php:52
 msgid "Create licenses"
-msgstr ""
+msgstr "Lizenzen erstellen"
 
 #: src/Security/Permission/Capability.php:48
 msgid "Create monetization pricing tiers"
-msgstr ""
+msgstr "Preisstufen der Monetarisierung erstellen"
 
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:169
 msgid "Create my account"
-msgstr ""
+msgstr "Mein Konto erstellen"
 
 #: themes/default/templates/pages/auth/sign-in.php:48
 msgid "Create one"
-msgstr ""
+msgstr "Eins erstellen"
 
 #: themes/default/templates/pages/client/organizations.php:53
 msgid "Create one below, or join one when you are invited."
-msgstr ""
+msgstr "Erstellen Sie unten eine, oder treten Sie einer bei, wenn Sie eingeladen werden."
 
 #: themes/default/templates/pages/client/organizations.php:107
 msgid "Create organization"
-msgstr ""
+msgstr "Organisation erstellen"
 
 #: src/Security/Permission/Capability.php:92
 msgid "Create organizations"
-msgstr ""
+msgstr "Organisationen erstellen"
 
 #: src/Security/Permission/Capability.php:87
 msgid "Create owners"
-msgstr ""
+msgstr "Inhaber erstellen"
 
 #: assets/js/admin/role-builder.js:91
 msgid "Create role"
-msgstr ""
+msgstr "Rolle erstellen"
 
 #: src/Security/Permission/Capability.php:111
 msgid "Create roles"
-msgstr ""
+msgstr "Rollen erstellen"
 
 #: src/Security/Permission/Capability.php:106
 msgid "Create service accounts"
-msgstr ""
+msgstr "Dienstkonten erstellen"
 
 #: src/Environments/Application/Installation/InstallerPage.php:57
 msgid "Create the database tables"
-msgstr ""
+msgstr "Die Datenbanktabellen erstellen"
 
 #: src/Environments/Application/Installation/InstallerPage.php:55
 msgid "Create the storage folders"
-msgstr ""
+msgstr "Die Speicherordner erstellen"
 
 #: src/Schema/Migrations/CreateAuthenticationTables.php:19
 msgid "Create user security, passkey, and authentication challenge tables"
-msgstr ""
+msgstr "Tabellen für Benutzersicherheit, Passkeys und Authentifizierungsanforderungen erstellen"
 
 #: src/Security/Permission/Capability.php:100
 msgid "Create users"
-msgstr ""
+msgstr "Benutzer erstellen"
 
 #: src/Environments/Application/Installation/InstallerPage.php:362
 msgid "Create your administrator account"
-msgstr ""
+msgstr "Erstellen Sie Ihr Administratorkonto"
 
 #: src/Environments/Application/Installation/InstallerPage.php:327
 msgid "Create your administrator account. You will use it to sign in and manage everything else, including other users."
-msgstr ""
+msgstr "Erstellen Sie Ihr Administratorkonto. Damit melden Sie sich an und verwalten alles Weitere, einschließlich anderer Benutzer."
 
 #: templates/admin/contents/system/queues.php:140
 msgid "Created"
-msgstr ""
+msgstr "Erstellt"
 
 #: themes/default/templates/pages/client/organization.php:18
 #, php-format
 msgid "Created %s. %d member(s)."
-msgstr ""
+msgstr "%s erstellt. %d Mitglied(er)."
 
 #: src/Environments/Application/Installation/InstallerPage.php:363
 msgid "Creating account&hellip;"
-msgstr ""
+msgstr "Konto wird erstellt&hellip;"
 
 #: templates/admin/contents/system/health.php:28
 msgid "Critical"
-msgstr ""
+msgstr "Kritisch"
 
 #: templates/admin/contents/system/health.php:27
 msgid "Critical Issues"
-msgstr ""
+msgstr "Kritische Probleme"
 
 #: src/Background/BackgroundSetup.php:184
 msgid "Cron (smliser cron)"
-msgstr ""
+msgstr "Cron (smliser cron)"
 
 #: src/Background/BackgroundSetup.php:190
 msgid "Cron URL (external service)"
-msgstr ""
+msgstr "Cron-URL (externer Dienst)"
 
 #: templates/admin/contents/accounts/access-control-form.php:123
 msgid "Current avatar"
-msgstr ""
+msgstr "Aktueller Avatar"
 
 #: templates/admin/contents/accounts/access-control-form.php:129
 msgid "Current avatar image"
-msgstr ""
+msgstr "Aktuelles Avatarbild"
 
 #: templates/admin/contents/system/maintenance.php:86
 msgid "Current maintenance"
-msgstr ""
+msgstr "Aktuelle Wartung"
 
 #: src/RESTAPI/Versions/V1.php:777
 msgid "Current pagination number."
-msgstr ""
+msgstr "Aktuelle Seitennummer."
 
 #: themes/default/templates/pages/client/security.php:45 themes/default/templates/pages/client/security.php:55 themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:90
 #: themes/default/templates/pages/client/security.php:98 themes/default/templates/pages/client/security.php:124 themes/default/templates/pages/client/security.php:153
 msgid "Current password"
-msgstr ""
+msgstr "Aktuelles Passwort"
 
 #: templates/admin/contents/options/email/editor.php:106 templates/admin/contents/options/email/templates.php:136
 msgid "Custom"

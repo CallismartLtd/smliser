@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
 "POT-Creation-Date: 2026-11-22 22:22+0000\n"
-"PO-Revision-Date: 2026-11-22 23:33+0000\n"
+"PO-Revision-Date: 2026-11-22 23:58+0000\n"
 "Language-Team: 中文（中国）\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -10183,462 +10183,463 @@ msgstr "自动更新安装新版本后发送到站点管理邮箱。"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:58
 msgid "Sent to the site administration email when a new release is out that automatic updates will not install."
-msgstr ""
+msgstr "当发布了自动更新不会安装的新版本时，发送到站点管理邮箱。"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:94
 msgid "Sent to the site administration email when a queued update or rollback did not complete."
-msgstr ""
+msgstr "当排队的更新或回滚未完成时，发送到站点管理邮箱。"
 
 #: src/Email/Templates/Licenses/LicenseExpiredEmail.php:118
 msgid "Sent when a license has passed its expiry date."
-msgstr ""
+msgstr "许可证超过到期日期时发送。"
 
 #: src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:128
 msgid "Sent when a license is deactivated from a domain."
-msgstr ""
+msgstr "许可证从某个域名停用时发送。"
 
 #: src/Email/Templates/Licenses/LicenseActivatedEmail.php:145
 msgid "Sent when a license is successfully activated on a domain."
-msgstr ""
+msgstr "许可证在某个域名上成功激活时发送。"
 
 #: src/Email/Templates/Licenses/LicenseRenewedEmail.php:136
 msgid "Sent when a license is successfully renewed."
-msgstr ""
+msgstr "许可证成功续期时发送。"
 
 #: src/Email/Templates/Licenses/LicenseSuspendedEmail.php:137
 msgid "Sent when a license is suspended by an administrator."
-msgstr ""
+msgstr "管理员暂停许可证时发送。"
 
 #: src/Email/Templates/Accounts/OrganizationMemberRemovedEmail.php:98
 msgid "Sent when a member is removed from an organization."
-msgstr ""
+msgstr "成员被移出组织时发送。"
 
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:155
 msgid "Sent when a new license is created and assigned to a licensee."
-msgstr ""
+msgstr "创建新许可证并分配给被许可人时发送。"
 
 #: src/Email/Templates/Accounts/WelcomeEmail.php:124
 msgid "Sent when a new user account is created."
-msgstr ""
+msgstr "创建新用户账户时发送。"
 
 #: src/Email/Templates/Monetization/PaymentFailedEmail.php:195
 msgid "Sent when a payment attempt fails."
-msgstr ""
+msgstr "付款尝试失败时发送。"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:169
 msgid "Sent when a payment is confirmed successfully."
-msgstr ""
+msgstr "付款确认成功时发送。"
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:176
 msgid "Sent when a subscription is cancelled by the user or an administrator."
-msgstr ""
+msgstr "用户或管理员取消订阅时发送。"
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:137
 msgid "Sent when a user is invited to join an organization."
-msgstr ""
+msgstr "邀请用户加入组织时发送。"
 
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:146
 msgid "Sent when a user requests a password reset."
-msgstr ""
+msgstr "用户请求重置密码时发送。"
 
 #: src/Email/Templates/System/TestEmail.php:147
 msgid "Sent when an administrator tests an email provider configuration."
-msgstr ""
+msgstr "管理员测试邮件提供商配置时发送。"
 
 #: templates/admin/contents/license/purchase-request.php:150
 msgid "Sent with the license."
-msgstr ""
+msgstr "随许可证一起发送。"
 
 #: src/Email/Templates/Security/EmailOtpEmail.php:115
 msgid "Sent with the one-time code used to sign in, or to enable or disable email two-factor authentication."
-msgstr ""
+msgstr "附带用于登录或启用/停用邮件双重身份验证的一次性验证码。"
 
 #: src/Email/Providers/PostmarkProvider.php:59
 msgid "Server API Token"
-msgstr ""
+msgstr "服务器 API 令牌"
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:409 src/Cache/Adapters/RedisCacheAdapter.php:423
 msgid "Server Host"
-msgstr ""
+msgstr "服务器主机"
 
 #: src/Environments/Application/Installation/InstallerPage.php:202
 msgid "Server address"
-msgstr ""
+msgstr "服务器地址"
 
 #: src/Background/BackgroundSetup.php:226
 msgid "Server cron and queue worker"
-msgstr ""
+msgstr "服务器 cron 与队列工作进程"
 
 #: src/Email/Providers/SMTPProvider.php:907
 msgid "Server said: "
-msgstr ""
+msgstr "服务器返回： "
 
 #: assets/js/globals.js:350
 msgid "Server unreachable (DNS or Connection Refused)."
-msgstr ""
+msgstr "服务器无法访问（DNS 或连接被拒绝）。"
 
 #: src/Server/DevServer.php:272
 msgid "Server workers are not available on Windows."
-msgstr ""
+msgstr "Windows 上不支持服务器工作进程。"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:721
 msgid "Service Account"
-msgstr ""
+msgstr "服务账户"
 
 #: templates/admin/contents/accounts/index.php:162
 msgid "Service Account Usage"
-msgstr ""
+msgstr "服务账户使用情况"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:894 src/Admin/ContentHandlers/AccessControlPage.php:916 src/Admin/ContentHandlers/AccessControlPage.php:990 src/Schema/Definitions/ServiceAccountsSchema.php:27
 msgid "Service Accounts"
-msgstr ""
+msgstr "服务账户"
 
 #: src/Admin/ContentHandlers/LicensePage.php:375 templates/admin/contents/license/index.php:77 templates/admin/contents/license/search.php:57 templates/admin/contents/license/view.php:167
 msgid "Service ID"
-msgstr ""
+msgstr "服务 ID"
 
 #: src/Exceptions/RequestException.php:268
 msgid "Service Unavailable"
-msgstr ""
+msgstr "服务不可用"
 
 #: src/Security/Actors/ServiceAccount.php:700
 msgid "Service account not active"
-msgstr ""
+msgstr "服务账户未激活"
 
 #: src/Exceptions/RequestException.php:75
 msgid "Session Expired"
-msgstr ""
+msgstr "会话已过期"
 
 #: src/Environments/Application/Health/SystemHealth.php:1296
 #, php-format
 msgid "Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough."
-msgstr ""
+msgstr "请在 %s 中设置。如果主机不支持 cron 任务，使用外部 cron 服务每 5 分钟调用一次 cron URL 即可。"
 
 #: templates/admin/contents/options/cache/form.php:104
 msgid "Set this cache adapter as the default provider for all caching operations."
-msgstr ""
+msgstr "将此缓存适配器设为所有缓存操作的默认提供商。"
 
 #: templates/admin/contents/options/email/form.php:85
 msgid "Set this email provider as the default provider for all mailing operations."
-msgstr ""
+msgstr "将此邮件提供商设为所有邮件发送的默认提供商。"
 
 #: themes/default/templates/pages/client/security.php:154
 msgid "Set up authenticator app"
-msgstr ""
+msgstr "设置身份验证器应用"
 
 #: src/Environments/Application/Health/SystemHealth.php:1259
 msgid "Set up background processing in Tools > Background Processing. To run the due tasks now, use \"Run due tasks\" on the Schedules page."
-msgstr ""
+msgstr "请在“工具 > 后台处理”中设置后台处理。要立即运行到期任务，请在“计划”页面使用“运行到期任务”。"
 
 #: templates/admin/contents/system/background.php:119
 msgid "Set up:"
-msgstr ""
+msgstr "设置："
 
 #: templates/admin/contents/system/signing-key.php:162
 msgid "Setting up a key"
-msgstr ""
+msgstr "设置密钥"
 
 #: src/Environments/Application/Installation/InstallerPage.php:309
 msgid "Setting up&hellip;"
-msgstr ""
+msgstr "正在设置&hellip;"
 
 #: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 templates/admin/contents/index.php:31
 #: templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32 templates/admin/contents/repository/upload.php:33
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #: src/SettingsAPI/SettingsController.php:71
 msgid "Settings updated successfully."
-msgstr ""
+msgstr "设置更新成功。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:41
 msgid "Setup"
-msgstr ""
+msgstr "安装"
 
 #: src/Environments/Application/Installation/InstallerPage.php:115
 msgid "Setup token"
-msgstr ""
+msgstr "安装令牌"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:108 src/Email/Templates/System/SystemAlertEmail.php:225
 msgid "Severity"
-msgstr ""
+msgstr "严重程度"
 
 #: src/Background/BackgroundSetup.php:233
 msgid "Shared hosting"
-msgstr ""
+msgstr "共享主机"
 
 #: templates/admin/contents/system/health.php:69
 msgid "Should be fixed now"
-msgstr ""
+msgstr "应立即修复"
 
 #: templates/admin/contents/system/health.php:74
 msgid "Should be improved"
-msgstr ""
+msgstr "应改进"
 
 #: assets/js/admin/email-editor.js:407
 msgid "Show block"
-msgstr ""
+msgstr "显示区块"
 
 #: assets/js/admin/core.js:280
 msgid "Show password"
-msgstr ""
+msgstr "显示密码"
 
 #: assets/js/admin/json-editor.js:2072
 msgid "Show toolbar"
-msgstr ""
+msgstr "显示工具栏"
 
 #: src/Environments/Application/Installation/InstallerPage.php:336
 msgid "Shown to other users of the dashboard."
-msgstr ""
+msgstr "仪表盘的其他用户可见。"
 
 #: src/Auth/ContentHandlers/AuthPages.php:84 themes/default/templates/pages/auth/sign-in.php:19 themes/default/templates/pages/auth/sign-in.php:36 themes/default/templates/pages/auth/sign-up.php:65
 #: themes/default/templates/pages/auth/signed-out.php:26 themes/default/templates/pages/home.php:16 themes/default/templates/partials/header.php:17
 msgid "Sign in"
-msgstr ""
+msgstr "登录"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:446
 msgid "Sign in to continue."
-msgstr ""
+msgstr "登录以继续。"
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:97
 msgid "Sign in to switch who you act for."
-msgstr ""
+msgstr "登录以切换您代表的对象。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:599
 msgid "Sign in to verify your email address."
-msgstr ""
+msgstr "登录以验证您的邮箱地址。"
 
 #: themes/default/templates/pages/auth/sign-in.php:43
 msgid "Sign in with a passkey"
-msgstr ""
+msgstr "使用通行密钥登录"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:46 src/ClientDashboard/ActionHandlers/SecurityManagement.php:77 src/ClientDashboard/ActionHandlers/SecurityManagement.php:96 src/ClientDashboard/ActionHandlers/SecurityManagement.php:125
 msgid "Sign in with a user account to manage security settings."
-msgstr ""
+msgstr "请使用用户账户登录以管理安全设置。"
 
 #: themes/default/templates/pages/client/security.php:32
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
-msgstr ""
+msgstr "使用指纹、面容、屏幕锁或安全密钥代替密码登录。通行密钥本身已证明是您本人，因此用它登录会跳过下面的第二步。"
 
 #: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
-msgstr ""
+msgstr "退出登录"
 
 #: src/Background/Jobs/Accounts/EmailOtpJob.php:107 src/Email/Templates/Security/EmailOtpEmail.php:121
 msgid "Sign-in verification code"
-msgstr ""
+msgstr "登录验证码"
 
 #: templates/admin/contents/modules/extensions.php:50 templates/admin/contents/modules/themes.php:52
 msgid "Signature (.sha256.sig)"
-msgstr ""
+msgstr "签名（.sha256.sig）"
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:116
 msgid "Signed By"
-msgstr ""
+msgstr "签名者"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:532
 #, php-format
 msgid "Signed by the \"%s\" key"
-msgstr ""
+msgstr "由“%s”密钥签名"
 
 #: themes/default/templates/partials/auth/signed-in.php:14
 #, php-format
 msgid "Signed in as %s."
-msgstr ""
+msgstr "已以 %s 身份登录。"
 
 #: templates/admin/contents/license/purchase-request.php:64
 #, php-format
 msgid "Signed in as user #%d"
-msgstr ""
+msgstr "已以用户 #%d 身份登录"
 
 #: assets/js/passkeys.js:85
 msgid "Signed in."
-msgstr ""
+msgstr "已登录。"
 
 #: src/Auth/ContentHandlers/AuthPages.php:271
 msgid "Signed out"
-msgstr ""
+msgstr "已退出登录"
 
 #: themes/default/templates/pages/auth/signed-out.php:14
 msgid "Signed out everywhere"
-msgstr ""
+msgstr "已在所有设备上退出登录"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:334 src/Admin/ContentHandlers/ToolsPage.php:360
 msgid "Signing Key"
-msgstr ""
+msgstr "签名密钥"
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:62 src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:194
 msgid "Signup Time"
-msgstr ""
+msgstr "注册时间"
 
 #: src/Environments/WordPress/IdentityService.php:367
 msgid "Signup to access this portal."
-msgstr ""
+msgstr "注册以访问此门户。"
 
 #: templates/admin/contents/options/cache/stats.php:220 assets/js/admin/cache-stats.js:135
 msgid "Since last restart"
-msgstr ""
+msgstr "自上次重启以来"
 
 #: themes/default/templates/partials/header.php:28
 msgid "Site"
-msgstr ""
+msgstr "站点"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:316 src/Admin/ContentHandlers/ToolsPage.php:357 assets/js/admin/support-report.js:29
 msgid "Site Health"
-msgstr ""
+msgstr "站点健康"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:576
 msgid "Site Language"
-msgstr ""
+msgstr "站点语言"
 
 #: src/Environments/Application/Health/SiteProbe.php:161
 msgid "Site Reachable"
-msgstr ""
+msgstr "站点可访问"
 
 #: src/Environments/Application/Installation/InstallerPage.php:299
 msgid "Site address"
-msgstr ""
+msgstr "站点地址"
 
 #: themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
 msgid "Sites"
-msgstr ""
+msgstr "站点"
 
 #: templates/admin/contents/repository/monetization.php:116
 msgid "Sites:"
-msgstr ""
+msgstr "站点："
 
 #: templates/admin/contents/repository/edit-artifacts.php:79 assets/js/admin/apps-uploader.js:1837
 msgid "Size:"
-msgstr ""
+msgstr "大小："
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:814 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
 #: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:38
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: assets/js/admin/repository-browser.js:1009
 #, javascript-format
 msgid "Slug changed to %s."
-msgstr ""
+msgstr "Slug 已更改为 %s。"
 
 #: assets/js/admin/support-report.js:118
 msgid "Smart License Server"
-msgstr ""
+msgstr "Smart License Server"
 
 #: src/Email/Providers/SMTPProvider.php:187
 msgid "Socket connection timeout. Default: "
-msgstr ""
+msgstr "套接字连接超时。默认值： "
 
 #: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
 msgid "Software"
-msgstr ""
+msgstr "软件"
 
 #: templates/admin/contents/index.php:318
 msgid "Software Downloads"
-msgstr ""
+msgstr "软件下载"
 
 #: templates/admin/contents/index.php:321
 msgid "Software Installations"
-msgstr ""
+msgstr "软件安装"
 
 #: assets/js/admin/repository-browser.js:828
 msgid "Some assets were not uploaded"
-msgstr ""
+msgstr "部分资源未上传"
 
 #: src/Exceptions/RequestException.php:219
 msgid "Some input fields did not pass validation checks."
-msgstr ""
+msgstr "部分输入字段未通过验证检查。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:452
 msgid "Something went wrong"
-msgstr ""
+msgstr "出错了"
 
 #: src/Monetization/Controller.php:150
 msgid "Something went wrong during data persistence."
-msgstr ""
+msgstr "保存数据时出错。"
 
 #: assets/js/admin/core.js:1981 assets/js/admin/core.js:2003
 msgid "Something went wrong!"
-msgstr ""
+msgstr "出错了！"
 
 #: src/HostedApps/HostingController.php:95
 msgid "Sorry there is no app matching the provided slug or ID."
-msgstr ""
+msgstr "抱歉，没有与所提供的 slug 或 ID 匹配的应用。"
 
 #: src/RESTAPI/Handlers/HostedApps.php:521
 msgid "Sorry, a maximum of 1 file is required when updating a {app_type} asset."
-msgstr ""
+msgstr "抱歉，更新 {app_type} 资源时最多只能上传 1 个文件。"
 
 #: src/Security/Authentication/ServiceAccountAuthenticator.php:52
 msgid "Sorry, the service account owner does not exist."
-msgstr ""
+msgstr "抱歉，服务账户所有者不存在。"
 
 #: src/Security/Authentication/ServiceAccountAuthenticator.php:62
 msgid "Sorry, you can no longer act for this resource owner."
-msgstr ""
+msgstr "抱歉，您已不能再代表此资源所有者操作。"
 
 #: src/Security/Authentication/ServiceAccountAuthenticator.php:72
 msgid "Sorry, you do not have a valid role."
-msgstr ""
+msgstr "抱歉，您没有有效的角色。"
 
 #: src/Exceptions/RequestException.php:98
 msgid "Sorry, you do not have the correct app ownership permission."
-msgstr ""
+msgstr "抱歉，您没有正确的应用所有权权限。"
 
 #: assets/js/admin/json-editor.js:321
 msgid "Sort"
-msgstr ""
+msgstr "排序"
 
 #: assets/js/admin/json-editor.js:317
 msgid "Sort keys"
-msgstr ""
+msgstr "排序键"
 
 #: assets/js/admin/json-editor.js:317
 msgid "Sort keys alphabetically"
-msgstr ""
+msgstr "按字母顺序排序键"
 
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Stable tag:"
-msgstr ""
+msgstr "稳定标签："
 
 #: src/Exceptions/CliErrorHandler.php:226 src/Exceptions/HttpErrorHandler.php:476
 msgid "Stack Trace:"
-msgstr ""
+msgstr "堆栈跟踪："
 
 #: src/Exceptions/AbstractErrorHandler.php:562
 msgid ""
 "Stack Trace:\n"
 msgstr ""
+"堆栈跟踪：\n"
 
 #: src/Environments/Application/Update/Updater.php:190
 #, php-format
 msgid "Staged %s %s for %s: requirements met, every file matches the package manifest."
-msgstr ""
+msgstr "已为 %3$s 暂存 %1$s %2$s：满足要求，每个文件都与软件包清单一致。"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:525
 msgid "Staging"
-msgstr ""
+msgstr "预发布"
 
 #: src/Admin/ContentHandlers/LicensePage.php:424 src/Email/Templates/Licenses/LicenseIssuedEmail.php:72 src/Email/Templates/Licenses/LicenseIssuedEmail.php:191 src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:151
 #: templates/admin/contents/license/view.php:201
 msgid "Start Date"
-msgstr ""
+msgstr "开始日期"
 
 #: src/Environments/Application/Installation/InstallerPage.php:96
 msgid "Start installation"
-msgstr ""
+msgstr "开始安装"
 
 #: src/Environments/Application/Health/SystemHealth.php:1284
 msgid "Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead."
-msgstr ""
+msgstr "启动“工具 > 后台处理”中显示的队列工作进程。在共享主机上，请改用组合命令 `smliser cron`。"
 
 #: templates/admin/contents/system/index.php:55
 msgid "State"
-msgstr ""
+msgstr "状态"
 
 #: templates/admin/contents/license/view.php:114
 msgid "Statistics"
-msgstr ""
+msgstr "统计"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:240 src/Admin/ContentHandlers/AccessControlPage.php:382 src/Admin/ContentHandlers/AccessControlPage.php:517 src/Admin/ContentHandlers/AccessControlPage.php:683
 #: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
@@ -10646,3801 +10647,3803 @@ msgstr ""
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
 #: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #: src/HostedApps/HostingController.php:789
 #, php-format
 msgid "Status is already \"%s\"."
-msgstr ""
+msgstr "状态已经是“%s”。"
 
 #: assets/js/admin/background-setup.js:175
 msgid "Status refreshed."
-msgstr ""
+msgstr "状态已刷新。"
 
 #: templates/admin/contents/license/purchase-request.php:56 templates/admin/contents/license/view.php:109
 msgid "Status:"
-msgstr ""
+msgstr "状态："
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:90
 #, php-format
 msgid "Status: %s"
-msgstr ""
+msgstr "状态：%s"
 
 #: src/Background/BackgroundSetup.php:160
 msgid "Stopped"
-msgstr ""
+msgstr "已停止"
 
 #: src/Monetization/Providers/RemoteProvider.php:79
 msgid "Store service account"
-msgstr ""
+msgstr "商店服务账户"
 
 #: src/Schema/Migrations/FlattenThemeAuthors.php:24
 msgid "Store theme authors as a name and a profile URL"
-msgstr ""
+msgstr "以名称和个人资料 URL 的形式存储主题作者"
 
 #: assets/js/admin/repository-browser.js:45
 msgid "Stored with the app but not managed by it."
-msgstr ""
+msgstr "随应用存储，但不由应用管理。"
 
 #: src/Schema/Definitions/LicenseMetaSchema.php:37
 msgid "Stores arbitrary key-value metadata for licenses."
-msgstr ""
+msgstr "存储许可证的任意键值元数据。"
 
 #: src/Schema/Definitions/BackgroundJobsSchema.php:37
 msgid "Stores background jobs."
-msgstr ""
+msgstr "存储后台任务。"
 
 #: src/Schema/Definitions/BulkMessagesSchema.php:38
 msgid "Stores bulk messages."
-msgstr ""
+msgstr "存储批量消息。"
 
 #: src/Schema/Definitions/AnalyticsDailySchema.php:37
 msgid "Stores daily analytics aggregates."
-msgstr ""
+msgstr "存储每日分析汇总。"
 
 #: src/Schema/Definitions/AppDownloadTokenSchema.php:37
 msgid "Stores download tokens."
-msgstr ""
+msgstr "存储下载令牌。"
 
 #: src/Schema/Definitions/FailedJobsSchema.php:43
 msgid "Stores failed jobs."
-msgstr ""
+msgstr "存储失败的任务。"
 
 #: src/Schema/Definitions/IdentityFederationSchema.php:38
 msgid "Stores federated identity mappings."
-msgstr ""
+msgstr "存储联合身份映射。"
 
 #: src/Schema/Definitions/OptionsSchema.php:37
 msgid "Stores global configuration."
-msgstr ""
+msgstr "存储全局配置。"
 
 #: src/Schema/Definitions/AppsSchema.php:33
 msgid "Stores hosted apps of every type."
-msgstr ""
+msgstr "存储各种类型的托管应用。"
 
 #: src/Schema/Definitions/UsersSchema.php:37
 msgid "Stores human user accounts with credentials."
-msgstr ""
+msgstr "存储带凭据的人类用户账户。"
 
 #: src/Schema/Definitions/AppMetaSchema.php:31
 msgid "Stores key-value metadata for hosted apps."
-msgstr ""
+msgstr "存储托管应用的键值元数据。"
 
 #: src/Schema/Definitions/LicenseSchema.php:50
 msgid "Stores license records with keys, service identifiers, and validity dates."
-msgstr ""
+msgstr "存储许可证记录，包括密钥、服务标识符和有效期。"
 
 #: src/Schema/Definitions/MonetizationSchema.php:37
 msgid "Stores monetization settings."
-msgstr ""
+msgstr "存储变现设置。"
 
 #: src/Schema/Definitions/OrganizationsSchema.php:22
 msgid "Stores organizations."
-msgstr ""
+msgstr "存储组织。"
 
 #: src/Schema/Definitions/PurchaseRequestsSchema.php:34
 msgid "Stores payment receipts buyers submit for review before a license is issued."
-msgstr ""
+msgstr "存储买家在签发许可证前提交审核的付款凭证。"
 
 #: src/Schema/Definitions/PricingTierSchema.php:31
 msgid "Stores pricing tier definitions."
-msgstr ""
+msgstr "存储定价层级定义。"
 
 #: src/Schema/Definitions/AnalyticsLogsSchema.php:40
 msgid "Stores raw analytics events - source of truth for event data."
-msgstr ""
+msgstr "存储原始分析事件——事件数据的权威来源。"
 
 #: src/Schema/Definitions/UserPasskeysSchema.php:23
 msgid "Stores registered WebAuthn passkey credential records."
-msgstr ""
+msgstr "存储已注册的 WebAuthn 通行密钥凭据记录。"
 
 #: src/Schema/Definitions/OwnersSchema.php:22
 msgid "Stores resource owners."
-msgstr ""
+msgstr "存储资源所有者。"
 
 #: src/Schema/Definitions/PurchaseRequestNotesSchema.php:31
 msgid "Stores reviewers' notes on purchase requests, and whether each was emailed to the buyer."
-msgstr ""
+msgstr "存储审核人员对购买请求的备注，以及每条备注是否已通过邮件发送给买家。"
 
 #: src/Schema/Definitions/RoleCapabilitiesSchema.php:25
 msgid "Stores role capabilities."
-msgstr ""
+msgstr "存储角色权限。"
 
 #: src/Schema/Definitions/RolesSchema.php:26
 msgid "Stores roles."
-msgstr ""
+msgstr "存储角色。"
 
 #: src/Schema/Definitions/ServiceAccountsSchema.php:31
 msgid "Stores service accounts."
-msgstr ""
+msgstr "存储服务账户。"
 
 #: src/Schema/Definitions/AuthChallengesSchema.php:25
 msgid "Stores short-lived authentication and factor-enrollment challenges."
-msgstr ""
+msgstr "存储短期有效的身份验证和因素注册质询。"
 
 #: src/Schema/Definitions/LicenseActivationsSchema.php:32
 msgid "Stores the domains each license is activated on."
-msgstr ""
+msgstr "存储每个许可证所激活的域名。"
 
 #: src/Schema/Definitions/UserSecuritySchema.php:25
 msgid "Stores two-factor authentication settings for user accounts."
-msgstr ""
+msgstr "存储用户账户的双重身份验证设置。"
 
 #: src/Schema/Definitions/UserOptionsSchema.php:37
 msgid "Stores user preferences."
-msgstr ""
+msgstr "存储用户偏好。"
 
 #: assets/js/admin/json-editor.js:928
 msgid "String"
-msgstr ""
+msgstr "字符串"
 
 #: templates/admin/contents/options/email/editor.php:174
 msgid "Styles"
-msgstr ""
+msgstr "样式"
 
 #: templates/admin/contents/broadcasts/compose.php:31 templates/admin/contents/broadcasts/index.php:51 templates/admin/contents/broadcasts/search.php:38
 msgid "Subject"
-msgstr ""
+msgstr "主题"
 
 #: src/RESTAPI/Versions/V1.php:891
 msgid "Submit a zip file for the app, keyed in with this argument in a multipart/form-data request. This is required for new applications."
-msgstr ""
+msgstr "在 multipart/form-data 请求中以此参数为键提交应用的 zip 文件。新应用必须提供。"
 
 #: src/RESTAPI/Versions/V1.php:897
 msgid "Submit an app.json file, keyed in with this argument in a multipart/form-data request. The content of this file will be served in the \"manifest\" property of REST response for the application."
-msgstr ""
+msgstr "在 multipart/form-data 请求中以此参数为键提交 app.json 文件。该文件的内容将在应用 REST 响应的“manifest”属性中返回。"
 
 #: templates/admin/contents/license/purchase-requests.php:70
 msgid "Submitted"
-msgstr ""
+msgstr "已提交"
 
 #: templates/admin/contents/license/purchase-request.php:88
 msgid "Submitted from"
-msgstr ""
+msgstr "提交来源"
 
 #: templates/admin/contents/license/purchase-request.php:57
 msgid "Submitted:"
-msgstr ""
+msgstr "提交时间："
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:173
 msgid "Subscription Cancelled"
-msgstr ""
+msgstr "订阅已取消"
 
 #: templates/admin/contents/options/email/editor.php:378 assets/js/admin/core.js:328 assets/js/admin/core.js:793 assets/js/admin/core.js:1893
 #: assets/js/globals.js:900
 msgid "Success"
-msgstr ""
+msgstr "成功"
 
 #: src/Security/Authentication/ServiceAccountAuthenticator.php:81 src/Security/Authentication/UserAuthenticator.php:120
 msgid "Successfully authenticated."
-msgstr ""
+msgstr "身份验证成功。"
 
 #: assets/js/admin/apps-uploader.js:1757
 msgid "Sucessfully deleted."
-msgstr ""
+msgstr "删除成功。"
 
 #: themes/default/templates/pages/repository/app.php:70
 msgid "Support"
-msgstr ""
+msgstr "支持"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:434
 msgid "Support Email"
-msgstr ""
+msgstr "支持邮箱"
 
 #: templates/admin/contents/system/health.php:228
 msgid "Support Report"
-msgstr ""
+msgstr "支持报告"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:287 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
 msgid "Support URL"
-msgstr ""
+msgstr "支持 URL"
 
 #: templates/admin/contents/system/health.php:243 assets/js/admin/support-report.js:425
 msgid "Support report"
-msgstr ""
+msgstr "支持报告"
 
 #: templates/admin/contents/license/index.php:59
 msgid "Suspend"
-msgstr ""
+msgstr "暂停"
 
 #: src/Email/Templates/Licenses/LicenseSuspendedEmail.php:144
 msgid "Suspicious activity detected."
-msgstr ""
+msgstr "检测到可疑活动。"
 
 #: themes/default/templates/frames/client-dashboard.php:71
 msgid "Switch account"
-msgstr ""
+msgstr "切换账户"
 
 #: templates/admin/contents/system/maintenance.php:61
 msgid "Switch maintenance mode on before a database backup or import, a server move, or other work that needs the site quiet."
-msgstr ""
+msgstr "在数据库备份或导入、服务器迁移或其他需要站点保持静止的工作之前，请开启维护模式。"
 
 #: templates/admin/contents/system/maintenance.php:132
 msgid "Switch maintenance on"
-msgstr ""
+msgstr "开启维护模式"
 
 #: src/ClientDashboard/ActionHandlers/AppActions.php:72
 msgid "Switch to an account or organization that can host apps first."
-msgstr ""
+msgstr "请先切换到可以托管应用的账户或组织。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1127
 msgid "Switch to another installed theme or reinstall this theme."
-msgstr ""
+msgstr "请切换到另一个已安装的主题，或重新安装此主题。"
 
 #: themes/default/templates/pages/client/organizations.php:82
 msgid "Switch to it"
-msgstr ""
+msgstr "切换到它"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:355
 msgid "Switch to the organization first."
-msgstr ""
+msgstr "请先切换到该组织。"
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:113
 msgid "Switching failed. Please try again."
-msgstr ""
+msgstr "切换失败，请重试。"
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:186
 msgid "Switching to a different plan."
-msgstr ""
+msgstr "正在切换到其他方案。"
 
 #: src/Environments/Application/Auth/ConsoleIdentityProvider.php:99
 msgid "System Admin (console)"
-msgstr ""
+msgstr "系统管理员（控制台）"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:185
 msgid "System Alert"
-msgstr ""
+msgstr "系统警报"
 
 #. translators: %s: app name
 #: src/Email/Templates/System/SystemAlertEmail.php:107
 #, php-format
 msgid "System Alert — %s"
-msgstr ""
+msgstr "系统警报 — %s"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:205
 msgid "System Alert — {{app_name}}"
-msgstr ""
+msgstr "系统警报 — {{app_name}}"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:310 src/Admin/ContentHandlers/ToolsPage.php:356 templates/admin/contents/system/diagnostics.php:38 assets/js/admin/support-report.js:30
 msgid "System Diagnostics"
-msgstr ""
+msgstr "系统诊断"
 
 #: src/Environments/Application/Installation/InstallerPage.php:249
 msgid "Table prefix"
-msgstr ""
+msgstr "数据表前缀"
 
 #: themes/default/templates/pages/repository/app.php:139
 msgid "Tags"
-msgstr ""
+msgstr "标签"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:141
 msgid "Target Version"
-msgstr ""
+msgstr "目标版本"
 
 #: templates/admin/contents/system/index.php:51
 msgid "Task ID"
-msgstr ""
+msgstr "任务 ID"
 
 #: templates/admin/contents/system/index.php:38
 msgid "Tasks normally run from cron (`schedule run` every minute). Use these buttons to run them now; nothing runs while the application is being updated."
-msgstr ""
+msgstr "任务通常由 cron 运行（每分钟执行 `schedule run`）。使用这些按钮可立即运行；应用更新期间不会运行任何任务。"
 
 #: src/Monetization/Providers/LocalProvider.php:109
 msgid "Tell buyers how to pay for this tier."
-msgstr ""
+msgstr "告诉买家如何为此层级付款。"
 
 #: src/Monetization/PurchaseRequestService.php:381
 msgid "Tell the buyer why the request is rejected."
-msgstr ""
+msgstr "告诉买家请求被拒绝的原因。"
 
 #: templates/admin/contents/options/email/templates.php:100
 msgid "Template"
-msgstr ""
+msgstr "模板"
 
 #: src/SettingsAPI/SettingsController.php:219 src/SettingsAPI/SettingsController.php:272 src/SettingsAPI/SettingsController.php:332
 msgid "Template key is required."
-msgstr ""
+msgstr "模板键为必填项。"
 
 #: assets/js/admin/email-editor.js:948
 msgid "Template reset to default."
-msgstr ""
+msgstr "模板已重置为默认值。"
 
 #: assets/js/admin/email-editor.js:907
 msgid "Template saved successfully."
-msgstr ""
+msgstr "模板保存成功。"
 
 #: assets/js/admin/email-editor.js:998
 msgid "Template status updated."
-msgstr ""
+msgstr "模板状态已更新。"
 
 #: templates/admin/contents/repository/monetization.php:182
 msgid "Term Length:"
-msgstr ""
+msgstr "期限长度："
 
 #: templates/admin/contents/repository/monetization.php:115
 msgid "Term:"
-msgstr ""
+msgstr "期限："
 
 #: src/Admin/ContentHandlers/OptionsPage.php:534
 msgid "Terms URL"
-msgstr ""
+msgstr "条款 URL"
 
 #: templates/admin/contents/options/cache/form.php:117
 msgid "Test"
-msgstr ""
+msgstr "测试"
 
 #: src/Email/Templates/System/TestEmail.php:144
 msgid "Test Email"
-msgstr ""
+msgstr "测试邮件"
 
 #: src/Email/Templates/System/TestEmail.php:35
 msgid "Test Email — Your Email Provider is Working"
-msgstr ""
+msgstr "测试邮件 — 您的邮件提供商工作正常"
 
 #: src/Environments/Application/Installation/InstallerPage.php:268
 msgid "Test connection and continue"
-msgstr ""
+msgstr "测试连接并继续"
 
 #: src/Email/RequestController.php:273
 #, php-format
 msgid "Test email sent successfully to %s via %s."
-msgstr ""
+msgstr "测试邮件已通过 %2$s 成功发送至 %1$s。"
 
 #: assets/js/admin/core.js:1983
 msgid "Test passed"
-msgstr ""
+msgstr "测试通过"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:44 templates/admin/contents/repository/edit-wptheme.php:44
 msgid "Tested WordPress Version"
-msgstr ""
+msgstr "已测试的 WordPress 版本"
 
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Tested up to:"
-msgstr ""
+msgstr "已测试至："
 
 #: templates/admin/contents/options/email/editor.php:212 templates/admin/contents/options/email/editor.php:314
 msgid "Text Color"
-msgstr ""
+msgstr "文字颜色"
 
 #. translators: %s: support (formatted)
 #: src/Email/Templates/Licenses/LicenseRenewedEmail.php:70
 #, php-format
 msgid "Thank you for renewing. If you have any questions, please contact us at %s."
-msgstr ""
+msgstr "感谢您的续订。如有任何问题，请通过 %s 联系我们。"
 
 #: src/Email/Templates/Licenses/LicenseRenewedEmail.php:177
 msgid "Thank you for renewing. If you have any questions, please contact us at {{support_email}}."
-msgstr ""
+msgstr "感谢您的续订。如有任何问题，请通过 {{support_email}} 联系我们。"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:79 src/Email/Templates/Monetization/PaymentReceivedEmail.php:195
 msgid "Thank you for your payment. We have received it successfully and your account has been updated accordingly."
-msgstr ""
+msgstr "感谢您的付款。我们已成功收到，您的账户已相应更新。"
 
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:54
 msgid "Thank you. We received your purchase request and your payment receipt. We will check the payment and email your license as soon as it is confirmed."
-msgstr ""
+msgstr "谢谢。我们已收到您的购买请求和付款凭证。我们会核实付款，确认后立即通过邮件发送您的许可证。"
 
 #: src/Monetization/ActionHandlers/PurchaseActions.php:86
 #, php-format
 msgid "Thank you. Your purchase request #%d has been received and will be reviewed shortly; the license will be sent to %s once your payment is confirmed."
-msgstr ""
+msgstr "谢谢。您的购买请求 #%d 已收到，将尽快审核；付款确认后，许可证将发送至 %s。"
 
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:121
 msgid "Thanks for your purchase!"
-msgstr ""
+msgstr "感谢您的购买！"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:213
 msgid "That database does not exist. Create it in your hosting control panel first, then check the spelling here (some hosts add your account name in front)."
-msgstr ""
+msgstr "该数据库不存在。请先在主机控制面板中创建它，然后在此检查拼写（有些主机会在前面加上您的账户名）。"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:215
 msgid "That database user does not exist. Check the username."
-msgstr ""
+msgstr "该数据库用户不存在。请检查用户名。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:204
 msgid "That factor is not enabled."
-msgstr ""
+msgstr "该验证因素未启用。"
 
 #: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:83
 msgid "That language is not available."
-msgstr ""
+msgstr "该语言不可用。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:184
 msgid "That passkey could not be found."
-msgstr ""
+msgstr "找不到该通行密钥。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:309
 msgid "That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again."
-msgstr ""
+msgstr "该安装令牌不正确。请从文件中重新复制（仅复制引号之间的字母和数字）后重试。"
 
 #: src/RESTAPI/RouteArguments.php:208
 #, php-format
 msgid "The \"%s\" %s is required."
-msgstr ""
+msgstr "“%s”%s 为必填项。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:161
 #, php-format
 msgid "The \"%s\" cache adapter could not read a value: %s"
-msgstr ""
+msgstr "“%s”缓存适配器无法读取值：%s"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:118
 #, php-format
 msgid "The \"%s\" cache adapter could not store a value."
-msgstr ""
+msgstr "“%s”缓存适配器无法存储值。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:111
 #, php-format
 msgid "The \"%s\" cache adapter could not store a value: %s"
-msgstr ""
+msgstr "“%s”缓存适配器无法存储值：%s"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:289
 #, php-format
 msgid "The \"%s\" cache adapter is configured but not active."
-msgstr ""
+msgstr "“%s”缓存适配器已配置但未激活。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:187
 #, php-format
 msgid "The \"%s\" cache adapter kept a value between two separate requests, so password resets, email OTPs and rate limiting can rely on it."
-msgstr ""
+msgstr "“%s”缓存适配器在两个独立请求之间保留了值，因此密码重置、邮件一次性验证码和速率限制都可以依赖它。"
 
 #: src/Background/Jobs/Purchases/PurchaseRequestEmailJob.php:79
 #, php-format
 msgid "The \"%s\" email template is disabled."
-msgstr ""
+msgstr "“%s”邮件模板已停用。"
 
 #: src/Environments/Application/Extensions/Extension.php:151
 #, php-format
 msgid "The \"%s\" of the extension \"%s\" must be a string."
-msgstr ""
+msgstr "扩展“%2$s”的“%1$s”必须是字符串。"
 
 #: src/Environments/Application/Theming/Theme.php:110
 #, php-format
 msgid "The \"%s\" of the theme \"%s\" must be a string."
-msgstr ""
+msgstr "主题“%2$s”的“%1$s”必须是字符串。"
 
 #: src/RESTAPI/RouteArguments.php:117
 #, php-format
 msgid "The \"%s\" parameter must be %s."
-msgstr ""
+msgstr "参数“%s”必须是 %s。"
 
 #: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:73
 #, php-format
 msgid "The \"%s\" template is disabled."
-msgstr ""
+msgstr "“%s”模板已停用。"
 
 #: src/Background/Jobs/Accounts/EmailOtpJob.php:85
 msgid "The \"Email Verification Code\" template is disabled."
-msgstr ""
+msgstr "“邮箱验证码”模板已停用。"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:83
 msgid "The \"Organization Invite\" template is disabled."
-msgstr ""
+msgstr "“组织邀请”模板已停用。"
 
 #: src/Background/Jobs/Accounts/EmailVerificationJob.php:57
 msgid "The \"Verify Email\" template is disabled."
-msgstr ""
+msgstr "“验证邮箱”模板已停用。"
 
 #: src/Environments/Application/Extensions/Extension.php:177
 #, php-format
 msgid "The \"depends\" of the extension \"%s\" has an invalid slug."
-msgstr ""
+msgstr "扩展“%s”的“depends”包含无效的 slug。"
 
 #: src/Environments/Application/Extensions/Extension.php:172
 #, php-format
 msgid "The \"depends\" of the extension \"%s\" must be a list of extension slugs."
-msgstr ""
+msgstr "扩展“%s”的“depends”必须是扩展 slug 列表。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:755
 #, php-format
 msgid "The %s \"%s\" %s requires app version %s or later; this is %s."
-msgstr ""
+msgstr "%s“%s”%s 需要应用版本 %s 或更高；当前为 %s。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:353
 #, php-format
 msgid "The %s \"%s\" could not be created."
-msgstr ""
+msgstr "无法创建%s“%s”。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:265
 #, php-format
 msgid "The %s \"%s\" could not be deleted."
-msgstr ""
+msgstr "无法删除%s“%s”。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:201
 #, php-format
 msgid "The %s \"%s\" could not be moved to the trash."
-msgstr ""
+msgstr "无法将%s“%s”移至回收站。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:301
 #, php-format
 msgid "The %s \"%s\" could not be renamed to \"%s\"."
-msgstr ""
+msgstr "无法将%s“%s”重命名为“%s”。"
 
 #: src/FileSystem/Repository.php:734 src/FileSystem/Repository.php:806 src/Monetization/Controller.php:312
 #, php-format
 msgid "The %s \"%s\" does not exist."
-msgstr ""
+msgstr "%s“%s”不存在。"
 
 #: src/HostedApps/AppRelease.php:175
 #, php-format
 msgid "The %s \"%s\" has no artifact named \"%s\"."
-msgstr ""
+msgstr "%s“%s”没有名为“%s”的制品。"
 
 #: src/HostedApps/AppRelease.php:126
 #, php-format
 msgid "The %s \"%s\" has no package to download."
-msgstr ""
+msgstr "%s“%s”没有可下载的软件包。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:297
 #, php-format
 msgid "The %s \"%s\" holds a file named \"%s.zip\"."
-msgstr ""
+msgstr "%s“%s”包含一个名为“%s.zip”的文件。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:634
 #, php-format
 msgid "The %s \"%s\" is already installed (%s); update it, or replace it with this package."
-msgstr ""
+msgstr "%s“%s”已安装（%s）；请更新它，或用此软件包替换它。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:394 src/Environments/Application/Modules/ModuleInstaller.php:504
 #, php-format
 msgid "The %s \"%s\" is not installed."
-msgstr ""
+msgstr "%s“%s”未安装。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:348
 #, php-format
 msgid "The %s \"%s\" is up to date (%s)."
-msgstr ""
+msgstr "%s“%s”已是最新（%s）。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:398
 #, php-format
 msgid "The %s \"%s\" was not installed from the marketplace; install a newer package of it to update it."
-msgstr ""
+msgstr "%s“%s”不是从市场安装的；请安装其更新的软件包来更新它。"
 
 #: src/HostedApps/HostedApplicationService.php:575 src/HostedApps/Storage/DirectoryAppStorage.php:280
 #, php-format
 msgid "The %s already has the slug \"%s\"."
-msgstr ""
+msgstr "%s的 slug 已经是“%s”。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:841
 #, php-format
 msgid "The %s assets could not be published: %s %s once the public folder is writable."
-msgstr ""
+msgstr "无法发布%s资源：公共文件夹可写后请%s %s。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:1055
 #, php-format
 msgid "The %s directory of %s \"%s\" leads outside the app."
-msgstr ""
+msgstr "%s“%s”的 %s 目录指向应用之外。"
 
 #: src/HostedApps/HostedApplicationService.php:567
 #, php-format
 msgid "The %s does not exist."
-msgstr ""
+msgstr "%s不存在。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:758
 #, php-format
 msgid "The %s of %s \"%s\" %s."
-msgstr ""
+msgstr "%2$s“%3$s”的%1$s%4$s。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:1061
 #, php-format
 msgid "The %s of %s \"%s\" could not be listed."
-msgstr ""
+msgstr "无法列出%2$s“%3$s”的%1$s。"
 
 #: src/Environments/Application/Extensions/Extension.php:140
 #, php-format
 msgid "The %s of the extension \"%s\" is not valid JSON."
-msgstr ""
+msgstr "扩展“%2$s”的 %1$s 不是有效的 JSON。"
 
 #: src/Environments/Application/Extensions/Extension.php:145
 #, php-format
 msgid "The %s of the extension \"%s\" needs a \"%s\"."
-msgstr ""
+msgstr "扩展“%2$s”的 %1$s 需要“%3$s”。"
 
 #: src/Environments/Application/Theming/Theme.php:99
 #, php-format
 msgid "The %s of the theme \"%s\" is not valid JSON."
-msgstr ""
+msgstr "主题“%2$s”的 %1$s 不是有效的 JSON。"
 
 #: src/Environments/Application/Theming/Theme.php:104
 #, php-format
 msgid "The %s of the theme \"%s\" needs a \"%s\"."
-msgstr ""
+msgstr "主题“%2$s”的 %1$s 需要“%3$s”。"
 
 #: src/HostedApps/HostedApplicationService.php:605
 #, php-format
 msgid "The %s was changed or deleted while renaming it. Reload it and try again."
-msgstr ""
+msgstr "重命名期间%s已被更改或删除。请重新加载后重试。"
 
 #: src/HostedApps/HostingController.php:694
 #, php-format
 msgid "The %s with slug \"%s\" was not found."
-msgstr ""
+msgstr "未找到 slug 为“%2$s”的%1$s。"
 
 #: src/HostedApps/HostingController.php:774 src/HostedApps/HostingController.php:945
 #, php-format
 msgid "The %s with slug %s was not found"
-msgstr ""
+msgstr "未找到 slug 为 %2$s 的%1$s"
 
 #: src/HostedApps/HostingController.php:585
 #, php-format
 msgid "The %s with slug %s was not found."
-msgstr ""
+msgstr "未找到 slug 为 %2$s 的%1$s。"
 
 #: src/RESTAPI/Handlers/Licenses.php:99 src/RESTAPI/Handlers/Licenses.php:381 src/RESTAPI/Handlers/Licenses.php:470
 #, php-format
 msgid "The %s with this slug \"%s\" does not exist"
-msgstr ""
+msgstr "slug 为“%2$s”的%1$s不存在"
 
 #: src/Environments/Application/Web/RestAPIProvider.php:446 src/Environments/WordPress/RESTAPI.php:299
 msgid "The API key could not be verified."
-msgstr ""
+msgstr "无法验证 API 密钥。"
 
 #: src/Admin/ContentHandlers/LicensePage.php:382
 msgid "The ID a client activates the license with, together with the license key. Leave empty to generate one."
-msgstr ""
+msgstr "客户端与许可证密钥一起用于激活许可证的 ID。留空则自动生成。"
 
 #: src/RESTAPI/Versions/V1.php:650
 msgid "The ID of the pricing tier sold; one of your tiers (GET licensing/tiers)."
-msgstr ""
+msgstr "所售定价层级的 ID；必须是您的层级之一（GET licensing/tiers）。"
 
 #: src/RESTAPI/Versions/V1.php:670
 msgid "The ID the buyer's sites activate the license with, together with the license key. Generated when empty."
-msgstr ""
+msgstr "买家站点与许可证密钥一起用于激活许可证的 ID。留空时自动生成。"
 
 #: src/RESTAPI/Handlers/Licensing.php:302
 msgid "The Licensing API is for stores, which authenticate with a service account."
-msgstr ""
+msgstr "Licensing API 供商店使用，商店通过服务账户进行身份验证。"
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:607
 msgid "The Memcached extension is not available on this server."
-msgstr ""
+msgstr "此服务器上没有 Memcached 扩展。"
 
 #: src/Security/Organizations/OrganizationService.php:80
 msgid "The Organization Administrator role is not installed. Ask the site administrator to install the default roles."
-msgstr ""
+msgstr "未安装“组织管理员”角色。请让站点管理员安装默认角色。"
 
 #: src/Core/Pdf/PdfRasterizer.php:100
 msgid "The PDF could not be copied to the system temporary directory."
-msgstr ""
+msgstr "无法将 PDF 复制到系统临时目录。"
 
 #: src/Core/Pdf/PdfRasterizer.php:122
 #, php-format
 msgid "The PDF could not be drawn. %s"
-msgstr ""
+msgstr "无法绘制 PDF。%s"
 
 #: src/Core/Pdf/PdfRasterizer.php:85
 msgid "The PDF does not exist."
-msgstr ""
+msgstr "PDF 不存在。"
 
 #: src/Background/BackgroundSetup.php:481
 #, php-format
 msgid "The PHP %s command-line binary could not be located from here, so the commands use \"php\". If \"php -v\" on this server shows another version, replace it with the path your host gives for PHP %s (for example /usr/local/bin/ea-php%d%d on cPanel)."
-msgstr ""
+msgstr "无法在此处找到 PHP %s 的命令行程序，因此命令使用“php”。如果此服务器上的“php -v”显示其他版本，请将其替换为主机提供的 PHP %s 路径（例如 cPanel 上的 /usr/local/bin/ea-php%d%d）。"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:223
 msgid "The PHP extension for this database type is not installed on the server. Ask your host to enable it, or choose another database type."
-msgstr ""
+msgstr "服务器上未安装此数据库类型的 PHP 扩展。请让您的主机商启用它，或选择其他数据库类型。"
 
 #: src/Environments/Application/Web/RestAPIProvider.php:394 src/Environments/WordPress/RESTAPI.php:332
 msgid "The REST API requires a secure (HTTPS) connection."
-msgstr ""
+msgstr "REST API 需要安全（HTTPS）连接。"
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:585
 msgid "The Redis extension is not available on this server."
-msgstr ""
+msgstr "此服务器上没有 Redis 扩展。"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:551
 #, php-format
 msgid "The SQLite database file name(default: %s)."
-msgstr ""
+msgstr "SQLite 数据库文件名（默认：%s）。"
 
 #: src/Environments/WordPress/RESTAPI.php:588
 msgid "The URL does not resolve to a valid host."
-msgstr ""
+msgstr "该 URL 无法解析到有效主机。"
 
 #: assets/js/admin/json-editor.js:1660
 msgid "The URL must return a valid JSON response. CORS must be enabled on the server."
-msgstr ""
+msgstr "该 URL 必须返回有效的 JSON 响应。服务器必须启用 CORS。"
 
 #: src/Background/BackgroundSetup.php:429
 msgid "The URL needs no secret: every caller gets the same empty answer, and it only ever runs work that is already due."
-msgstr ""
+msgstr "该 URL 不需要密钥：每个调用者都会得到相同的空响应，并且它只会运行已经到期的工作。"
 
 #: src/RESTAPI/Versions/V1.php:610 src/RESTAPI/Versions/V1.php:635 src/RESTAPI/Versions/V1.php:730
 msgid "The URL of the website where the license is currently activated."
-msgstr ""
+msgstr "当前激活该许可证的网站 URL。"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:637
 msgid "The URL segment that appears before download pages. For example: https://example.com/downloads/"
-msgstr ""
+msgstr "出现在下载页面之前的 URL 片段。例如：https://example.com/downloads/"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:623
 msgid "The URL segment that appears before repository pages. For example: https://example.com/repository/"
-msgstr ""
+msgstr "出现在存储库页面之前的 URL 片段。例如：https://example.com/repository/"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:597
 msgid "The URL segment that appears before the admin url. For example: https://example.com/smliser-admin/"
-msgstr ""
+msgstr "出现在管理 URL 之前的 URL 片段。例如：https://example.com/smliser-admin/"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:610
 msgid "The URL segment that appears before the client dashboard page. For example: https://example.com/dashboard/"
-msgstr ""
+msgstr "出现在客户仪表盘页面之前的 URL 片段。例如：https://example.com/dashboard/"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:650
 msgid "The URL segment the appears before authentication pages. For example https://example.com/auth"
-msgstr ""
+msgstr "出现在身份验证页面之前的 URL 片段。例如 https://example.com/auth"
 
 #: src/Environments/Application/Health/SystemHealth.php:1434
 msgid "The Updates page shows its output under History."
-msgstr ""
+msgstr "“更新”页面会在“历史”下显示其输出。"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:134
 msgid "The Updates page shows which version the site is running now and what to do next. The end of the update output is below."
-msgstr ""
+msgstr "“更新”页面显示站点当前运行的版本以及下一步操作。更新输出的末尾如下。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:835
 msgid "The account could not be created."
-msgstr ""
+msgstr "无法创建账户。"
 
 #: src/Security/Authentication/EmailVerificationToken.php:103
 msgid "The account for this link no longer exists."
-msgstr ""
+msgstr "此链接对应的账户已不存在。"
 
 #: src/Monetization/License.php:1431
 msgid "The activation could not be saved."
-msgstr ""
+msgstr "无法保存激活。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:282
 #, php-format
 msgid "The active \"%s\" cache adapter cannot run on this server."
-msgstr ""
+msgstr "活动的“%s”缓存适配器无法在此服务器上运行。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:167
 msgid "The active cache adapter is the in-memory runtime cache, so a value written in one request was gone in the next."
-msgstr ""
+msgstr "活动的缓存适配器是内存中的运行时缓存，因此一次请求写入的值在下一次请求中就消失了。"
 
 #: templates/admin/contents/modules/themes.php:125
 #, php-format
 msgid "The active theme \"%s\" cannot be used, so the default theme renders the public pages. The error log says why."
-msgstr ""
+msgstr "无法使用活动主题“%s”，因此公共页面由默认主题渲染。错误日志中说明了原因。"
 
 #: src/HostedApps/HostedApplicationService.php:513
 msgid "The app could not be deleted. Please try again."
-msgstr ""
+msgstr "无法删除该应用，请重试。"
 
 #: src/RESTAPI/Versions/V1.php:799
 msgid "The app status to list: active, deactivated, suspended or trash. Statuses other than active are for system admins only (403 for anyone else)."
-msgstr ""
+msgstr "要列出的应用状态：active、deactivated、suspended 或 trash。active 以外的状态仅限系统管理员（其他人返回 403）。"
 
 #: src/Monetization/LicensingService.php:89
 msgid "The app this pricing tier belongs to does not exist."
-msgstr ""
+msgstr "此定价层级所属的应用不存在。"
 
 #: src/HostedApps/HostingController.php:74 src/HostedApps/HostingController.php:524
 #, php-format
 msgid "The app type \"%s\" is not supported"
-msgstr ""
+msgstr "不支持应用类型“%s”"
 
 #: src/HostedApps/HostingController.php:435
 #, php-format
 msgid "The app type \"%s\" is not supported."
-msgstr ""
+msgstr "不支持应用类型“%s”。"
 
 #: themes/default/templates/pages/client/app-new.php:30
 msgid "The app's address on this site is made from it. Only an administrator can change the address later."
-msgstr ""
+msgstr "应用在此站点上的地址由此生成。以后只有管理员可以更改该地址。"
 
 #: src/HostedApps/HostingController.php:68
 msgid "The app_type parameter is required."
-msgstr ""
+msgstr "app_type 参数为必填项。"
 
 #: src/FileSystem/Repository.php:250
 msgid "The application archive file must be in ZIP format."
-msgstr ""
+msgstr "应用归档文件必须为 ZIP 格式。"
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:278
 msgid "The application is being updated. Try again once the update has finished."
-msgstr ""
+msgstr "应用正在更新。请在更新完成后重试。"
 
 #: templates/admin/contents/system/health.php:75
 msgid "The application is running, but some checks need attention."
-msgstr ""
+msgstr "应用正在运行，但部分检查需要注意。"
 
 #: src/RESTAPI/Versions/V1.php:839
 msgid "The application name. Required when uploading new app."
-msgstr ""
+msgstr "应用名称。上传新应用时必填。"
 
 #: assets/js/admin/apps-uploader.js:455
 msgid "The application package (.zip) is required."
-msgstr ""
+msgstr "应用包（.zip）为必填项。"
 
 #: src/HostedApps/AbstractHostedApp.php:1105
 msgid "The application record is locked or has already been removed."
-msgstr ""
+msgstr "应用记录已被锁定或已被删除。"
 
 #: src/Exceptions/FileRequestException.php:40
 msgid "The application type specified in the request is not supported."
-msgstr ""
+msgstr "请求中指定的应用类型不受支持。"
 
 #: src/RESTAPI/Versions/V1.php:854
 msgid "The application version. For Wordpress plugins and themes, the version will be extracted from the readme.txt and style.css respectively, custom apps should define the app version in the app.json file."
-msgstr ""
+msgstr "应用版本。WordPress 插件和主题的版本分别从 readme.txt 和 style.css 中提取，自定义应用应在 app.json 文件中定义应用版本。"
 
 #: themes/default/templates/pages/client/apps.php:22
 msgid "The apps you host here, for whoever you act for."
-msgstr ""
+msgstr "您在此托管的应用（按您当前代表的对象）。"
 
 #: src/FileSystem/Repository.php:1053
 #, php-format
 msgid "The artifact \"%s\" does not exist."
-msgstr ""
+msgstr "制品“%s”不存在。"
 
 #: src/FileSystem/Repository.php:1203
 #, php-format
 msgid "The artifact file \"%s\" does not exist."
-msgstr ""
+msgstr "制品文件“%s”不存在。"
 
 #: src/FileSystem/Repository.php:1107
 #, php-format
 msgid "The artifact file with name \"%s\" cannot be renamed to \"%s\" because it does not exist."
-msgstr ""
+msgstr "名为“%s”的制品文件不存在，因此无法重命名为“%s”。"
 
 #: src/HostedApps/HostingController.php:628
 msgid "The artifact filename is invalid."
-msgstr ""
+msgstr "制品文件名无效。"
 
 #: src/HostedApps/HostingController.php:602 src/HostedApps/HostingController.php:707
 msgid "The artifact filename is required."
-msgstr ""
+msgstr "制品文件名为必填项。"
 
 #: src/HostedApps/HostingController.php:717
 msgid "The artifact filename must not contain directory separators."
-msgstr ""
+msgstr "制品文件名不能包含目录分隔符。"
 
 #: assets/js/admin/apps-uploader.js:1531
 msgid "The artifact is saved under this exact name, extension included (e.g. \"my-app-1.0.0.zip.sha256\"). Leave it empty to use the uploaded file's name. Unsafe characters are sanitized, e.g. \"my artifact.zip\" becomes \"my-artifact.zip\"."
-msgstr ""
+msgstr "制品将以此确切名称保存，包括扩展名（例如“my-app-1.0.0.zip.sha256”）。留空则使用上传文件的名称。不安全的字符会被清理，例如“my artifact.zip”会变为“my-artifact.zip”。"
 
 #: src/HostedApps/AppRelease.php:165
 msgid "The artifact must be the name of a ZIP artifact, e.g. \"acme-1.2.0.zip\"."
-msgstr ""
+msgstr "制品必须是 ZIP 制品的名称，例如“acme-1.2.0.zip”。"
 
 #: src/HostedApps/HostingController.php:617
 msgid "The artifact name must not contain directory separators."
-msgstr ""
+msgstr "制品名称不能包含目录分隔符。"
 
 #: src/Exceptions/FileRequestException.php:45
 msgid "The associated repository/filesystem for this application type is not available."
-msgstr ""
+msgstr "此应用类型关联的存储库/文件系统不可用。"
 
 #: src/Exceptions/FileRequestException.php:118
 msgid "The authenticated user does not have permission to access this resource."
-msgstr ""
+msgstr "已认证用户无权访问此资源。"
 
 #: src/Exceptions/RequestException.php:103
 msgid "The authenticated user does not have permission to perform this action."
-msgstr ""
+msgstr "已认证用户无权执行此操作。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:135
 msgid "The authenticator code is incorrect."
-msgstr ""
+msgstr "身份验证器验证码不正确。"
 
 #: src/RESTAPI/Versions/V1.php:849
 msgid "The author URL."
-msgstr ""
+msgstr "作者 URL。"
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:237
 msgid "The backup was deleted."
-msgstr ""
+msgstr "备份已删除。"
 
 #: src/RESTAPI/Versions/V1.php:929
 msgid "The base64 encoded download token issued during license activation or the last reauthentication token."
-msgstr ""
+msgstr "许可证激活时签发的 base64 编码下载令牌，或最近一次的重新认证令牌。"
 
 #: src/RESTAPI/Versions/V1.php:660
 msgid "The buyer's email address; the license is delivered to it."
-msgstr ""
+msgstr "买家的邮箱地址；许可证将发送到该地址。"
 
 #: src/RESTAPI/Versions/V1.php:665
 msgid "The buyer's name."
-msgstr ""
+msgstr "买家的姓名。"
 
 #: templates/admin/contents/system/maintenance.php:113
 msgid "The bypass link lets another browser in; a new link stops the earlier ones."
-msgstr ""
+msgstr "绕过链接允许另一个浏览器进入；新链接会使之前的链接失效。"
 
 #: templates/admin/contents/options/cache/form.php:40
 #, php-format
 msgid "The cache adapter \"%s\" does not exists. <a href=\"%s\">Go Back</a>"
-msgstr ""
+msgstr "缓存适配器“%s”不存在。<a href=\"%s\">返回</a>"
 
 #: src/HostedApps/HostingController.php:609
 msgid "The canonical filename for this artifact is required."
-msgstr ""
+msgstr "此制品的规范文件名为必填项。"
 
 #: src/Monetization/Providers/RemoteProvider.php:115
 msgid "The checkout URL must be an http or https URL."
-msgstr ""
+msgstr "结账 URL 必须是 http 或 https URL。"
 
 #: src/Environments/Application/Update/PackageVerifier.php:102
 msgid "The checksums are not signed by a release key (accepted: --trust-unsigned)."
-msgstr ""
+msgstr "校验和未由发布密钥签名（可通过 --trust-unsigned 接受）。"
 
 #: src/Environments/Application/Update/PackageVerifier.php:111
 #, php-format
 msgid "The checksums file does not list %s."
-msgstr ""
+msgstr "校验和文件中未列出 %s。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1197
 #, php-format
 msgid "The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has."
-msgstr ""
+msgstr "磁盘上的代码版本为 %s，但 state.json 记录的是 %s：已安装更新，但其完成步骤尚未运行。在此之前，计划任务和排队任务将暂停。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:231
 msgid "The confirmation code is incorrect or expired."
-msgstr ""
+msgstr "确认码不正确或已过期。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:256
 msgid "The connection works; the update server may be down or rejecting requests. Retry later before changing server configuration."
-msgstr ""
+msgstr "连接正常；更新服务器可能已宕机或正在拒绝请求。请稍后重试，然后再考虑更改服务器配置。"
 
 #: src/Exceptions/FileRequestException.php:145 src/Exceptions/FileRequestException.php:150
 msgid "The corresponding file could not be located on the server."
-msgstr ""
+msgstr "在服务器上找不到对应的文件。"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:225
 msgid "The database file could not be created or opened. Make sure the database folder exists and is writable by the web server."
-msgstr ""
+msgstr "无法创建或打开数据库文件。请确保数据库文件夹存在且 Web 服务器可写。"
 
 #: src/Environments/Application/Update/Updater.php:371
 #, php-format
 msgid "The database migration from schema %s to %s failed: %s The site stays in maintenance; restore your database backup before rolling back."
-msgstr ""
+msgstr "数据库从架构 %s 迁移到 %s 失败：%s 站点仍处于维护模式；回滚前请先恢复数据库备份。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:497
 msgid "The database saved in the .env file could not be reached. "
-msgstr ""
+msgstr "无法连接 .env 文件中保存的数据库。 "
 
 #: src/Environments/Application/Update/Updater.php:359
 #, php-format
 msgid "The database schema changes (%s to %s) and no migration is available; restoring the previous version."
-msgstr ""
+msgstr "数据库架构有变更（%s 到 %s）且没有可用的迁移；正在恢复上一个版本。"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:221
 msgid "The database server did not answer in time. Check the server address, or ask your host whether remote connections are allowed."
-msgstr ""
+msgstr "数据库服务器未及时响应。请检查服务器地址，或询问主机商是否允许远程连接。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:474
 msgid "The database settings in the .env file are not valid. Enter them again below."
-msgstr ""
+msgstr "`.env` 文件中的数据库设置无效。请在下方重新输入。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:220
 msgid "The database user you created and gave access to this database."
-msgstr ""
+msgstr "您创建并授权访问此数据库的数据库用户。"
 
 #: src/Email/RequestController.php:50
 msgid "The default mailer is required."
-msgstr ""
+msgstr "必须设置默认发信服务。"
 
 #: templates/admin/contents/system/maintenance.php:96
 msgid "The default maintenance notice."
-msgstr ""
+msgstr "默认维护通知。"
 
 #: src/Email/RequestController.php:74
 msgid "The default sender email is required"
-msgstr ""
+msgstr "必须填写默认发件人邮箱"
 
 #: src/Email/RequestController.php:67
 msgid "The default sender name is required"
-msgstr ""
+msgstr "必须填写默认发件人名称"
 
 #: src/Environments/Application/Theming/ThemeInstaller.php:125
 msgid "The default theme ships with the application; it is updated with the application, and cannot be installed, replaced or removed here."
-msgstr ""
+msgstr "默认主题随应用一起提供；它随应用更新，无法在此安装、替换或删除。"
 
 #: src/Monetization/Controller.php:478
 #, php-format
 msgid "The domain \"%s\" has been uninstalled"
-msgstr ""
+msgstr "域名“%s”已卸载"
 
 #: src/Environments/WordPress/RESTAPI.php:574
 msgid "The domain parameter is required."
-msgstr ""
+msgstr "domain 参数为必填项。"
 
 #: src/Monetization/Controller.php:474
 msgid "The domain provided does not exist in this license."
-msgstr ""
+msgstr "此许可证中不存在所提供的域名。"
 
 #: src/RESTAPI/Versions/V1.php:585
 msgid "The domain to associate associate the license activation record with."
-msgstr ""
+msgstr "与许可证激活记录关联的域名。"
 
 #: src/RESTAPI/Versions/V1.php:919
 msgid "The domain where the plugin is installed."
-msgstr ""
+msgstr "安装插件的域名。"
 
 #: src/Environments/Application/Update/UpdateServer.php:393
 #, php-format
 msgid "The download of %s failed with HTTP %d."
-msgstr ""
+msgstr "下载 %s 失败，HTTP 状态码 %d。"
 
 #: src/Environments/Application/Update/UpdateServer.php:388
 #, php-format
 msgid "The download of %s failed: %s"
-msgstr ""
+msgstr "下载 %s 失败：%s"
 
 #: src/RESTAPI/Handlers/Licenses.php:496
 msgid "The download token has expired. Activate the license on this domain again to get a new one."
-msgstr ""
+msgstr "下载令牌已过期。请在此域名上重新激活许可证以获取新令牌。"
 
 #: src/RESTAPI/Handlers/Licenses.php:503
 msgid "The download token was not issued to this license on this domain."
-msgstr ""
+msgstr "该下载令牌并非为此域名上的此许可证签发。"
 
 #: src/Background/Jobs/Accounts/EmailVerificationJob.php:48
 msgid "The email address is already verified."
-msgstr ""
+msgstr "该邮箱地址已验证。"
 
 #: src/Environments/WordPress/IdentityService.php:496
 msgid "The email address is invalid."
-msgstr ""
+msgstr "邮箱地址无效。"
 
 #: templates/admin/contents/options/email/form.php:38 templates/admin/contents/options/monetization/monetizations.php:41
 #, php-format
 msgid "The email provider \"%s\" does not exists. <a href=\"%s\">Go Back</a>"
-msgstr ""
+msgstr "邮件提供商“%s”不存在。<a href=\"%s\">返回</a>"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:339
 msgid "The email provider used for all outgoing system emails. Configure individual providers using the cards below."
-msgstr ""
+msgstr "用于所有外发系统邮件的邮件提供商。请使用下方卡片配置各个提供商。"
 
 #: src/Environments/Application/Boot/ExtensionBootstrapper.php:113
 #, php-format
 msgid "The entry class \"%s\" of the extension \"%s\" does not implement %s."
-msgstr ""
+msgstr "扩展“%2$s”的入口类“%1$s”未实现 %3$s。"
 
 #: src/Environments/Application/Extensions/Extension.php:195
 #, php-format
 msgid "The entry class \"%s\" of the extension \"%s\" must be a class inside the namespace \"%s\"."
-msgstr ""
+msgstr "扩展“%2$s”的入口类“%1$s”必须是命名空间“%3$s”中的类。"
 
 #: src/Environments/Application/Extensions/Extension.php:213
 #, php-format
 msgid "The entry class \"%s\" of the extension \"%s\" was not found at %s."
-msgstr ""
+msgstr "在 %3$s 中找不到扩展“%2$s”的入口类“%1$s”。"
 
 #: src/Environments/Application/Extensions/Extension.php:207
 #, php-format
 msgid "The extension \"%s\" has no \"%s\" source folder."
-msgstr ""
+msgstr "扩展“%s”没有“%s”源代码文件夹。"
 
 #: src/Environments/Application/Extensions/Extension.php:133
 #, php-format
 msgid "The extension \"%s\" has no %s."
-msgstr ""
+msgstr "扩展“%s”没有 %s。"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:100
 #, php-format
 msgid "The extension \"%s\" is already the latest version."
-msgstr ""
+msgstr "扩展“%s”已是最新版本。"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:80
 #, php-format
 msgid "The extension \"%s\" is disabled and stops loading from the next request on."
-msgstr ""
+msgstr "扩展“%s”已停用，从下一个请求起不再加载。"
 
 #: src/Environments/Application/Extensions/ExtensionInstaller.php:123
 #, php-format
 msgid "The extension \"%s\" is enabled; disable it before removing it."
-msgstr ""
+msgstr "扩展“%s”已启用；请先停用再删除。"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:96
 #, php-format
 msgid "The extension \"%s\" is not installed."
-msgstr ""
+msgstr "扩展“%s”未安装。"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:178
 #, php-format
 msgid "The extension \"%s\" is part of, or depends on, a dependency cycle."
-msgstr ""
+msgstr "扩展“%s”属于或依赖于一个依赖循环。"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:389
 #, php-format
 msgid "The extension \"%s\" is required by %s; disable that first."
-msgstr ""
+msgstr "扩展“%s”被 %s 依赖；请先停用后者。"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:152
 #, php-format
 msgid "The extension \"%s\" is up to date."
-msgstr ""
+msgstr "扩展“%s”已是最新。"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:147
 #, php-format
 msgid "The extension \"%s\" requires \"%s\", which is not enabled or cannot be loaded."
-msgstr ""
+msgstr "扩展“%s”需要“%s”，但后者未启用或无法加载。"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:124 src/Environments/Application/Extensions/ExtensionManager.php:335
 #, php-format
 msgid "The extension \"%s\" requires app version %s or later; this is %s."
-msgstr ""
+msgstr "扩展“%s”需要应用版本 %s 或更高；当前为 %s。"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:224
 #, php-format
 msgid "The extension \"%s\" was removed."
-msgstr ""
+msgstr "扩展“%s”已删除。"
 
 #: src/FileSystem/Repository.php:890
 msgid "The extension for the for this image could not be trusted."
-msgstr ""
+msgstr "无法信任此图片的文件扩展名。"
 
 #: src/Environments/Application/Extensions/Extension.php:165
 #, php-format
 msgid "The extension slug \"%s\" does not match its folder \"%s\"."
-msgstr ""
+msgstr "扩展 slug“%s”与其文件夹“%s”不匹配。"
 
 #: src/Environments/Application/Extensions/Extension.php:161
 #, php-format
 msgid "The extension slug \"%s\" is invalid: use lowercase letters, digits and hyphens."
-msgstr ""
+msgstr "扩展 slug“%s”无效：请使用小写字母、数字和连字符。"
 
 #: src/RESTAPI/Versions/V1.php:695
 msgid "The features the license includes; a list or a comma-separated string."
-msgstr ""
+msgstr "许可证包含的功能；列表或逗号分隔的字符串。"
 
 #: src/Exceptions/FileRequestException.php:65
 msgid "The file MIME type does not match the expected type or is disallowed."
-msgstr ""
+msgstr "文件 MIME 类型与预期类型不符或不被允许。"
 
 #: src/Exceptions/FileRequestException.php:211
 msgid "The file appears to be corrupted, incomplete, or unreadable."
-msgstr ""
+msgstr "文件似乎已损坏、不完整或无法读取。"
 
 #: src/Exceptions/FileRequestException.php:179
 msgid "The file does not meet the required validation criteria (e.g., missing manifest or invalid structure)."
-msgstr ""
+msgstr "文件不符合所需的验证标准（例如缺少清单或结构无效）。"
 
 #: src/Exceptions/FileRequestException.php:133
 msgid "The file exists but cannot be read or written due to insufficient permissions."
-msgstr ""
+msgstr "文件存在，但由于权限不足无法读取或写入。"
 
 #: src/Exceptions/FileRequestException.php:174
 msgid "The file failed integrity checks (e.g., corrupted or tampered)."
-msgstr ""
+msgstr "文件未通过完整性检查（例如已损坏或被篡改）。"
 
 #: src/Exceptions/FileRequestException.php:81
 msgid "The file upload process encountered an unexpected error."
-msgstr ""
+msgstr "文件上传过程中出现意外错误。"
 
 #: templates/admin/contents/system/updates.php:313
 #, php-format
 msgid "The files of version %s, from %s. Kept for %d days, until the next update, or until you delete it."
-msgstr ""
+msgstr "版本 %s 的文件，来自 %s。保留 %d 天，直到下次更新或您将其删除。"
 
 #: src/Environments/Application/Update/UpdateRunner.php:377
 msgid "The finish process could not be started."
-msgstr ""
+msgstr "无法启动完成流程。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:233
 msgid "The folder that holds the database file. Leave empty to use the application&rsquo;s storage folder. Keep it outside your public web folder."
-msgstr ""
+msgstr "存放数据库文件的文件夹。留空则使用应用的存储文件夹。请将其放在公共 Web 文件夹之外。"
 
 #: src/Cache/CacheRequestController.php:367 src/Email/RequestController.php:174
 #, php-format
 msgid "The following fields are required: %s."
-msgstr ""
+msgstr "以下字段为必填项：%s。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:401
 msgid "The form expired. Please try again."
-msgstr ""
+msgstr "表单已过期，请重试。"
 
 #: src/RESTAPI/Versions/V1.php:844
 msgid "The full name of the application author."
-msgstr ""
+msgstr "应用作者的全名。"
 
 #: templates/admin/contents/system/signing-key.php:200
 msgid "The generated value is the private key. Anyone who has it can sign packages your users' apps will trust. Keep a backup somewhere safe: if it is lost, every app has to be updated to trust a new key."
-msgstr ""
+msgstr "生成的值是私钥。任何拥有它的人都可以签署您用户的应用会信任的软件包。请将备份保存在安全的地方：一旦丢失，所有应用都必须更新以信任新的密钥。"
 
 #: src/Environments/Application/Update/PackageVerifier.php:87
 msgid "The hosting attestation does not name this hosted app and package."
-msgstr ""
+msgstr "托管证明中未列出此托管应用和软件包。"
 
 #: src/ClientDashboard/ActionHandlers/AppActions.php:163
 msgid "The image is uploaded."
-msgstr ""
+msgstr "图片已上传。"
 
 #: src/Environments/Application/Boot/BootModeResolver.php:211
 msgid "The installation state could not be read."
-msgstr ""
+msgstr "无法读取安装状态。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:129
 msgid "The installer hit an unexpected error. Details were written to the error log. Fix the cause, then reload this page; completed steps are not repeated."
-msgstr ""
+msgstr "安装程序遇到意外错误。详细信息已写入错误日志。请修复问题后重新加载此页面；已完成的步骤不会重复执行。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:401
 msgid "The installer is closed and the setup token has been deleted."
-msgstr ""
+msgstr "安装程序已关闭，安装令牌已删除。"
 
 #: src/Security/Organizations/OrganizationInvitations.php:139
 msgid "The invitation could not be saved. Please try again."
-msgstr ""
+msgstr "无法保存邀请，请重试。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:324
 msgid "The invitation is revoked; its link no longer works."
-msgstr ""
+msgstr "邀请已撤销；其链接不再有效。"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:59
 msgid "The invitation payload is incomplete."
-msgstr ""
+msgstr "邀请数据不完整。"
 
 #. translators: %s: a locale code such as fr_FR.
 #: src/SettingsAPI/SettingsController.php:383
 #, php-format
 msgid "The language \"%s\" is not installed."
-msgstr ""
+msgstr "未安装语言“%s”。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1394
 msgid "The last check for updates failed: "
-msgstr ""
+msgstr "上次检查更新失败： "
 
 #: src/Environments/Application/Health/SystemHealth.php:1404
 #, php-format
 msgid "The last check for updates was on %s; the scheduler checks every 12 hours."
-msgstr ""
+msgstr "上次检查更新的时间为 %s；调度器每 12 小时检查一次。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1433
 #, php-format
 msgid "The last queued %s, at %s, failed."
-msgstr ""
+msgstr "最近一次排队的%s（%s）失败。"
 
 #: src/RESTAPI/Handlers/Licenses.php:106 src/RESTAPI/Handlers/Licenses.php:218 src/RESTAPI/Handlers/Licenses.php:304 src/RESTAPI/Handlers/Licenses.php:388
 #: src/RESTAPI/Handlers/Licenses.php:475
 msgid "The license could not be found. The license key or service ID may be incorrect."
-msgstr ""
+msgstr "找不到许可证。许可证密钥或服务 ID 可能不正确。"
 
 #: src/Monetization/LicensingService.php:126 src/Monetization/LicensingService.php:235
 msgid "The license could not be saved."
-msgstr ""
+msgstr "无法保存许可证。"
 
 #: src/Monetization/License.php:1395 src/Monetization/License.php:1408 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
 #: src/Monetization/LicensingService.php:191
 msgid "The license does not exist."
-msgstr ""
+msgstr "许可证不存在。"
 
 #: src/RESTAPI/Handlers/Licenses.php:169
 msgid "The license is active on this domain, but a download token could not be issued. Activate again to get one."
-msgstr ""
+msgstr "许可证在此域名上已激活，但无法签发下载令牌。请重新激活以获取令牌。"
 
 #: src/Monetization/License.php:1415
 #, php-format
 msgid "The license is already activated on %s."
-msgstr ""
+msgstr "许可证已在 %s 上激活。"
 
 #: src/RESTAPI/Handlers/Licenses.php:226
 msgid "The license is already deactivated. Its owner must resolve it."
-msgstr ""
+msgstr "许可证已停用。需由其所有者处理。"
 
 #: src/Admin/ContentHandlers/LicensePage.php:368
 msgid "The license is delivered to this address. A registered user with this verified address is linked to the license."
-msgstr ""
+msgstr "许可证将发送到此地址。使用此已验证地址的注册用户会关联到该许可证。"
 
 #: src/RESTAPI/Handlers/Licenses.php:310
 #, php-format
 msgid "The license is not activated on %s."
-msgstr ""
+msgstr "许可证未在 %s 上激活。"
 
 #: themes/default/templates/pages/purchase.php:75
 msgid "The license is sent here."
-msgstr ""
+msgstr "许可证将发送到这里。"
 
 #. translators: %s: buyer's email address.
 #: themes/default/templates/pages/purchase.php:78
 #, php-format
 msgid "The license is sent to %s and added to your account."
-msgstr ""
+msgstr "许可证已发送至 %s 并添加到您的账户。"
 
 #: src/RESTAPI/Versions/V1.php:580
 msgid "The license key to activate"
-msgstr ""
+msgstr "要激活的许可证密钥"
 
 #: src/RESTAPI/Versions/V1.php:600
 msgid "The license key to deactivate."
-msgstr ""
+msgstr "要停用的许可证密钥。"
 
 #: src/RESTAPI/Versions/V1.php:924
 msgid "The license key to reauthenticate."
-msgstr ""
+msgstr "要重新认证的许可证密钥。"
 
 #: src/RESTAPI/Versions/V1.php:625
 msgid "The license key to uninstall."
-msgstr ""
+msgstr "要卸载的许可证密钥。"
 
 #: src/RESTAPI/Versions/V1.php:720
 msgid "The license key to validate."
-msgstr ""
+msgstr "要验证的许可证密钥。"
 
 #: src/Exceptions/RequestException.php:118
 msgid "The license or subscription for this request has been suspended."
-msgstr ""
+msgstr "此请求的许可证或订阅已被暂停。"
 
 #: src/RESTAPI/Versions/V1.php:705
 msgid "The license status; empty to calculate it from its dates. \"revoked\" needs the monetization.license.revoke capability."
-msgstr ""
+msgstr "许可证状态；留空则根据其日期计算。“revoked”需要 monetization.license.revoke 权限。"
 
 #: src/Monetization/DownloadToken.php:504
 msgid "The license this download token was issued for no longer exists."
-msgstr ""
+msgstr "签发此下载令牌的许可证已不存在。"
 
 #: src/RESTAPI/Handlers/Licenses.php:352
 #, php-format
 msgid "The license uninstalled for the domain \"%s\" successfully."
-msgstr ""
+msgstr "已成功为域名“%s”卸载许可证。"
 
 #: src/Monetization/Controller.php:307 src/Monetization/LicensingService.php:101
 msgid "The licensee email is required."
-msgstr ""
+msgstr "被许可人邮箱为必填项。"
 
 #: src/Server/DevServer.php:594
 #, php-format
 msgid "The log directory %s could not be created."
-msgstr ""
+msgstr "无法创建日志目录 %s。"
 
 #: src/FileSystem/Repository.php:1209
 msgid "The main application package cannot be deleted as an artifact."
-msgstr ""
+msgstr "主应用包不能作为制品删除。"
 
 #: src/FileSystem/Repository.php:1114
 msgid "The main application package cannot be renamed as an artifact."
-msgstr ""
+msgstr "主应用包不能作为制品重命名。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:751
 #, php-format
 msgid "The marketplace announced \"%s\" %s, but the package holds \"%s\" %s. Nothing was installed."
-msgstr ""
+msgstr "市场公布的是“%s”%s，但软件包中是“%s”%s。未安装任何内容。"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:173
 #, php-format
 msgid "The marketplace could not be asked about %d extension(s); see the status of each card."
-msgstr ""
+msgstr "无法向市场查询 %d 个扩展；请查看每张卡片的状态。"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:149
 #, php-format
 msgid "The marketplace could not be asked about %d theme(s); see the Version column."
-msgstr ""
+msgstr "无法向市场查询 %d 个主题；请查看“版本”列。"
 
 #: assets/js/admin/modules.js:396
 #, javascript-format
 msgid "The marketplace publishes no %ss yet."
-msgstr ""
+msgstr "市场尚未发布任何%s。"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:202 src/Admin/ActionHandlers/ThemeManagement.php:178
 msgid "The marketplace was read."
-msgstr ""
+msgstr "已读取市场。"
 
 #: src/Security/Organizations/OrganizationService.php:269
 msgid "The member could not be removed. Please try again."
-msgstr ""
+msgstr "无法移除成员，请重试。"
 
 #: src/Security/RequestController.php:520
 msgid "The member must belong to an existing organization."
-msgstr ""
+msgstr "成员必须属于现有组织。"
 
 #: src/Security/RequestController.php:511
 #, php-format
 msgid "The member status must be one of %s"
-msgstr ""
+msgstr "成员状态必须是以下之一：%s"
 
 #: src/Security/RequestController.php:528
 msgid "The member subject must be an existing user."
-msgstr ""
+msgstr "成员主体必须是现有用户。"
 
 #: src/Messaging/MessageController.php:53
 msgid "The message body is required."
-msgstr ""
+msgstr "消息正文为必填项。"
 
 #: src/Messaging/MessageController.php:47
 msgid "The message subject is required."
-msgstr ""
+msgstr "消息主题为必填项。"
 
 #: assets/js/admin/modules.js:130
 msgid "The module could not be installed."
-msgstr ""
+msgstr "无法安装模块。"
 
 #: src/Environments/Application/Update/UpdateServer.php:316
 msgid "The module release is not a release from release()."
-msgstr ""
+msgstr "模块版本并非来自 release()。"
 
 #: src/Security/Organizations/OrganizationService.php:425
 #, php-format
 msgid "The name can be at most %d characters long."
-msgstr ""
+msgstr "名称最多 %d 个字符。"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:609
 msgid "The name of the application"
-msgstr ""
+msgstr "应用名称"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:130
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is already used by \"%s\"."
-msgstr ""
+msgstr "扩展“%2$s”的命名空间“%1$s”已被“%3$s”使用。"
 
 #: src/Environments/Application/Extensions/ExtensionManager.php:358
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is already used by the enabled extension \"%s\"."
-msgstr ""
+msgstr "扩展“%2$s”的命名空间“%1$s”已被已启用的扩展“%3$s”使用。"
 
 #: src/Environments/Application/Extensions/Extension.php:187
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is invalid: it must end with a backslash."
-msgstr ""
+msgstr "扩展“%2$s”的命名空间“%1$s”无效：必须以反斜杠结尾。"
 
 #: src/Environments/Application/Extensions/Extension.php:191
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is reserved by the app."
-msgstr ""
+msgstr "扩展“%2$s”的命名空间“%1$s”为应用保留。"
 
 #: src/FileSystem/Repository.php:242
 msgid "The new filename cannot be empty."
-msgstr ""
+msgstr "新文件名不能为空。"
 
 #: src/HostedApps/HostingController.php:939
 msgid "The new slug is required."
-msgstr ""
+msgstr "新 slug 为必填项。"
 
 #: src/Environments/Application/Update/Updater.php:598
 #, php-format
 msgid "The new version needs PHP %s; this server runs %s."
-msgstr ""
+msgstr "新版本需要 PHP %s；此服务器运行的是 %s。"
 
 #: src/Environments/Application/Update/Updater.php:607
 #, php-format
 msgid "The new version needs these PHP extensions: %s."
-msgstr ""
+msgstr "新版本需要以下 PHP 扩展：%s。"
 
 #: src/Monetization/PurchaseRequestService.php:303
 msgid "The note could not be saved. Please try again."
-msgstr ""
+msgstr "无法保存备注，请重试。"
 
 #: src/RESTAPI/Versions/V1.php:690
 msgid "The number of domains the license can be activated on; -1 for unlimited."
-msgstr ""
+msgstr "许可证可激活的域名数量；-1 表示不限。"
 
 #: src/Security/Organizations/OrganizationService.php:104
 msgid "The organization could not be created. Please try again."
-msgstr ""
+msgstr "无法创建组织，请重试。"
 
 #: src/Security/Organizations/OrganizationService.php:166
 msgid "The organization could not be deleted. Please try again."
-msgstr ""
+msgstr "无法删除组织，请重试。"
 
 #: src/Security/Organizations/OrganizationService.php:138
 msgid "The organization could not be renamed. Please try again."
-msgstr ""
+msgstr "无法重命名组织，请重试。"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:65
 msgid "The organization no longer exists."
-msgstr ""
+msgstr "该组织已不存在。"
 
 #: src/Environments/Application/Update/Updater.php:187
 msgid "The package contents do not match its manifest: "
-msgstr ""
+msgstr "软件包内容与其清单不一致： "
 
 #: src/Environments/Application/Update/PackageVerifier.php:80
 msgid "The package has no checksums file; only the file list inside it was checked."
-msgstr ""
+msgstr "软件包没有校验和文件；仅检查了其中的文件列表。"
 
 #: src/Environments/Application/Update/Updater.php:181
 msgid "The package has no system/ directory."
-msgstr ""
+msgstr "软件包中没有 system/ 目录。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:648
 #, php-format
 msgid "The package holds %s %s; every check passed."
-msgstr ""
+msgstr "软件包包含 %s %s；所有检查均已通过。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:714
 #, php-format
 msgid "The package holds a link (%s); links are not allowed in a %s package."
-msgstr ""
+msgstr "软件包包含一个链接（%s）；%s 软件包中不允许链接。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:708
 #, php-format
 msgid "The package holds an unexpected path (%s): a %s package holds one folder named after the %s. Nothing was installed."
-msgstr ""
+msgstr "软件包包含意外路径（%s）：%s 软件包应只包含一个以该%s命名的文件夹。未安装任何内容。"
 
 #: src/Environments/Application/Update/Updater.php:683
 #, php-format
 msgid "The package holds an unexpected path (%s); it was not extracted."
-msgstr ""
+msgstr "软件包包含意外路径（%s）；未解压该路径。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:792
 #, php-format
 msgid "The package holds the PHP file %s in assets/; assets are served as they are, so PHP is not allowed there."
-msgstr ""
+msgstr "软件包在 assets/ 中包含 PHP 文件 %s；资源会按原样提供，因此不允许在其中放置 PHP。"
 
 #: src/Environments/Application/Theming/ThemeInstaller.php:152
 #, php-format
 msgid "The package holds the PHP file %s outside templates/; PHP runs only from templates/."
-msgstr ""
+msgstr "软件包在 templates/ 之外包含 PHP 文件 %s；PHP 只能从 templates/ 运行。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:788
 #, php-format
 msgid "The package holds the server configuration file %s in assets/; assets are served as they are, so it is not allowed."
-msgstr ""
+msgstr "软件包在 assets/ 中包含服务器配置文件 %s；资源会按原样提供，因此不允许。"
 
 #: src/Environments/Application/Update/Updater.php:161
 #, php-format
 msgid "The package is %s for \"%s\"; this installation needs %s for \"%s\"."
-msgstr ""
+msgstr "软件包是用于“%2$s”的%1$s；此安装需要用于“%4$s”的%3$s。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:638
 #, php-format
 msgid "The package is version %s of \"%s\", older than the installed %s. Downgrades are not supported."
-msgstr ""
+msgstr "软件包是“%2$s”的 %1$s 版本，比已安装的 %3$s 旧。不支持降级。"
 
 #: src/Environments/Application/Update/Updater.php:171
 #, php-format
 msgid "The package is version %s, older than the installed %s. Downgrades are not supported."
-msgstr ""
+msgstr "软件包版本为 %s，比已安装的 %s 旧。不支持降级。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:306
 #, php-format
 msgid "The package of %s \"%s\" could not be renamed to \"%s.zip\"."
-msgstr ""
+msgstr "无法将%s“%s”的软件包重命名为“%s.zip”。"
 
 #: src/HostedApps/AbstractHostedApp.php:1451
 #, php-format
 msgid "The package of this %s is not stored on this server."
-msgstr ""
+msgstr "此%s的软件包未存储在此服务器上。"
 
 #: src/Environments/Application/Update/PackageVerifier.php:96
 msgid "The package signature is missing or invalid; it may not come from the publisher. Nothing was changed."
-msgstr ""
+msgstr "软件包签名缺失或无效；它可能并非来自发布者。未做任何更改。"
 
 #: src/Environments/Application/Update/PackageVerifier.php:101
 msgid "The package signature was not verified (--trust-unsigned)."
-msgstr ""
+msgstr "未验证软件包签名（--trust-unsigned）。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:720
 #, php-format
 msgid "The package unpacks to more than %d MB; a %s package must be smaller."
-msgstr ""
+msgstr "软件包解压后超过 %d MB；%s 软件包必须更小。"
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:122
 msgid "The package was downloaded from {{package_source}} and verified before it was installed."
-msgstr ""
+msgstr "软件包从 {{package_source}} 下载，并在安装前经过验证。"
 
 #: src/FileSystem/Repository.php:358
 #, php-format
 msgid "The package was stored but its attestation could not be updated: %s"
-msgstr ""
+msgstr "软件包已存储，但无法更新其证明：%s"
 
 #: assets/js/admin/modules.js:114
 msgid "The package will be installed even if its signature is missing or invalid. Continue only for a package you built or received directly."
-msgstr ""
+msgstr "即使签名缺失或无效，也将安装此软件包。仅对您自己构建或直接收到的软件包继续。"
 
 #: src/Core/Pdf/PdfRasterizer.php:163
 msgid "The page directory could not be created."
-msgstr ""
+msgstr "无法创建页面目录。"
 
 #: src/Environments/Application/Theming/ThemeInstaller.php:142 src/Environments/Application/Theming/ThemeManager.php:191
 #, php-format
 msgid "The parent \"%s\" of the theme \"%s\" has a parent itself; only one level is supported."
-msgstr ""
+msgstr "主题“%2$s”的父主题“%1$s”本身也有父主题；仅支持一层。"
 
 #: src/Environments/Application/Theming/Theme.php:126
 #, php-format
 msgid "The parent \"%s\" of the theme \"%s\" is invalid."
-msgstr ""
+msgstr "主题“%2$s”的父主题“%1$s”无效。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:359
 msgid "The passkey could not sign you in. Try again, or sign in with your password."
-msgstr ""
+msgstr "无法使用通行密钥登录。请重试，或使用密码登录。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:703
 msgid "The password could not be changed. Please try again."
-msgstr ""
+msgstr "无法更改密码，请重试。"
 
 #: src/Environments/Application/Installation/AppInstaller.php:920
 #, php-format
 msgid "The password must be at least %d characters long."
-msgstr ""
+msgstr "密码长度至少为 %d 个字符。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:226
 msgid "The password of that database user. It is stored in the <code>.env</code> file."
-msgstr ""
+msgstr "该数据库用户的密码。它存储在 <code>.env</code> 文件中。"
 
 #: src/Environments/WordPress/IdentityService.php:411 src/Exceptions/RequestException.php:86 src/Security/Authentication/UserAuthenticator.php:85
 msgid "The password you entered is incorrect."
-msgstr ""
+msgstr "您输入的密码不正确。"
 
 #: src/Exceptions/RequestException.php:49
 msgid "The please provide the missing request parameter."
-msgstr ""
+msgstr "请提供缺失的请求参数。"
 
 #: src/Exceptions/RequestException.php:54
 msgid "The please provide the required file."
-msgstr ""
+msgstr "请提供所需的文件。"
 
 #: src/FileSystem/WPPluginRepository.php:51
 msgid "The plugin ZIP file must contain a readme.txt file."
-msgstr ""
+msgstr "插件 ZIP 文件必须包含 readme.txt 文件。"
 
 #: src/RESTAPI/Handlers/WPPlugins.php:73
 msgid "The plugin does not exist, please check the typography or the plugin slug."
-msgstr ""
+msgstr "插件不存在，请检查拼写或插件 slug。"
 
 #: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:95 assets/js/i18n.js:213
 msgid "The preference could not be saved."
-msgstr ""
+msgstr "无法保存偏好设置。"
 
 #. translators: %s: comma-separated list of preference names.
 #: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:72
 #, php-format
 msgid "The preference must be one of: %s."
-msgstr ""
+msgstr "偏好设置必须是以下之一：%s。"
 
 #: src/Monetization/Providers/RemoteProvider.php:89
 msgid "The price as buyers read it, e.g. \"$49 / year\". Shown as is."
-msgstr ""
+msgstr "买家看到的价格，例如“$49 / 年”。按原样显示。"
 
 #: src/Monetization/Providers/LocalProvider.php:84
 msgid "The price as buyers read it, e.g. \"₦25,000 / year\". Shown as is; buyers pay this amount."
-msgstr ""
+msgstr "买家看到的价格，例如“₦25,000 / 年”。按原样显示；买家支付此金额。"
 
 #: src/Monetization/LicensingService.php:79
 #, php-format
 msgid "The pricing tier \"%s\" is archived and issues no new licenses."
-msgstr ""
+msgstr "定价层级“%s”已归档，不再签发新许可证。"
 
 #: src/Monetization/LicensingService.php:83
 #, php-format
 msgid "The pricing tier \"%s\" is not sold by the provider \"%s\"."
-msgstr ""
+msgstr "提供商“%2$s”不销售定价层级“%1$s”。"
 
 #: src/Monetization/LicensingService.php:75
 msgid "The pricing tier does not exist."
-msgstr ""
+msgstr "定价层级不存在。"
 
 #: src/Monetization/PurchaseRequestService.php:335
 msgid "The pricing tier of this request was deleted, so no license can be issued from it. Reject the request instead."
-msgstr ""
+msgstr "此请求的定价层级已被删除，因此无法据此签发许可证。请改为拒绝该请求。"
 
 #: src/Core/Process/Process.php:97
 #, php-format
 msgid "The program \"%s\" could not be started."
-msgstr ""
+msgstr "无法启动程序“%s”。"
 
 #: src/Exceptions/RequestException.php:71
 msgid "The provided API key or token is incorrect or expired."
-msgstr ""
+msgstr "提供的 API 密钥或令牌不正确或已过期。"
 
 #: src/FileSystem/DownloadsApi/FileRequestController.php:506
 msgid "The provided URL is not valid."
-msgstr ""
+msgstr "提供的 URL 无效。"
 
 #: src/Exceptions/RequestException.php:93
 msgid "The provided credentials do not grant access to this resource."
-msgstr ""
+msgstr "提供的凭据无权访问此资源。"
 
 #: src/Core/UploadedFile.php:449
 msgid "The provided directory name is not safe."
-msgstr ""
+msgstr "提供的目录名称不安全。"
 
 #: src/Exceptions/FileRequestException.php:88
 msgid "The provided download token is invalid, expired, or does not match the file."
-msgstr ""
+msgstr "提供的下载令牌无效、已过期或与文件不匹配。"
 
 #: src/Exceptions/RequestException.php:181
 msgid "The provided email is not available."
-msgstr ""
+msgstr "提供的邮箱不可用。"
 
 #: src/Security/RequestController.php:848
 msgid "The provided member does not belong to this organization, try refreshing the current page."
-msgstr ""
+msgstr "所提供的成员不属于此组织，请尝试刷新当前页面。"
 
 #: src/Security/RequestController.php:844
 msgid "The provided orgaization does exist."
-msgstr ""
+msgstr "所提供的组织不存在。"
 
 #: src/Security/RequestController.php:136
 msgid "The provided security entity is not supported."
-msgstr ""
+msgstr "不支持所提供的安全实体。"
 
 #: src/Exceptions/RequestException.php:186
 msgid "The provided slug for this application is not available."
-msgstr ""
+msgstr "为此应用提供的 slug 不可用。"
 
 #: src/Security/OwnerSubjects/Organization.php:316
 msgid "The provided slug is not available."
-msgstr ""
+msgstr "提供的 slug 不可用。"
 
 #: src/Monetization/Controller.php:418
 #, php-format
 msgid "The provider \"%s\" is not supported."
-msgstr ""
+msgstr "不支持提供商“%s”。"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1116
 #, php-format
 msgid "The public assets are not published: %s"
-msgstr ""
+msgstr "公共资源未发布：%s"
 
 #: src/Environments/Application/Update/UpdateRunner.php:448
 #, php-format
 msgid "The public assets could not be republished: %s Run `smliser installer link:assets --force`."
-msgstr ""
+msgstr "无法重新发布公共资源：%s 请运行 `smliser installer link:assets --force`。"
 
 #: src/Environments/Application/Theming/CorePages.php:180
 msgid "The public key apps use to check that the packages they download from this site are genuine."
-msgstr ""
+msgstr "应用用于检查从此站点下载的软件包是否真实的公钥。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:861
 #, php-format
 msgid "The published assets in public/%s could not be removed: %s"
-msgstr ""
+msgstr "无法删除 public/%s 中已发布的资源：%s"
 
 #: src/Monetization/PurchaseRequestService.php:540 src/Monetization/PurchaseRequestService.php:543
 msgid "The purchase request could not be deleted. Please try again."
-msgstr ""
+msgstr "无法删除购买请求，请重试。"
 
 #: src/Background/Jobs/Purchases/PurchaseRequestEmailJob.php:67 src/Background/Jobs/Purchases/RasterizeReceiptJob.php:41
 msgid "The purchase request does not exist."
-msgstr ""
+msgstr "购买请求不存在。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1305
 msgid "The queue worker is running, but nothing runs the scheduled tasks, so update checks, license expiry and clean-up do not happen."
-msgstr ""
+msgstr "队列工作进程正在运行，但没有任何东西运行计划任务，因此不会进行更新检查、许可证到期处理和清理。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1282
 msgid "The queue worker is running, but scheduled tasks need an automatic scheduler trigger."
-msgstr ""
+msgstr "队列工作进程正在运行，但计划任务需要一个自动调度触发器。"
 
 #: src/Background/BackgroundSetup.php:145
 msgid "The queue worker runs jobs, but no automatic trigger runs scheduled tasks: add the scheduler cron job below."
-msgstr ""
+msgstr "队列工作进程会运行任务，但没有自动触发器运行计划任务：请添加下方的调度器 cron 任务。"
 
 #: templates/admin/contents/license/purchase-request.php:114
 #, php-format
 msgid "The receipt (%s) was deleted after the receipt retention period. See the notes."
-msgstr ""
+msgstr "凭证（%s）已在凭证保留期后删除。请查看备注。"
 
 #: src/Monetization/PurchaseRequestService.php:790
 msgid "The receipt PDF contains scripts or embedded files, which receipts do not need. Please export or print it to a plain PDF and upload that."
-msgstr ""
+msgstr "凭证 PDF 包含脚本或嵌入文件，而凭证并不需要这些。请将其导出或打印为普通 PDF 后再上传。"
 
 #: src/Monetization/PurchaseRequestService.php:781
 msgid "The receipt PDF is incomplete or damaged. Please upload it again."
-msgstr ""
+msgstr "凭证 PDF 不完整或已损坏。请重新上传。"
 
 #: assets/js/admin/purchase-review.js:90
 msgid "The receipt could not be loaded."
-msgstr ""
+msgstr "无法加载凭证。"
 
 #: src/Monetization/PurchaseRequestService.php:578
 msgid "The receipt file could not be deleted."
-msgstr ""
+msgstr "无法删除凭证文件。"
 
 #: templates/admin/contents/license/purchase-request.php:116
 msgid "The receipt file is missing from storage."
-msgstr ""
+msgstr "存储中缺少凭证文件。"
 
 #: src/Monetization/PurchaseRequestService.php:488
 msgid "The receipt file is missing."
-msgstr ""
+msgstr "凭证文件缺失。"
 
 #: src/Monetization/PurchaseRequestService.php:587
 msgid "The receipt file was deleted, but the request could not be updated."
-msgstr ""
+msgstr "凭证文件已删除，但无法更新请求。"
 
 #: src/Monetization/PurchaseRequestService.php:755
 msgid "The receipt image could not be read. Please upload it again or send a PDF."
-msgstr ""
+msgstr "无法读取凭证图片。请重新上传或发送 PDF。"
 
 #: src/Monetization/PurchaseRequestService.php:761
 #, php-format
 msgid "The receipt image is too large (%d × %d pixels). Please send a smaller image or a PDF."
-msgstr ""
+msgstr "凭证图片太大（%d × %d 像素）。请发送较小的图片或 PDF。"
 
 #: src/Monetization/PurchaseRequestService.php:482
 msgid "The receipt is not a PDF."
-msgstr ""
+msgstr "凭证不是 PDF。"
 
 #: src/Monetization/PurchaseRequestService.php:726
 #, php-format
 msgid "The receipt must be %d MB or smaller."
-msgstr ""
+msgstr "凭证大小不能超过 %d MB。"
 
 #: src/Monetization/PurchaseRequestService.php:732
 #, php-format
 msgid "The receipt must be a %s file."
-msgstr ""
+msgstr "凭证必须是 %s 文件。"
 
 #: src/Monetization/PurchaseRequestService.php:567
 msgid "The receipt of a pending request is kept until it is decided."
-msgstr ""
+msgstr "待处理请求的凭证会保留到作出决定为止。"
 
 #: src/Email/Templates/Purchases/PurchaseRequestMessageEmail.php:63
 msgid ""
 "The receipt you sent is hard to read.\n"
 "Please reply to this email with a clearer copy."
 msgstr ""
+"您发送的凭证难以辨认。\n"
+"请回复此邮件并附上更清晰的副本。"
 
 #: src/Environments/Application/Health/SiteProbe.php:144
 msgid "The redirects did not end at a page. Check for a redirect loop between the web server and the application URL."
-msgstr ""
+msgstr "重定向未落到某个页面。请检查 Web 服务器与应用 URL 之间是否存在重定向循环。"
 
 #: assets/js/admin/support-report.js:64
 msgid "The report could not be built."
-msgstr ""
+msgstr "无法生成报告。"
 
 #: src/Environments/WordPress/Dispatcher.php:503
 #, php-format
 msgid "The repository has been migrated from version \"%s\" to version \"%s\"."
-msgstr ""
+msgstr "存储库已从版本“%s”迁移到版本“%s”。"
 
 #: src/Exceptions/RequestException.php:39
 msgid "The request body could not be parsed as valid JSON."
-msgstr ""
+msgstr "无法将请求体解析为有效的 JSON。"
 
 #: src/Exceptions/RequestException.php:207
 msgid "The request content type is not supported by this endpoint."
-msgstr ""
+msgstr "此端点不支持该请求内容类型。"
 
 #: src/Exceptions/RequestException.php:171
 msgid "The request could not be completed due to a resource conflict."
-msgstr ""
+msgstr "由于资源冲突，无法完成请求。"
 
 #: src/Monetization/PurchaseRequestService.php:389
 msgid "The request could not be rejected. Please try again."
-msgstr ""
+msgstr "无法拒绝请求，请重试。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:300
 msgid "The request did not come from this site. Reload the page and try again."
-msgstr ""
+msgstr "该请求并非来自此站点。请重新加载页面后重试。"
 
 #: assets/js/admin/background.js:71 assets/js/admin/maintenance.js:100 assets/js/admin/modules.js:97 assets/js/admin/updates.js:81
 msgid "The request failed."
-msgstr ""
+msgstr "请求失败。"
 
 #: assets/js/page-forms.js:84 assets/js/page-forms.js:90
 msgid "The request failed. Please try again."
-msgstr ""
+msgstr "请求失败，请重试。"
 
 #: src/Exceptions/FileRequestException.php:55
 msgid "The request format or parameters provided are improperly structured."
-msgstr ""
+msgstr "请求格式或参数结构不正确。"
 
 #: src/Environments/Application/Web/HttpDispatcher.php:1086
 msgid "The request method is not allowed on this server."
-msgstr ""
+msgstr "此服务器不允许该请求方法。"
 
 #: src/Exceptions/RequestException.php:157
 msgid "The request method is not supported for this resource."
-msgstr ""
+msgstr "此资源不支持该请求方法。"
 
 #: src/Exceptions/RequestException.php:200
 msgid "The request payload exceeded the maximum required size."
-msgstr ""
+msgstr "请求数据超出了允许的最大大小。"
 
 #: src/Exceptions/RequestException.php:81
 msgid "The request signature could not be verified."
-msgstr ""
+msgstr "无法验证请求签名。"
 
 #: assets/js/globals.js:338
 msgid "The request timed out."
-msgstr ""
+msgstr "请求超时。"
 
 #: assets/js/globals.js:341
 msgid "The request was aborted."
-msgstr ""
+msgstr "请求已中止。"
 
 #: assets/js/admin/repository-browser.js:1047
 msgid "The request was refused."
-msgstr ""
+msgstr "请求被拒绝。"
 
 #: src/Exceptions/RequestException.php:130
 msgid "The requested API endpoint does not exist."
-msgstr ""
+msgstr "请求的 API 端点不存在。"
 
 #: src/RESTAPI/Handlers/HostedApps.php:206 src/RESTAPI/Handlers/HostedApps.php:254
 msgid "The requested app could not be found"
-msgstr ""
+msgstr "找不到请求的应用"
 
 #: src/Exceptions/FileRequestException.php:140
 msgid "The requested application (slug or ID) was not found in the repository."
-msgstr ""
+msgstr "在存储库中未找到请求的应用（slug 或 ID）。"
 
 #: src/Exceptions/RequestException.php:140
 msgid "The requested application could not be located."
-msgstr ""
+msgstr "无法找到请求的应用。"
 
 #: src/Exceptions/RequestException.php:145
 msgid "The requested application has nothing to download."
-msgstr ""
+msgstr "请求的应用没有可下载的内容。"
 
 #: src/FileSystem/DownloadsApi/FileResponse.php:482
 msgid "The requested range cannot be satisfied."
-msgstr ""
+msgstr "无法满足请求的范围。"
 
 #: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
-msgstr ""
+msgstr "找不到请求的资源。"
 
 #: src/Exceptions/RequestException.php:135
 msgid "The requested resource could not be located."
-msgstr ""
+msgstr "无法定位请求的资源。"
 
 #: src/Exceptions/RequestException.php:150
 msgid "The resource owner does not exist."
-msgstr ""
+msgstr "资源所有者不存在。"
 
 #: src/Security/RequestController.php:343
 msgid "The resource owner for this service account was not found."
-msgstr ""
+msgstr "找不到此服务账户的资源所有者。"
 
 #: src/Security/Organizations/OrganizationService.php:233
 msgid "The role could not be changed. Please try again."
-msgstr ""
+msgstr "无法更改角色，请重试。"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:65
 msgid "The rollback did not complete. Check the Updates page."
-msgstr ""
+msgstr "回滚未完成。请查看“更新”页面。"
 
 #: src/Background/BackgroundSetup.php:144
 msgid "The scheduler runs scheduled tasks, but no queue worker processes dispatched jobs: start the queue worker below."
-msgstr ""
+msgstr "调度器会运行计划任务，但没有队列工作进程处理已分派的任务：请启动下方的队列工作进程。"
 
 #: src/RESTAPI/Versions/V1.php:771
 msgid "The search term"
-msgstr ""
+msgstr "搜索词"
 
 #: src/Security/Authentication/UserAccounts.php:232
 msgid "The selected account type is invalid."
-msgstr ""
+msgstr "所选账户类型无效。"
 
 #: src/Monetization/Controller.php:70
 msgid "The selected monetization provider does not exist."
-msgstr ""
+msgstr "所选的变现提供商不存在。"
 
 #: src/Server/DevServer.php:420
 #, php-format
 msgid "The server (process %d) could not be stopped."
-msgstr ""
+msgstr "无法停止服务器（进程 %d）。"
 
 #: src/Server/DevServer.php:414
 #, php-format
 msgid "The server (process %d) did not stop within %d seconds. Stop it anyway with force."
-msgstr ""
+msgstr "服务器（进程 %d）未在 %d 秒内停止。请强制停止。"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:217
 msgid "The server address could not be found. Check the server address; it is usually localhost."
-msgstr ""
+msgstr "找不到服务器地址。请检查服务器地址；通常为 localhost。"
 
 #: src/Server/DevServer.php:380
 #, php-format
 msgid "The server did not start listening. See %s."
-msgstr ""
+msgstr "服务器未开始监听。请参阅 %s。"
 
 #: src/Exceptions/RequestException.php:255
 msgid "The server does not support the action requested."
-msgstr ""
+msgstr "服务器不支持所请求的操作。"
 
 #: src/Exceptions/FileRequestException.php:196
 msgid "The server has insufficient storage space to complete the requested file operation."
-msgstr ""
+msgstr "服务器存储空间不足，无法完成所请求的文件操作。"
 
 #: src/Server/DevServer.php:292 src/Server/DevServer.php:371
 msgid "The server process could not be started."
-msgstr ""
+msgstr "无法启动服务器进程。"
 
 #: assets/js/globals.js:228
 msgid "The server response could not be read."
-msgstr ""
+msgstr "无法读取服务器响应。"
 
 #: assets/js/admin/site-health.js:146 assets/js/admin/site-health.js:169
 msgid "The server returned an unexpected response."
-msgstr ""
+msgstr "服务器返回了意外的响应。"
 
 #: src/Exceptions/RequestException.php:164
 msgid "The server timed out waiting for the request to complete."
-msgstr ""
+msgstr "服务器在等待请求完成时超时。"
 
 #: src/Server/DevServer.php:390
 #, php-format
 msgid "The server was started but could not be recorded in %s, so it was stopped again."
-msgstr ""
+msgstr "服务器已启动，但无法记录到 %s 中，因此已再次停止。"
 
 #: src/RESTAPI/Versions/V1.php:605 src/RESTAPI/Versions/V1.php:630 src/RESTAPI/Versions/V1.php:725 src/RESTAPI/Versions/V1.php:934
 msgid "The service ID associated with the license."
-msgstr ""
+msgstr "与许可证关联的服务 ID。"
 
 #: src/Monetization/Providers/RemoteProvider.php:74
 msgid "The service account the store uses. Only it can issue licenses from this tier."
-msgstr ""
+msgstr "商店使用的服务账户。只有它可以从此层级签发许可证。"
 
 #: src/RESTAPI/Versions/V1.php:575
 msgid "The service id associated with the license key"
-msgstr ""
+msgstr "与许可证密钥关联的服务 ID"
 
 #: src/Exceptions/RequestException.php:269
 msgid "The service is temporarily unavailable or under maintenance."
-msgstr ""
+msgstr "服务暂时不可用或正在维护。"
 
 #: assets/js/admin/updates.js:103
 msgid "The setting could not be saved."
-msgstr ""
+msgstr "无法保存设置。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:228
 msgid "The sign-in code could not be sent. Please try again."
-msgstr ""
+msgstr "无法发送登录验证码，请重试。"
 
 #: templates/admin/contents/system/signing-key.php:40
 msgid "The signing key is not valid"
-msgstr ""
+msgstr "签名密钥无效"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1106
 #, php-format
 msgid "The site address (%s) is not set in the .env file."
-msgstr ""
+msgstr "`.env` 文件中未设置站点地址（%s）。"
 
 #: src/Environments/Application/Health/SiteProbe.php:146
 msgid "The site answered with an unexpected status."
-msgstr ""
+msgstr "站点返回了意外的状态。"
 
 #: src/Environments/Application/Health/SiteProbe.php:142
 msgid "The site answers with a server error. Read the PHP and web server error logs; if it is in maintenance mode, finish or roll back the update."
-msgstr ""
+msgstr "站点返回服务器错误。请查看 PHP 和 Web 服务器错误日志；如果处于维护模式，请完成或回滚更新。"
 
 #: src/Environments/Application/Health/SiteProbe.php:143
 msgid "The site answers, but not with its page. Check the application URL (SMLISER_APP_URL) and the web server configuration."
-msgstr ""
+msgstr "站点有响应，但返回的不是其页面。请检查应用 URL（SMLISER_APP_URL）和 Web 服务器配置。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1179
 msgid "The site is in maintenance because an update is being installed or did not finish. Visitors cannot use the site."
-msgstr ""
+msgstr "站点处于维护状态，因为正在安装更新或更新未完成。访客无法使用站点。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1181
 #, php-format
 msgid "The site is in maintenance mode (%s). Visitors cannot use the site%s."
-msgstr ""
+msgstr "站点处于维护模式（%s）。访客无法使用站点%s。"
 
 #: templates/admin/contents/system/maintenance.php:40
 msgid "The site is in maintenance while an update is installed or finished. The update ends it; see the Updates page."
-msgstr ""
+msgstr "安装或完成更新期间站点处于维护状态。更新会结束维护；请查看“更新”页面。"
 
 #: templates/admin/contents/system/maintenance.php:46
 msgid "The site is in maintenance while it is being installed."
-msgstr ""
+msgstr "安装期间站点处于维护状态。"
 
 #: templates/admin/contents/system/maintenance.php:60
 msgid "The site is open"
-msgstr ""
+msgstr "站点已开放"
 
 #: src/RESTAPI/Handlers/Licenses.php:604
 msgid "The site secret is not valid for this domain."
-msgstr ""
+msgstr "站点密钥对此域名无效。"
 
 #: src/FileSystem/Repository.php:277
 #, php-format
 msgid "The slug \"%s\" belongs to a %s in the trash. Restore or permanently delete it, or change the %s name and try again."
-msgstr ""
+msgstr "slug“%s”属于回收站中的某个%s。请恢复或永久删除它，或者更改%s名称后重试。"
 
 #: src/HostedApps/AbstractHostedApp.php:1043
 #, php-format
 msgid "The slug \"%s\" cannot be used to store this %s."
-msgstr ""
+msgstr "slug“%s”不能用于存储此%s。"
 
 #: src/FileSystem/Repository.php:263
 #, php-format
 msgid "The slug \"%s\" is not available, you can change the %s name and try again."
-msgstr ""
+msgstr "slug“%s”不可用，您可以更改%s名称后重试。"
 
 #: src/HostedApps/HostedApplicationService.php:613
 #, php-format
 msgid "The slug \"%s\" is not available: %s."
-msgstr ""
+msgstr "slug“%s”不可用：%s。"
 
 #: assets/js/admin/repository-browser.js:987
 #, javascript-format
 msgid "The slug is the app's public name in download and update URLs. Licenses, tokens, analytics and messages move with it, but copies already installed elsewhere keep asking for \"%s\" and stop receiving updates."
-msgstr ""
+msgstr "slug 是应用在下载和更新 URL 中的公开名称。许可证、令牌、分析数据和消息会随之迁移，但已安装在其他地方的副本仍会请求“%s”，并将不再收到更新。"
 
 #: assets/js/admin/repository-browser.js:1012
 msgid "The slug was not changed"
-msgstr ""
+msgstr "slug 未更改"
 
 #: src/Environments/Application/Extensions/Extension.php:199
 #, php-format
 msgid "The source folder \"%s\" of the extension \"%s\" is invalid: use a relative folder."
-msgstr ""
+msgstr "扩展“%2$s”的源代码文件夹“%1$s”无效：请使用相对路径文件夹。"
 
 #: src/Environments/Application/Extensions/Extension.php:203
 #, php-format
 msgid "The source folder of the extension \"%s\" cannot be assets/: assets are published in public/ and must not hold PHP."
-msgstr ""
+msgstr "扩展“%s”的源代码文件夹不能是 assets/：资源会发布到 public/，不得包含 PHP。"
 
 #: src/Messaging/MessageController.php:120
 msgid "The specified action is not allowed."
-msgstr ""
+msgstr "不允许执行指定的操作。"
 
 #: src/Exceptions/FileRequestException.php:155
 msgid "The specified directory or repository path does not exist on the server."
-msgstr ""
+msgstr "服务器上不存在指定的目录或存储库路径。"
 
 #: src/Messaging/MessageController.php:64
 msgid "The specified message was not found."
-msgstr ""
+msgstr "未找到指定的消息。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1281
 msgid "The standalone scheduler is running, but queued jobs need a queue worker to process them."
-msgstr ""
+msgstr "独立调度器正在运行，但排队的任务需要队列工作进程来处理。"
 
 #: src/HostedApps/HostingController.php:783
 #, php-format
 msgid "The status \"%s\" is not valid for the %s with slug \"%s\""
-msgstr ""
+msgstr "状态“%s”对 slug 为“%s”的%s无效"
 
 #: assets/js/admin/background-setup.js:179
 msgid "The status could not be loaded."
-msgstr ""
+msgstr "无法加载状态。"
 
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:190
 msgid "The status of {{app_name}} has been changed from {{old_status}} to {{new_status}}."
-msgstr ""
+msgstr "{{app_name}} 的状态已从 {{old_status}} 更改为 {{new_status}}。"
 
 #: src/Security/RequestController.php:228 src/Security/RequestController.php:336 src/Security/RequestController.php:434 src/Security/RequestController.php:652
 msgid "The status provided is not allowed."
-msgstr ""
+msgstr "不允许所提供的状态。"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:194
 msgid "The system was unable to connect to the database after 3 consecutive attempts."
-msgstr ""
+msgstr "系统连续尝试 3 次后仍无法连接到数据库。"
 
 #: src/FileSystem/Repository.php:246
 msgid "The temporary file is not valid."
-msgstr ""
+msgstr "临时文件无效。"
 
 #: src/Core/Pdf/PdfRasterizer.php:109
 msgid "The temporary page directory could not be created."
-msgstr ""
+msgstr "无法创建临时页面目录。"
 
 #: src/Environments/Application/Theming/Theme.php:92
 #, php-format
 msgid "The theme \"%s\" has no %s."
-msgstr ""
+msgstr "主题“%s”没有 %s。"
 
 #: src/Environments/Application/Theming/Theme.php:130
 #, php-format
 msgid "The theme \"%s\" has no templates folder."
-msgstr ""
+msgstr "主题“%s”没有 templates 文件夹。"
 
 #: src/Environments/Application/Theming/ThemeInstaller.php:160
 #, php-format
 msgid "The theme \"%s\" is active; activate another theme before removing it."
-msgstr ""
+msgstr "主题“%s”正在使用；请先启用其他主题再删除它。"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:76
 #, php-format
 msgid "The theme \"%s\" is already the latest version."
-msgstr ""
+msgstr "主题“%s”已是最新版本。"
 
 #: src/Environments/Application/Theming/ThemeManager.php:120
 #, php-format
 msgid "The theme \"%s\" is not installed."
-msgstr ""
+msgstr "主题“%s”未安装。"
 
 #: src/Environments/Application/Theming/ThemeInstaller.php:166
 #, php-format
 msgid "The theme \"%s\" is the parent of %s; remove those first."
-msgstr ""
+msgstr "主题“%s”是 %s 的父主题；请先删除这些主题。"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:128
 #, php-format
 msgid "The theme \"%s\" is up to date."
-msgstr ""
+msgstr "主题“%s”已是最新。"
 
 #: src/Environments/Application/Theming/ThemeInstaller.php:138
 #, php-format
 msgid "The theme \"%s\" needs its parent theme \"%s\"; install the parent first."
-msgstr ""
+msgstr "主题“%s”需要其父主题“%s”；请先安装父主题。"
 
 #: src/Environments/Application/Theming/ThemeManager.php:164 src/Environments/Application/Theming/ThemeManager.php:311
 #, php-format
 msgid "The theme \"%s\" requires app version %s or later; this is %s."
-msgstr ""
+msgstr "主题“%s”需要应用版本 %s 或更高；当前为 %s。"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:200
 #, php-format
 msgid "The theme \"%s\" was removed."
-msgstr ""
+msgstr "主题“%s”已删除。"
 
 #: src/RESTAPI/Handlers/WPThemes.php:69
 msgid "The theme does not exist."
-msgstr ""
+msgstr "主题不存在。"
 
 #: src/Environments/Application/Theming/Theme.php:122
 #, php-format
 msgid "The theme slug \"%s\" does not match its folder \"%s\"."
-msgstr ""
+msgstr "主题 slug“%s”与其文件夹“%s”不匹配。"
 
 #: src/Environments/Application/Theming/Theme.php:118
 #, php-format
 msgid "The theme slug \"%s\" is invalid: use lowercase letters, digits and hyphens."
-msgstr ""
+msgstr "主题 slug“%s”无效：请使用小写字母、数字和连字符。"
 
 #: src/FileSystem/WPThemeRepository.php:49
 msgid "The theme zip file must contain a style.css file"
-msgstr ""
+msgstr "主题 zip 文件必须包含 style.css 文件"
 
 #: src/Environments/Application/Installation/InstallerPage.php:117
 msgid "The token is valid for 24 hours and is deleted when the installation finishes."
-msgstr ""
+msgstr "该令牌有效期为 24 小时，安装完成后会被删除。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:208
 #, php-format
 msgid "The trash time of %s \"%s\" could not be recorded."
-msgstr ""
+msgstr "无法记录%s“%s”移入回收站的时间。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:236 src/HostedApps/Storage/DirectoryAppStorage.php:244
 #, php-format
 msgid "The trashed %s \"%s\" could not be restored."
-msgstr ""
+msgstr "无法从回收站恢复%s“%s”。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:823
 msgid "The two passwords do not match. Type them again."
-msgstr ""
+msgstr "两次输入的密码不一致。请重新输入。"
 
 #: src/Exceptions/FileRequestException.php:201
 msgid "The underlying filesystem or I/O handler is unavailable or not initialized properly."
-msgstr ""
+msgstr "底层文件系统或 I/O 处理程序不可用或未正确初始化。"
 
 #: assets/js/admin/updates.js:143
 msgid "The update did not complete; see the history below."
-msgstr ""
+msgstr "更新未完成；请查看下方历史记录。"
 
 #: src/Environments/Application/Update/UpdateService.php:734
 msgid "The update ended without output."
-msgstr ""
+msgstr "更新已结束，没有输出。"
 
 #: assets/js/admin/updates.js:143
 msgid "The update has ended."
-msgstr ""
+msgstr "更新已结束。"
 
 #: assets/js/admin/updates.js:132
 msgid "The update has not finished after 20 minutes. Check that the queue worker is running, or run `smliser update status` from the console."
-msgstr ""
+msgstr "更新 20 分钟后仍未完成。请检查队列工作进程是否在运行，或在控制台运行 `smliser update status`。"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:251
 #, php-format
 msgid "The update server %s is reachable but did not return a success response (%d ms, %s). Update checks may fail until it recovers."
-msgstr ""
+msgstr "更新服务器 %s 可以访问，但未返回成功响应（%d 毫秒，%s）。在其恢复之前，更新检查可能会失败。"
 
 #: src/Environments/Application/Update/Updater.php:165
 #, php-format
 msgid "The update server announced %s, but the package contains %s. Nothing was changed."
-msgstr ""
+msgstr "更新服务器公布的是 %s，但软件包中是 %s。未做任何更改。"
 
 #: src/Environments/Application/Update/UpdateServer.php:165 src/Environments/Application/Update/UpdateServer.php:260
 #, php-format
 msgid "The update server answered with HTTP %d; try again later."
-msgstr ""
+msgstr "更新服务器返回 HTTP %d；请稍后重试。"
 
 #: src/Environments/Application/Update/UpdateServer.php:177
 msgid "The update server described a different release than the one asked for."
-msgstr ""
+msgstr "更新服务器描述的版本与请求的不同。"
 
 #: src/Environments/Application/Update/UpdateServer.php:267
 msgid "The update server did not answer with a repository listing; try again later."
-msgstr ""
+msgstr "更新服务器未返回存储库列表；请稍后重试。"
 
 #: src/Environments/Application/Update/UpdateServer.php:172
 msgid "The update server did not describe a release; try again later."
-msgstr ""
+msgstr "更新服务器未描述任何版本；请稍后重试。"
 
 #: src/Environments/Application/Update/UpdateServer.php:349
 msgid "The update server did not report a valid version; try again later."
-msgstr ""
+msgstr "更新服务器未报告有效的版本；请稍后重试。"
 
 #: src/Environments/Application/Update/UpdateServer.php:160
 #, php-format
 msgid "The update server does not publish \"%s\"."
-msgstr ""
+msgstr "更新服务器未发布“%s”。"
 
 #: src/Environments/Application/Update/UpdateServer.php:157
 #, php-format
 msgid "The update server does not publish %s yet; try again later."
-msgstr ""
+msgstr "更新服务器尚未发布 %s；请稍后重试。"
 
 #: src/Environments/Application/Update/UpdateServer.php:159
 msgid "The update server does not publish this application."
-msgstr ""
+msgstr "更新服务器未发布此应用。"
 
 #: src/Environments/Application/Update/UpdateServer.php:211
 #, php-format
 msgid "The update server publishes %s %s%s."
-msgstr ""
+msgstr "更新服务器发布了 %s %s%s。"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:66
 #, php-format
 msgid "The update to %s did not complete. Check the Updates page to see where the site stands."
-msgstr ""
+msgstr "更新到 %s 未完成。请查看“更新”页面了解站点当前状态。"
 
 #: src/Environments/Application/Update/Updater.php:316
 #, php-format
 msgid "The update to %s failed and the previous files were restored: %s"
-msgstr ""
+msgstr "更新到 %s 失败，已恢复之前的文件：%s"
 
 #: src/Environments/Application/Update/Updater.php:424
 #, php-format
 msgid "The update to %s migrated the database, so its files cannot be rolled back on their own. Restore a full backup instead."
-msgstr ""
+msgstr "更新到 %s 时迁移了数据库，因此无法单独回滚其文件。请改为恢复完整备份。"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1237
 msgid "The upload is incomplete or damaged. Upload the release again (FTP clients should use binary mode)."
-msgstr ""
+msgstr "上传不完整或已损坏。请重新上传该版本（FTP 客户端应使用二进制模式）。"
 
 #: assets/js/admin/apps-uploader.js:440
 msgid "The uploaded file exceeds the max_upload_size; this server cannot process this request."
-msgstr ""
+msgstr "上传的文件超出 max_upload_size；此服务器无法处理该请求。"
 
 #: src/Exceptions/FileRequestException.php:76
 msgid "The uploaded file exceeds the maximum size allowed by the server configuration."
-msgstr ""
+msgstr "上传的文件超出服务器配置允许的最大大小。"
 
 #: src/Exceptions/FileRequestException.php:60
 msgid "The uploaded or requested file has an unsupported or mismatched file extension."
-msgstr ""
+msgstr "上传或请求的文件扩展名不受支持或不匹配。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:315
 msgid "The uploaded package could not be stored; check the permissions of the storage folder."
-msgstr ""
+msgstr "无法存储上传的软件包；请检查存储文件夹的权限。"
 
 #: src/FileSystem/SoftwareRepository.php:47
 msgid "The uploaded software ZIP file is missing the required readme.md file."
-msgstr ""
+msgstr "上传的软件 ZIP 文件缺少必需的 readme.md 文件。"
 
 #: src/Exceptions/RequestException.php:276
 msgid "The upstream service did not respond in time."
-msgstr ""
+msgstr "上游服务未及时响应。"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:211
 msgid "The username or password was rejected. Check them in your hosting control panel, and make sure the user has been given access to this database."
-msgstr ""
+msgstr "用户名或密码被拒绝。请在主机控制面板中检查，并确保该用户已被授予访问此数据库的权限。"
 
 #: src/Environments/WordPress/RESTAPI.php:558
 msgid "The value cannot be empty."
-msgstr ""
+msgstr "值不能为空。"
 
 #: src/Environments/WordPress/RESTAPI.php:604
 msgid "The value must be an integer."
-msgstr ""
+msgstr "值必须为整数。"
 
 #: src/Background/Jobs/Accounts/EmailOtpJob.php:67
 msgid "The verification code could not be read."
-msgstr ""
+msgstr "无法读取验证码。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:66
 msgid "The verification code could not be sent. Please try again."
-msgstr ""
+msgstr "无法发送验证码，请重试。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:85
 msgid "The verification code is incorrect or expired."
-msgstr ""
+msgstr "验证码不正确或已过期。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:271
 msgid "The verification code is invalid or has expired."
-msgstr ""
+msgstr "验证码无效或已过期。"
 
 #: src/HostedApps/HostingController.php:174
 #, php-format
 msgid "The version of \"%s\" changes only with a new package. Upload the ZIP of version %s to change it from %s."
-msgstr ""
+msgstr "“%s”的版本只会随新软件包而改变。请上传版本 %s 的 ZIP 以将其从 %s 更改。"
 
 #: src/Admin/ActionHandlers/MaintenanceManagement.php:62
 msgid "The visitor message must be text."
-msgstr ""
+msgstr "访客消息必须是文本。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:301
 msgid "The web address people use to reach this site, detected from your browser. Change it only if it is wrong, for example to use <code>https://</code> or your final domain. Links in emails and API responses use it."
-msgstr ""
+msgstr "访问者用来访问此站点的网址，从您的浏览器检测得出。仅在有误时更改，例如改用 <code>https://</code> 或您的最终域名。邮件和 API 响应中的链接会使用它。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1520
 #, php-format
 msgid "The web server serves %s instead of its public folder, and nothing stops visitors from downloading files outside public, such as .env with the database password and application secrets."
-msgstr ""
+msgstr "Web 服务器提供的是 %s 而不是其 public 文件夹，没有任何措施能阻止访客下载 public 之外的文件，例如包含数据库密码和应用密钥的 .env。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1519
 #, php-format
 msgid "The web server serves %s instead of its public folder. The .htaccess file in that folder keeps everything outside public unreachable, but the whole application folder depends on it."
-msgstr ""
+msgstr "Web 服务器提供的是 %s 而不是其 public 文件夹。该文件夹中的 .htaccess 文件使 public 之外的所有内容都无法访问，但整个应用文件夹都依赖于它。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1498
 #, php-format
 msgid "The web server serves %s, so only public files can be reached."
-msgstr ""
+msgstr "Web 服务器提供的是 %s，因此只能访问公共文件。"
 
 #: src/Environments/Application/Update/Updater.php:662
 msgid "The zip PHP extension is needed to apply updates."
-msgstr ""
+msgstr "应用更新需要 zip PHP 扩展。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:677
 #, php-format
 msgid "The zip PHP extension is needed to install %ss."
-msgstr ""
+msgstr "安装%s需要 zip PHP 扩展。"
 
 #: src/Environments/Application/Update/UpdateService.php:209
 msgid "The zip PHP extension is not enabled."
-msgstr ""
+msgstr "zip PHP 扩展未启用。"
 
 #: templates/admin/contents/repository/edit-wptheme.php:111
 msgid "Theme Download URL"
-msgstr ""
+msgstr "主题下载 URL"
 
 #: templates/admin/contents/repository/edit-wptheme.php:59
 msgid "Theme Homepage"
-msgstr ""
+msgstr "主题主页"
 
 #: templates/admin/contents/repository/edit-wptheme.php:85
 msgid "Theme Preview URL"
-msgstr ""
+msgstr "主题预览 URL"
 
 #: templates/admin/contents/repository/edit-wptheme.php:98
 msgid "Theme Support URL"
-msgstr ""
+msgstr "主题支持 URL"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:221
 msgid "Theme assets published: "
-msgstr ""
+msgstr "主题资源已发布： "
 
 #: src/Admin/ContentHandlers/ModulesPage.php:352
 msgid "Themes"
-msgstr ""
+msgstr "主题"
 
 #: templates/admin/contents/modules/themes.php:127
 msgid "Themes change how the public pages look."
-msgstr ""
+msgstr "主题可改变公共页面的外观。"
 
 #: templates/admin/contents/system/signing-key.php:193
 msgid "Then open the .env file in your host's File Manager and set:"
-msgstr ""
+msgstr "然后在主机的文件管理器中打开 .env 文件并设置："
 
 #: templates/admin/contents/accounts/index.php:195
 msgid "There are currently no account summaries to display. Check back later or contact support if you believe this is an error."
-msgstr ""
+msgstr "目前没有可显示的账户摘要。请稍后再来查看；如果您认为这是错误，请联系支持。"
 
 #: src/Environments/Application/Web/RestAPIProvider.php:222 src/Environments/WordPress/RESTAPI.php:376
 #, php-format
 msgid "There is no \"%s\" category in %s."
-msgstr ""
+msgstr "%2$s 中没有“%1$s”类别。"
 
 #: src/Monetization/Providers/RemoteProvider.php:73
 msgid "There is no active service account. Create one under Accounts → Service Accounts, then reload this page."
-msgstr ""
+msgstr "没有活动的服务账户。请在“账户 → 服务账户”下创建一个，然后重新加载此页面。"
 
 #: templates/admin/contents/system/updates.php:312
 msgid "There is no backup of a previous version."
-msgstr ""
+msgstr "没有上一个版本的备份。"
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:184
 msgid "There is no backup to restore."
-msgstr ""
+msgstr "没有可恢复的备份。"
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:237
 msgid "There is no backup."
-msgstr ""
+msgstr "没有备份。"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1223
 msgid "There is no manifest.json, so the application files cannot be verified. This is expected for a source checkout."
-msgstr ""
+msgstr "没有 manifest.json，因此无法验证应用文件。对于源代码检出，这是正常的。"
 
 #: templates/admin/contents/license/purchase-request.php:45
 #, php-format
 msgid "There is no purchase request #%d. <a href=\"%s\"><i class=\"ti ti-arrow-narrow-left\"></i> Go Back</a>"
-msgstr ""
+msgstr "不存在购买请求 #%d。<a href=\"%s\"><i class=\"ti ti-arrow-narrow-left\"></i> 返回</a>"
 
 #: src/Environments/Application/Update/Updater.php:420
 msgid "There is no update to roll back."
-msgstr ""
+msgstr "没有可回滚的更新。"
 
 #: src/Environments/Application/Update/Updater.php:345
 msgid "There is no update waiting to be finished."
-msgstr ""
+msgstr "没有等待完成的更新。"
 
 #: themes/default/templates/pages/auth/signed-out.php:15
 msgid "There was no active session on this device."
-msgstr ""
+msgstr "此设备上没有活动会话。"
 
 #: templates/admin/contents/system/updates.php:217
 msgid "These are checked for this web request. Installing from this page runs as the web server's PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with"
-msgstr ""
+msgstr "这些项目是针对此 Web 请求检查的。从此页面安装时以 Web 服务器的 PHP 用户运行；自动更新则在后台处理运行的地方执行，可能是其他用户或其他 PHP。请在那里检查，使用"
 
 #: assets/js/admin/repository-browser.js:371
 msgid "These files have no app record, so they can be viewed but not changed."
-msgstr ""
+msgstr "这些文件没有应用记录，因此只能查看，不能更改。"
 
 #: templates/admin/contents/system/queues.php:229
 #, php-format
 msgid "These records are automatically purged after %d days"
-msgstr ""
+msgstr "这些记录会在 %d 天后自动清除"
 
 #: themes/default/templates/pages/client/organization.php:72
 msgid "They get an email with a link to join, valid for 48 hours. Someone without an account can create one from the link."
-msgstr ""
+msgstr "他们会收到一封包含加入链接的邮件，有效期 48 小时。没有账户的人可以通过该链接创建账户。"
 
 #: src/HostedApps/AbstractHostedApp.php:1441
 #, php-format
 msgid "This %s has no package."
-msgstr ""
+msgstr "此%s没有软件包。"
 
 #: src/HostedApps/HostedApplicationService.php:571
 #, php-format
 msgid "This %s is in the trash. Restore it before renaming it."
-msgstr ""
+msgstr "此%s在回收站中。请先恢复再重命名。"
 
 #: src/FileSystem/Repository.php:272
 #, php-format
 msgid "This %s is in the trash. Restore it before uploading a new version."
-msgstr ""
+msgstr "此%s在回收站中。请先恢复再上传新版本。"
 
 #: src/HostedApps/HostingController.php:800
 #, php-format
 msgid "This %s is suspended. Only a system administrator can lift the suspension."
-msgstr ""
+msgstr "此%s已被暂停。只有系统管理员才能解除暂停。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:276 src/Auth/ActionHandlers/AuthManagement.php:366
 msgid "This account cannot sign in."
-msgstr ""
+msgstr "此账户无法登录。"
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:216 src/Security/Authentication/UserAuthenticator.php:94
 msgid "This account is not active. Contact the site administrator."
-msgstr ""
+msgstr "此账户未激活。请联系站点管理员。"
 
 #: templates/admin/contents/repository/monetization.php:28
 #, php-format
 msgid "This app does not exist in the repository <a href=\"%s\">Back</a>"
-msgstr ""
+msgstr "存储库中不存在此应用 <a href=\"%s\">返回</a>"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:232
 msgid "This app does not exist, or it belongs to someone else. Switch to its owner to manage it."
-msgstr ""
+msgstr "此应用不存在，或属于其他人。请切换到其所有者以管理它。"
 
 #: src/ClientDashboard/ActionHandlers/AppActions.php:249 src/HostedApps/HostingController.php:894
 msgid "This app does not exist."
-msgstr ""
+msgstr "此应用不存在。"
 
 #: themes/default/templates/pages/repository/app.php:106
 msgid "This app has no description yet."
-msgstr ""
+msgstr "此应用尚无描述。"
 
 #: src/Monetization/Controller.php:97 src/Monetization/Controller.php:190
 msgid "This app has no such pricing tier."
-msgstr ""
+msgstr "此应用没有该定价层级。"
 
 #: themes/default/templates/pages/client/app.php:72
 msgid "This app is in the trash. It is deleted for good after a while, unless you restore it."
-msgstr ""
+msgstr "此应用在回收站中。除非您恢复它，否则一段时间后将被永久删除。"
 
 #: themes/default/templates/pages/client/app.php:70
 msgid "This app is suspended by the site's administrators, so it is not offered. Contact them to have the suspension lifted."
-msgstr ""
+msgstr "此应用已被站点管理员暂停，因此不对外提供。请联系他们解除暂停。"
 
 #: src/Monetization/Providers/RemoteProvider.php:72
 msgid "This app's owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page."
-msgstr ""
+msgstr "此应用的所有者没有活动的服务账户。请在“账户 → 服务账户”下为其创建一个，然后重新加载此页面。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:138
 msgid "This authenticator setup has already been used."
-msgstr ""
+msgstr "此身份验证器设置已被使用。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:129
 msgid "This authenticator setup has expired. Start again."
-msgstr ""
+msgstr "此身份验证器设置已过期。请重新开始。"
 
 #: assets/js/admin/purchase-review.js:122
 msgid "This browser cannot show the PDF here. Use Download to open it."
-msgstr ""
+msgstr "此浏览器无法在此显示 PDF。请使用“下载”打开。"
 
 #: assets/js/passkeys.js:29
 msgid "This browser does not support passkeys."
-msgstr ""
+msgstr "此浏览器不支持通行密钥。"
 
 #: templates/admin/contents/system/maintenance.php:162
 msgid "This browser keeps access; you get a bypass link for others. The console works throughout."
-msgstr ""
+msgstr "此浏览器保留访问权限；您会获得一个供他人使用的绕过链接。控制台全程可用。"
 
 #: assets/js/admin/site-health.js:124
 msgid "This check could not run."
-msgstr ""
+msgstr "此检查无法运行。"
 
 #: themes/default/templates/pages/client/security.php:53
 msgid "This device"
-msgstr ""
+msgstr "此设备"
 
 #: assets/js/admin/core.js:1175
 msgid "This field"
-msgstr ""
+msgstr "此字段"
 
 #: assets/js/admin/json-editor.js:1493 assets/js/modal.js:1185
 msgid "This field is required"
-msgstr ""
+msgstr "此字段为必填项"
 
 #: assets/js/admin/repository-browser.js:675
 msgid "This file is not one of the app's files, so it cannot be opened here."
-msgstr ""
+msgstr "此文件不是应用的文件之一，因此无法在此打开。"
 
 #: assets/js/admin/repository-browser.js:697
 msgid "This file is too large to preview. Download it instead."
-msgstr ""
+msgstr "此文件太大，无法预览。请下载查看。"
 
 #: assets/js/admin/purchase-review.js:108
 msgid "This file type is not shown here. Download it to open it."
-msgstr ""
+msgstr "此处不显示该文件类型。请下载后打开。"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:179
 msgid "This hosted app type is not registered."
-msgstr ""
+msgstr "此托管应用类型未注册。"
 
 #: templates/admin/contents/system/updates.php:63
 msgid "This installation cannot update until the problems below are fixed."
-msgstr ""
+msgstr "在修复以下问题之前，此安装无法更新。"
 
 #: src/Environments/Application/Update/PackageVerifier.php:97
 msgid "This installation has no release signing keys, so it cannot verify any package."
-msgstr ""
+msgstr "此安装没有版本签名密钥，因此无法验证任何软件包。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:325
 msgid "This invitation has already expired or was revoked."
-msgstr ""
+msgstr "此邀请已过期或已被撤销。"
 
 #: src/Security/Organizations/OrganizationInvitations.php:180
 msgid "This invitation has expired or was revoked."
-msgstr ""
+msgstr "此邀请已过期或已被撤销。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:385
 msgid "This invitation has expired or was revoked. Ask for a new one."
-msgstr ""
+msgstr "此邀请已过期或已被撤销。请索取新的邀请。"
 
 #: themes/default/templates/pages/client/organizations.php:18
 msgid "This invitation has expired or was revoked. Ask the organization for a new one."
-msgstr ""
+msgstr "此邀请已过期或已被撤销。请向该组织索取新的邀请。"
 
 #: themes/default/templates/pages/client/organizations.php:43
 #, php-format
 msgid "This invitation is for %s. Sign out, then sign in or sign up with that address to answer it."
-msgstr ""
+msgstr "此邀请是发给 %s 的。请退出登录，然后使用该地址登录或注册以回复。"
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:172
 msgid "This invitation link will expire in {{expires_in}} hours. If it expires, please ask {{inviter_name}} to send a new invitation."
-msgstr ""
+msgstr "此邀请链接将在 {{expires_in}} 小时后过期。如已过期，请让 {{inviter_name}} 重新发送邀请。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:389
 #, php-format
 msgid "This invitation was sent to %s. Sign in with that address to answer it."
-msgstr ""
+msgstr "此邀请已发送至 %s。请使用该地址登录以回复。"
 
 #: src/Email/Templates/Accounts/PasswordChangedEmail.php:73 src/Email/Templates/Accounts/PasswordChangedEmail.php:166
 msgid "This is a confirmation that your account password has been updated. No further action is needed."
-msgstr ""
+msgstr "特此确认您的账户密码已更新。无需进一步操作。"
 
 #: src/Exceptions/FileRequestException.php:106
 msgid "This is a monetized application; a valid license or token is required to access the file."
-msgstr ""
+msgstr "这是一个收费应用；访问该文件需要有效的许可证或令牌。"
 
 #: themes/default/templates/pages/signing-key.php:49
 msgid "This is a public key: it can only check signatures, not make them, and it is safe to share."
-msgstr ""
+msgstr "这是一个公钥：它只能验证签名，不能生成签名，可以放心分享。"
 
 #. translators: 1: app name (formatted), 2: support (formatted)
 #: src/Email/Templates/System/SystemAlertEmail.php:112
 #, php-format
 msgid "This is an automated alert from %1$s. If this issue requires support, contact us at %2$s."
-msgstr ""
+msgstr "这是来自 %1$s 的自动警报。如果此问题需要支持，请通过 %2$s 联系我们。"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:250
 msgid "This is an automated alert from {{app_name}}. If this issue requires support, contact us at {{support_email}}."
-msgstr ""
+msgstr "这是来自 {{app_name}} 的自动警报。如果此问题需要支持，请通过 {{support_email}} 联系我们。"
 
 #: src/Email/Templates/System/UpdateEmail.php:127
 msgid "This is an automated message from {{app_name}} about its own software updates. Questions? Contact us at {{support_email}}."
-msgstr ""
+msgstr "这是 {{app_name}} 关于其自身软件更新的自动消息。有疑问？请通过 {{support_email}} 联系我们。"
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:64
 msgid "This is an automated notification for administrative awareness."
-msgstr ""
+msgstr "这是一条供管理员知悉的自动通知。"
 
 #. translators: %s: app name (formatted)
 #: src/Email/Templates/System/TestEmail.php:64
 #, php-format
 msgid "This is an automated test email sent from %s to verify that your email provider is set up and working correctly. No action is required."
-msgstr ""
+msgstr "这是一封从 %s 发送的自动测试邮件，用于验证您的邮件提供商已正确设置并正常工作。无需任何操作。"
 
 #: src/Email/Templates/System/TestEmail.php:176
 msgid "This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required."
-msgstr ""
+msgstr "这是一封从 {{app_name}} 发送的自动测试邮件，用于验证您的邮件提供商已正确设置并正常工作。无需任何操作。"
 
 #: src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
 msgid "This license does not exist."
-msgstr ""
+msgstr "此许可证不存在。"
 
 #: src/Monetization/DownloadToken.php:405
 msgid "This license must be issued to a hosted application first."
-msgstr ""
+msgstr "此许可证必须先签发给一个托管应用。"
 
 #: themes/default/templates/pages/auth/verify-email.php:29
 msgid "This link did not work"
-msgstr ""
+msgstr "此链接无效"
 
 #: src/Environments/Application/Middlewares/URLCSRFMiddleware.php:35
 msgid "This link has expired or is not valid for you. Go back, reload the page and try again."
-msgstr ""
+msgstr "此链接已过期或对您无效。请返回，重新加载页面后重试。"
 
 #: src/Security/Authentication/EmailVerificationToken.php:107
 msgid "This link was sent to an email address the account no longer uses."
-msgstr ""
+msgstr "此链接发送到了该账户已不再使用的邮箱地址。"
 
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:161
 msgid "This link will expire in {{expires_in}} hours. If it expires, you can ask for a new one from your account."
-msgstr ""
+msgstr "此链接将在 {{expires_in}} 小时后过期。如已过期，您可以在账户中申请新链接。"
 
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:189
 msgid "This link will expire in {{expires_in}} minutes. If it expires, you can request a new one from the login page."
-msgstr ""
+msgstr "此链接将在 {{expires_in}} 分钟后过期。如已过期，您可以在登录页面申请新链接。"
 
 #: src/Server/DevServer.php:349
 #, php-format
 msgid "This machine cannot listen on %s."
-msgstr ""
+msgstr "此机器无法在 %s 上监听。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:246 src/ClientDashboard/ActionHandlers/OrganizationActions.php:266
 msgid "This member does not exist."
-msgstr ""
+msgstr "此成员不存在。"
 
 #: src/Monetization/Controller.php:232
 msgid "This monetization does not exist yet, please add a pricing tier first."
-msgstr ""
+msgstr "此变现方案尚不存在，请先添加定价层级。"
 
 #: src/Exceptions/RequestException.php:123
 msgid "This operation is restricted under current system settings."
-msgstr ""
+msgstr "当前系统设置限制了此操作。"
 
 #: src/Monetization/PurchaseRequestService.php:164
 msgid "This option is no longer sold."
-msgstr ""
+msgstr "此选项已不再销售。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:111
 msgid "This organization does not exist."
-msgstr ""
+msgstr "此组织不存在。"
 
 #: assets/js/admin/purchase-review.js:225
 msgid "This page could not be loaded."
-msgstr ""
+msgstr "无法加载此页面。"
 
 #: src/Environments/Application/Update/Updater.php:349
 #, php-format
 msgid "This process runs version %s, not the new %s. Run the finish step again in a new process."
-msgstr ""
+msgstr "此进程运行的是版本 %s，而不是新版本 %s。请在新进程中再次运行完成步骤。"
 
 #: src/Monetization/PurchaseRequestService.php:171
 msgid "This product is not for sale at the moment."
-msgstr ""
+msgstr "此产品目前不出售。"
 
 #: src/Monetization/PurchaseRequestService.php:160
 msgid "This product is not sold here."
-msgstr ""
+msgstr "此处不销售此产品。"
 
 #: src/Security/RequestController.php:70
 msgid "This provided security entity is not supported."
-msgstr ""
+msgstr "不支持所提供的安全实体。"
 
 #: src/Admin/ActionHandlers/PurchaseReview.php:180
 msgid "This purchase request does not exist."
-msgstr ""
+msgstr "此购买请求不存在。"
 
 #: src/Environments/Application/Middlewares/CSRFMiddleware.php:56
 msgid "This request did not come from this site."
-msgstr ""
+msgstr "此请求并非来自此站点。"
 
 #: src/Monetization/PurchaseRequestService.php:377
 #, php-format
 msgid "This request was already %s; only a pending request can be rejected."
-msgstr ""
+msgstr "此请求已被处理（%s）；只有待处理的请求才能被拒绝。"
 
 #: src/Monetization/PurchaseRequestService.php:329
 #, php-format
 msgid "This request was already approved; its license is #%d."
-msgstr ""
+msgstr "此请求已获批准；其许可证为 #%d。"
 
 #: templates/admin/contents/license/purchase-request.php:142
 msgid "This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes."
-msgstr ""
+msgstr "此请求已被拒绝。如果付款随后已确认（例如争议已解决），请批准它：将签发许可证并通过邮件发送，拒绝记录会保留在备注中。"
 
 #: src/Environments/Application/Update/UpdateRunner.php:182
 msgid "This server cannot start a new PHP process; the update finishes on the next request to the site."
-msgstr ""
+msgstr "此服务器无法启动新的 PHP 进程；更新将在下一次访问站点时完成。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:470
 msgid "This server is not ready yet"
-msgstr ""
+msgstr "此服务器尚未就绪"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:221 src/Auth/ActionHandlers/AuthManagement.php:280
 msgid "This sign-in challenge has already been used."
-msgstr ""
+msgstr "此登录质询已被使用。"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:189
 msgid "This sign-in challenge has expired. Sign in again."
-msgstr ""
+msgstr "此登录质询已过期。请重新登录。"
 
 #: themes/default/templates/pages/auth/mfa.php:20
 msgid "This sign-in challenge is invalid or expired. Please sign in again."
-msgstr ""
+msgstr "此登录质询无效或已过期。请重新登录。"
 
 #: themes/default/templates/pages/signing-key.php:35
 msgid "This site does not sign its packages"
-msgstr ""
+msgstr "此站点不对其软件包签名"
 
 #: src/Environments/Application/Health/SystemHealth.php:1403
 msgid "This site has never checked for updates."
-msgstr ""
+msgstr "此站点从未检查过更新。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:442
 msgid "This site is not set up yet"
-msgstr ""
+msgstr "此站点尚未设置"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:44
 #, php-format
 msgid "This site runs %s. Review and install %s from the Updates page."
-msgstr ""
+msgstr "此站点运行的是 %s。请在“更新”页面检查并安装 %s。"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:772
 #, php-format
 msgid "This storage does not serve the app type \"%s\"."
-msgstr ""
+msgstr "此存储不提供应用类型“%s”。"
 
 #: src/Security/Authentication/EmailVerificationToken.php:97
 msgid "This verification link has expired. Ask for a new one."
-msgstr ""
+msgstr "此验证链接已过期。请申请新的链接。"
 
 #: src/Auth/ContentHandlers/AuthPages.php:218 src/Security/Authentication/EmailVerificationToken.php:78 src/Security/Authentication/EmailVerificationToken.php:87 src/Security/Authentication/EmailVerificationToken.php:93
 msgid "This verification link is not valid."
-msgstr ""
+msgstr "此验证链接无效。"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:81
 msgid "This verification request has expired. Start again."
-msgstr ""
+msgstr "此验证请求已过期。请重新开始。"
 
 #: src/Email/Templates/Security/SecurityEmailTemplate.php:224
 msgid "This wasn't me — secure my account"
-msgstr ""
+msgstr "这不是我本人 — 保护我的账户"
 
 #: assets/js/admin/email-editor.js:926
 msgid "This will permanently remove your custom template and restore the system default. Are you sure?"
-msgstr ""
+msgstr "这将永久删除您的自定义模板并恢复系统默认模板。确定吗？"
 
 #: src/Environments/WordPress/WordPressEnvironment.php:516
 msgid "Three Minutely"
-msgstr ""
+msgstr "每三分钟"
 
 #: src/Monetization/Controller.php:177
 msgid "Tier ID is required."
-msgstr ""
+msgstr "层级 ID 为必填项。"
 
 #: templates/admin/contents/repository/monetization.php:172
 msgid "Tier Name:"
-msgstr ""
+msgstr "层级名称："
 
 #: assets/js/admin/core.js:1307
 msgid "Tier deleted"
-msgstr ""
+msgstr "层级已删除"
 
 #: src/Monetization/Controller.php:62
 msgid "Tier name is required"
-msgstr ""
+msgstr "层级名称为必填项"
 
 #: templates/admin/contents/repository/monetization.php:80
 msgid "Tiers"
-msgstr ""
+msgstr "层级"
 
 #: src/Email/Templates/Security/SecurityEmailTemplate.php:207 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
 msgid "Time"
-msgstr ""
+msgstr "时间"
 
 #: src/Email/Templates/Purchases/PurchaseRequestMessageEmail.php:86
 msgid "To answer, contact us at {{support_email}} and mention request #{{request_id}}."
-msgstr ""
+msgstr "如需回复，请通过 {{support_email}} 联系我们，并注明请求 #{{request_id}}。"
 
 #. translators: %s: support (formatted)
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:81
 #, php-format
 msgid "To download the update, use your license key through the standard update mechanism on your site. If you need help, contact us at %s."
-msgstr ""
+msgstr "要下载更新，请通过您站点的标准更新机制使用许可证密钥。如需帮助，请通过 %s 联系我们。"
 
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:204
 msgid "To download the update, use your license key through the standard update mechanism on your site. If you need help, contact us at {{support_email}}."
-msgstr ""
+msgstr "要下载更新，请通过您站点的标准更新机制使用许可证密钥。如需帮助，请通过 {{support_email}} 联系我们。"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:270
 msgid "To leave the organization, use Leave on the Organizations page."
-msgstr ""
+msgstr "要退出该组织，请在“组织”页面使用“退出”。"
 
 #. translators: %s: support (formatted)
 #: src/Email/Templates/Licenses/LicenseExpiredEmail.php:69
 #, php-format
 msgid "To renew your license or if you have any questions, please contact us at %s."
-msgstr ""
+msgstr "如需续订许可证或有任何问题，请通过 %s 联系我们。"
 
 #: src/Email/Templates/Licenses/LicenseExpiredEmail.php:159
 msgid "To renew your license or if you have any questions, please contact us at {{support_email}}."
-msgstr ""
+msgstr "如需续订许可证或有任何问题，请通过 {{support_email}} 联系我们。"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:975
 msgid "Today's Downloads"
-msgstr ""
+msgstr "今日下载"
 
 #: assets/js/admin/json-editor.js:343 assets/js/admin/json-editor.js:2097
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "切换全屏"
 
 #: assets/js/admin/json-editor.js:338
 msgid "Toggle light/dark theme"
-msgstr ""
+msgstr "切换浅色/深色主题"
 
 #: src/Admin/AdminDashboardRegistry.php:67 assets/js/admin/json-editor.js:338
 msgid "Toggle theme"
-msgstr ""
+msgstr "切换主题"
 
 #: assets/js/admin/json-editor.js:238
 msgid "Toggle toolbar"
-msgstr ""
+msgstr "显示/隐藏工具栏"
 
 #: templates/admin/contents/license/view.php:194
 msgid "Toggle visibility"
-msgstr ""
+msgstr "显示/隐藏"
 
 #: assets/js/admin/core.js:617
 msgid "Token Expiry (optional)"
-msgstr ""
+msgstr "令牌过期时间（可选）"
 
 #: src/Security/Authentication/PasswordResetToken.php:106
 msgid "Token already used or invalidated"
-msgstr ""
+msgstr "令牌已被使用或已失效"
 
 #: src/RESTAPI/Handlers/Licenses.php:598
 msgid "Token could not be decoded properly, please be sure that the token is base64 encoded or not double encoding it."
-msgstr ""
+msgstr "无法正确解码令牌，请确保令牌经过 base64 编码，且没有重复编码。"
 
 #: src/Security/Authentication/PasswordResetToken.php:100
 msgid "Token expired"
-msgstr ""
+msgstr "令牌已过期"
 
 #: templates/admin/contents/options/email/editor.php:374
 msgid "Tone"
-msgstr ""
+msgstr "语气"
 
 #: src/Environments/Application/Middlewares/AuthenticationMonitorMiddleware.php:104
 msgid "Too many attempts. Please wait and try again."
-msgstr ""
+msgstr "尝试次数过多。请稍候重试。"
 
 #: src/Environments/Application/Middlewares/LicenseMonitorMiddleware.php:177
 msgid "Too many license requests. Please wait and try again."
-msgstr ""
+msgstr "许可证请求过多。请稍候重试。"
 
 #: src/Monetization/PurchaseRequestService.php:219
 msgid "Too many purchase requests are awaiting review from your network. Please wait until they are reviewed."
-msgstr ""
+msgstr "来自您网络的待审核购买请求过多。请等待审核完成。"
 
 #: src/Environments/Application/Auth/WebIdentityProvider.php:247 src/Environments/WordPress/IdentityService.php:504
 msgid "Too many signup attempts, please try again later."
-msgstr ""
+msgstr "注册尝试次数过多，请稍后重试。"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:281 assets/js/admin/json-editor.js:242
 msgid "Tools"
-msgstr ""
+msgstr "工具"
 
 #: src/Environments/Application/Health/SystemHealth.php:1276
 msgid "Tools > Background Processing"
-msgstr ""
+msgstr "工具 > 后台处理"
 
 #: src/Environments/Application/Health/SystemHealth.php:1230
 msgid "Tools > Background Processing shows what runs jobs on this site and how to set it up. To clear the backlog now, use \"Process queue\" on the Queue Monitor page."
-msgstr ""
+msgstr "“工具 > 后台处理”显示此站点由什么运行任务以及如何设置。要立即清理积压任务，请在“队列监控”页面使用“处理队列”。"
 
 #: templates/admin/contents/index.php:326
 msgid "Top Apps by Client Accesses"
-msgstr ""
+msgstr "客户端访问量最高的应用"
 
 #: templates/admin/contents/index.php:325
 msgid "Top Apps by Downloads"
-msgstr ""
+msgstr "下载量最高的应用"
 
 #: templates/admin/contents/index.php:53
 #, php-format
 msgid "Total %s"
-msgstr ""
+msgstr "%s总计"
 
 #: templates/admin/contents/index.php:315
 msgid "Total Accesses"
-msgstr ""
+msgstr "总访问量"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1019
 msgid "Total Client Access"
-msgstr ""
+msgstr "客户端总访问量"
 
 #: templates/admin/contents/license/view.php:116
 msgid "Total Domains Activated:"
-msgstr ""
+msgstr "已激活域名总数："
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/index.php:314
 msgid "Total Downloads"
-msgstr ""
+msgstr "总下载量"
 
 #: templates/admin/contents/license/view.php:117
 msgid "Total Logs:"
-msgstr ""
+msgstr "日志总数："
 
 #: templates/admin/contents/options/cache/stats.php:156 assets/js/admin/cache-stats.js:154
 msgid "Total Requests"
-msgstr ""
+msgstr "总请求数"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:81 src/Email/Templates/Monetization/PaymentReceivedEmail.php:211
 msgid "Transaction ID"
-msgstr ""
+msgstr "交易 ID"
 
 #: src/Email/Providers/SMTPProvider.php:155
 msgid "Transport encryption method."
-msgstr ""
+msgstr "传输加密方式。"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:412
 #, php-format
 msgid "Trash %s"
-msgstr ""
+msgstr "将%s移至回收站"
 
 #: assets/js/admin/json-editor.js:252
 msgid "Tree"
-msgstr ""
+msgstr "树"
 
 #: assets/js/admin/json-editor.js:245
 msgid "Tree view"
-msgstr ""
+msgstr "树状视图"
 
 #: templates/admin/contents/modules/extensions.php:71 templates/admin/contents/modules/themes.php:73
 msgid "Trust Package"
-msgstr ""
+msgstr "信任软件包"
 
 #: assets/js/admin/modules.js:113
 msgid "Trust an unsigned package"
-msgstr ""
+msgstr "信任未签名的软件包"
 
 #: templates/admin/contents/modules/themes.php:74
 msgid "Trust this package without a valid signature (only for a package you built or received directly: its templates run on every public page)"
-msgstr ""
+msgstr "在没有有效签名的情况下信任此软件包（仅适用于您自己构建或直接收到的软件包：其模板会在每个公共页面上运行）"
 
 #: templates/admin/contents/modules/extensions.php:72
 msgid "Trust this package without a valid signature (only for a package you built or received directly: once enabled, its PHP runs on every request)"
-msgstr ""
+msgstr "在没有有效签名的情况下信任此软件包（仅适用于您自己构建或直接收到的软件包：启用后，其 PHP 会在每个请求中运行）"
 
 #: src/Environments/Application/Health/SystemHealth.php:1187
 msgid "Turn maintenance mode off once the work is done: Tools > Maintenance, or `smliser maintenance off`."
-msgstr ""
+msgstr "工作完成后请关闭维护模式：工具 > 维护，或运行 `smliser maintenance off`。"
 
 #: templates/admin/contents/system/maintenance.php:118
 msgid "Turn maintenance off"
-msgstr ""
+msgstr "关闭维护模式"
 
 #: templates/admin/contents/system/maintenance.php:164 assets/js/admin/maintenance.js:45
 msgid "Turn maintenance on"
-msgstr ""
+msgstr "开启维护模式"
 
 #: assets/js/admin/maintenance.js:49
 msgid "Turn on"
-msgstr ""
+msgstr "开启"
 
 #: src/Email/Templates/Security/TwoFactorDisabledEmail.php:59
 msgid "Two-Factor Authentication Disabled"
-msgstr ""
+msgstr "双重身份验证已停用"
 
 #: src/Email/Templates/Security/TwoFactorEnabledEmail.php:59
 msgid "Two-Factor Authentication Enabled"
-msgstr ""
+msgstr "双重身份验证已启用"
 
 #: src/Email/Templates/Accounts/MfaResetEmail.php:35
 msgid "Two-Factor Authentication Has Been Reset"
-msgstr ""
+msgstr "双重身份验证已被重置"
 
 #: src/Email/Templates/Accounts/MfaResetEmail.php:113
 msgid "Two-Factor Authentication Reset"
-msgstr ""
+msgstr "双重身份验证重置"
 
 #: src/Email/Templates/Security/TwoFactorDisabledEmail.php:46
 msgid "Two-factor authentication disabled"
-msgstr ""
+msgstr "双重身份验证已停用"
 
 #: src/Email/Templates/Security/TwoFactorEnabledEmail.php:46
 msgid "Two-factor authentication enabled"
-msgstr ""
+msgstr "双重身份验证已启用"
 
 #: src/Email/Templates/Security/TwoFactorDisabledEmail.php:55
 #, php-format
 msgid "Two-factor authentication with %s was turned off for your account. Your account is now less protected."
-msgstr ""
+msgstr "您账户的 %s 双重身份验证已关闭。您的账户现在受到的保护较少。"
 
 #: src/Email/Templates/Security/TwoFactorEnabledEmail.php:55
 #, php-format
 msgid "Two-factor authentication with %s was turned on for your account."
-msgstr ""
+msgstr "您账户的 %s 双重身份验证已开启。"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:97 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:224 src/Email/Templates/Apps/AppPublishedEmail.php:70 src/Email/Templates/Apps/AppPublishedEmail.php:192
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:89 src/Email/Templates/Apps/AppStatusChangedEmail.php:199 src/Email/Templates/Apps/AppUpdatedEmail.php:74 src/Email/Templates/Apps/AppUpdatedEmail.php:195
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:19
 #: themes/default/templates/pages/repository/app.php:112 assets/js/admin/json-editor.js:926
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: src/Exceptions/RequestException.php:58
 msgid "Type Mismatch"
-msgstr ""
+msgstr "类型不匹配"
 
 #: src/Environments/Application/Installation/InstallerPage.php:355
 msgid "Type the same password again."
-msgstr ""
+msgstr "请再次输入相同的密码。"
 
 #: src/Email/Providers/SMTPProvider.php:143
 msgid "Typically 25 (plain), 465 (SSL), or 587 (STARTTLS/TLS)."
-msgstr ""
+msgstr "通常为 25（明文）、465（SSL）或 587（STARTTLS/TLS）。"
 
 #: src/Email/Providers/MailgunProvider.php:83
 msgid "US (default)"
-msgstr ""
+msgstr "美国（默认）"
 
 #: src/Security/Context/ContextServiceProvider.php:813
 msgid "Unable to build accounts summary report."
-msgstr ""
+msgstr "无法生成账户摘要报告。"
 
 #: src/Environments/WordPress/IdentityService.php:202
 msgid "Unable to create WordPress user, try again."
-msgstr ""
+msgstr "无法创建 WordPress 用户，请重试。"
 
 #: src/Environments/WordPress/Installer.php:99
 #, php-format
 msgid "Unable to create tabe \"%s\", error: %s"
-msgstr ""
+msgstr "无法创建数据表“%s”，错误：%s"
 
 #: src/Core/UploadedFile.php:453
 msgid "Unable to created destination directory."
-msgstr ""
+msgstr "无法创建目标目录。"
 
 #: assets/js/admin/core.js:1087
 msgid "Unable to delete"
-msgstr ""
+msgstr "无法删除"
 
 #: assets/js/admin/apps-uploader.js:1317
 #, javascript-format
 msgid "Unable to delete %s."
-msgstr ""
+msgstr "无法删除 %s。"
 
 #: src/Monetization/Controller.php:565 assets/js/admin/core.js:580
 msgid "Unable to delete license"
-msgstr ""
+msgstr "无法删除许可证"
 
 #: src/Security/Context/ContextServiceProvider.php:688
 msgid "Unable to delete the provided entity from the database."
-msgstr ""
+msgstr "无法从数据库中删除所提供的实体。"
 
 #: src/Monetization/License.php:1697
 msgid "Unable to generate a unique license key after multiple attempts."
-msgstr ""
+msgstr "多次尝试后仍无法生成唯一的许可证密钥。"
 
 #: assets/js/admin/core.js:665
 msgid "Unable to generate download token"
-msgstr ""
+msgstr "无法生成下载令牌"
 
 #: src/Environments/Application/Health/SystemHealth.php:457
 msgid "Unable to inspect"
-msgstr ""
+msgstr "无法检查"
 
 #: src/Environments/Application/Health/SystemHealth.php:227
 msgid "Unable to inspect the active database connection."
-msgstr ""
+msgstr "无法检查当前的数据库连接。"
 
 #: src/RESTAPI/Handlers/Licenses.php:269
 msgid "Unable to process this request at the moment."
-msgstr ""
+msgstr "目前无法处理此请求。"
 
 #: src/HostedApps/HostingController.php:392
 msgid "Unable to read uploaded app.json file."
-msgstr ""
+msgstr "无法读取上传的 app.json 文件。"
 
 #: assets/js/admin/core.js:1803
 msgid "Unable to remove member"
-msgstr ""
+msgstr "无法移除成员"
 
 #: src/HostedApps/HostingController.php:455 src/HostedApps/HostingController.php:538 src/HostedApps/HostingController.php:594 src/HostedApps/HostingController.php:727
 #: src/HostedApps/HostingController.php:819
 msgid "Unable to resolve repository class."
-msgstr ""
+msgstr "无法解析存储库类。"
 
 #: assets/js/admin/core.js:822
 msgid "Unable to save license"
-msgstr ""
+msgstr "无法保存许可证"
 
 #: src/Security/RequestController.php:453
 msgid "Unable to save organization"
-msgstr ""
+msgstr "无法保存组织"
 
 #: src/Security/RequestController.php:674
 msgid "Unable to save resource owner."
-msgstr ""
+msgstr "无法保存资源所有者。"
 
 #: src/Security/RequestController.php:740
 msgid "Unable to save role to the database."
-msgstr ""
+msgstr "无法将角色保存到数据库。"
 
 #: src/Security/RequestController.php:369
 msgid "Unable to save service account"
-msgstr ""
+msgstr "无法保存服务账户"
 
 #: src/Monetization/Controller.php:333
 msgid "Unable to save the license"
-msgstr ""
+msgstr "无法保存许可证"
 
 #: src/Monetization/DownloadToken.php:442
 msgid "Unable to save token in the database"
-msgstr ""
+msgstr "无法将令牌保存到数据库"
 
 #: src/Security/RequestController.php:276
 msgid "Unable to save user"
-msgstr ""
+msgstr "无法保存用户"
 
 #: src/Security/Authentication/UserAccounts.php:157
 msgid "Unable to save user, try again."
-msgstr ""
+msgstr "无法保存用户，请重试。"
 
 #: src/Security/Authentication/UserAccounts.php:129
 msgid "Unable to set new password"
-msgstr ""
+msgstr "无法设置新密码"
 
 #: src/Core/Response.php:348
 msgid "Unable to start download. Headers already sent."
-msgstr ""
+msgstr "无法开始下载。响应头已发送。"
 
 #: src/Monetization/Controller.php:478
 #, php-format
 msgid "Unable to uninstall \"%s\""
-msgstr ""
+msgstr "无法卸载“%s”"
 
 #: src/RESTAPI/Handlers/Licenses.php:355
 #, php-format
 msgid "Unable to unstall %s please try again later."
-msgstr ""
+msgstr "无法卸载 %s，请稍后重试。"
 
 #: src/Exceptions/RequestException.php:97
 msgid "Unathorized App Access"
-msgstr ""
+msgstr "未经授权的应用访问"
 
 #: src/Environments/Application/Middlewares/AdminAccessMiddleware.php:39 src/Environments/Application/Middlewares/ClientAccessMiddleware.php:46
 msgid "Unauthenticated access. Please log in to continue."
-msgstr ""
+msgstr "未经身份验证的访问。请登录以继续。"
 
 #: src/Exceptions/FileRequestException.php:87 src/Exceptions/FileRequestException.php:98 src/Exceptions/RequestException.php:65
 msgid "Unauthorized"
-msgstr ""
+msgstr "未授权"
 
 #: src/Environments/WordPress/Dispatcher.php:281 src/Exceptions/FileRequestException.php:93
 msgid "Unauthorized Download"
-msgstr ""
+msgstr "未经授权的下载"
 
 #: src/Environments/Application/Middlewares/AdminAccessMiddleware.php:75
 msgid "Unauthorized access. System admin privileges required."
-msgstr ""
+msgstr "未经授权的访问。需要系统管理员权限。"
 
 #: src/Exceptions/FileRequestException.php:94
 msgid "Unauthorized file download error."
-msgstr ""
+msgstr "未经授权的文件下载错误。"
 
 #: assets/js/admin/json-editor.js:290 assets/js/admin/json-editor.js:294
 msgid "Undo"
-msgstr ""
+msgstr "撤销"
 
 #: assets/js/admin/json-editor.js:290
 msgid "Undo (Ctrl+Z)"
-msgstr ""
+msgstr "撤销（Ctrl+Z）"
 
 #: src/Cache/Adapters/ApcuCacheAdapter.php:374
 #, php-format
 msgid "Unexpected error while testing APCu — %s"
-msgstr ""
+msgstr "测试 APCu 时出现意外错误 — %s"
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:673
 #, php-format
 msgid "Unexpected error while testing Memcached at %s:%d — %s"
-msgstr ""
+msgstr "测试 %s:%d 上的 Memcached 时出现意外错误 — %s"
 
 #: src/Cache/Adapters/RuntimeCacheAdapter.php:311
 #, php-format
 msgid "Unexpected error while testing Runtime cache — %s"
-msgstr ""
+msgstr "测试运行时缓存时出现意外错误 — %s"
 
 #: src/Environments/Application/Health/SystemHealth.php:1194
 msgid "Unfinished Update"
-msgstr ""
+msgstr "未完成的更新"
 
 #: src/Security/Permission/Capability.php:58
 msgid "Uninstall domain from license"
-msgstr ""
+msgstr "从许可证中卸载域名"
 
 #: src/Admin/ContentHandlers/DashboardPage.php:525 src/Core/UserAgent.php:517 templates/admin/contents/index.php:157
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 #: src/Email/Providers/AmazonSESProvider.php:456
 msgid "Unknown Amazon SES error."
-msgstr ""
+msgstr "未知的 Amazon SES 错误。"
 
 #: src/Email/Providers/BrevoProvider.php:278
 msgid "Unknown Brevo API error."
-msgstr ""
+msgstr "未知的 Brevo API 错误。"
 
 #: src/Exceptions/AbstractErrorHandler.php:796
 msgid "Unknown Error"
-msgstr ""
+msgstr "未知错误"
 
 #: src/Exceptions/FileRequestException.php:215
 msgid "Unknown File Error"
-msgstr ""
+msgstr "未知文件错误"
 
 #: src/Email/Providers/MailgunProvider.php:329
 msgid "Unknown Mailgun API error."
-msgstr ""
+msgstr "未知的 Mailgun API 错误。"
 
 #: src/Email/Providers/PostmarkProvider.php:313 src/Email/Providers/PostmarkProvider.php:323
 msgid "Unknown Postmark API error."
-msgstr ""
+msgstr "未知的 Postmark API 错误。"
 
 #: src/Email/Providers/ResendProvider.php:274
 msgid "Unknown Resend API error."
-msgstr ""
+msgstr "未知的 Resend API 错误。"
 
 #: src/Email/Providers/SendGridProvider.php:308
 msgid "Unknown SendGrid API error."
-msgstr ""
+msgstr "未知的 SendGrid API 错误。"
 
 #: templates/admin/contents/license/purchase-request.php:69
 msgid "Unknown app"
-msgstr ""
+msgstr "未知应用"
 
 #: src/RESTAPI/Handlers/HostedApps.php:120
 #, php-format
 msgid "Unknown app type \"%s\". Registered app types: %s."
-msgstr ""
+msgstr "未知的应用类型“%s”。已注册的应用类型：%s。"
 
 #: src/Environments/Application/Update/UpdateService.php:450
 #, php-format
 msgid "Unknown automatic update mode \"%s\"; use off, security or all."
-msgstr ""
+msgstr "未知的自动更新模式“%s”；请使用 off、security 或 all。"
 
 #: src/Background/Schedule/ScheduledTask.php:666
 msgid "Unknown callable"
-msgstr ""
+msgstr "未知的可调用对象"
 
 #: src/Email/Templates/Security/SecurityEmailTemplate.php:254
 msgid "Unknown device"
-msgstr ""
+msgstr "未知设备"
 
 #: src/Environments/WordPress/IdentityService.php:432 src/Environments/WordPress/IdentityService.php:461 src/Security/Authentication/UserAuthenticator.php:70
 msgid "Unknown email address."
-msgstr ""
+msgstr "未知的邮箱地址。"
 
 #: assets/js/admin/dashboard.js:85
 msgid "Unknown error occurred."
-msgstr ""
+msgstr "发生未知错误。"
 
 #: src/Monetization/LicensingService.php:170
 #, php-format
 msgid "Unknown license status \"%s\". Use one of: %s."
-msgstr ""
+msgstr "未知的许可证状态“%s”。请使用以下之一：%s。"
 
 #: src/Monetization/LicensingService.php:197
 #, php-format
 msgid "Unknown license terms: %s."
-msgstr ""
+msgstr "未知的许可证条款：%s。"
 
 #: src/Background/Jobs/Purchases/PurchaseRequestEmailJob.php:143
 #, php-format
 msgid "Unknown purchase request email \"%s\"."
-msgstr ""
+msgstr "未知的购买请求邮件“%s”。"
 
 #: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:67
 msgid "Unknown security notice."
-msgstr ""
+msgstr "未知的安全通知。"
 
 #: src/Environments/Application/Installation/WebInstaller.php:801
 msgid "Unknown task."
-msgstr ""
+msgstr "未知任务。"
 
 #: assets/js/admin/json-editor.js:1079
 msgid "Unknown type"
-msgstr ""
+msgstr "未知类型"
 
 #: themes/default/templates/partials/repository/pricing.php:26
 msgid "Unlimited sites"
-msgstr ""
+msgstr "不限站点"
 
 #: src/RESTAPI/RouteCatalog.php:169
 msgid "Unnamed Route"
-msgstr ""
+msgstr "未命名路由"
 
 #: assets/js/admin/site-health.js:232
 msgid "Unnamed check"
-msgstr ""
+msgstr "未命名检查"
 
 #: assets/js/admin/repository-browser.js:484
 msgid "Unrecognised name"
-msgstr ""
+msgstr "无法识别的名称"
 
 #: templates/admin/contents/options/email/editor.php:112
 msgid "Unsaved changes"
-msgstr ""
+msgstr "未保存的更改"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:534
 msgid "Unsigned; installed as trusted"
-msgstr ""
+msgstr "未签名；已作为受信任软件包安装"
 
 #: src/Exceptions/RequestException.php:211
 msgid "Unsupported Content Type"
-msgstr ""
+msgstr "不支持的内容类型"
 
 #: src/Exceptions/RequestException.php:206
 msgid "Unsupported Media Type"
-msgstr ""
+msgstr "不支持的媒体类型"
 
 #: src/Exceptions/FileRequestException.php:44
 msgid "Unsupported Type"
-msgstr ""
+msgstr "不支持的类型"
 
 #: templates/admin/contents/system/updates.php:86
 msgid "Up to date"
-msgstr ""
+msgstr "已是最新"
 
 #: assets/js/admin/modules.js:182
 msgid "Up to date."
-msgstr ""
+msgstr "已是最新。"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:424 src/Admin/ContentHandlers/ModulesPage.php:497
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #: assets/js/admin/modules.js:448
 #, javascript-format
 msgid "Update %1$s from %2$s to %3$s? Its files are replaced."
-msgstr ""
+msgstr "将 %1$s 从 %2$s 更新到 %3$s？其文件将被替换。"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:424 src/Admin/ContentHandlers/ModulesPage.php:497
 #, php-format
 msgid "Update %s from the marketplace? Its files are replaced with the latest version."
-msgstr ""
+msgstr "从市场更新 %s？其文件将被替换为最新版本。"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:51
 msgid "Update Available"
-msgstr ""
+msgstr "有可用更新"
 
 #: src/Environments/Application/Health/SystemHealth.php:1392 src/Environments/Application/Health/SystemHealth.php:1400 src/Environments/Application/Health/SystemHealth.php:1410 src/Environments/Application/Health/SystemHealth.php:1423
 msgid "Update Check"
-msgstr ""
+msgstr "更新检查"
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:87
 msgid "Update Failed"
-msgstr ""
+msgstr "更新失败"
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:55
 msgid "Update Installed"
-msgstr ""
+msgstr "更新已安装"
 
 #: src/Environments/Application/Health/SystemHealth.php:1378 src/Environments/Application/Health/SystemHealth.php:1381
 msgid "Update Readiness"
-msgstr ""
+msgstr "更新就绪情况"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:218 src/Admin/ActionHandlers/SystemManagement.php:231 src/Admin/ActionHandlers/SystemManagement.php:248 src/Admin/ActionHandlers/SystemManagement.php:262
 #: assets/js/admin/site-health.js:32
 msgid "Update Server Connection"
-msgstr ""
+msgstr "更新服务器连接"
 
 #: src/Security/Permission/Capability.php:45
 msgid "Update app monetization"
-msgstr ""
+msgstr "修改应用变现"
 
 #: assets/js/admin/core.js:1349
 msgid "Update failed"
-msgstr ""
+msgstr "更新失败"
 
 #: src/Security/Permission/Capability.php:31
 msgid "Update hosted application details"
-msgstr ""
+msgstr "修改托管应用详情"
 
 #: templates/admin/contents/system/updates.php:50
 msgid "Update in progress"
-msgstr ""
+msgstr "正在更新"
 
 #: src/Security/Permission/Capability.php:53
 msgid "Update licenses"
-msgstr ""
+msgstr "修改许可证"
 
 #: src/Security/Permission/Capability.php:49
 msgid "Update monetization pricing tiers"
-msgstr ""
+msgstr "修改定价层级"
 
 #: src/Security/Permission/Capability.php:97
 msgid "Update organization members"
-msgstr ""
+msgstr "修改组织成员"
 
 #: src/Security/Permission/Capability.php:93
 msgid "Update organizations"
-msgstr ""
+msgstr "修改组织"
 
 #: src/Security/Permission/Capability.php:88
 msgid "Update owners"
-msgstr ""
+msgstr "修改所有者"
 
 #: templates/admin/contents/system/updates.php:56
 msgid "Update queued"
-msgstr ""
+msgstr "更新已排队"
 
 #: src/Security/Permission/Capability.php:112
 msgid "Update roles"
-msgstr ""
+msgstr "修改角色"
 
 #: src/Security/Permission/Capability.php:107
 msgid "Update service accounts"
-msgstr ""
+msgstr "修改服务账户"
 
 #: templates/admin/contents/broadcasts/compose.php:63
 msgid "Update this message"
-msgstr ""
+msgstr "更新此消息"
 
 #: assets/js/admin/modules.js:446
 #, javascript-format
 msgid "Update to %s"
-msgstr ""
+msgstr "更新到 %s"
 
 #: src/Security/Permission/Capability.php:101
 msgid "Update users"
-msgstr ""
+msgstr "修改用户"
 
 #: themes/default/templates/pages/client/app.php:50 themes/default/templates/pages/repository/app.php:118
 msgid "Updated"
-msgstr ""
+msgstr "已更新"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:289 src/Admin/ActionHandlers/ThemeManagement.php:263
 #, php-format
 msgid "Updated %s from %s to %s."
-msgstr ""
+msgstr "已将 %s 从 %s 更新到 %s。"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:322 src/Admin/ContentHandlers/ToolsPage.php:358
 msgid "Updates"
-msgstr ""
+msgstr "更新"
 
 #: templates/admin/contents/system/updates.php:62
 msgid "Updates are blocked"
-msgstr ""
+msgstr "更新已被阻止"
 
 #: templates/admin/contents/system/updates.php:92
 msgid "Updates are installed only when you start them."
-msgstr ""
+msgstr "只有在您启动时才会安装更新。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1383
 msgid "Updates cannot be installed: "
-msgstr ""
+msgstr "无法安装更新： "
 
 #: templates/admin/contents/options/email/editor.php:462
 msgid "Updating preview..."
-msgstr ""
+msgstr "正在更新预览..."
 
 #: src/FileSystem/WPPluginRepository.php:230
 msgid "Upgrade Notice"
-msgstr ""
+msgstr "升级通知"
 
 #: assets/js/admin/core.js:872
 msgid "Upgrade successful!"
-msgstr ""
+msgstr "升级成功！"
 
 #: themes/default/templates/pages/client/app-new.php:48
 msgid "Upload"
-msgstr ""
+msgstr "上传"
 
 #: templates/admin/contents/repository/uploader.php:50
 #, php-format
 msgid "Upload %s Zip File"
-msgstr ""
+msgstr "上传 %s ZIP 文件"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:594
 msgid "Upload (signed)"
-msgstr ""
+msgstr "上传（已签名）"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:593
 msgid "Upload (unsigned, trusted)"
-msgstr ""
+msgstr "上传（未签名，受信任）"
 
 #: src/Exceptions/FileRequestException.php:80
 msgid "Upload Failed"
-msgstr ""
+msgstr "上传失败"
 
 #: templates/admin/contents/accounts/access-control-form.php:91
 msgid "Upload Image"
-msgstr ""
+msgstr "上传图片"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:157 src/Admin/ContentHandlers/RepositoryPage.php:482 templates/admin/contents/repository/index.php:47
 msgid "Upload New"
-msgstr ""
+msgstr "上传新的"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:186
 #, php-format
 msgid "Upload New %s"
-msgstr ""
+msgstr "上传新的%s"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:46
 msgid "Upload New Application"
-msgstr ""
+msgstr "上传新应用"
 
 #: templates/admin/contents/repository/upload.php:43
 msgid "Upload a Hosted App"
-msgstr ""
+msgstr "上传托管应用"
 
 #: themes/default/templates/pages/client/app.php:78
 msgid "Upload a new zip file to publish a new version; its version and requirements are read from the package."
-msgstr ""
+msgstr "上传新的 zip 文件以发布新版本；其版本和要求会从软件包中读取。"
 
 #: themes/default/templates/pages/client/apps.php:40
 msgid "Upload a plugin, theme or software package to host it here."
-msgstr ""
+msgstr "上传插件、主题或软件包以在此托管。"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:92 themes/default/templates/pages/client/apps.php:26
 msgid "Upload an app"
-msgstr ""
+msgstr "上传应用"
 
 #: templates/admin/contents/accounts/access-control-form.php:106
 msgid "Upload an image (170 x 170 pixels recommended)."
-msgstr ""
+msgstr "上传一张图片（建议 170 × 170 像素）。"
 
 #: templates/admin/contents/modules/extensions.php:114 templates/admin/contents/modules/themes.php:116
 msgid "Upload and install"
-msgstr ""
+msgstr "上传并安装"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:574
 #, php-format
 msgid "Upload and manage %s."
-msgstr ""
+msgstr "上传并管理%s。"
 
 #: src/Security/Permission/Capability.php:34
 msgid "Upload application assets"
-msgstr ""
+msgstr "上传应用资源"
 
 #: assets/js/admin/repository-browser.js:340 assets/js/admin/repository-browser.js:870 assets/js/admin/repository-browser.js:873
 msgid "Upload artifact"
-msgstr ""
+msgstr "上传制品"
 
 #: assets/js/admin/repository-browser.js:336 assets/js/admin/repository-browser.js:796
 msgid "Upload assets"
-msgstr ""
+msgstr "上传资源"
 
 #: src/HostedApps/HostingController.php:449
 msgid "Upload at least one asset using \"asset_file\" or \"asset_file[]\" key in your file parameter name."
-msgstr ""
+msgstr "请在文件参数名中使用“asset_file”或“asset_file[]”键至少上传一个资源。"
 
 #: assets/js/admin/apps-uploader.js:586
 msgid "Upload from"
-msgstr ""
+msgstr "上传自"
 
 #: assets/js/admin/apps-uploader.js:579
 msgid "Upload from Gallery"
-msgstr ""
+msgstr "从图库上传"
 
 #: assets/js/admin/apps-uploader.js:620
 msgid "Upload from URL"
-msgstr ""
+msgstr "从 URL 上传"
 
 #: assets/js/admin/apps-uploader.js:616
 msgid "Upload from device"
-msgstr ""
+msgstr "从设备上传"
 
 #: assets/js/admin/apps-uploader.js:1173
 msgid "Upload request failed."
-msgstr ""
+msgstr "上传请求失败。"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:304
 #, php-format
 msgid "Upload the %s package as a .zip file whose name uses letters, digits, dots, hyphens and underscores."
-msgstr ""
+msgstr "请将 %s 软件包以 .zip 文件上传，文件名只能包含字母、数字、点、连字符和下划线。"
 
 #: themes/default/templates/pages/client/app-new.php:13
 msgid "Upload the app's zip file. Its version and requirements are read from the package; the rest you can edit once it is uploaded."
-msgstr ""
+msgstr "上传应用的 zip 文件。其版本和要求会从软件包中读取；其余内容可在上传后编辑。"
 
 #: assets/js/admin/apps-uploader.js:603
 msgid "Upload to repository"
-msgstr ""
+msgstr "上传到存储库"
 
 #: src/FileSystem/Repository.php:746
 msgid "Upload was not success."
-msgstr ""
+msgstr "上传未成功。"
 
 #: src/Monetization/PurchaseRequestService.php:718
 msgid "Upload your payment receipt."
-msgstr ""
+msgstr "上传您的付款凭证。"
 
 #: themes/default/templates/pages/client/app.php:46
 msgid "Uploaded"
-msgstr ""
+msgstr "已上传"
 
 #: assets/js/admin/repository-browser.js:824
 #, javascript-format
 msgid "Uploaded %s assets."
-msgstr ""
+msgstr "已上传 %s 个资源。"
 
 #: src/FileSystem/Repository.php:374
 msgid "Uploaded ZIP could not be opened."
-msgstr ""
+msgstr "无法打开上传的 ZIP。"
 
 #: assets/js/admin/apps-uploader.js:598
 msgid "Uploaded image preview"
-msgstr ""
+msgstr "已上传图片预览"
 
 #: templates/admin/contents/options/cache/stats.php:210 assets/js/admin/cache-stats.js:194
 msgid "Uptime"
-msgstr ""
+msgstr "运行时间"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:624
 #, php-format
 msgid "Use %s file to edit %s version"
-msgstr ""
+msgstr "使用 %s 文件编辑 %s 版本"
 
 #. translators: %s: a placeholder example such as {{token}}.
 #: templates/admin/contents/options/email/editor.php:368
 #, php-format
 msgid "Use %s placeholders for dynamic values."
-msgstr ""
+msgstr "使用 %s 占位符表示动态值。"
 
 #: src/Email/Providers/MailgunProvider.php:86
 msgid "Use EU region if your Mailgun account is hosted in Europe."
-msgstr ""
+msgstr "如果您的 Mailgun 账户托管在欧洲，请使用 EU 区域。"
 
 #. translators: %s: a placeholder example such as {{token}}.
 #: templates/admin/contents/options/email/editor.php:411
 #, php-format
 msgid "Use a %s placeholder or a full URL."
-msgstr ""
+msgstr "使用 %s 占位符或完整 URL。"
 
 #: themes/default/templates/pages/client/security.php:116
 msgid "Use an app such as 1Password, Google Authenticator, or Microsoft Authenticator."
-msgstr ""
+msgstr "使用 1Password、Google Authenticator 或 Microsoft Authenticator 等应用。"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:30
 msgid "Use plugin readme.txt file to edit the minimum WordPress version required to install this plugin"
-msgstr ""
+msgstr "使用插件的 readme.txt 文件编辑安装此插件所需的最低 WordPress 版本"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:15
 msgid "Use plugin readme.txt file to edit the plugin's required PHP version."
-msgstr ""
+msgstr "使用插件的 readme.txt 文件编辑插件所需的 PHP 版本。"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:45
 msgid "Use plugin the readme.txt file to edit the WordPress version this plugin has been tested up to."
-msgstr ""
+msgstr "使用插件的 readme.txt 文件编辑此插件已测试到的 WordPress 版本。"
 
 #: src/Email/Templates/Security/EmailOtpEmail.php:64
 #, php-format

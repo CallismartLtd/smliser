@@ -77,6 +77,7 @@ if ( $request->isEmpty( 'noheader' ) ) {
 		'collapsed'      => $collapsed,
 		'registry'       => $registry,
 		'assets_manager' => $assets_manager,
+		'preferences_url' => $urlmanager->client_dashboard_url( 'json/preferences' )->url(),
 	] );
 
 	/*

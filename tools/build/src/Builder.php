@@ -20,7 +20,7 @@ final class Builder {
 	/**
 	 * Repository directories every build copies.
 	 */
-	private const SOURCE_DIRS = [ 'src', 'templates', 'assets', 'themes' ];
+	private const SOURCE_DIRS = [ 'src', 'templates', 'assets', 'themes', 'languages' ];
 
 	/**
 	 * Number of files copied in this run.
@@ -210,7 +210,7 @@ final class Builder {
 	}
 
 	/**
-	 * Copy src/, templates/, assets/ and themes/ into the runtime directory.
+	 * Copy src/, templates/, assets/, themes/ and languages/ into the runtime directory.
 	 *
 	 * Theme assets are not minified: a theme ships its files as written.
 	 *
@@ -225,6 +225,7 @@ final class Builder {
 			'templates' => $target->templates_path(),
 			'assets'    => $target->assets_path(),
 			'themes'    => $target->themes_path(),
+			'languages' => $target->languages_path(),
 		];
 
 		foreach ( $destinations as $source => $destination ) {

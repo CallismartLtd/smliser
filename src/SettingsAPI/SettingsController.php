@@ -16,6 +16,8 @@ use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
 use SmartLicenseServer\Email\Templates\EmailTemplateRegistry;
 use SmartLicenseServer\Exceptions\RequestException;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\Locale;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\Security\SecurityAwareTrait;
 use SmartLicenseServer\Utils\SanitizeAwareTrait;
@@ -54,7 +56,11 @@ class SettingsController {
 
 				if ( $request->has( $key ) ) {
 					$value = $this->sanitize_auto( $request->get( $key ) );
-					
+
+					if ( Settings::SITE_LOCALE === $key ) {
+						$value = $this->validate_site_locale( (string) $value );
+					}
+
 					$this->settings->set( $key, $value );
 				}
 			}
@@ -62,7 +68,7 @@ class SettingsController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => 'Settings updated successfully.'
+					'message' => smliser__( 'Settings updated successfully.' )
 				]
 			] );
 		} catch ( RequestException $e ) {
@@ -353,5 +359,33 @@ class SettingsController {
 			return Response::error( $e )
 				->set_header( 'Content-Type', 'application/json; charset=utf-8' );
 		}
+	}
+
+	/**
+	 * Validate the site language: empty (automatic) or an installed locale.
+	 *
+	 * @param string $value
+	 * @return string The normalized locale code, or ''.
+	 * @throws RequestException When the language is not installed.
+	 */
+	private function validate_site_locale( string $value ) : string {
+		if ( '' === $value ) {
+			return '';
+		}
+
+		$locale = Locale::try_parse( $value );
+
+		if ( null === $locale || ! in_array( $locale->code(), I18n::translator()->available_locales(), true ) ) {
+			throw new RequestException(
+				'invalid_param',
+				sprintf(
+					/* translators: %s: a locale code such as fr_FR. */
+					smliser__( 'The language "%s" is not installed.' ),
+					$value
+				)
+			);
+		}
+
+		return $locale->code();
 	}
 }

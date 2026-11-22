@@ -81,15 +81,6 @@ function is_smliser_error( $value ) : bool {
 	return ( $value instanceof Exception );
 }
 
-if ( ! function_exists( '__' ) ) {
-	/**
-	 * Retrieves the translation of $text.
-	 */
-	function __( string $text, string $domain = 'default' ) : string {
-		return smliser__( $text, $domain );
-	}
-}
-
 if ( ! function_exists( 'is_interactive_shell' ) ) {
 	/**
 	 * Tells whether the current request is an intercative shell session

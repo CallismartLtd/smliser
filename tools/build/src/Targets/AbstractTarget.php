@@ -133,6 +133,15 @@ abstract class AbstractTarget {
 	}
 
 	/**
+	 * Build-relative directory of the bundled translations.
+	 *
+	 * @return string
+	 */
+	final public function languages_path() : string {
+		return BuildContext::join( $this->runtime_path(), 'languages' );
+	}
+
+	/**
 	 * Build-relative directory of the bundled site themes (the default theme).
 	 *
 	 * @return string

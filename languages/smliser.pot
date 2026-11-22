@@ -1,0 +1,723 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart License Server 0.4.9\n"
+"Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
+"POT-Creation-Date: 2026-11-22 22:02+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Domain: smliser\n"
+
+#. translators: 1: Plugin name, 2: Number of affected directories
+#: src/Environments/WordPress/WordPressEnvironment.php:430
+#, php-format
+msgid "%1$s detected a filesystem permission problem in %2$d directory."
+msgid_plural "%1$s detected filesystem permission problems in %2$d directories."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: application name, 2: version number.
+#: themes/default/templates/partials/footer.php:13
+#, php-format
+msgid "%1$s v%2$s"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:484
+msgid "API Rate Limit (Per Minute)"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:812
+msgid "APP ID"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:790
+msgid "Account Name"
+msgstr ""
+
+#: themes/default/templates/partials/header.php:20
+msgid "Admin"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:596
+msgid "Admin URL Prefix"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:406
+msgid "Administration Email"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-generic.php:50 templates/admin/contents/repository/edit-software.php:67 templates/admin/contents/repository/edit-wpplugin.php:98 templates/admin/contents/repository/edit-wptheme.php:124
+msgid "App.json File"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:649
+msgid "Authentication URL prefix"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:638
+msgid "Author Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:652
+msgid "Author Profile URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:582
+msgid "Automatic (browser language)"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:724 src/Admin/ContentHandlers/OptionsPage.php:781
+msgid "Cache"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:723
+msgid "Cache Adapters"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:730
+msgid "Cache Statistics"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:731
+msgid "Cache Stats"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:609
+msgid "Client Dashboard URL Prefix"
+msgstr ""
+
+#: templates/admin/header.php:43
+msgid "Collapse menu"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:209
+msgid "Confirm Password"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:435
+msgid "Customer-facing support email address used in license communications and support responses."
+msgstr ""
+
+#: templates/admin/header.php:29 themes/default/templates/partials/header.php:21
+msgid "Dashboard"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:507
+msgid "Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:338
+msgid "Default Email Provider"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:367
+msgid "Default From Address"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:353
+msgid "Default From Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:473
+msgid "Default License Activation Limit"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:462
+msgid "Default License Duration (Days)"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:474
+msgid "Default number of activations allowed per license key."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:463
+msgid "Default number of days a newly generated license remains valid when no expiration date is specified."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:518
+msgid "Defines whether this repository operates in production, staging, or development mode."
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:851
+msgid "Description"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:421
+msgid "Designated contact email for server, infrastructure, or application hosting-related issues and notifications."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:526
+msgid "Development"
+msgstr ""
+
+#: themes/default/templates/partials/header.php:13
+msgid "Documentation"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
+msgid "Documentation URL"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
+msgid "Download URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:636
+msgid "Downloads URL Prefix"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:178 src/Admin/ContentHandlers/OptionsPage.php:775
+msgid "Email"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:709
+msgid "Email Provider Settings"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:710
+msgid "Email Providers"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:716 src/Admin/ContentHandlers/OptionsPage.php:717
+msgid "Email Templates"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:517
+msgid "Environment Mode"
+msgstr ""
+
+#: src/Environments/WordPress/Dispatcher.php:272
+msgid "Expired download link, please refresh current page."
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wptheme.php:72
+msgid "External Repository URL"
+msgstr ""
+
+#: src/Monetization/Controller.php:204
+msgid "Failed to delete the pricing tier, please try again."
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:824
+msgid "File Size"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:162
+msgid "Full Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:535
+msgid "Full URL to your Terms of Service or license agreement page."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:549
+msgid "Full URL to your privacy policy page."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:763
+msgid "General"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:692
+msgid "General Settings"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:225
+msgid "Generate Password"
+msgstr ""
+
+#. translators: %s: the user's display name.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:65
+#, php-format
+msgid "Hi %s,"
+msgstr ""
+
+#. translators: {{display_name}} is replaced with the user's name; keep it as is.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150
+msgid "Hi {{display_name}},"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
+msgid "Homepage URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:420
+msgid "Hosting Email"
+msgstr ""
+
+#. translators: %s: support email address.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:76
+#, php-format
+msgid "If you did not make this change, your account may be compromised. Please contact us immediately at %s so we can secure your account."
+msgstr ""
+
+#. translators: {{support_email}} is replaced with an email address; keep it as is.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:175
+msgid "If you did not make this change, your account may be compromised. Please contact us immediately at {{support_email}} so we can secure your account."
+msgstr ""
+
+#. translators: %s: support email address.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:81
+#, php-format
+msgid "If you made this change yourself, you can safely ignore this email. For any other questions, contact us at %s."
+msgstr ""
+
+#. translators: {{support_email}} is replaced with an email address; keep it as is.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:183
+msgid "If you made this change yourself, you can safely ignore this email. For any other questions, contact us at {{support_email}}."
+msgstr ""
+
+#: src/Environments/WordPress/RESTAPI.php:580
+msgid "Invalid URL format."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:577
+msgid "Language of the admin and client dashboards, emails and public pages. Users can still choose their own language in their preferences. \"Automatic\" follows each visitor's browser language when a translation is installed."
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:826
+msgid "Last Updated"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:816
+msgid "License"
+msgstr ""
+
+#: src/Monetization/Controller.php:456
+msgid "License ID is required."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:448
+msgid "License Key Prefix"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:495
+msgid "Log Retention (Days)"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:485
+msgid "Maximum number of API requests allowed per client within a one-minute window."
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:501
+msgid "Member"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:510
+msgid "Member Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:528
+msgid "Member Status"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:820
+msgid "Monetization"
+msgstr ""
+
+#: src/Monetization/Controller.php:173
+msgid "Monetization ID is required."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:702
+msgid "Monetization Provider Settings"
+msgstr ""
+
+#: src/Monetization/Controller.php:248
+msgid "Monetization disabled successfully."
+msgstr ""
+
+#: src/Monetization/Controller.php:248
+msgid "Monetization enabled successfully."
+msgstr ""
+
+#: src/Monetization/Controller.php:183 src/Monetization/Controller.php:238
+msgid "Monetization not found."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:703
+msgid "Monetizations"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:608
+msgid "Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:496
+msgid "Number of days system logs are retained before automatic cleanup."
+msgstr ""
+
+#: src/Environments/WordPress/RESTAPI.php:584
+msgid "Only HTTPS URLs are allowed."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:64
+msgid "Only user accounts have preferences."
+msgstr ""
+
+#: templates/admin/header.php:46
+msgid "Open menu"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:347 src/Admin/ContentHandlers/AccessControlPage.php:360 src/Admin/ContentHandlers/AccessControlPage.php:471 src/Admin/ContentHandlers/AccessControlPage.php:480
+msgid "Organization Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:366 src/Admin/ContentHandlers/AccessControlPage.php:376 src/Admin/ContentHandlers/AccessControlPage.php:486 src/Admin/ContentHandlers/AccessControlPage.php:495
+msgid "Organization Slug"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:666
+msgid "Owner"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:640
+msgid "Owner Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:654
+msgid "Owner Subject"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:668 src/Admin/ContentHandlers/AccessControlPage.php:821
+msgid "Owner Type"
+msgstr ""
+
+#: themes/default/templates/partials/footer.php:15
+msgid "Package signing key"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:193
+msgid "Password"
+msgstr ""
+
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:134
+msgid "Password Changed"
+msgstr ""
+
+#. translators: %s: chmod command example
+#: src/Environments/WordPress/WordPressEnvironment.php:448
+#, php-format
+msgid "Please check directory ownership and permissions. You may need to run %s or contact your hosting provider."
+msgstr ""
+
+#: src/Environments/WordPress/Dispatcher.php:338
+msgid "Please provide a valid file path"
+msgstr ""
+
+#: src/Environments/WordPress/Dispatcher.php:291
+msgid "Please specify the download type."
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wpplugin.php:72
+msgid "Plugin Download URL"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wpplugin.php:85
+msgid "Plugin Homepage"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wpplugin.php:59
+msgid "Plugin Support URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:449
+msgid "Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:407
+msgid "Primary email address for receiving system notifications, error reports, and administrative alerts."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:548
+msgid "Privacy Policy URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:524
+msgid "Production"
+msgstr ""
+
+#: src/Monetization/Controller.php:460
+msgid "Provide the domain to uninstall."
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:822
+msgid "Public Download URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:393
+msgid "Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:506
+msgid "Receipt Retention (Days)"
+msgstr ""
+
+#: themes/default/templates/partials/header.php:12
+msgid "Repository"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:392
+msgid "Repository Name"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:622
+msgid "Repository URL Prefix"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wpplugin.php:14 templates/admin/contents/repository/edit-wptheme.php:14
+msgid "Required PHP Version"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wpplugin.php:29 templates/admin/contents/repository/edit-wptheme.php:29
+msgid "Required WordPress Version"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:738 src/Admin/ContentHandlers/OptionsPage.php:787
+msgid "Routes"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:737
+msgid "Routes Settings"
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:94
+msgid "Saved."
+msgstr ""
+
+#: src/Environments/WordPress/Dispatcher.php:188
+msgid "Security check failed."
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:393
+msgid "Select Organization Status"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:368
+msgid "Sender email address used in outgoing emails when the active provider does not have a From Email configured."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:354
+msgid "Sender name used in outgoing emails when the active provider does not have a From Name configured."
+msgstr ""
+
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:137
+msgid "Sent after a user's password has been successfully changed."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:801
+msgid "Settings"
+msgstr ""
+
+#: src/SettingsAPI/SettingsController.php:71
+msgid "Settings updated successfully."
+msgstr ""
+
+#: themes/default/templates/partials/header.php:17
+msgid "Sign in"
+msgstr ""
+
+#: themes/default/templates/partials/header.php:22
+msgid "Sign out"
+msgstr ""
+
+#: themes/default/templates/partials/header.php:28
+msgid "Site"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:576
+msgid "Site Language"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:814
+msgid "Slug"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:525
+msgid "Staging"
+msgstr ""
+
+#: src/Admin/ContentHandlers/AccessControlPage.php:240 src/Admin/ContentHandlers/AccessControlPage.php:382 src/Admin/ContentHandlers/AccessControlPage.php:517 src/Admin/ContentHandlers/AccessControlPage.php:683
+#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
+msgid "Status"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:434
+msgid "Support Email"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
+msgid "Support URL"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:534
+msgid "Terms URL"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wpplugin.php:44 templates/admin/contents/repository/edit-wptheme.php:44
+msgid "Tested WordPress Version"
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:83
+msgid "That language is not available."
+msgstr ""
+
+#: src/Environments/WordPress/RESTAPI.php:588
+msgid "The URL does not resolve to a valid host."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:637
+msgid "The URL segment that appears before download pages. For example: https://example.com/downloads/"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:623
+msgid "The URL segment that appears before repository pages. For example: https://example.com/repository/"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:597
+msgid "The URL segment that appears before the admin url. For example: https://example.com/smliser-admin/"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:610
+msgid "The URL segment that appears before the client dashboard page. For example: https://example.com/dashboard/"
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:650
+msgid "The URL segment the appears before authentication pages. For example https://example.com/auth"
+msgstr ""
+
+#: src/Environments/WordPress/RESTAPI.php:574
+msgid "The domain parameter is required."
+msgstr ""
+
+#: src/Monetization/Controller.php:474
+msgid "The domain provided does not exist in this license."
+msgstr ""
+
+#: src/Admin/ContentHandlers/OptionsPage.php:339
+msgid "The email provider used for all outgoing system emails. Configure individual providers using the cards below."
+msgstr ""
+
+#. translators: %s: a locale code such as fr_FR.
+#: src/SettingsAPI/SettingsController.php:383
+#, php-format
+msgid "The language \"%s\" is not installed."
+msgstr ""
+
+#: src/RESTAPI/Handlers/WPPlugins.php:73
+msgid "The plugin does not exist, please check the typography or the plugin slug."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:95 assets/js/i18n.js:205
+msgid "The preference could not be saved."
+msgstr ""
+
+#. translators: %s: comma-separated list of preference names.
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:72
+#, php-format
+msgid "The preference must be one of: %s."
+msgstr ""
+
+#: src/RESTAPI/Handlers/HostedApps.php:206 src/RESTAPI/Handlers/HostedApps.php:254
+msgid "The requested app could not be found"
+msgstr ""
+
+#: src/RESTAPI/Handlers/WPThemes.php:69
+msgid "The theme does not exist."
+msgstr ""
+
+#: src/Environments/WordPress/RESTAPI.php:558
+msgid "The value cannot be empty."
+msgstr ""
+
+#: src/Environments/WordPress/RESTAPI.php:604
+msgid "The value must be an integer."
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wptheme.php:111
+msgid "Theme Download URL"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wptheme.php:59
+msgid "Theme Homepage"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wptheme.php:85
+msgid "Theme Preview URL"
+msgstr ""
+
+#: templates/admin/contents/repository/edit-wptheme.php:98
+msgid "Theme Support URL"
+msgstr ""
+
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:73 src/Email/Templates/Accounts/PasswordChangedEmail.php:166
+msgid "This is a confirmation that your account password has been updated. No further action is needed."
+msgstr ""
+
+#: src/Monetization/Controller.php:466
+msgid "This license does not exist."
+msgstr ""
+
+#: src/Monetization/Controller.php:232
+msgid "This monetization does not exist yet, please add a pricing tier first."
+msgstr ""
+
+#: src/Monetization/Controller.php:177
+msgid "Tier ID is required."
+msgstr ""
+
+#: templates/admin/contents/index.php:157
+msgid "Unknown"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:623
+msgid "Version"
+msgstr ""
+
+#: src/Environments/WordPress/Dispatcher.php:280
+msgid "You are not authorized to perform this action."
+msgstr ""
+
+#: src/Environments/WordPress/Dispatcher.php:192
+msgid "You do not have the required permission to perform this action."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:58
+msgid "You must be signed in to change your preferences."
+msgstr ""
+
+#: src/RESTAPI/Handlers/WPPlugins.php:53
+msgid "You must provide either the plugin ID or the plugin slug."
+msgstr ""
+
+#: src/RESTAPI/Handlers/WPThemes.php:50
+msgid "You must provide either the theme ID or the theme slug."
+msgstr ""
+
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:35
+msgid "Your Password Has Been Changed"
+msgstr ""
+
+#. translators: %s: date and time of the change.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:70
+#, php-format
+msgid "Your password was changed successfully on %s."
+msgstr ""
+
+#. translators: {{changed_at}} is replaced with a date; keep it as is.
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:159
+msgid "Your password was changed successfully on {{changed_at}}."
+msgstr ""
+
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:43
+msgid "Your password was changed successfully. If this was not you, contact support immediately."
+msgstr ""
+
+#: src/Environments/WordPress/WordPressEnvironment.php:395
+msgid "not readable"
+msgstr ""
+
+#: src/Environments/WordPress/WordPressEnvironment.php:398
+msgid "not writable"
+msgstr ""

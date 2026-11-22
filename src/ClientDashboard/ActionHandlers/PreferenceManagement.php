@@ -12,6 +12,8 @@ namespace SmartLicenseServer\ClientDashboard\ActionHandlers;
 
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\Locale;
 use SmartLicenseServer\Security\Actors\User;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\SettingsAPI\UserSettings;
@@ -31,6 +33,7 @@ final class PreferenceManagement {
 	public const KEYS = [
 		UserSettings::DASHBOARD_THEME_NAME,
 		UserSettings::DASHBOARD_SIDEBAR_COLLAPSED_NAME,
+		UserSettings::LOCALE,
 	];
 
 	/**
@@ -52,30 +55,65 @@ final class PreferenceManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( null === $principal ) {
-			return $this->answer( false, 'You must be signed in to change your preferences.', 401 );
+			return $this->answer( false, smliser__( 'You must be signed in to change your preferences.' ), 401 );
 		}
 
 		$actor = $principal->get_actor();
 
 		if ( ! $actor instanceof User ) {
-			return $this->answer( false, 'Only user accounts have preferences.', 403 );
+			return $this->answer( false, smliser__( 'Only user accounts have preferences.' ), 403 );
 		}
 
 		$key = (string) $request->get( 'key', '' );
 
 		if ( ! in_array( $key, self::KEYS, true ) ) {
-			return $this->answer( false, sprintf( 'The preference must be one of: %s.', implode( ', ', self::KEYS ) ), 400 );
+			return $this->answer( false, sprintf(
+				/* translators: %s: comma-separated list of preference names. */
+				smliser__( 'The preference must be one of: %s.' ),
+				implode( ', ', self::KEYS )
+			), 400 );
+		}
+
+		$value = $request->get( 'value', '' );
+
+		if ( UserSettings::LOCALE === $key ) {
+			$value = $this->normalize_locale( (string) $value );
+
+			if ( null === $value ) {
+				return $this->answer( false, smliser__( 'That language is not available.' ), 400 );
+			}
 		}
 
 		try {
-			$saved = UserSettings::for( $actor )->set( $key, $request->get( 'value', '' ) );
+			$saved = UserSettings::for( $actor )->set( $key, $value );
 		} catch ( Throwable $e ) {
 			return $this->answer( false, $e->getMessage(), 500 );
 		}
 
 		return $saved
-			? $this->answer( true, 'Saved.', 200 )
-			: $this->answer( false, 'The preference could not be saved.', 500 );
+			? $this->answer( true, smliser__( 'Saved.' ), 200 )
+			: $this->answer( false, smliser__( 'The preference could not be saved.' ), 500 );
+	}
+
+	/**
+	 * Validate a language choice: '' (use the site language) or an
+	 * installed locale.
+	 *
+	 * @param string $value
+	 * @return string|null The normalized code, '' or null when invalid.
+	 */
+	private function normalize_locale( string $value ) : ?string {
+		if ( '' === $value ) {
+			return '';
+		}
+
+		$locale = Locale::try_parse( $value );
+
+		if ( null === $locale || ! in_array( $locale->code(), I18n::translator()->available_locales(), true ) ) {
+			return null;
+		}
+
+		return $locale->code();
 	}
 
 	/**

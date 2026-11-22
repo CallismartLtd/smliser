@@ -26,6 +26,8 @@ use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\FileSystem\FileSystem;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\I18n\TranslatorInterface;
+use SmartLicenseServer\I18n\WPTranslator;
 use SmartLicenseServer\Monetization\MonetizationRegistry;
 use SmartLicenseServer\HostedApps\Storage\AppStorage;
 use SmartLicenseServer\HostedApps\Storage\DirectoryAppStorage;
@@ -56,6 +58,18 @@ class WordPressEnvironment extends Environment {
 		Autoloader::add_function_dir( __DIR__ . '/functions' );
 
 		$this->container->singleton( WordPressEnvironment::class, $this );
+
+		// WordPress owns locale selection and gettext; bridge to it.
+		$this->container->singleton(
+			TranslatorInterface::class,
+			function () : TranslatorInterface {
+				$translator = new WPTranslator();
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN, \SMLISER_RUNTIME_DIR . 'languages' );
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN . '-js', \SMLISER_RUNTIME_DIR . 'languages' );
+
+				return $translator;
+			}
+		);
 		$this->container->singleton(
 			Request::class,
 			fn () : Request => Request::createFromGlobals()

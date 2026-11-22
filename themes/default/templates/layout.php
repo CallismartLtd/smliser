@@ -13,7 +13,7 @@ $this->enqueue_style( 'style', 'css/theme.css' );
 $this->enqueue_script( 'script', 'js/theme.js' );
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html <?php echo smliser_language_attributes(); // phpcs:ignore -- escaped. ?>>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

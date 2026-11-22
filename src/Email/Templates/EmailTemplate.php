@@ -735,6 +735,8 @@ abstract class EmailTemplate {
 	protected function skeleton( string $body_content ) : string {
 		$subject   = \escHtml( $this->subject() );
 		$preheader = \escHtml( $this->preheader() );
+		$lang      = \escAttr( \smliser_locale()->to_bcp47() );
+		$dir       = \escAttr( \smliser_locale()->direction() );
 		$header    = $this->render_header();
 		$footer    = $this->render_footer();
 		$body_bg   = $this->styles['body_bg'] ?? '#f4f6f8';
@@ -743,7 +745,7 @@ abstract class EmailTemplate {
 
 		$html = <<<HTML
         <!DOCTYPE html>
-        <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+        <html lang="{$lang}" dir="{$dir}" xmlns="http://www.w3.org/1999/xhtml">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1092,12 +1094,25 @@ abstract class EmailTemplate {
 			return null;
 		}
 
-		return new EmailMessage( [
+		// Render in the recipient's language, whatever the current request uses.
+		return smliser_with_locale( $this->locale(), fn () : EmailMessage => new EmailMessage( [
 			'to'      => $this->recipient(),
 			'subject' => $this->subject(),
 			'body'    => $this->render(),
 			'text'    => $this->text(),
-		] );
+		] ) );
+	}
+
+	/**
+	 * The language to write the email in.
+	 *
+	 * Templates addressed to a known user should return
+	 * smliser_user_locale( $user ). Null uses the site language.
+	 *
+	 * @return string|null A locale code such as `fr_FR`, or null.
+	 */
+	protected function locale() : ?string {
+		return smliser_site_locale();
 	}
 
 	/**

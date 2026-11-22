@@ -42,6 +42,7 @@ use SmartLicenseServer\Console\Commands\Apps\WPPluginCommand;
 use SmartLicenseServer\Console\Commands\Apps\SoftwareCommand;
 use SmartLicenseServer\Console\Commands\Apps\WPThemeCommand;
 use SmartLicenseServer\Console\Commands\CacheCommand;
+use SmartLicenseServer\Console\Commands\I18nCommand;
 use SmartLicenseServer\Console\Commands\CronCommand;
 use SmartLicenseServer\Console\Commands\DiagnoseCommand;
 use SmartLicenseServer\Console\Commands\Installer;
@@ -97,6 +98,7 @@ class CommandRegistry extends AbstractRegistry {
 		MaintenanceCommand::class,
 		ThemeCommand::class,
 		ExtensionCommand::class,
+		I18nCommand::class,
 	];
 
 	/*

@@ -32,7 +32,7 @@ class PasswordChangedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Your Password Has Been Changed';
+		return smliser__( 'Your Password Has Been Changed' );
 	}
 
 	protected function recipient() : string {
@@ -40,7 +40,7 @@ class PasswordChangedEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your password was changed successfully. If this was not you, contact support immediately.';
+		return smliser__( 'Your password was changed successfully. If this was not you, contact support immediately.' );
 	}
 
 	protected function variables() : array {
@@ -51,14 +51,40 @@ class PasswordChangedEmail extends EmailTemplate {
 	}
 
 	protected function body() : string {
-		$vars         = $this->variables();
-		$display_name = \escHtml( $vars['{{display_name}}'] );
-		$changed_at   = \escHtml( $vars['{{changed_at}}'] );
-		$support      = \escHtml( $vars['{{support_email}}'] );
+		$vars    = $this->variables();
+		$support = \escHtml( $vars['{{support_email}}'] );
+		$mailto  = static fn ( string $color, string $decoration ) : string => sprintf(
+			'<a href="mailto:%1$s" style="color:%2$s;text-decoration:%3$s;">%1$s</a>',
+			$support,
+			$color,
+			$decoration
+		);
+
+		$greeting = \escHtml( sprintf(
+			/* translators: %s: the user's display name. */
+			smliser__( 'Hi %s,' ),
+			$vars['{{display_name}}']
+		) );
+		$changed  = sprintf(
+			/* translators: %s: date and time of the change. */
+			\escHtml( smliser__( 'Your password was changed successfully on %s.' ) ),
+			'<strong>' . \escHtml( $vars['{{changed_at}}'] ) . '</strong>'
+		);
+		$intro    = \escHtml( smliser__( 'This is a confirmation that your account password has been updated. No further action is needed.' ) );
+		$warning  = sprintf(
+			/* translators: %s: support email address. */
+			\escHtml( smliser__( 'If you did not make this change, your account may be compromised. Please contact us immediately at %s so we can secure your account.' ) ),
+			$mailto( '#991b1b', 'underline' )
+		);
+		$closing  = sprintf(
+			/* translators: %s: support email address. */
+			\escHtml( smliser__( 'If you made this change yourself, you can safely ignore this email. For any other questions, contact us at %s.' ) ),
+			$mailto( '#6366f1', 'none' )
+		);
 
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$display_name},
+            {$greeting}
         </p>
 
         <!-- Success banner -->
@@ -68,16 +94,14 @@ class PasswordChangedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#166534;line-height:1.5;">
-                        &#10003;&nbsp; Your password was changed successfully on
-                        <strong>{$changed_at}</strong>.
+                        &#10003;&nbsp; {$changed}
                     </p>
                 </td>
             </tr>
         </table>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            This is a confirmation that your account password has been updated.
-            No further action is needed.
+            {$intro}
         </p>
 
         <!-- Security notice -->
@@ -87,29 +111,30 @@ class PasswordChangedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:13px;font-weight:600;color:#991b1b;line-height:1.5;">
-                        &#128683;&nbsp; If you did not make this change, your account may be
-                        compromised. Please contact us immediately at
-                        <a href="mailto:{$support}"
-                           style="color:#991b1b;text-decoration:underline;">{$support}</a>
-                        so we can secure your account.
+                        &#128683;&nbsp; {$warning}
                     </p>
                 </td>
             </tr>
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you made this change yourself, you can safely ignore this email.
-            For any other questions, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$closing}
         </p>
         HTML;
 	}
 
+	/**
+	 * Write to the user in their own language.
+	 */
+	protected function locale() : ?string {
+		return smliser_user_locale( $this->user );
+	}
+
 	public function label() : string {
-		return 'Password Changed';
+		return smliser__( 'Password Changed' );
 	}
 	public function description() : string {
-		return 'Sent after a user\'s password has been successfully changed.';
+		return smliser__( 'Sent after a user\'s password has been successfully changed.' );
 	}
 	public static function preview() : static {
 		$user = User::from_array( [ 'display_name' => 'Jane Doe' ] );
@@ -121,7 +146,8 @@ class PasswordChangedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{display_name}},',
+				/* translators: {{display_name}} is replaced with the user's name; keep it as is. */
+				'content'   => smliser__( 'Hi {{display_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -129,14 +155,15 @@ class PasswordChangedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => 'Your password was changed successfully on {{changed_at}}.',
+				/* translators: {{changed_at}} is replaced with a date; keep it as is. */
+				'content'   => smliser__( 'Your password was changed successfully on {{changed_at}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'This is a confirmation that your account password has been updated. No further action is needed.',
+				'content'   => smliser__( 'This is a confirmation that your account password has been updated. No further action is needed.' ),
 				'editable'  => true,
 				'removable' => true,
 			],
@@ -144,14 +171,16 @@ class PasswordChangedEmail extends EmailTemplate {
 				'id'        => 'security_notice',
 				'type'      => 'banner',
 				'tone'      => 'error',
-				'content'   => 'If you did not make this change, your account may be compromised. Please contact us immediately at {{support_email}} so we can secure your account.',
+				/* translators: {{support_email}} is replaced with an email address; keep it as is. */
+				'content'   => smliser__( 'If you did not make this change, your account may be compromised. Please contact us immediately at {{support_email}} so we can secure your account.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you made this change yourself, you can safely ignore this email. For any other questions, contact us at {{support_email}}.',
+				/* translators: {{support_email}} is replaced with an email address; keep it as is. */
+				'content'   => smliser__( 'If you made this change yourself, you can safely ignore this email. For any other questions, contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

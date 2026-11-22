@@ -29,9 +29,15 @@ final class JS {
 	 */
 	public function all( string $suffix = '' ) : array {
 		return [
+			'i18n' => [
+				'url'          => $this->urlmanager->assets_url( sprintf( 'js/i18n%s.js', $suffix ) ),
+				'dependencies' => [],
+				'version'      => SMLISER_VER,
+				'footer'       => false,
+			],
 			'gobals' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/globals%s.js', $suffix ) ),
-				'dependencies' => [],
+				'dependencies' => [ 'i18n' ],
 				'version'      => SMLISER_VER,
 				'footer'       => false,
 			],

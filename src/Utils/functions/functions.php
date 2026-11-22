@@ -462,13 +462,6 @@ function smliser_is_scalar_array( mixed $array ) : bool {
 }
 
 /**
- * Global translation helper.
- */
-function smliser__( string $text, string $domain = 'default' ) : string {
-	return $text; //@TODO: Build a translation engine.
-}
-
-/**
  * Log error messages to the error log.
  * 
  * @param Throwable|string $error

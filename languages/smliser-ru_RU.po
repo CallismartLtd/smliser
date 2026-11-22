@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
 "POT-Creation-Date: 2026-11-22 22:22+0000\n"
-"PO-Revision-Date: 2026-11-22 23:17+0000\n"
+"PO-Revision-Date: 2026-11-22 23:33+0000\n"
 "Language-Team: Русский (Россия)\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -6860,2176 +6860,2176 @@ msgstr "Сообщение обновлено."
 
 #: assets/js/admin/core.js:1573
 msgid "Message saved successfully"
-msgstr ""
+msgstr "Сообщение успешно сохранено"
 
 #: templates/admin/contents/license/purchase-request.php:98
 msgid "Message sent with the license"
-msgstr ""
+msgstr "Сообщение, отправленное вместе с лицензией"
 
 #: assets/js/admin/core.js:1535
 msgid "Message subject is required."
-msgstr ""
+msgstr "Требуется тема сообщения."
 
 #: templates/admin/contents/license/purchase-request.php:149
 msgid "Message to the buyer (optional)"
-msgstr ""
+msgstr "Сообщение покупателю (необязательно)"
 
 #: themes/default/templates/pages/client/purchases.php:76
 msgid "Messages about this purchase"
-msgstr ""
+msgstr "Сообщения об этой покупке"
 
 #: templates/admin/contents/options/email/templates.php:46
 msgid "Messaging"
-msgstr ""
+msgstr "Сообщения"
 
 #: src/Exceptions/RequestException.php:156 themes/default/templates/pages/errors/405.php:15
 msgid "Method Not Allowed"
-msgstr ""
+msgstr "Метод не разрешён"
 
 #: src/Environments/Application/Theming/CorePages.php:228
 msgid "Method not allowed"
-msgstr ""
+msgstr "Метод не разрешён"
 
 #: src/Exceptions/RequestException.php:254
 msgid "Method not implemented"
-msgstr ""
+msgstr "Метод не реализован"
 
 #: src/Environments/Application/Update/Updater.php:365
 #, php-format
 msgid "Migrating the database from schema %s to %s."
-msgstr ""
+msgstr "Миграция базы данных со схемы %s на %s."
 
 #: templates/admin/contents/repository/edit-artifacts.php:83 assets/js/admin/apps-uploader.js:1841
 msgid "Mime Type:"
-msgstr ""
+msgstr "MIME-тип:"
 
 #: templates/admin/contents/options/cache/stats.php:166
 msgid "Miss rate:"
-msgstr ""
+msgstr "Доля промахов:"
 
 #: assets/js/admin/cache-stats.js:161
 #, javascript-format
 msgid "Miss rate: %s%%"
-msgstr ""
+msgstr "Доля промахов: %s%%"
 
 #: templates/admin/contents/options/cache/stats.php:256 assets/js/admin/cache-stats.js:264
 msgid "Misses"
-msgstr ""
+msgstr "Промахи"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1104
 #, php-format
 msgid "Missing .env file: %s"
-msgstr ""
+msgstr "Отсутствует файл .env: %s"
 
 #: src/Exceptions/RequestException.php:43
 msgid "Missing Data"
-msgstr ""
+msgstr "Отсутствуют данные"
 
 #: src/Exceptions/RequestException.php:53
 msgid "Missing File"
-msgstr ""
+msgstr "Отсутствует файл"
 
 #: src/Exceptions/FileRequestException.php:49
 msgid "Missing Parameter"
-msgstr ""
+msgstr "Отсутствует параметр"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1142
 #, php-format
 msgid "Missing default role: %s"
-msgstr ""
+msgstr "Отсутствует роль по умолчанию: %s"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1111
 #, php-format
 msgid "Missing directory: %s (%s)"
-msgstr ""
+msgstr "Отсутствует каталог: %s (%s)"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:142
 msgid "Missing or invalid cache probe token."
-msgstr ""
+msgstr "Тестовый токен кэша отсутствует или недействителен."
 
 #: src/Security/RequestController.php:763 src/Security/RequestController.php:806
 msgid "Missing parameter \"search\"."
-msgstr ""
+msgstr "Отсутствует параметр «search»."
 
 #: src/HostedApps/HostingController.php:428 src/HostedApps/HostingController.php:516
 #, php-format
 msgid "Missing required parameters: %s"
-msgstr ""
+msgstr "Отсутствуют обязательные параметры: %s"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1133
 #, php-format
 msgid "Missing table: %s"
-msgstr ""
+msgstr "Отсутствует таблица: %s"
 
 #: assets/js/modal.js:21
 msgid "Modal Title"
-msgstr ""
+msgstr "Заголовок окна"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:338 src/Admin/ContentHandlers/ModulesPage.php:601
 msgid "Modules"
-msgstr ""
+msgstr "Модули"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
 #: src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
-msgstr ""
+msgstr "Монетизация"
 
 #: src/Monetization/Controller.php:173
 msgid "Monetization ID is required."
-msgstr ""
+msgstr "Требуется ID монетизации."
 
 #: src/Admin/ContentHandlers/OptionsPage.php:702
 msgid "Monetization Provider Settings"
-msgstr ""
+msgstr "Настройки провайдера монетизации"
 
 #: templates/admin/contents/repository/monetization.php:191
 msgid "Monetization Provider:"
-msgstr ""
+msgstr "Провайдер монетизации:"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:681 templates/admin/contents/repository/monetization.php:147
 msgid "Monetization Providers"
-msgstr ""
+msgstr "Провайдеры монетизации"
 
 #: templates/admin/contents/repository/monetization.php:63
 msgid "Monetization Status:"
-msgstr ""
+msgstr "Статус монетизации:"
 
 #: src/Monetization/Controller.php:248
 msgid "Monetization disabled successfully."
-msgstr ""
+msgstr "Монетизация успешно отключена."
 
 #: src/Monetization/Controller.php:248
 msgid "Monetization enabled successfully."
-msgstr ""
+msgstr "Монетизация успешно включена."
 
 #: src/Monetization/Controller.php:183 src/Monetization/Controller.php:238
 msgid "Monetization not found."
-msgstr ""
+msgstr "Монетизация не найдена."
 
 #: assets/js/admin/core.js:1352
 msgid "Monetization updated"
-msgstr ""
+msgstr "Монетизация обновлена"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:703
 msgid "Monetizations"
-msgstr ""
+msgstr "Монетизации"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1150
 msgid "Monetize App"
-msgstr ""
+msgstr "Монетизировать приложение"
 
 #: assets/js/datetime-picker.js:524
 msgid "Month"
-msgstr ""
+msgstr "Месяц"
 
 #: src/Background/Schedule/DayMatchers/EveryNMonths.php:81
 #, php-format
 msgid "Monthly on day %d"
-msgstr ""
+msgstr "Ежемесячно, %d-го числа"
 
 #: src/Background/Schedule/DayMatchers/DaysOfMonth.php:65
 msgid "Monthly on day(s) "
-msgstr ""
+msgstr "Ежемесячно, числа: "
 
 #: themes/default/templates/pages/client/app.php:210
 #, php-format
 msgid "Move %s to the trash? It stops being offered, and is deleted for good after a while unless you restore it."
-msgstr ""
+msgstr "Переместить %s в корзину? Оно перестанет предлагаться и через некоторое время будет удалено навсегда, если вы его не восстановите."
 
 #: themes/default/templates/pages/client/app.php:215
 msgid "Move to trash"
-msgstr ""
+msgstr "Переместить в корзину"
 
 #: templates/admin/contents/options/email/editor.php:259
 msgid "Muted Text"
-msgstr ""
+msgstr "Приглушённый текст"
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:182
 msgid "My Awesome Plugin — Pro Plan"
-msgstr ""
+msgstr "My Awesome Plugin — тариф Pro"
 
 #: src/ClientDashboard/ContentHandlers/LicensesPage.php:46
 msgid "My licenses"
-msgstr ""
+msgstr "Мои лицензии"
 
 #: src/ClientDashboard/ContentHandlers/PurchasesPage.php:50
 msgid "My purchases"
-msgstr ""
+msgstr "Мои покупки"
 
 #: src/Environments/Application/Health/SystemHealth.php:637
 msgid "MySQL (PDO)"
-msgstr ""
+msgstr "MySQL (PDO)"
 
 #: src/Environments/Application/Health/SystemHealth.php:636
 msgid "MySQL (mysqli)"
-msgstr ""
+msgstr "MySQL (mysqli)"
 
 #: themes/default/templates/pages/home.php:43
 msgid "MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer."
-msgstr ""
+msgstr "MySQL, MariaDB, PostgreSQL и SQLite через единый уровень абстракции."
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
 #: themes/default/templates/pages/client/app-new.php:28 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:248
 #, php-format
 msgid "Name each file %s, with its image extension."
-msgstr ""
+msgstr "Назовите каждый файл %s, с расширением изображения."
 
 #: src/RESTAPI/Versions/V1.php:823
 msgid "Name of a ZIP artifact to download instead of the main package, e.g. \"acme-1.2.0.zip\". Its integrity is the developer's <name>.sha256 and <name>.sha256.sig artifacts; version and security are then null."
-msgstr ""
+msgstr "Имя ZIP-артефакта для загрузки вместо основного пакета, например «acme-1.2.0.zip». Его целостность обеспечивают артефакты разработчика <name>.sha256 и <name>.sha256.sig; версия и безопасность тогда равны null."
 
 #: themes/default/templates/pages/purchase.php:68
 msgid "Name on the license"
-msgstr ""
+msgstr "Имя в лицензии"
 
 #: assets/js/admin/repository-browser.js:871
 msgid "Name the artifact as it will be downloaded."
-msgstr ""
+msgstr "Назовите артефакт так, как он будет скачиваться."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:315
 msgid "Name the extension (its slug)."
-msgstr ""
+msgstr "Укажите расширение (его ярлык)."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:284
 msgid "Name the theme (its slug)."
-msgstr ""
+msgstr "Укажите тему (её ярлык)."
 
 #: templates/admin/contents/repository/edit-artifacts.php:61 templates/admin/contents/repository/monetization.php:155 assets/js/admin/apps-uploader.js:1822
 msgid "Name:"
-msgstr ""
+msgstr "Имя:"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:475
 #, php-format
 msgid "Needs %s enabled"
-msgstr ""
+msgstr "Требуется включённое %s"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:414 src/Admin/ContentHandlers/ModulesPage.php:471
 #, php-format
 msgid "Needs app %s"
-msgstr ""
+msgstr "Требуется приложение %s"
 
 #: assets/js/globals.js:357
 msgid "Network Error"
-msgstr ""
+msgstr "Ошибка сети"
 
 #: src/ClientDashboard/ContentHandlers/LicensesPage.php:97
 msgid "Never"
-msgstr ""
+msgstr "Никогда"
 
 #: src/Background/BackgroundSetup.php:205
 msgid "Never ran"
-msgstr ""
+msgstr "Ни разу не запускалось"
 
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:153
 msgid "New Application Version Available"
-msgstr ""
+msgstr "Доступна новая версия приложения"
 
 #: src/Email/Templates/Licenses/LicenseRenewedEmail.php:68 src/Email/Templates/Licenses/LicenseRenewedEmail.php:169
 msgid "New Expiry Date"
-msgstr ""
+msgstr "Новая дата окончания"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:99 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:226
 msgid "New Owner"
-msgstr ""
+msgstr "Новый владелец"
 
 #: assets/js/admin/json-editor.js:1116
 msgid "New Property"
-msgstr ""
+msgstr "Новое свойство"
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:61
 msgid "New Purchase Request (Admin)"
-msgstr ""
+msgstr "Новый запрос на покупку (админ)"
 
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:201
 msgid "New Status"
-msgstr ""
+msgstr "Новый статус"
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:56 src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:176
 msgid "New User Registration"
-msgstr ""
+msgstr "Регистрация нового пользователя"
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:24
 msgid "New User Signup Notification"
-msgstr ""
+msgstr "Уведомление о регистрации нового пользователя"
 
 #: src/Email/Templates/Apps/AppUpdatedEmail.php:76 src/Email/Templates/Apps/AppUpdatedEmail.php:197 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:78 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:195
 #: src/Email/Templates/System/UpdateInstalledEmail.php:114
 msgid "New Version"
-msgstr ""
+msgstr "Новая версия"
 
 #: templates/admin/contents/system/maintenance.php:115
 msgid "New bypass link"
-msgstr ""
+msgstr "Новая обходная ссылка"
 
 #: src/Admin/ActionHandlers/MaintenanceManagement.php:128
 msgid "New bypass link made; earlier links stop working."
-msgstr ""
+msgstr "Создана новая обходная ссылка; прежние ссылки больше не работают."
 
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
-msgstr ""
+msgstr "Новое имя для %s"
 
 #: themes/default/templates/pages/auth/reset-password.php:25
 msgid "New password"
-msgstr ""
+msgstr "Новый пароль"
 
 #: src/Security/Authentication/UserAccounts.php:125
 msgid "New password cannot be empty."
-msgstr ""
+msgstr "Новый пароль не может быть пустым."
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:45
 #, php-format
 msgid "New purchase request #%d to review"
-msgstr ""
+msgstr "Новый запрос на покупку №%d ожидает рассмотрения"
 
 #: themes/default/templates/pages/client/app.php:95
 msgid "New version"
-msgstr ""
+msgstr "Новая версия"
 
 #: themes/default/templates/partials/repository/pagination.php:22 assets/js/admin/modules.js:419
 msgid "Next"
-msgstr ""
+msgstr "Далее"
 
 #: templates/admin/contents/system/index.php:54
 msgid "Next Run"
-msgstr ""
+msgstr "Следующий запуск"
 
 #: assets/js/datetime-picker.js:517
 msgid "Next month"
-msgstr ""
+msgstr "Следующий месяц"
 
 #: assets/js/admin/purchase-review.js:185
 msgid "Next page"
-msgstr ""
+msgstr "Следующая страница"
 
 #: assets/js/admin/core.js:1054 assets/js/admin/core.js:1781
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: assets/js/admin/modules.js:396
 #, javascript-format
 msgid "No %1$s matches \"%2$s\"."
-msgstr ""
+msgstr "Нет %1$s, соответствующих «%2$s»."
 
 #: themes/default/templates/pages/repository/type.php:16
 #, php-format
 msgid "No %s are hosted here yet."
-msgstr ""
+msgstr "Здесь пока не размещено ни одного %s."
 
 #: src/HostedApps/AbstractHostedApp.php:1003
 #, php-format
 msgid "No %s file provided for upload."
-msgstr ""
+msgstr "Файл %s для загрузки не предоставлен."
 
 #: assets/js/admin/repository-browser.js:399
 #, javascript-format
 msgid "No %s has files in storage yet."
-msgstr ""
+msgstr "Ни у одного %s пока нет файлов в хранилище."
 
 #: src/Core/UploadedFile.php:209
 #, php-format
 msgid "No %s was uploaded."
-msgstr ""
+msgstr "%s не был загружен."
 
 #: templates/admin/contents/accounts/index.php:194
 msgid "No Account Summary Data Available"
-msgstr ""
+msgstr "Нет данных сводки по аккаунтам"
 
 #: src/Core/Pdf/PdfRasterizer.php:91
 msgid "No PDF renderer is available: install the Imagick extension, Ghostscript or Poppler (pdftoppm)."
-msgstr ""
+msgstr "Нет доступного средства рендеринга PDF: установите расширение Imagick, Ghostscript или Poppler (pdftoppm)."
 
 #: src/Server/DevServer.php:533
 msgid "No PHP command-line binary could be started (proc_open may be disabled)."
-msgstr ""
+msgstr "Не удалось запустить исполняемый файл PHP командной строки (возможно, proc_open отключён)."
 
 #: themes/default/templates/pages/auth/sign-in.php:48
 msgid "No account?"
-msgstr ""
+msgstr "Нет аккаунта?"
 
 #: assets/js/admin/site-health.js:295
 msgid "No additional checks were returned."
-msgstr ""
+msgstr "Дополнительные проверки не вернулись."
 
 #: assets/js/admin/admin-repository.js:150
 msgid "No analytics data available"
-msgstr ""
+msgstr "Нет данных аналитики"
 
 #: templates/admin/contents/repository/search.php:58
 #, php-format
 msgid "No app found matching the search term \"%s\". <a href=\"%s\">Reset Search</a>"
-msgstr ""
+msgstr "Не найдено приложений по запросу «%s». <a href=\"%s\">Сбросить поиск</a>"
 
 #: templates/admin/contents/repository/index.php:116
 msgid "No app found matching this status"
-msgstr ""
+msgstr "Нет приложений с этим статусом"
 
 #: themes/default/templates/pages/client/apps.php:40
 msgid "No app has this status."
-msgstr ""
+msgstr "Ни одно приложение не имеет этого статуса."
 
 #: assets/js/admin/repository-browser.js:399
 msgid "No app types are stored yet."
-msgstr ""
+msgstr "Типы приложений пока не сохранены."
 
 #: themes/default/templates/pages/client/apps.php:39
 msgid "No apps here"
-msgstr ""
+msgstr "Здесь нет приложений"
 
 #: themes/default/templates/pages/client/apps.php:39
 msgid "No apps yet"
-msgstr ""
+msgstr "Пока нет приложений"
 
 #: assets/js/admin/repository-browser.js:444
 msgid "No artifacts yet."
-msgstr ""
+msgstr "Пока нет артефактов."
 
 #: assets/js/admin/repository-browser.js:444
 msgid "No assets yet."
-msgstr ""
+msgstr "Пока нет ресурсов."
 
 #: src/Messaging/BulkMessage.php:333
 msgid "No associated apps"
-msgstr ""
+msgstr "Нет связанных приложений"
 
 #: src/RESTAPI/Handlers/BulkMessages.php:49
 msgid "No bulk messages found."
-msgstr ""
+msgstr "Массовые сообщения не найдены."
 
 #: assets/js/admin/apps-uploader.js:1639
 msgid "No changes detected"
-msgstr ""
+msgstr "Изменений не обнаружено"
 
 #: src/Environments/Application/Update/PackageVerifier.php:77
 #, php-format
 msgid "No checksums file was found for %s, so the package cannot be verified."
-msgstr ""
+msgstr "Файл контрольных сумм для %s не найден, поэтому пакет нельзя проверить."
 
 #: src/Environments/Application/Installation/AppInstaller.php:1120
 msgid "No database connection is configured."
-msgstr ""
+msgstr "Подключение к базе данных не настроено."
 
 #: src/RESTAPI/RouteCatalog.php:206
 msgid "No description"
-msgstr ""
+msgstr "Нет описания"
 
 #: templates/admin/contents/system/diagnostics.php:32
 msgid "No diagnostic data available."
-msgstr ""
+msgstr "Диагностические данные отсутствуют."
 
 #: src/Cache/CacheRequestController.php:284
 msgid "No expired entries found."
-msgstr ""
+msgstr "Устаревших записей не найдено."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:245
 msgid "No extension is installed."
-msgstr ""
+msgstr "Расширения не установлены."
 
 #: templates/admin/contents/modules/extensions.php:131
 msgid "No extension is installed. Upload a package, or install one from the marketplace."
-msgstr ""
+msgstr "Расширения не установлены. Загрузите пакет или установите расширение из маркетплейса."
 
 #: src/Environments/Application/Health/SystemHealth.php:995
 msgid "No failed jobs in the archive."
-msgstr ""
+msgstr "В архиве нет неудачных заданий."
 
 #: templates/admin/contents/system/queues.php:155
 msgid "No failed jobs recorded."
-msgstr ""
+msgstr "Неудачных заданий не зарегистрировано."
 
 #: assets/js/admin/repository-browser.js:600
 msgid "No file selected"
-msgstr ""
+msgstr "Файл не выбран"
 
 #: templates/admin/contents/repository/uploader.php:55 assets/js/admin/apps-uploader.js:153 assets/js/admin/apps-uploader.js:377 assets/js/admin/apps-uploader.js:1540
 #: assets/js/admin/apps-uploader.js:1602
 msgid "No file selected."
-msgstr ""
+msgstr "Файл не выбран."
 
 #: assets/js/admin/apps-uploader.js:1645
 #, javascript-format
 msgid "No file selected. Do you want to proceed with changing the artifact filename from \"%1$s\" to \"%2$s\"?"
-msgstr ""
+msgstr "Файл не выбран. Продолжить, изменив имя файла артефакта с «%1$s» на «%2$s»?"
 
 #: src/FileSystem/Repository.php:238
 msgid "No file uploaded."
-msgstr ""
+msgstr "Файл не загружен."
 
 #: templates/admin/contents/system/health.php:117
 msgid "No health checks available."
-msgstr ""
+msgstr "Проверки состояния отсутствуют."
 
 #: assets/js/admin/apps-uploader.js:593 assets/js/admin/apps-uploader.js:797
 msgid "No image selected"
-msgstr ""
+msgstr "Изображение не выбрано"
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:172
 msgid "No installed extension comes from the marketplace."
-msgstr ""
+msgstr "Ни одно установленное расширение не из маркетплейса."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:148
 msgid "No installed theme comes from the marketplace."
-msgstr ""
+msgstr "Ни одна установленная тема не из маркетплейса."
 
 #: src/Environments/Application/Health/SystemHealth.php:1218
 msgid "No job has been waiting to run for more than "
-msgstr ""
+msgstr "Ни одно задание не ждёт запуска дольше "
 
 #: src/Environments/Application/Health/SystemHealth.php:402
 msgid "No job is waiting"
-msgstr ""
+msgstr "Нет ожидающих заданий"
 
 #: src/Environments/Application/Health/SystemHealth.php:1008
 msgid "No jobs currently running."
-msgstr ""
+msgstr "Сейчас нет выполняющихся заданий."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:186
 msgid "No jobs were ready to run."
-msgstr ""
+msgstr "Не было готовых к запуску заданий."
 
 #: templates/admin/contents/license/search.php:65
 msgid "No licenses found."
-msgstr ""
+msgstr "Лицензии не найдены."
 
 #: themes/default/templates/pages/client/licenses.php:25
 msgid "No licenses yet"
-msgstr ""
+msgstr "Пока нет лицензий"
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:799
 #, php-format
 msgid "No live %s has the slug \"%s\"."
-msgstr ""
+msgstr "Ни у одного активного %s нет ярлыка «%s»."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:260
 #, php-format
 msgid "No live or trashed %s has the slug \"%s\"."
-msgstr ""
+msgstr "Ни у одного активного или удалённого в корзину %s нет ярлыка «%s»."
 
 #: templates/admin/contents/broadcasts/search.php:46
 msgid "No messages found."
-msgstr ""
+msgstr "Сообщения не найдены."
 
 #: src/Environments/Application/Update/UpdateRunner.php:421
 msgid "No migration was pending: the database already has every registered migration."
-msgstr ""
+msgstr "Нет ожидающих миграций: в базе данных уже есть все зарегистрированные миграции."
 
 #: templates/admin/contents/repository/monetization.php:151
 msgid "No monetization provider found"
-msgstr ""
+msgstr "Провайдер монетизации не найден"
 
 #: assets/js/globals.js:655
 msgid "No name"
-msgstr ""
+msgstr "Без имени"
 
 #: src/Security/Actors/ServiceAccount.php:280
 msgid "No new API key data available."
-msgstr ""
+msgstr "Нет новых данных API-ключа."
 
 #: templates/admin/contents/license/purchase-request.php:171
 msgid "No notes yet."
-msgstr ""
+msgstr "Пока нет заметок."
 
 #: themes/default/templates/pages/client/organizations.php:52
 msgid "No organizations yet"
-msgstr ""
+msgstr "Пока нет организаций"
 
 #: themes/default/templates/partials/route.php:24
 msgid "No parameters."
-msgstr ""
+msgstr "Нет параметров."
 
 #: themes/default/templates/pages/client/security.php:36
 msgid "No passkeys are registered yet."
-msgstr ""
+msgstr "Ключи доступа пока не зарегистрированы."
 
 #: src/RESTAPI/Handlers/Licensing.php:149
 msgid "No pricing tier with this ID is sold by your store."
-msgstr ""
+msgstr "Ваш магазин не продаёт ценовой уровень с этим ID."
 
 #: templates/admin/contents/repository/monetization.php:84 assets/js/admin/core.js:1319
 msgid "No pricing tiers has been set"
-msgstr ""
+msgstr "Ценовые уровни не заданы"
 
 #: themes/default/templates/pages/client/purchases.php:25
 msgid "No purchases yet"
-msgstr ""
+msgstr "Пока нет покупок"
 
 #: templates/admin/contents/system/queues.php:155
 msgid "No queued job registered."
-msgstr ""
+msgstr "Нет зарегистрированных заданий в очереди."
 
 #: templates/admin/index.php:114
 msgid "No registered handler for this page."
-msgstr ""
+msgstr "Для этой страницы не зарегистрирован обработчик."
 
 #: src/Environments/Application/Update/UpdateService.php:205
 msgid "No release signing keys are configured, so no package can be verified."
-msgstr ""
+msgstr "Ключи подписи релизов не настроены, поэтому ни один пакет нельзя проверить."
 
 #: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:593
 #, php-format
 msgid "No repository is registered for the app type \"%s\"."
-msgstr ""
+msgstr "Для типа приложения «%s» не зарегистрирован репозиторий."
 
 #: assets/js/admin/core.js:967
 msgid "No results found"
-msgstr ""
+msgstr "Ничего не найдено"
 
 #: themes/default/templates/pages/documentation.php:29
 msgid "No routes are registered."
-msgstr ""
+msgstr "Маршруты не зарегистрированы."
 
 #: src/Background/Schedule/ScheduledTask.php:606
 msgid "No schedule defined."
-msgstr ""
+msgstr "Расписание не задано."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:97
 #, php-format
 msgid "No scheduled task \"%s\" is registered."
-msgstr ""
+msgstr "Запланированная задача «%s» не зарегистрирована."
 
 #: src/Environments/Application/Health/SystemHealth.php:1248
 #, php-format
 msgid "No scheduled task is running on time%s, so the scheduler is not being called. Update checks, license expiry and clean-up tasks are not running."
-msgstr ""
+msgstr "Ни одна запланированная задача не выполняется вовремя%s, значит, планировщик не вызывается. Проверка обновлений, истечение лицензий и очистка не выполняются."
 
 #: templates/admin/contents/system/index.php:62
 msgid "No scheduled tasks registered."
-msgstr ""
+msgstr "Запланированные задачи не зарегистрированы."
 
 #: src/Server/DevServer.php:445
 msgid "No server is running, so there is no address to restart it at."
-msgstr ""
+msgstr "Сервер не запущен, поэтому нет адреса для его перезапуска."
 
 #: templates/admin/contents/options/monetization/monetization-providers.php:33
 msgid "No settings"
-msgstr ""
+msgstr "Нет настроек"
 
 #: src/Environments/Application/Health/SystemHealth.php:1079 templates/admin/contents/system/signing-key.php:47
 #, php-format
 msgid "No signing key is set, so apps cannot check that their updates came from this site.%s"
-msgstr ""
+msgstr "Ключ подписи не задан, поэтому приложения не могут проверить, что обновления пришли с этого сайта.%s"
 
 #: src/HostedApps/AbstractHostedApp.php:1014
 #, php-format
 msgid "No slug was acquired after uploading this %s."
-msgstr ""
+msgstr "После загрузки этого %s ярлык не получен."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:103
 msgid "No tasks are due."
-msgstr ""
+msgstr "Нет задач, которые пора выполнить."
 
 #: src/Environments/Application/Theming/ThemeContext.php:353
 #, php-format
 msgid "No theme in the chain of \"%s\" has the asset \"%s\"."
-msgstr ""
+msgstr "Ни одна тема в цепочке «%s» не содержит ресурс «%s»."
 
 #: src/Environments/Application/Theming/ThemeContext.php:372
 #, php-format
 msgid "No theme in the chain of \"%s\" has the template \"%s\"."
-msgstr ""
+msgstr "Ни одна тема в цепочке «%s» не содержит шаблон «%s»."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:221
 msgid "No theme is installed."
-msgstr ""
+msgstr "Темы не установлены."
 
 #: src/Environments/Application/Health/SystemHealth.php:377
 msgid "No third-party extensions or themes are installed."
-msgstr ""
+msgstr "Сторонние расширения и темы не установлены."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:222
 #, php-format
 msgid "No trashed %s has the slug \"%s\"."
-msgstr ""
+msgstr "Ни у одного удалённого в корзину %s нет ярлыка «%s»."
 
 #: templates/admin/contents/system/updates.php:272
 msgid "No update has run on this installation."
-msgstr ""
+msgstr "На этой установке ещё не выполнялось ни одного обновления."
 
 #: src/Environments/WordPress/Dispatcher.php:492
 msgid "No upgrade needed"
-msgstr ""
+msgstr "Обновление не требуется"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1148
 msgid "No user account exists."
-msgstr ""
+msgstr "Учётных записей пользователей нет."
 
 #: src/FileSystem/Repository.php:257
 #, php-format
 msgid "No valid slug can be made from \"%s\"."
-msgstr ""
+msgstr "Из «%s» нельзя получить допустимый ярлык."
 
 #: src/Environments/Application/Health/SystemHealth.php:665
 msgid "No — falling back to in-memory array cache"
-msgstr ""
+msgstr "Нет — используется кэш-массив в памяти"
 
 #: assets/js/admin/apps-uploader.js:1650
 msgid "No, Cancel"
-msgstr ""
+msgstr "Нет, отмена"
 
 #: src/Environments/Application/Health/SystemHealth.php:499
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: templates/admin/contents/repository/monetization.php:122
 msgid "None (issued by an administrator)"
-msgstr ""
+msgstr "Нет (выдана администратором)"
 
 #: templates/admin/contents/repository/monetization.php:193
 msgid "None (licenses issued by an administrator)"
-msgstr ""
+msgstr "Нет (лицензии выдаются администратором)"
 
 #: templates/admin/contents/license/purchase-request.php:81
 msgid "None given"
-msgstr ""
+msgstr "Не указано"
 
 #: themes/default/templates/pages/client/security.php:33
 msgid "None registered"
-msgstr ""
+msgstr "Не зарегистрировано"
 
 #: themes/default/templates/pages/client/app.php:120
 msgid "None yet."
-msgstr ""
+msgstr "Пока нет."
 
 #: templates/admin/contents/system/signing-key.php:149
 msgid "None. Every app type can be uploaded without a key."
-msgstr ""
+msgstr "Нет. Любой тип приложения можно загружать без ключа."
 
 #: src/Environments/Application/Web/HttpDispatcher.php:1091
 msgid "Not Allowed"
-msgstr ""
+msgstr "Не разрешено"
 
 #: templates/admin/contents/options/cache/stats.php:83
 msgid "Not Connected"
-msgstr ""
+msgstr "Не подключено"
 
 #: src/Exceptions/RequestException.php:129 themes/default/templates/pages/errors/404.php:14
 msgid "Not Found"
-msgstr ""
+msgstr "Не найдено"
 
 #: templates/admin/contents/options/cache/stats.php:76
 msgid "Not Supported"
-msgstr ""
+msgstr "Не поддерживается"
 
 #: assets/js/admin/repository-browser.js:576
 msgid "Not an app file"
-msgstr ""
+msgstr "Не файл приложения"
 
 #: src/Environments/Application/Health/SystemHealth.php:785 src/Monetization/ContentHandlers/PurchasePages.php:73 themes/default/templates/pages/purchase.php:30
 msgid "Not available"
-msgstr ""
+msgstr "Недоступно"
 
 #: themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
 msgid "Not enabled"
-msgstr ""
+msgstr "Не включено"
 
 #: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
-msgstr ""
+msgstr "Не найдено"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:465
 msgid "Not loading"
-msgstr ""
+msgstr "Не загружается"
 
 #: src/Background/BackgroundSetup.php:250
 msgid "Not recommended"
-msgstr ""
+msgstr "Не рекомендуется"
 
 #: templates/admin/contents/options/email/index.php:86
 msgid "Not recommended for production use."
-msgstr ""
+msgstr "Не рекомендуется для рабочей среды."
 
 #: templates/admin/contents/options/cache/stats.php:204 templates/admin/contents/options/cache/stats.php:224 assets/js/admin/cache-stats.js:136 assets/js/admin/cache-stats.js:189
 msgid "Not reported"
-msgstr ""
+msgstr "Нет данных"
 
 #: src/Background/BackgroundSetup.php:160
 msgid "Not set up"
-msgstr ""
+msgstr "Не настроено"
 
 #: templates/admin/contents/options/cache/index.php:74
 msgid "Not supported"
-msgstr ""
+msgstr "Не поддерживается"
 
 #: src/Environments/Application/Installation/InstallerPage.php:432
 msgid "Not the owner? This site is not ready yet; please check back later."
-msgstr ""
+msgstr "Вы не владелец? Этот сайт ещё не готов; загляните позже."
 
 #: templates/admin/contents/options/cache/stats.php:150 templates/admin/contents/options/cache/stats.php:168 assets/js/admin/cache-stats.js:149 assets/js/admin/cache-stats.js:161
 msgid "Not tracked by this adapter"
-msgstr ""
+msgstr "Этот адаптер не отслеживает"
 
 #: themes/default/templates/pages/purchase.php:91
 msgid "Note (optional)"
-msgstr ""
+msgstr "Заметка (необязательно)"
 
 #: src/Admin/ActionHandlers/PurchaseReview.php:64
 msgid "Note saved and emailed to the buyer."
-msgstr ""
+msgstr "Заметка сохранена и отправлена покупателю по почте."
 
 #: src/Admin/ActionHandlers/PurchaseReview.php:64
 msgid "Note saved."
-msgstr ""
+msgstr "Заметка сохранена."
 
 #: templates/admin/contents/license/purchase-request.php:169
 msgid "Notes"
-msgstr ""
+msgstr "Заметки"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:219
 msgid "Nothing answered at that server address and port. Check both; leave the port empty to use the standard one."
-msgstr ""
+msgstr "По этому адресу и порту сервера ничего не ответило. Проверьте оба значения; оставьте порт пустым, чтобы использовать стандартный."
 
 #: src/Background/BackgroundSetup.php:162
 msgid "Nothing has run background work on this site yet. Choose how it should run below and follow the steps."
-msgstr ""
+msgstr "На этом сайте ещё не выполнялась фоновая работа. Выберите ниже, как она должна выполняться, и следуйте шагам."
 
 #: src/Background/BackgroundSetup.php:163
 msgid "Nothing has run background work recently. Check the cron job or external service, or set one up below."
-msgstr ""
+msgstr "Фоновая работа давно не выполнялась. Проверьте cron-задание или внешний сервис либо настройте его ниже."
 
 #: themes/default/templates/pages/repository/index.php:27
 msgid "Nothing is hosted here yet."
-msgstr ""
+msgstr "Здесь пока ничего не размещено."
 
 #: src/Environments/Application/Installation/InstallerPage.php:181
 msgid "Nothing is saved until the connection works."
-msgstr ""
+msgstr "Ничего не сохраняется, пока подключение не заработает."
 
 #: themes/default/templates/pages/repository/index.php:24 themes/default/templates/pages/repository/type.php:17
 msgid "Nothing matches your search."
-msgstr ""
+msgstr "Ничего не найдено."
 
 #: templates/admin/contents/system/updates.php:202
 msgid "Nothing on this server blocks an update. A dry run also checks the release itself."
-msgstr ""
+msgstr "На этом сервере ничто не мешает обновлению. Пробный запуск также проверит сам релиз."
 
 #: src/Environments/Application/Health/SystemHealth.php:1378
 msgid "Nothing prevents installing updates."
-msgstr ""
+msgstr "Ничто не мешает установке обновлений."
 
 #: src/Background/BackgroundSetup.php:252
 msgid "Nothing runs on its own. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them from the Schedules and Queue Monitor pages."
-msgstr ""
+msgstr "Ничего не запускается само. Проверка обновлений, обновления безопасности, истечение лицензий, письма и очистка ждут, пока администратор не запустит их со страниц «Расписания» и «Монитор очереди»."
 
 #: src/Exceptions/AbstractErrorHandler.php:782
 msgid "Notice"
-msgstr ""
+msgstr "Уведомление"
 
 #: src/Background/Jobs/Apps/SendAppOwnershipChangedEmailJob.php:51
 msgid "Notifies both the previous and new app owner when ownership is transferred."
-msgstr ""
+msgstr "Уведомляет прежнего и нового владельца приложения о передаче прав владения."
 
 #: assets/js/admin/apps-uploader.js:1855
 msgid "Now"
-msgstr ""
+msgstr "Сейчас"
 
 #: assets/js/admin/json-editor.js:931
 msgid "Null"
-msgstr ""
+msgstr "Null"
 
 #: src/FileSystem/FileSystemHelper.php:481
 msgid "Null bytes are not allowed."
-msgstr ""
+msgstr "Нулевые байты не допускаются."
 
 #: assets/js/admin/json-editor.js:1031
 msgid "Null has no editable value"
-msgstr ""
+msgstr "У null нет редактируемого значения"
 
 #: assets/js/admin/json-editor.js:929
 msgid "Number"
-msgstr ""
+msgstr "Число"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:496
 msgid "Number of days system logs are retained before automatic cleanup."
-msgstr ""
+msgstr "Количество дней хранения системных журналов до автоматической очистки."
 
 #: templates/admin/contents/repository/monetization.php:183
 msgid "Number of days, months or years"
-msgstr ""
+msgstr "Количество дней, месяцев или лет"
 
 #: src/RESTAPI/Versions/V1.php:956
 msgid "Number of messages per page."
-msgstr ""
+msgstr "Количество сообщений на странице."
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:253
 msgid "Numbered in the order added; name a file screenshot-2 to give it that place."
-msgstr ""
+msgstr "Нумеруются в порядке добавления; назовите файл screenshot-2, чтобы поставить его на это место."
 
 #: assets/js/admin/json-editor.js:933
 msgid "Object"
-msgstr ""
+msgstr "Объект"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:109 src/Email/Templates/System/SystemAlertEmail.php:226 src/Email/Templates/System/UpdateFailedEmail.php:143
 msgid "Occurred At"
-msgstr ""
+msgstr "Произошло"
 
 #: src/Environments/Application/Installation/DatabaseSettings.php:39
 msgid "Offered by most hosting plans."
-msgstr ""
+msgstr "Есть в большинстве тарифов хостинга."
 
 #: src/Email/Providers/SMTPProvider.php:545
 msgid "Offered mechanisms: "
-msgstr ""
+msgstr "Предлагаемые механизмы: "
 
 #: templates/admin/contents/system/signing-key.php:191
 msgid "On any computer with PHP, generate a key:"
-msgstr ""
+msgstr "На любом компьютере с PHP сгенерируйте ключ:"
 
 #: templates/admin/contents/system/background.php:154
 msgid "Once it is set up, its first run shows under Live status, usually within a few minutes."
-msgstr ""
+msgstr "После настройки его первый запуск появится в разделе «Текущий статус», обычно в течение нескольких минут."
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:252 src/ClientDashboard/ContentHandlers/AppsPage.php:253
 msgid "One image; delete the current one to upload another."
-msgstr ""
+msgstr "Одно изображение; удалите текущее, чтобы загрузить другое."
 
 #: templates/admin/contents/system/health.php:70
 msgid "One or more critical checks failed. Parts of the application may not work until these are resolved."
-msgstr ""
+msgstr "Одна или несколько критических проверок не пройдены. Части приложения могут не работать, пока это не исправлено."
 
 #: src/Exceptions/RequestException.php:34
 msgid "One or more required parameters are missing or invalid."
-msgstr ""
+msgstr "Один или несколько обязательных параметров отсутствуют или недопустимы."
 
 #: src/Environments/Application/Update/UpdateService.php:227
 #, php-format
 msgid "Only %d MB of disk space is free; an update needs at least %d MB."
-msgstr ""
+msgstr "Свободно только %d МБ на диске; для обновления нужно не менее %d МБ."
 
 #: src/Environments/WordPress/RESTAPI.php:584
 msgid "Only HTTPS URLs are allowed."
-msgstr ""
+msgstr "Разрешены только URL с HTTPS."
 
 #: src/HostedApps/HostingController.php:801
 msgid "Only a system administrator can suspend an app."
-msgstr ""
+msgstr "Только системный администратор может приостановить приложение."
 
 #: src/HostedApps/HostedApplicationService.php:509
 msgid "Only an app in the trash can be deleted for good. Move it to the trash first."
-msgstr ""
+msgstr "Окончательно удалить можно только приложение из корзины. Сначала переместите его в корзину."
 
 #: src/RESTAPI/Handlers/HostedApps.php:135
 msgid "Only system administrators can list applications that are not active."
-msgstr ""
+msgstr "Только системные администраторы могут просматривать неактивные приложения."
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:265
 msgid "Only system administrators can manage extensions."
-msgstr ""
+msgstr "Только системные администраторы могут управлять расширениями."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:241
 msgid "Only system administrators can manage themes."
-msgstr ""
+msgstr "Только системные администраторы могут управлять темами."
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:255
 msgid "Only system administrators can manage updates."
-msgstr ""
+msgstr "Только системные администраторы могут управлять обновлениями."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:261
 msgid "Only system administrators can run background tasks."
-msgstr ""
+msgstr "Только системные администраторы могут запускать фоновые задачи."
 
 #: src/Admin/ActionHandlers/MaintenanceManagement.php:171
 msgid "Only system administrators can switch maintenance mode."
-msgstr ""
+msgstr "Только системные администраторы могут переключать режим обслуживания."
 
 #: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:64
 msgid "Only user accounts have preferences."
-msgstr ""
+msgstr "Настройки есть только у учётных записей пользователей."
 
 #. translators: 1: file (formatted), 2: opening <code> tag, 3: closing <code> tag
 #: src/Environments/Application/Installation/InstallerPage.php:91
 #, php-format
 msgid "Open %1$s and copy the value after %2$s\"token\":%3$s — the 32 letters and numbers between the quotes."
-msgstr ""
+msgstr "Откройте %1$s и скопируйте значение после %2$s\"token\":%3$s — 32 буквы и цифры между кавычками."
 
 #: assets/js/admin/repository-browser.js:349
 msgid "Open app"
-msgstr ""
+msgstr "Открыть приложение"
 
 #: assets/js/datetime-picker.js:320
 msgid "Open date picker"
-msgstr ""
+msgstr "Открыть выбор даты"
 
 #: templates/admin/header.php:46
 msgid "Open menu"
-msgstr ""
+msgstr "Открыть меню"
 
 #: src/Environments/Application/Health/SystemHealth.php:1260
 msgid "Open the Schedules page: a task that keeps failing or running too long can hold the others back. \"Run due tasks\" runs them now."
-msgstr ""
+msgstr "Откройте страницу «Расписания»: задача, которая постоянно завершается ошибкой или выполняется слишком долго, может задерживать остальные. «Выполнить назревшие задачи» запустит их сейчас."
 
 #: src/Environments/Application/Health/SystemHealth.php:1031
 msgid "Open the Schedules tab and review the error detail for each affected task."
-msgstr ""
+msgstr "Откройте вкладку «Расписания» и посмотрите подробности ошибки для каждой затронутой задачи."
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:154 src/Email/Templates/System/UpdateInstalledEmail.php:127
 msgid "Open the Updates Page"
-msgstr ""
+msgstr "Открыть страницу «Обновления»"
 
 #: templates/admin/contents/system/maintenance.php:117
 msgid "Open the site to visitors again?"
-msgstr ""
+msgstr "Снова открыть сайт для посетителей?"
 
 #: assets/js/admin/maintenance.js:124
 msgid "Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now."
-msgstr ""
+msgstr "Откройте эту ссылку в другом браузере, чтобы пользоваться сайтом, пока посетители ждут. Не передавайте её; она показывается только сейчас."
 
 #. translators: 1: opening <strong> tag, 2: closing <strong> tag
 #: src/Environments/Application/Installation/InstallerPage.php:87
 #, php-format
 msgid "Open your hosting control panel’s %1$sFile Manager%2$s, or connect with your FTP client."
-msgstr ""
+msgstr "Откройте %1$sфайловый менеджер%2$s в панели управления хостингом или подключитесь через FTP-клиент."
 
 #: src/Background/BackgroundSetup.php:383
 msgid "Open your hosting panel's cron jobs"
-msgstr ""
+msgstr "Откройте cron-задания в панели хостинга"
 
 #: assets/js/globals.js:897
 msgid "Operation failed"
-msgstr ""
+msgstr "Операция не удалась"
 
 #: assets/js/admin/core.js:1409
 msgid "Operation successful"
-msgstr ""
+msgstr "Операция выполнена"
 
 #: templates/admin/contents/license/view.php:121
 msgid "Operations"
-msgstr ""
+msgstr "Операции"
 
 #: themes/default/templates/pages/purchase.php:48
 msgid "Option"
-msgstr ""
+msgstr "Параметр"
 
 #: src/Email/Providers/AmazonSESProvider.php:132
 msgid "Optional SES configuration set for tracking and event publishing."
-msgstr ""
+msgstr "Необязательный набор конфигурации SES для отслеживания и публикации событий."
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:426
 msgid "Optional string prepended to every cache key to avoid collisions in shared environments."
-msgstr ""
+msgstr "Необязательная строка, добавляемая к каждому ключу кэша, чтобы избежать конфликтов в общих окружениях."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:454
 msgid "Optional string prepended to every key to avoid collisions in shared environments."
-msgstr ""
+msgstr "Необязательная строка, добавляемая к каждому ключу, чтобы избежать конфликтов в общих окружениях."
 
 #: templates/admin/contents/repository/edit-software.php:36
 msgid "Optional – leave empty to use server download"
-msgstr ""
+msgstr "Необязательно — оставьте пустым, чтобы загружать с сервера"
 
 #: templates/admin/contents/repository/edit-software.php:62
 msgid "Optional – link to software documentation"
-msgstr ""
+msgstr "Необязательно — ссылка на документацию ПО"
 
 #: templates/admin/contents/repository/edit-software.php:49
 msgid "Optional – link to software homepage"
-msgstr ""
+msgstr "Необязательно — ссылка на домашнюю страницу ПО"
 
 #: templates/admin/contents/repository/edit-software.php:23
 msgid "Optional – link to support page"
-msgstr ""
+msgstr "Необязательно — ссылка на страницу поддержки"
 
 #: src/RESTAPI/Versions/V1.php:860
 msgid "Optional, leave empty to serve app zip file from this server or specify alternative download URL."
-msgstr ""
+msgstr "Необязательно; оставьте пустым, чтобы отдавать zip-файл приложения с этого сервера, или укажите другой URL загрузки."
 
 #: src/RESTAPI/Versions/V1.php:870
 msgid "Optional, provide alternative homepage URL for the application."
-msgstr ""
+msgstr "Необязательно; укажите другой URL домашней страницы приложения."
 
 #: src/RESTAPI/Versions/V1.php:885
 msgid "Optional, provide external repository URL for WordPress themes."
-msgstr ""
+msgstr "Необязательно; укажите URL внешнего репозитория для тем WordPress."
 
 #: src/RESTAPI/Versions/V1.php:875
 msgid "Optional, provide preview URL for WordPress themes."
-msgstr ""
+msgstr "Необязательно; укажите URL предпросмотра для тем WordPress."
 
 #: src/RESTAPI/Versions/V1.php:865
 msgid "Optional, provide support URL for the application if applicable."
-msgstr ""
+msgstr "Необязательно; укажите URL поддержки приложения, если есть."
 
 #: src/RESTAPI/Versions/V1.php:880
 msgid "Optional, provide the application documentation URL."
-msgstr ""
+msgstr "Необязательно; укажите URL документации приложения."
 
 #: src/Schema/Definitions/OptionsSchema.php:30
 msgid "Options"
-msgstr ""
+msgstr "Параметры"
 
 #. translators: 1: opening link tag, 2: closing link tag.
 #: themes/default/templates/pages/client/security.php:135
 #, php-format
 msgid "Or %1$sopen the authenticator app%2$s on this device."
-msgstr ""
+msgstr "Или %1$sоткройте приложение-аутентификатор%2$s на этом устройстве."
 
 #: src/Background/BackgroundSetup.php:347
 msgid "Or supervisord: /etc/supervisor/conf.d/smliser-worker.conf"
-msgstr ""
+msgstr "Или supervisord: /etc/supervisor/conf.d/smliser-worker.conf"
 
 #: src/ClientDashboard/ContentHandlers/OrganizationPage.php:57 src/ClientDashboard/ContentHandlers/OrganizationPage.php:156
 msgid "Organization"
-msgstr ""
+msgstr "Организация"
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:134
 msgid "Organization Invite"
-msgstr ""
+msgstr "Приглашение в организацию"
 
 #: src/Email/Templates/Accounts/OrganizationMemberRemovedEmail.php:95
 msgid "Organization Member Removed"
-msgstr ""
+msgstr "Участник удалён из организации"
 
 #: src/Schema/Definitions/OrganizationMembersSchema.php:30 templates/admin/contents/accounts/access-control-form.php:153
 msgid "Organization Members"
-msgstr ""
+msgstr "Участники организации"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:347 src/Admin/ContentHandlers/AccessControlPage.php:360 src/Admin/ContentHandlers/AccessControlPage.php:471 src/Admin/ContentHandlers/AccessControlPage.php:480
 msgid "Organization Name"
-msgstr ""
+msgstr "Название организации"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:366 src/Admin/ContentHandlers/AccessControlPage.php:376 src/Admin/ContentHandlers/AccessControlPage.php:486 src/Admin/ContentHandlers/AccessControlPage.php:495
 msgid "Organization Slug"
-msgstr ""
+msgstr "Ярлык организации"
 
 #: themes/default/templates/pages/client/organization.php:129
 msgid "Organization name"
-msgstr ""
+msgstr "Название организации"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:892 src/Admin/ContentHandlers/AccessControlPage.php:931 src/Admin/ContentHandlers/AccessControlPage.php:932 src/Admin/ContentHandlers/AccessControlPage.php:1002
 #: src/ClientDashboard/ContentHandlers/OrganizationsPage.php:55 src/Schema/Definitions/OrganizationsSchema.php:18
 msgid "Organizations"
-msgstr ""
+msgstr "Организации"
 
 #: themes/default/templates/pages/client/organizations.php:48
 msgid "Organizations you belong to. Switch to one to work for it; what you can do there depends on your role."
-msgstr ""
+msgstr "Организации, в которых вы состоите. Переключитесь на одну из них, чтобы работать от её имени; ваши возможности зависят от роли."
 
 #: templates/admin/contents/accounts/index.php:149
 msgid "Orphaned records detected. Please review and clean up data integrity issues."
-msgstr ""
+msgstr "Обнаружены потерянные записи. Проверьте и исправьте проблемы целостности данных."
 
 #: assets/js/admin/repository-browser.js:43
 msgid "Other files"
-msgstr ""
+msgstr "Другие файлы"
 
 #: templates/admin/contents/system/signing-key.php:142
 msgid "Other files of an app are not signed by this site. Developers who want them verified sign them with their own key."
-msgstr ""
+msgstr "Другие файлы приложения этот сайт не подписывает. Разработчики, которые хотят их проверять, подписывают их своим ключом."
 
 #: src/Admin/ContentHandlers/DashboardPage.php:617 src/ClientDashboard/ContentHandlers/OverviewPage.php:43 templates/admin/contents/index.php:43 templates/admin/contents/license/view.php:107
 msgid "Overview"
-msgstr ""
+msgstr "Обзор"
 
 #: templates/admin/contents/modules/extensions.php:62 templates/admin/contents/modules/themes.php:64
 msgid "Overwrite"
-msgstr ""
+msgstr "Перезаписать"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:666
 msgid "Owner"
-msgstr ""
+msgstr "Владелец"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:640
 msgid "Owner Name"
-msgstr ""
+msgstr "Имя владельца"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:654
 msgid "Owner Subject"
-msgstr ""
+msgstr "Субъект-владелец"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:668 src/Admin/ContentHandlers/AccessControlPage.php:821
 msgid "Owner Type"
-msgstr ""
+msgstr "Тип владельца"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:924 src/Schema/Definitions/OwnersSchema.php:18
 msgid "Owners"
-msgstr ""
+msgstr "Владельцы"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:199
 msgid "Ownership of {{app_name}} has been transferred to {{new_owner}}. You no longer have owner-level access."
-msgstr ""
+msgstr "Права владения {{app_name}} переданы {{new_owner}}. У вас больше нет доступа уровня владельца."
 
 #: src/Environments/Application/Health/SystemHealth.php:641
 msgid "PDO Core"
-msgstr ""
+msgstr "PDO Core"
 
 #: src/Email/Providers/PHPMailProvider.php:34 src/Email/Templates/System/TestEmail.php:151
 msgid "PHP Mail"
-msgstr ""
+msgstr "PHP Mail"
 
 #: src/Environments/Application/Update/UpdateService.php:220
 #, php-format
 msgid "PHP cannot write to %s; the files are owned by another user."
-msgstr ""
+msgstr "PHP не может записывать в %s; файлы принадлежат другому пользователю."
 
 #: templates/admin/contents/modules/extensions.php:25 templates/admin/contents/modules/themes.php:27
 msgid "Package (.zip)"
-msgstr ""
+msgstr "Пакет (.zip)"
 
 #: src/Environments/Application/Health/SystemHealth.php:1064 src/Environments/Application/Health/SystemHealth.php:1070 src/Environments/Application/Health/SystemHealth.php:1077
 msgid "Package Signing"
-msgstr ""
+msgstr "Подписание пакетов"
 
 #: src/Environments/Application/Theming/CorePages.php:179
 msgid "Package Signing Key"
-msgstr ""
+msgstr "Ключ подписи пакетов"
 
 #: assets/js/admin/repository-browser.js:35
 msgid "Package and documents"
-msgstr ""
+msgstr "Пакет и документы"
 
 #: themes/default/templates/partials/footer.php:15
 msgid "Package signing key"
-msgstr ""
+msgstr "Ключ подписи пакетов"
 
 #: templates/admin/contents/system/signing-key.php:46
 msgid "Packages are not signed"
-msgstr ""
+msgstr "Пакеты не подписаны"
 
 #: templates/admin/contents/system/signing-key.php:34
 msgid "Packages are signed"
-msgstr ""
+msgstr "Пакеты подписаны"
 
 #: themes/default/templates/pages/signing-key.php:36
 msgid "Packages downloaded from this site carry no signature, so an app cannot check that a download came from this site unchanged."
-msgstr ""
+msgstr "Пакеты, загружаемые с этого сайта, не подписаны, поэтому приложение не может проверить, что загрузка пришла с этого сайта без изменений."
 
 #: assets/js/admin/modules.js:416 assets/js/admin/purchase-review.js:212 assets/js/admin/purchase-review.js:240
 #, javascript-format
 msgid "Page %1$s of %2$s"
-msgstr ""
+msgstr "Страница %1$s из %2$s"
 
 #: src/Core/Pdf/Rasterizers/PopplerRasterizer.php:91
 #, php-format
 msgid "Page %d could not be renamed."
-msgstr ""
+msgstr "Не удалось переименовать страницу %d."
 
 #: src/Core/Pdf/PdfRasterizer.php:172
 #, php-format
 msgid "Page %d could not be saved."
-msgstr ""
+msgstr "Не удалось сохранить страницу %d."
 
 #: themes/default/templates/partials/repository/pagination.php:19
 #, php-format
 msgid "Page %d of %d"
-msgstr ""
+msgstr "Страница %d из %d"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:680
 msgid "Page Routing"
-msgstr ""
+msgstr "Маршрутизация страниц"
 
 #: src/Environments/Application/Theming/CorePages.php:212
 msgid "Page not found"
-msgstr ""
+msgstr "Страница не найдена"
 
 #: src/RESTAPI/Versions/V1.php:950
 msgid "Page number for pagination."
-msgstr ""
+msgstr "Номер страницы для пагинации."
 
 #: themes/default/templates/partials/repository/pagination.php:14 assets/js/admin/modules.js:410
 msgid "Pages"
-msgstr ""
+msgstr "Страницы"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:410
 #, php-format
 msgid "Parent of %s"
-msgstr ""
+msgstr "Родитель %s"
 
 #: src/Exceptions/AbstractErrorHandler.php:781
 msgid "Parse Error"
-msgstr ""
+msgstr "Ошибка разбора"
 
 #: src/Background/BackgroundSetup.php:150
 msgid "Partly running"
-msgstr ""
+msgstr "Частично работает"
 
 #: templates/admin/contents/system/health.php:46
 msgid "Passed"
-msgstr ""
+msgstr "Пройдено"
 
 #: templates/admin/contents/system/health.php:45
 msgid "Passed Checks"
-msgstr ""
+msgstr "Пройденные проверки"
 
 #: src/Email/Templates/Security/PasskeyAddedEmail.php:31
 msgid "Passkey Added"
-msgstr ""
+msgstr "Ключ доступа добавлен"
 
 #: src/Email/Templates/Security/PasskeyRemovedEmail.php:31
 msgid "Passkey Removed"
-msgstr ""
+msgstr "Ключ доступа удалён"
 
 #: src/Email/Templates/Security/PasskeyAddedEmail.php:23
 msgid "Passkey added"
-msgstr ""
+msgstr "Ключ доступа добавлен"
 
 #: themes/default/templates/pages/client/security.php:53
 msgid "Passkey name"
-msgstr ""
+msgstr "Имя ключа доступа"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:173
 msgid "Passkey registered successfully."
-msgstr ""
+msgstr "Ключ доступа успешно зарегистрирован."
 
 #: assets/js/passkeys.js:43
 msgid "Passkey registered."
-msgstr ""
+msgstr "Ключ доступа зарегистрирован."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
 msgid "Passkey registration could not be started."
-msgstr ""
+msgstr "Не удалось начать регистрацию ключа доступа."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:170
 msgid "Passkey registration failed or expired. Please try again."
-msgstr ""
+msgstr "Регистрация ключа доступа не удалась или истекла. Попробуйте ещё раз."
 
 #: assets/js/passkeys.js:46
 msgid "Passkey registration failed."
-msgstr ""
+msgstr "Регистрация ключа доступа не удалась."
 
 #: src/Email/Templates/Security/PasskeyRemovedEmail.php:23
 msgid "Passkey removed"
-msgstr ""
+msgstr "Ключ доступа удалён"
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:187
 msgid "Passkey removed."
-msgstr ""
+msgstr "Ключ доступа удалён."
 
 #: assets/js/passkeys.js:38
 msgid "Passkey setup was cancelled."
-msgstr ""
+msgstr "Настройка ключа доступа отменена."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:338
 msgid "Passkey sign-in could not be started. Please try again."
-msgstr ""
+msgstr "Не удалось начать вход по ключу доступа. Попробуйте ещё раз."
 
 #: assets/js/passkeys.js:91
 msgid "Passkey sign-in failed."
-msgstr ""
+msgstr "Вход по ключу доступа не удался."
 
 #: assets/js/passkeys.js:80
 msgid "Passkey sign-in was cancelled."
-msgstr ""
+msgstr "Вход по ключу доступа отменён."
 
 #: themes/default/templates/pages/client/security.php:32
 msgid "Passkeys"
-msgstr ""
+msgstr "Ключи доступа"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:347
 #: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: src/Email/Templates/Accounts/PasswordChangedEmail.php:134
 msgid "Password Changed"
-msgstr ""
+msgstr "Пароль изменён"
 
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:142
 msgid "Password Reset"
-msgstr ""
+msgstr "Сброс пароля"
 
 #: src/Auth/ActionHandlers/AuthManagement.php:131
 msgid "Password accepted. Complete the additional verification to sign in."
-msgstr ""
+msgstr "Пароль принят. Пройдите дополнительную проверку, чтобы войти."
 
 #: src/Security/RequestController.php:250
 msgid "Password exceeds maximum length."
-msgstr ""
+msgstr "Пароль превышает максимальную длину."
 
 #: src/Security/RequestController.php:246
 msgid "Password mismatch, please check and try again."
-msgstr ""
+msgstr "Пароли не совпадают, проверьте и попробуйте ещё раз."
 
 #: src/Security/Authentication/UserAccounts.php:100
 #, php-format
 msgid "Password must be at least %d characters long."
-msgstr ""
+msgstr "Пароль должен содержать не менее %d символов."
 
 #: src/Security/Authentication/UserAccounts.php:94
 msgid "Password must not be empty."
-msgstr ""
+msgstr "Пароль не должен быть пустым."
 
 #: src/Environments/Application/Auth/IdentityService.php:105
 msgid "Password sign-in is not available here."
-msgstr ""
+msgstr "Вход по паролю здесь недоступен."
 
 #: src/Security/Authentication/UserAuthenticator.php:62
 msgid "Password was not provided."
-msgstr ""
+msgstr "Пароль не указан."
 
 #: src/Security/Authentication/UserAccounts.php:106
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Пароли не совпадают."
 
 #: assets/js/admin/json-editor.js:1638
 msgid "Paste JSON"
-msgstr ""
+msgstr "Вставить JSON"
 
 #: assets/js/admin/json-editor.js:1672
 msgid "Paste from clipboard"
-msgstr ""
+msgstr "Вставить из буфера обмена"
 
 #: assets/js/admin/json-editor.js:1666
 msgid "Paste or type JSON"
-msgstr ""
+msgstr "Вставьте или введите JSON"
 
 #: assets/js/admin/json-editor.js:1971
 msgid "Pasted from clipboard"
-msgstr ""
+msgstr "Вставлено из буфера обмена"
 
 #: templates/admin/contents/system/maintenance.php:98
 msgid "Paused until maintenance ends."
-msgstr ""
+msgstr "Приостановлено до окончания обслуживания."
 
 #: themes/default/templates/pages/purchase.php:45
 msgid "Pay as shown below, then send us your receipt. Your license is issued once the payment is confirmed."
-msgstr ""
+msgstr "Оплатите, как указано ниже, затем пришлите нам квитанцию. Лицензия выдаётся после подтверждения оплаты."
 
 #: src/Exceptions/RequestException.php:199
 msgid "Payload Too Large"
-msgstr ""
+msgstr "Слишком большой объём данных"
 
 #: templates/admin/contents/license/purchase-request.php:76
 msgid "Payment"
-msgstr ""
+msgstr "Оплата"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:82 src/Email/Templates/Monetization/PaymentReceivedEmail.php:212
 msgid "Payment Date"
-msgstr ""
+msgstr "Дата оплаты"
 
 #: src/Email/Templates/Monetization/PaymentFailedEmail.php:192
 msgid "Payment Failed"
-msgstr ""
+msgstr "Оплата не прошла"
 
 #: src/Email/Templates/Monetization/PaymentFailedEmail.php:46
 msgid "Payment Failed — Action Required"
-msgstr ""
+msgstr "Оплата не прошла — требуется действие"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:166
 msgid "Payment Received"
-msgstr ""
+msgstr "Оплата получена"
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:44
 msgid "Payment Received — Thank You"
-msgstr ""
+msgstr "Оплата получена — спасибо"
 
 #: src/Exceptions/FileRequestException.php:105 src/Exceptions/FileRequestException.php:110
 msgid "Payment Required"
-msgstr ""
+msgstr "Требуется оплата"
 
 #: src/Monetization/Providers/LocalProvider.php:89
 msgid "Payment instructions"
-msgstr ""
+msgstr "Инструкции по оплате"
 
 #: themes/default/templates/pages/purchase.php:86
 msgid "Payment receipt"
-msgstr ""
+msgstr "Квитанция об оплате"
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:89 templates/admin/contents/license/purchase-request.php:80
 msgid "Payment reference"
-msgstr ""
+msgstr "Номер платежа"
 
 #: themes/default/templates/pages/purchase.php:81
 msgid "Payment reference (optional)"
-msgstr ""
+msgstr "Номер платежа (необязательно)"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1058
 msgid "Peak Access Day"
-msgstr ""
+msgstr "День пиковых обращений"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:1004
 msgid "Peak Day"
-msgstr ""
+msgstr "Пиковый день"
 
 #: templates/admin/contents/license/purchase-requests.php:25
 #, php-format
 msgid "Pending (%d)"
-msgstr ""
+msgstr "Ожидают (%d)"
 
 #: src/Background/Jobs/Apps/CleanTrashedAppsJob.php:48
 msgid "Permanently deletes apps that have been in trash longer than the retention threshold."
-msgstr ""
+msgstr "Окончательно удаляет приложения, находящиеся в корзине дольше срока хранения."
 
 #: src/Exceptions/FileRequestException.php:132
 msgid "Permission Denied"
-msgstr ""
+msgstr "Доступ запрещён"
 
 #: templates/admin/contents/options/email/editor.php:458
 msgid "Placeholder values are used — live data resolves on send."
-msgstr ""
+msgstr "Используются примерные значения — реальные данные подставляются при отправке."
 
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:84 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:220
 msgid "Plan"
-msgstr ""
+msgstr "Тариф"
 
 #. translators: %s: chmod command example
 #: src/Environments/WordPress/WordPressEnvironment.php:448
 #, php-format
 msgid "Please check directory ownership and permissions. You may need to run %s or contact your hosting provider."
-msgstr ""
+msgstr "Проверьте владельца и права доступа каталога. Возможно, нужно выполнить %s или обратиться к хостинг-провайдеру."
 
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:66 src/Email/Templates/Accounts/VerifyEmailEmail.php:145
 msgid "Please confirm that this is your email address. Licenses issued to this address will then appear in your account."
-msgstr ""
+msgstr "Подтвердите, что это ваш адрес электронной почты. Тогда лицензии, выданные на этот адрес, появятся в вашем аккаунте."
 
 #: assets/js/admin/json-editor.js:591
 msgid "Please drop a valid JSON file"
-msgstr ""
+msgstr "Перетащите корректный JSON-файл"
 
 #: assets/js/admin/json-editor.js:1751
 msgid "Please enter a URL."
-msgstr ""
+msgstr "Введите URL."
 
 #: assets/js/admin/apps-uploader.js:826
 msgid "Please enter a valid URL."
-msgstr ""
+msgstr "Введите корректный URL."
 
 #: assets/js/admin/apps-uploader.js:1625
 msgid "Please enter a valid artifact filename."
-msgstr ""
+msgstr "Введите корректное имя файла артефакта."
 
 #: assets/js/modal.js:1105
 msgid "Please enter a value:"
-msgstr ""
+msgstr "Введите значение:"
 
 #. translators: %s: support (formatted)
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:85
 #, php-format
 msgid "Please keep this email as your receipt. If you have any questions about this payment, contact us at %s."
-msgstr ""
+msgstr "Сохраните это письмо как квитанцию. Если у вас есть вопросы об этой оплате, напишите нам: %s."
 
 #: src/Email/Templates/Monetization/PaymentReceivedEmail.php:222
 msgid "Please keep this email as your receipt. If you have any questions about this payment, contact us at {{support_email}}."
-msgstr ""
+msgstr "Сохраните это письмо как квитанцию. Если у вас есть вопросы об этой оплате, напишите нам: {{support_email}}."
 
 #: assets/js/admin/json-editor.js:1764
 msgid "Please paste or type some JSON."
-msgstr ""
+msgstr "Вставьте или введите JSON."
 
 #: src/Auth/ActionHandlers/AuthManagement.php:646 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54 src/Security/RequestController.php:201
 msgid "Please provide a valid email address."
-msgstr ""
+msgstr "Укажите действительный адрес электронной почты."
 
 #: src/Environments/WordPress/Dispatcher.php:338
 msgid "Please provide a valid file path"
-msgstr ""
+msgstr "Укажите корректный путь к файлу"
 
 #: src/Security/RequestController.php:428
 msgid "Please provide a valid organization name."
-msgstr ""
+msgstr "Укажите корректное название организации."
 
 #: src/Security/RequestController.php:642
 msgid "Please provide a valid resource owner name."
-msgstr ""
+msgstr "Укажите корректное имя владельца ресурсов."
 
 #: src/Security/RequestController.php:623
 msgid "Please provide a valid resource owner type."
-msgstr ""
+msgstr "Укажите корректный тип владельца ресурсов."
 
 #: src/Security/RequestController.php:330
 msgid "Please provide a valid service account display name."
-msgstr ""
+msgstr "Укажите корректное отображаемое имя сервисного аккаунта."
 
 #: src/Security/RequestController.php:611
 msgid "Please provide a valid subject_id."
-msgstr ""
+msgstr "Укажите корректный subject_id."
 
 #: src/Security/RequestController.php:255
 msgid "Please provide new user passwords."
-msgstr ""
+msgstr "Укажите новые пароли пользователя."
 
 #: src/Environments/WordPress/Dispatcher.php:587
 msgid "Please provide security entity type."
-msgstr ""
+msgstr "Укажите тип субъекта безопасности."
 
 #: src/Environments/WordPress/Dispatcher.php:574
 msgid "Please provide security entity."
-msgstr ""
+msgstr "Укажите субъект безопасности."
 
 #: src/RESTAPI/Handlers/Licenses.php:403
 msgid "Please provide the X-Download-Token header value"
-msgstr ""
+msgstr "Укажите значение заголовка X-Download-Token"
 
 #: src/Exceptions/FileRequestException.php:123
 msgid "Please provide the license ID in the request parameter."
-msgstr ""
+msgstr "Укажите ID лицензии в параметре запроса."
 
 #: src/Security/RequestController.php:64 src/Security/RequestController.php:130
 msgid "Please provide the security entity."
-msgstr ""
+msgstr "Укажите субъект безопасности."
 
 #: assets/js/admin/apps-uploader.js:1638
 msgid "Please select a file to upload."
-msgstr ""
+msgstr "Выберите файл для загрузки."
 
 #: src/Security/RequestController.php:349
 msgid "Please select a role for this service account"
-msgstr ""
+msgstr "Выберите роль для этого сервисного аккаунта"
 
 #: assets/js/modal.js:1299
 msgid "Please select an option:"
-msgstr ""
+msgstr "Выберите вариант:"
 
 #: assets/js/admin/apps-uploader.js:1133
 msgid "Please select at least one image."
-msgstr ""
+msgstr "Выберите хотя бы одно изображение."
 
 #: assets/js/admin/json-editor.js:1742
 msgid "Please select or drop a JSON file."
-msgstr ""
+msgstr "Выберите или перетащите JSON-файл."
 
 #: src/Environments/WordPress/Dispatcher.php:291
 msgid "Please specify the download type."
-msgstr ""
+msgstr "Укажите тип загрузки."
 
 #: assets/js/admin/core.js:455
 msgid "Please upload an image."
-msgstr ""
+msgstr "Загрузите изображение."
 
 #: src/HostedApps/HostingController.php:371
 msgid "Please upload app.json file using \"app_json_file\" key in your file parameter."
-msgstr ""
+msgstr "Загрузите файл app.json с ключом «app_json_file» в параметре файла."
 
 #: src/HostedApps/HostingController.php:635
 msgid "Please upload the artifact file using \"artifact_file\" as file parameter key."
-msgstr ""
+msgstr "Загрузите файл артефакта с ключом параметра файла «artifact_file»."
 
 #: src/RESTAPI/Handlers/HostedApps.php:520
 msgid "Please upload {app_type} asset file."
-msgstr ""
+msgstr "Загрузите файл ресурса {app_type}."
 
 #: src/Environments/WordPress/IdentityService.php:370
 msgid "Please use the password reset option to recover your account."
-msgstr ""
+msgstr "Воспользуйтесь сбросом пароля, чтобы восстановить доступ к аккаунту."
 
 #: templates/admin/contents/repository/edit-wpplugin.php:72
 msgid "Plugin Download URL"
-msgstr ""
+msgstr "URL загрузки плагина"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:85
 msgid "Plugin Homepage"
-msgstr ""
+msgstr "Домашняя страница плагина"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:59
 msgid "Plugin Support URL"
-msgstr ""
+msgstr "URL поддержки плагина"
 
 #: templates/admin/contents/options/cache/stats.php:267
 msgid "Poor"
-msgstr ""
+msgstr "Плохо"
 
 #: src/Core/Pdf/Rasterizers/PopplerRasterizer.php:52
 msgid "Poppler (pdftoppm) is not installed."
-msgstr ""
+msgstr "Poppler (pdftoppm) не установлен."
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:416 src/Cache/Adapters/RedisCacheAdapter.php:430 src/Email/Providers/SMTPProvider.php:141 src/Environments/Application/Installation/InstallerPage.php:209
 msgid "Port"
-msgstr ""
+msgstr "Порт"
 
 #: src/Server/DevServer.php:353
 #, php-format
 msgid "Port %d is already in use on %s."
-msgstr ""
+msgstr "Порт %d уже используется на %s."
 
 #: src/Environments/Application/Health/SystemHealth.php:640
 msgid "PostgreSQL (PDO)"
-msgstr ""
+msgstr "PostgreSQL (PDO)"
 
 #: src/Email/Providers/PostmarkProvider.php:79
 msgid "Postmark message stream ID. Defaults to \"outbound\" if not specified."
-msgstr ""
+msgstr "ID потока сообщений Postmark. По умолчанию «outbound», если не указан."
 
 #: src/FileSystem/Repository.php:904
 msgid "Potentially malicious content detected in the image."
-msgstr ""
+msgstr "В изображении обнаружено потенциально вредоносное содержимое."
 
 #: src/Exceptions/RequestException.php:192
 msgid "Precondition Failed"
-msgstr ""
+msgstr "Предварительное условие не выполнено"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:449
 msgid "Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system."
-msgstr ""
+msgstr "Префикс, автоматически добавляемый к генерируемым лицензионным ключам (например, SMLISER-XXXX-XXXX). Помогает определить систему, выдавшую ключ."
 
 #: templates/admin/contents/repository/upload.php:52
 msgid "Prepare the app package (WordPress plugins, themes, or any registered application type) you want to upload and compress it into a ZIP file."
-msgstr ""
+msgstr "Подготовьте пакет приложения (плагины, темы WordPress или любой зарегистрированный тип приложения), который хотите загрузить, и упакуйте его в ZIP-файл."
 
 #: src/Environments/Application/Installation/InstallerPage.php:308
 msgid "Prepare the application"
-msgstr ""
+msgstr "Подготовьте приложение"
 
 #: assets/js/admin/json-editor.js:1838 assets/js/admin/json-editor.js:1848
 msgid "Pretty-printed (indented)"
-msgstr ""
+msgstr "Отформатированный (с отступами)"
 
 #: templates/admin/contents/options/email/editor.php:456 templates/admin/contents/repository/preview.php:105 assets/js/admin/json-editor.js:1853
 msgid "Preview"
-msgstr ""
+msgstr "Предпросмотр"
 
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:278
 msgid "Preview URL"
-msgstr ""
+msgstr "URL предпросмотра"
 
 #: templates/admin/contents/options/email/templates.php:190
 msgid "Preview and configure this template"
-msgstr ""
+msgstr "Просмотреть и настроить этот шаблон"
 
 #: themes/default/templates/partials/repository/pagination.php:16 assets/js/admin/modules.js:413
 msgid "Previous"
-msgstr ""
+msgstr "Назад"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:98 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:225
 msgid "Previous Owner"
-msgstr ""
+msgstr "Предыдущий владелец"
 
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:200
 msgid "Previous Status"
-msgstr ""
+msgstr "Предыдущий статус"
 
 #: src/Email/Templates/Apps/AppUpdatedEmail.php:75 src/Email/Templates/Apps/AppUpdatedEmail.php:196 src/Email/Templates/System/UpdateInstalledEmail.php:113
 msgid "Previous Version"
-msgstr ""
+msgstr "Предыдущая версия"
 
 #: assets/js/datetime-picker.js:516
 msgid "Previous month"
-msgstr ""
+msgstr "Предыдущий месяц"
 
 #: assets/js/admin/purchase-review.js:184
 msgid "Previous page"
-msgstr ""
+msgstr "Предыдущая страница"
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:88 src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:64 src/Monetization/Providers/LocalProvider.php:82 src/Monetization/Providers/RemoteProvider.php:87
 #: templates/admin/contents/license/purchase-requests.php:68 themes/default/templates/pages/client/purchases.php:47 themes/default/templates/pages/purchase.php:50
 msgid "Price"
-msgstr ""
+msgstr "Цена"
 
 #: templates/admin/contents/license/purchase-request.php:71
 msgid "Price shown:"
-msgstr ""
+msgstr "Отображаемая цена:"
 
 #: themes/default/templates/partials/repository/pricing.php:16
 msgid "Pricing"
-msgstr ""
+msgstr "Цены"
 
 #: templates/admin/contents/repository/monetization.php:148
 msgid "Pricing Tier"
-msgstr ""
+msgstr "Ценовой уровень"
 
 #: src/Schema/Definitions/PricingTierSchema.php:27
 msgid "Pricing Tiers"
-msgstr ""
+msgstr "Ценовые уровни"
 
 #: src/Monetization/Controller.php:206
 msgid "Pricing tier deleted successfully."
-msgstr ""
+msgstr "Ценовой уровень успешно удалён."
 
 #: templates/admin/menu.php:24
 msgid "Primary"
-msgstr ""
+msgstr "Основной"
 
 #: templates/admin/contents/options/email/editor.php:246
 msgid "Primary Text"
-msgstr ""
+msgstr "Основной текст"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:407
 msgid "Primary email address for receiving system notifications, error reports, and administrative alerts."
-msgstr ""
+msgstr "Основной адрес для системных уведомлений, отчётов об ошибках и административных оповещений."
 
 #: src/Security/Context/ContextServiceProvider.php:378
 msgid "Principal must either be a valid resource owner or be acting for a resource owner."
-msgstr ""
+msgstr "Субъект должен быть действительным владельцем ресурсов или действовать от имени владельца ресурсов."
 
 #: templates/admin/contents/system/queues.php:138
 msgid "Priority"
-msgstr ""
+msgstr "Приоритет"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:548
 msgid "Privacy Policy URL"
-msgstr ""
+msgstr "URL политики конфиденциальности"
 
 #: src/Cache/Adapters/MemcachedCacheAdapter.php:650 src/Cache/Adapters/RedisCacheAdapter.php:658
 msgid "Probe read returned unexpected data — the value was corrupted in transit."
-msgstr ""
+msgstr "Тестовое чтение вернуло неожиданные данные — значение повреждено при передаче."
 
 #: templates/admin/contents/system/queues.php:105
 msgid "Process queue"
-msgstr ""
+msgstr "Обработать очередь"
 
 #: src/Background/BackgroundSetup.php:449
 msgid "Process queued jobs"
-msgstr ""
+msgstr "Обработать задания в очереди"
 
 #: templates/admin/contents/system/queues.php:104
 msgid "Process queued jobs now, for up to 20 seconds, in this request?"
-msgstr ""
+msgstr "Обработать задания из очереди сейчас, до 20 секунд, в этом запросе?"
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:187
 #, php-format
 msgid "Processed %d job(s); %d still pending."
-msgstr ""
+msgstr "Обработано заданий: %d; ещё ожидают: %d."
 
 #: templates/admin/contents/accounts/access-control-form.php:142
 msgid "Processing"
-msgstr ""
+msgstr "Обработка"
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:87 src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:63
 msgid "Product"
-msgstr ""
+msgstr "Продукт"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:524
 msgid "Production"
-msgstr ""
+msgstr "Рабочий"
 
 #: src/Core/Process/Process.php:90
 msgid "Programs cannot be started from this PHP (proc_open is unavailable)."
-msgstr ""
+msgstr "Этот PHP не может запускать программы (proc_open недоступен)."
 
 #: assets/js/admin/json-editor.js:888
 msgid "Property name already exists"
-msgstr ""
+msgstr "Свойство с таким именем уже существует"
 
 #: assets/js/admin/json-editor.js:880 assets/js/admin/json-editor.js:1120
 msgid "Property name is required"
-msgstr ""
+msgstr "Требуется имя свойства"
 
 #: src/Monetization/Controller.php:460
 msgid "Provide the domain to uninstall."
-msgstr ""
+msgstr "Укажите домен для удаления."
 
 #: src/Email/Templates/System/TestEmail.php:65 src/Email/Templates/System/TestEmail.php:184 templates/admin/contents/options/email/index.php:106
 msgid "Provider"
-msgstr ""
+msgstr "Провайдер"
 
 #: templates/admin/contents/options/monetization/monetization-providers.php:21
 msgid "Provider ID"
-msgstr ""
+msgstr "ID провайдера"
 
 #: src/Email/RequestController.php:121 src/Email/RequestController.php:236
 msgid "Provider ID is required."
-msgstr ""
+msgstr "Требуется ID провайдера."
 
 #: templates/admin/contents/options/monetization/monetization-providers.php:22
 msgid "Provider Name"
-msgstr ""
+msgstr "Название провайдера"
 
 #: templates/admin/contents/repository/monetization.php:122
 msgid "Provider:"
-msgstr ""
+msgstr "Провайдер:"
 
 #: src/Background/Jobs/Analytics/PruneAnalyticsLogsJob.php:80
 msgid "Prune Analytics Logs"
-msgstr ""
+msgstr "Очистка журналов аналитики"
 
 #: src/Background/Jobs/Analytics/PruneLicenseActivityLogsJob.php:83
 msgid "Prune License Activity Logs"
-msgstr ""
+msgstr "Очистка журналов активности лицензий"
 
 #: src/Background/Schedule/Scheduler.php:582
 msgid "Prune License Meta"
-msgstr ""
+msgstr "Очистка метаданных лицензий"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:822
 msgid "Public Download URL"
-msgstr ""
+msgstr "Публичный URL загрузки"
 
 #: templates/admin/contents/system/signing-key.php:88 themes/default/templates/pages/signing-key.php:41
 msgid "Public key"
-msgstr ""
+msgstr "Открытый ключ"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:393
 msgid "Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces."
-msgstr ""
+msgstr "Публичное название этого репозитория лицензий. Может отображаться в системных письмах, ответах API и административных интерфейсах."
 
 #: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:63
 msgid "Public page"
-msgstr ""
+msgstr "Публичная страница"
 
 #: templates/admin/contents/modules/extensions.php:126
 msgid "Publish every installed extension's assets in the public folder again?"
-msgstr ""
+msgstr "Опубликовать заново ресурсы всех установленных расширений в публичной папке?"
 
 #: templates/admin/contents/modules/themes.php:132
 msgid "Publish every installed theme's assets in the public folder again?"
-msgstr ""
+msgstr "Опубликовать заново ресурсы всех установленных тем в публичной папке?"
 
 #: templates/admin/contents/system/signing-key.php:105
 msgid "Publish the fingerprint somewhere other than this site, such as your company website, so developers can check that the key they copied was not replaced by someone who broke into this site."
-msgstr ""
+msgstr "Опубликуйте отпечаток не только на этом сайте, например на сайте вашей компании, чтобы разработчики могли убедиться, что скопированный ключ не подменил взломщик этого сайта."
 
 #: src/Environments/Application/Installation/InstallerPage.php:56
 msgid "Publish the public assets"
-msgstr ""
+msgstr "Опубликовать публичные ресурсы"
 
 #: templates/admin/contents/modules/marketplace.php:45
 msgid "Published by the update server and always signed: every package is verified before it is installed."
-msgstr ""
+msgstr "Публикуется сервером обновлений и всегда подписан: каждый пакет проверяется перед установкой."
 
 #: src/Admin/ContentHandlers/LicensePage.php:297 src/Admin/ContentHandlers/LicensePage.php:510
 msgid "Purchase Request"
-msgstr ""
+msgstr "Запрос на покупку"
 
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:101
 msgid "Purchase Request Approved"
-msgstr ""
+msgstr "Запрос на покупку одобрен"
 
 #: src/Email/Templates/Purchases/PurchaseRequestMessageEmail.php:55
 msgid "Purchase Request Message"
-msgstr ""
+msgstr "Сообщение по запросу на покупку"
 
 #: src/Schema/Definitions/PurchaseRequestNotesSchema.php:27
 msgid "Purchase Request Notes"
-msgstr ""
+msgstr "Заметки к запросу на покупку"
 
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:31
 msgid "Purchase Request Received"
-msgstr ""
+msgstr "Запрос на покупку получен"
 
 #: src/Email/Templates/Purchases/PurchaseRequestRejectedEmail.php:38
 msgid "Purchase Request Rejected"
-msgstr ""
+msgstr "Запрос на покупку отклонён"
 
 #: src/Admin/ContentHandlers/LicensePage.php:296 src/Admin/ContentHandlers/LicensePage.php:504 src/Schema/Definitions/PurchaseRequestsSchema.php:30 templates/admin/contents/license/purchase-request.php:33
 msgid "Purchase Requests"
-msgstr ""
+msgstr "Запросы на покупку"
 
 #: templates/admin/contents/license/purchase-requests.php:46
 msgid "Purchase requests buyers send for tiers sold by manual payment will appear here."
-msgstr ""
+msgstr "Здесь появятся запросы на покупку, которые покупатели отправляют для уровней с ручной оплатой."
 
 #: themes/default/templates/pages/client/purchases.php:21
 msgid "Purchases you paid for by transfer, and what became of them."
-msgstr ""
+msgstr "Покупки, оплаченные переводом, и их итог."
 
 #: src/Background/Schedule/Scheduler.php:631
 msgid "Purge Completed Jobs"
-msgstr ""
+msgstr "Очистить завершённые задания"
 
 #: src/Background/Schedule/Scheduler.php:639
 msgid "Purge Failed Jobs"
-msgstr ""
+msgstr "Очистить неудачные задания"
 
 #: templates/admin/contents/system/queues.php:118
 msgid "Purge completed"
-msgstr ""
+msgstr "Очистить завершённые"
 
 #: templates/admin/contents/system/queues.php:126
 msgid "Purge failed records"
-msgstr ""
+msgstr "Очистить неудачные записи"
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:224
 #, php-format
 msgid "Purged %d completed job(s) older than %d day(s)."
-msgstr ""
+msgstr "Удалено завершённых заданий старше %2$d дн.: %1$d."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:243
 #, php-format
 msgid "Purged %d failed job record(s) older than %d day(s)."
-msgstr ""
+msgstr "Удалено записей неудачных заданий старше %2$d дн.: %1$d."
 
 #: templates/admin/contents/system/queues.php:110
 msgid "Put jobs that have been running for more than 5 minutes back in the queue? Only do this if no worker is still running them."
-msgstr ""
+msgstr "Вернуть в очередь задания, выполняющиеся дольше 5 минут? Делайте это, только если их уже не выполняет ни один обработчик."
 
 #: templates/admin/contents/system/queues.php:136
 msgid "Queue"
-msgstr ""
+msgstr "Очередь"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:298 src/Admin/ContentHandlers/ToolsPage.php:354
 msgid "Queue Monitor"
-msgstr ""
+msgstr "Монитор очереди"
 
 #: src/Environments/Application/Health/SystemHealth.php:1218 src/Environments/Application/Health/SystemHealth.php:1223
 msgid "Queue Worker"
-msgstr ""
+msgstr "Обработчик очереди"
 
 #: src/Background/BackgroundSetup.php:186
 msgid "Queue worker (smliser queue work)"
-msgstr ""
+msgstr "Обработчик очереди (smliser queue work)"
 
 #: src/Exceptions/RequestException.php:230
 msgid "Quota Exceeded"
-msgstr ""
+msgstr "Квота превышена"
 
 #: themes/default/templates/pages/home.php:48
 msgid "REST API"
-msgstr ""
+msgstr "REST API"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:915
 msgid "REST API Service Accounts"
-msgstr ""
+msgstr "Сервисные аккаунты REST API"
 
 #: src/Environments/Application/Theming/CorePages.php:141
 #, php-format
 msgid "REST API routes in the \"%s\" category."
-msgstr ""
+msgstr "Маршруты REST API в категории «%s»."
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:132
 #, php-format
 msgid "Ran %d task(s); %d failed."
-msgstr ""
+msgstr "Выполнено задач: %d; с ошибкой: %d."
 
 #: src/FileSystem/DownloadsApi/FileResponse.php:483
 msgid "Range Not Satisfiable"
-msgstr ""
+msgstr "Диапазон недостижим"
 
 #: src/Exceptions/RequestException.php:225
 msgid "Rate Limit Exceeded"
-msgstr ""
+msgstr "Превышен лимит запросов"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:264
 #, php-format
 msgid "Reached the update server %s in %d ms via %s."
-msgstr ""
+msgstr "Сервер обновлений %s доступен: %d мс через %s."
 
 #: assets/js/admin/repository-browser.js:37
 msgid "Read-only. Upload a new version of the app to change these."
-msgstr ""
+msgstr "Только чтение. Загрузите новую версию приложения, чтобы изменить это."
 
 #: src/Environments/Application/Health/SystemHealth.php:850
 #, php-format
 msgid "Readable: %s, Writable: %s, Size: %s"
-msgstr ""
+msgstr "Чтение: %s, запись: %s, размер: %s"
 
 #: src/Environments/Application/Installation/InstallerPage.php:377
 msgid "Ready to go"
-msgstr ""
+msgstr "Всё готово"
 
 #: templates/admin/contents/system/updates.php:156
 msgid "Ready to install"
-msgstr ""
+msgstr "Готово к установке"
 
 #: src/ClientDashboard/ContentHandlers/PurchasesPage.php:93 src/Email/Templates/Apps/AppStatusChangedEmail.php:90 src/Email/Templates/Apps/AppStatusChangedEmail.php:202 src/Email/Templates/Licenses/LicenseSuspendedEmail.php:69
 #: src/Email/Templates/Licenses/LicenseSuspendedEmail.php:169 src/Email/Templates/Monetization/PaymentFailedEmail.php:106 src/Email/Templates/Monetization/PaymentFailedEmail.php:234 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:87
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:223
 msgid "Reason"
-msgstr ""
+msgstr "Причина"
 
 #: templates/admin/contents/license/purchase-request.php:160
 msgid "Reason (sent to the buyer)"
-msgstr ""
+msgstr "Причина (отправляется покупателю)"
 
 #: templates/admin/contents/license/purchase-request.php:98
 msgid "Reason sent to the buyer"
-msgstr ""
+msgstr "Причина, отправленная покупателю"
 
 #: templates/admin/contents/license/purchase-request.php:112 themes/default/templates/pages/client/purchases.php:62
 msgid "Receipt"
-msgstr ""
+msgstr "Квитанция"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:506
 msgid "Receipt Retention (Days)"
-msgstr ""
+msgstr "Хранение квитанций (дни)"
 
 #: src/Background/Jobs/Purchases/CleanPurchaseReceiptsJob.php:68
 #, php-format
 msgid "Receipt file deleted automatically, %d days after the decision (receipt retention)."
-msgstr ""
+msgstr "Файл квитанции автоматически удалён через %d дн. после решения (срок хранения квитанций)."
 
 #: assets/js/admin/purchase-review.js:198
 msgid "Receipt pages"
-msgstr ""
+msgstr "Страницы квитанции"
 
 #. translators: %s: email address.
 #: themes/default/templates/pages/client/security.php:71
 #, php-format
 msgid "Receive a one-time code at %s when you sign in."
-msgstr ""
+msgstr "Получать одноразовый код на %s при входе."
 
 #: templates/admin/contents/index.php:177
 msgid "Recent Activity"
-msgstr ""
+msgstr "Недавняя активность"
 
 #: templates/admin/contents/system/health.php:39
 msgid "Recommendations"
-msgstr ""
+msgstr "Рекомендации"
 
 #: templates/admin/contents/system/health.php:40
 msgid "Recommended"
-msgstr ""
+msgstr "Рекомендуется"
 
 #: src/Monetization/Monetization.php:329
 msgid "Record locked or already removed by concurrent request."
-msgstr ""
+msgstr "Запись заблокирована или уже удалена параллельным запросом."
 
 #: src/Environments/Application/Update/Updater.php:388
 #, php-format
 msgid "Recorded version %s (schema %s); maintenance mode is off."
-msgstr ""
+msgstr "Записана версия %s (схема %s); режим обслуживания выключен."
 
 #: src/Exceptions/AbstractErrorHandler.php:790
 msgid "Recoverable Error"
-msgstr ""
+msgstr "Устранимая ошибка"
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:416
 msgid "Redis Cache"
-msgstr ""
+msgstr "Кэш Redis"
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:611
 #, php-format
 msgid "Redis authentication failed for %s:%d. Check your password."
-msgstr ""
+msgstr "Ошибка аутентификации Redis для %s:%d. Проверьте пароль."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:680
 #, php-format
 msgid "Redis error on %s:%d — %s"
-msgstr ""
+msgstr "Ошибка Redis на %s:%d — %s"
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:447
 msgid "Redis logical database index (0–15). Defaults to 0."
-msgstr ""
+msgstr "Индекс логической базы данных Redis (0–15). По умолчанию 0."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:426
 msgid "Redis server hostname or IP address."
-msgstr ""
+msgstr "Имя хоста или IP-адрес сервера Redis."
 
 #: src/Cache/Adapters/RedisCacheAdapter.php:433
 msgid "Redis server port. Typically 6379."
-msgstr ""
+msgstr "Порт сервера Redis. Обычно 6379."
 
 #: assets/js/admin/json-editor.js:296 assets/js/admin/json-editor.js:300
 msgid "Redo"
-msgstr ""
+msgstr "Повторить"
 
 #: assets/js/admin/json-editor.js:296
 msgid "Redo (Ctrl+Y)"
-msgstr ""
+msgstr "Повторить (Ctrl+Y)"
 
 #: templates/admin/contents/options/cache/stats.php:94
 msgid "Refresh"
-msgstr ""
+msgstr "Обновить"
 
 #: templates/admin/contents/options/cache/stats.php:93
 msgid "Refresh stats"
-msgstr ""
+msgstr "Обновить статистику"
 
 #: templates/admin/contents/system/updates.php:177
 msgid "Reinstall"
-msgstr ""
+msgstr "Переустановить"
 
 #: src/Environments/Application/Health/SystemHealth.php:1103
 msgid "Reinstall or remove this extension folder."
-msgstr ""
+msgstr "Переустановите или удалите эту папку расширения."
 
 #: src/Environments/Application/Health/SystemHealth.php:1127
 msgid "Reinstall or remove this theme folder."
-msgstr ""
+msgstr "Переустановите или удалите эту папку темы."
 
 #: templates/admin/contents/system/updates.php:176
 #, php-format
 msgid "Reinstall version %s to repair its files? The site will be unavailable for the few seconds it takes."
-msgstr ""
+msgstr "Переустановить версию %s, чтобы восстановить её файлы? Сайт будет недоступен несколько секунд."
 
 #: templates/admin/contents/license/purchase-request.php:163
 msgid "Reject"
-msgstr ""
+msgstr "Отклонить"
 
 #: templates/admin/contents/license/purchase-requests.php:27
 #, php-format
 msgid "Rejected (%d)"
-msgstr ""
+msgstr "Отклонённые (%d)"
 
 #: src/Monetization/PurchaseRequestService.php:408
 #, php-format
@@ -9037,1149 +9037,1151 @@ msgid ""
 "Rejected on %s, before this approval. Reason sent to the buyer:\n"
 "%s"
 msgstr ""
+"Отклонено %s, до этого одобрения. Причина, отправленная покупателю:\n"
+"%s"
 
 #: src/Admin/ActionHandlers/PurchaseReview.php:94
 #, php-format
 msgid "Rejected. The reason is being emailed to %s."
-msgstr ""
+msgstr "Отклонено. Причина отправляется по почте на %s."
 
 #: templates/admin/contents/system/updates.php:129
 msgid "Release"
-msgstr ""
+msgstr "Релиз"
 
 #: src/Exceptions/RequestException.php:144
 msgid "Release Not Found"
-msgstr ""
+msgstr "Релиз не найден"
 
 #: src/Background/Schedule/Scheduler.php:614
 msgid "Release Stale Running Jobs"
-msgstr ""
+msgstr "Освободить зависшие выполняемые задания"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:108 src/Email/Templates/System/UpdateFailedEmail.php:142 src/Email/Templates/System/UpdateInstalledEmail.php:115
 msgid "Release Type"
-msgstr ""
+msgstr "Тип релиза"
 
 #: templates/admin/contents/system/queues.php:111
 msgid "Release stale jobs"
-msgstr ""
+msgstr "Освободить зависшие задания"
 
 #: src/Admin/ActionHandlers/BackgroundManagement.php:205
 #, php-format
 msgid "Released %d stale job(s) back to the queue."
-msgstr ""
+msgstr "Возвращено в очередь зависших заданий: %d."
 
 #: src/Monetization/Providers/RemoteProvider.php:43
 msgid "Remote store"
-msgstr ""
+msgstr "Удалённое хранилище"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:227 src/Admin/ContentHandlers/ModulesPage.php:263 src/Admin/ContentHandlers/ModulesPage.php:428 src/Admin/ContentHandlers/ModulesPage.php:501
 #: themes/default/templates/pages/client/organization.php:55 assets/js/smliser-uploader.js:359
 msgid "Remove"
-msgstr ""
+msgstr "Удалить"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:428 src/Admin/ContentHandlers/ModulesPage.php:501
 #, php-format
 msgid "Remove %s and its files?"
-msgstr ""
+msgstr "Удалить %s и его файлы?"
 
 #: themes/default/templates/pages/client/organization.php:52
 #, php-format
 msgid "Remove %s from %s?"
-msgstr ""
+msgstr "Удалить %s из %s?"
 
 #: assets/js/admin/email-editor.js:422
 msgid "Remove block"
-msgstr ""
+msgstr "Удалить блок"
 
 #: src/Security/Permission/Capability.php:98
 msgid "Remove members from organizations"
-msgstr ""
+msgstr "Удаление участников из организаций"
 
 #: themes/default/templates/pages/client/security.php:46
 msgid "Remove passkey"
-msgstr ""
+msgstr "Удалить ключ доступа"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:263
 #, php-format
 msgid "Remove the broken extension \"%s\" and its files?"
-msgstr ""
+msgstr "Удалить повреждённое расширение «%s» и его файлы?"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:227
 #, php-format
 msgid "Remove the broken theme \"%s\" and its files?"
-msgstr ""
+msgstr "Удалить повреждённую тему «%s» и её файлы?"
 
 #: assets/js/admin/apps-uploader.js:1053
 msgid "Remove this file"
-msgstr ""
+msgstr "Удалить этот файл"
 
 #: src/Background/Jobs/Analytics/PruneLicenseActivityLogsJob.php:90
 msgid "Removes license activity log entries older than the configured retention window."
-msgstr ""
+msgstr "Удаляет записи журнала активности лицензий старше настроенного срока хранения."
 
 #: themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
 msgid "Rename"
-msgstr ""
+msgstr "Переименовать"
 
 #: assets/js/admin/json-editor.js:874
 msgid "Rename Property"
-msgstr ""
+msgstr "Переименовать свойство"
 
 #: assets/js/admin/repository-browser.js:923 assets/js/admin/repository-browser.js:926
 msgid "Rename artifact"
-msgstr ""
+msgstr "Переименовать артефакт"
 
 #: assets/js/admin/json-editor.js:689
 msgid "Rename key"
-msgstr ""
+msgstr "Переименовать ключ"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:211 assets/js/admin/repository-browser.js:940
 #, php-format, javascript-format
 msgid "Renamed to %s."
-msgstr ""
+msgstr "Переименовано в %s."
 
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:57
 msgid "Render PDF Receipt"
-msgstr ""
+msgstr "Отрисовать PDF-квитанцию"
 
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:64
 msgid "Render the pages of a PDF payment receipt to images, so reviewers see it the same in every browser."
-msgstr ""
+msgstr "Преобразует страницы PDF-квитанции об оплате в изображения, чтобы проверяющие видели её одинаково в любом браузере."
 
 #: assets/js/admin/repository-browser.js:734
 msgid "Replace"
-msgstr ""
+msgstr "Заменить"
 
 #: templates/admin/contents/modules/extensions.php:63
 msgid "Replace the installed extension of the same slug (same or newer version; downgrades are refused)"
-msgstr ""
+msgstr "Заменить установленное расширение с тем же slug (та же или более новая версия; понижение версии запрещено)"
 
 #: templates/admin/contents/modules/themes.php:65
 msgid "Replace the installed theme of the same slug (same or newer version; downgrades are refused)"
-msgstr ""
+msgstr "Заменить установленную тему с тем же slug (та же или более новая версия; понижение версии запрещено)"
 
 #: src/Environments/Application/Update/Updater.php:268
 #, php-format
 msgid "Replaced %s/ (previous copy in %s/%s/)."
-msgstr ""
+msgstr "Заменено %s/ (предыдущая копия в %s/%s/)."
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:658
 #, php-format
 msgid "Replaced the %s \"%s\" %s with %s."
-msgstr ""
+msgstr "%s «%s» %s заменено на %s."
 
 #: themes/default/templates/pages/client/app.php:103
 msgid "Replaces the app's manifest."
-msgstr ""
+msgstr "Заменяет манифест приложения."
 
 #: templates/admin/contents/system/signing-key.php:162
 msgid "Replacing the key"
-msgstr ""
+msgstr "Замена ключа"
 
 #: assets/js/admin/support-report.js:96
 msgid "Report generated and copied. Paste it into your support request."
-msgstr ""
+msgstr "Отчёт создан и скопирован. Вставьте его в обращение в поддержку."
 
 #: assets/js/admin/support-report.js:97
 msgid "Report generated. Press Ctrl+C (Cmd+C) to copy the selected text."
-msgstr ""
+msgstr "Отчёт создан. Нажмите Ctrl+C (Cmd+C), чтобы скопировать выделенный текст."
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:86 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:148 src/Admin/ContentHandlers/RepositoryPage.php:191
 #: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:723
 #: src/Admin/ContentHandlers/RepositoryPage.php:1170 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
 #: templates/admin/contents/repository/upload.php:20 themes/default/templates/pages/repository/app.php:29 themes/default/templates/partials/header.php:12
 msgid "Repository"
-msgstr ""
+msgstr "Репозиторий"
 
 #: src/Exceptions/FileRequestException.php:166
 msgid "Repository Conflict"
-msgstr ""
+msgstr "Конфликт репозитория"
 
 #: src/Exceptions/FileRequestException.php:205
 msgid "Repository Error"
-msgstr ""
+msgstr "Ошибка репозитория"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:392
 msgid "Repository Name"
-msgstr ""
+msgstr "Название репозитория"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:622
 msgid "Repository URL Prefix"
-msgstr ""
+msgstr "Префикс URL репозитория"
 
 #: templates/admin/contents/modules/extensions.php:126 templates/admin/contents/modules/themes.php:132
 msgid "Republish assets"
-msgstr ""
+msgstr "Опубликовать ресурсы заново"
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:85 src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:62 templates/admin/contents/license/purchase-request.php:54 templates/admin/contents/license/purchase-requests.php:65
 #: themes/default/templates/pages/client/purchases.php:43
 msgid "Request"
-msgstr ""
+msgstr "Запрос"
 
 #: templates/admin/contents/options/cache/stats.php:235 assets/js/admin/cache-stats.js:248
 msgid "Request Breakdown"
-msgstr ""
+msgstr "Разбивка запросов"
 
 #: templates/admin/contents/license/purchase-request.php:55
 msgid "Request ID:"
-msgstr ""
+msgstr "ID запроса:"
 
 #: src/Exceptions/RequestException.php:163
 msgid "Request Timeout"
-msgstr ""
+msgstr "Тайм-аут запроса"
 
 #: assets/js/admin/core.js:915
 msgid "Request failed"
-msgstr ""
+msgstr "Запрос не выполнен"
 
 #: assets/js/admin/core.js:1741
 msgid "Request failed."
-msgstr ""
+msgstr "Запрос не выполнен."
 
 #. translators: 1: ip address (formatted), 2: user agent (formatted)
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:80
 #, php-format
 msgid "Request made from IP: %1$s Device: %2$s"
-msgstr ""
+msgstr "Запрос с IP: %1$s Устройство: %2$s"
 
 #: src/Admin/ActionHandlers/SystemManagement.php:221
 #, php-format
 msgid "Request to the update server %s timed out after %d seconds (%s). Automatic updates will fail until the server can reach it."
-msgstr ""
+msgstr "Запрос к серверу обновлений %s превысил тайм-аут через %d с (%s). Автоматические обновления не будут работать, пока сервер не сможет к нему подключиться."
 
 #: assets/js/admin/core.js:1744
 msgid "Request was successful, but no response message."
-msgstr ""
+msgstr "Запрос выполнен, но сообщение ответа отсутствует."
 
 #: templates/admin/contents/options/cache/stats.php:222 assets/js/admin/cache-stats.js:136
 msgid "Request-scoped"
-msgstr ""
+msgstr "В рамках запроса"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:14 templates/admin/contents/repository/edit-wptheme.php:14
 msgid "Required PHP Version"
-msgstr ""
+msgstr "Требуемая версия PHP"
 
 #: templates/admin/contents/repository/edit-wpplugin.php:29 templates/admin/contents/repository/edit-wptheme.php:29
 msgid "Required WordPress Version"
-msgstr ""
+msgstr "Требуемая версия WordPress"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:479
 #, php-format
 msgid "Required by %s"
-msgstr ""
+msgstr "Требуется для %s"
 
 #: src/Exceptions/FileRequestException.php:50
 msgid "Required file identifier (slug or ID) is missing from the request."
-msgstr ""
+msgstr "В запросе отсутствует обязательный идентификатор файла (slug или ID)."
 
 #: src/Exceptions/RequestException.php:44
 msgid "Required request data (body, header, or query parameter) is missing."
-msgstr ""
+msgstr "Отсутствуют обязательные данные запроса (тело, заголовок или параметр запроса)."
 
 #: templates/admin/contents/system/updates.php:189
 msgid "Requirements"
-msgstr ""
+msgstr "Требования"
 
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Requires PHP:"
-msgstr ""
+msgstr "Требуется PHP:"
 
 #: themes/default/templates/pages/repository/app.php:57
 msgid "Requires a license"
-msgstr ""
+msgstr "Требуется лицензия"
 
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Requires at least:"
-msgstr ""
+msgstr "Требуется не ниже:"
 
 #: templates/admin/contents/options/cache/form.php:120 templates/admin/contents/options/email/editor.php:141
 msgid "Reset"
-msgstr ""
+msgstr "Сбросить"
 
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:180
 msgid "Reset My Password"
-msgstr ""
+msgstr "Сбросить мой пароль"
 
 #: assets/js/admin/email-editor.js:927
 msgid "Reset Template"
-msgstr ""
+msgstr "Сбросить шаблон"
 
 #: src/Email/Templates/Accounts/PasswordResetEmail.php:43
 msgid "Reset Your Password"
-msgstr ""
+msgstr "Сбросьте пароль"
 
 #: assets/js/admin/core.js:2005
 msgid "Reset successful"
-msgstr ""
+msgstr "Сброс выполнен"
 
 #: src/Auth/ContentHandlers/AuthPages.php:168 themes/default/templates/pages/auth/forgot-password.php:12
 msgid "Reset your password"
-msgstr ""
+msgstr "Сбросьте пароль"
 
 #: src/Exceptions/RequestException.php:134
 msgid "Resource Not Found"
-msgstr ""
+msgstr "Ресурс не найден"
 
 #: src/Exceptions/RequestException.php:149
 msgid "Resource Owner Not Found"
-msgstr ""
+msgstr "Владелец ресурсов не найден"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:893 src/Admin/ContentHandlers/AccessControlPage.php:923 src/Admin/ContentHandlers/AccessControlPage.php:996
 msgid "Resource Owners"
-msgstr ""
+msgstr "Владельцы ресурсов"
 
 #: themes/default/templates/pages/auth/sign-up.php:47
 msgid "Resource owner"
-msgstr ""
+msgstr "Владелец ресурсов"
 
 #: templates/admin/contents/accounts/owners.php:31
 msgid "Resource owners are individual users or organizations that own or host resources in this repository."
-msgstr ""
+msgstr "Владельцы ресурсов — это отдельные пользователи или организации, которые владеют ресурсами или размещают их в этом репозитории."
 
 #: themes/default/templates/pages/client/app.php:176
 msgid "Restore"
-msgstr ""
+msgstr "Восстановить"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:404 templates/admin/contents/system/updates.php:323
 #, php-format
 msgid "Restore %s"
-msgstr ""
+msgstr "Восстановить %s"
 
 #: src/Environments/Application/Health/SystemHealth.php:1167
 msgid "Restore the file from a backup, or check its permissions. Do not delete it: it records that this site is installed."
-msgstr ""
+msgstr "Восстановите файл из резервной копии или проверьте его права. Не удаляйте его: он отмечает, что сайт установлен."
 
 #: templates/admin/contents/system/updates.php:322
 #, php-format
 msgid "Restore version %s? This is only possible when the update did not change the database."
-msgstr ""
+msgstr "Восстановить версию %s? Это возможно, только если обновление не изменило базу данных."
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:56
 #, php-format
 msgid "Restoring %s %s failed"
-msgstr ""
+msgstr "Не удалось восстановить %s %s"
 
 #: src/Environments/Application/Update/Updater.php:435
 #, php-format
 msgid "Restoring the files of %s from %s/."
-msgstr ""
+msgstr "Восстановление файлов %s из %s/."
 
 #: src/Exceptions/RequestException.php:122
 msgid "Restricted Access"
-msgstr ""
+msgstr "Ограниченный доступ"
 
 #: templates/admin/contents/system/queues.php:148
 msgid "Result"
-msgstr ""
+msgstr "Результат"
 
 #: src/Email/Templates/Monetization/PaymentFailedEmail.php:242
 msgid "Retry Payment"
-msgstr ""
+msgstr "Повторить оплату"
 
 #: src/Admin/ActionHandlers/MaintenanceManagement.php:70
 msgid "Retry after must be a whole number of seconds."
-msgstr ""
+msgstr "Значение retry after должно быть целым числом секунд."
 
 #: themes/default/templates/pages/auth/signed-out.php:27 themes/default/templates/pages/auth/verify-email.php:33 themes/default/templates/pages/purchase.php:34
 msgid "Return to home"
-msgstr ""
+msgstr "На главную"
 
 #: themes/default/templates/pages/auth/mfa.php:21
 msgid "Return to sign in"
-msgstr ""
+msgstr "Вернуться ко входу"
 
 #: src/Environments/Application/Update/UpdateService.php:356
 #, php-format
 msgid "Reusing %s, verified by the dry run of %s (downloaded from %s)."
-msgstr ""
+msgstr "Повторно используется %s, проверенный пробным запуском %s (загружен с %s)."
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:114
 msgid "Review and Install"
-msgstr ""
+msgstr "Проверить и установить"
 
 #: src/Environments/Application/Health/SystemHealth.php:999
 msgid "Review the Queue Monitor → Failed tab to diagnose recurring failures."
-msgstr ""
+msgstr "Откройте вкладку «Монитор очереди → Неудачные», чтобы выяснить причину повторяющихся сбоев."
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:97
 msgid "Review the request"
-msgstr ""
+msgstr "Рассмотреть запрос"
 
 #: templates/admin/contents/license/purchase-request.php:93
 msgid "Reviewed"
-msgstr ""
+msgstr "Рассмотрено"
 
 #: templates/admin/contents/license/index.php:60 themes/default/templates/pages/client/organization.php:112
 msgid "Revoke"
-msgstr ""
+msgstr "Отозвать"
 
 #: src/Security/Permission/Capability.php:54
 msgid "Revoke licenses"
-msgstr ""
+msgstr "Отзыв лицензий"
 
 #: themes/default/templates/pages/client/organization.php:109
 #, php-format
 msgid "Revoke the invitation to %s?"
-msgstr ""
+msgstr "Отозвать приглашение для %s?"
 
 #: src/RESTAPI/Handlers/Licensing.php:268
 msgid "Revoking a license needs the monetization.license.revoke capability."
-msgstr ""
+msgstr "Для отзыва лицензии требуется право monetization.license.revoke."
 
 #: themes/default/templates/pages/client/organization.php:80 themes/default/templates/pages/client/overview.php:25
 msgid "Role"
-msgstr ""
+msgstr "Роль"
 
 #: src/Schema/Definitions/RoleAssignmentSchema.php:27
 msgid "Role Assignments"
-msgstr ""
+msgstr "Назначения ролей"
 
 #: assets/js/admin/role-builder.js:77
 msgid "Role Builder"
-msgstr ""
+msgstr "Конструктор ролей"
 
 #: src/Schema/Definitions/RoleCapabilitiesSchema.php:21
 msgid "Role Capabilities"
-msgstr ""
+msgstr "Права роли"
 
 #: assets/js/admin/role-builder.js:81
 msgid "Role Configuration"
-msgstr ""
+msgstr "Настройка роли"
 
 #: assets/js/admin/role-builder.js:114
 msgid "Role Slug"
-msgstr ""
+msgstr "Slug роли"
 
 #: assets/js/admin/role-builder.js:97
 msgid "Role name"
-msgstr ""
+msgstr "Название роли"
 
 #: themes/default/templates/pages/client/organization.php:39
 #, php-format
 msgid "Role of %s"
-msgstr ""
+msgstr "Роль %s"
 
 #: assets/js/admin/role-builder.js:84
 msgid "Role preset"
-msgstr ""
+msgstr "Шаблон роли"
 
 #: src/Security/Permission/Role.php:396
 msgid "Role slug must be set"
-msgstr ""
+msgstr "Необходимо указать slug роли"
 
 #: templates/admin/contents/accounts/access-control-form.php:185
 msgid "Role:"
-msgstr ""
+msgstr "Роль:"
 
 #: src/Schema/Definitions/RolesSchema.php:22
 msgid "Roles"
-msgstr ""
+msgstr "Роли"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:738 src/Admin/ContentHandlers/OptionsPage.php:787
 msgid "Routes"
-msgstr ""
+msgstr "Маршруты"
 
 #: src/Admin/ContentHandlers/OptionsPage.php:737
 msgid "Routes Settings"
-msgstr ""
+msgstr "Настройки маршрутов"
 
 #: src/SettingsAPI/SettingsController.php:125
 msgid "Routes has been updated."
-msgstr ""
+msgstr "Маршруты обновлены."
 
 #: templates/admin/contents/options/email/editor.php:417
 msgid "Rows"
-msgstr ""
+msgstr "Строки"
 
 #: templates/admin/contents/system/index.php:87
 #, php-format
 msgid "Run \"%s\" now?"
-msgstr ""
+msgstr "Запустить «%s» сейчас?"
 
 #: src/Environments/Application/Health/SystemHealth.php:1201
 msgid "Run `smliser update finish` from the console, or roll the update back."
-msgstr ""
+msgstr "Выполните `smliser update finish` в консоли или откатите обновление."
 
 #: assets/js/admin/site-health.js:374
 msgid "Run again"
-msgstr ""
+msgstr "Запустить снова"
 
 #: src/Background/BackgroundSetup.php:444 templates/admin/contents/system/index.php:45
 msgid "Run due tasks"
-msgstr ""
+msgstr "Запустить назначенные задачи"
 
 #: templates/admin/contents/system/index.php:44
 msgid "Run every task that is due now? Each runs in this request."
-msgstr ""
+msgstr "Запустить сейчас все задачи, срок которых наступил? Каждая выполняется в этом запросе."
 
 #: templates/admin/contents/system/index.php:89
 msgid "Run now"
-msgstr ""
+msgstr "Запустить сейчас"
 
 #: src/Environments/Application/Installation/InstallerPage.php:309
 msgid "Run setup"
-msgstr ""
+msgstr "Запустить установку"
 
 #: assets/js/admin/site-health.js:125
 msgid "Run the checks again. If this keeps failing, check the server error log."
-msgstr ""
+msgstr "Запустите проверки ещё раз. Если ошибка повторяется, посмотрите журнал ошибок сервера."
 
 #: src/Background/BackgroundSetup.php:315
 msgid "Run the scheduler every minute"
-msgstr ""
+msgstr "Запускать планировщик каждую минуту"
 
 #. translators: %s: app
 #: src/Environments/Application/Installation/InstallerPage.php:94
 #, php-format
 msgid "Run this in the folder you uploaded %s to, and copy the line it prints:"
-msgstr ""
+msgstr "Выполните это в папке, куда вы загрузили %s, и скопируйте выведенную строку:"
 
 #: templates/admin/contents/system/index.php:88
 msgid "Run this task now, whether or not it is due"
-msgstr ""
+msgstr "Запустить эту задачу сейчас, независимо от срока"
 
 #: templates/admin/contents/system/background.php:99
 msgid "Running now"
-msgstr ""
+msgstr "Выполняется"
 
 #: src/Background/BackgroundSetup.php:135
 msgid "Running: "
-msgstr ""
+msgstr "Выполняется: "
 
 #: assets/js/admin/site-health.js:93
 msgid "Running…"
-msgstr ""
+msgstr "Выполнение…"
 
 #: src/Cache/Adapters/RuntimeCacheAdapter.php:205
 msgid "Runtime Cache"
-msgstr ""
+msgstr "Кэш времени выполнения"
 
 #: src/Cache/Adapters/RuntimeCacheAdapter.php:299
 msgid "Runtime cache probe delete failed unexpectedly."
-msgstr ""
+msgstr "Тестовое удаление из кэша времени выполнения неожиданно не удалось."
 
 #: src/Cache/Adapters/RuntimeCacheAdapter.php:303
 msgid "Runtime cache probe key still exists after deletion."
-msgstr ""
+msgstr "Тестовый ключ кэша времени выполнения всё ещё существует после удаления."
 
 #: src/Cache/Adapters/RuntimeCacheAdapter.php:295
 msgid "Runtime cache probe read returned unexpected data."
-msgstr ""
+msgstr "Тестовое чтение кэша времени выполнения вернуло неожиданные данные."
 
 #: src/Cache/Adapters/RuntimeCacheAdapter.php:289
 msgid "Runtime cache probe write failed unexpectedly."
-msgstr ""
+msgstr "Тестовая запись в кэш времени выполнения неожиданно не удалась."
 
 #: src/Email/Providers/SMTPProvider.php:135
 msgid "SMTP Host"
-msgstr ""
+msgstr "SMTP-хост"
 
 #: src/Email/Providers/SMTPProvider.php:167
 msgid "SMTP password. Leave blank for open relay."
-msgstr ""
+msgstr "Пароль SMTP. Оставьте пустым для открытого релея."
 
 #: src/Email/Providers/SMTPProvider.php:137
 msgid "SMTP server hostname. e.g. smtp.gmail.com"
-msgstr ""
+msgstr "Имя хоста SMTP-сервера, например smtp.gmail.com"
 
 #: src/Email/Providers/SMTPProvider.php:161
 msgid "SMTP username. Leave blank for open relay."
-msgstr ""
+msgstr "Имя пользователя SMTP. Оставьте пустым для открытого релея."
 
 #: src/Email/Providers/SMTPProvider.php:390
 msgid "SMTPProvider: STARTTLS negotiation failed."
-msgstr ""
+msgstr "SMTPProvider: не удалось согласовать STARTTLS."
 
 #: src/Email/Providers/SMTPProvider.php:383
 msgid "SMTPProvider: STARTTLS requested but server did not advertise STARTTLS capability."
-msgstr ""
+msgstr "SMTPProvider: запрошен STARTTLS, но сервер не объявил поддержку STARTTLS."
 
 #: src/Email/Providers/SMTPProvider.php:869
 msgid "SMTPProvider: connection closed unexpectedly while reading response."
-msgstr ""
+msgstr "SMTPProvider: соединение неожиданно закрыто при чтении ответа."
 
 #: src/Email/Providers/SMTPProvider.php:834
 msgid "SMTPProvider: failed to write to socket."
-msgstr ""
+msgstr "SMTPProvider: не удалось записать в сокет."
 
 #: src/Email/Providers/SMTPProvider.php:544
 msgid "SMTPProvider: server does not support AUTH PLAIN or AUTH LOGIN. "
-msgstr ""
+msgstr "SMTPProvider: сервер не поддерживает AUTH PLAIN и AUTH LOGIN. "
 
 #: src/Email/Providers/SMTPProvider.php:897
 msgid "SMTPProvider: server response exceeded maximum line limit."
-msgstr ""
+msgstr "SMTPProvider: ответ сервера превысил максимальное число строк."
 
 #: src/Environments/Application/Health/SystemHealth.php:639
 msgid "SQLite (PDO)"
-msgstr ""
+msgstr "SQLite (PDO)"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:462
 msgid "SQLite Cache"
-msgstr ""
+msgstr "Кэш SQLite"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:631
 #, php-format
 msgid "SQLite cache directory does not exist: %s"
-msgstr ""
+msgstr "Папка кэша SQLite не существует: %s"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:637
 #, php-format
 msgid "SQLite cache directory is not writable: %s"
-msgstr ""
+msgstr "Папка кэша SQLite недоступна для записи: %s"
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:626
 msgid "SQLite cache path is not configured."
-msgstr ""
+msgstr "Путь к кэшу SQLite не настроен."
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:659
 msgid "SQLite probe read returned unexpected value."
-msgstr ""
+msgstr "Тестовое чтение SQLite вернуло неожиданное значение."
 
 #: src/Cache/Adapters/SQLiteCacheAdapter.php:655
 msgid "SQLite probe write failed."
-msgstr ""
+msgstr "Тестовая запись SQLite не удалась."
 
 #: templates/admin/contents/accounts/access-control-form.php:270 templates/admin/contents/options/cache/form.php:116 templates/admin/contents/options/email/form.php:97 templates/admin/contents/options/email/index.php:41
 #: templates/admin/contents/options/index.php:29 templates/admin/contents/options/monetization/monetizations.php:60 templates/admin/contents/options/routing.php:42 templates/admin/contents/system/updates.php:248
 #: assets/js/admin/apps-uploader.js:1552 assets/js/admin/core.js:1212 assets/js/admin/json-editor.js:956
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: templates/admin/contents/repository/uploader.php:124
 #, php-format
 msgid "Save %s"
-msgstr ""
+msgstr "Сохранить %s"
 
 #: templates/admin/contents/options/email/index.php:39
 msgid "Save Defaults"
-msgstr ""
+msgstr "Сохранить значения по умолчанию"
 
 #: templates/admin/contents/license/form.php:41
 msgid "Save License"
-msgstr ""
+msgstr "Сохранить лицензию"
 
 #: templates/admin/contents/options/email/editor.php:150 assets/js/admin/email-editor.js:910 assets/js/admin/email-editor.js:916
 msgid "Save Template"
-msgstr ""
+msgstr "Сохранить шаблон"
 
 #: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:106
 msgid "Save changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 #: src/Environments/Application/Installation/InstallerPage.php:54
 msgid "Save the site address"
-msgstr ""
+msgstr "Сохранить адрес сайта"
 
 #: assets/js/admin/core.js:1626
 msgid "Save this key now. For security, it will not be shown to you again."
-msgstr ""
+msgstr "Сохраните этот ключ сейчас. В целях безопасности он больше не будет показан."
 
 #: src/Monetization/Controller.php:145 src/Monetization/Controller.php:340 src/Monetization/Controller.php:432 assets/js/admin/apps-uploader.js:542
 #: assets/js/admin/core.js:328 assets/js/admin/email-editor.js:903
 msgid "Saved"
-msgstr ""
+msgstr "Сохранено"
 
 #: src/Email/RequestController.php:85
 msgid "Saved successfully."
-msgstr ""
+msgstr "Успешно сохранено."
 
 #: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:94 assets/js/admin/updates.js:100
 msgid "Saved."
-msgstr ""
+msgstr "Сохранено."
 
 #: src/Monetization/License.php:1166
 #, php-format
 msgid "Saving the license meta \"%s\" failed: %s"
-msgstr ""
+msgstr "Не удалось сохранить метаданные лицензии «%s»: %s"
 
 #: assets/js/admin/email-editor.js:878
 msgid "Saving..."
-msgstr ""
+msgstr "Сохранение..."
 
 #: src/ClientDashboard/ActionHandlers/SecurityManagement.php:117
 msgid "Scan the secret in your authenticator app, then enter its current code."
-msgstr ""
+msgstr "Отсканируйте секрет в приложении-аутентификаторе, затем введите текущий код."
 
 #: themes/default/templates/pages/client/security.php:131
 msgid "Scan this QR code with your authenticator app"
-msgstr ""
+msgstr "Отсканируйте этот QR-код приложением-аутентификатором"
 
 #: themes/default/templates/pages/client/security.php:132
 msgid "Scan this code with your authenticator app."
-msgstr ""
+msgstr "Отсканируйте этот код приложением-аутентификатором."
 
 #: src/Background/BackgroundSetup.php:388 src/Background/BackgroundSetup.php:423
 msgid "Schedule"
-msgstr ""
+msgstr "Расписание"
 
 #: src/Environments/Application/Health/SystemHealth.php:1024
 msgid "Scheduled Task Errors"
-msgstr ""
+msgstr "Ошибки запланированных задач"
 
 #: src/Background/BackgroundSetup.php:137
 msgid "Scheduled tasks and queued jobs run each time the external cron service calls this site. Cron on the server is more reliable when your hosting offers it."
-msgstr ""
+msgstr "Запланированные задачи и задания из очереди выполняются каждый раз, когда внешний cron-сервис обращается к сайту. Cron на сервере надёжнее, если хостинг его предоставляет."
 
 #: src/Background/BackgroundSetup.php:138
 msgid "Scheduled tasks and queued jobs run on their own."
-msgstr ""
+msgstr "Запланированные задачи и задания из очереди выполняются автоматически."
 
 #: src/Background/BackgroundSetup.php:185
 msgid "Scheduler command (smliser schedule run)"
-msgstr ""
+msgstr "Команда планировщика (smliser schedule run)"
 
 #: src/Admin/ContentHandlers/ToolsPage.php:292 src/Admin/ContentHandlers/ToolsPage.php:367
 msgid "Schedules"
-msgstr ""
+msgstr "Расписания"
 
 #: templates/admin/contents/repository/edit-wptheme.php:146
 msgid "Screenshot"
-msgstr ""
+msgstr "Снимок экрана"
 
 #: templates/admin/contents/repository/edit-software.php:99 templates/admin/contents/repository/edit-wpplugin.php:135 themes/default/templates/pages/repository/app.php:84
 msgid "Screenshots"
-msgstr ""
+msgstr "Снимки экрана"
 
 #: templates/admin/contents/broadcasts/search.php:30 templates/admin/contents/license/search.php:48 templates/admin/contents/modules/marketplace.php:41 templates/admin/contents/repository/search.php:37
 #: themes/default/templates/partials/repository/toolbar.php:22
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: themes/default/templates/partials/repository/toolbar.php:16
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "Поиск: %s"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:116
 msgid "Search Bulk Messages"
-msgstr ""
+msgstr "Поиск массовых рассылок"
 
 #: assets/js/admin/json-editor.js:354
 msgid "Search JSON"
-msgstr ""
+msgstr "Поиск по JSON"
 
 #: src/Admin/ContentHandlers/LicensePage.php:295 src/Admin/ContentHandlers/LicensePage.php:498 templates/admin/contents/license/index.php:65
 msgid "Search Licenses"
-msgstr ""
+msgstr "Поиск лицензий"
 
 #: src/Admin/ContentHandlers/BulkMessagePage.php:172 templates/admin/contents/broadcasts/index.php:40
 msgid "Search Messages"
-msgstr ""
+msgstr "Поиск сообщений"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1126 templates/admin/contents/repository/index.php:133
 msgid "Search Repository"
-msgstr ""
+msgstr "Поиск по репозиторию"
 
 #: templates/admin/contents/repository/search.php:36 assets/js/globals.js:593
 msgid "Search apps"
-msgstr ""
+msgstr "Поиск приложений"
 
 #: templates/admin/contents/modules/marketplace.php:40 assets/js/admin/modules.js:264
 msgid "Search by name, slug or author"
-msgstr ""
+msgstr "Поиск по названию, slug или автору"
 
 #: templates/admin/contents/repository/search.php:63
 msgid "Search for hosted applications in the repository."
-msgstr ""
+msgstr "Поиск размещённых приложений в репозитории."
 
 #: assets/js/admin/core.js:223
 msgid "Search for resource owners..."
-msgstr ""
+msgstr "Поиск владельцев ресурсов..."
 
 #: assets/js/admin/core.js:216
 msgid "Search for users or organizations..."
-msgstr ""
+msgstr "Поиск пользователей или организаций..."
 
 #: assets/js/admin/json-editor.js:353
 msgid "Search keys or values"
-msgstr ""
+msgstr "Поиск ключей или значений"
 
 #: assets/js/admin/json-editor.js:354
 msgid "Search keys or values…"
-msgstr ""
+msgstr "Поиск ключей или значений…"
 
 #: templates/admin/contents/license/search.php:47
 msgid "Search licenses..."
-msgstr ""
+msgstr "Поиск лицензий..."
 
 #: templates/admin/contents/broadcasts/search.php:29
 msgid "Search messages"
-msgstr ""
+msgstr "Поиск сообщений"
 
 #: src/HostedApps/ContentHandlers/RepositoryPages.php:122
 #, php-format
 msgid "Search results for \"%s\""
-msgstr ""
+msgstr "Результаты поиска по запросу «%s»"
 
 #: templates/admin/contents/modules/marketplace.php:40
 msgid "Search the marketplace"
-msgstr ""
+msgstr "Поиск в магазине"
 
 #: themes/default/templates/partials/repository/toolbar.php:16
 msgid "Search the repository"
-msgstr ""
+msgstr "Поиск по репозиторию"
 
 #: assets/js/admin/core.js:208
 msgid "Search users..."
-msgstr ""
+msgstr "Поиск пользователей..."
 
 #: src/ClientDashboard/ContentHandlers/SecurityPage.php:40
 msgid "Security"
-msgstr ""
+msgstr "Безопасность"
 
 #: src/Email/Templates/Security/SecurityEmailTemplate.php:117
 msgid "Security alert: "
-msgstr ""
+msgstr "Оповещение безопасности: "
 
 #: src/Environments/WordPress/Dispatcher.php:188
 msgid "Security check failed."
-msgstr ""
+msgstr "Проверка безопасности не пройдена."
 
 #: templates/admin/contents/system/updates.php:93
 msgid "Security releases"
-msgstr ""
+msgstr "Выпуски безопасности"
 
 #: templates/admin/contents/system/updates.php:93
 msgid "Security releases are installed automatically; other releases wait for you."
-msgstr ""
+msgstr "Выпуски безопасности устанавливаются автоматически; остальные ждут вашего решения."
 
 #: src/Environments/Application/Health/SystemHealth.php:493
 msgid "Security releases only"
-msgstr ""
+msgstr "Только выпуски безопасности"
 
 #: src/Exceptions/RequestException.php:113
 msgid "Security token verification failed for this request."
-msgstr ""
+msgstr "Не удалось проверить токен безопасности для этого запроса."
 
 #: templates/admin/contents/system/updates.php:68
 #, php-format
 msgid "Security update available: %s"
-msgstr ""
+msgstr "Доступно обновление безопасности: %s"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:34
 #, php-format
 msgid "Security update: %s %s is available"
-msgstr ""
+msgstr "Обновление безопасности: доступна %s %s"
 
 #: src/Background/BackgroundSetup.php:455
 msgid "Security updates cannot install themselves in this mode."
-msgstr ""
+msgstr "В этом режиме обновления безопасности не могут устанавливаться сами."
 
 #: src/Environments/Application/Health/SystemHealth.php:1059
 #, php-format
 msgid "See Tools → Signing Key for how to set %s."
-msgstr ""
+msgstr "Как задать %s, см. в разделе «Инструменты → Ключ подписи»."
 
 #: themes/default/templates/pages/repository/app.php:59
 msgid "See pricing"
-msgstr ""
+msgstr "Посмотреть цены"
 
 #: themes/default/templates/pages/client/purchases.php:90
 msgid "See your license"
-msgstr ""
+msgstr "Посмотреть лицензию"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:393
 msgid "Select Organization Status"
-msgstr ""
+msgstr "Выберите статус организации"
 
 #: assets/js/admin/repository-browser.js:601
 msgid "Select a file to preview it, see its details and manage it."
-msgstr ""
+msgstr "Выберите файл, чтобы просмотреть его, увидеть сведения и управлять им."
 
 #: templates/admin/contents/broadcasts/compose.php:45
 msgid "Select a hosted application to associate this message with."
-msgstr ""
+msgstr "Выберите размещённое приложение, с которым связать это сообщение."
 
 #: templates/admin/contents/license/purchase-requests.php:64 assets/js/admin/role-builder.js:148
 msgid "Select all"
-msgstr ""
+msgstr "Выбрать все"
 
 #: assets/js/admin/role-builder.js:145
 msgid "Select all capabilities"
-msgstr ""
+msgstr "Выбрать все права"
 
 #: assets/js/admin/apps-uploader.js:787
 msgid "Select an Image"
-msgstr ""
+msgstr "Выберите изображение"
 
 #: templates/admin/contents/repository/upload.php:57
 msgid "Select app type"
-msgstr ""
+msgstr "Выберите тип приложения"
 
 #: assets/js/datetime-picker.js:307
 msgid "Select date"
-msgstr ""
+msgstr "Выберите дату"
 
 #: assets/js/datetime-picker.js:307
 msgid "Select date & time"
-msgstr ""
+msgstr "Выберите дату и время"
 
 #: src/Admin/ContentHandlers/LicensePage.php:393
 msgid "Select hosted application."
-msgstr ""
+msgstr "Выберите размещённое приложение."
 
 #: assets/js/admin/apps-uploader.js:611
 msgid "Select image file(s)"
-msgstr ""
+msgstr "Выберите файлы изображений"
 
 #: src/Admin/ContentHandlers/LicensePage.php:406
 msgid "Select license status."
-msgstr ""
+msgstr "Выберите статус лицензии."
 
 #: templates/admin/contents/license/purchase-requests.php:78
 #, php-format
 msgid "Select request #%d"
-msgstr ""
+msgstr "Выбрать запрос № %d"
 
 #: assets/js/admin/role-builder.js:88
 msgid "Select role preset"
-msgstr ""
+msgstr "Выберите шаблон роли"
 
 #: templates/admin/contents/options/email/index.php:107
 msgid "Select the provider you want to test."
-msgstr ""
+msgstr "Выберите провайдера для проверки."
 
 #: src/Admin/ActionHandlers/PurchaseReview.php:120
 msgid "Select the purchase requests to delete."
-msgstr ""
+msgstr "Выберите запросы на покупку для удаления."
 
 #: templates/admin/contents/repository/browser.php:35
 msgid "Selected file"
-msgstr ""
+msgstr "Выбранный файл"
 
 #: src/Background/Jobs/Accounts/EmailVerificationJob.php:67
 msgid "Send Email Verification"
-msgstr ""
+msgstr "Отправить подтверждение email"
 
 #: src/Background/Jobs/Accounts/EmailOtpJob.php:118
 msgid "Send Email Verification Code"
-msgstr ""
+msgstr "Отправить код подтверждения email"
 
 #: src/Background/Jobs/Accounts/MfaResetEmailJob.php:60
 msgid "Send MFA Reset Email"
-msgstr ""
+msgstr "Отправить письмо о сбросе MFA"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:93
 msgid "Send Organization Invitation"
-msgstr ""
+msgstr "Отправить приглашение в организацию"
 
 #: src/Background/Jobs/Accounts/PasswordResetJob.php:83
 msgid "Send Password Reset Email"
-msgstr ""
+msgstr "Отправить письмо для сброса пароля"
 
 #: src/Background/Jobs/Purchases/PurchaseRequestEmailJob.php:150
 msgid "Send Purchase Request Email"
-msgstr ""
+msgstr "Отправить письмо о запросе на покупку"
 
 #: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:110
 msgid "Send Security Notice Email"
-msgstr ""
+msgstr "Отправить письмо с уведомлением безопасности"
 
 #: src/Background/Jobs/Accounts/SignupEmailJob.php:87
 msgid "Send Signup Email"
-msgstr ""
+msgstr "Отправить письмо о регистрации"
 
 #: templates/admin/contents/options/email/index.php:95 templates/admin/contents/options/email/index.php:137
 msgid "Send Test Email"
-msgstr ""
+msgstr "Отправить тестовое письмо"
 
 #: templates/admin/contents/options/email/index.php:121
 msgid "Send To"
-msgstr ""
+msgstr "Кому"
 
 #: src/Background/Jobs/Updates/UpdateNotificationJob.php:116
 msgid "Send Update Notification"
-msgstr ""
+msgstr "Отправить уведомление об обновлении"
 
 #: themes/default/templates/pages/auth/mfa.php:52
 msgid "Send a code to my verified email"
-msgstr ""
+msgstr "Отправить код на мой подтверждённый email"
 
 #: templates/admin/contents/options/email/index.php:97
 msgid "Send a test email through any configured provider to verify it is working correctly. The provider must have its settings configure and saved before testing."
-msgstr ""
+msgstr "Отправьте тестовое письмо через любого настроенного провайдера, чтобы проверить его работу. Перед проверкой настройки провайдера должны быть заданы и сохранены."
 
 #: themes/default/templates/pages/client/organization.php:106
 msgid "Send again"
-msgstr ""
+msgstr "Отправить снова"
 
 #: src/Security/Permission/Capability.php:80
 msgid "Send bulk messages"
-msgstr ""
+msgstr "Отправить массовую рассылку"
 
 #: themes/default/templates/pages/client/security.php:91
 msgid "Send code to disable"
-msgstr ""
+msgstr "Отправить код для отключения"
 
 #: themes/default/templates/pages/client/security.php:99
 msgid "Send enrollment code"
-msgstr ""
+msgstr "Отправить код подключения"
 
 #: themes/default/templates/pages/purchase.php:100
 msgid "Send for review"
-msgstr ""
+msgstr "Отправить на проверку"
 
 #: themes/default/templates/pages/client/organization.php:87
 msgid "Send invitation"
-msgstr ""
+msgstr "Отправить приглашение"
 
 #: themes/default/templates/frames/client-dashboard.php:127 themes/default/templates/pages/auth/verify-email.php:42
 msgid "Send me a new link"
-msgstr ""
+msgstr "Отправить мне новую ссылку"
 
 #: themes/default/templates/pages/auth/forgot-password.php:21
 msgid "Send the link"
-msgstr ""
+msgstr "Отправить ссылку"
 
 #: src/RESTAPI/Handlers/Licenses.php:592
 #, php-format
 msgid "Send the site secret for this domain in the %s header."
-msgstr ""
+msgstr "Передавайте секрет сайта для этого домена в заголовке %s."
 
 #: src/Email/Providers/AmazonSESProvider.php:126 src/Email/Providers/ResendProvider.php:73
 msgid "Sender display name. Leave blank to use the global from name"
-msgstr ""
+msgstr "Отображаемое имя отправителя. Оставьте пустым, чтобы использовать общее имя отправителя"
 
 #: src/Email/Providers/BrevoProvider.php:75 src/Email/Providers/MailgunProvider.php:98 src/Email/Providers/PostmarkProvider.php:73 src/Email/Providers/SMTPProvider.php:180
 msgid "Sender display name. Leave blank to use the global from name."
-msgstr ""
+msgstr "Отображаемое имя отправителя. Оставьте пустым, чтобы использовать общее имя отправителя."
 
 #: src/Admin/ContentHandlers/OptionsPage.php:368
 msgid "Sender email address used in outgoing emails when the active provider does not have a From Email configured."
-msgstr ""
+msgstr "Адрес отправителя для исходящих писем, если у активного провайдера не задан адрес отправителя."
 
 #: src/Email/Providers/BrevoProvider.php:69
 msgid "Sender email address(must be a verified sender in Brevo). Leave blank to use the global from email."
-msgstr ""
+msgstr "Адрес отправителя (должен быть подтверждённым отправителем в Brevo). Оставьте пустым, чтобы использовать общий адрес отправителя."
 
 #: src/Email/Providers/MailgunProvider.php:92 src/Email/Providers/SMTPProvider.php:173
 msgid "Sender email address. Leave blank to use the global from email."
-msgstr ""
+msgstr "Адрес отправителя. Оставьте пустым, чтобы использовать общий адрес отправителя."
 
 #: src/Admin/ContentHandlers/OptionsPage.php:354
 msgid "Sender name used in outgoing emails when the active provider does not have a From Name configured."
-msgstr ""
+msgstr "Имя отправителя для исходящих писем, если у активного провайдера не задано имя отправителя."
 
 #: src/Email/Providers/MailgunProvider.php:74
 msgid "Sending Domain"
-msgstr ""
+msgstr "Домен отправки"
 
 #: src/Background/Jobs/Apps/SendAppPublishedEmailJob.php:44
 msgid "Sends a notification email to the app owner when a new app is published."
-msgstr ""
+msgstr "Отправляет владельцу приложения уведомление при публикации нового приложения."
 
 #: src/Background/Jobs/Apps/SendAppUpdatedEmailJob.php:44
 msgid "Sends a notification email to the app owner when an app is updated."
-msgstr ""
+msgstr "Отправляет владельцу приложения уведомление при обновлении приложения."
 
 #: src/Background/Jobs/Apps/SendAppStatusChangedEmailJob.php:46
 msgid "Sends a notification email to the app owner when an app status changes."
-msgstr ""
+msgstr "Отправляет владельцу приложения уведомление при изменении статуса приложения."
 
 #: src/Background/Jobs/Licenses/NotifyExpiringLicensesJob.php:64
 msgid "Sends expiry reminder emails to licensees whose licenses are expiring soon."
-msgstr ""
+msgstr "Отправляет напоминания об истечении лицензиатам, у которых скоро истекают лицензии."
 
 #: src/Background/Jobs/Apps/NotifyAppUpdateJob.php:52
 msgid "Sends new version notification emails to all active licensees of an app."
-msgstr ""
+msgstr "Отправляет уведомления о новой версии всем активным лицензиатам приложения."
 
 #: themes/default/templates/pages/client/purchases.php:51
 msgid "Sent"
-msgstr ""
+msgstr "Отправлено"
 
 #: src/Email/Templates/System/TestEmail.php:66 src/Email/Templates/System/TestEmail.php:185
 msgid "Sent At"
-msgstr ""
+msgstr "Время отправки"
 
 #: src/Email/Templates/Licenses/LicenseExpiryReminderEmail.php:140
 msgid "Sent a set number of days before a license is due to expire."
-msgstr ""
+msgstr "Отправляется за заданное число дней до истечения лицензии."
 
 #: src/Email/Templates/Security/PasskeyAddedEmail.php:35
 msgid "Sent after a passkey has been added to a user's account."
-msgstr ""
+msgstr "Отправляется после добавления ключа доступа в аккаунт пользователя."
 
 #: src/Email/Templates/Security/PasskeyRemovedEmail.php:35
 msgid "Sent after a passkey has been removed from a user's account."
-msgstr ""
+msgstr "Отправляется после удаления ключа доступа из аккаунта пользователя."
 
 #: src/Email/Templates/Security/TwoFactorDisabledEmail.php:63
 msgid "Sent after a user turns off email codes or an authenticator app as a second sign-in factor."
-msgstr ""
+msgstr "Отправляется, когда пользователь отключает коды по email или приложение-аутентификатор как второй фактор входа."
 
 #: src/Email/Templates/Security/TwoFactorEnabledEmail.php:63
 msgid "Sent after a user turns on email codes or an authenticator app as a second sign-in factor."
-msgstr ""
+msgstr "Отправляется, когда пользователь включает коды по email или приложение-аутентификатор как второй фактор входа."
 
 #: src/Email/Templates/Accounts/PasswordChangedEmail.php:137
 msgid "Sent after a user's password has been successfully changed."
-msgstr ""
+msgstr "Отправляется после успешной смены пароля пользователя."
 
 #: src/Email/Templates/Accounts/MfaResetEmail.php:116
 msgid "Sent after a user's two-factor authentication has been reset by an administrator."
-msgstr ""
+msgstr "Отправляется после того, как администратор сбросил двухфакторную аутентификацию пользователя."
 
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:124
 msgid "Sent after signup, and when a user asks for a new verification link."
-msgstr ""
+msgstr "Отправляется после регистрации и когда пользователь запрашивает новую ссылку подтверждения."
 
 #: src/Email/Templates/System/BulkMessageEmail.php:91
 msgid "Sent for admin-initiated bulk messages to licensees."
-msgstr ""
+msgstr "Используется для массовых рассылок лицензиатам, запущенных администратором."
 
 #: src/Email/Templates/Purchases/PurchaseRequestMessageEmail.php:59
 msgid "Sent to a buyer when a reviewer emails them a note while processing their purchase request."
-msgstr ""
+msgstr "Отправляется покупателю, когда проверяющий пишет ему заметку при обработке запроса на покупку."
 
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:35
 msgid "Sent to a buyer when their purchase request and payment receipt are received."
-msgstr ""
+msgstr "Отправляется покупателю после получения его запроса на покупку и квитанции об оплате."
 
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:105
 msgid "Sent to a buyer when their purchase request is approved: the license key and terms, with the license document attached."
-msgstr ""
+msgstr "Отправляется покупателю при одобрении запроса на покупку: лицензионный ключ и условия, с приложенным документом лицензии."
 
 #: src/Email/Templates/Purchases/PurchaseRequestRejectedEmail.php:42
 msgid "Sent to a buyer when their purchase request is rejected, with the reviewer's reason."
-msgstr ""
+msgstr "Отправляется покупателю при отклонении запроса на покупку, с причиной от проверяющего."
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:153
 msgid "Sent to administrators when a new user account is created."
-msgstr ""
+msgstr "Отправляется администраторам при создании нового аккаунта пользователя."
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:185
 msgid "Sent to both the previous and new owner when application ownership is transferred."
-msgstr ""
+msgstr "Отправляется прежнему и новому владельцу при передаче прав на приложение."
 
 #: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:156
 msgid "Sent to licensees when an application they hold a license for is updated."
-msgstr ""
+msgstr "Отправляется лицензиатам при обновлении приложения, на которое у них есть лицензия."
 
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:65
 msgid "Sent to the admin email address when a buyer submits a purchase request with a payment receipt."
-msgstr ""
+msgstr "Отправляется на email администратора, когда покупатель отправляет запрос на покупку с квитанцией об оплате."
 
 #: src/Email/Templates/System/SystemAlertEmail.php:188
 msgid "Sent to the admin email address when a critical system event requires attention."
-msgstr ""
+msgstr "Отправляется на email администратора, когда критическое системное событие требует внимания."
 
 #: src/Email/Templates/Apps/AppPublishedEmail.php:158
 msgid "Sent to the app owner when a hosted application is published."
-msgstr ""
+msgstr "Отправляется владельцу приложения при публикации размещённого приложения."
 
 #: src/Email/Templates/Apps/AppUpdatedEmail.php:161
 msgid "Sent to the app owner when a new version of their application is uploaded."
-msgstr ""
+msgstr "Отправляется владельцу приложения при загрузке новой версии его приложения."
 
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:167
 msgid "Sent to the app owner when the status of their application is changed by an administrator."
-msgstr ""
+msgstr "Отправляется владельцу приложения, когда администратор меняет статус его приложения."
 
 #: src/Email/Templates/System/UpdateInstalledEmail.php:62
 msgid "Sent to the site administration email after an automatic update installed a new release."
-msgstr ""
+msgstr "Отправляется на административный email сайта после того, как автоматическое обновление установило новый выпуск."
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:58
 msgid "Sent to the site administration email when a new release is out that automatic updates will not install."

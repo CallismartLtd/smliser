@@ -120,10 +120,12 @@ class UpdateManagement {
 			null === $result['version']
 				? sprintf( smliser__( '%s %s is up to date; nothing would be installed.' ), \SMLISER_APP_NAME, \SMLISER_VER )
 				: sprintf(
-					smliser__( 'Version %s is downloaded from %s, verified%s and ready to install.' ),
+					empty( $result['package']['signed_by'] )
+						? smliser__( 'Version %1$s is downloaded from %2$s, verified and ready to install.' )
+						: smliser__( 'Version %1$s is downloaded from %2$s, verified (signed by %3$s) and ready to install.' ),
 					$result['version'],
-					$result['package']['source'] ?? 'the update server',
-					empty( $result['package']['signed_by'] ) ? '' : sprintf( ' (signed by %s)', $result['package']['signed_by'] )
+					$result['package']['source'] ?? smliser__( 'the update server' ),
+					$result['package']['signed_by'] ?? ''
 				)
 		);
 	}

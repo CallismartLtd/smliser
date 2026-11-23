@@ -49,10 +49,9 @@ $when = static function ( ?string $iso ) : string {
 		'warning',
 		'ti ti-barrier-block',
 		smliser__( 'Maintenance mode is on' ),
-		sprintf(
-			smliser__( 'Visitors get the maintenance page%s. You are using the site through the bypass.' ),
-			$status['background_paused'] ? ', and scheduled tasks and queued jobs wait' : ''
-		),
+		$status['background_paused']
+			? smliser__( 'Visitors get the maintenance page, and scheduled tasks and queued jobs wait. You are using the site through the bypass.' )
+			: smliser__( 'Visitors get the maintenance page. You are using the site through the bypass.' ),
 	],
 	default => [
 		'pass',

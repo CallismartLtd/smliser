@@ -1178,9 +1178,10 @@ class SystemHealth {
 				MaintenanceFlag::REASON_UPDATE === $reason
 					? smliser__( 'The site is in maintenance because an update is being installed or did not finish. Visitors cannot use the site.' )
 					: \sprintf(
-						smliser__( 'The site is in maintenance mode (%s). Visitors cannot use the site%s.' ),
-						$reason,
-						$this->maintenance->background_paused() ? ', and scheduled tasks and queued jobs wait until it ends' : ''
+						$this->maintenance->background_paused()
+							? smliser__( 'The site is in maintenance mode (%s). Visitors cannot use the site, and scheduled tasks and queued jobs wait until it ends.' )
+							: smliser__( 'The site is in maintenance mode (%s). Visitors cannot use the site.' ),
+						$reason
 					),
 				MaintenanceFlag::REASON_UPDATE === $reason
 					? smliser__( 'If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back.' )
@@ -1410,9 +1411,10 @@ class SystemHealth {
 				smliser__( 'Update Check' ),
 				$check['security'] ? 'critical' : 'warning',
 				\sprintf(
-					smliser__( 'Version %s is available%s; this site runs %s.' ),
+					$check['security']
+						? smliser__( 'Version %1$s is available and fixes a security issue; this site runs %2$s.' )
+						: smliser__( 'Version %1$s is available; this site runs %2$s.' ),
 					$check['latest'],
-					$check['security'] ? ' and fixes a security issue' : '',
 					\SMLISER_VER
 				),
 				null !== $overview['queued']

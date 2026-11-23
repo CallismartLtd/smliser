@@ -280,7 +280,7 @@ class CacheRequestController {
 				'success' => true,
 				'data'    => [
 					'message' => $pruned > 0
-						? sprintf( smliser__( 'Flushed %d expired entr%s.' ), $pruned, 1 !== $pruned ? 'ies' : 'y' )
+						? sprintf( smliser_n( 'Flushed %d expired entry.', 'Flushed %d expired entries.', $pruned ), $pruned )
 						: smliser__( 'No expired entries found.' ),
 				],
 			] ) )->set_header( 'Content-Type', 'application/json; charset=utf-8' );

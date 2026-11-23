@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server 0.4.9\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-22 22:22+0000\n"
+"POT-Creation-Date: 2026-11-23 00:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid " Union-typed dependencies must be explicitly registered."
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1219
+#: src/Environments/Application/Installation/AppInstaller.php:1275
 msgid " Upload the release again."
 msgstr ""
 
@@ -72,7 +72,7 @@ msgstr ""
 msgid " Uploads of %s are refused until it is."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:472
+#: src/Environments/Application/Installation/InstallerPage.php:500
 msgid " from working:</p>"
 msgstr ""
 
@@ -230,7 +230,7 @@ msgid "%1$s is not an accepted type (%2$s)."
 msgstr ""
 
 #. translators: 1: app, 2: opening <strong> tag, 3: closing <strong> tag
-#: src/Environments/Application/Installation/InstallerPage.php:180
+#: src/Environments/Application/Installation/InstallerPage.php:208
 #, php-format
 msgid "%1$s stores its data in a database. Create an empty database and a database user in your hosting control panel (often under %2$sMySQL Databases%3$s), then enter the details here."
 msgstr ""
@@ -247,30 +247,30 @@ msgid "%1$s v%2$s"
 msgstr ""
 
 #. translators: 1: title, 2: app
-#: src/Environments/Application/Installation/InstallerPage.php:492
+#: src/Environments/Application/Installation/InstallerPage.php:520
 #, php-format
 msgid "%1$s · %2$s installer"
 msgstr ""
 
 #. translators: 1: opening <span> tag, 2: closing <span> tag
-#: src/Environments/Application/Installation/InstallerPage.php:623
+#: src/Environments/Application/Installation/InstallerPage.php:652
 #, php-format
 msgid "%1$sLets someone else continue with the setup token. Your progress is kept.%2$s"
 msgstr ""
 
 #. translators: 1: opening <a> tag, 2: app (formatted), 3: closing <a> tag
-#: src/Environments/Application/Installation/InstallerPage.php:403
+#: src/Environments/Application/Installation/InstallerPage.php:431
 #, php-format
 msgid "%1$sOpen %2$sSign in%3$s"
 msgstr ""
 
 #. translators: 1: opening <a> tag, 2: closing <a> tag
-#: src/Environments/Application/Installation/InstallerPage.php:431
+#: src/Environments/Application/Installation/InstallerPage.php:459
 #, php-format
 msgid "%1$sStart setup%2$s"
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:702
+#: src/Environments/Application/Installation/WebInstaller.php:772
 #, php-format
 msgid "%d already existed"
 msgstr ""
@@ -300,7 +300,7 @@ msgstr ""
 msgid "%d images are uploaded."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1226
+#: src/Environments/Application/Health/SystemHealth.php:1227
 #, php-format
 msgid "%d job(s) are ready to run but have not been picked up; the oldest has waited since %s. Emails, notifications and updates are delayed until a worker takes them."
 msgstr ""
@@ -320,7 +320,7 @@ msgstr ""
 msgid "%d of %d missing (%s)"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1252
+#: src/Environments/Application/Health/SystemHealth.php:1253
 #, php-format
 msgid "%d of %d scheduled tasks are more than %d minutes overdue: %s."
 msgstr ""
@@ -370,7 +370,7 @@ msgstr ""
 msgid "%s %s is available"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1423
+#: src/Environments/Application/Health/SystemHealth.php:1425
 #, php-format
 msgid "%s %s is the latest version (checked %s)."
 msgstr ""
@@ -380,12 +380,12 @@ msgstr ""
 msgid "%s %s is the latest version."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:84 src/Admin/ActionHandlers/UpdateManagement.php:166
+#: src/Admin/ActionHandlers/UpdateManagement.php:84 src/Admin/ActionHandlers/UpdateManagement.php:168
 #, php-format
 msgid "%s %s is up to date."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:152
+#: src/Admin/ActionHandlers/UpdateManagement.php:154
 #, php-format
 msgid "%s %s is up to date. Check for updates first, or reinstall."
 msgstr ""
@@ -541,7 +541,7 @@ msgid "%s has been successfully removed from %s."
 msgstr ""
 
 #. translators: %s: app
-#: src/Environments/Application/Installation/InstallerPage.php:428
+#: src/Environments/Application/Installation/InstallerPage.php:456
 #, php-format
 msgid "%s has been uploaded to this server but has not been set up yet."
 msgstr ""
@@ -597,7 +597,7 @@ msgid "%s is enabled and loads from the next request on."
 msgstr ""
 
 #. translators: %s: app
-#: src/Environments/Application/Installation/InstallerPage.php:400
+#: src/Environments/Application/Installation/InstallerPage.php:428
 #, php-format
 msgid "%s is installed and open to visitors. Sign in with the administrator account you just created."
 msgstr ""
@@ -667,7 +667,7 @@ msgstr ""
 msgid "%s is the only active system administrator. Make another user an active system administrator first."
 msgstr ""
 
-#: src/Environments/Application/Boot/BootModeResolver.php:245 templates/admin/contents/system/maintenance.php:142
+#: src/Environments/Application/Boot/BootModeResolver.php:245 templates/admin/contents/system/maintenance.php:141
 #, php-format
 msgid "%s is undergoing scheduled maintenance. Please try again shortly."
 msgstr ""
@@ -718,7 +718,7 @@ msgstr ""
 msgid "%s requires an update."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1329
+#: src/Environments/Application/Health/SystemHealth.php:1330
 #, php-format
 msgid "%s runs background work; it last ran %s ago."
 msgstr ""
@@ -820,7 +820,7 @@ msgstr ""
 msgid ") in"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:175
+#: src/Environments/Application/Installation/InstallerPage.php:203
 msgid "), which supports every language and emoji. Change it only if your host requires another."
 msgstr ""
 
@@ -864,7 +864,7 @@ msgstr ""
 msgid "2Factor Authentication setup"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:474
+#: src/Environments/Application/Installation/InstallerPage.php:502
 msgid "<p>Fix them, then reload this page.</p>"
 msgstr ""
 
@@ -1197,7 +1197,7 @@ msgstr ""
 msgid "Accept Invitation"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:39
+#: src/Environments/Application/Installation/InstallerPage.php:67
 msgid "Access"
 msgstr ""
 
@@ -1435,16 +1435,16 @@ msgstr ""
 msgid "Add note"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1306
+#: src/Environments/Application/Health/SystemHealth.php:1307
 #, php-format
 msgid "Add the scheduler cron job shown in %s under \"Server cron and queue worker\"."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1285
+#: src/Environments/Application/Health/SystemHealth.php:1286
 msgid "Add the scheduler cron job shown in Tools > Background Processing, or use the combined `smliser cron` command."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:251
+#: src/Environments/Application/Installation/InstallerPage.php:279
 msgid "Added to the start of every table name, so the database can be shared with other applications. Leave empty for <code>smliser_</code>."
 msgstr ""
 
@@ -1489,15 +1489,15 @@ msgstr ""
 msgid "Administration Email"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:42
+#: src/Environments/Application/Installation/InstallerPage.php:70
 msgid "Administrator"
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:842
+#: src/Environments/Application/Installation/WebInstaller.php:921
 msgid "Administrator account created."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:183
+#: src/Environments/Application/Installation/InstallerPage.php:211
 msgid "Advanced"
 msgstr ""
 
@@ -1682,7 +1682,7 @@ msgstr ""
 msgid "An inactive app is not offered for download or sale."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1419
+#: src/Environments/Application/Health/SystemHealth.php:1421
 msgid "An install is queued; make sure the queue worker is running."
 msgstr ""
 
@@ -1690,7 +1690,7 @@ msgstr ""
 msgid "An installation holds maintenance mode"
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:187
+#: src/Environments/Application/Installation/WebInstaller.php:252
 #, php-format
 msgid "An installation is already in progress in another browser. If it was abandoned, the installer can be claimed again after %d minutes of inactivity."
 msgstr ""
@@ -1748,7 +1748,7 @@ msgstr ""
 msgid "An update is available for {{app_name}}"
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:148
+#: src/Admin/ActionHandlers/UpdateManagement.php:150
 msgid "An update is being installed."
 msgstr ""
 
@@ -1777,7 +1777,7 @@ msgstr ""
 msgid "Another %s is being installed, updated or removed; try again in a moment."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:317
+#: src/Environments/Application/Installation/WebInstaller.php:382
 msgid "Another browser claimed the installer a moment ago."
 msgstr ""
 
@@ -2041,7 +2041,7 @@ msgstr ""
 msgid "Ask for a new link"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:147
+#: templates/admin/contents/system/maintenance.php:146
 msgid "Ask visitors to retry after (seconds)"
 msgstr ""
 
@@ -2215,7 +2215,7 @@ msgstr ""
 msgid "Automatic Calculation"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1441
+#: src/Environments/Application/Health/SystemHealth.php:1443
 msgid "Automatic Updates"
 msgstr ""
 
@@ -2224,7 +2224,7 @@ msgstr ""
 msgid "Automatic update from %s to %s completed. The previous version can be restored for %d days."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:217
+#: src/Admin/ActionHandlers/UpdateManagement.php:219
 msgid "Automatic update setting saved."
 msgstr ""
 
@@ -2245,7 +2245,7 @@ msgstr ""
 msgid "Automatic updates are off on this site."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1443
+#: src/Environments/Application/Health/SystemHealth.php:1445
 msgid "Automatic updates are off, so security releases are only installed when an administrator does it."
 msgstr ""
 
@@ -2302,25 +2302,25 @@ msgstr ""
 msgid "Background Jobs"
 msgstr ""
 
-#: src/Admin/ContentHandlers/ToolsPage.php:304 src/Admin/ContentHandlers/ToolsPage.php:355 src/Environments/Application/Health/SystemHealth.php:1287 src/Environments/Application/Health/SystemHealth.php:1293
-#: src/Environments/Application/Health/SystemHealth.php:1303 src/Environments/Application/Health/SystemHealth.php:1312 src/Environments/Application/Health/SystemHealth.php:1326
+#: src/Admin/ContentHandlers/ToolsPage.php:304 src/Admin/ContentHandlers/ToolsPage.php:355 src/Environments/Application/Health/SystemHealth.php:1288 src/Environments/Application/Health/SystemHealth.php:1294
+#: src/Environments/Application/Health/SystemHealth.php:1304 src/Environments/Application/Health/SystemHealth.php:1313 src/Environments/Application/Health/SystemHealth.php:1327
 msgid "Background Processing"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1338
+#: src/Environments/Application/Health/SystemHealth.php:1339
 msgid "Background Processing Reliability"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1295
+#: src/Environments/Application/Health/SystemHealth.php:1296
 msgid "Background processing has never run on this site. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1315
+#: src/Environments/Application/Health/SystemHealth.php:1316
 #, php-format
 msgid "Background processing stopped: it last ran %s ago (%s). Scheduled tasks and queued jobs are waiting."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1340
+#: src/Environments/Application/Health/SystemHealth.php:1341
 msgid "Background work runs only when the external cron service calls the cron URL. If that service stops, so do updates and emails, and each call is limited like any web request."
 msgstr ""
 
@@ -2471,7 +2471,7 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:157
+#: templates/admin/contents/system/maintenance.php:156
 msgid "By default, scheduled tasks and queued jobs wait, so nothing writes to the database during a backup or an import."
 msgstr ""
 
@@ -2576,11 +2576,15 @@ msgstr ""
 msgid "Caution:"
 msgstr ""
 
+#: src/Environments/Application/Installation/InstallerPage.php:717
+msgid "Change"
+msgstr ""
+
 #: src/Security/Permission/Capability.php:33
 msgid "Change hosted application status"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:132 assets/js/admin/maintenance.js:45
+#: templates/admin/contents/system/maintenance.php:131 assets/js/admin/maintenance.js:45
 msgid "Change maintenance"
 msgstr ""
 
@@ -2612,7 +2616,7 @@ msgstr ""
 msgid "Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:256
+#: src/Environments/Application/Installation/InstallerPage.php:284
 msgid "Character set"
 msgstr ""
 
@@ -2640,7 +2644,7 @@ msgstr ""
 msgid "Check now"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1395
+#: src/Environments/Application/Health/SystemHealth.php:1396
 msgid "Check outbound HTTPS access to the update server (see \"Update Server Connection\"), then use \"Check now\" on the Updates page."
 msgstr ""
 
@@ -2648,7 +2652,7 @@ msgstr ""
 msgid "Check outbound HTTPS access, DNS resolution, and the server's CA certificate bundle."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1319
+#: src/Environments/Application/Health/SystemHealth.php:1320
 #, php-format
 msgid "Check that the cron job or external service still runs. %s shows each runner's last run and the configuration for this server."
 msgstr ""
@@ -2769,6 +2773,10 @@ msgstr ""
 
 #: src/Admin/ActionHandlers/ExtensionManagement.php:123
 msgid "Choose the extension package (.zip) to upload."
+msgstr ""
+
+#: src/Console/Commands/Installer.php:399
+msgid "Choose the language of the installation. It is also saved as the site language and your account's language."
 msgstr ""
 
 #: src/Monetization/Controller.php:65
@@ -3016,7 +3024,7 @@ msgstr ""
 msgid "Confirm passowrd"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:353 themes/default/templates/pages/auth/reset-password.php:30 themes/default/templates/pages/auth/sign-up.php:40
+#: src/Environments/Application/Installation/InstallerPage.php:381 themes/default/templates/pages/auth/reset-password.php:30 themes/default/templates/pages/auth/sign-up.php:40
 msgid "Confirm password"
 msgstr ""
 
@@ -3028,7 +3036,7 @@ msgstr ""
 msgid "Conflict"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:267
+#: src/Environments/Application/Installation/InstallerPage.php:295
 msgid "Connect your database"
 msgstr ""
 
@@ -3041,11 +3049,11 @@ msgstr ""
 msgid "Connected to %s%s."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:623
+#: src/Environments/Application/Installation/WebInstaller.php:693
 msgid "Connected. Your database settings were saved."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:268
+#: src/Environments/Application/Installation/InstallerPage.php:296
 msgid "Connecting&hellip;"
 msgstr ""
 
@@ -3053,7 +3061,7 @@ msgstr ""
 msgid "Connection Timeout (seconds)"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1444
+#: src/Environments/Application/Health/SystemHealth.php:1446
 msgid "Consider installing security releases automatically (Updates page)."
 msgstr ""
 
@@ -3324,7 +3332,7 @@ msgstr ""
 msgid "Create account"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:363
+#: src/Environments/Application/Installation/InstallerPage.php:391
 msgid "Create account and finish"
 msgstr ""
 
@@ -3392,11 +3400,11 @@ msgstr ""
 msgid "Create service accounts"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:57
+#: src/Environments/Application/Installation/InstallerPage.php:85
 msgid "Create the database tables"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:55
+#: src/Environments/Application/Installation/InstallerPage.php:83
 msgid "Create the storage folders"
 msgstr ""
 
@@ -3408,11 +3416,11 @@ msgstr ""
 msgid "Create users"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:362
+#: src/Environments/Application/Installation/InstallerPage.php:390
 msgid "Create your administrator account"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:327
+#: src/Environments/Application/Installation/InstallerPage.php:355
 msgid "Create your administrator account. You will use it to sign in and manage everything else, including other users."
 msgstr ""
 
@@ -3425,7 +3433,7 @@ msgstr ""
 msgid "Created %s. %d member(s)."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:363
+#: src/Environments/Application/Installation/InstallerPage.php:391
 msgid "Creating account&hellip;"
 msgstr ""
 
@@ -3453,7 +3461,7 @@ msgstr ""
 msgid "Current avatar image"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:86
+#: templates/admin/contents/system/maintenance.php:85
 msgid "Current maintenance"
 msgstr ""
 
@@ -3486,7 +3494,7 @@ msgstr ""
 msgid "Data Integrity"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:40
+#: src/Environments/Application/Installation/InstallerPage.php:68
 msgid "Database"
 msgstr ""
 
@@ -3534,23 +3542,23 @@ msgstr ""
 msgid "Database execution failure dropping primary license record."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:231
+#: src/Environments/Application/Installation/InstallerPage.php:259
 msgid "Database folder"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:195
+#: src/Environments/Application/Installation/InstallerPage.php:223
 msgid "Database name"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:224
+#: src/Environments/Application/Installation/InstallerPage.php:252
 msgid "Database password"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:182
+#: src/Environments/Application/Installation/InstallerPage.php:210
 msgid "Database type"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:218
+#: src/Environments/Application/Installation/InstallerPage.php:246
 msgid "Database username"
 msgstr ""
 
@@ -4352,7 +4360,7 @@ msgstr ""
 msgid "Email Verification Code"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:340 themes/default/templates/pages/client/organization.php:76
+#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/organization.php:76
 msgid "Email address"
 msgstr ""
 
@@ -4472,11 +4480,11 @@ msgstr ""
 msgid "Encryption"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:239
+#: src/Environments/Application/Installation/InstallerPage.php:267
 msgid "Encryption key"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:241
+#: src/Environments/Application/Installation/InstallerPage.php:269
 msgid "Encrypts the database file. Only works when your server&rsquo;s SQLite supports encryption; leave empty if unsure."
 msgstr ""
 
@@ -4488,7 +4496,7 @@ msgstr ""
 msgid "Enter Service ID"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:916
+#: src/Environments/Application/Installation/AppInstaller.php:919
 msgid "Enter a valid email address, for example you@example.com."
 msgstr ""
 
@@ -4599,7 +4607,7 @@ msgstr ""
 msgid "Enter the setup key manually"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:912
+#: src/Environments/Application/Installation/AppInstaller.php:915
 msgid "Enter your name."
 msgstr ""
 
@@ -4677,7 +4685,7 @@ msgstr ""
 msgid "Every new release is installed automatically."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1238
+#: src/Environments/Application/Health/SystemHealth.php:1239
 msgid "Every scheduled task ran on time."
 msgstr ""
 
@@ -4994,11 +5002,11 @@ msgstr ""
 msgid "Fingerprint"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:43
+#: src/Environments/Application/Installation/InstallerPage.php:71
 msgid "Finish"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:382
+#: src/Environments/Application/Installation/InstallerPage.php:410
 msgid "Finish installation"
 msgstr ""
 
@@ -5007,7 +5015,7 @@ msgstr ""
 msgid "Finishing with the new version (%s %ssmliser update finish)."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:383
+#: src/Environments/Application/Installation/InstallerPage.php:411
 msgid "Finishing&hellip;"
 msgstr ""
 
@@ -5015,7 +5023,7 @@ msgstr ""
 msgid "Fit width"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1384
+#: src/Environments/Application/Health/SystemHealth.php:1385
 msgid "Fix the problems listed; security releases cannot be installed until then. The Updates page shows the same list."
 msgstr ""
 
@@ -5033,10 +5041,12 @@ msgstr ""
 
 #: src/Cache/CacheRequestController.php:283
 #, php-format
-msgid "Flushed %d expired entr%s."
-msgstr ""
+msgid "Flushed %d expired entry."
+msgid_plural "Flushed %d expired entries."
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:660
+#: src/Environments/Application/Installation/WebInstaller.php:730
 msgid "Folders, database tables and default roles are in place."
 msgstr ""
 
@@ -5226,7 +5236,7 @@ msgid "Go back"
 msgstr ""
 
 #. translators: 1: app, 2: dir (formatted)
-#: src/Environments/Application/Installation/InstallerPage.php:89
+#: src/Environments/Application/Installation/InstallerPage.php:117
 #, php-format
 msgid "Go to the folder you uploaded %1$s to, then open %2$s."
 msgstr ""
@@ -5282,7 +5292,7 @@ msgstr ""
 msgid "Have an account?"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:92
+#: src/Environments/Application/Installation/InstallerPage.php:120
 msgid "Have terminal (SSH) access instead?"
 msgstr ""
 
@@ -5400,7 +5410,7 @@ msgstr ""
 msgid "How should background work run?"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:175
+#: src/Environments/Application/Installation/InstallerPage.php:203
 msgid "How text is stored and sent. Leave empty for the recommended value ("
 msgstr ""
 
@@ -5459,7 +5469,7 @@ msgstr ""
 msgid "If an account exists for this email, you will receive a password reset link shortly."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1186
+#: src/Environments/Application/Health/SystemHealth.php:1187
 msgid "If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back."
 msgstr ""
 
@@ -5487,7 +5497,7 @@ msgstr ""
 msgid "If this count stays elevated across page reloads, a worker may have died mid-job. Run `queue release-stale` from the CLI."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:429
+#: src/Environments/Application/Installation/InstallerPage.php:457
 msgid "If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP)."
 msgstr ""
 
@@ -5719,7 +5729,7 @@ msgstr ""
 msgid "If you requested this reset due to lost authenticator app access or recovery codes, you can sign in and set up a new authenticator device. For any questions, contact us at %s."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1341
+#: src/Environments/Application/Health/SystemHealth.php:1342
 #, php-format
 msgid "If your hosting offers cron jobs, use the hosting panel cron job in %s instead; on a VPS, use cron with a queue worker."
 msgstr ""
@@ -5774,7 +5784,7 @@ msgstr ""
 msgid "Imported from URL successfully"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1522
+#: src/Environments/Application/Health/SystemHealth.php:1524
 #, php-format
 msgid "In your hosting control panel (or web server configuration), set the document root of this site to %s.%s"
 msgstr ""
@@ -5799,7 +5809,7 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:124
+#: src/Environments/Application/Installation/InstallerPage.php:152
 msgid "Install "
 msgstr ""
 
@@ -5820,11 +5830,11 @@ msgstr ""
 msgid "Install it as soon as possible."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1420
+#: src/Environments/Application/Health/SystemHealth.php:1422
 msgid "Install it from the Updates page."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:58
+#: src/Environments/Application/Installation/InstallerPage.php:86
 msgid "Install the default roles"
 msgstr ""
 
@@ -5841,7 +5851,7 @@ msgstr ""
 msgid "Installation State"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:415
+#: src/Environments/Application/Installation/InstallerPage.php:443
 msgid "Installation complete"
 msgstr ""
 
@@ -5860,6 +5870,12 @@ msgstr ""
 
 #: src/Environments/Application/Health/SystemHealth.php:1145
 msgid "Installed extensions and themes are valid; enabled extensions resolve and the active theme is available."
+msgstr ""
+
+#. translators: %s: comma-separated locale codes, e.g. "en_US, fr_FR".
+#: src/Console/Commands/Installer.php:135
+#, php-format
+msgid "Installed languages: %s."
 msgstr ""
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:657
@@ -6150,7 +6166,7 @@ msgstr ""
 msgid "Join %s"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:155
+#: templates/admin/contents/system/maintenance.php:154
 msgid "Keep background work running"
 msgstr ""
 
@@ -6193,15 +6209,33 @@ msgstr ""
 msgid "Labels and values support %s placeholders."
 msgstr ""
 
+#: src/Environments/Application/Installation/InstallerPage.php:716
+msgid "Language"
+msgstr ""
+
+#: src/Console/Commands/Installer.php:129
+msgid "Language (run, make:admin):"
+msgstr ""
+
+#: src/Console/Commands/Installer.php:401
+msgid "Language number (press Enter for English)"
+msgstr ""
+
 #: src/Admin/ContentHandlers/OptionsPage.php:577
 msgid "Language of the admin and client dashboards, emails and public pages. Users can still choose their own language in their preferences. \"Automatic\" follows each visitor's browser language when a translation is installed."
+msgstr ""
+
+#. translators: 1: language name, 2: locale code, e.g. fr_FR.
+#: src/Console/Commands/Installer.php:373
+#, php-format
+msgid "Language: %1$s (%2$s)."
 msgstr ""
 
 #: templates/admin/contents/system/index.php:53
 msgid "Last Ran"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1431
+#: src/Environments/Application/Health/SystemHealth.php:1433
 msgid "Last Update Attempt"
 msgstr ""
 
@@ -6256,7 +6290,7 @@ msgstr ""
 msgid "Leave blank if the server has no AUTH configured."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:211
+#: src/Environments/Application/Installation/InstallerPage.php:239
 msgid "Leave empty for the standard port ("
 msgstr ""
 
@@ -6273,7 +6307,7 @@ msgstr ""
 msgid "Leave empty to serve downloads from this site, at %s"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:621
+#: src/Environments/Application/Installation/InstallerPage.php:650
 msgid "Leave the installer"
 msgstr ""
 
@@ -6638,11 +6672,11 @@ msgstr ""
 msgid "Make Default"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:114
+#: templates/admin/contents/system/maintenance.php:113
 msgid "Make a new bypass link? Earlier links stop working; this browser keeps access."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1405
+#: src/Environments/Application/Health/SystemHealth.php:1406
 msgid "Make sure the scheduler runs (see \"Scheduler\"), or use \"Check now\" on the Updates page."
 msgstr ""
 
@@ -6825,7 +6859,7 @@ msgstr ""
 msgid "Message body cannot be empty."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:141
+#: templates/admin/contents/system/maintenance.php:140
 msgid "Message for visitors"
 msgstr ""
 
@@ -6899,7 +6933,7 @@ msgstr ""
 msgid "Misses"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1104
+#: src/Environments/Application/Installation/AppInstaller.php:1160
 #, php-format
 msgid "Missing .env file: %s"
 msgstr ""
@@ -6916,12 +6950,12 @@ msgstr ""
 msgid "Missing Parameter"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1142
+#: src/Environments/Application/Installation/AppInstaller.php:1198
 #, php-format
 msgid "Missing default role: %s"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1111
+#: src/Environments/Application/Installation/AppInstaller.php:1167
 #, php-format
 msgid "Missing directory: %s (%s)"
 msgstr ""
@@ -6939,7 +6973,7 @@ msgstr ""
 msgid "Missing required parameters: %s"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1133
+#: src/Environments/Application/Installation/AppInstaller.php:1189
 #, php-format
 msgid "Missing table: %s"
 msgstr ""
@@ -7144,7 +7178,7 @@ msgstr ""
 msgid "New Version"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:115
+#: templates/admin/contents/system/maintenance.php:114
 msgid "New bypass link"
 msgstr ""
 
@@ -7293,7 +7327,7 @@ msgstr ""
 msgid "No checksums file was found for %s, so the package cannot be verified."
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1120
+#: src/Environments/Application/Installation/AppInstaller.php:1176
 msgid "No database connection is configured."
 msgstr ""
 
@@ -7359,7 +7393,7 @@ msgstr ""
 msgid "No installed theme comes from the marketplace."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1218
+#: src/Environments/Application/Health/SystemHealth.php:1219
 msgid "No job has been waiting to run for more than "
 msgstr ""
 
@@ -7475,7 +7509,7 @@ msgstr ""
 msgid "No scheduled task \"%s\" is registered."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1248
+#: src/Environments/Application/Health/SystemHealth.php:1249
 #, php-format
 msgid "No scheduled task is running on time%s, so the scheduler is not being called. Update checks, license expiry and clean-up tasks are not running."
 msgstr ""
@@ -7537,7 +7571,7 @@ msgstr ""
 msgid "No upgrade needed"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1148
+#: src/Environments/Application/Installation/AppInstaller.php:1204
 msgid "No user account exists."
 msgstr ""
 
@@ -7638,7 +7672,7 @@ msgstr ""
 msgid "Not supported"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:432
+#: src/Environments/Application/Installation/InstallerPage.php:460
 msgid "Not the owner? This site is not ready yet; please check back later."
 msgstr ""
 
@@ -7678,7 +7712,7 @@ msgstr ""
 msgid "Nothing is hosted here yet."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:181
+#: src/Environments/Application/Installation/InstallerPage.php:209
 msgid "Nothing is saved until the connection works."
 msgstr ""
 
@@ -7690,7 +7724,7 @@ msgstr ""
 msgid "Nothing on this server blocks an update. A dry run also checks the release itself."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1378
+#: src/Environments/Application/Health/SystemHealth.php:1379
 msgid "Nothing prevents installing updates."
 msgstr ""
 
@@ -7807,7 +7841,7 @@ msgstr ""
 msgid "Only system administrators can manage themes."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:255
+#: src/Admin/ActionHandlers/UpdateManagement.php:257
 msgid "Only system administrators can manage updates."
 msgstr ""
 
@@ -7824,7 +7858,7 @@ msgid "Only user accounts have preferences."
 msgstr ""
 
 #. translators: 1: file (formatted), 2: opening <code> tag, 3: closing <code> tag
-#: src/Environments/Application/Installation/InstallerPage.php:91
+#: src/Environments/Application/Installation/InstallerPage.php:119
 #, php-format
 msgid "Open %1$s and copy the value after %2$s\"token\":%3$s — the 32 letters and numbers between the quotes."
 msgstr ""
@@ -7841,7 +7875,7 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1260
+#: src/Environments/Application/Health/SystemHealth.php:1261
 msgid "Open the Schedules page: a task that keeps failing or running too long can hold the others back. \"Run due tasks\" runs them now."
 msgstr ""
 
@@ -7853,7 +7887,7 @@ msgstr ""
 msgid "Open the Updates Page"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:117
+#: templates/admin/contents/system/maintenance.php:116
 msgid "Open the site to visitors again?"
 msgstr ""
 
@@ -7862,7 +7896,7 @@ msgid "Open this link in another browser to use the site while visitors wait. Ke
 msgstr ""
 
 #. translators: 1: opening <strong> tag, 2: closing <strong> tag
-#: src/Environments/Application/Installation/InstallerPage.php:87
+#: src/Environments/Application/Installation/InstallerPage.php:115
 #, php-format
 msgid "Open your hosting control panel’s %1$sFile Manager%2$s, or connect with your FTP client."
 msgstr ""
@@ -8200,7 +8234,7 @@ msgstr ""
 msgid "Passkeys"
 msgstr ""
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:347
+#: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:375
 #: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34
 msgid "Password"
 msgstr ""
@@ -8262,7 +8296,7 @@ msgstr ""
 msgid "Pasted from clipboard"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:98
+#: templates/admin/contents/system/maintenance.php:97
 msgid "Paused until maintenance ends."
 msgstr ""
 
@@ -8507,7 +8541,7 @@ msgstr ""
 msgid "Poppler (pdftoppm) is not installed."
 msgstr ""
 
-#: src/Cache/Adapters/MemcachedCacheAdapter.php:416 src/Cache/Adapters/RedisCacheAdapter.php:430 src/Email/Providers/SMTPProvider.php:141 src/Environments/Application/Installation/InstallerPage.php:209
+#: src/Cache/Adapters/MemcachedCacheAdapter.php:416 src/Cache/Adapters/RedisCacheAdapter.php:430 src/Email/Providers/SMTPProvider.php:141 src/Environments/Application/Installation/InstallerPage.php:237
 msgid "Port"
 msgstr ""
 
@@ -8540,7 +8574,7 @@ msgstr ""
 msgid "Prepare the app package (WordPress plugins, themes, or any registered application type) you want to upload and compress it into a ZIP file."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:308
+#: src/Environments/Application/Installation/InstallerPage.php:336
 msgid "Prepare the application"
 msgstr ""
 
@@ -8742,7 +8776,7 @@ msgstr ""
 msgid "Publish the fingerprint somewhere other than this site, such as your company website, so developers can check that the key they copied was not replaced by someone who broke into this site."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:56
+#: src/Environments/Application/Installation/InstallerPage.php:84
 msgid "Publish the public assets"
 msgstr ""
 
@@ -8824,7 +8858,7 @@ msgstr ""
 msgid "Queue Monitor"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1218 src/Environments/Application/Health/SystemHealth.php:1223
+#: src/Environments/Application/Health/SystemHealth.php:1219 src/Environments/Application/Health/SystemHealth.php:1224
 msgid "Queue Worker"
 msgstr ""
 
@@ -8876,7 +8910,7 @@ msgstr ""
 msgid "Readable: %s, Writable: %s, Size: %s"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:377
+#: src/Environments/Application/Installation/InstallerPage.php:405
 msgid "Ready to go"
 msgstr ""
 
@@ -9479,7 +9513,7 @@ msgstr ""
 msgid "Run \"%s\" now?"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1201
+#: src/Environments/Application/Health/SystemHealth.php:1202
 msgid "Run `smliser update finish` from the console, or roll the update back."
 msgstr ""
 
@@ -9499,7 +9533,7 @@ msgstr ""
 msgid "Run now"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:309
+#: src/Environments/Application/Installation/InstallerPage.php:337
 msgid "Run setup"
 msgstr ""
 
@@ -9512,7 +9546,7 @@ msgid "Run the scheduler every minute"
 msgstr ""
 
 #. translators: %s: app
-#: src/Environments/Application/Installation/InstallerPage.php:94
+#: src/Environments/Application/Installation/InstallerPage.php:122
 #, php-format
 msgid "Run this in the folder you uploaded %s to, and copy the line it prints:"
 msgstr ""
@@ -9650,7 +9684,7 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:54
+#: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr ""
 
@@ -10244,7 +10278,7 @@ msgstr ""
 msgid "Server Host"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:202
+#: src/Environments/Application/Installation/InstallerPage.php:230
 msgid "Server address"
 msgstr ""
 
@@ -10292,7 +10326,7 @@ msgstr ""
 msgid "Session Expired"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1296
+#: src/Environments/Application/Health/SystemHealth.php:1297
 #, php-format
 msgid "Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough."
 msgstr ""
@@ -10309,7 +10343,7 @@ msgstr ""
 msgid "Set up authenticator app"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1259
+#: src/Environments/Application/Health/SystemHealth.php:1260
 msgid "Set up background processing in Tools > Background Processing. To run the due tasks now, use \"Run due tasks\" on the Schedules page."
 msgstr ""
 
@@ -10321,7 +10355,7 @@ msgstr ""
 msgid "Setting up a key"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:309
+#: src/Environments/Application/Installation/InstallerPage.php:337
 msgid "Setting up&hellip;"
 msgstr ""
 
@@ -10334,11 +10368,11 @@ msgstr ""
 msgid "Settings updated successfully."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:41
+#: src/Environments/Application/Installation/InstallerPage.php:69
 msgid "Setup"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:115
+#: src/Environments/Application/Installation/InstallerPage.php:143
 msgid "Setup token"
 msgstr ""
 
@@ -10370,7 +10404,7 @@ msgstr ""
 msgid "Show toolbar"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:336
+#: src/Environments/Application/Installation/InstallerPage.php:364
 msgid "Shown to other users of the dashboard."
 msgstr ""
 
@@ -10478,8 +10512,14 @@ msgstr ""
 msgid "Site Reachable"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:299
+#: src/Environments/Application/Installation/InstallerPage.php:327
 msgid "Site address"
+msgstr ""
+
+#. translators: %s: locale code, e.g. fr_FR.
+#: src/Console/Commands/Installer.php:423
+#, php-format
+msgid "Site language set to %s."
 msgstr ""
 
 #: themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
@@ -10532,7 +10572,7 @@ msgstr ""
 msgid "Some input fields did not pass validation checks."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:452
+#: src/Environments/Application/Installation/InstallerPage.php:480
 msgid "Something went wrong"
 msgstr ""
 
@@ -10607,11 +10647,11 @@ msgstr ""
 msgid "Start Date"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:96
+#: src/Environments/Application/Installation/InstallerPage.php:124
 msgid "Start installation"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1284
+#: src/Environments/Application/Health/SystemHealth.php:1285
 msgid "Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead."
 msgstr ""
 
@@ -10854,11 +10894,11 @@ msgstr ""
 msgid "Switch account"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:61
+#: templates/admin/contents/system/maintenance.php:60
 msgid "Switch maintenance mode on before a database backup or import, a server move, or other work that needs the site quiet."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:132
+#: templates/admin/contents/system/maintenance.php:131
 msgid "Switch maintenance on"
 msgstr ""
 
@@ -10908,7 +10948,7 @@ msgstr ""
 msgid "System Diagnostics"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:249
+#: src/Environments/Application/Installation/InstallerPage.php:277
 msgid "Table prefix"
 msgstr ""
 
@@ -10980,7 +11020,7 @@ msgstr ""
 msgid "Test Email — Your Email Provider is Working"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:268
+#: src/Environments/Application/Installation/InstallerPage.php:296
 msgid "Test connection and continue"
 msgstr ""
 
@@ -11052,7 +11092,7 @@ msgstr ""
 msgid "That passkey could not be found."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:309
+#: src/Environments/Application/Installation/WebInstaller.php:374
 msgid "That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again."
 msgstr ""
 
@@ -11372,7 +11412,7 @@ msgstr ""
 msgid "The URL segment the appears before authentication pages. For example https://example.com/auth"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1434
+#: src/Environments/Application/Health/SystemHealth.php:1436
 msgid "The Updates page shows its output under History."
 msgstr ""
 
@@ -11380,7 +11420,7 @@ msgstr ""
 msgid "The Updates page shows which version the site is running now and what to do next. The end of the update output is below."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:835
+#: src/Environments/Application/Installation/WebInstaller.php:905
 msgid "The account could not be created."
 msgstr ""
 
@@ -11531,7 +11571,7 @@ msgstr ""
 msgid "The author URL."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:237
+#: src/Admin/ActionHandlers/UpdateManagement.php:239
 msgid "The backup was deleted."
 msgstr ""
 
@@ -11547,7 +11587,7 @@ msgstr ""
 msgid "The buyer's name."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:113
+#: templates/admin/contents/system/maintenance.php:112
 msgid "The bypass link lets another browser in; a new link stops the earlier ones."
 msgstr ""
 
@@ -11573,7 +11613,7 @@ msgstr ""
 msgid "The checksums file does not list %s."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1197
+#: src/Environments/Application/Health/SystemHealth.php:1198
 #, php-format
 msgid "The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has."
 msgstr ""
@@ -11599,7 +11639,7 @@ msgstr ""
 msgid "The database migration from schema %s to %s failed: %s The site stays in maintenance; restore your database backup before rolling back."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:497
+#: src/Environments/Application/Installation/WebInstaller.php:567
 msgid "The database saved in the .env file could not be reached. "
 msgstr ""
 
@@ -11612,11 +11652,11 @@ msgstr ""
 msgid "The database server did not answer in time. Check the server address, or ask your host whether remote connections are allowed."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:474
+#: src/Environments/Application/Installation/WebInstaller.php:544
 msgid "The database settings in the .env file are not valid. Enter them again below."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:220
+#: src/Environments/Application/Installation/InstallerPage.php:248
 msgid "The database user you created and gave access to this database."
 msgstr ""
 
@@ -11624,7 +11664,7 @@ msgstr ""
 msgid "The default mailer is required."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:96
+#: templates/admin/contents/system/maintenance.php:95
 msgid "The default maintenance notice."
 msgstr ""
 
@@ -11822,7 +11862,7 @@ msgstr ""
 msgid "The finish process could not be started."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:233
+#: src/Environments/Application/Installation/InstallerPage.php:261
 msgid "The folder that holds the database file. Leave empty to use the application&rsquo;s storage folder. Keep it outside your public web folder."
 msgstr ""
 
@@ -11831,7 +11871,7 @@ msgstr ""
 msgid "The following fields are required: %s."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:401
+#: src/Environments/Application/Installation/WebInstaller.php:471
 msgid "The form expired. Please try again."
 msgstr ""
 
@@ -11855,11 +11895,11 @@ msgstr ""
 msgid "The installation state could not be read."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:129
+#: src/Environments/Application/Installation/WebInstaller.php:146
 msgid "The installer hit an unexpected error. Details were written to the error log. Fix the cause, then reload this page; completed steps are not repeated."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:401
+#: src/Environments/Application/Installation/InstallerPage.php:429
 msgid "The installer is closed and the setup token has been deleted."
 msgstr ""
 
@@ -11875,22 +11915,32 @@ msgstr ""
 msgid "The invitation payload is incomplete."
 msgstr ""
 
+#. translators: 1: the value given with --lang, 2: comma-separated locale codes, e.g. "en_US, fr_FR".
+#: src/Console/Commands/Installer.php:350
+#, php-format
+msgid "The language \"%1$s\" is not installed. Use one of: %2$s."
+msgstr ""
+
 #. translators: %s: a locale code such as fr_FR.
 #: src/SettingsAPI/SettingsController.php:383
 #, php-format
 msgid "The language \"%s\" is not installed."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1394
+#: src/Console/Commands/Installer.php:130
+msgid "The language of the installation, e.g. fr_FR. Saved as the site language (run)"
+msgstr ""
+
+#: src/Environments/Application/Health/SystemHealth.php:1395
 msgid "The last check for updates failed: "
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1404
+#: src/Environments/Application/Health/SystemHealth.php:1405
 #, php-format
 msgid "The last check for updates was on %s; the scheduler checks every 12 hours."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1433
+#: src/Environments/Application/Health/SystemHealth.php:1435
 #, php-format
 msgid "The last queued %s, at %s, failed."
 msgstr ""
@@ -12243,12 +12293,12 @@ msgstr ""
 msgid "The password could not be changed. Please try again."
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:920
+#: src/Environments/Application/Installation/AppInstaller.php:923
 #, php-format
 msgid "The password must be at least %d characters long."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:226
+#: src/Environments/Application/Installation/InstallerPage.php:254
 msgid "The password of that database user. It is stored in the <code>.env</code> file."
 msgstr ""
 
@@ -12342,7 +12392,7 @@ msgid "The provided member does not belong to this organization, try refreshing 
 msgstr ""
 
 #: src/Security/RequestController.php:844
-msgid "The provided orgaization does exist."
+msgid "The provided organization does not exist."
 msgstr ""
 
 #: src/Security/RequestController.php:136
@@ -12362,7 +12412,7 @@ msgstr ""
 msgid "The provider \"%s\" is not supported."
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1116
+#: src/Environments/Application/Installation/AppInstaller.php:1172
 #, php-format
 msgid "The public assets are not published: %s"
 msgstr ""
@@ -12389,11 +12439,11 @@ msgstr ""
 msgid "The purchase request does not exist."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1305
+#: src/Environments/Application/Health/SystemHealth.php:1306
 msgid "The queue worker is running, but nothing runs the scheduled tasks, so update checks, license expiry and clean-up do not happen."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1282
+#: src/Environments/Application/Health/SystemHealth.php:1283
 msgid "The queue worker is running, but scheduled tasks need an automatic scheduler trigger."
 msgstr ""
 
@@ -12496,7 +12546,7 @@ msgstr ""
 msgid "The request could not be rejected. Please try again."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:300
+#: src/Environments/Application/Installation/WebInstaller.php:365
 msgid "The request did not come from this site. Reload the page and try again."
 msgstr ""
 
@@ -12680,7 +12730,7 @@ msgstr ""
 msgid "The signing key is not valid"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1106
+#: src/Environments/Application/Installation/AppInstaller.php:1162
 #, php-format
 msgid "The site address (%s) is not set in the .env file."
 msgstr ""
@@ -12701,9 +12751,14 @@ msgstr ""
 msgid "The site is in maintenance because an update is being installed or did not finish. Visitors cannot use the site."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1181
+#: src/Environments/Application/Health/SystemHealth.php:1182
 #, php-format
-msgid "The site is in maintenance mode (%s). Visitors cannot use the site%s."
+msgid "The site is in maintenance mode (%s). Visitors cannot use the site, and scheduled tasks and queued jobs wait until it ends."
+msgstr ""
+
+#: src/Environments/Application/Health/SystemHealth.php:1183
+#, php-format
+msgid "The site is in maintenance mode (%s). Visitors cannot use the site."
 msgstr ""
 
 #: templates/admin/contents/system/maintenance.php:40
@@ -12714,8 +12769,12 @@ msgstr ""
 msgid "The site is in maintenance while it is being installed."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:60
+#: templates/admin/contents/system/maintenance.php:59
 msgid "The site is open"
+msgstr ""
+
+#: src/Console/Commands/Installer.php:430
+msgid "The site language could not be saved. Choose it later in the admin settings (General)."
 msgstr ""
 
 #: src/RESTAPI/Handlers/Licenses.php:604
@@ -12773,7 +12832,7 @@ msgstr ""
 msgid "The specified message was not found."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1281
+#: src/Environments/Application/Health/SystemHealth.php:1282
 msgid "The standalone scheduler is running, but queued jobs need a queue worker to process them."
 msgstr ""
 
@@ -12874,7 +12933,7 @@ msgstr ""
 msgid "The theme zip file must contain a style.css file"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:117
+#: src/Environments/Application/Installation/InstallerPage.php:145
 msgid "The token is valid for 24 hours and is deleted when the installation finishes."
 msgstr ""
 
@@ -12888,7 +12947,7 @@ msgstr ""
 msgid "The trashed %s \"%s\" could not be restored."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:823
+#: src/Environments/Application/Installation/WebInstaller.php:893
 msgid "The two passwords do not match. Type them again."
 msgstr ""
 
@@ -12959,7 +13018,12 @@ msgstr ""
 
 #: src/Environments/Application/Update/UpdateServer.php:211
 #, php-format
-msgid "The update server publishes %s %s%s."
+msgid "The update server publishes %s %s (security release)."
+msgstr ""
+
+#: src/Environments/Application/Update/UpdateServer.php:211
+#, php-format
+msgid "The update server publishes %s %s."
 msgstr ""
 
 #: src/Email/Templates/System/UpdateFailedEmail.php:66
@@ -12977,7 +13041,7 @@ msgstr ""
 msgid "The update to %s migrated the database, so its files cannot be rolled back on their own. Restore a full backup instead."
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1237
+#: src/Environments/Application/Installation/AppInstaller.php:1293
 msgid "The upload is incomplete or damaged. Upload the release again (FTP clients should use binary mode)."
 msgstr ""
 
@@ -13042,21 +13106,21 @@ msgstr ""
 msgid "The visitor message must be text."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:301
+#: src/Environments/Application/Installation/InstallerPage.php:329
 msgid "The web address people use to reach this site, detected from your browser. Change it only if it is wrong, for example to use <code>https://</code> or your final domain. Links in emails and API responses use it."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1520
+#: src/Environments/Application/Health/SystemHealth.php:1522
 #, php-format
 msgid "The web server serves %s instead of its public folder, and nothing stops visitors from downloading files outside public, such as .env with the database password and application secrets."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1519
+#: src/Environments/Application/Health/SystemHealth.php:1521
 #, php-format
 msgid "The web server serves %s instead of its public folder. The .htaccess file in that folder keeps everything outside public unreachable, but the whole application folder depends on it."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1498
+#: src/Environments/Application/Health/SystemHealth.php:1500
 #, php-format
 msgid "The web server serves %s, so only public files can be reached."
 msgstr ""
@@ -13123,15 +13187,15 @@ msgstr ""
 msgid "There is no backup of a previous version."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:184
+#: src/Admin/ActionHandlers/UpdateManagement.php:186
 msgid "There is no backup to restore."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:237
+#: src/Admin/ActionHandlers/UpdateManagement.php:239
 msgid "There is no backup."
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1223
+#: src/Environments/Application/Installation/AppInstaller.php:1279
 msgid "There is no manifest.json, so the application files cannot be verified. This is expected for a source checkout."
 msgstr ""
 
@@ -13246,7 +13310,7 @@ msgstr ""
 msgid "This browser does not support passkeys."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:162
+#: templates/admin/contents/system/maintenance.php:161
 msgid "This browser keeps access; you get a bypass link for others. The console works throughout."
 msgstr ""
 
@@ -13460,7 +13524,7 @@ msgstr ""
 msgid "This server cannot start a new PHP process; the update finishes on the next request to the site."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:470
+#: src/Environments/Application/Installation/InstallerPage.php:498
 msgid "This server is not ready yet"
 msgstr ""
 
@@ -13480,11 +13544,11 @@ msgstr ""
 msgid "This site does not sign its packages"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1403
+#: src/Environments/Application/Health/SystemHealth.php:1404
 msgid "This site has never checked for updates."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:442
+#: src/Environments/Application/Installation/InstallerPage.php:470
 msgid "This site is not set up yet"
 msgstr ""
 
@@ -13638,11 +13702,11 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1276
+#: src/Environments/Application/Health/SystemHealth.php:1277
 msgid "Tools > Background Processing"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1230
+#: src/Environments/Application/Health/SystemHealth.php:1231
 msgid "Tools > Background Processing shows what runs jobs on this site and how to set it up. To clear the backlog now, use \"Process queue\" on the Queue Monitor page."
 msgstr ""
 
@@ -13720,15 +13784,15 @@ msgstr ""
 msgid "Trust this package without a valid signature (only for a package you built or received directly: once enabled, its PHP runs on every request)"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1187
+#: src/Environments/Application/Health/SystemHealth.php:1188
 msgid "Turn maintenance mode off once the work is done: Tools > Maintenance, or `smliser maintenance off`."
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:118
+#: templates/admin/contents/system/maintenance.php:117
 msgid "Turn maintenance off"
 msgstr ""
 
-#: templates/admin/contents/system/maintenance.php:164 assets/js/admin/maintenance.js:45
+#: templates/admin/contents/system/maintenance.php:163 assets/js/admin/maintenance.js:45
 msgid "Turn maintenance on"
 msgstr ""
 
@@ -13781,7 +13845,7 @@ msgstr ""
 msgid "Type Mismatch"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:355
+#: src/Environments/Application/Installation/InstallerPage.php:383
 msgid "Type the same password again."
 msgstr ""
 
@@ -13961,7 +14025,7 @@ msgstr ""
 msgid "Unexpected error while testing Runtime cache — %s"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1194
+#: src/Environments/Application/Health/SystemHealth.php:1195
 msgid "Unfinished Update"
 msgstr ""
 
@@ -14054,7 +14118,7 @@ msgstr ""
 msgid "Unknown security notice."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:801
+#: src/Environments/Application/Installation/WebInstaller.php:871
 msgid "Unknown task."
 msgstr ""
 
@@ -14124,7 +14188,7 @@ msgstr ""
 msgid "Update Available"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1392 src/Environments/Application/Health/SystemHealth.php:1400 src/Environments/Application/Health/SystemHealth.php:1410 src/Environments/Application/Health/SystemHealth.php:1423
+#: src/Environments/Application/Health/SystemHealth.php:1393 src/Environments/Application/Health/SystemHealth.php:1401 src/Environments/Application/Health/SystemHealth.php:1411 src/Environments/Application/Health/SystemHealth.php:1425
 msgid "Update Check"
 msgstr ""
 
@@ -14136,7 +14200,7 @@ msgstr ""
 msgid "Update Installed"
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1378 src/Environments/Application/Health/SystemHealth.php:1381
+#: src/Environments/Application/Health/SystemHealth.php:1379 src/Environments/Application/Health/SystemHealth.php:1382
 msgid "Update Readiness"
 msgstr ""
 
@@ -14227,7 +14291,7 @@ msgstr ""
 msgid "Updates are installed only when you start them."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1383
+#: src/Environments/Application/Health/SystemHealth.php:1384
 msgid "Updates cannot be installed: "
 msgstr ""
 
@@ -14517,7 +14581,7 @@ msgstr ""
 msgid "Using the local package %s."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:204
+#: src/Environments/Application/Installation/InstallerPage.php:232
 msgid "Usually <code>localhost</code>. Your host lists it if the database is on another server."
 msgstr ""
 
@@ -14591,6 +14655,26 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+#: src/Environments/Application/Health/SystemHealth.php:1415
+#, php-format
+msgid "Version %1$s is available and fixes a security issue; this site runs %2$s."
+msgstr ""
+
+#: src/Environments/Application/Health/SystemHealth.php:1416
+#, php-format
+msgid "Version %1$s is available; this site runs %2$s."
+msgstr ""
+
+#: src/Admin/ActionHandlers/UpdateManagement.php:125
+#, php-format
+msgid "Version %1$s is downloaded from %2$s, verified (signed by %3$s) and ready to install."
+msgstr ""
+
+#: src/Admin/ActionHandlers/UpdateManagement.php:124
+#, php-format
+msgid "Version %1$s is downloaded from %2$s, verified and ready to install."
+msgstr ""
+
 #: src/Environments/Application/Update/Updater.php:362
 #, php-format
 msgid "Version %s changes the database (schema %s to %s), which this installation cannot migrate yet. The previous version was restored."
@@ -14609,11 +14693,6 @@ msgstr ""
 #: templates/admin/contents/system/updates.php:74
 #, php-format
 msgid "Version %s is available"
-msgstr ""
-
-#: src/Environments/Application/Health/SystemHealth.php:1413
-#, php-format
-msgid "Version %s is available%s; this site runs %s."
 msgstr ""
 
 #: src/Admin/ActionHandlers/UpdateManagement.php:83 assets/js/admin/modules.js:182
@@ -14636,17 +14715,12 @@ msgstr ""
 msgid "Version %s is downloaded and verified; installing it is queued."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:123
-#, php-format
-msgid "Version %s is downloaded from %s, verified%s and ready to install."
-msgstr ""
-
 #: src/Background/Jobs/Updates/ApplyUpdateJob.php:91
 #, php-format
 msgid "Version %s is installed and finishes on the next request to the site."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:167
+#: src/Admin/ActionHandlers/UpdateManagement.php:169
 #, php-format
 msgid "Version %s is installed. It finishes as this page reloads."
 msgstr ""
@@ -14656,12 +14730,12 @@ msgstr ""
 msgid "Version %s was downloaded and verified %s; installing it will not download it again."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:168 src/Background/Jobs/Updates/ApplyUpdateJob.php:92
+#: src/Admin/ActionHandlers/UpdateManagement.php:170 src/Background/Jobs/Updates/ApplyUpdateJob.php:92
 #, php-format
 msgid "Version %s was installed."
 msgstr ""
 
-#: src/Admin/ActionHandlers/UpdateManagement.php:195 src/Background/Jobs/Updates/ApplyUpdateJob.php:77
+#: src/Admin/ActionHandlers/UpdateManagement.php:197 src/Background/Jobs/Updates/ApplyUpdateJob.php:77
 #, php-format
 msgid "Version %s was restored."
 msgstr ""
@@ -14758,8 +14832,11 @@ msgid "Violation of terms of service."
 msgstr ""
 
 #: templates/admin/contents/system/maintenance.php:53
-#, php-format
-msgid "Visitors get the maintenance page%s. You are using the site through the bypass."
+msgid "Visitors get the maintenance page, and scheduled tasks and queued jobs wait. You are using the site through the bypass."
+msgstr ""
+
+#: templates/admin/contents/system/maintenance.php:54
+msgid "Visitors get the maintenance page. You are using the site through the bypass."
 msgstr ""
 
 #: templates/admin/contents/repository/preview.php:85
@@ -14833,7 +14910,7 @@ msgstr ""
 msgid "We will email you a link to choose a new one."
 msgstr ""
 
-#: src/Environments/Application/Health/SystemHealth.php:1496
+#: src/Environments/Application/Health/SystemHealth.php:1498
 msgid "Web Server Document Root"
 msgstr ""
 
@@ -14874,7 +14951,7 @@ msgid "Welcome — Your Account is Ready"
 msgstr ""
 
 #. translators: %s: app
-#: src/Environments/Application/Installation/InstallerPage.php:85
+#: src/Environments/Application/Installation/InstallerPage.php:113
 #, php-format
 msgid "Welcome! Setting up %s takes a few minutes. First, confirm that this is your server, so nobody else can take over the installation."
 msgstr ""
@@ -14925,7 +15002,7 @@ msgstr ""
 msgid "Where buyers buy this tier on the store."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:97
+#: src/Environments/Application/Installation/InstallerPage.php:125
 msgid "While you install, visitors see a short “setting things up” notice."
 msgstr ""
 
@@ -14977,7 +15054,7 @@ msgstr ""
 msgid "Write the note."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:59
+#: src/Environments/Application/Installation/InstallerPage.php:87
 msgid "Write the web server rules (.htaccess)"
 msgstr ""
 
@@ -15128,7 +15205,7 @@ msgstr ""
 msgid "You now act for %s."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:342
+#: src/Environments/Application/Installation/InstallerPage.php:370
 msgid "You sign in with this address, and password resets are sent to it."
 msgstr ""
 
@@ -15262,8 +15339,12 @@ msgstr ""
 msgid "Your email provider is configured correctly. This test email was delivered successfully."
 msgstr ""
 
-#: src/Environments/Application/Installation/WebInstaller.php:201
+#: src/Environments/Application/Installation/WebInstaller.php:266
 msgid "Your installer session expired. Enter the setup token to continue."
+msgstr ""
+
+#: src/Console/Commands/Installer.php:1299
+msgid "Your language could not be saved to your account. Choose it later in your preferences."
 msgstr ""
 
 #: src/Email/Templates/Licenses/LicenseExpiredEmail.php:142
@@ -15319,7 +15400,7 @@ msgstr ""
 msgid "Your membership in {{organization_name}} has been ended. You no longer have access to this organization's resources."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:334
+#: src/Environments/Application/Installation/InstallerPage.php:362
 msgid "Your name"
 msgstr ""
 
@@ -15459,6 +15540,10 @@ msgstr ""
 msgid "already exists"
 msgstr ""
 
+#: src/Console/Commands/Installer.php:131
+msgid "and as the administrator's language. Without it, run asks when translations are installed;"
+msgstr ""
+
 #: src/HostedApps/HostingController.php:385
 msgid "app.json files must be a json file."
 msgstr ""
@@ -15593,7 +15678,7 @@ msgstr ""
 msgid "leads outside the app"
 msgstr ""
 
-#: src/Environments/Application/Installation/AppInstaller.php:1229
+#: src/Environments/Application/Installation/AppInstaller.php:1285
 #, php-format
 msgid "manifest.json is for version %s, but the code is version %s: files from two releases are mixed. Upload one release completely."
 msgstr ""
@@ -15637,6 +15722,10 @@ msgstr ""
 
 #: src/Core/Pdf/Rasterizers/PopplerRasterizer.php:95
 msgid "pdftoppm wrote no pages."
+msgstr ""
+
+#: src/Console/Commands/Installer.php:132
+msgid "pressing Enter keeps English and leaves the site language on automatic."
 msgstr ""
 
 #: themes/default/templates/pages/auth/sign-up.php:55
@@ -15691,6 +15780,10 @@ msgstr ""
 
 #: assets/js/admin/modules.js:336
 msgid "the request failed."
+msgstr ""
+
+#: src/Admin/ActionHandlers/UpdateManagement.php:127
+msgid "the update server"
 msgstr ""
 
 #: themes/default/templates/pages/auth/sign-in.php:20

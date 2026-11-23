@@ -841,7 +841,7 @@ class RequestController {
 			$organization = Organization::get_by_id( $org_id );
 
 			if ( ! $organization ) {
-				throw new RequestException( 'error', smliser__( 'The provided orgaization does exist.' ), ['status' => 400] );
+				throw new RequestException( 'error', smliser__( 'The provided organization does not exist.' ), ['status' => 400] );
 			}
 
 			if ( ! $organization->is_member( $member_id ) ) {

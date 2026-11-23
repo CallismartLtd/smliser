@@ -208,7 +208,7 @@ final class UpdateServer {
 		$release = $this->release( $app_type, $app_slug, null, $progress );
 		$version = self::assert_version( $release );
 
-		$this->report( $progress, 'check', self::STATUS_OK, sprintf( smliser__( 'The update server publishes %s %s%s.' ), $app_slug, $version, $release['security'] ? ' (security release)' : '' ) );
+		$this->report( $progress, 'check', self::STATUS_OK, sprintf( $release['security'] ? smliser__( 'The update server publishes %s %s (security release).' ) : smliser__( 'The update server publishes %s %s.' ), $app_slug, $version ) );
 
 		return [
 			'version'  => $version,

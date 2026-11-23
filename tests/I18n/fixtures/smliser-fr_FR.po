@@ -1,0 +1,42 @@
+# French translation of Smart License Server (test fixture).
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart License Server\n"
+"Language: fr_FR\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/Example.php:10
+msgid "Save changes"
+msgstr "Enregistrer les modifications"
+
+#. translators: %s: user name.
+msgid "Hello, %s."
+msgstr "Bonjour, %s."
+
+msgctxt "verb"
+msgid "Post"
+msgstr "Publier"
+
+msgctxt "noun"
+msgid "Post"
+msgstr "Article"
+
+msgid "%d license"
+msgid_plural "%d licenses"
+msgstr[0] "%d licence"
+msgstr[1] "%d licences"
+
+#, fuzzy
+msgid "Delete"
+msgstr "Supprimer (à revoir)"
+
+msgid "Untranslated"
+msgstr ""
+
+msgid ""
+"Line one\n"
+"Line \"two\""
+msgstr ""
+"Ligne un\n"
+"Ligne \"deux\""

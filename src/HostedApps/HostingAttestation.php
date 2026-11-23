@@ -207,7 +207,7 @@ final class HostingAttestation {
 		$artifact = $slug . '.zip';
 
 		return sprintf(
-			"%s\n# type: %s\n# slug: %s\n# artifact: %s\n%s  %s\n",
+			smliser__( "%s\n# type: %s\n# slug: %s\n# artifact: %s\n%s  %s\n" ),
 			self::HEADER,
 			$type,
 			$slug,

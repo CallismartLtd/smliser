@@ -113,7 +113,7 @@ abstract class PurchaseRequestEmail extends EmailTemplate {
 					'id'                => 1024,
 					'tier_id'           => 1,
 					'price'             => '₦25,000 / year',
-					'buyer_name'        => 'Jane Doe',
+					'buyer_name'        => smliser__( 'Jane Doe' ),
 					'buyer_email'       => 'jane@example.com',
 					'payment_reference' => 'TRF-0042',
 					'status'            => PurchaseRequest::STATUS_PENDING,

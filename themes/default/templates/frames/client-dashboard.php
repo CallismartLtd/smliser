@@ -24,7 +24,7 @@
 	<aside class="dash-side">
 		<a class="site-brand" href="<?php echo escUrl( $this->url( '/' )->url() ); ?>"><?php echo escHtml( SMLISER_APP_NAME ); ?></a>
 
-		<nav class="dash-menu" aria-label="Dashboard">
+		<nav class="dash-menu" aria-label="<?php smliser_esc_attr_e( 'Dashboard' ); ?>">
 			<ul>
 				<?php foreach ( $dashboard['menu'] as $item ) : ?>
 					<li>
@@ -55,7 +55,7 @@
 			<h1 class="dash-title"><?php echo escHtml( $view->get_title() ); ?></h1>
 
 			<div class="dash-top-actions">
-				<nav class="dash-top-menu" aria-label="Account">
+				<nav class="dash-top-menu" aria-label="<?php smliser_esc_attr_e( 'Account' ); ?>">
 					<?php if ( count( $dashboard['context']['options'] ) > 1 ) : ?>
 						<?php
 						$current_context = $dashboard['context']['options'][0];
@@ -68,10 +68,10 @@
 						?>
 						<div class="dash-context">
 							<details class="dash-context-dropdown">
-								<summary class="dash-context-trigger" aria-label="Switch account">
+								<summary class="dash-context-trigger" aria-label="<?php smliser_esc_attr_e( 'Switch account' ); ?>">
 									<img class="dash-context-avatar" src="<?php echo escUrl( $current_context['avatar'] ); ?>" alt="" width="38" height="38">
 									<span class="dash-context-current">
-										<span class="dash-context-label">Acting as</span>
+										<span class="dash-context-label"><?php smliser_esc_html_e( 'Acting as' ); ?></span>
 										<strong><?php echo escHtml( $current_context['label'] ); ?></strong>
 									</span>
 									<svg class="dash-context-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -80,7 +80,7 @@
 								</summary>
 
 								<div class="dash-context-panel">
-									<p class="dash-context-heading">Acting as</p>
+									<p class="dash-context-heading"><?php smliser_esc_html_e( 'Acting as' ); ?></p>
 									<ul>
 										<?php foreach ( $dashboard['context']['options'] as $option ) : ?>
 											<li>
@@ -120,11 +120,11 @@
 		<?php if ( ! $dashboard['account']['verified'] ) : ?>
 			<div class="notice dash-notice" role="status">
 				<p>
-					<?php echo escHtml( sprintf( 'Verify your email address, %s. Licenses bought with it are added to your account once it is verified.', $dashboard['account']['email'] ) ); ?>
+					<?php echo escHtml( sprintf( smliser__( 'Verify your email address, %s. Licenses bought with it are added to your account once it is verified.' ), $dashboard['account']['email'] ) ); ?>
 				</p>
 				<form method="post" action="<?php echo escUrl( $dashboard['account']['resend_url'] ); ?>" data-smliser-form>
 					<div class="notice" data-smliser-form-message hidden></div>
-					<button type="submit" class="btn btn-small">Send me a new link</button>
+					<button type="submit" class="btn btn-small"><?php smliser_esc_html_e( 'Send me a new link' ); ?></button>
 				</form>
 			</div>
 		<?php endif; ?>

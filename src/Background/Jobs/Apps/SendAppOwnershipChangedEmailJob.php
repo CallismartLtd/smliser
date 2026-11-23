@@ -48,7 +48,7 @@ class SendAppOwnershipChangedEmailJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Notifies both the previous and new app owner when ownership is transferred.';
+		return smliser__( 'Notifies both the previous and new app owner when ownership is transferred.' );
 	}
 
 	/**

@@ -375,7 +375,7 @@ class ContextServiceProvider extends DataStore {
 		if ( ! $subject && ! in_array( OwnerSubjectInterface::class, class_implements( $actor ), true ) ) {
 			throw new SecurityException(
 				'invalid_scope',
-				'Principal must either be a valid resource owner or be acting for a resource owner.',
+				smliser__( 'Principal must either be a valid resource owner or be acting for a resource owner.' ),
 				['status' => 500]
 			);
 		}
@@ -685,14 +685,14 @@ class ContextServiceProvider extends DataStore {
 			if ( false === $deleted ) {
 				throw new SecurityException(
 					'delete_error',
-					'Unable to delete the provided entity from the database.',
+					smliser__( 'Unable to delete the provided entity from the database.' ),
 					['status' => 500]
 				);
 			}
 		} catch ( \Exception $e ) {
 			throw new SecurityException(
 				'delete_error',
-				'Failed to delete entity. Transaction rolled back.',
+				smliser__( 'Failed to delete entity. Transaction rolled back.' ),
 				['status' => 500, 'error' => $e->getMessage()]
 			);
 		}
@@ -810,7 +810,7 @@ class ContextServiceProvider extends DataStore {
 		} catch ( \Exception $e ) {
 			throw new SecurityException(
 				'accounts_summary_error',
-				'Unable to build accounts summary report.',
+				smliser__( 'Unable to build accounts summary report.' ),
 				[
 					'status' => 500,
 					'error'  => $e->getMessage(),
@@ -882,7 +882,7 @@ class ContextServiceProvider extends DataStore {
 			->set_status( Owner::STATUS_ACTIVE );
 
 		if ( ! $subject->get_id() || ! $owner->save() ) {
-			throw new SecurityException( 'owner_save_error', sprintf( 'A resource owner record for %s could not be made.', $subject->get_display_name() ), [ 'status' => 500 ] );
+			throw new SecurityException( 'owner_save_error', sprintf( smliser__( 'A resource owner record for %s could not be made.' ), $subject->get_display_name() ), [ 'status' => 500 ] );
 		}
 
 		return $owner;
@@ -997,7 +997,7 @@ class ContextServiceProvider extends DataStore {
 	 */
 	public static function assert_can_delete_user( User $user, ?ActorInterface $by ) : void {
 		if ( static::is_same_user( $user, $by ) ) {
-			throw new SecurityException( 'self_lockout', 'You cannot delete your own account.', [ 'status' => 409 ] );
+			throw new SecurityException( 'self_lockout', smliser__( 'You cannot delete your own account.' ), [ 'status' => 409 ] );
 		}
 
 		static::assert_admin_remains( $user, false );
@@ -1029,11 +1029,11 @@ class ContextServiceProvider extends DataStore {
 
 		if ( static::is_same_user( $user, $by ) ) {
 			if ( $role !== $current_role ) {
-				throw new SecurityException( 'self_lockout', 'You cannot change your own role; another administrator must.', [ 'status' => 409 ] );
+				throw new SecurityException( 'self_lockout', smliser__( 'You cannot change your own role; another administrator must.' ), [ 'status' => 409 ] );
 			}
 
 			if ( $status !== $user->get_status() ) {
-				throw new SecurityException( 'self_lockout', 'You cannot change your own status; another administrator must.', [ 'status' => 409 ] );
+				throw new SecurityException( 'self_lockout', smliser__( 'You cannot change your own status; another administrator must.' ), [ 'status' => 409 ] );
 			}
 		}
 
@@ -1073,7 +1073,7 @@ class ContextServiceProvider extends DataStore {
 		if ( $has_access && ! $keeps_access && 0 === static::count_active_platform_admins( $user->get_id() ) ) {
 			throw new SecurityException(
 				'last_admin',
-				sprintf( '%s is the only active system administrator. Make another user an active system administrator first.', $user->get_display_name() ?: $user->get_email() ),
+				sprintf( smliser__( '%s is the only active system administrator. Make another user an active system administrator first.' ), $user->get_display_name() ?: $user->get_email() ),
 				[ 'status' => 409 ]
 			);
 		}

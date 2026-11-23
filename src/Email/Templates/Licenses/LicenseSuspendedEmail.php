@@ -34,7 +34,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Your License Has Been Suspended';
+		return smliser__( 'Your License Has Been Suspended' );
 	}
 
 	protected function recipient() : string {
@@ -42,7 +42,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your license has been suspended. Please contact support for more information.';
+		return smliser__( 'Your license has been suspended. Please contact support for more information.' );
 	}
 
 	protected function variables() : array {
@@ -61,9 +61,19 @@ class LicenseSuspendedEmail extends EmailTemplate {
 		$reason        = \escHtml( $vars['{{reason}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			smliser_esc_html__( '🚫 Your license has been suspended and is currently inactive. Please contact support to resolve this.' ),
+			smliser_esc_html__( 'License Key' ),
+			smliser_esc_html__( 'Reason' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you believe this suspension was made in error or need further assistance, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <!-- Suspension banner -->
@@ -73,8 +83,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#991b1b;line-height:1.5;">
-                        &#128683;&nbsp; Your license has been suspended and is currently inactive.
-                        Please contact support to resolve this.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -91,7 +100,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    License Key
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;color:#1a1a2e;
                                            font-family:monospace;font-weight:700;letter-spacing:0.05em;">
@@ -103,7 +112,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Reason
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
                                     {$reason}
@@ -116,25 +125,23 @@ class LicenseSuspendedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you believe this suspension was made in error or need further assistance,
-            please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Suspended';
+		return smliser__( 'License Suspended' );
 	}
 	public function description() : string {
-		return 'Sent when a license is suspended by an administrator.';
+		return smliser__( 'Sent when a license is suspended by an administrator.' );
 	}
 	public static function preview() : static {
 		$license = License::from_array( [
 			'licensee_fullname' => 'Jane Doe',
 			'license_key'       => 'SMLISER-XXXX-XXXX-XXXX',
 		] );
-		return new static( $license, 'preview@example.com', 'Suspicious activity detected.' );
+		return new static( $license, 'preview@example.com', smliser__( 'Suspicious activity detected.' ) );
 	}
 
 	public function get_blocks() : array {
@@ -142,7 +149,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -150,7 +157,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'error',
-				'content'   => 'Your license has been suspended and is currently inactive. Please contact support to resolve this.',
+				'content'   => smliser__( 'Your license has been suspended and is currently inactive. Please contact support to resolve this.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -158,8 +165,8 @@ class LicenseSuspendedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'License Key', 'value' => '{{license_key}}' ],
-					[ 'label' => 'Reason',      'value' => '{{reason}}' ],
+					[ 'label' => smliser__( 'License Key' ), 'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Reason' ),      'value' => '{{reason}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -167,7 +174,7 @@ class LicenseSuspendedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you believe this suspension was made in error or need further assistance, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you believe this suspension was made in error or need further assistance, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

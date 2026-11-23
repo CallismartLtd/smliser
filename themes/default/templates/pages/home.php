@@ -10,14 +10,14 @@
  */
 
 $principal = $this->principal();
-$actions   = [ [ 'label' => 'API documentation', 'url' => $this->url( 'documentation' )->url(), 'accent' => true ] ];
+$actions   = [ [ 'label' => smliser__( 'API documentation' ), 'url' => $this->url( 'documentation' )->url(), 'accent' => true ] ];
 
 if ( null === $principal ) {
-	$actions[] = [ 'label' => 'Sign in', 'url' => $this->urls()->login_url()->url() ];
+	$actions[] = [ 'label' => smliser__( 'Sign in' ), 'url' => $this->urls()->login_url()->url() ];
 } else {
 	$actions[] = $principal->is( 'system_admin' )
-		? [ 'label' => 'Admin', 'url' => $this->urls()->admin_url()->url() ]
-		: [ 'label' => 'Dashboard', 'url' => $this->urls()->client_dashboard_url()->url() ];
+		? [ 'label' => smliser__( 'Admin' ), 'url' => $this->urls()->admin_url()->url() ]
+		: [ 'label' => smliser__( 'Dashboard' ), 'url' => $this->urls()->client_dashboard_url()->url() ];
 }
 
 $this->partial(
@@ -27,26 +27,26 @@ $this->partial(
 		'heading' => SMLISER_APP_NAME,
 		'message' => $view->get_description(),
 		'actions' => $actions,
-		'detail'  => sprintf( 'v%s · PHP %s', $app_version, $php_version ),
+		'detail'  => sprintf( smliser__( 'v%s · PHP %s' ), $app_version, $php_version ),
 	]
 );
 ?>
 <div class="cells">
 	<div class="cell">
-		<h3>Command line</h3>
-		<p>Manage applications, licenses and the installation from the terminal.</p>
+		<h3><?php smliser_esc_html_e( 'Command line' ); ?></h3>
+		<p><?php smliser_esc_html_e( 'Manage applications, licenses and the installation from the terminal.' ); ?></p>
 		<code>smliser status</code>
 	</div>
 
 	<div class="cell">
-		<h3>Any database</h3>
-		<p>MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer.</p>
+		<h3><?php smliser_esc_html_e( 'Any database' ); ?></h3>
+		<p><?php smliser_esc_html_e( 'MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer.' ); ?></p>
 		<code>callismart/dbprism</code>
 	</div>
 
 	<div class="cell">
-		<h3>REST API</h3>
-		<p>Activate licenses, check updates and download releases from your software.</p>
+		<h3><?php smliser_esc_html_e( 'REST API' ); ?></h3>
+		<p><?php smliser_esc_html_e( 'Activate licenses, check updates and download releases from your software.' ); ?></p>
 		<code>/smliser/v1/</code>
 	</div>
 </div>

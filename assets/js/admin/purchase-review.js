@@ -50,7 +50,7 @@
 	async function view( button ) {
 		const { url, mime = '', name = 'receipt' } = button.dataset;
 		const pages = parsePages( button.dataset.pages );
-		const status = element( 'p', 'smliser-receipt-viewer__status', 'Loading the receipt…' );
+		const status = element( 'p', 'smliser-receipt-viewer__status', smliserI18n.__( 'Loading the receipt…' ) );
 		const body   = element( 'div', 'smliser-receipt-viewer' );
 		const footer = element( 'div', 'smliser-receipt-viewer__footer' );
 		const close  = element( 'button', 'smliser-btn smliser-surface-btn', 'Close' );
@@ -87,7 +87,7 @@
 		try {
 			blob = await smliserFetchBlob( url, { credentials: 'same-origin' } );
 		} catch ( error ) {
-			status.textContent = error?.message || 'The receipt could not be loaded.';
+			status.textContent = error?.message || smliserI18n.__( 'The receipt could not be loaded.' );
 			status.dataset.state = 'error';
 			return;
 		}
@@ -105,7 +105,7 @@
 		status.remove();
 
 		if ( ! viewable ) {
-			body.appendChild( element( 'p', 'smliser-receipt-viewer__status', 'This file type is not shown here. Download it to open it.' ) );
+			body.appendChild( element( 'p', 'smliser-receipt-viewer__status', smliserI18n.__( 'This file type is not shown here. Download it to open it.' ) ) );
 			return;
 		}
 
@@ -119,7 +119,7 @@
 		if ( 'application/pdf' === mime ) {
 			// The browser says whether it shows PDFs inside a page; most phones do not.
 			if ( ! canShowPdf() ) {
-				body.appendChild( element( 'p', 'smliser-receipt-viewer__status', 'This browser cannot show the PDF here. Use Download to open it.' ) );
+				body.appendChild( element( 'p', 'smliser-receipt-viewer__status', smliserI18n.__( 'This browser cannot show the PDF here. Use Download to open it.' ) ) );
 				return;
 			}
 
@@ -135,7 +135,7 @@
 		const image = element( 'img', 'smliser-receipt-viewer__image' );
 		image.alt   = `Receipt ${ name }`;
 		image.src   = objectUrl;
-		image.title = 'Click to zoom';
+		image.title = smliserI18n.__( 'Click to zoom' );
 		image.addEventListener( 'click', () => body.classList.toggle( 'is-zoomed' ) );
 		body.appendChild( image );
 	}
@@ -181,11 +181,11 @@
 		const canvas  = element( 'div', 'smliser-doc__canvas' );
 		const counter = element( 'span', 'smliser-doc__counter' );
 		const level   = element( 'span', 'smliser-doc__zoom-level' );
-		const prev    = toolButton( 'ti ti-chevron-up', 'Previous page' );
-		const next    = toolButton( 'ti ti-chevron-down', 'Next page' );
-		const out     = toolButton( 'ti ti-minus', 'Zoom out' );
-		const into    = toolButton( 'ti ti-plus', 'Zoom in' );
-		const fit     = toolButton( 'ti ti-arrows-horizontal', 'Fit width' );
+		const prev    = toolButton( 'ti ti-chevron-up', smliserI18n.__( 'Previous page' ) );
+		const next    = toolButton( 'ti ti-chevron-down', smliserI18n.__( 'Next page' ) );
+		const out     = toolButton( 'ti ti-minus', smliserI18n.__( 'Zoom out' ) );
+		const into    = toolButton( 'ti ti-plus', smliserI18n.__( 'Zoom in' ) );
+		const fit     = toolButton( 'ti ti-arrows-horizontal', smliserI18n.__( 'Fit width' ) );
 		const sheets  = [];
 
 		let zoom    = ZOOMS.indexOf( 1 );
@@ -195,7 +195,7 @@
 		root.setAttribute( 'aria-label', `Receipt ${ name }` );
 		toolbar.setAttribute( 'role', 'toolbar' );
 		canvas.tabIndex = 0;
-		canvas.setAttribute( 'aria-label', 'Receipt pages' );
+		canvas.setAttribute( 'aria-label', smliserI18n.__( 'Receipt pages' ) );
 		counter.setAttribute( 'aria-live', 'polite' );
 
 		toolbar.append(
@@ -209,7 +209,7 @@
 			const label = element( 'figcaption', 'smliser-doc__page-number', `${ index + 1 }` );
 
 			sheet.setAttribute( 'role', 'img' );
-			sheet.setAttribute( 'aria-label', `Page ${ index + 1 } of ${ pages.length }` );
+			sheet.setAttribute( 'aria-label', smliserI18n.sprintf( smliserI18n.__( 'Page %1$s of %2$s' ), index + 1, pages.length ) );
 			sheet.dataset.index = String( index );
 
 			// Size the sheet to the page before showing it, so nothing jumps.
@@ -222,7 +222,7 @@
 			probe.onerror = () => {
 				sheet.classList.remove( 'is-loading' );
 				sheet.classList.add( 'is-failed' );
-				sheet.textContent = 'This page could not be loaded.';
+				sheet.textContent = smliserI18n.__( 'This page could not be loaded.' );
 			};
 			probe.src = src;
 
@@ -237,7 +237,7 @@
 		 * Draw the counter, the zoom level and the buttons' states.
 		 */
 		const update = () => {
-			counter.textContent = `Page ${ current + 1 } of ${ pages.length }`;
+			counter.textContent = smliserI18n.sprintf( smliserI18n.__( 'Page %1$s of %2$s' ), current + 1, pages.length );
 			level.textContent   = `${ Math.round( ZOOMS[ zoom ] * 100 ) }%`;
 			prev.disabled       = 0 === current;
 			next.disabled       = pages.length - 1 === current;

@@ -70,6 +70,6 @@ final class Weekdays implements DayMatcher {
 	 */
 	public function describe() : string {
 		$names = array_map( fn( int $day ) => self::DAY_NAMES[ $day ], $this->days );
-		return 'Weekly on ' . implode( ', ', $names );
+		return smliser__( 'Weekly on ' ) . implode( ', ', $names );
 	}
 }

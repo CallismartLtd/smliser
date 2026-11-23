@@ -29,34 +29,34 @@ if ( $license ) {
 	\array_unshift(
 		$args['actions'],
 		[
-			'title' => 'View logs for this license',
-			'label' => 'Logs',
+			'title' => smliser__( 'View logs for this license' ),
+			'label' => smliser__( 'Logs' ),
 			'url'   => $urlmanager->admin_license_page_url( 'logs', ['filterBy' => $license_id] ),
 			'icon'  => 'ti ti-logs'
 		],
 
 		[
-			'title' => 'Edit License',
-			'label' => 'Edit license',
+			'title' => smliser__( 'Edit License' ),
+			'label' => smliser__( 'Edit license' ),
 			'url'   => $urlmanager->admin_license_page_url( 'edit', ['id' => $license_id] ),
 			'icon'  => 'ti ti-edit'
 		],
 		
 		[
-			'title' => 'Download License Document',
-			'label' => 'Download Document',
+			'title' => smliser__( 'Download License Document' ),
+			'label' => smliser__( 'Download Document' ),
 			'url'   => $download_url,
 			'icon'  => 'ti ti-download'
 		],
 
 		[
-			'title'      => 'Generate license download token',
-			'label'      => 'Generate Token',
+			'title'      => smliser__( 'Generate license download token' ),
+			'label'      => smliser__( 'Generate Token' ),
 			'url'        => '#',
 			'class'      => 'smliser-generate-download-token-btn',
 			'icon'       => 'ti ti-cloud',
 			'attributes' => [
-				'aria-label'    => 'Generate a one-time download token for this license.',
+				'aria-label'    => smliser__( 'Generate a one-time download token for this license.' ),
 				'aria-role'     => 'button',
 				'aria-haspopup' => 'dialog',
 				'disabled'      => \sprintf( '%s', ! $license->is_issued() ? 'disabled' : '' ),
@@ -71,13 +71,13 @@ if ( $license ) {
 		],
 
 		[
-			'title'      => 'Delete License',
-			'label'      => 'Delete license',
+			'title'      => smliser__( 'Delete License' ),
+			'label'      => smliser__( 'Delete license' ),
 			'url'        => '#',
 			'class'      => 'smliser-license-delete-btn',
 			'icon'       => 'ti ti-trash',
 			'attributes' => [
-				'aria-label' => 'Delete this license permanently.',
+				'aria-label' => smliser__( 'Delete this license permanently.' ),
 				'disabled'   => empty( $license ),
 				'id'         => 'smliser-license-delete-button'
 			]
@@ -94,7 +94,7 @@ $public_download_url = $urlmanager->document_download_url( $license ? $license->
         
         <?php echo  \smliser_not_found_container(
         	\sprintf(
-        		'Invalid or deleted license is "%s". <a href="%s"> <i class="ti ti-arrow-narrow-left"></i> Go Back</a>',
+        		smliser__( 'Invalid or deleted license is "%s". <a href="%s"> <i class="ti ti-arrow-narrow-left"></i> Go Back</a>' ),
         		$license_id,
         		$urlmanager->admin_license_page_url()->url(),
         	)
@@ -104,35 +104,35 @@ $public_download_url = $urlmanager->document_download_url( $license ? $license->
         <div class="smliser-admin-view-page-wrapper">
             <div class="smliser-admin-view-page-header"> 
                 <div class="smliser-admin-view-page-header-child">
-                    <h2>Overview</h2>
-                    <p><i class="ti ti-database"></i> License ID: <?php echo escHtml( intval( $license->get_id() ) ) ?></p>
-                    <p><i class="ti ti-circle-check"></i> Status: <?php echo escHtml( $license->get_status() ) ?></p>
-                    <p><i class="ti ti-license"></i> Licensee: <?php echo escHtml( $licensee ?: 'N/A' ) ?></p>
+                    <h2><?php smliser_esc_html_e( 'Overview' ); ?></h2>
+                    <p><i class="ti ti-database"></i> <?php smliser_esc_html_e( 'License ID:' ); ?> <?php echo escHtml( intval( $license->get_id() ) ) ?></p>
+                    <p><i class="ti ti-circle-check"></i> <?php smliser_esc_html_e( 'Status:' ); ?> <?php echo escHtml( $license->get_status() ) ?></p>
+                    <p><i class="ti ti-license"></i> <?php smliser_esc_html_e( 'Licensee:' ); ?> <?php echo escHtml( $licensee ?: 'N/A' ) ?></p>
                 </div>
 
                 <div class="smliser-admin-view-page-header-child">
-                    <h2>Statistics</h2>
-                    <p><i class="ti ti-app-window"></i> Max Allowed Domains: <?php echo escHtml( $license->get_max_allowed_domains() ) ?></p>
-                    <p><i class="ti ti-dice-6"></i> Total Domains Activated: <span id="total-active-domain"><?php echo intval( $license->get_total_active_domains() )?></span></p>
-                    <p><i class="ti ti-logs"></i> Total Logs: <?php echo escHtml( $total_logs ) ?></p>
+                    <h2><?php smliser_esc_html_e( 'Statistics' ); ?></h2>
+                    <p><i class="ti ti-app-window"></i> <?php smliser_esc_html_e( 'Max Allowed Domains:' ); ?> <?php echo escHtml( $license->get_max_allowed_domains() ) ?></p>
+                    <p><i class="ti ti-dice-6"></i> <?php smliser_esc_html_e( 'Total Domains Activated:' ); ?> <span id="total-active-domain"><?php echo intval( $license->get_total_active_domains() )?></span></p>
+                    <p><i class="ti ti-logs"></i> <?php smliser_esc_html_e( 'Total Logs:' ); ?> <?php echo escHtml( $total_logs ) ?></p>
                 </div>
                 
                 <div class="smliser-admin-view-page-header-child">
-                    <h2>Operations</h2>
-                    <p><i class="ti ti-calendar"></i> Last Updated: <?php echo escHtml( $license->get_updated_at()?->format( smliser_datetime_format() ) ?? 'N/A' )?></p>
-                    <p><i class="ti ti-calendar"></i> Date Created: <?php echo escHtml( $license->get_created_at()?->format( smliser_datetime_format() ) ?? 'N/A' ) ?></p>
-                    <p><i class="ti ti-apps"></i> App Attribute: <?php echo escHtml( $license->get_app_prop() ?: 'N/A' ) ?></p>
+                    <h2><?php smliser_esc_html_e( 'Operations' ); ?></h2>
+                    <p><i class="ti ti-calendar"></i> <?php smliser_esc_html_e( 'Last Updated:' ); ?> <?php echo escHtml( $license->get_updated_at()?->format( smliser_datetime_format() ) ?? 'N/A' )?></p>
+                    <p><i class="ti ti-calendar"></i> <?php smliser_esc_html_e( 'Date Created:' ); ?> <?php echo escHtml( $license->get_created_at()?->format( smliser_datetime_format() ) ?? 'N/A' ) ?></p>
+                    <p><i class="ti ti-apps"></i> <?php smliser_esc_html_e( 'App Attribute:' ); ?> <?php echo escHtml( $license->get_app_prop() ?: 'N/A' ) ?></p>
                 </div>
 
             </div>
 
             <div class="smliser-admin-view-page-body">
-                <h3>License Details</h3>
+                <h3><?php smliser_esc_html_e( 'License Details' ); ?></h3>
                 <table class="widefat smliser-license-table">
                     <tbody>
     
                         <tr>
-                            <th>Is issued</th>
+                            <th><?php smliser_esc_html_e( 'Is issued' ); ?></th>
                             <td>
                                 <?php if ( $license->is_issued() ) : ?>
                                     <span class="ti ti-circle-check"></span>
@@ -143,7 +143,7 @@ $public_download_url = $urlmanager->document_download_url( $license ? $license->
                         </tr>
 
                         <tr>
-                            <th>App Info</th>
+                            <th><?php smliser_esc_html_e( 'App Info' ); ?></th>
                             <td>
                                 <?php if ( $license->is_issued() ) : ?>
                                     <a href="<?php echo escUrl( $urlmanager->admin_repo_url( 'view', ['app_id' => $licensed_app->get_id(), 'type' => $licensed_app->get_type()] )->url() ); ?>">
@@ -156,20 +156,20 @@ $public_download_url = $urlmanager->document_download_url( $license ? $license->
                         </tr>
 
                         <tr>
-                            <th>Document Download URL(public)</th>
+                            <th><?php smliser_esc_html_e( 'Document Download URL(public)' ); ?></th>
                             <td>
                                 <span><?php echo escHtml( $public_download_url ); ?></span>
-                                <i class="ti ti-copy smliser-click-to-copy" title="Copy" data-copy-value="<?php echo escAttr( $public_download_url ); ?>"></i>
+                                <i class="ti ti-copy smliser-click-to-copy" title="<?php smliser_esc_attr_e( 'Copy' ); ?>" data-copy-value="<?php echo escAttr( $public_download_url ); ?>"></i>
                             </td>
                         </tr>
 
                         <tr>
-                            <th>Service ID</th>
-                            <td><span class="smliser-click-to-copy" title="Copy" data-copy-value="<?php echo escAttr( $license->get_service_id() ); ?>"><?php echo escHtml( $license->get_service_id() ); ?></span></td>
+                            <th><?php smliser_esc_html_e( 'Service ID' ); ?></th>
+                            <td><span class="smliser-click-to-copy" title="<?php smliser_esc_attr_e( 'Copy' ); ?>" data-copy-value="<?php echo escAttr( $license->get_service_id() ); ?>"><?php echo escHtml( $license->get_service_id() ); ?></span></td>
                         </tr>
                         
                         <tr>
-                            <th>License Key</th>
+                            <th><?php smliser_esc_html_e( 'License Key' ); ?></th>
                             <td>
                                 <div class="smliser-license-obfuscation">
                                     <div class="smliser-license-obfuscation_data">
@@ -180,7 +180,7 @@ $public_download_url = $urlmanager->document_download_url( $license ? $license->
                                                 readonly 
                                                 class="smliser-license-text"
                                             />
-                                            <span class="ti ti-copy copy-key smliser-tooltip" title="Copy license key"></span>
+                                            <span class="ti ti-copy copy-key smliser-tooltip" title="<?php smliser_esc_attr_e( 'Copy license key' ); ?>"></span>
                                         </span>
 
                                         <span class="smliser-obfuscated-license-text">
@@ -191,29 +191,29 @@ $public_download_url = $urlmanager->document_download_url( $license ? $license->
                                     <input type="checkbox" 
                                         id="toggle-<?php echo escHtml( $license->get_id() ); ?>" 
                                         class="smliser-licence-key-visibility-toggle smliser-tooltip" 
-                                        title="Toggle visibility" 
+                                        title="<?php smliser_esc_attr_e( 'Toggle visibility' ); ?>" 
                                     />
                                 </div>
                             </td>
                         </tr>
 
                         <tr>
-                            <th>Start Date</th>
+                            <th><?php smliser_esc_html_e( 'Start Date' ); ?></th>
                             <td><?php echo escHtml( $license->get_start_date()?->format( \smliser_datetime_format() ) ?? 'N/A' ); ?></td>
                         </tr>
 
                         <tr>
-                            <th>End Date</th>
+                            <th><?php smliser_esc_html_e( 'End Date' ); ?></th>
                             <td><?php echo escHtml( $license->get_end_date()?->format( \smliser_datetime_format() ) ?? 'N/A' ); ?></td>
                         </tr>
 
                         <tr>
-                            <th>Activated on</th>
+                            <th><?php smliser_esc_html_e( 'Activated on' ); ?></th>
                             <td><?php format_active_domains( $license ); ?></td>
                         </tr>
 
                         <tr>
-                            <th>Alert</th>
+                            <th><?php smliser_esc_html_e( 'Alert' ); ?></th>
                             <td><?php print_license_alert( $license ) ?></td>
                         </tr>
                     </tbody>

@@ -32,7 +32,7 @@ class MfaResetEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Two-Factor Authentication Has Been Reset';
+		return smliser__( 'Two-Factor Authentication Has Been Reset' );
 	}
 
 	protected function recipient() : string {
@@ -40,7 +40,7 @@ class MfaResetEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your two-factor authentication and recovery codes were reset by an administrator. If this was not you, secure your account immediately.';
+		return smliser__( 'Your two-factor authentication and recovery codes were reset by an administrator. If this was not you, secure your account immediately.' );
 	}
 
 	protected function variables() : array {
@@ -56,9 +56,21 @@ class MfaResetEmail extends EmailTemplate {
 		$reset_at     = \escHtml( $vars['{{reset_at}}'] );
 		$support      = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: display name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $display_name ),
+			/* translators: %s: reset at (formatted) */
+			sprintf( smliser_esc_html__( '⚠ Your two-factor authentication (TOTP) and recovery codes were reset by an administrator on %s.' ), '<strong>' . $reset_at . '</strong>' ),
+			smliser_esc_html__( 'All active login sessions have been terminated across all your devices.' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( '🚫 If you did not request this reset, your account may be compromised. Please contact us immediately at %s so we can secure your account.' ), '<a href="mailto:' . $support . '" style="color:#991b1b;text-decoration:underline;">' . $support . '</a>' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you requested this reset due to lost authenticator app access or recovery codes, you can sign in and set up a new authenticator device. For any questions, contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$display_name},
+            {$i18n[0]}
         </p>
 
         <!-- Warning banner -->
@@ -68,15 +80,14 @@ class MfaResetEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#991b1b;line-height:1.5;">
-                        &#9888;&nbsp; Your two-factor authentication (TOTP) and recovery codes were reset by an administrator on
-                        <strong>{$reset_at}</strong>.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
         </table>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            All active login sessions have been terminated across all your devices.
+            {$i18n[2]}
         </p>
 
         <!-- Security notice -->
@@ -86,29 +97,23 @@ class MfaResetEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:13px;font-weight:600;color:#991b1b;line-height:1.5;">
-                        &#128683;&nbsp; If you did not request this reset, your account may be
-                        compromised. Please contact us immediately at
-                        <a href="mailto:{$support}"
-                           style="color:#991b1b;text-decoration:underline;">{$support}</a>
-                        so we can secure your account.
+                        {$i18n[3]}
                     </p>
                 </td>
             </tr>
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you requested this reset due to lost authenticator app access or recovery codes, you can sign in and set up a new authenticator device.
-            For any questions, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Two-Factor Authentication Reset';
+		return smliser__( 'Two-Factor Authentication Reset' );
 	}
 	public function description() : string {
-		return 'Sent after a user\'s two-factor authentication has been reset by an administrator.';
+		return smliser__( 'Sent after a user\'s two-factor authentication has been reset by an administrator.' );
 	}
 	public static function preview() : static {
 		$user = User::from_array( [ 'display_name' => 'Jane Doe' ] );

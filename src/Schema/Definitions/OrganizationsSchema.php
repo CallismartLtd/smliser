@@ -15,11 +15,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class OrganizationsSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Organizations';
+		return smliser__( 'Organizations' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores organizations.';
+		return smliser__( 'Stores organizations.' );
 	}
 
 	public static function get_table_name() : string {

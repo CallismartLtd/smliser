@@ -2939,3 +2939,21 @@ textarea[data-support-report-text] {
     padding: 2px 6px;
     font-size: .85em;
 }
+/* Language picker in the dashboard top bar (smliser_language_switcher()). */
+.smliser-language-switcher {
+	display: inline-flex;
+	align-items: center;
+	gap: .35rem;
+	margin-inline-end: .75rem;
+	font-size: .875rem;
+}
+
+.smliser-language-switcher select {
+	font: inherit;
+	padding: .2rem .45rem;
+	border-radius: 6px;
+	border: 1px solid var(--smliser-border-color, #c3c4c7);
+	background: transparent;
+	color: inherit;
+	max-width: 11rem;
+}

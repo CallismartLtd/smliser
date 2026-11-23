@@ -20,8 +20,8 @@ if ( 'add-new' !== $tab ) {
 	\array_unshift(
 		$args['actions'],
 		[
-			'title' => 'View License',
-			'label' => 'View license',
+			'title' => smliser__( 'View License' ),
+			'label' => smliser__( 'View license' ),
 			'url'   => $urlmanager->admin_license_page_url( 'view', ['id' => $license_id] ),
 			'icon'  => 'ti ti-eye'
 		]
@@ -38,7 +38,7 @@ if ( 'add-new' !== $tab ) {
         <?php endforeach; ?>
 
         <label for="save_license" class="smliser-form-label-row">
-            <span>Save License</span>
+            <span><?php smliser_esc_html_e( 'Save License' ); ?></span>
             <button type="submit" id="save_license" class="smliser-submit-button"><?php printf( '%s', isset( $license ) ? 'Update' : 'Save' ); ?></button>
         </label>
         <span class="smliser-spinner"></span>

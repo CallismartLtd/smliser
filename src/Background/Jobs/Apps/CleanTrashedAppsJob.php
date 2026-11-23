@@ -45,7 +45,7 @@ class CleanTrashedAppsJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Permanently deletes apps that have been in trash longer than the retention threshold.';
+		return smliser__( 'Permanently deletes apps that have been in trash longer than the retention threshold.' );
 	}
 
 	/**

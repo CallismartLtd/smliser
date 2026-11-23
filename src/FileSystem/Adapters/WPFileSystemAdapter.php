@@ -68,7 +68,7 @@ class WPFileSystemAdapter implements FileSystemAdapterInterface {
 			\ob_end_clean();
 
 			if ( ! $initialized || ! $wp_filesystem instanceof WP_Filesystem_Base ) {
-				throw new FileSystemException( 'Failed to initialize WP_Filesystem credentials or method.' );
+				throw new FileSystemException( smliser__( 'Failed to initialize WP_Filesystem credentials or method.' ) );
 			}
 		}
 

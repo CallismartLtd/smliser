@@ -81,9 +81,20 @@ class AppStatusChangedEmail extends EmailTemplate {
 			? [ '#fef2f2', '#fecaca', '#991b1b', '&#128683;' ]
 			: [ '#f0fdf4', '#bbf7d0', '#166534', '&#10003;' ];
 
+		$i18n = [
+			smliser_esc_html__( 'A status update for your application.' ),
+			/* translators: 1: banner icon, 2: app name (formatted), 3: old status (formatted), 4: new status (formatted) */
+			sprintf( smliser_esc_html__( '%1$s The status of %2$s has been changed from %3$s to %4$s.' ), $banner_icon, '<strong>' . $app_name . '</strong>', '<strong>' . $old_status . '</strong>', '<strong>' . $new_status . '</strong>' ),
+			smliser_esc_html__( 'Application' ),
+			smliser_esc_html__( 'Type' ),
+			smliser_esc_html__( 'Reason' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you have questions about this change or believe it was made in error, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            A status update for your application.
+            {$i18n[0]}
         </p>
 
         <!-- Status banner -->
@@ -94,9 +105,7 @@ class AppStatusChangedEmail extends EmailTemplate {
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;
                                color:{$banner_text_color};line-height:1.5;">
-                        {$banner_icon}&nbsp; The status of <strong>{$app_name}</strong>
-                        has been changed from <strong>{$old_status}</strong>
-                        to <strong>{$new_status}</strong>.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -113,7 +122,7 @@ class AppStatusChangedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Application
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_name}
@@ -122,7 +131,7 @@ class AppStatusChangedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Type
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_type}
@@ -133,7 +142,7 @@ class AppStatusChangedEmail extends EmailTemplate {
                             <td colspan="2" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Reason
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
                                     {$reason}
@@ -146,25 +155,23 @@ class AppStatusChangedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you have questions about this change or believe it was made in error,
-            please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[5]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Application Status Changed';
+		return smliser__( 'Application Status Changed' );
 	}
 	public function description() : string {
-		return 'Sent to the app owner when the status of their application is changed by an administrator.';
+		return smliser__( 'Sent to the app owner when the status of their application is changed by an administrator.' );
 	}
 	public static function preview() : static {
 		$app = WPPlugin::from_array_minimal( [
 			'name' => 'My Awesome Plugin',
 			'type' => 'wpplugin',
 		] );
-		return new static( $app, 'preview@example.com', 'active', 'suspended', 'Violation of terms of service.' );
+		return new static( $app, 'preview@example.com', 'active', 'suspended', smliser__( 'Violation of terms of service.' ) );
 	}
 
 	public function get_blocks() : array {
@@ -172,7 +179,7 @@ class AppStatusChangedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'A status update for your application.',
+				'content'   => smliser__( 'A status update for your application.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -180,7 +187,7 @@ class AppStatusChangedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'warning',
-				'content'   => 'The status of {{app_name}} has been changed from {{old_status}} to {{new_status}}.',
+				'content'   => smliser__( 'The status of {{app_name}} has been changed from {{old_status}} to {{new_status}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -188,11 +195,11 @@ class AppStatusChangedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Application',     'value' => '{{app_name}}' ],
-					[ 'label' => 'Type',            'value' => '{{app_type}}' ],
-					[ 'label' => 'Previous Status', 'value' => '{{old_status}}' ],
-					[ 'label' => 'New Status',      'value' => '{{new_status}}' ],
-					[ 'label' => 'Reason',          'value' => '{{reason}}' ],
+					[ 'label' => smliser__( 'Application' ),     'value' => '{{app_name}}' ],
+					[ 'label' => smliser__( 'Type' ),            'value' => '{{app_type}}' ],
+					[ 'label' => smliser__( 'Previous Status' ), 'value' => '{{old_status}}' ],
+					[ 'label' => smliser__( 'New Status' ),      'value' => '{{new_status}}' ],
+					[ 'label' => smliser__( 'Reason' ),          'value' => '{{reason}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -200,7 +207,7 @@ class AppStatusChangedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you have questions about this change or believe it was made in error, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you have questions about this change or believe it was made in error, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

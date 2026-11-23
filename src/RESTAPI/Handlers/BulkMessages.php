@@ -46,7 +46,7 @@ class BulkMessages {
 		}
 
 		if ( empty( $results['items'] ) ) {
-			return new RequestException( 'no_bulk_messages', 'No bulk messages found.', [ 'status' => 404 ] );
+			return new RequestException( 'no_bulk_messages', smliser__( 'No bulk messages found.' ), [ 'status' => 404 ] );
 		}
 
 		$request->set( 'smliser_resource', $results );

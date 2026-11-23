@@ -360,7 +360,7 @@ final class Container {
 		if ( ! $reflection->isInstantiable() ) {
 			throw $this->unresolvable(
 				"Unable to autowire '{$id}': the class is not instantiable. " .
-				'Interfaces and abstract classes must be explicitly bound.'
+				smliser__( 'Interfaces and abstract classes must be explicitly bound.' )
 			);
 		}
 
@@ -405,7 +405,7 @@ final class Container {
 			throw $this->unresolvable(
 				$this->format_unresolvable_parameter_message(
 					$parameter,
-					'has no type declaration'
+					smliser__( 'has no type declaration' )
 				)
 			);
 		}
@@ -414,9 +414,9 @@ final class Container {
 			throw $this->unresolvable(
 				$this->format_unresolvable_parameter_message(
 					$parameter,
-					'uses a union type'
+					smliser__( 'uses a union type' )
 				) .
-				' Union-typed dependencies must be explicitly registered.'
+				smliser__( ' Union-typed dependencies must be explicitly registered.' )
 			);
 		}
 
@@ -424,7 +424,7 @@ final class Container {
 			throw $this->unresolvable(
 				$this->format_unresolvable_parameter_message(
 					$parameter,
-					'uses an unsupported type declaration'
+					smliser__( 'uses an unsupported type declaration' )
 				)
 			);
 		}
@@ -434,20 +434,20 @@ final class Container {
 				throw $this->unresolvable(
 					$this->format_unresolvable_parameter_message(
 						$parameter,
-						'is a built-in type with a default value'
+						smliser__( 'is a built-in type with a default value' )
 					) .
-					' The default value cannot be injected automatically; ' .
-					'consider registering a factory for this service.'
+					smliser__( ' The default value cannot be injected automatically; ' ) .
+					smliser__( 'consider registering a factory for this service.' )
 				);
 			}
 
 			throw $this->unresolvable(
 				$this->format_unresolvable_parameter_message(
 					$parameter,
-					'is a built-in type'
+					smliser__( 'is a built-in type' )
 				) .
-				' Scalar and built-in constructor dependencies must be ' .
-				'provided explicitly through a factory.'
+				smliser__( ' Scalar and built-in constructor dependencies must be ' ) .
+				smliser__( 'provided explicitly through a factory.' )
 			);
 		}
 

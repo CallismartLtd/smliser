@@ -54,7 +54,7 @@ final class OrganizationPage implements ClientPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Organization',
+			'title'      => smliser__( 'Organization' ),
 			'slug'       => 'organization',
 			'handler'    => $this,
 			'icon'       => 'ti ti-users-group',
@@ -141,7 +141,7 @@ final class OrganizationPage implements ClientPageInterface {
 				'roles'                   => $roles,
 				'can'                     => $can,
 				'invitations_available'   => $this->invitations->is_available(),
-				'invitations_unavailable' => OrganizationInvitations::NOT_PERSISTENT_MESSAGE,
+				'invitations_unavailable' => OrganizationInvitations::not_persistent_message(),
 				'invitations'             => $invitations,
 				'actions'                 => [
 					'rename'            => $url( 'organization/rename' ),
@@ -153,7 +153,7 @@ final class OrganizationPage implements ClientPageInterface {
 					'invitation_revoke' => $url( 'organization/invitations/revoke' ),
 				],
 			]
-		)->set_title( (string) $organization?->get_display_name() ?: 'Organization' );
+		)->set_title( (string) $organization?->get_display_name() ?: smliser__( 'Organization' ) );
 	}
 
 	/**

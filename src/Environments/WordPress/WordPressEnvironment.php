@@ -26,6 +26,8 @@ use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\FileSystem\FileSystem;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\I18n\TranslatorInterface;
+use SmartLicenseServer\I18n\WPTranslator;
 use SmartLicenseServer\Monetization\MonetizationRegistry;
 use SmartLicenseServer\HostedApps\Storage\AppStorage;
 use SmartLicenseServer\HostedApps\Storage\DirectoryAppStorage;
@@ -56,6 +58,18 @@ class WordPressEnvironment extends Environment {
 		Autoloader::add_function_dir( __DIR__ . '/functions' );
 
 		$this->container->singleton( WordPressEnvironment::class, $this );
+
+		// WordPress owns locale selection and gettext; bridge to it.
+		$this->container->singleton(
+			TranslatorInterface::class,
+			function () : TranslatorInterface {
+				$translator = new WPTranslator();
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN, \SMLISER_RUNTIME_DIR . 'languages' );
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN . '-js', \SMLISER_RUNTIME_DIR . 'languages' );
+
+				return $translator;
+			}
+		);
 		$this->container->singleton(
 			Request::class,
 			fn () : Request => Request::createFromGlobals()
@@ -452,7 +466,7 @@ class WordPressEnvironment extends Environment {
             <p>
                 <?php printf(
                 	/* translators: %s: plugin name */
-                	escHtml( '%s requires an update.' ) . ' <a id="smliser-update-btn" style="cursor:pointer;">' . escHtml( 'Click here to update now.' ) . '</a>',
+                	smliser_esc_html__( '%s requires an update.' ) . ' <a id="smliser-update-btn" style="cursor:pointer;">' . smliser_esc_html__( 'Click here to update now.' ) . '</a>',
                 	esc_html( SMLISER_APP_NAME )
                 );?>              
                 
@@ -494,17 +508,17 @@ class WordPressEnvironment extends Environment {
 
 		$schedules['smliser_every_minute'] = [
 			'interval' => MINUTE_IN_SECONDS,
-			'display'  => 'Every Minute',
+			'display'  => smliser__( 'Every Minute' ),
 		];
 
 		$schedules['smliser_three_minutely'] = [
 			'interval' => 3 * MINUTE_IN_SECONDS,
-			'display'  => 'Three Minutely',
+			'display'  => smliser__( 'Three Minutely' ),
 		];
 
 		$schedules['smliser_4_hourly'] = [
 			'interval' => 4 * HOUR_IN_SECONDS,
-			'display'  => 'Four Hourly',
+			'display'  => smliser__( 'Four Hourly' ),
 		];
 
 		return $schedules;

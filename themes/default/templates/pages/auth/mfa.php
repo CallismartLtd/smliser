@@ -15,22 +15,22 @@
  */
 ?>
 <div class="panel">
-	<h1 class="panel-heading">Verify your sign-in</h1>
+	<h1 class="panel-heading"><?php smliser_esc_html_e( 'Verify your sign-in' ); ?></h1>
 	<?php if ( ! $valid ) : ?>
-		<p class="panel-lead">This sign-in challenge is invalid or expired. Please sign in again.</p>
-		<p><a class="btn btn-accent btn-block" href="<?php echo escUrl( $this->urls()->login_url()->url() ); ?>">Return to sign in</a></p>
+		<p class="panel-lead"><?php smliser_esc_html_e( 'This sign-in challenge is invalid or expired. Please sign in again.' ); ?></p>
+		<p><a class="btn btn-accent btn-block" href="<?php echo escUrl( $this->urls()->login_url()->url() ); ?>"><?php smliser_esc_html_e( 'Return to sign in' ); ?></a></p>
 	<?php else : ?>
-		<p class="panel-lead">Your password was accepted. Complete one of your enabled verification methods to continue.</p>
+		<p class="panel-lead"><?php smliser_esc_html_e( 'Your password was accepted. Complete one of your enabled verification methods to continue.' ); ?></p>
 		<?php if ( $email_pending ) : ?>
 			<form method="post" action="<?php echo escUrl( $verify_action ); ?>" data-smliser-form>
 				<input type="hidden" name="challenge" value="<?php echo escAttr( $challenge ); ?>">
 				<input type="hidden" name="method" value="email">
 				<div class="notice" data-smliser-form-message hidden></div>
 				<label class="field">
-					<span class="field-label">Email verification code</span>
+					<span class="field-label"><?php smliser_esc_html_e( 'Email verification code' ); ?></span>
 					<input type="text" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required autofocus>
 				</label>
-				<button type="submit" class="btn btn-accent btn-block">Verify and sign in</button>
+				<button type="submit" class="btn btn-accent btn-block"><?php smliser_esc_html_e( 'Verify and sign in' ); ?></button>
 			</form>
 		<?php else : ?>
 			<?php if ( $totp_available ) : ?>
@@ -39,20 +39,20 @@
 					<input type="hidden" name="method" value="totp">
 					<div class="notice" data-smliser-form-message hidden></div>
 					<label class="field">
-						<span class="field-label">Authenticator code or recovery code</span>
+						<span class="field-label"><?php smliser_esc_html_e( 'Authenticator code or recovery code' ); ?></span>
 						<input type="text" name="code" autocomplete="one-time-code" required autofocus>
 					</label>
-					<button type="submit" class="btn btn-accent btn-block">Verify and sign in</button>
+					<button type="submit" class="btn btn-accent btn-block"><?php smliser_esc_html_e( 'Verify and sign in' ); ?></button>
 				</form>
 			<?php endif; ?>
 			<?php if ( $email_available ) : ?>
 				<form method="post" action="<?php echo escUrl( $email_action ); ?>" data-smliser-form>
 					<input type="hidden" name="challenge" value="<?php echo escAttr( $challenge ); ?>">
 					<div class="notice" data-smliser-form-message hidden></div>
-					<button type="submit" class="btn btn-block">Send a code to my verified email</button>
+					<button type="submit" class="btn btn-block"><?php smliser_esc_html_e( 'Send a code to my verified email' ); ?></button>
 				</form>
 			<?php endif; ?>
 		<?php endif; ?>
-		<p class="panel-links"><a href="<?php echo escUrl( $this->urls()->login_url()->url() ); ?>">Cancel and sign in again</a></p>
+		<p class="panel-links"><a href="<?php echo escUrl( $this->urls()->login_url()->url() ); ?>"><?php smliser_esc_html_e( 'Cancel and sign in again' ); ?></a></p>
 	<?php endif; ?>
 </div>

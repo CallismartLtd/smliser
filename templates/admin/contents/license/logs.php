@@ -26,7 +26,7 @@ defined( 'SMLISER_ROOT' ) || exit;
             <p>
                 <?php
 					printf(
-						'Logs over %s days are automatically deleted.',
+						smliser__( 'Logs over %s days are automatically deleted.' ),
 						escHtml( $log_duration )
 					)
 
@@ -35,22 +35,22 @@ defined( 'SMLISER_ROOT' ) || exit;
         </div>
         
         <?php if ( empty( $logs ) ) : ?>
-            <?php echo smliser_not_found_container( 'All recent license activities will appear here.' ); ?>
+            <?php echo smliser_not_found_container( smliser__( 'All recent license activities will appear here.' ) ); ?>
         <?php else: ?>
             <table class="smliser-table widefat striped">
                 <tr>
-                    <th>Date</th>
-                    <th>User Agent</th>
-                    <th>Client IP Address</th>
-                    <th>Comment</th>
-                    <th>Duration</th>
-                    <th>Website</th>
+                    <th><?php smliser_esc_html_e( 'Date' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'User Agent' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Client IP Address' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Comment' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Duration' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Website' ); ?></th>
                     <th></th>
 
                 </tr>
                 <?php if ( empty( $logs ) ):?>
                     <tr>
-                        <td colspan="5">All license activation tasks will appear here.</td>
+                        <td colspan="5"><?php smliser_esc_html_e( 'All license activation tasks will appear here.' ); ?></td>
                     </tr> 
                 <?php else: foreach( $logs as $task_data ):?>
                 <tr>
@@ -60,11 +60,11 @@ defined( 'SMLISER_ROOT' ) || exit;
                     <td><?php echo escHtml( $task_data['comment'] ?? 'N/A' );?></td>
                     <td><?php echo escHtml( smliser_readable_duration( $task_data['duration'] ?? 0 ) );?></td>
                     <td><?php echo escHtml( smliser_url_origin( $task_data['website'] ?? 'N/A' ) );?></td>
-                    <td><a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'view', [ 'id' => $task_data['license_id'] ?? 0] )->url() ) ?>">View License</a></td>
+                    <td><a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'view', [ 'id' => $task_data['license_id'] ?? 0] )->url() ) ?>"><?php smliser_esc_html_e( 'View License' ); ?></a></td>
                 </tr>
                 <?php endforeach; endif;?>
             </table>
-            <p class="smliser-table-count"><?php echo intval( count( $logs ) ); echo ' Item' . ( count( $logs ) > 1 ? 's' : '' ); ?></p>
+            <p class="smliser-table-count"><?php echo intval( count( $logs ) ); echo smliser__( ' Item' ) . ( count( $logs ) > 1 ? 's' : '' ); ?></p>
         <?php endif; ?>      
     </div>
 

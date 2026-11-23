@@ -27,14 +27,14 @@ class UserOptionsSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'User Options';
+		return smliser__( 'User Options' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores user preferences.';
+		return smliser__( 'Stores user preferences.' );
 	}
 
 	/**

@@ -56,7 +56,7 @@ class GhostscriptRasterizer implements PdfRasterizerInterface {
 		$gs = Process::find_executable( ...self::PROGRAMS );
 
 		if ( null === $gs ) {
-			return new Exception( 'rasterizer_unavailable', 'Ghostscript is not installed.' );
+			return new Exception( 'rasterizer_unavailable', smliser__( 'Ghostscript is not installed.' ) );
 		}
 
 		$run = Process::run(
@@ -89,7 +89,7 @@ class GhostscriptRasterizer implements PdfRasterizerInterface {
 			++$count;
 		}
 
-		return $count > 0 ? $count : new Exception( 'rasterize_failed', 'Ghostscript wrote no pages.' );
+		return $count > 0 ? $count : new Exception( 'rasterize_failed', smliser__( 'Ghostscript wrote no pages.' ) );
 	}
 
 	/**
@@ -100,11 +100,11 @@ class GhostscriptRasterizer implements PdfRasterizerInterface {
 	 */
 	private static function describe( array $run ) : string {
 		if ( $run['timed_out'] ) {
-			return sprintf( 'Ghostscript took longer than %d seconds.', self::TIMEOUT );
+			return sprintf( smliser__( 'Ghostscript took longer than %d seconds.' ), self::TIMEOUT );
 		}
 
 		$said = trim( $run['error'] . "\n" . $run['output'] );
 
-		return sprintf( 'Ghostscript exited with code %d%s', $run['exit_code'], '' === $said ? '.' : ': ' . substr( (string) preg_replace( '/\s+/', ' ', $said ), 0, 500 ) );
+		return sprintf( smliser__( 'Ghostscript exited with code %d%s' ), $run['exit_code'], '' === $said ? '.' : ': ' . substr( (string) preg_replace( '/\s+/', ' ', $said ), 0, 500 ) );
 	}
 }

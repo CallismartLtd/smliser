@@ -26,6 +26,6 @@ unset( $menu_args['breadcrumbs'][0] );
                 <?php smliser_render_input_field( $field ); ?>
             <?php endforeach; ?>
         </div>
-        <button type="submit" class="smliser-submit-button">Save</button>
+        <button type="submit" class="smliser-submit-button"><?php smliser_esc_html_e( 'Save' ); ?></button>
     </form>
 </div>

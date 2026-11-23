@@ -52,7 +52,7 @@ final class OrganizationsPage implements ClientPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Organizations',
+			'title'      => smliser__( 'Organizations' ),
 			'slug'       => 'organizations',
 			'handler'    => $this,
 			'icon'       => 'ti ti-building-community',

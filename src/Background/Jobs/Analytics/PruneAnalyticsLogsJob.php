@@ -77,13 +77,13 @@ class PruneAnalyticsLogsJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Prune Analytics Logs';
+		return smliser__( 'Prune Analytics Logs' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Deletes raw analytics log entries older than the configured retention period to keep the table lean.';
+		return smliser__( 'Deletes raw analytics log entries older than the configured retention period to keep the table lean.' );
 	}
 }

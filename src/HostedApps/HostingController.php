@@ -65,13 +65,13 @@ class HostingController {
 			$app_type = $request->get( 'app_type', null );
 
 			if ( ! $app_type ) {
-				throw new RequestException( 'invalid_parameter_type', 'The app_type parameter is required.' , [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_parameter_type', smliser__( 'The app_type parameter is required.' ) , [ 'status' => 400 ] );
 			}
 
 			$registry = HostedAppsRegistry::instance();
 
 			if ( ! $registry->is_app_type_registered( $app_type ) ) {
-				throw new RequestException( 'invalid_input', sprintf( 'The app type "%s" is not supported', $app_type ) , [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_input', sprintf( smliser__( 'The app type "%s" is not supported' ), $app_type ) , [ 'status' => 400 ] );
 			}
 			
 			$app_id    = (int) $request->getTyped( 'app_id', 'int', 0 );
@@ -82,7 +82,7 @@ class HostingController {
 			$arg         = $app_id ? $app_id : $app_slug;
 
 			if ( ! $app_class || ! class_exists( $app_class ) ) {
-				throw new RequestException( 'invalid_input', sprintf( 'App class for type "%s" not found.', $app_type ) , [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_input', sprintf( smliser__( 'App class for type "%s" not found.' ), $app_type ) , [ 'status' => 400 ] );
 			}
 			
 			if ( $arg ) {
@@ -92,7 +92,7 @@ class HostingController {
 			}
 
 			if ( ! $app instanceof AbstractHostedApp ) {
-				throw new RequestException( 'invalid_input', 'Sorry there is no app matching the provided slug or ID.' , [ 'status' => 404 ] );
+				throw new RequestException( 'invalid_input', smliser__( 'Sorry there is no app matching the provided slug or ID.' ) , [ 'status' => 404 ] );
 			}
 
 			// The main package is always the latest release: its version only
@@ -104,13 +104,13 @@ class HostingController {
 			$name = $request->get( 'app_name', null );
 			
 			if ( ! $app->exists() && empty( $name ) ) {
-				throw new RequestException( 'invalid_input', 'Application name is required.' , [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_input', smliser__( 'Application name is required.' ) , [ 'status' => 400 ] );
 			}
 
 			$author = $request->get( 'app_author', null );
 
 			if ( ! $app->exists() && empty( $author ) ) {
-				throw new RequestException( 'invalid_input', 'Application author name is required.' , [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_input', smliser__( 'Application author name is required.' ) , [ 'status' => 400 ] );
 			}
 
 			$app_zip_file = $request->get_file( 'app_zip_file' );
@@ -171,7 +171,7 @@ class HostingController {
 				throw new RequestException(
 					'package_required',
 					sprintf(
-						'The version of "%s" changes only with a new package. Upload the ZIP of version %s to change it from %s.',
+						smliser__( 'The version of "%s" changes only with a new package. Upload the ZIP of version %s to change it from %s.' ),
 						$app->get_name(),
 						$app->get_version(),
 						$version_before
@@ -368,34 +368,34 @@ class HostingController {
 		if ( ! $uploaded_json || ! $uploaded_json->is_upload_successful() ) {
 			return new RequestException(
 				'missing_file',
-				'Please upload app.json file using "app_json_file" key in your file parameter.'
+				smliser__( 'Please upload app.json file using "app_json_file" key in your file parameter.' )
 			);
 		}
 
 		if ( ! $uploaded_json->is_uploaded_file() ) {
 			return new RequestException(
 				'missing_file',
-				'app.json files must be correctly uploaded.'
+				smliser__( 'app.json files must be correctly uploaded.' )
 			);
 		}
 
 		if ( 'json' !== $uploaded_json->get_canonical_extension() ) {
 			return new RequestException(
 				'missing_file',
-				'app.json files must be a json file.'
+				smliser__( 'app.json files must be a json file.' )
 			);
 		}
 
 		$contents = $uploaded_json->get_contents();
 
 		if ( false === $contents ) {
-			return new RequestException( 'file_read_error', 'Unable to read uploaded app.json file.' );
+			return new RequestException( 'file_read_error', smliser__( 'Unable to read uploaded app.json file.' ) );
 		}
 
 		$manifest = json_decode( $contents, true );
 
 		if ( ! is_array( $manifest ) ) {
-			return new RequestException( 'invalid_app_json', 'Invalid app.json file. JSON could not be parsed.' );
+			return new RequestException( 'invalid_app_json', smliser__( 'Invalid app.json file. JSON could not be parsed.' ) );
 		}
 
 		return (array) static::sanitize_deep( $manifest );
@@ -425,14 +425,14 @@ class HostingController {
 			if ( ! empty( $missing ) ) {
 				throw new RequestException(
 					'required_param',
-					sprintf( 'Missing required parameters: %s', implode( ', ', $missing ) )
+					sprintf( smliser__( 'Missing required parameters: %s' ), implode( ', ', $missing ) )
 				);
 			}
 
 			unset( $missing );
 			
 			if ( ! HostedApplicationService::app_type_is_allowed( $app_type ) ) {
-				throw new RequestException( 'invalid_input', sprintf( 'The app type "%s" is not supported.', $app_type ) );
+				throw new RequestException( 'invalid_input', sprintf( smliser__( 'The app type "%s" is not supported.' ), $app_type ) );
 			}
 
 			$app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
@@ -446,13 +446,13 @@ class HostingController {
 			$asset_file = $request->get_files( 'asset_file' );
 			
 			if ( ! $asset_file || ! ( $asset_file->count() > 0 ) ) {
-				throw new RequestException( 'invalid_input', 'Upload at least one asset using "asset_file" or "asset_file[]" key in your file parameter name.' );
+				throw new RequestException( 'invalid_input', smliser__( 'Upload at least one asset using "asset_file" or "asset_file[]" key in your file parameter name.' ) );
 			}
 
 			$repo_class = HostedApplicationService::get_app_repository_class( $app_type );
 			
 			if ( ! $repo_class ) {
-				throw new RequestException( 'internal_server_error', 'Unable to resolve repository class.' );
+				throw new RequestException( 'internal_server_error', smliser__( 'Unable to resolve repository class.' ) );
 			}
 			
 			if ( $request->isPost() ) {
@@ -513,7 +513,7 @@ class HostingController {
 			if ( ! empty( $missing ) ) {
 				throw new RequestException(
 					'required_param',
-					sprintf( 'Missing required parameters: %s', implode( ', ', $missing ) ),
+					sprintf( smliser__( 'Missing required parameters: %s' ), implode( ', ', $missing ) ),
 					['status' => 400]
 				);
 			}
@@ -521,7 +521,7 @@ class HostingController {
 			unset( $missing );
 
 			if ( ! HostedApplicationService::app_type_is_allowed( $app_type ) ) {
-				throw new RequestException( 'invalid_input', sprintf( 'The app type "%s" is not supported', $app_type ), ['status' => 400] );
+				throw new RequestException( 'invalid_input', sprintf( smliser__( 'The app type "%s" is not supported' ), $app_type ), ['status' => 400] );
 			}
 
 			$app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
@@ -535,7 +535,7 @@ class HostingController {
 			$repo_class = HostedApplicationService::get_app_repository_class( $app_type );
 			
 			if ( ! $repo_class ) {
-				throw new RequestException( 'internal_server_error', 'Unable to resolve repository class.', ['status' => 500] );
+				throw new RequestException( 'internal_server_error', smliser__( 'Unable to resolve repository class.' ), ['status' => 500] );
 			}
 
 			$result = $repo_class->delete_asset( $app_slug, $asset_name );
@@ -551,7 +551,7 @@ class HostingController {
 			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			return Response::json(
-				[ 'success' => true, 'data' => [ 'message' => 'Asset deleted successfully.' ] ],
+				[ 'success' => true, 'data' => [ 'message' => smliser__( 'Asset deleted successfully.' ) ] ],
 				200
 			);
 
@@ -582,7 +582,7 @@ class HostingController {
 			$app      = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 			if ( ! $app ) {
-				throw new RequestException( 'resource_not_found', sprintf( 'The %s with slug %s was not found.', $app_type, $app_slug ), [ 'status' => 404 ] );
+				throw new RequestException( 'resource_not_found', sprintf( smliser__( 'The %s with slug %s was not found.' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 			}
 
 			static::check_app_ownership( $app );
@@ -591,7 +591,7 @@ class HostingController {
 			$repo_class = $registry->get_app_type_directory_class( $app_type );
 
 			if ( ! $repo_class ) {
-				throw new RequestException( 'internal_server_error', 'Unable to resolve repository class.', [ 'status' => 500 ] );
+				throw new RequestException( 'internal_server_error', smliser__( 'Unable to resolve repository class.' ), [ 'status' => 500 ] );
 			}
 
 			$current_filename = (string) $request->get( 'artifact_filename', '' );
@@ -599,14 +599,14 @@ class HostingController {
 			if ( $is_edit && '' === $current_filename ) {
 				throw new RequestException(
 					'required_param',
-					'The artifact filename is required.'
+					smliser__( 'The artifact filename is required.' )
 				);
 			}
 			
 			$canonical_filename = (string) $request->get( 'canonical_filename', '' );
 
 			if ( ! $canonical_filename ) {
-				throw new RequestException( 'required_param', 'The canonical filename for this artifact is required.' );
+				throw new RequestException( 'required_param', smliser__( 'The canonical filename for this artifact is required.' ) );
 			}
 
 			// Redundant is better.
@@ -614,7 +614,7 @@ class HostingController {
 				|| str_contains( $canonical_filename, '/' ) || str_contains( $canonical_filename, '\\' );
 
 			if ( $contains_dir_seps ) {
-				throw new RequestException( 'invalid_input', 'The artifact name must not contain directory separators.' );
+				throw new RequestException( 'invalid_input', smliser__( 'The artifact name must not contain directory separators.' ) );
 			}
 
 			unset( $contains_dir_seps );
@@ -625,14 +625,14 @@ class HostingController {
 			if ( '' === $canonical_filename ) {
 				throw new RequestException(
 					'invalid_input',
-					'The artifact filename is invalid.'
+					smliser__( 'The artifact filename is invalid.' )
 				);
 			}
 
 			if ( null === $artifact_file ) {
 
 				if ( ! $is_edit ) {
-					throw new RequestException( 'required_param', 'Please upload the artifact file using "artifact_file" as file parameter key.' );
+					throw new RequestException( 'required_param', smliser__( 'Please upload the artifact file using "artifact_file" as file parameter key.' ) );
 				}
 
 				$response_data = $repo_class->rename_artifact( $app->get_slug(), $current_filename, $canonical_filename );
@@ -691,7 +691,7 @@ class HostingController {
 				throw new RequestException(
 					'resource_not_found',
 					sprintf(
-						'The %s with slug "%s" was not found.',
+						smliser__( 'The %s with slug "%s" was not found.' ),
 						$app_type,
 						$app_slug
 					),
@@ -704,7 +704,7 @@ class HostingController {
 			if ( '' === $artifact_filename ) {
 				throw new RequestException(
 					'required_param',
-					'The artifact filename is required.'
+					smliser__( 'The artifact filename is required.' )
 				);
 			}
 
@@ -714,7 +714,7 @@ class HostingController {
 			) {
 				throw new RequestException(
 					'invalid_input',
-					'The artifact filename must not contain directory separators.'
+					smliser__( 'The artifact filename must not contain directory separators.' )
 				);
 			}
 
@@ -724,7 +724,7 @@ class HostingController {
 			if ( ! $repo_class ) {
 				throw new RequestException(
 					'internal_server_error',
-					'Unable to resolve repository class.',
+					smliser__( 'Unable to resolve repository class.' ),
 					[ 'status' => 500 ]
 				);
 			}
@@ -741,7 +741,7 @@ class HostingController {
 
 			$response_data = [
 				'success' => true,
-				'message' => 'Deleted successfully',
+				'message' => smliser__( 'Deleted successfully' ),
 				'data'    => [
 					'filename' => $artifact_filename,
 					'deleted'  => true,
@@ -771,7 +771,7 @@ class HostingController {
 			$app      = $app ?? HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 			if ( ! $app ) {
-				throw new RequestException( 'resource_not_found', sprintf( 'The %s with slug %s was not found', $app_type, $app_slug ), [ 'status' => 404 ] );
+				throw new RequestException( 'resource_not_found', sprintf( smliser__( 'The %s with slug %s was not found' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 			}
 
 			static::check_app_ownership( $app );
@@ -780,13 +780,13 @@ class HostingController {
 			$known_statuses = array_keys( $app->get_statuses() );
 
 			if ( ! in_array( $status, $known_statuses, true ) ) {
-				throw new RequestException( 'invalid_input', sprintf( 'The status "%s" is not valid for the %s with slug "%s"', $status, $app_type, $app_slug ), [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_input', sprintf( smliser__( 'The status "%s" is not valid for the %s with slug "%s"' ), $status, $app_type, $app_slug ), [ 'status' => 400 ] );
 			}
 
 			$old_status = $app->get_status();
 
 			if ( $old_status === $status ) {
-				throw new RequestException( 'precondition_failed', sprintf( 'Status is already "%s".', $status ) );
+				throw new RequestException( 'precondition_failed', sprintf( smliser__( 'Status is already "%s".' ), $status ) );
 			}
 
 			// A suspension is the platform's decision: only a system administrator
@@ -797,8 +797,8 @@ class HostingController {
 				throw new RequestException(
 					'unauthorized_scope',
 					$suspension === $old_status
-						? sprintf( 'This %s is suspended. Only a system administrator can lift the suspension.', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) )
-						: 'Only a system administrator can suspend an app.',
+						? sprintf( smliser__( 'This %s is suspended. Only a system administrator can lift the suspension.' ), HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) )
+						: smliser__( 'Only a system administrator can suspend an app.' ),
 					[ 'status' => 403 ]
 				);
 			}
@@ -816,7 +816,7 @@ class HostingController {
 				$repo_class = HostedApplicationService::get_app_repository_class( $app_type );
 
 				if ( ! $repo_class ) {
-					throw new RequestException( 'internal_server_error', 'Unable to resolve repository class.' );
+					throw new RequestException( 'internal_server_error', smliser__( 'Unable to resolve repository class.' ) );
 				}
 
 				$moved = $to_trash
@@ -827,7 +827,7 @@ class HostingController {
 				if ( $moved instanceof Exception && StorageException::NOT_FOUND !== $moved->get_error_code() ) {
 					throw new RequestException(
 						'status_change_failed',
-						sprintf( 'Failed to %s the files of the %s "%s": %s', $to_trash ? 'trash' : 'restore', $app_type, $app_slug, $moved->get_error_message() ),
+						sprintf( smliser__( 'Failed to %s the files of the %s "%s": %s' ), $to_trash ? 'trash' : 'restore', $app_type, $app_slug, $moved->get_error_message() ),
 						[ 'status' => StorageException::ALREADY_EXISTS === $moved->get_error_code() ? 409 : 500 ]
 					);
 				}
@@ -843,7 +843,7 @@ class HostingController {
 						: $repo_class->trash( $app->get_slug() );
 				}
 
-				throw new RequestException( 'status_change_failed', sprintf( 'Failed to change status for the %s from %s to %s, error: %s', $app_type, $old_status, $status, $saved->get_error_message() ), [ 'status' => 500 ] );
+				throw new RequestException( 'status_change_failed', sprintf( smliser__( 'Failed to change status for the %s from %s to %s, error: %s' ), $app_type, $old_status, $status, $saved->get_error_message() ), [ 'status' => 500 ] );
 			}
 
 			// Dispatch status change notification — skip trash transitions
@@ -861,7 +861,7 @@ class HostingController {
 			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			$data = [
-				'message'      => sprintf( '%s status changed from %s to %s', HostedAppsRegistry::instance()->get_app_type_label( $app_type ), $old_status, $status ),
+				'message'      => sprintf( smliser__( '%s status changed from %s to %s' ), HostedAppsRegistry::instance()->get_app_type_label( $app_type ), $old_status, $status ),
 				'redirect_url' => $this->urlmanager->admin_repo_url( 'view', [ 'type' => $app->get_type(), 'app_id' => $app->get_id() ] )
 			];
 
@@ -891,7 +891,7 @@ class HostingController {
 			$app      = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 			if ( ! $app ) {
-				throw new RequestException( 'resource_not_found', 'This app does not exist.', [ 'status' => 404 ] );
+				throw new RequestException( 'resource_not_found', smliser__( 'This app does not exist.' ), [ 'status' => 404 ] );
 			}
 
 			$this->check_app_ownership( $app );
@@ -907,7 +907,7 @@ class HostingController {
 
 			$this->cache->group( CacheGroup::DATA )->invalidate();
 
-			return Response::json( [ 'success' => true, 'data' => [ 'message' => sprintf( '%s is deleted for good.', $name ) ] ], 200 );
+			return Response::json( [ 'success' => true, 'data' => [ 'message' => sprintf( smliser__( '%s is deleted for good.' ), $name ) ] ], 200 );
 
 		} catch ( RequestException $e ) {
 			return Response::error( $e )
@@ -936,13 +936,13 @@ class HostingController {
 			$new_slug = trim( (string) $request->get( 'new_slug', '' ) );
 
 			if ( '' === $new_slug ) {
-				throw new RequestException( 'invalid_input', 'The new slug is required.', [ 'status' => 400 ] );
+				throw new RequestException( 'invalid_input', smliser__( 'The new slug is required.' ), [ 'status' => 400 ] );
 			}
 
 			$app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 			if ( ! $app ) {
-				throw new RequestException( 'resource_not_found', sprintf( 'The %s with slug %s was not found', $app_type, $app_slug ), [ 'status' => 404 ] );
+				throw new RequestException( 'resource_not_found', sprintf( smliser__( 'The %s with slug %s was not found' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 			}
 
 			$renamed = HostedApplicationService::rename_app_slug( $app, $new_slug );
@@ -954,7 +954,7 @@ class HostingController {
 			$this->cache->group( CacheGroup::DATA )->invalidate();
 
 			$data = [
-				'message'      => sprintf( '%s renamed from "%s" to "%s".', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ), $app_slug, $new_slug ),
+				'message'      => sprintf( smliser__( '%s renamed from "%s" to "%s".' ), HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ), $app_slug, $new_slug ),
 				'slug'         => $new_slug,
 				'redirect_url' => $this->urlmanager->admin_repo_url( 'view', [ 'type' => $app->get_type(), 'app_id' => $app->get_id() ] )
 			];

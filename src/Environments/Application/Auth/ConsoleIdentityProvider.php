@@ -96,7 +96,7 @@ class ConsoleIdentityProvider implements IdentityProviderInterface {
 			->set_is_canonical( $default_role['is_canonical'] );
 
 		$actor = ( new ServiceAccount() )
-			->set_display_name( 'System Admin (console)' )
+			->set_display_name( smliser__( 'System Admin (console)' ) )
 			->set_created_at( new DateTimeImmutable( 'now', new DateTimeZone( 'UTC' ) ) )
 			->set_id( 0 )
 			->set_status( ServiceAccount::STATUS_ACTIVE );

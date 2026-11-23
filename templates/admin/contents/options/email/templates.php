@@ -43,7 +43,7 @@ $group_map = [
 	'payment_received'             => 'Monetization',
 	'payment_failed'               => 'Monetization',
 	'subscription_cancelled'       => 'Monetization',
-	'bulk_message'                 => 'Messaging',
+	'bulk_message'                 => smliser__( 'Messaging' ),
 	'test_email'                   => 'System',
 	'system_alert'                 => 'System',
 ];
@@ -66,12 +66,12 @@ $group_colors = [
     <div class="smliser-template-filter" style="margin:16px 20px 0;">
         <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
             <i style="font-size:13px;font-weight:600;color:#64748b;margin-right:4px;">
-                Filter:
+                <?php smliser_esc_html_e( 'Filter:' ); ?>
             </i>
             <button type="button"
                     class="smliser-filter-btn smliser-filter-btn--active"
                     data-group="all">
-                All <i class="smliser-filter-count"><?php echo count( $templates ); ?></i>
+                <?php smliser_esc_html_e( 'All' ); ?> <i class="smliser-filter-count"><?php echo count( $templates ); ?></i>
             </button>
             <?php
 			$groups = array_unique( array_values( $group_map ) );
@@ -97,10 +97,10 @@ foreach ( $groups as $group ) :
         <table class="smliser-table widefat striped" id="smliser-email-templates-table">
             <thead>
                 <tr>
-                    <th style="width:30%;">Template</th>
-                    <th>Description</th>
-                    <th style="width:110px;">Status</th>
-                    <th style="width:100px;">Actions</th>
+                    <th style="width:30%;"><?php smliser_esc_html_e( 'Template' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Description' ); ?></th>
+                    <th style="width:110px;"><?php smliser_esc_html_e( 'Status' ); ?></th>
+                    <th style="width:100px;"><?php smliser_esc_html_e( 'Actions' ); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -133,7 +133,7 @@ foreach ( $groups as $group ) :
                                 <i style="display:inline-block;font-size:11px;font-weight:700;
                                              padding:2px 8px;border-radius:9999px;margin-left:4px;
                                              background-color:#fdf4ff;color:#9333ea;">
-                                    Custom
+                                    <?php smliser_esc_html_e( 'Custom' ); ?>
                                 </i>
                             <?php endif; ?>
                         </td>
@@ -152,7 +152,7 @@ foreach ( $groups as $group ) :
                                              color:#16a34a;border:1px solid #bbf7d0;">
                                     <i style="width:6px;height:6px;border-radius:50%;
                                                  background:#16a34a;display:inline-block;"></i>
-                                    Enabled
+                                    <?php smliser_esc_html_e( 'Enabled' ); ?>
                                 </i>
                             <?php else : ?>
                                 <i style="display:inline-flex;align-items:center;gap:5px;
@@ -161,7 +161,7 @@ foreach ( $groups as $group ) :
                                              color:#94a3b8;border:1px solid #e2e8f0;">
                                     <i style="width:6px;height:6px;border-radius:50%;
                                                  background:#94a3b8;display:inline-block;"></i>
-                                    Disabled
+                                    <?php smliser_esc_html_e( 'Disabled' ); ?>
                                 </i>
                             <?php endif; ?>
                         </td>
@@ -174,7 +174,7 @@ foreach ( $groups as $group ) :
                                         class="smliser-template-toggle"
                                         data-key="<?php echo escAttr( $key ); ?>"
                                         data-enabled="<?php echo $entry['is_enabled'] ? '1' : '0'; ?>"
-                                        title="<?php echo $entry['is_enabled'] ? 'Disable this template' : 'Enable this template'; ?>"
+                                        title="<?php echo $entry['is_enabled'] ? smliser__( 'Disable this template' ) : smliser__( 'Enable this template' ); ?>"
                                         style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;
                                             font-size:12px;font-weight:600;cursor:pointer;border-radius:6px;
                                             border:1px solid <?php echo $entry['is_enabled'] ? '#fecaca' : '#bbf7d0'; ?>;
@@ -182,14 +182,14 @@ foreach ( $groups as $group ) :
                                             color:<?php echo $entry['is_enabled'] ? '#991b1b' : '#166534'; ?>;">
                                     <i class="ti <?php echo $entry['is_enabled'] ? 'ti-eye-off' : 'ti-eye'; ?>"
                                         style="font-size:14px;width:14px;height:14px;margin-top:2px;"></i>
-                                    <?php echo $entry['is_enabled'] ? 'Disable' : 'Enable'; ?>
+                                    <?php echo $entry['is_enabled'] ? smliser__( 'Disable' ) : smliser__( 'Enable' ); ?>
                                 </button>
 
                                 <a href="<?php echo escUrl( $detail_url->add_query_param( 'noheader', true )->url() ); ?>"
                                 class="button smliser-nav-btn"
-                                title="Preview and configure this template">
+                                title="<?php smliser_esc_attr_e( 'Preview and configure this template' ); ?>">
                                     <i class="ti ti-settings"></i>
-                                    Manage
+                                    <?php smliser_esc_html_e( 'Manage' ); ?>
                                 </a>
 
                             </div>

@@ -150,7 +150,7 @@ class AppUploader {
 
         clearBtn.addEventListener( 'click', () => {
             fileInput.value     = '';
-            fileInfo.innerHTML  = '<span>No file selected.</span>';
+            fileInfo.innerHTML  = '<span>' + smliserI18n.esc( smliserI18n.__( 'No file selected.' ) ) + '</span>';
             clearBtn.classList.add( 'smliser-hide' );
             uploadBtn.classList.remove( 'smliser-hide' );
         });
@@ -374,7 +374,7 @@ class AppUploader {
         const file  = input.files ? input.files[0] : null;
     
         if ( ! file ) {
-            fileInfo.innerHTML = '<p class="smliser-uploaded-file-info__empty">No file selected.</p>';
+            fileInfo.innerHTML = '<p class="smliser-uploaded-file-info__empty">' + smliserI18n.esc( smliserI18n.__( 'No file selected.' ) ) + '</p>';
             clearBtn.classList.add( 'smliser-hide' );
             uploadBtn.classList.add( 'smliser-hide' );
             return;
@@ -401,8 +401,8 @@ class AppUploader {
             : 'smliser-uploaded-file-info__status--success';
     
         const statusTitle = exceedsLimit
-            ? `File size exceeds the maximum upload limit of ${ maxUploadMB }`
-            : 'File size is within the acceptable limit';
+            ? smliserI18n.sprintf( smliserI18n.__( 'File size exceeds the maximum upload limit of %s' ), maxUploadMB )
+            : smliserI18n.__( 'File size is within the acceptable limit' );
     
         fileInfo.innerHTML = `
             <div class="smliser-uploaded-file-info__card">
@@ -427,7 +427,7 @@ class AppUploader {
                 </div>
                 <span class="smliser-uploaded-file-info__status ${ statusClass }" title="${ statusTitle }">
                     <i class="ti ${ statusIcon }" aria-hidden="true"></i>
-                    <span>${ exceedsLimit ? 'Exceeds limit' : 'Valid' }</span>
+                    <span>${ exceedsLimit ? smliserI18n.__( 'Exceeds limit' ) : smliserI18n.__( 'Valid' ) }</span>
                 </span>
             </div>
         `;
@@ -437,7 +437,7 @@ class AppUploader {
     
         if ( exceedsLimit ) {
             uploadBtn.classList.remove( 'smliser-hide' );
-            SmliserToast.show( 'The uploaded file exceeds the max_upload_size; this server cannot process this request.', 10000 );
+            SmliserToast.show( smliserI18n.__( 'The uploaded file exceeds the max_upload_size; this server cannot process this request.' ), 10000 );
         }
     }
 
@@ -452,7 +452,7 @@ class AppUploader {
 
         if ( !app_id && fileInput.files.length === 0 ) {
             e.preventDefault();
-            SmliserToast.show( 'The application package (.zip) is required.', 5000 );
+            SmliserToast.show( smliserI18n.__( 'The application package (.zip) is required.' ), 5000 );
         }
     }
 
@@ -466,7 +466,7 @@ class AppUploader {
             if ( e.dataTransfer.types.includes( 'Files' ) ) {
                 e.dataTransfer.dropEffect = 'copy';
                 dropZone.classList.add( 'active' );
-                fileInfo.innerHTML = 'Drop file here';
+                fileInfo.innerHTML = smliserI18n.__( 'Drop file here' );
             } else {
                 e.dataTransfer.dropEffect = 'none';
                 fileInfo.innerHTML = originalText;
@@ -539,7 +539,7 @@ class AppUploader {
                 throw new Error( response.error.message );
             }
 
-            SmliserToast.show( response?.data?.message ?? 'Saved', 6000 );
+            SmliserToast.show( response?.data?.message ?? smliserI18n.__( 'Saved' ), 6000 );
 
             setTimeout( () => {
                 window.location.href = response.data.redirect_url;
@@ -576,56 +576,55 @@ class AppUploader {
         const galleryButton = hasWpMedia ? `
                     <button type="button" class="button smliser-nav-btn" id="upload-from-wp" data-action="uploadFromWpGallery">
                         <span class="ti ti-files"></span>
-                        Upload from Gallery
+                        ${ smliserI18n.esc( smliserI18n.__( 'Upload from Gallery' ) ) }
                     </button>` : '';
 
         const body      = document.createElement( 'div' );
         body.className  = 'app-asset-uploader';
         body.innerHTML  = `
             <em class="app-asset-uploader_description">
-                Upload from ${ sources }.
-                Multiple files are supported where the asset limit allows.
+                ${ smliserI18n.esc( smliserI18n.__( 'Upload from' ) ) } ${ sources }${ smliserI18n.esc( smliserI18n.__( '. Multiple files are supported where the asset limit allows.' ) ) }
             </em>
 
             <div class="app-asset-uploader-body">
                 <div class="app-asset-uploader-body_uploaded-asset">
                     <div class="app-asset-uploader-placeholder">
                         <span class="ti ti-image-in-picture"></span>
-                        <p class="app-asset-uploader-placeholder_hint">No image selected</p>
+                        <p class="app-asset-uploader-placeholder_hint">${ smliserI18n.esc( smliserI18n.__( 'No image selected' ) ) }</p>
                     </div>
 
                     <div class="app-asset-uploader-uploaded-image">
-                        <span class="ti ti-minus clear-uploaded" title="Clear selected image" data-action="resetModal" role="button" aria-label="Clear selected image" tabindex="0"></span>
-                        <img src="" alt="Uploaded image preview" id="currentImage">
+                        <span class="ti ti-minus clear-uploaded" title="${ smliserI18n.esc( smliserI18n.__( 'Clear selected image' ) ) }" data-action="resetModal" role="button" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Clear selected image' ) ) }" tabindex="0"></span>
+                        <img src="" alt="${ smliserI18n.esc( smliserI18n.__( 'Uploaded image preview' ) ) }" id="currentImage">
                     </div>
 
                     <button type="button" class="button smliser-nav-btn" id="upload-image" data-action="uploadToRepository">
                         <span class="ti ti-cloud-upload"></span>
-                        Upload to repository
+                        ${ smliserI18n.esc( smliserI18n.__( 'Upload to repository' ) ) }
                     </button>
                 </div>
 
                 <div class="smliser-multi-preview"></div>
                 <div class="smliser-spinner modal"></div>
 
-                <input type="url" id="app-uploader-asset-url-input" placeholder="Enter image URL" aria-label="Image URL">
-                <input type="file" id="app-uploader-asset-file-input" accept="image/*" class="smliser-hide" aria-label="Select image file(s)">
+                <input type="url" id="app-uploader-asset-url-input" placeholder="${ smliserI18n.esc( smliserI18n.__( 'Enter image URL' ) ) }" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Image URL' ) ) }">
+                <input type="file" id="app-uploader-asset-file-input" accept="image/*" class="smliser-hide" aria-label="${ smliserI18n.esc( smliserI18n.__( 'Select image file(s)' ) ) }">
 
                 <div class="app-asset-uploader-buttons-container">
                     <button type="button" class="button smliser-nav-btn" id="upload-from-device" data-action="uploadFromDevice">
                         <span class="ti ti-folder-open"></span>
-                        Upload from device
+                        ${ smliserI18n.esc( smliserI18n.__( 'Upload from device' ) ) }
                     </button>${ galleryButton }
                     <button type="button" class="button smliser-nav-btn" id="upload-from-url" data-action="uploadFromUrl">
                         <span class="ti ti-link"></span>
-                        Upload from URL
+                        ${ smliserI18n.esc( smliserI18n.__( 'Upload from URL' ) ) }
                     </button>
                 </div>
             </div>
         `;
 
         this.assetModal = new SmliserModal({
-            title       : 'Asset Uploader',
+            title       : smliserI18n.__( 'Asset Uploader' ),
             body        : body,
             customClass : 'app-asset-uploader-modal',
         });
@@ -785,8 +784,8 @@ class AppUploader {
         if ( ! this._hasWpMedia() ) return;
 
         const frame = wp.media({
-            title   : 'Select an Image',
-            button  : { text: 'Use this image' },
+            title   : smliserI18n.__( 'Select an Image' ),
+            button  : { text: smliserI18n.__( 'Use this image' ) },
             library : { type: 'image' },
             multiple: false,
         });
@@ -795,7 +794,7 @@ class AppUploader {
             const attachment = frame.state().get( 'selection' ).first().toJSON();
 
             if ( ! attachment?.url ) {
-                SmliserToast.show( 'No image selected', 5000 );
+                SmliserToast.show( smliserI18n.__( 'No image selected' ), 5000 );
                 return;
             }
 
@@ -824,7 +823,7 @@ class AppUploader {
         try {
             new URL( urlValue );
         } catch {
-            this.imageUrlInput.setCustomValidity( 'Please enter a valid URL.' );
+            this.imageUrlInput.setCustomValidity( smliserI18n.__( 'Please enter a valid URL.' ) );
             this.imageUrlInput.reportValidity();
             return;
         }
@@ -913,7 +912,7 @@ class AppUploader {
 
         if ( needsPng && ! file.type.includes( 'image/png' ) ) {
             const converted = await this._convertToPng( file );
-            SmliserToast.show( `"${ file.name }" has been converted to PNG.`, 4000 );
+            SmliserToast.show( smliserI18n.sprintf( smliserI18n.__( '"%s" has been converted to PNG.' ), file.name ), 4000 );
             return converted;
         }
 
@@ -951,7 +950,7 @@ class AppUploader {
             if ( ! response.ok ) {
                 const json          = await response.json();
                 const errorMessage  = json?.data?.message ?? json?.error?.message ?? response.statusText;
-                throw new Error( `Image fetch failed: ${ errorMessage }` );
+                throw new Error( smliserI18n.sprintf( smliserI18n.__( 'Image fetch failed: %s' ), errorMessage ) );
             }
 
             const blob      = await response.blob();
@@ -963,7 +962,7 @@ class AppUploader {
 
             if ( needsPng && ! contentType.includes( 'image/png' ) ) {
                 const converted = await this._convertToPng( blob, fileName );
-                SmliserToast.show( 'Image has been converted to PNG.', 5000 );
+                SmliserToast.show( smliserI18n.__( 'Image has been converted to PNG.' ), 5000 );
                 return converted;
             }
 
@@ -1046,12 +1045,12 @@ class AppUploader {
 
         const thumb = document.createElement( 'div' );
         thumb.className = 'smliser-multi-preview_thumb';
-        thumb.title = 'Click to preview';
+        thumb.title = smliserI18n.__( 'Click to preview' );
 
         thumb.innerHTML = `
             <img src="${ objectUrl }" alt="${ file.name }" loading="lazy">
             <span class="smliser-multi-preview_name">${ file.name }</span>
-            <button type="button" class="smliser-multi-preview_remove" title="Remove this file"><i class="ti ti-x"></i></button>
+            <button type="button" class="smliser-multi-preview_remove" title="${ smliserI18n.esc( smliserI18n.__( 'Remove this file' ) ) }"><i class="ti ti-x"></i></button>
         `;
 
         // Release the object URL once the thumbnail has loaded.
@@ -1131,7 +1130,7 @@ class AppUploader {
      */
     async uploadToRepository( config, btn ) {
         if ( ! this.currentFiles.length ) {
-            SmliserToast.show( 'Please select at least one image.', 3000 );
+            SmliserToast.show( smliserI18n.__( 'Please select at least one image.' ), 3000 );
             return;
         }
 
@@ -1171,7 +1170,7 @@ class AppUploader {
 
 
             if ( ! response.success ) {
-                throw new Error( response?.result?.message ?? 'Upload request failed.' );
+                throw new Error( response?.result?.message ?? smliserI18n.__( 'Upload request failed.' ) );
             }
 
             this._processBatchResult( response.result, container );
@@ -1231,7 +1230,7 @@ class AppUploader {
 
         if ( uploadCount > 0 && failCount > 0 ) {
             // Partial success — close but leave the user informed via the notices above
-            SmliserToast.show( `${ uploadCount } uploaded, ${ failCount } failed. See details above.`, 15000 );
+            SmliserToast.show( smliserI18n.sprintf( smliserI18n.__( '%1$s uploaded, %2$s failed. See details above.' ), uploadCount, failCount ), 15000 );
         }
 
         if ( 'edit' === context ) {
@@ -1272,13 +1271,13 @@ class AppUploader {
                     class="ti ti-edit edit-image"
                     data-config="${ encodeURIComponent( JSON.stringify( configJson ) ) }"
                     data-action="openModal"
-                    title="Edit"
+                    title="${ smliserI18n.esc( smliserI18n.__( 'Edit' ) ) }"
                 ></span>
                 <span
                     class="ti ti-trash delete-image"
                     data-config="${ encodeURIComponent( JSON.stringify( configJson ) ) }"
                     data-action="deleteImage"
-                    title="Delete"
+                    title="${ smliserI18n.esc( smliserI18n.__( 'Delete' ) ) }"
                 ></span>
             </div>
         `;
@@ -1295,7 +1294,7 @@ class AppUploader {
      * Delete an existing asset image.
      */
     async _deleteImage( config, btn ) {
-        const confirmed = await SmliserModal.confirm( `Are you sure you want to delete ${ config.asset_name ?? 'this image' }? This action cannot be reversed.` );
+        const confirmed = await SmliserModal.confirm( smliserI18n.sprintf( smliserI18n.__( 'Are you sure you want to delete %s? This action cannot be reversed.' ), config.asset_name ?? 'this image' ) );
         if ( ! confirmed ) return;
 
         const payLoad = new FormData();
@@ -1315,7 +1314,7 @@ class AppUploader {
             });
 
             if ( ! response.success ) {
-                throw new Error( response.data?.message ?? `Unable to delete ${ config.asset_name }.` );
+                throw new Error( response.data?.message ?? smliserI18n.sprintf( smliserI18n.__( 'Unable to delete %s.' ), config.asset_name ) );
             }
 
             SmliserToast.show( response.data?.message, 3000 );
@@ -1364,7 +1363,7 @@ class AppUploader {
                     URL.revokeObjectURL( url );
 
                     if ( ! pngBlob ) {
-                        reject( new Error( 'Canvas PNG export failed.' ) );
+                        reject( new Error( smliserI18n.__( 'Canvas PNG export failed.' ) ) );
                         return;
                     }
 
@@ -1374,7 +1373,7 @@ class AppUploader {
 
             img.onerror = () => {
                 URL.revokeObjectURL( url );
-                reject( new Error( 'Invalid image file.' ) );
+                reject( new Error( smliserI18n.__( 'Invalid image file.' ) ) );
             };
 
             img.src = url;
@@ -1444,8 +1443,8 @@ class AppUploader {
         textareaParent.parentElement.appendChild( editorFrame );        
 
         this.editor = new SmliserJsonEditor( editorFrame, {
-            title: 'APP JSON Editor',
-            description: textarea.dataset.editorDescription ?? "Edit your application's JSON file (app.json). File contents will be served in the REST API response.",
+            title: smliserI18n.__( 'APP JSON Editor' ),
+            description: textarea.dataset.editorDescription ?? smliserI18n.__( 'Edit your application\'s JSON file (app.json). File contents will be served in the REST API response.' ),
             data: jsonData,
             autoFocus: false,
             theme: document.documentElement.getAttribute( 'data-theme' )
@@ -1508,7 +1507,7 @@ class AppUploader {
         const deleteBtn = clickedBtn.closest( AppUploader.SELECTORS.ARTIFACT_DELETE_BTN );
         const filename  = config?.filename ?? 'artifact';        
 
-        if ( deleteBtn && await SmliserModal.confirm( `Are you sure to delete  ${filename}?` ) ) {
+        if ( deleteBtn && await SmliserModal.confirm( smliserI18n.sprintf( smliserI18n.__( 'Are you sure to delete  %s?' ), filename ) ) ) {
             config.artifact_filename    = config?.filename ?? null;
             this._deleteArtifact( config );
         }
@@ -1529,7 +1528,7 @@ class AppUploader {
             modalBody.id        = Date.now().toString();
             modalBody.innerHTML = `
                 <label for="artifact-name" class="smliser-form-label-row">
-                    <span class="smliser-form-label">Artifact File Name: <i class="smliser-form-description ti ti-question-mark" title="The artifact is saved under this exact name, extension included (e.g. &quot;my-app-1.0.0.zip.sha256&quot;). Leave it empty to use the uploaded file's name. Unsafe characters are sanitized, e.g. &quot;my artifact.zip&quot; becomes &quot;my-artifact.zip&quot;."></i></span>
+                    <span class="smliser-form-label">${ smliserI18n.esc( smliserI18n.__( 'Artifact File Name:' ) ) } <i class="smliser-form-description ti ti-question-mark" title="${ smliserI18n.esc( smliserI18n.__( 'The artifact is saved under this exact name, extension included (e.g. "my-app-1.0.0.zip.sha256"). Leave it empty to use the uploaded file\'s name. Unsafe characters are sanitized, e.g. "my artifact.zip" becomes "my-artifact.zip".' ) ) }"></i></span>
                     <input type="text" class="smliser-form-input" style="font-size: 15px;" id="artifact-name" name="canonical_filename" autocomplete="off" required>
                     
                 </label>
@@ -1538,19 +1537,19 @@ class AppUploader {
                 <div class="smliser-form-file-row">
                     <input type="file" class="smliser-hide artifact-file-input" id="artifact-file" name="artifact_file">
                     <div class="smliser-file-info">
-                        <span>No file selected.</span>
+                        <span>${ smliserI18n.esc( smliserI18n.__( 'No file selected.' ) ) }</span>
                     </div>
-                    <button type="button" class="smliser-upload-btn button">Drag over or click to upload file</button>
-                    <button type="button" class="smliser-file-remove button smliser-hide"><span class="ti ti-x" title="remove file"></span> Clear</button>
+                    <button type="button" class="smliser-upload-btn button">${ smliserI18n.esc( smliserI18n.__( 'Drag over or click to upload file' ) ) }</button>
+                    <button type="button" class="smliser-file-remove button smliser-hide"><span class="ti ti-x" title="${ smliserI18n.esc( smliserI18n.__( 'remove file' ) ) }"></span> ${ smliserI18n.esc( smliserI18n.__( 'Clear' ) ) }</button>
                 </div>
-                <em>Max Upload Size: ${smliser_var.uploads.max_upload_size_readable}</em>`;
+                <em>${ smliserI18n.esc( smliserI18n.__( 'Max Upload Size:' ) ) } ${smliser_var.uploads.max_upload_size_readable}</em>`;
 
             const modalFooter       = document.createElement( 'div' );
             modalFooter.className   = 'smliser-button-container';
             const saveButton        = document.createElement( 'button' );
             saveButton.type         = 'submit';
             saveButton.className    = 'smliser-save-btn button';
-            saveButton.textContent  = 'Save';
+            saveButton.textContent  = smliserI18n.__( 'Save' );
             saveButton.setAttribute( 'form', modalBody.id );
 
             modalFooter.appendChild( saveButton );
@@ -1566,7 +1565,7 @@ class AppUploader {
             this.initArtifactFileUploader();
         }
 
-        this.artifactModal.setHeaderTitle( config?.isNew ? 'Add New Artifact' : 'Edit Artifact' );
+        this.artifactModal.setHeaderTitle( config?.isNew ? smliserI18n.__( 'Add New Artifact' ) : smliserI18n.__( 'Edit Artifact' ) );
         this.artifactModal.getBody( '#artifact-name' ).value    = config?.filename ?? '';
         this.artifactModal.getBody( 'textarea' ).value          = StringUtils.JSONstringify( config, 2 );
         this.artifactModal.open();
@@ -1600,7 +1599,7 @@ class AppUploader {
 
         clearBtn.addEventListener( 'click', () => {
             this.artifactFileInput.value    = '';
-            fileInfo.innerHTML              = '<span>No file selected.</span>';
+            fileInfo.innerHTML              = '<span>' + smliserI18n.esc( smliserI18n.__( 'No file selected.' ) ) + '</span>';
 
             clearBtn.classList.add( 'smliser-hide' );
             fileUploadBtn.classList.remove( 'smliser-hide' );
@@ -1623,32 +1622,32 @@ class AppUploader {
             const file                  = this.artifactFileInput.files[0];
 
             if ( ! canonicalFileName ) {
-                SmliserToast.show( 'Please enter a valid artifact filename.', 5000 );
+                SmliserToast.show( smliserI18n.__( 'Please enter a valid artifact filename.' ), 5000 );
                 return;
             }
 
             const config    = StringUtils.JSONparse( modal.getBody( '#artifact-config' ).value );
             
             if ( ! config ) {
-                SmliserToast.show( 'Invalid artifact configuration.', 5000 );
+                SmliserToast.show( smliserI18n.__( 'Invalid artifact configuration.' ), 5000 );
                 return;
             }
 
             if ( ! file ) {
                 let errorMessage = config.isNew ? 
-                    'Please select a file to upload.' :
-                    ( canonicalFileName === config.filename ? 'No changes detected' : null ); 
+                    smliserI18n.__( 'Please select a file to upload.' ) :
+                    ( canonicalFileName === config.filename ? smliserI18n.__( 'No changes detected' ) : null ); 
                 let proceed = false;
 
                 if ( errorMessage ) {
                     await SmliserModal.error( errorMessage, 'Error' );
                 } else {
-                    const message = `No file selected. Do you want to proceed with changing the artifact filename from "${config.filename}" to "${canonicalFileName}"?`;
+                    const message = smliserI18n.sprintf( smliserI18n.__( 'No file selected. Do you want to proceed with changing the artifact filename from "%1$s" to "%2$s"?' ), config.filename, canonicalFileName );
                     proceed = await SmliserModal.confirm({
-                        title: 'File Name Change',
+                        title: smliserI18n.__( 'File Name Change' ),
                         message: message,
-                        confirmText: 'Yes, Proceed',
-                        cancelText: 'No, Cancel'
+                        confirmText: smliserI18n.__( 'Yes, Proceed' ),
+                        cancelText: smliserI18n.__( 'No, Cancel' )
                     });                    
                 }
 
@@ -1705,7 +1704,7 @@ class AppUploader {
             });
 
             if ( ! response.success ) {
-                throw new Error( response?.data?.message ?? 'Artifact upload request failed with an unknown error.' );
+                throw new Error( response?.data?.message ?? smliserI18n.__( 'Artifact upload request failed with an unknown error.' ) );
             }
 
             return {
@@ -1752,10 +1751,10 @@ class AppUploader {
             });
 
             if ( ! response.success ) {
-                throw new Error( response?.data?.message ?? 'Artifact upload request failed with an unknown error.' );
+                throw new Error( response?.data?.message ?? smliserI18n.__( 'Artifact upload request failed with an unknown error.' ) );
             }
 
-            await SmliserModal.success( response.message || 'Sucessfully deleted.' );
+            await SmliserModal.success( response.message || smliserI18n.__( 'Sucessfully deleted.' ) );
 
             const slug      = StringUtils.replace( '.', '-', config.slug )
             const targetEl  = this.artifactUploader.querySelector( `.smliser-app-artifacts_item.${slug}` );
@@ -1780,8 +1779,8 @@ class AppUploader {
             const duration  = ( response.duration / 1000 ).toFixed( 2 );
 
             await SmliserModal.success(
-                `Successfully downloaded <strong>${ response.filename }</strong> (${ fileSize }) in ${ duration } seconds.`,
-                'File Downloaded'
+                `Successfully downloaded <strong>${ response.filename }</strong> (${ fileSize }${ smliserI18n.esc( smliserI18n.__( ') in' ) ) } ${ duration } seconds.`,
+                smliserI18n.__( 'File Downloaded' )
             );
 
         } catch ( error ) {
@@ -1820,13 +1819,13 @@ class AppUploader {
         liEl.innerHTML  = `
             <div class="smliser-app-artifacts_item-heading">
                 <span>
-                    <strong>Name:</strong> ${artifactData.filename}
+                    <strong>${ smliserI18n.esc( smliserI18n.__( 'Name:' ) ) }</strong> ${artifactData.filename}
                 </span>
                     
                 <div class="smliser-app-artifacts_item-buttons">
-                    <button title="Edit artifact" class="smliser-edit-artifact" data-config="${data}"> <i class="ti ti-edit"></i></button>
-                    <button title="Delete artifact" class="smliser-delete-artifact" data-config="${data}"> <i class="ti ti-trash"></i></button>
-                    <button title="Download artifact" class="smliser-download-artifact" data-config="${data}"> <i class="ti ti-download"></i></button>
+                    <button title="${ smliserI18n.esc( smliserI18n.__( 'Edit artifact' ) ) }" class="smliser-edit-artifact" data-config="${data}"> <i class="ti ti-edit"></i></button>
+                    <button title="${ smliserI18n.esc( smliserI18n.__( 'Delete artifact' ) ) }" class="smliser-delete-artifact" data-config="${data}"> <i class="ti ti-trash"></i></button>
+                    <button title="${ smliserI18n.esc( smliserI18n.__( 'Download artifact' ) ) }" class="smliser-download-artifact" data-config="${data}"> <i class="ti ti-download"></i></button>
                 </div>
 
             </div>
@@ -1835,25 +1834,25 @@ class AppUploader {
                 <table>
                     <tbody>
                         <tr>
-                            <th>Size:</th>
+                            <th>${ smliserI18n.esc( smliserI18n.__( 'Size:' ) ) }</th>
                             <td>${StringUtils.formatBytes( artifactData.size )}</td>
                         </tr>
                         <tr>
-                            <th>Mime Type:</th>
+                            <th>${ smliserI18n.esc( smliserI18n.__( 'Mime Type:' ) ) }</th>
                             <td>${artifactData.mimeType}</td>
                         </tr>
                         <tr>
-                            <th>Download URL:</th>
+                            <th>${ smliserI18n.esc( smliserI18n.__( 'Download URL:' ) ) }</th>
                             <td>
                                 <span title="${artifactData.url}">
                                     ${StringUtils.truncate( artifactData.url, 40 )}   
                                 </span>
-                                <i class="ti ti-copy smliser-click-to-copy" title="Click to copy" data-copy-value="${artifactData.url}"></i>
+                                <i class="ti ti-copy smliser-click-to-copy" title="${ smliserI18n.esc( smliserI18n.__( 'Click to copy' ) ) }" data-copy-value="${artifactData.url}"></i>
                             </td>
                         </tr>
                         <tr>
-                            <th>Last Updated:</th>
-                            <td>Now</td>
+                            <th>${ smliserI18n.esc( smliserI18n.__( 'Last Updated:' ) ) }</th>
+                            <td>${ smliserI18n.esc( smliserI18n.__( 'Now' ) ) }</td>
                         </tr>
                     </tbody>
                 </table>

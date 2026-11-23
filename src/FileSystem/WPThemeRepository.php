@@ -46,7 +46,7 @@ class WPThemeRepository extends Repository {
 		$style_css = static::zip_entry( $zip, $root, 'style.css' );
 
 		if ( null === $style_css ) {
-			throw new Exception( 'style_missing', 'The theme zip file must contain a style.css file', [ 'status' => 400 ] );
+			throw new Exception( 'style_missing', smliser__( 'The theme zip file must contain a style.css file' ), [ 'status' => 400 ] );
 		}
 
 		$documents = [ 'style.css' => $style_css ];
@@ -67,7 +67,7 @@ class WPThemeRepository extends Repository {
 	 */
 	public function asset_types() : array {
 		return [
-			'screenshot'  => 'Main screenshot',
+			'screenshot'  => smliser__( 'Main screenshot' ),
 			'screenshots' => 'Additional screenshot',
 		];
 	}

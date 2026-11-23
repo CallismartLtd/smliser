@@ -24,7 +24,7 @@ $fallback = $recorded !== $active;
 	<?php if ( 'upload' === $section ) :
 		$form_fields	= [
 			[
-				'label'	=> 'Package (.zip)',
+				'label'	=> smliser__( 'Package (.zip)' ),
 				'help'	=> '',
 				'input'	=> [
 					'type'	=> 'file',
@@ -37,7 +37,7 @@ $fallback = $recorded !== $active;
 				]
 			],
 			[
-				'label'	=> 'Checksums (.sha256)',
+				'label'	=> smliser__( 'Checksums (.sha256)' ),
 				'help'	=> '',
 				'input'	=> [
 					'type'	=> 'file',
@@ -49,7 +49,7 @@ $fallback = $recorded !== $active;
 				]
 			],
 			[
-				'label'	=> 'Signature (.sha256.sig)',
+				'label'	=> smliser__( 'Signature (.sha256.sig)' ),
 				'help'	=> '',
 				'input'	=> [
 					'type'	=> 'file',
@@ -61,8 +61,8 @@ $fallback = $recorded !== $active;
 				]
 			],
 			[
-				'label'	=> 'Overwrite',
-				'help'	=> 'Replace the installed theme of the same slug (same or newer version; downgrades are refused)',
+				'label'	=> smliser__( 'Overwrite' ),
+				'help'	=> smliser__( 'Replace the installed theme of the same slug (same or newer version; downgrades are refused)' ),
 				'input'	=> [
 					'type'	=> 'checkbox',
 					'name'	=> 'replace',
@@ -70,8 +70,8 @@ $fallback = $recorded !== $active;
 				]
 			],
 			[
-				'label'	=> 'Trust Package',
-				'help'	=> 'Trust this package without a valid signature (only for a package you built or received directly: its templates run on every public page)',
+				'label'	=> smliser__( 'Trust Package' ),
+				'help'	=> smliser__( 'Trust this package without a valid signature (only for a package you built or received directly: its templates run on every public page)' ),
 				'input'	=> [
 					'type'	=> 'checkbox',
 					'name'	=> 'trust_unsigned',
@@ -79,8 +79,8 @@ $fallback = $recorded !== $active;
 				]
 			],
 			[
-				'label'	=> 'Activate it once installed',
-				'help'	=> 'Activate this package after installing?',
+				'label'	=> smliser__( 'Activate it once installed' ),
+				'help'	=> smliser__( 'Activate this package after installing?' ),
 				'input'	=> [
 					'type'	=> 'checkbox',
 					'name'	=> 'activate',
@@ -113,7 +113,7 @@ $fallback = $recorded !== $active;
 			</div>
 
 			<button type="submit" class="smliser-btn smliser-btn-glass">
-				<i class="ti ti-upload"></i> Upload and install
+				<i class="ti ti-upload"></i> <?php smliser_esc_html_e( 'Upload and install' ); ?>
 			</button>
 
 		</form>
@@ -122,14 +122,14 @@ $fallback = $recorded !== $active;
 			<p class="smliser-section-description">
 				<i class="ti <?php echo $fallback ? 'ti-alert-triangle' : 'ti-info-circle'; ?>"></i>
 				<?php if ( $fallback ) : ?>
-					<?php echo escHtml( sprintf( 'The active theme "%s" cannot be used, so the default theme renders the public pages. The error log says why.', $recorded ) ); ?>
+					<?php echo escHtml( sprintf( smliser__( 'The active theme "%s" cannot be used, so the default theme renders the public pages. The error log says why.' ), $recorded ) ); ?>
 				<?php else : ?>
-					Themes change how the public pages look.
+					<?php smliser_esc_html_e( 'Themes change how the public pages look.' ); ?>
 				<?php endif; ?>
 			</p>
 			<div class="smliser-modules-toolbar-actions">
-				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="check"><i class="ti ti-refresh"></i> Check for updates</button>
-				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="publish" data-confirm="Publish every installed theme's assets in the public folder again?"><i class="ti ti-world-upload"></i> Republish assets</button>
+				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="check"><i class="ti ti-refresh"></i> <?php smliser_esc_html_e( 'Check for updates' ); ?></button>
+				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="publish" data-confirm="<?php smliser_esc_attr_e( 'Publish every installed theme\'s assets in the public folder again?' ); ?>"><i class="ti ti-world-upload"></i> <?php smliser_esc_html_e( 'Republish assets' ); ?></button>
 			</div>
 		</div>
 

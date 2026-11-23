@@ -27,14 +27,14 @@ class LicenseMetaSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'License Meta';
+		return smliser__( 'License Meta' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores arbitrary key-value metadata for licenses.';
+		return smliser__( 'Stores arbitrary key-value metadata for licenses.' );
 	}
 
 	/**

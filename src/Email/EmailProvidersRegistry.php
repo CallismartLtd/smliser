@@ -115,7 +115,7 @@ class EmailProvidersRegistry  extends AbstractRegistry {
 		if ( null === static::$instance ) {
 			if ( ! $container ) {
 				throw new EmailTransportException(
-					sprintf( '%s requires %s on first bootstrap.', static::class, Container::class )
+					sprintf( smliser__( '%s requires %s on first bootstrap.' ), static::class, Container::class )
 				);
 			}
 

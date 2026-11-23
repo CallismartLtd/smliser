@@ -18,11 +18,11 @@ use SmartLicenseServer\Schema\TableName;
  */
 final class UserSecuritySchema implements DatabaseSchemaInterface {
 	public static function get_label() : string {
-		return 'User Security Factors';
+		return smliser__( 'User Security Factors' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores two-factor authentication settings for user accounts.';
+		return smliser__( 'Stores two-factor authentication settings for user accounts.' );
 	}
 
 	public static function get_table_name() : string {

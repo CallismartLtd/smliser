@@ -132,22 +132,22 @@ final class BackgroundSetup {
 			return [
 				'tone'    => 'pass',
 				'icon'    => 'ti ti-circle-check',
-				'title'   => 'Running: ' . ( $this->modes()[ $mode ]['label'] ?? $mode ),
+				'title'   => smliser__( 'Running: ' ) . ( $this->modes()[ $mode ]['label'] ?? $mode ),
 				'message' => self::MODE_URL === $mode
-					? 'Scheduled tasks and queued jobs run each time the external cron service calls this site. Cron on the server is more reliable when your hosting offers it.'
-					: 'Scheduled tasks and queued jobs run on their own.',
+					? smliser__( 'Scheduled tasks and queued jobs run each time the external cron service calls this site. Cron on the server is more reliable when your hosting offers it.' )
+					: smliser__( 'Scheduled tasks and queued jobs run on their own.' ),
 			];
 		}
 
 		if ( $detected['scheduler'] || $detected['worker'] ) {
 			$message = $detected['scheduler']
-				? 'The scheduler runs scheduled tasks, but no queue worker processes dispatched jobs: start the queue worker below.'
-				: 'The queue worker runs jobs, but no automatic trigger runs scheduled tasks: add the scheduler cron job below.';
+				? smliser__( 'The scheduler runs scheduled tasks, but no queue worker processes dispatched jobs: start the queue worker below.' )
+				: smliser__( 'The queue worker runs jobs, but no automatic trigger runs scheduled tasks: add the scheduler cron job below.' );
 
 			return [
 				'tone'    => 'warning',
 				'icon'    => 'ti ti-alert-triangle',
-				'title'   => 'Partly running',
+				'title'   => smliser__( 'Partly running' ),
 				'message' => $message,
 			];
 		}
@@ -157,10 +157,10 @@ final class BackgroundSetup {
 		return [
 			'tone'    => 'critical',
 			'icon'    => 'ti ti-circle-x',
-			'title'   => $never ? 'Not set up' : 'Stopped',
+			'title'   => $never ? smliser__( 'Not set up' ) : smliser__( 'Stopped' ),
 			'message' => $never
-				? 'Nothing has run background work on this site yet. Choose how it should run below and follow the steps.'
-				: 'Nothing has run background work recently. Check the cron job or external service, or set one up below.',
+				? smliser__( 'Nothing has run background work on this site yet. Choose how it should run below and follow the steps.' )
+				: smliser__( 'Nothing has run background work recently. Check the cron job or external service, or set one up below.' ),
 		];
 	}
 
@@ -181,13 +181,13 @@ final class BackgroundSetup {
 	 */
 	public function runners() : array {
 		$sources = [
-			BackgroundStatus::SOURCE_CLI_CRON     => [ 'Cron (smliser cron)', self::CRON_ALIVE ],
-			BackgroundStatus::SOURCE_SCHEDULE_RUN => [ 'Scheduler command (smliser schedule run)', self::CRON_ALIVE ],
-			BackgroundStatus::SOURCE_WORKER       => [ 'Queue worker (smliser queue work)', self::WORKER_ALIVE ],
+			BackgroundStatus::SOURCE_CLI_CRON     => [ smliser__( 'Cron (smliser cron)' ), self::CRON_ALIVE ],
+			BackgroundStatus::SOURCE_SCHEDULE_RUN => [ smliser__( 'Scheduler command (smliser schedule run)' ), self::CRON_ALIVE ],
+			BackgroundStatus::SOURCE_WORKER       => [ smliser__( 'Queue worker (smliser queue work)' ), self::WORKER_ALIVE ],
 		];
 
 		if ( null !== $this->cron_url ) {
-			$sources[ BackgroundStatus::SOURCE_CRON_URL ] = [ 'Cron URL (external service)', self::CRON_ALIVE ];
+			$sources[ BackgroundStatus::SOURCE_CRON_URL ] = [ smliser__( 'Cron URL (external service)' ), self::CRON_ALIVE ];
 		}
 
 		$runners = [];
@@ -202,7 +202,7 @@ final class BackgroundSetup {
 				'alive'   => null !== $age && $age <= $limit,
 				'age'     => $age,
 				'at'      => null === $entry ? null : (string) ( $entry['at'] ?? '' ),
-				'summary' => null === $entry || null === $age ? 'Never ran' : $this->summarize( $entry, $age ),
+				'summary' => null === $entry || null === $age ? smliser__( 'Never ran' ) : $this->summarize( $entry, $age ),
 			];
 		}
 
@@ -223,33 +223,33 @@ final class BackgroundSetup {
 	public function modes() : array {
 		$modes = [
 			self::MODE_SERVER => [
-				'label'       => 'Server cron and queue worker',
-				'badge'       => 'Best',
+				'label'       => smliser__( 'Server cron and queue worker' ),
+				'badge'       => smliser__( 'Best' ),
 				'icon'        => 'ti ti-server-2',
-				'description' => 'For a VPS or dedicated server. Cron runs the scheduled tasks every minute and a worker, kept running by systemd or supervisord, starts each job as soon as it is queued.',
+				'description' => smliser__( 'For a VPS or dedicated server. Cron runs the scheduled tasks every minute and a worker, kept running by systemd or supervisord, starts each job as soon as it is queued.' ),
 			],
 			self::MODE_PANEL => [
-				'label'       => 'Hosting panel cron job',
-				'badge'       => 'Shared hosting',
+				'label'       => smliser__( 'Hosting panel cron job' ),
+				'badge'       => smliser__( 'Shared hosting' ),
 				'icon'        => 'ti ti-layout-dashboard',
-				'description' => 'For shared hosting with a "Cron Jobs" page (cPanel, Plesk, DirectAdmin). One cron job runs the due tasks and then the queued jobs, every minute or every 5 minutes.',
+				'description' => smliser__( 'For shared hosting with a "Cron Jobs" page (cPanel, Plesk, DirectAdmin). One cron job runs the due tasks and then the queued jobs, every minute or every 5 minutes.' ),
 			],
 		];
 
 		if ( null !== $this->cron_url ) {
 			$modes[ self::MODE_URL ] = [
-				'label'       => 'External cron service',
-				'badge'       => 'Works anywhere',
+				'label'       => smliser__( 'External cron service' ),
+				'badge'       => smliser__( 'Works anywhere' ),
 				'icon'        => 'ti ti-world-www',
-				'description' => 'For hosting without cron. A free service such as cron-job.org requests this site\'s cron URL every 5 to 10 minutes; each request runs what is due. Visits to the site never run it.',
+				'description' => smliser__( 'For hosting without cron. A free service such as cron-job.org requests this site\'s cron URL every 5 to 10 minutes; each request runs what is due. Visits to the site never run it.' ),
 			];
 		}
 
 		$modes[ self::MODE_MANUAL ] = [
-			'label'       => 'Manual',
-			'badge'       => 'Not recommended',
+			'label'       => smliser__( 'Manual' ),
+			'badge'       => smliser__( 'Not recommended' ),
 			'icon'        => 'ti ti-hand-click',
-			'description' => 'Nothing runs on its own. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them from the Schedules and Queue Monitor pages.',
+			'description' => smliser__( 'Nothing runs on its own. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them from the Schedules and Queue Monitor pages.' ),
 		];
 
 		return $modes;
@@ -312,12 +312,12 @@ final class BackgroundSetup {
 		return [
 			'steps' => [
 				[
-					'title'   => 'Run the scheduler every minute',
+					'title'   => smliser__( 'Run the scheduler every minute' ),
 					'content' => '* * * * * cd ' . escapeshellarg( $root ) . ' && ' . escapeshellarg( $php ) . ' ' . self::CONSOLE . ' schedule run >> ' . escapeshellarg( $log ) . ' 2>&1',
 					'note'    => sprintf( 'Add it to the crontab of %s (crontab -u %s -e), the user PHP runs as for this site, so files it creates stay writable. Output is appended to %s.', $user, $user, $log ),
 				],
 				[
-					'title'   => 'systemd: /etc/systemd/system/smliser-worker.service',
+					'title'   => smliser__( 'systemd: /etc/systemd/system/smliser-worker.service' ),
 					'content' => implode(
 						"\n",
 						[
@@ -344,7 +344,7 @@ final class BackgroundSetup {
 					'note' => 'Then run: systemctl daemon-reload && systemctl enable --now smliser-worker',
 				],
 				[
-					'title'   => 'Or supervisord: /etc/supervisor/conf.d/smliser-worker.conf',
+					'title'   => smliser__( 'Or supervisord: /etc/supervisor/conf.d/smliser-worker.conf' ),
 					'content' => implode(
 						"\n",
 						[
@@ -380,17 +380,17 @@ final class BackgroundSetup {
 		return [
 			'steps' => [
 				[
-					'title'   => 'Open your hosting panel\'s cron jobs',
+					'title'   => smliser__( 'Open your hosting panel\'s cron jobs' ),
 					'content' => null,
 					'note'    => 'cPanel: Advanced > Cron Jobs. Plesk: Websites & Domains > Scheduled Tasks. DirectAdmin: Advanced Features > Cron Jobs.',
 				],
 				[
-					'title'   => 'Schedule',
+					'title'   => smliser__( 'Schedule' ),
 					'content' => '* * * * *',
 					'note'    => 'Every minute. If your host allows every 5 minutes at most, use */5 * * * *; tasks and jobs then wait up to 5 minutes.',
 				],
 				[
-					'title'   => 'Command',
+					'title'   => smliser__( 'Command' ),
 					'content' => 'cd ' . escapeshellarg( $env['root'] ) . ' && ' . escapeshellarg( $env['php'] ) . ' ' . self::CONSOLE . ' cron >> ' . escapeshellarg( $log ) . ' 2>&1',
 					'note'    => 'Runs the due scheduled tasks, then queued jobs for up to 45 seconds. Runs never overlap. Output is appended to ' . $log . '.',
 				],
@@ -410,7 +410,7 @@ final class BackgroundSetup {
 		return [
 			'steps' => [
 				[
-					'title'   => 'Create a cron job at an external service',
+					'title'   => smliser__( 'Create a cron job at an external service' ),
 					'content' => null,
 					'note'    => 'For example cron-job.org, which is free. Any service that requests a URL on a schedule works.',
 				],
@@ -420,14 +420,14 @@ final class BackgroundSetup {
 					'note'    => 'Method GET. It answers 204 No Content at once and then runs what is due, so a short timeout in the service is fine.',
 				],
 				[
-					'title'   => 'Schedule',
+					'title'   => smliser__( 'Schedule' ),
 					'content' => '*/5 * * * *',
 					'note'    => 'Every 5 minutes, or at most every 10. Calls less than a minute apart are answered but run nothing.',
 				],
 			],
 			'notes' => [
-				'The URL needs no secret: every caller gets the same empty answer, and it only ever runs work that is already due.',
-				'Each call runs as a web request, so jobs are processed for up to 25 seconds per call. If your hosting offers cron jobs, the hosting panel option is more reliable.',
+				smliser__( 'The URL needs no secret: every caller gets the same empty answer, and it only ever runs work that is already due.' ),
+				smliser__( 'Each call runs as a web request, so jobs are processed for up to 25 seconds per call. If your hosting offers cron jobs, the hosting panel option is more reliable.' ),
 			],
 		];
 	}
@@ -441,18 +441,18 @@ final class BackgroundSetup {
 		return [
 			'steps' => [
 				[
-					'title'   => 'Run due tasks',
+					'title'   => smliser__( 'Run due tasks' ),
 					'content' => null,
 					'note'    => 'Tools > Schedules > "Run due tasks". Do this at least twice a day so update checks and license expiry happen.',
 				],
 				[
-					'title'   => 'Process queued jobs',
+					'title'   => smliser__( 'Process queued jobs' ),
 					'content' => null,
 					'note'    => 'Tools > Queue Monitor > "Process queue". Emails and update installs are queued jobs.',
 				],
 			],
 			'notes' => [
-				'Security updates cannot install themselves in this mode.',
+				smliser__( 'Security updates cannot install themselves in this mode.' ),
 			],
 		];
 	}
@@ -473,12 +473,12 @@ final class BackgroundSetup {
 		$version = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
 
 		if ( $env['php_found'] ) {
-			return [ sprintf( '%s is the PHP %s command-line binary on this server, the same version this site runs on.', $env['php'], $version ) ];
+			return [ sprintf( smliser__( '%s is the PHP %s command-line binary on this server, the same version this site runs on.' ), $env['php'], $version ) ];
 		}
 
 		return [
 			sprintf(
-				'The PHP %s command-line binary could not be located from here, so the commands use "php". If "php -v" on this server shows another version, replace it with the path your host gives for PHP %s (for example /usr/local/bin/ea-php%d%d on cPanel).',
+				smliser__( 'The PHP %s command-line binary could not be located from here, so the commands use "php". If "php -v" on this server shows another version, replace it with the path your host gives for PHP %s (for example /usr/local/bin/ea-php%d%d on cPanel).' ),
 				$version,
 				$version,
 				PHP_MAJOR_VERSION,
@@ -513,7 +513,7 @@ final class BackgroundSetup {
 		if ( isset( $entry['skipped'] ) ) {
 			$parts[] = 'skipped (' . $entry['skipped'] . ')';
 		} elseif ( isset( $entry['tasks'] ) || isset( $entry['jobs'] ) ) {
-			$parts[] = sprintf( '%d task(s), %d job(s) in %ss', (int) ( $entry['tasks'] ?? 0 ), (int) ( $entry['jobs'] ?? 0 ), $entry['seconds'] ?? '?' );
+			$parts[] = sprintf( smliser__( '%d task(s), %d job(s) in %ss' ), (int) ( $entry['tasks'] ?? 0 ), (int) ( $entry['jobs'] ?? 0 ), $entry['seconds'] ?? '?' );
 		}
 
 		$parts[] = sprintf( 'PHP %s %s', $entry['php'] ?? '?', $entry['sapi'] ?? '?' );

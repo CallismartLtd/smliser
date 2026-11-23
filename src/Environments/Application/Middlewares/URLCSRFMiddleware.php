@@ -32,7 +32,7 @@ class URLCSRFMiddleware extends CSRFMiddleware {
 	 */
 	public function handle( Request $request, callable $next ) : mixed {
 		if ( ! $this->csrf->verify_url( $request, $this->action( $request ), $this->param( $request ) ) ) {
-			return $this->reject( $request, 'INVALID_URL_TOKEN', 'This link has expired or is not valid for you. Go back, reload the page and try again.' );
+			return $this->reject( $request, 'INVALID_URL_TOKEN', smliser__( 'This link has expired or is not valid for you. Go back, reload the page and try again.' ) );
 		}
 
 		return $next( $request );

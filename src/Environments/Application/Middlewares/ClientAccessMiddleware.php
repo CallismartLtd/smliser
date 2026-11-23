@@ -43,7 +43,7 @@ class ClientAccessMiddleware implements MiddlewareInterface {
 		if ( $request->wantsJson() ) {
 			return Response::json( [
 				'success' => false,
-				'message' => 'Unauthenticated access. Please log in to continue.',
+				'message' => smliser__( 'Unauthenticated access. Please log in to continue.' ),
 				'code'    => 'UNAUTHENTICATED',
 			], 401 );
 		}

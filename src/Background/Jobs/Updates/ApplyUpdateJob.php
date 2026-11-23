@@ -74,7 +74,7 @@ class ApplyUpdateJob implements JobHandlerInterface {
 
 		try {
 			if ( 'rollback' === $action ) {
-				return $this->finish_attempt( $action, true, sprintf( 'Version %s was restored.', $this->runner->rollback( $progress ) ), $log );
+				return $this->finish_attempt( $action, true, sprintf( smliser__( 'Version %s was restored.' ), $this->runner->rollback( $progress ) ), $log );
 			}
 
 			if ( 'prepare' === $step ) {
@@ -87,9 +87,9 @@ class ApplyUpdateJob implements JobHandlerInterface {
 		}
 
 		return match ( $result['status'] ) {
-			UpdateRunner::UP_TO_DATE => $this->finish_attempt( $action, true, sprintf( '%s %s is up to date; nothing was installed.', \SMLISER_APP_NAME, \SMLISER_VER ), $log ),
-			UpdateRunner::PENDING    => $this->finish_attempt( $action, true, sprintf( 'Version %s is installed and finishes on the next request to the site.', $result['prepared']['manifest']->version ?? '?' ), $log ),
-			default                  => $this->finish_attempt( $action, true, sprintf( 'Version %s was installed.', $result['prepared']['manifest']->version ?? '?' ), $log ),
+			UpdateRunner::UP_TO_DATE => $this->finish_attempt( $action, true, sprintf( smliser__( '%s %s is up to date; nothing was installed.' ), \SMLISER_APP_NAME, \SMLISER_VER ), $log ),
+			UpdateRunner::PENDING    => $this->finish_attempt( $action, true, sprintf( smliser__( 'Version %s is installed and finishes on the next request to the site.' ), $result['prepared']['manifest']->version ?? '?' ), $log ),
+			default                  => $this->finish_attempt( $action, true, sprintf( smliser__( 'Version %s was installed.' ), $result['prepared']['manifest']->version ?? '?' ), $log ),
 		};
 	}
 
@@ -106,12 +106,12 @@ class ApplyUpdateJob implements JobHandlerInterface {
 		$prepared = $this->runner->prepare( $reinstall, $progress );
 
 		if ( null === $prepared ) {
-			return $this->finish_attempt( 'install', true, sprintf( '%s %s is up to date; nothing was installed.', \SMLISER_APP_NAME, \SMLISER_VER ), $log );
+			return $this->finish_attempt( 'install', true, sprintf( smliser__( '%s %s is up to date; nothing was installed.' ), \SMLISER_APP_NAME, \SMLISER_VER ), $log );
 		}
 
 		$this->dispatch_job( self::class, [ 'action' => 'install', 'step' => 'apply', 'reinstall' => $reinstall ] );
 
-		$message = sprintf( 'Version %s is downloaded and verified; installing it is queued.', $prepared['manifest']->version );
+		$message = sprintf( smliser__( 'Version %s is downloaded and verified; installing it is queued.' ), $prepared['manifest']->version );
 
 		return [ 'ok' => true, 'step' => 'prepare', 'message' => $message, 'log' => $log ];
 	}
@@ -135,13 +135,13 @@ class ApplyUpdateJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Apply Update';
+		return smliser__( 'Apply Update' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Downloads, verifies and installs the latest release of the application through the update API, in two queued steps.';
+		return smliser__( 'Downloads, verifies and installs the latest release of the application through the update API, in two queued steps.' );
 	}
 }

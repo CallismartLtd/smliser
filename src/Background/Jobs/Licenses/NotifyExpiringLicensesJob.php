@@ -61,7 +61,7 @@ class NotifyExpiringLicensesJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Sends expiry reminder emails to licensees whose licenses are expiring soon.';
+		return smliser__( 'Sends expiry reminder emails to licensees whose licenses are expiring soon.' );
 	}
 
 	/**

@@ -27,7 +27,7 @@ class AdminDownloadMiddleware implements MiddlewareInterface {
 			return Response::error(
 				new Exception(
 					'login_required',
-					'You must be logged in to access this resource.',
+					smliser__( 'You must be logged in to access this resource.' ),
 					[ 'status' => 401]
 				)
 			);
@@ -37,7 +37,7 @@ class AdminDownloadMiddleware implements MiddlewareInterface {
 			return Response::error(
 				new Exception(
 					'unauthorized_download',
-					'You do not have the required permission to access this resource',
+					smliser__( 'You do not have the required permission to access this resource' ),
 					['status' => 403]
 				)
 			);

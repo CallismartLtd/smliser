@@ -21,7 +21,7 @@ use SmartLicenseServer\Schema\TableName;
 final class FlattenThemeAuthors extends AbstractMigration implements ReversibleMigrationInterface {
 
 	public static function get_description() : string {
-		return 'Store theme authors as a name and a profile URL';
+		return smliser__( 'Store theme authors as a name and a profile URL' );
 	}
 
 	public function up() : void {

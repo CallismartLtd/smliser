@@ -123,7 +123,7 @@ final class AppRelease {
 		$slug = $app->get_slug();
 
 		if ( null === $app->get_package() && null === $app->get_custom_download_url() ) {
-			throw new RequestException( 'release_not_found', sprintf( 'The %s "%s" has no package to download.', $type, $slug ), [ 'status' => 404 ] );
+			throw new RequestException( 'release_not_found', sprintf( smliser__( 'The %s "%s" has no package to download.' ), $type, $slug ), [ 'status' => 404 ] );
 		}
 
 		try {
@@ -162,7 +162,7 @@ final class AppRelease {
 		$slug = $app->get_slug();
 
 		if ( ! AppFile::is_segment( $artifact ) || ! str_ends_with( strtolower( $artifact ), '.zip' ) || 4 === strlen( $artifact ) ) {
-			throw new RequestException( 'invalid_input', 'The artifact must be the name of a ZIP artifact, e.g. "acme-1.2.0.zip".', [ 'status' => 400 ] );
+			throw new RequestException( 'invalid_input', smliser__( 'The artifact must be the name of a ZIP artifact, e.g. "acme-1.2.0.zip".' ), [ 'status' => 400 ] );
 		}
 
 		try {
@@ -172,7 +172,7 @@ final class AppRelease {
 		}
 
 		if ( ! isset( $names[ $artifact ] ) ) {
-			throw new RequestException( 'release_not_found', sprintf( 'The %s "%s" has no artifact named "%s".', $type, $slug, $artifact ), [ 'status' => 404 ] );
+			throw new RequestException( 'release_not_found', sprintf( smliser__( 'The %s "%s" has no artifact named "%s".' ), $type, $slug, $artifact ), [ 'status' => 404 ] );
 		}
 
 		$base      = substr( $artifact, 0, -4 );

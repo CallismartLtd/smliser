@@ -102,7 +102,7 @@ class SmliserAdminRepository {
 
             datasets.push({
                 type: 'bar',
-                label: 'Downloads',
+                label: smliserI18n.__( 'Downloads' ),
                 data: analytics.downloads.timeline.values,
                 backgroundColor: 'rgba(59, 130, 246, 0.8)',
                 borderColor: 'rgba(59, 130, 246, 1)',
@@ -127,7 +127,7 @@ class SmliserAdminRepository {
 
             datasets.push({
                 type: 'line',
-                label: 'Client Access',
+                label: smliserI18n.__( 'Client Access' ),
                 data: analytics.client_access.timeline.values,
                 borderColor: 'rgba(16, 185, 129, 1)',
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
@@ -147,7 +147,7 @@ class SmliserAdminRepository {
         }
 
         if (!datasets.length) {
-            canvas.parentElement.innerHTML = '<p style="text-align:center;color:#999;">No analytics data available</p>';
+            canvas.parentElement.innerHTML = '<p style="text-align:center;color:#999;">' + smliserI18n.esc( smliserI18n.__( 'No analytics data available' ) ) + '</p>';
             return;
         }
 
@@ -289,7 +289,7 @@ class SmliserAdminRepository {
                         ratioDiv.innerHTML = `
                             <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
                                 <span>📊</span>
-                                <span>Access/Download Ratio: <strong style="color: #818cf8;">${ratio}x</strong></span>
+                                <span>${ smliserI18n.esc( smliserI18n.__( 'Access/Download Ratio:' ) ) } <strong style="color: #818cf8;">${ratio}x</strong></span>
                             </div>
                         `;
                         tableRoot.appendChild(ratioDiv);
@@ -370,7 +370,7 @@ class SmliserAdminRepository {
                     },
                     title: {
                         display: true,
-                        text: 'Downloads vs Client Access (Last 30 Days)',
+                        text: smliserI18n.__( 'Downloads vs Client Access (Last 30 Days)' ),
                         font: {
                             size: 16,
                             weight: 'bold'
@@ -402,7 +402,7 @@ class SmliserAdminRepository {
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Downloads',
+                            text: smliserI18n.__( 'Downloads' ),
                             font: {
                                 size: 12,
                                 weight: 'bold'
@@ -430,7 +430,7 @@ class SmliserAdminRepository {
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Client Access',
+                            text: smliserI18n.__( 'Client Access' ),
                             font: {
                                 size: 12,
                                 weight: 'bold'

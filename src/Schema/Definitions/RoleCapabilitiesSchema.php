@@ -18,11 +18,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class RoleCapabilitiesSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Role Capabilities';
+		return smliser__( 'Role Capabilities' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores role capabilities.';
+		return smliser__( 'Stores role capabilities.' );
 	}
 
 	public static function get_table_name() : string {

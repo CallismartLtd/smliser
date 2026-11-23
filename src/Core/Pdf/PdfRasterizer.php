@@ -82,13 +82,13 @@ class PdfRasterizer {
 	 */
 	public function rasterize( string $pdf_path, string $pages_dir, int $max_pages = 5, int $dpi = 150 ) : int|Exception {
 		if ( ! $this->fs->is_file( $pdf_path ) ) {
-			return new Exception( 'pdf_missing', 'The PDF does not exist.' );
+			return new Exception( 'pdf_missing', smliser__( 'The PDF does not exist.' ) );
 		}
 
 		$available = array_filter( $this->rasterizers, static fn ( PdfRasterizerInterface $rasterizer ) : bool => $rasterizer->is_available() );
 
 		if ( [] === $available ) {
-			return new Exception( 'rasterizer_unavailable', 'No PDF renderer is available: install the Imagick extension, Ghostscript or Poppler (pdftoppm).' );
+			return new Exception( 'rasterizer_unavailable', smliser__( 'No PDF renderer is available: install the Imagick extension, Ghostscript or Poppler (pdftoppm).' ) );
 		}
 
 		$work = FileSystemHelper::join_path( sys_get_temp_dir(), sprintf( 'smliser-pdf-%s', bin2hex( random_bytes( 8 ) ) ) );
@@ -97,7 +97,7 @@ class PdfRasterizer {
 
 		try {
 			if ( '' === $work || ! $this->fs->mkdir( $work, 0700 ) || ! $this->fs->copy( $pdf_path, $copy ) ) {
-				return new Exception( 'rasterize_failed', 'The PDF could not be copied to the system temporary directory.' );
+				return new Exception( 'rasterize_failed', smliser__( 'The PDF could not be copied to the system temporary directory.' ) );
 			}
 
 			$reasons = [];
@@ -106,7 +106,7 @@ class PdfRasterizer {
 				$this->clear( $out );
 
 				if ( ! $this->fs->mkdir( $out, 0700 ) ) {
-					return new Exception( 'rasterize_failed', 'The temporary page directory could not be created.' );
+					return new Exception( 'rasterize_failed', smliser__( 'The temporary page directory could not be created.' ) );
 				}
 
 				$count = $rasterizer->rasterize( $copy, $out, max( 1, $max_pages ), max( 36, $dpi ) );
@@ -119,7 +119,7 @@ class PdfRasterizer {
 				return $this->publish( $out, $pages_dir, $count );
 			}
 
-			return new Exception( 'rasterize_failed', sprintf( 'The PDF could not be drawn. %s', implode( ' | ', $reasons ) ) );
+			return new Exception( 'rasterize_failed', sprintf( smliser__( 'The PDF could not be drawn. %s' ), implode( ' | ', $reasons ) ) );
 		} finally {
 			$this->clear( $work );
 		}
@@ -160,7 +160,7 @@ class PdfRasterizer {
 		$this->clear( $to );
 
 		if ( ! $this->fs->mkdir( $to, \SMLISER_DIR_PERMISSION ) ) {
-			return new Exception( 'rasterize_failed', 'The page directory could not be created.' );
+			return new Exception( 'rasterize_failed', smliser__( 'The page directory could not be created.' ) );
 		}
 
 		for ( $page = 1; $page <= $count; $page++ ) {
@@ -169,7 +169,7 @@ class PdfRasterizer {
 			if ( ! $this->fs->move( FileSystemHelper::join_path( $from, $name ), FileSystemHelper::join_path( $to, $name ) ) ) {
 				$this->clear( $to );
 
-				return new Exception( 'rasterize_failed', sprintf( 'Page %d could not be saved.', $page ) );
+				return new Exception( 'rasterize_failed', sprintf( smliser__( 'Page %d could not be saved.' ), $page ) );
 			}
 		}
 

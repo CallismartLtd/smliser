@@ -77,7 +77,7 @@ class CacheRequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message'    => sprintf( '%s settings saved successfully.', $adapter->get_name() ),
+					'message'    => sprintf( smliser__( '%s settings saved successfully.' ), $adapter->get_name() ),
 					'is_default' => CacheAdapterRegistry::get_default_adapter_id() === $adapter_id,
 				],
 			] );
@@ -114,7 +114,7 @@ class CacheRequestController {
 				throw new RequestException(
 					'test_failed',
 					sprintf(
-						'Could not establish a connection to %s. Please check your settings and try again.',
+						smliser__( 'Could not establish a connection to %s. Please check your settings and try again.' ),
 						$cloned->get_name()
 					)
 				);
@@ -123,7 +123,7 @@ class CacheRequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message'    => sprintf( '%s connection test passed successfully.', $cloned->get_name() ),
+					'message'    => sprintf( smliser__( '%s connection test passed successfully.' ), $cloned->get_name() ),
 					'is_default' => CacheAdapterRegistry::get_default_adapter_id() === $cloned->get_id(),
 				],
 			] );
@@ -155,7 +155,7 @@ class CacheRequestController {
 			$adapter_id = static::sanitize_key( $request->get( 'adapter_id', '' ) );
 
 			if ( ! $adapter_id ) {
-				throw new RequestException( 'required_param', 'Adapter ID is required.' );
+				throw new RequestException( 'required_param', smliser__( 'Adapter ID is required.' ) );
 			}
 
 			CacheAdapterRegistry::reset_adapter_settings( $adapter_id );
@@ -163,7 +163,7 @@ class CacheRequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => sprintf( '%s settings reset successfully.', $adapter_id ),
+					'message' => sprintf( smliser__( '%s settings reset successfully.' ), $adapter_id ),
 				],
 			] );
 
@@ -233,7 +233,7 @@ class CacheRequestController {
 				throw new RequestException(
 					'action_failed',
 					sprintf(
-						'Failed to clear %s cache. The adapter may not support a full flush.',
+						smliser__( 'Failed to clear %s cache. The adapter may not support a full flush.' ),
 						$this->cache->get_name()
 					)
 				);
@@ -242,7 +242,7 @@ class CacheRequestController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => sprintf( '%s cache cleared successfully.', $this->cache->get_name() ),
+					'message' => sprintf( smliser__( '%s cache cleared successfully.' ), $this->cache->get_name() ),
 				],
 			] );
 
@@ -269,7 +269,7 @@ class CacheRequestController {
 			if ( 'sqlitecache' !== $cache->get_id() ) {
 				throw new RequestException(
 					'validation_failed',
-					'Manual cache expiry flush is not supported by this driver.'
+					smliser__( 'Manual cache expiry flush is not supported by this driver.' )
 				);
 			}
 
@@ -280,8 +280,8 @@ class CacheRequestController {
 				'success' => true,
 				'data'    => [
 					'message' => $pruned > 0
-						? sprintf( 'Flushed %d expired entr%s.', $pruned, 1 !== $pruned ? 'ies' : 'y' )
-						: 'No expired entries found.',
+						? sprintf( smliser_n( 'Flushed %d expired entry.', 'Flushed %d expired entries.', $pruned ), $pruned )
+						: smliser__( 'No expired entries found.' ),
 				],
 			] ) )->set_header( 'Content-Type', 'application/json; charset=utf-8' );
 
@@ -318,13 +318,13 @@ class CacheRequestController {
 		$adapter_id = static::sanitize_key( $request->get( 'adapter_id' ) );
 
 		if ( ! $adapter_id ) {
-			throw new RequestException( 'required_param', 'Adapter ID is required.' );
+			throw new RequestException( 'required_param', smliser__( 'Adapter ID is required.' ) );
 		}
 
 		$adapter = $collection->get_adapter( $adapter_id );
 
 		if ( null === $adapter ) {
-			throw new RequestException( 'validation_failed', 'Invalid cache adapter.' );
+			throw new RequestException( 'validation_failed', smliser__( 'Invalid cache adapter.' ) );
 		}
 
 		$schema         = $adapter->get_settings_schema();
@@ -364,7 +364,7 @@ class CacheRequestController {
 		if ( ! empty( $missing_fields ) ) {
 			throw new RequestException(
 				'required_param',
-				sprintf( 'The following fields are required: %s.', implode( ', ', $missing_fields ) )
+				sprintf( smliser__( 'The following fields are required: %s.' ), implode( ', ', $missing_fields ) )
 			);
 		}
 

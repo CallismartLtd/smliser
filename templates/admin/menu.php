@@ -21,7 +21,7 @@
  */
 defined( 'SMLISER_ROOT' ) || exit; ?>
 
-<nav class="dashboard-left-menu" id="dashboard-left-menu" aria-label="Primary">
+<nav class="dashboard-left-menu" id="dashboard-left-menu" aria-label="<?php smliser_esc_attr_e( 'Primary' ); ?>">
     <ul class="dashboard-menu-list">
         <?php foreach ( $registry->all() as $key => $menu ) : ?>
             <?php if ( ( is_callable( $menu['visibility'] ) && ! $menu['visibility']() ) || ! $menu['visibility'] ) : continue; ?>

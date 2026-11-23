@@ -8,7 +8,7 @@
 
 defined( 'SMLISER_ROOT' ) || exit;
 
-$title = sprintf( 'Edit Software: %s', $app->get_name() );
+$title = sprintf( smliser__( 'Edit Software: %s' ), $app->get_name() );
 
 $other_fields = [
 	[
@@ -20,7 +20,7 @@ $other_fields = [
 			'class' => 'app-uploader-form-row',
 			'attr'  => [
 				'spellcheck'  => 'off',
-				'placeholder' => 'Optional – link to support page'
+				'placeholder' => smliser__( 'Optional – link to support page' )
 			]
 		]
 	],
@@ -33,7 +33,7 @@ $other_fields = [
 			'class' => 'app-uploader-form-row',
 			'attr'  => [
 				'spellcheck'  => 'off',
-				'placeholder' => 'Optional – leave empty to use server download'
+				'placeholder' => smliser__( 'Optional – leave empty to use server download' )
 			]
 		]
 	],
@@ -46,7 +46,7 @@ $other_fields = [
 			'class' => 'app-uploader-form-row',
 			'attr'  => [
 				'spellcheck'  => 'off',
-				'placeholder' => 'Optional – link to software homepage'
+				'placeholder' => smliser__( 'Optional – link to software homepage' )
 			]
 		]
 	],
@@ -59,7 +59,7 @@ $other_fields = [
 			'class' => 'app-uploader-form-row',
 			'attr'  => [
 				'spellcheck'  => 'off',
-				'placeholder' => 'Optional – link to software documentation'
+				'placeholder' => smliser__( 'Optional – link to software documentation' )
 			]
 		]
 	],
@@ -86,17 +86,17 @@ $screenshots = $app->get_screenshots();
 
 $assets = [
 	'icon' => [
-		'title'  => 'Icons',
+		'title'  => smliser__( 'Icons' ),
 		'images' => $app->get_icons(),
 		'total'  => count( array_filter( $app->get_icons() ) )
 	],
 	'cover' => [
-		'title'  => 'Cover',
+		'title'  => smliser__( 'Cover' ),
 		'images' => [$app->get_cover()],
 		'total'  => count( array_filter( (array) $app->get_cover() ) )
 	],
 	'screenshot' => [
-		'title'  => 'Screenshots',
+		'title'  => smliser__( 'Screenshots' ),
 		'images' => $screenshots,
 		'total'  => count( array_filter( $screenshots ) )
 	],

@@ -18,6 +18,8 @@ use SmartLicenseServer\Environments\Application\Kernel\ExecutionHandlerInterface
 use SmartLicenseServer\Environments\Application\Web\DowntimeExecutionHandler;
 use SmartLicenseServer\Exceptions\DatabaseException;
 use SmartLicenseServer\FileSystem\FileSystem;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\LocaleResolver;
 
 /**
  * Execution handler for web requests while the application is in Installation mode.
@@ -49,6 +51,12 @@ use SmartLicenseServer\FileSystem\FileSystem;
  *
  * The application session is not used: SessionManager depends on
  * SMLISER_SECRET, which this installer writes. See InstallerSession.
+ *
+ * The installer's language is picked before anything else (see
+ * apply_locale() and InstallerLanguage), without the database: a choice made
+ * with the language picker (?lang=) is kept in the smliser_lang cookie and
+ * the installer session, and is saved as the site language and the
+ * administrator's language once the database exists.
  *
  * @package SmartLicenseServer\Environments\Application\Installation
  * @since 0.2.0
@@ -95,6 +103,13 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	private ?Response $response = null;
 
 	/**
+	 * The language explicitly chosen for the installer, if any.
+	 *
+	 * @var string|null
+	 */
+	private ?string $language = null;
+
+	/**
 	 * Class constructor.
 	 *
 	 * @param AppInstaller     $installer The application installer.
@@ -119,6 +134,8 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public function handle() : int {
+		$this->apply_locale();
+
 		try {
 			$response = $this->dispatch();
 		} catch ( \Throwable $e ) {
@@ -126,8 +143,8 @@ final class WebInstaller implements ExecutionHandlerInterface {
 
 			$response = $this->respond(
 				$this->page->failure(
-					'The installer hit an unexpected error. Details were written to the error log. '
-					. 'Fix the cause, then reload this page; completed steps are not repeated.'
+					smliser__( 'The installer hit an unexpected error. Details were written to the error log. '
+					. 'Fix the cause, then reload this page; completed steps are not repeated.' )
 				),
 				500
 			);
@@ -157,6 +174,54 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	*/
 
 	/**
+	 * Switch the installer to the requested language.
+	 *
+	 * Precedence: ?lang= (the language picker), the owner's installer
+	 * session, the smliser_lang cookie, the browser's Accept-Language
+	 * header, then English. The database is never read: it may not exist yet.
+	 * A language picked with ?lang= is remembered in the cookie and, for the
+	 * owner, in the installer session.
+	 *
+	 * @return void
+	 */
+	private function apply_locale() : void {
+		try {
+			$translator = I18n::translator();
+			$language   = new InstallerLanguage( $translator->available_locales() );
+
+			$query  = $this->request->query( LocaleResolver::QUERY_PARAM );
+			$query  = is_string( $query ) ? $query : null;
+			$cookie = $this->request->cookie( LocaleResolver::COOKIE );
+			$cookie = is_string( $cookie ) ? $cookie : null;
+
+			$owner_cookie = $_COOKIE[ InstallerSession::COOKIE ] ?? null;
+			$is_owner     = $this->session->is_owner( is_string( $owner_cookie ) ? $owner_cookie : null );
+			$stored       = ( $is_owner ? $this->session->locale() : null ) ?? $cookie;
+
+			$choice = $language->choice( $query, $stored );
+			$locale = $language->resolve( $query, $stored, $this->request->get_header( 'Accept-Language' ) );
+
+			$translator->set_locale( $locale );
+			$this->language = $choice?->code();
+
+			if ( null !== $choice && null !== $language->find( $query ) ) {
+				$this->remember_language( $choice->code() );
+
+				if ( $is_owner ) {
+					$this->session->set_locale( $choice->code() );
+				}
+			}
+
+			if ( $language->has_choice() && $this->is_installer_path() ) {
+				$this->page->set_language_picker( $this->installer_url(), I18n::language_options(), $locale->code() );
+			}
+		} catch ( \Throwable $e ) {
+			// A broken catalog must never stop the installation: stay in English.
+			\smliser_log_error( '[WebInstaller] Could not apply the installer language: ' . $e->getMessage() );
+		}
+	}
+
+	/**
 	 * Route the request to the owner, the claim form or the visitor response.
 	 *
 	 * @return Response|null Null when a delegated handler already sent its response.
@@ -184,8 +249,8 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		if ( $this->session->is_claimed() ) {
 			return $this->visitor(
 				sprintf(
-					'An installation is already in progress in another browser. If it was abandoned, '
-					. 'the installer can be claimed again after %d minutes of inactivity.',
+					smliser__( 'An installation is already in progress in another browser. If it was abandoned, '
+					. 'the installer can be claimed again after %d minutes of inactivity.' ),
 					(int) ceil( $this->session->idle_timeout() / 60 )
 				)
 			);
@@ -198,7 +263,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 			$this->forget_cookie();
 		}
 
-		return $this->is_post() ? $this->claim() : $this->token_form( $expired ? 'Your installer session expired. Enter the setup token to continue.' : null );
+		return $this->is_post() ? $this->claim() : $this->token_form( $expired ? smliser__( 'Your installer session expired. Enter the setup token to continue.' ) : null );
 	}
 
 	/**
@@ -297,7 +362,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	 */
 	private function claim() : ?Response {
 		if ( ! $this->is_same_origin() ) {
-			return $this->token_form( 'The request did not come from this site. Reload the page and try again.', 403 );
+			return $this->token_form( smliser__( 'The request did not come from this site. Reload the page and try again.' ), 403 );
 		}
 
 		$input = $this->request->post( 'setup_token', '' );
@@ -306,7 +371,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 			// Slows down guessing; the token itself is 128 bits.
 			usleep( 500000 );
 			return $this->token_form(
-				'That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again.',
+				smliser__( 'That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again.' ),
 				403
 			);
 		}
@@ -314,11 +379,16 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		try {
 			$cookie = $this->session->claim();
 		} catch ( \LogicException ) {
-			return $this->visitor( 'Another browser claimed the installer a moment ago.' );
+			return $this->visitor( smliser__( 'Another browser claimed the installer a moment ago.' ) );
 		}
 
 		$this->installer->begin_installation();
 		$this->set_cookie( $cookie );
+
+		// A language picked on the token form carries over into the new claim.
+		if ( null !== $this->language ) {
+			$this->session->set_locale( $this->language );
+		}
 
 		return $this->next();
 	}
@@ -398,7 +468,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	 */
 	private function owner_post() : Response {
 		if ( ! $this->is_same_origin() || ! $this->session->verify_csrf( $this->request->post( '_csrf' ) ) ) {
-			$this->session->flash( 'error', 'The form expired. Please try again.' );
+			$this->session->flash( 'error', smliser__( 'The form expired. Please try again.' ) );
 			return $this->next();
 		}
 
@@ -449,7 +519,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		return self::STEP_SETUP === $action
 			&& self::STEP_ADMIN === $step
 			&& $this->wants_json()
-			&& isset( InstallerPage::SETUP_TASKS[ (string) $this->request->post( 'task', '' ) ] );
+			&& isset( InstallerPage::setup_tasks()[ (string) $this->request->post( 'task', '' ) ] );
 	}
 
 	/**
@@ -471,7 +541,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 			// Not configured yet: the normal starting point.
 			return $result;
 		} catch ( \InvalidArgumentException | \RuntimeException $e ) {
-			$result['notices'][] = $this->error( 'The database settings in the .env file are not valid. Enter them again below.', $e->getMessage() );
+			$result['notices'][] = $this->error( smliser__( 'The database settings in the .env file are not valid. Enter them again below.' ), $e->getMessage() );
 			return $result;
 		}
 
@@ -494,7 +564,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 			$issues = $this->installer->installation_issues();
 		} catch ( DatabaseException $e ) {
 			$result['notices'][] = $this->error(
-				'The database saved in the .env file could not be reached. ' . DatabaseSettings::explain_error( $e->getMessage(), (string) $config->driver ),
+				smliser__( 'The database saved in the .env file could not be reached. ' ) . DatabaseSettings::explain_error( $e->getMessage(), (string) $config->driver ),
 				$e->getMessage()
 			);
 			return $result;
@@ -533,7 +603,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 			self::STEP_DATABASE => $this->page->database(
 				$context,
 				$values + $assessment['config'] + [ 'db_driver' => 'mysql' ],
-				DatabaseSettings::DRIVERS,
+				DatabaseSettings::drivers(),
 				DatabaseSettings::default_sqlite_dir()
 			),
 			self::STEP_SETUP => $this->page->setup(
@@ -620,7 +690,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		}
 
 		$this->installer->use_connection( $adapter );
-		$this->session->flash( 'success', 'Connected. Your database settings were saved.' );
+		$this->session->flash( 'success', smliser__( 'Connected. Your database settings were saved.' ) );
 
 		return $this->next();
 	}
@@ -633,7 +703,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	private function run_setup() : Response {
 		$task = (string) $this->request->post( 'task', '' );
 
-		if ( $this->wants_json() && isset( InstallerPage::SETUP_TASKS[ $task ] ) ) {
+		if ( $this->wants_json() && isset( InstallerPage::setup_tasks()[ $task ] ) ) {
 			return Response::json(
 				[ 'task' => $this->run_task( $task ) ],
 				200,
@@ -643,11 +713,11 @@ final class WebInstaller implements ExecutionHandlerInterface {
 
 		$failed = false;
 
-		foreach ( array_keys( InstallerPage::SETUP_TASKS ) as $name ) {
+		foreach ( array_keys( InstallerPage::setup_tasks() ) as $name ) {
 			$result = $this->run_task( $name );
 
 			if ( 'done' !== $result['status'] ) {
-				$this->session->flash( 'failed' === $result['status'] ? 'error' : 'warning', InstallerPage::SETUP_TASKS[ $name ] . ': ' . $result['detail'] );
+				$this->session->flash( 'failed' === $result['status'] ? 'error' : 'warning', InstallerPage::setup_tasks()[ $name ] . ': ' . $result['detail'] );
 			}
 
 			if ( 'failed' === $result['status'] ) {
@@ -657,7 +727,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		}
 
 		if ( ! $failed ) {
-			$this->session->flash( 'success', 'Folders, database tables and default roles are in place.' );
+			$this->session->flash( 'success', smliser__( 'Folders, database tables and default roles are in place.' ) );
 		}
 
 		return $this->next();
@@ -666,7 +736,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	/**
 	 * Run one setup task.
 	 *
-	 * @param string $task Task key from InstallerPage::SETUP_TASKS.
+	 * @param string $task Task key from InstallerPage::setup_tasks().
 	 * @return array{status: string, detail: string} Status is "done", "warning" or "failed".
 	 */
 	private function run_task( string $task ) : array {
@@ -699,7 +769,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 				$parts[] = sprintf( '%d %s created', $created, $noun );
 			}
 			if ( $existing > 0 ) {
-				$parts[] = sprintf( '%d already existed', $existing );
+				$parts[] = sprintf( smliser__( '%d already existed' ), $existing );
 			}
 
 			return [
@@ -798,7 +868,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 
 		return [
 			'status' => 'failed',
-			'detail' => 'Unknown task.',
+			'detail' => smliser__( 'Unknown task.' ),
 		];
 	}
 
@@ -820,7 +890,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		$messages = $this->installer->validate_admin( $name, $email, $password );
 
 		if ( ! isset( $messages['password'] ) && ! hash_equals( $password, $confirm ) ) {
-			$messages['password'] = 'The two passwords do not match. Type them again.';
+			$messages['password'] = smliser__( 'The two passwords do not match. Type them again.' );
 		}
 
 		$errors = array_map( fn ( string $message ) : array => $this->error( $message ), array_values( $messages ) );
@@ -830,16 +900,25 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		}
 
 		try {
-			$this->installer->create_admin( $name, $email, $password );
+			$admin = $this->installer->create_admin( $name, $email, $password );
 		} catch ( DatabaseException | \InvalidArgumentException $e ) {
-			return $this->render_step( $assessment, $values, [ $this->error( 'The account could not be created.', $e->getMessage() ) ], 422 );
+			return $this->render_step( $assessment, $values, [ $this->error( smliser__( 'The account could not be created.' ), $e->getMessage() ) ], 422 );
+		}
+
+		if ( null !== $this->language ) {
+			try {
+				$this->installer->save_user_language( $admin, $this->language );
+			} catch ( \Throwable $e ) {
+				// The account exists; the language can still be chosen in the dashboard.
+				\smliser_log_error( '[WebInstaller] Could not save the administrator\'s language: ' . $e->getMessage() );
+			}
 		}
 
 		if ( self::STEP_FINISH === $this->assess()['step'] ) {
 			return $this->finish();
 		}
 
-		$this->session->flash( 'success', 'Administrator account created.' );
+		$this->session->flash( 'success', smliser__( 'Administrator account created.' ) );
 
 		return $this->next();
 	}
@@ -850,6 +929,7 @@ final class WebInstaller implements ExecutionHandlerInterface {
 	 * @return Response
 	 */
 	private function finish() : Response {
+		$this->save_site_language();
 		$this->installer->mark_installed();
 		$this->token->delete();
 		$this->session->release();
@@ -861,6 +941,27 @@ final class WebInstaller implements ExecutionHandlerInterface {
 		$this->fs->rmdir( dirname( $this->lock_file() ) );
 
 		return $this->respond( $this->page->done( $this->base_path() . '/' ) );
+	}
+
+	/**
+	 * Save the language chosen in the installer as the site language.
+	 *
+	 * Nothing is saved when no language was picked, so the site keeps
+	 * detecting each visitor's language from the browser. A failure is only
+	 * logged: the setting can be changed later in the admin settings.
+	 *
+	 * @return void
+	 */
+	private function save_site_language() : void {
+		if ( null === $this->language ) {
+			return;
+		}
+
+		try {
+			$this->installer->save_site_language( $this->language );
+		} catch ( \Throwable $e ) {
+			\smliser_log_error( '[WebInstaller] Could not save the site language: ' . $e->getMessage() );
+		}
 	}
 
 	/**
@@ -1096,6 +1197,26 @@ final class WebInstaller implements ExecutionHandlerInterface {
 				'secure'   => $this->is_https(),
 				'httponly' => true,
 				'samesite' => 'Strict',
+			]
+		);
+	}
+
+	/**
+	 * Remember the chosen language in the browser, in the cookie the application also reads.
+	 *
+	 * @param string $locale A validated locale code.
+	 * @return void
+	 */
+	private function remember_language( string $locale ) : void {
+		setcookie(
+			LocaleResolver::COOKIE,
+			$locale,
+			[
+				'expires'  => time() + 365 * 86400,
+				'path'     => $this->base_path() . '/',
+				'secure'   => $this->is_https(),
+				'httponly' => false,
+				'samesite' => 'Lax',
 			]
 		);
 	}

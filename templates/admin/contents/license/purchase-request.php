@@ -30,7 +30,7 @@ $args = $page_handler->get_menu_args( $request );
 	0,
 	[
 		[
-			'label' => 'Purchase Requests',
+			'label' => smliser__( 'Purchase Requests' ),
 			'url'   => $urlmanager->admin_license_page_url( 'purchase-requests' ),
 		],
 	]
@@ -42,7 +42,7 @@ $args = $page_handler->get_menu_args( $request );
 	<?php if ( ! $purchase ) : ?>
 		<?php echo \smliser_not_found_container(
 			\sprintf(
-				'There is no purchase request #%d. <a href="%s"><i class="ti ti-arrow-narrow-left"></i> Go Back</a>',
+				smliser__( 'There is no purchase request #%d. <a href="%s"><i class="ti ti-arrow-narrow-left"></i> Go Back</a>' ),
 				$request_id,
 				$urlmanager->admin_license_page_url( 'purchase-requests' )->url()
 			)
@@ -51,69 +51,69 @@ $args = $page_handler->get_menu_args( $request );
 		<div class="smliser-admin-view-page-wrapper">
 			<div class="smliser-admin-view-page-header">
 				<div class="smliser-admin-view-page-header-child">
-					<h2>Request</h2>
-					<p><i class="ti ti-database"></i> Request ID: <?php echo escHtml( (string) $purchase->get_id() ); ?></p>
-					<p><i class="ti ti-circle-check"></i> Status: <?php echo escHtml( ucfirst( $purchase->get_status() ) ); ?></p>
-					<p><i class="ti ti-calendar"></i> Submitted: <?php echo escHtml( $purchase->get_created_at()?->format( smliser_datetime_format() ) ?? 'N/A' ); ?></p>
+					<h2><?php smliser_esc_html_e( 'Request' ); ?></h2>
+					<p><i class="ti ti-database"></i> <?php smliser_esc_html_e( 'Request ID:' ); ?> <?php echo escHtml( (string) $purchase->get_id() ); ?></p>
+					<p><i class="ti ti-circle-check"></i> <?php smliser_esc_html_e( 'Status:' ); ?> <?php echo escHtml( ucfirst( $purchase->get_status() ) ); ?></p>
+					<p><i class="ti ti-calendar"></i> <?php smliser_esc_html_e( 'Submitted:' ); ?> <?php echo escHtml( $purchase->get_created_at()?->format( smliser_datetime_format() ) ?? 'N/A' ); ?></p>
 				</div>
 
 				<div class="smliser-admin-view-page-header-child">
-					<h2>Buyer</h2>
+					<h2><?php smliser_esc_html_e( 'Buyer' ); ?></h2>
 					<p><i class="ti ti-user"></i> <?php echo escHtml( $purchase->get_buyer_name() ); ?></p>
 					<p><i class="ti ti-mail"></i> <?php echo escHtml( $purchase->get_buyer_email() ); ?></p>
-					<p><i class="ti ti-id"></i> <?php echo escHtml( $purchase->get_user_id() ? sprintf( 'Signed in as user #%d', $purchase->get_user_id() ) : ( $purchase->wants_account() ? 'Guest; asked for an account' : 'Guest' ) ); ?></p>
+					<p><i class="ti ti-id"></i> <?php echo escHtml( $purchase->get_user_id() ? sprintf( smliser__( 'Signed in as user #%d' ), $purchase->get_user_id() ) : ( $purchase->wants_account() ? smliser__( 'Guest; asked for an account' ) : 'Guest' ) ); ?></p>
 				</div>
 
 				<div class="smliser-admin-view-page-header-child">
-					<h2>Bought</h2>
-					<p><i class="ti ti-apps"></i> <?php echo escHtml( $app ? $app->get_name() : 'Unknown app' ); ?></p>
-					<p><i class="ti ti-tag"></i> <?php echo escHtml( $tier ? $tier->get_name() : sprintf( 'Deleted tier #%d', $purchase->get_tier_id() ) ); ?></p>
-					<p><i class="ti ti-cash"></i> Price shown: <?php echo escHtml( $purchase->get_price() ?: 'N/A' ); ?></p>
+					<h2><?php smliser_esc_html_e( 'Bought' ); ?></h2>
+					<p><i class="ti ti-apps"></i> <?php echo escHtml( $app ? $app->get_name() : smliser__( 'Unknown app' ) ); ?></p>
+					<p><i class="ti ti-tag"></i> <?php echo escHtml( $tier ? $tier->get_name() : sprintf( smliser__( 'Deleted tier #%d' ), $purchase->get_tier_id() ) ); ?></p>
+					<p><i class="ti ti-cash"></i> <?php smliser_esc_html_e( 'Price shown:' ); ?> <?php echo escHtml( $purchase->get_price() ?: 'N/A' ); ?></p>
 				</div>
 			</div>
 
 			<div class="smliser-admin-view-page-body">
-				<h3>Payment</h3>
+				<h3><?php smliser_esc_html_e( 'Payment' ); ?></h3>
 				<table class="widefat smliser-license-table">
 					<tbody>
 						<tr>
-							<th>Payment reference</th>
-							<td><?php echo escHtml( $purchase->get_payment_reference() ?: 'None given' ); ?></td>
+							<th><?php smliser_esc_html_e( 'Payment reference' ); ?></th>
+							<td><?php echo escHtml( $purchase->get_payment_reference() ?: smliser__( 'None given' ) ); ?></td>
 						</tr>
 						<tr>
-							<th>Buyer's note</th>
+							<th><?php smliser_esc_html_e( 'Buyer\'s note' ); ?></th>
 							<td><?php echo nl2br( escHtml( $purchase->get_note() ?: 'None' ) ); ?></td>
 						</tr>
 						<tr>
-							<th>Submitted from</th>
+							<th><?php smliser_esc_html_e( 'Submitted from' ); ?></th>
 							<td><?php echo escHtml( $purchase->get_ip_address() ?: 'N/A' ); ?></td>
 						</tr>
 						<?php if ( ! $purchase->is_pending() ) : ?>
 							<tr>
-								<th>Reviewed</th>
-								<td><?php echo escHtml( sprintf( '%s on %s by %s', ucfirst( $purchase->get_status() ), $purchase->get_reviewed_at()?->format( smliser_datetime_format() ) ?? 'N/A', $authors[ $purchase->get_reviewed_by() ] ?? 'Unknown' ) ); ?></td>
+								<th><?php smliser_esc_html_e( 'Reviewed' ); ?></th>
+								<td><?php echo escHtml( sprintf( smliser__( '%s on %s by %s' ), ucfirst( $purchase->get_status() ), $purchase->get_reviewed_at()?->format( smliser_datetime_format() ) ?? 'N/A', $authors[ $purchase->get_reviewed_by() ] ?? 'Unknown' ) ); ?></td>
 							</tr>
 							<?php if ( '' !== $purchase->get_review_note() ) : ?>
 								<tr>
-									<th><?php echo escHtml( 'approved' === $purchase->get_status() ? 'Message sent with the license' : 'Reason sent to the buyer' ); ?></th>
+									<th><?php echo escHtml( 'approved' === $purchase->get_status() ? smliser__( 'Message sent with the license' ) : smliser__( 'Reason sent to the buyer' ) ); ?></th>
 									<td><?php echo nl2br( escHtml( $purchase->get_review_note() ) ); ?></td>
 								</tr>
 							<?php endif; ?>
 							<?php if ( $purchase->get_license_id() ) : ?>
 								<tr>
-									<th>License</th>
-									<td><a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'view', [ 'id' => $purchase->get_license_id() ] )->url() ); ?>">License #<?php echo escHtml( (string) $purchase->get_license_id() ); ?></a></td>
+									<th><?php smliser_esc_html_e( 'License' ); ?></th>
+									<td><a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'view', [ 'id' => $purchase->get_license_id() ] )->url() ); ?>"><?php smliser_esc_html_e( 'License #' ); ?><?php echo escHtml( (string) $purchase->get_license_id() ); ?></a></td>
 								</tr>
 							<?php endif; ?>
 						<?php endif; ?>
 					</tbody>
 				</table>
 
-				<h3>Receipt</h3>
+				<h3><?php smliser_esc_html_e( 'Receipt' ); ?></h3>
 				<?php if ( '' === $receipt_url && '' === $purchase->get_receipt_file() ) : ?>
-					<p class="smliser-review-help"><?php echo escHtml( sprintf( 'The receipt (%s) was deleted after the receipt retention period. See the notes.', $purchase->get_receipt_name() ?: 'receipt' ) ); ?></p>
+					<p class="smliser-review-help"><?php echo escHtml( sprintf( smliser__( 'The receipt (%s) was deleted after the receipt retention period. See the notes.' ), $purchase->get_receipt_name() ?: 'receipt' ) ); ?></p>
 				<?php elseif ( '' === $receipt_url ) : ?>
-					<p class="smliser-review-help">The receipt file is missing from storage.</p>
+					<p class="smliser-review-help"><?php smliser_esc_html_e( 'The receipt file is missing from storage.' ); ?></p>
 				<?php else : ?>
 					<div class="smliser-review-receipt-row">
 						<span class="smliser-review-receipt-type"><?php echo escHtml( strtoupper( (string) ( explode( '/', $purchase->get_receipt_mime() )[1] ?? 'file' ) ) ); ?></span>
@@ -126,30 +126,30 @@ $args = $page_handler->get_menu_args( $request );
 							data-mime="<?php echo escAttr( $purchase->get_receipt_mime() ); ?>"
 							data-pages="<?php echo escAttr( (string) smliser_safe_json_encode( $receipt_pages ) ); ?>"
 							data-name="<?php echo escAttr( sprintf( 'purchase-request-%d-receipt.%s', $purchase->get_id(), pathinfo( $purchase->get_receipt_file(), PATHINFO_EXTENSION ) ) ); ?>">
-							<i class="ti ti-eye"></i> View receipt
+							<i class="ti ti-eye"></i> <?php smliser_esc_html_e( 'View receipt' ); ?>
 						</button>
 					</div>
 					<?php if ( ! $purchase->is_pending() && $receipt_retention > 0 && $purchase->get_reviewed_at() ) : ?>
-						<p class="smliser-review-help"><?php echo escHtml( sprintf( 'Kept until about %s (%d days after the decision), then deleted automatically. The request stays.', $purchase->get_reviewed_at()->modify( sprintf( '+%d days', $receipt_retention ) )->format( smliser_datetime_format() ), $receipt_retention ) ); ?></p>
+						<p class="smliser-review-help"><?php echo escHtml( sprintf( smliser__( 'Kept until about %s (%d days after the decision), then deleted automatically. The request stays.' ), $purchase->get_reviewed_at()->modify( sprintf( '+%d days', $receipt_retention ) )->format( smliser_datetime_format() ), $receipt_retention ) ); ?></p>
 					<?php endif; ?>
 				<?php endif; ?>
 
 				<?php if ( $purchase->can_approve() ) : ?>
 					<h3><?php echo escHtml( $purchase->is_pending() ? 'Decision' : 'Reconsider' ); ?></h3>
 					<?php if ( $purchase->is_pending() ) : ?>
-						<p class="smliser-review-help">Check the receipt against your account for <?php echo escHtml( $purchase->get_price() ?: 'the price shown' ); ?>. The decision is emailed to the buyer. A rejected request can still be approved later; an approval is final.</p>
+						<p class="smliser-review-help"><?php smliser_esc_html_e( 'Check the receipt against your account for' ); ?> <?php echo escHtml( $purchase->get_price() ?: 'the price shown' ); ?><?php smliser_esc_html_e( '. The decision is emailed to the buyer. A rejected request can still be approved later; an approval is final.' ); ?></p>
 					<?php else : ?>
-						<p class="smliser-review-help">This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes.</p>
+						<p class="smliser-review-help"><?php smliser_esc_html_e( 'This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes.' ); ?></p>
 					<?php endif; ?>
 					<div class="smliser-review-decisions">
 						<form class="smliser-review-form" method="post" action="<?php echo escUrl( $actions['approve'] ); ?>" data-smliser-form>
 							<div class="notice" data-smliser-form-message hidden></div>
 							<input type="hidden" name="request_id" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>">
 							<label>
-								<span>Message to the buyer (optional)</span>
-								<textarea name="message" rows="3" placeholder="Sent with the license."></textarea>
+								<span><?php smliser_esc_html_e( 'Message to the buyer (optional)' ); ?></span>
+								<textarea name="message" rows="3" placeholder="<?php smliser_esc_attr_e( 'Sent with the license.' ); ?>"></textarea>
 							</label>
-							<button type="submit" class="smliser-btn smliser-btn-glass"><i class="ti ti-circle-check"></i> <?php echo escHtml( $purchase->is_pending() ? 'Approve and issue the license' : 'Approve after all and issue the license' ); ?></button>
+							<button type="submit" class="smliser-btn smliser-btn-glass"><i class="ti ti-circle-check"></i> <?php echo escHtml( $purchase->is_pending() ? smliser__( 'Approve and issue the license' ) : smliser__( 'Approve after all and issue the license' ) ); ?></button>
 						</form>
 
 						<?php if ( $purchase->can_reject() ) : ?>
@@ -157,18 +157,18 @@ $args = $page_handler->get_menu_args( $request );
 								<div class="notice" data-smliser-form-message hidden></div>
 								<input type="hidden" name="request_id" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>">
 								<label>
-									<span>Reason (sent to the buyer)</span>
-									<textarea name="reason" rows="3" required placeholder="E.g. no payment matching this receipt was received."></textarea>
+									<span><?php smliser_esc_html_e( 'Reason (sent to the buyer)' ); ?></span>
+									<textarea name="reason" rows="3" required placeholder="<?php smliser_esc_attr_e( 'E.g. no payment matching this receipt was received.' ); ?>"></textarea>
 								</label>
-								<button type="submit" class="smliser-btn smliser-btn-danger"><i class="ti ti-circle-x"></i> Reject</button>
+								<button type="submit" class="smliser-btn smliser-btn-danger"><i class="ti ti-circle-x"></i> <?php smliser_esc_html_e( 'Reject' ); ?></button>
 							</form>
 						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 
-				<h3>Notes</h3>
+				<h3><?php smliser_esc_html_e( 'Notes' ); ?></h3>
 				<?php if ( [] === $notes ) : ?>
-					<p class="smliser-review-help">No notes yet.</p>
+					<p class="smliser-review-help"><?php smliser_esc_html_e( 'No notes yet.' ); ?></p>
 				<?php else : ?>
 					<ol class="smliser-review-notes">
 						<?php foreach ( $notes as $note ) : ?>
@@ -176,7 +176,7 @@ $args = $page_handler->get_menu_args( $request );
 								<p class="smliser-review-note__meta">
 									<strong><?php echo escHtml( $authors[ $note->get_author_id() ] ?? ( 0 === $note->get_author_id() ? 'System' : 'Unknown' ) ); ?></strong>
 									· <?php echo escHtml( $note->get_created_at()?->format( smliser_datetime_format() ) ?? '' ); ?>
-									· <?php echo escHtml( $note->is_sent_to_buyer() ? 'Emailed to the buyer' : 'Internal' ); ?>
+									· <?php echo escHtml( $note->is_sent_to_buyer() ? smliser__( 'Emailed to the buyer' ) : 'Internal' ); ?>
 								</p>
 								<p><?php echo nl2br( escHtml( $note->get_body() ) ); ?></p>
 							</li>
@@ -188,29 +188,29 @@ $args = $page_handler->get_menu_args( $request );
 					<div class="notice" data-smliser-form-message hidden></div>
 					<input type="hidden" name="request_id" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>">
 					<label>
-						<span>Add a note</span>
+						<span><?php smliser_esc_html_e( 'Add a note' ); ?></span>
 						<textarea name="note" rows="3" required></textarea>
 					</label>
 					<label class="smliser-review-check">
 						<input type="checkbox" name="notify_buyer" value="1">
-						<span>Also email this note to the buyer (<?php echo escHtml( $purchase->get_buyer_email() ); ?>)</span>
+						<span><?php smliser_esc_html_e( 'Also email this note to the buyer (' ); ?><?php echo escHtml( $purchase->get_buyer_email() ); ?>)</span>
 					</label>
-					<button type="submit" class="smliser-btn smliser-surface-btn"><i class="ti ti-note"></i> Add note</button>
+					<button type="submit" class="smliser-btn smliser-surface-btn"><i class="ti ti-note"></i> <?php smliser_esc_html_e( 'Add note' ); ?></button>
 				</form>
 
-				<h3>Delete</h3>
+				<h3><?php smliser_esc_html_e( 'Delete' ); ?></h3>
 				<p class="smliser-review-help">
 					<?php if ( $purchase->get_license_id() ) : ?>
-						<?php echo escHtml( sprintf( 'Deletes this request, its notes and its receipt. License #%d is kept; change or revoke it on its own page.', $purchase->get_license_id() ) ); ?>
+						<?php echo escHtml( sprintf( smliser__( 'Deletes this request, its notes and its receipt. License #%d is kept; change or revoke it on its own page.' ), $purchase->get_license_id() ) ); ?>
 					<?php else : ?>
-						Deletes this request, its notes and its receipt. The buyer is not told.
+						<?php smliser_esc_html_e( 'Deletes this request, its notes and its receipt. The buyer is not told.' ); ?>
 					<?php endif; ?>
 				</p>
 				<form class="smliser-review-form" method="post" action="<?php echo escUrl( $actions['delete'] ); ?>" data-smliser-form
-					data-confirm="<?php echo escAttr( sprintf( 'Delete purchase request #%d? This cannot be undone.', $purchase->get_id() ) ); ?>" data-confirm-label="Delete" data-confirm-danger>
+					data-confirm="<?php echo escAttr( sprintf( smliser__( 'Delete purchase request #%d? This cannot be undone.' ), $purchase->get_id() ) ); ?>" data-confirm-label="Delete" data-confirm-danger>
 					<div class="notice" data-smliser-form-message hidden></div>
 					<input type="hidden" name="request_id" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>">
-					<button type="submit" class="smliser-btn smliser-btn-danger"><i class="ti ti-trash"></i> Delete request</button>
+					<button type="submit" class="smliser-btn smliser-btn-danger"><i class="ti ti-trash"></i> <?php smliser_esc_html_e( 'Delete request' ); ?></button>
 				</form>
 			</div>
 		</div>

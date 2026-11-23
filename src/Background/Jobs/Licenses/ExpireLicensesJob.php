@@ -52,7 +52,7 @@ class ExpireLicensesJob implements JobHandlerInterface {
 	}
 
 	public static function get_job_description() : string {
-		return 'Marks licenses past their end date as expired and notifies licensees.';
+		return smliser__( 'Marks licenses past their end date as expired and notifies licensees.' );
 	}
 
 	/**

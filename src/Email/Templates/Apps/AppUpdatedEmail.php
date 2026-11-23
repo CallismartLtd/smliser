@@ -66,9 +66,21 @@ class AppUpdatedEmail extends EmailTemplate {
 		$app_slug    = \escHtml( $vars['{{app_slug}}'] );
 		$support     = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			smliser_esc_html__( 'A new version of your application is now live.' ),
+			/* translators: 1: app name (formatted), 2: old version (formatted), 3: new version (formatted) */
+			sprintf( smliser_esc_html__( '✓ %1$s has been updated from version %2$s to version %3$s.' ), '<strong>' . $app_name . '</strong>', '<strong>' . $old_version . '</strong>', '<strong>' . $new_version . '</strong>' ),
+			smliser_esc_html__( 'Application Name' ),
+			smliser_esc_html__( 'Type' ),
+			smliser_esc_html__( 'Previous Version' ),
+			smliser_esc_html__( 'New Version' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not make this update or have any concerns, contact us immediately at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            A new version of your application is now live.
+            {$i18n[0]}
         </p>
 
         <!-- Success banner -->
@@ -78,9 +90,7 @@ class AppUpdatedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#166534;line-height:1.5;">
-                        &#10003;&nbsp; <strong>{$app_name}</strong> has been updated from
-                        version <strong>{$old_version}</strong> to
-                        version <strong>{$new_version}</strong>.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -97,7 +107,7 @@ class AppUpdatedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Application Name
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_name}
@@ -106,7 +116,7 @@ class AppUpdatedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Type
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_type}
@@ -117,7 +127,7 @@ class AppUpdatedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 0 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Previous Version
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$old_version}
@@ -126,7 +136,7 @@ class AppUpdatedEmail extends EmailTemplate {
                             <td width="50%" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    New Version
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:700;">
                                     {$new_version}
@@ -139,17 +149,16 @@ class AppUpdatedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not make this update or have any concerns, contact us immediately at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Application Updated';
+		return smliser__( 'Application Updated' );
 	}
 	public function description() : string {
-		return 'Sent to the app owner when a new version of their application is uploaded.';
+		return smliser__( 'Sent to the app owner when a new version of their application is uploaded.' );
 	}
 	public static function preview() : static {
 		$app = WPTheme::from_array_minimal( [
@@ -166,7 +175,7 @@ class AppUpdatedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'A new version of your application is now live.',
+				'content'   => smliser__( 'A new version of your application is now live.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -174,7 +183,7 @@ class AppUpdatedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => '{{app_name}} has been updated from version {{old_version}} to version {{new_version}}.',
+				'content'   => smliser__( '{{app_name}} has been updated from version {{old_version}} to version {{new_version}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -182,10 +191,10 @@ class AppUpdatedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Application Name',  'value' => '{{app_name}}' ],
-					[ 'label' => 'Type',              'value' => '{{app_type}}' ],
-					[ 'label' => 'Previous Version',  'value' => '{{old_version}}' ],
-					[ 'label' => 'New Version',       'value' => '{{new_version}}' ],
+					[ 'label' => smliser__( 'Application Name' ),  'value' => '{{app_name}}' ],
+					[ 'label' => smliser__( 'Type' ),              'value' => '{{app_type}}' ],
+					[ 'label' => smliser__( 'Previous Version' ),  'value' => '{{old_version}}' ],
+					[ 'label' => smliser__( 'New Version' ),       'value' => '{{new_version}}' ],
 				],
 				'editable'  => true,
 				'removable' => true,
@@ -193,7 +202,7 @@ class AppUpdatedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not make this update or have any concerns, contact us immediately at {{support_email}}.',
+				'content'   => smliser__( 'If you did not make this update or have any concerns, contact us immediately at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

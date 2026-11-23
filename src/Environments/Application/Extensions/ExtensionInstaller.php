@@ -112,7 +112,7 @@ final class ExtensionInstaller extends ModuleInstaller {
 	 * {@inheritdoc}
 	 */
 	protected function publish_action() : string {
-		return 'publish the assets again';
+		return smliser__( 'publish the assets again' );
 	}
 
 	/**
@@ -120,7 +120,7 @@ final class ExtensionInstaller extends ModuleInstaller {
 	 */
 	protected function assert_removable( string $slug ) : void {
 		if ( $this->extensions->is_enabled( $slug ) ) {
-			throw new ExtensionException( sprintf( 'The extension "%s" is enabled; disable it before removing it.', $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension "%s" is enabled; disable it before removing it.' ), $slug ) );
 		}
 	}
 }

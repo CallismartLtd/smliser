@@ -43,7 +43,7 @@ final class LicensesPage implements ClientPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'My licenses',
+			'title'      => smliser__( 'My licenses' ),
 			'slug'       => 'licenses',
 			'handler'    => $this,
 			'icon'       => 'ti ti-certificate',
@@ -94,7 +94,7 @@ final class LicensesPage implements ClientPageInterface {
 				'tier'				=> (string) PricingTier::get_by_id( $license->get_tier_id() )?->get_name(),
 				'status'			=> ucfirst( $license->get_status() ),
 				'status_key'		=> $license->get_status(),
-				'expires'			=> $this->format_date( $license->get_end_date(), 'Never' ),
+				'expires'			=> $this->format_date( $license->get_end_date(), smliser__( 'Never' ) ),
 				'sites'				=> sprintf( '%d of %s', $license->get_total_active_domains(), $license->get_max_allowed_domains() ),
 				'key'				=> (string) $license->get_license_key(),
 				'partial_key'		=> $license->get_partial_key(),

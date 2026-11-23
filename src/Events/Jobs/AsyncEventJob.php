@@ -53,7 +53,7 @@ class AsyncEventJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Dispatches an event asynchronously in the background.';
+		return smliser__( 'Dispatches an event asynchronously in the background.' );
 	}
 
 	/*

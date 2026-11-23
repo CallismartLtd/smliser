@@ -95,7 +95,7 @@ class AuthManagement {
 			return static::error_response(
 				400,
 				'missing_credentials',
-				'Email and password are required.'
+				smliser__( 'Email and password are required.' )
 			);
 		}
 
@@ -123,12 +123,12 @@ class AuthManagement {
 					]
 				);
 			} catch ( \Throwable ) {
-				return static::error_response( 503, 'mfa_unavailable', 'Additional verification could not be started. Please try again.' );
+				return static::error_response( 503, 'mfa_unavailable', smliser__( 'Additional verification could not be started. Please try again.' ) );
 			}
 
 			return static::success_response( 200, [
 				'success'  => true,
-				'message'  => 'Password accepted. Complete the additional verification to sign in.',
+				'message'  => smliser__( 'Password accepted. Complete the additional verification to sign in.' ),
 				'redirect' => $this->urlmanager->login_url( 'mfa', [ 'challenge' => $challenge ] )->url(),
 			] );
 		}
@@ -173,7 +173,7 @@ class AuthManagement {
 			200,
 			[
 				'success'  => true,
-				'message'  => sprintf( 'Welcome back, %s.', $principal->get_display_name() ),
+				'message'  => sprintf( smliser__( 'Welcome back, %s.' ), $principal->get_display_name() ),
 				'redirect' => $redirect_url->url()
 			]
 		);
@@ -186,13 +186,13 @@ class AuthManagement {
 		$token		= trim( (string) $request->post( 'challenge', '' ) );
 		$challenge	= $this->factor_manager->get_challenge( $token, 'login' );
 		if ( ! $challenge ) {
-			return static::error_response( 401, 'challenge_expired', 'This sign-in challenge has expired. Sign in again.' );
+			return static::error_response( 401, 'challenge_expired', smliser__( 'This sign-in challenge has expired. Sign in again.' ) );
 		}
 
 		$user = User::get_by_id( (int) $challenge['user_id'] );
 		$status = $user ? $this->factor_manager->status( (int) $user->get_id() ) : null;
 		if ( ! $user || ! $status['email'] || ! $user->is_email_verified() ) {
-			return static::error_response( 400, 'email_factor_unavailable', 'Email verification is not available for this account.' );
+			return static::error_response( 400, 'email_factor_unavailable', smliser__( 'Email verification is not available for this account.' ) );
 		}
 
 		try {
@@ -218,19 +218,19 @@ class AuthManagement {
 
 			if ( ! $this->factor_manager->consume_challenge( $token ) ) {
 				$this->factor_manager->consume_challenge( $code_challenge['token'] );
-				return static::error_response( 409, 'challenge_used', 'This sign-in challenge has already been used.' );
+				return static::error_response( 409, 'challenge_used', smliser__( 'This sign-in challenge has already been used.' ) );
 			}
 		} catch ( \Throwable $e ) {
 			if ( isset( $code_challenge['token'] ) ) {
 				$this->factor_manager->consume_challenge( $code_challenge['token'] );
 			}
 			$this->logger->warning( 'signin_code_failed', sprintf( 'Could not send a sign-in code: %s', $e->getMessage() ) );
-			return static::error_response( 503, 'email_delivery_failed', 'The sign-in code could not be sent. Please try again.' );
+			return static::error_response( 503, 'email_delivery_failed', smliser__( 'The sign-in code could not be sent. Please try again.' ) );
 		}
 
 		return static::success_response( 200, [
 			'success'  => true,
-			'message'  => 'A verification code was sent to your verified email address.',
+			'message'  => smliser__( 'A verification code was sent to your verified email address.' ),
 			'redirect' => $this->urlmanager->login_url( 'mfa', [ 'challenge' => $code_challenge['token'], 'method' => 'email' ] )->url(),
 		] );
 	}
@@ -264,20 +264,20 @@ class AuthManagement {
 				$this->record_mfa_failure( $user );
 			}
 		} else {
-			return static::error_response( 400, 'invalid_factor', 'Choose a supported verification method.' );
+			return static::error_response( 400, 'invalid_factor', smliser__( 'Choose a supported verification method.' ) );
 		}
 
 		if ( ! $challenge || ! $verified ) {
-			return static::error_response( 401, 'invalid_code', 'The verification code is invalid or has expired.' );
+			return static::error_response( 401, 'invalid_code', smliser__( 'The verification code is invalid or has expired.' ) );
 		}
 
 		$user = User::get_by_id( (int) $challenge['user_id'] );
 		if ( ! $user || ! $user->can_authenticate() ) {
-			return static::error_response( 401, 'account_unavailable', 'This account cannot sign in.' );
+			return static::error_response( 401, 'account_unavailable', smliser__( 'This account cannot sign in.' ) );
 		}
 
 		if ( ! $already_consumed && ! $this->factor_manager->consume_challenge( $token ) ) {
-			return static::error_response( 409, 'challenge_used', 'This sign-in challenge has already been used.' );
+			return static::error_response( 409, 'challenge_used', smliser__( 'This sign-in challenge has already been used.' ) );
 		}
 
 		$principal = $this->web_identity_provider->complete_login_for_user(
@@ -302,7 +302,7 @@ class AuthManagement {
 
 		return static::success_response( 200, [
 			'success'  => true,
-			'message'  => sprintf( 'Welcome back, %s.', $principal->get_display_name() ),
+			'message'  => sprintf( smliser__( 'Welcome back, %s.' ), $principal->get_display_name() ),
 			'redirect' => $redirect->url(),
 		] );
 	}
@@ -335,7 +335,7 @@ class AuthManagement {
 			] );
 		} catch ( \Throwable $e ) {
 			$this->logger->warning( 'passkey_login_start_failed', 'Could not start passkey sign-in: ' . $e->getMessage() );
-			return static::error_response( 503, 'passkey_unavailable', 'Passkey sign-in could not be started. Please try again.' );
+			return static::error_response( 503, 'passkey_unavailable', smliser__( 'Passkey sign-in could not be started. Please try again.' ) );
 		}
 	}
 
@@ -356,14 +356,14 @@ class AuthManagement {
 
 		if ( ! $result ) {
 			$this->record_passkey_failure( $request );
-			return static::error_response( 401, 'passkey_rejected', 'The passkey could not sign you in. Try again, or sign in with your password.' );
+			return static::error_response( 401, 'passkey_rejected', smliser__( 'The passkey could not sign you in. Try again, or sign in with your password.' ) );
 		}
 
 		$user = User::get_by_id( $result['user_id'] );
 
 		if ( ! $user || ! $user->can_authenticate() ) {
 			$this->record_passkey_failure( $request );
-			return static::error_response( 401, 'account_unavailable', 'This account cannot sign in.' );
+			return static::error_response( 401, 'account_unavailable', smliser__( 'This account cannot sign in.' ) );
 		}
 
 		$principal = $this->web_identity_provider->complete_login_for_user( $user, (bool) ( $result['context']['remember'] ?? false ) );
@@ -387,7 +387,7 @@ class AuthManagement {
 
 		return static::success_response( 200, [
 			'success'  => true,
-			'message'  => sprintf( 'Welcome back, %s.', $principal->get_display_name() ),
+			'message'  => sprintf( smliser__( 'Welcome back, %s.' ), $principal->get_display_name() ),
 			'redirect' => $redirect->url(),
 		] );
 	}
@@ -433,12 +433,12 @@ class AuthManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( ! $principal ) {
-			return Response::json( [ 'success' => false, 'message' => 'Already logged out' ], 200 );
+			return Response::json( [ 'success' => false, 'message' => smliser__( 'Already logged out' ) ], 200 );
 		}
 
 		$this->id_provider->logout();
 
-		return Response::json( [ 'success' => true, 'message' => sprintf( 'Good bye %s', $principal->get_display_name() ) ], 200 );
+		return Response::json( [ 'success' => true, 'message' => sprintf( smliser__( 'Good bye %s' ), $principal->get_display_name() ) ], 200 );
 	}
 
 	/**
@@ -458,11 +458,11 @@ class AuthManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( ! $principal ) {
-			$data = [ 'success' => false, 'message' => 'Already logged out' ];
+			$data = [ 'success' => false, 'message' => smliser__( 'Already logged out' ) ];
 		} else {
 			$this->id_provider->logout_everywhere();
 
-			$data = [ 'success' => true, 'message' => sprintf( 'Good bye %s, you are signed out on every device', $principal->get_display_name() ) ];
+			$data = [ 'success' => true, 'message' => sprintf( smliser__( 'Good bye %s, you are signed out on every device' ), $principal->get_display_name() ) ];
 		}
 
 		if ( $request->wantsJson() ) {
@@ -523,7 +523,7 @@ class AuthManagement {
 			return static::error_response(
 				400,
 				'terms_not_accepted',
-				'You must agree to the terms and conditions to create an account.'
+				smliser__( 'You must agree to the terms and conditions to create an account.' )
 			);
 		}
 
@@ -570,7 +570,7 @@ class AuthManagement {
 			200,
 			[
 				'success'  => true,
-				'message'  => 'Account created successfully! Check your email to verify your account.',
+				'message'  => smliser__( 'Account created successfully! Check your email to verify your account.' ),
 				// Back where they were sent from, e.g. an organization invitation.
 				'redirect' => $this->redirect_url( $request, $this->urlmanager->client_dashboard_url() )->url()
 			]
@@ -596,15 +596,15 @@ class AuthManagement {
 		$user = $this->guard->get_principal()?->get_actor();
 
 		if ( ! ( $user instanceof User ) ) {
-			return static::error_response( 401, 'not_signed_in', 'Sign in to verify your email address.' );
+			return static::error_response( 401, 'not_signed_in', smliser__( 'Sign in to verify your email address.' ) );
 		}
 
 		if ( $user->is_email_verified() ) {
-			return static::success_response( 200, [ 'success' => true, 'message' => 'Your email address is already verified.' ] );
+			return static::success_response( 200, [ 'success' => true, 'message' => smliser__( 'Your email address is already verified.' ) ] );
 		}
 
 		if ( ! $this->accounts->acquire_verification_resend( $user ) ) {
-			return static::error_response( 429, 'too_soon', 'A link was sent a moment ago. Check your inbox, or try again in a minute.' );
+			return static::error_response( 429, 'too_soon', smliser__( 'A link was sent a moment ago. Check your inbox, or try again in a minute.' ) );
 		}
 
 		$this->dispatch_job( EmailVerificationJob::class, [ 'user_id' => $user->get_id() ] );
@@ -613,7 +613,7 @@ class AuthManagement {
 			200,
 			[
 				'success' => true,
-				'message' => sprintf( 'A new verification link is on its way to %s.', $user->get_email() ),
+				'message' => sprintf( smliser__( 'A new verification link is on its way to %s.' ), $user->get_email() ),
 			]
 		);
 	}
@@ -643,7 +643,7 @@ class AuthManagement {
 			return static::error_response(
 				400,
 				'invalid_email',
-				'Please provide a valid email address.'
+				smliser__( 'Please provide a valid email address.' )
 			);
 		}
 
@@ -660,7 +660,7 @@ class AuthManagement {
 			200,
 			[
 				'success' => true,
-				'message' => 'If an account exists for this email, you will receive a password reset link shortly.',
+				'message' => smliser__( 'If an account exists for this email, you will receive a password reset link shortly.' ),
 			]
 		);
 	}
@@ -700,7 +700,7 @@ class AuthManagement {
 			return static::error_response(
 				500,
 				'reset_failed',
-				'The password could not be changed. Please try again.'
+				smliser__( 'The password could not be changed. Please try again.' )
 			);
 		}
 
@@ -710,7 +710,7 @@ class AuthManagement {
 			200,
 			[
 				'success'  => true,
-				'message'  => 'Your password has been changed. Sign in with the new one.',
+				'message'  => smliser__( 'Your password has been changed. Sign in with the new one.' ),
 				'redirect' => $this->urlmanager->login_url()->url(),
 			]
 		);

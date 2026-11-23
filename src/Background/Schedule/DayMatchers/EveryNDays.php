@@ -75,6 +75,6 @@ final class EveryNDays implements DayMatcher {
 	 * {@inheritdoc}
 	 */
 	public function describe() : string {
-		return sprintf( 'Every %d day(s)', $this->n );
+		return sprintf( smliser__( 'Every %d day(s)' ), $this->n );
 	}
 }

@@ -24,26 +24,26 @@ $menu_args = $page_handler->get_top_menu_args( $request );
 // "label" is the singular badge text used for async results.
 $status_groups = [
 	'critical' => [
-		'title' => 'Critical Issues',
-		'label' => 'Critical',
+		'title' => smliser__( 'Critical Issues' ),
+		'label' => smliser__( 'Critical' ),
 		'icon'  => 'ti ti-circle-x',
 		'open'  => true,
 	],
 	'warning' => [
-		'title' => 'Warnings',
-		'label' => 'Warning',
+		'title' => smliser__( 'Warnings' ),
+		'label' => smliser__( 'Warning' ),
 		'icon'  => 'ti ti-alert-triangle',
 		'open'  => true,
 	],
 	'info' => [
-		'title' => 'Recommendations',
-		'label' => 'Recommended',
+		'title' => smliser__( 'Recommendations' ),
+		'label' => smliser__( 'Recommended' ),
 		'icon'  => 'ti ti-info-circle',
 		'open'  => false,
 	],
 	'pass' => [
-		'title' => 'Passed Checks',
-		'label' => 'Passed',
+		'title' => smliser__( 'Passed Checks' ),
+		'label' => smliser__( 'Passed' ),
 		'icon'  => 'ti ti-circle-check',
 		'open'  => false,
 	],
@@ -66,18 +66,18 @@ foreach ( $checks as $check ) {
 $overall_states = [
 	'critical' => [
 		'icon'    => 'ti ti-circle-x',
-		'title'   => 'Should be fixed now',
-		'message' => 'One or more critical checks failed. Parts of the application may not work until these are resolved.',
+		'title'   => smliser__( 'Should be fixed now' ),
+		'message' => smliser__( 'One or more critical checks failed. Parts of the application may not work until these are resolved.' ),
 	],
 	'warning' => [
 		'icon'    => 'ti ti-alert-triangle',
-		'title'   => 'Should be improved',
-		'message' => 'The application is running, but some checks need attention.',
+		'title'   => smliser__( 'Should be improved' ),
+		'message' => smliser__( 'The application is running, but some checks need attention.' ),
 	],
 	'pass' => [
 		'icon'    => 'ti ti-circle-check',
-		'title'   => 'Good',
-		'message' => 'All critical and warning checks passed.',
+		'title'   => smliser__( 'Good' ),
+		'message' => smliser__( 'All critical and warning checks passed.' ),
 	],
 ];
 
@@ -114,7 +114,7 @@ $async_config = [
 
 	<?php if ( empty( $checks ) ) : ?>
 		<div class="smliser-not-found-container">
-			<p>No health checks available.</p>
+			<p><?php smliser_esc_html_e( 'No health checks available.' ); ?></p>
 		</div>
 	<?php else : ?>
 
@@ -148,7 +148,7 @@ $async_config = [
 						<span class="smliser-diagnostics-panel-icon">
 							<i class="ti ti-clock"></i>
 						</span>
-						<span class="smliser-diagnostics-panel-title">Additional Checks</span>
+						<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Additional Checks' ); ?></span>
 					</span>
 					<span class="smliser-diagnostics-panel-summary-right">
 						<span class="smliser-diagnostics-panel-count">…</span>
@@ -160,7 +160,7 @@ $async_config = [
 				<div class="smliser-diagnostics-panel-body">
 					<ul class="smliser-health-checks"></ul>
 					<noscript>
-						<p class="smliser-health-check-message">JavaScript is required to run the additional checks.</p>
+						<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'JavaScript is required to run the additional checks.' ); ?></p>
 					</noscript>
 				</div>
 			</details>
@@ -225,7 +225,7 @@ $async_config = [
 						<span class="smliser-diagnostics-panel-icon">
 							<i class="ti ti-message-dots"></i>
 						</span>
-						<span class="smliser-diagnostics-panel-title">Support Report</span>
+						<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Support Report' ); ?></span>
 					</span>
 					<span class="smliser-diagnostics-panel-summary-right">
 						<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -240,8 +240,8 @@ $async_config = [
 						rows="12"
 						readonly
 						spellcheck="false"
-						aria-label="Support report"
-						placeholder="Click “Generate report” to build the report."
+						aria-label="<?php smliser_esc_attr_e( 'Support report' ); ?>"
+						placeholder="<?php smliser_esc_attr_e( 'Click “Generate report” to build the report.' ); ?>"
 					></textarea>
 					
 					<div class="smliser-support-report-actions">
@@ -250,7 +250,7 @@ $async_config = [
 							class="smliser-btn smliser-btn-glass"
 							data-support-report="health"
 							data-report-meta="<?php echo escAttr( (string) \json_encode( $report_meta ) ); ?>"
-						><i class="ti ti-analyze"></i> Generate report</button>
+						><i class="ti ti-analyze"></i> <?php smliser_esc_html_e( 'Generate report' ); ?></button>
 
 						<button
 							type="button"
@@ -258,7 +258,7 @@ $async_config = [
 							data-support-report-download="txt"
 							data-support-report-kind="health"
 							disabled
-						><i class="ti ti-download"></i> Download .txt</button>
+						><i class="ti ti-download"></i> <?php smliser_esc_html_e( 'Download .txt' ); ?></button>
 
 						<button
 							type="button"
@@ -266,7 +266,7 @@ $async_config = [
 							data-support-report-download="json"
 							data-support-report-kind="health"
 							disabled
-						><i class="ti ti-download"></i> Download .json</button>
+						><i class="ti ti-download"></i> <?php smliser_esc_html_e( 'Download .json' ); ?></button>
 					</div>
 				</div>
 			</details>

@@ -18,9 +18,9 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
         <table class="smliser-table widefat striped">
             <thead>
                 <tr>
-                    <th>Provider ID</th>
-                    <th>Provider Name</th>
-                    <th>Action</th>
+                    <th><?php smliser_esc_html_e( 'Provider ID' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Provider Name' ); ?></th>
+                    <th><?php smliser_esc_html_e( 'Action' ); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,13 +30,13 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                         <td><?php echo escHtml( $provider::get_name() ); ?></td>
                         <td>
                             <?php if ( empty( $provider->get_settings_schema() ) ) : ?>
-                                <span>No settings</span>
+                                <span><?php smliser_esc_html_e( 'No settings' ); ?></span>
                             <?php else : ?>
                                 <a href="<?php
 								echo escUrl( $urlmanager->admin_options_url( 'monetization' )
 									->add_query_params( ['provider' => $provider::get_id() ] )->url()
 								); ?>"
-                                class="button smliser-nav-btn"> <i class="ti ti-settings"></i> Configure</a>
+                                class="button smliser-nav-btn"> <i class="ti ti-settings"></i> <?php smliser_esc_html_e( 'Configure' ); ?></a>
                             <?php endif; ?>
                         </td>
                     </tr>

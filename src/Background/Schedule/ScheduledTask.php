@@ -603,14 +603,14 @@ class ScheduledTask {
 	 */
 	public function get_schedule_description() : string {
 		if ( null === $this->day_matcher && 0 === $this->interval_seconds ) {
-			return 'No schedule defined.';
+			return smliser__( 'No schedule defined.' );
 		}
 
 		if ( null === $this->day_matcher ) {
 			return match ( $this->interval_seconds ) {
-				60      => 'Every minute',
-				3600    => 'Every hour',
-				default => sprintf( 'Every %d seconds', $this->interval_seconds ),
+				60      => smliser__( 'Every minute' ),
+				3600    => smliser__( 'Every hour' ),
+				default => sprintf( smliser__( 'Every %d seconds' ), $this->interval_seconds ),
 			};
 		}
 
@@ -663,7 +663,7 @@ class ScheduledTask {
 			return get_class( $callable ) . '()';
 		}
 
-		return 'Unknown callable';
+		return smliser__( 'Unknown callable' );
 	}
 
 	/*

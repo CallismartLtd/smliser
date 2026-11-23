@@ -37,7 +37,7 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
     <?php smliser_print_admin_content_header( $menu_args ); ?>
     <?php if ( ! $adapter ) : ?>
         <?php printf(
-        	smliser_not_found_container( 'The cache adapter "%s" does not exists. <a href="%s">Go Back</a>' ),
+        	smliser_not_found_container( smliser__( 'The cache adapter "%s" does not exists. <a href="%s">Go Back</a>' ) ),
         	$adapter_key,
         	$current_url->url()
         ); ?>
@@ -50,8 +50,8 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
 
             <div class="smliser-options-form_body">
                 <?php smliser_render_input_field( [
-                	'label' => 'Default TTL',
-                	'help'  => 'Default cache expiration duration in seconds.',
+                	'label' => smliser__( 'Default TTL' ),
+                	'help'  => smliser__( 'Default cache expiration duration in seconds.' ),
                 	'input' => [
                 		'type'  => 'number',
                 		'name'  => 'default_cache_ttl',
@@ -99,9 +99,9 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                 <?php endforeach; ?>
 
                 <div class="smliser-form-label-row">
-                    <strong id="set-as-default-label">Make Default <?php
+                    <strong id="set-as-default-label"><?php smliser_esc_html_e( 'Make Default' ); ?> <?php
                 			smliser_render_field_help_icon(
-                				'Set this cache adapter as the default provider for all caching operations.',
+                				smliser__( 'Set this cache adapter as the default provider for all caching operations.' ),
                 				'set-as-default-label'
                 			) ?>
                     </strong>
@@ -113,11 +113,11 @@ $current_url = smliser_get_current_url()->remove_query_param( 'message', 'sectio
                 </div>
 
                 <div class="smliser-form-label-row submit-row">
-                    <button type="submit" class="smliser-submit-button">Save</button>
-                    <button type="button" class="smliser-btn test-cache-btn">Test</button>
+                    <button type="submit" class="smliser-submit-button"><?php smliser_esc_html_e( 'Save' ); ?></button>
+                    <button type="button" class="smliser-btn test-cache-btn"><?php smliser_esc_html_e( 'Test' ); ?></button>
                     
                     <?php if ( ! empty( $saved_settings ) ) : ?>
-                        <button type="button" class="smliser-btn reset-cache-btn">Reset</button>
+                        <button type="button" class="smliser-btn reset-cache-btn"><?php smliser_esc_html_e( 'Reset' ); ?></button>
                     <?php endif; ?>
 
                 </div>

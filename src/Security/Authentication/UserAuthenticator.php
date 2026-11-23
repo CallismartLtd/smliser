@@ -42,7 +42,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_MISSING_CREDENTIALS,
 				'empty_email',
-				'Email address was not provided.'
+				smliser__( 'Email address was not provided.' )
 			);
 		}
 
@@ -51,7 +51,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_INVALID_CREDENTIALS,
 				'invalid_email',
-				'Please provide a valid email address.'
+				smliser__( 'Please provide a valid email address.' )
 			);
 		}
 
@@ -59,7 +59,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_MISSING_CREDENTIALS,
 				'empty_password',
-				'Password was not provided.'
+				smliser__( 'Password was not provided.' )
 			);
 		}
 
@@ -67,7 +67,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_ACTOR_NOT_FOUND,
 				'invalid_user',
-				'Unknown email address.'
+				smliser__( 'Unknown email address.' )
 			);
 		}
 
@@ -82,7 +82,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_INVALID_CREDENTIALS,
 				'incorrect_password',
-				'The password you entered is incorrect.'
+				smliser__( 'The password you entered is incorrect.' )
 			);
 		}
 
@@ -91,7 +91,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_UNAUTHORIZED,
 				'account_inactive',
-				'This account is not active. Contact the site administrator.'
+				smliser__( 'This account is not active. Contact the site administrator.' )
 			);
 		}
 
@@ -102,7 +102,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				status: AuthenticationResult::STATUS_UNAUTHORIZED,
 				error_code: 'invalid_role',
-				message: 'Authentication denied due to invalid role.'
+				message: smliser__( 'Authentication denied due to invalid role.' )
 			);
 		}
 
@@ -117,7 +117,7 @@ class UserAuthenticator implements AuthenticatorInterface {
 			actor: $user,
 			owner: $owner,
 			role: $role,
-			message: 'Successfully authenticated.'
+			message: smliser__( 'Successfully authenticated.' )
 		);
 	}
 }

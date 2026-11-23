@@ -31,8 +31,8 @@ class UpdateAvailableEmail extends UpdateEmail {
 	 */
 	protected function subject() : string {
 		return $this->security
-			? sprintf( 'Security update: %s %s is available', \SMLISER_APP_NAME, $this->new_version )
-			: sprintf( '%s %s is available', \SMLISER_APP_NAME, $this->new_version );
+			? sprintf( smliser__( 'Security update: %s %s is available' ), \SMLISER_APP_NAME, $this->new_version )
+			: sprintf( smliser__( '%s %s is available' ), \SMLISER_APP_NAME, $this->new_version );
 	}
 
 	/**
@@ -40,22 +40,22 @@ class UpdateAvailableEmail extends UpdateEmail {
 	 */
 	protected function preheader() : string {
 		return $this->security
-			? sprintf( 'Version %s fixes a security issue. This site runs %s; install the update soon.', $this->new_version, $this->current_version )
-			: sprintf( 'This site runs %s. Review and install %s from the Updates page.', $this->current_version, $this->new_version );
+			? sprintf( smliser__( 'Version %s fixes a security issue. This site runs %s; install the update soon.' ), $this->new_version, $this->current_version )
+			: sprintf( smliser__( 'This site runs %s. Review and install %s from the Updates page.' ), $this->current_version, $this->new_version );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function label() : string {
-		return 'Update Available';
+		return smliser__( 'Update Available' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function description() : string {
-		return 'Sent to the site administration email when a new release is out that automatic updates will not install.';
+		return smliser__( 'Sent to the site administration email when a new release is out that automatic updates will not install.' );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class UpdateAvailableEmail extends UpdateEmail {
 			'0.4.2',
 			true,
 			'https://example.com/admin/tools/updates',
-			'Automatic updates are off on this site.'
+			smliser__( 'Automatic updates are off on this site.' )
 		);
 	}
 
@@ -80,7 +80,7 @@ class UpdateAvailableEmail extends UpdateEmail {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'An update is available for {{app_name}}',
+				'content'   => smliser__( 'An update is available for {{app_name}}' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -89,29 +89,29 @@ class UpdateAvailableEmail extends UpdateEmail {
 				'type'    => 'banner',
 				'tone'    => $this->security ? 'warning' : 'info',
 				'content' => $this->security
-					? 'Version {{new_version}} is a security release. Install it as soon as possible.'
-					: 'Version {{new_version}} of {{product_name}} is available.',
+					? smliser__( 'Version {{new_version}} is a security release. Install it as soon as possible.' )
+					: smliser__( 'Version {{new_version}} of {{product_name}} is available.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'      => 'reason',
 				'type'    => 'text',
-				'content' => '{{detail}} Review the release and install it from the Updates page.',
+				'content' => smliser__( '{{detail}} Review the release and install it from the Updates page.' ),
 			],
 			[
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Installed', 'value' => '{{current_version}}' ],
-					[ 'label' => 'Available', 'value' => '{{new_version}}' ],
-					[ 'label' => 'Release Type', 'value' => '{{release_type}}' ],
+					[ 'label' => smliser__( 'Installed' ), 'value' => '{{current_version}}' ],
+					[ 'label' => smliser__( 'Available' ), 'value' => '{{new_version}}' ],
+					[ 'label' => smliser__( 'Release Type' ), 'value' => '{{release_type}}' ],
 				],
 			],
 			[
 				'id'    => 'button',
 				'type'  => 'button',
-				'label' => 'Review and Install',
+				'label' => smliser__( 'Review and Install' ),
 				'url'   => '{{updates_url}}',
 			],
 			$this->closing_block(),

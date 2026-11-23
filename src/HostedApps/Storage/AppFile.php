@@ -94,7 +94,7 @@ final class AppFile {
 		static::check_identity( $type, $slug );
 
 		if ( ! in_array( $kind, self::KINDS, true ) ) {
-			throw new StorageException( StorageException::INVALID_PATH, sprintf( '"%s" is not an app file kind.', $kind ), $type, $slug, $name );
+			throw new StorageException( StorageException::INVALID_PATH, sprintf( smliser__( '"%s" is not an app file kind.' ), $kind ), $type, $slug, $name );
 		}
 
 		$named = in_array( $kind, self::NAMED_KINDS, true );
@@ -102,7 +102,7 @@ final class AppFile {
 		if ( $named ) {
 			static::check_name( $type, $slug, $name );
 		} elseif ( '' !== $name ) {
-			throw new StorageException( StorageException::INVALID_PATH, sprintf( 'A %s file has no name.', $kind ), $type, $slug, $name );
+			throw new StorageException( StorageException::INVALID_PATH, sprintf( smliser__( 'A %s file has no name.' ), $kind ), $type, $slug, $name );
 		}
 	}
 
@@ -185,11 +185,11 @@ final class AppFile {
 	 */
 	public static function check_identity( string $type, string $slug ) : void {
 		if ( ! static::is_identifier( $type ) ) {
-			throw new StorageException( StorageException::INVALID_PATH, sprintf( '"%s" is not a valid app type.', $type ), $type, $slug );
+			throw new StorageException( StorageException::INVALID_PATH, sprintf( smliser__( '"%s" is not a valid app type.' ), $type ), $type, $slug );
 		}
 
 		if ( ! static::is_segment( $slug ) ) {
-			throw new StorageException( StorageException::INVALID_PATH, sprintf( '"%s" is not a valid app slug.', $slug ), $type, $slug );
+			throw new StorageException( StorageException::INVALID_PATH, sprintf( smliser__( '"%s" is not a valid app slug.' ), $slug ), $type, $slug );
 		}
 	}
 
@@ -202,7 +202,7 @@ final class AppFile {
 	 */
 	public static function check_type( string $type ) : void {
 		if ( ! static::is_identifier( $type ) ) {
-			throw new StorageException( StorageException::INVALID_PATH, sprintf( '"%s" is not a valid app type.', $type ), $type );
+			throw new StorageException( StorageException::INVALID_PATH, sprintf( smliser__( '"%s" is not a valid app type.' ), $type ), $type );
 		}
 	}
 
@@ -217,7 +217,7 @@ final class AppFile {
 	 */
 	public static function check_name( string $type, string $slug, string $name ) : void {
 		if ( ! static::is_segment( $name ) ) {
-			throw new StorageException( StorageException::INVALID_PATH, sprintf( '"%s" is not a valid file name.', $name ), $type, $slug, $name );
+			throw new StorageException( StorageException::INVALID_PATH, sprintf( smliser__( '"%s" is not a valid file name.' ), $name ), $type, $slug, $name );
 		}
 	}
 

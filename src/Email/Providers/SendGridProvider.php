@@ -56,21 +56,21 @@ class SendGridProvider extends AbstractRestEmailProvider {
 		return [
 			'api_key' => [
 				'type'        => 'password',
-				'label'       => 'API Key',
+				'label'       => smliser__( 'API Key' ),
 				'required'    => true,
-				'description' => 'Your SendGrid API key. Requires Mail Send permission.',
+				'description' => smliser__( 'Your SendGrid API key. Requires Mail Send permission.' ),
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => true,
-				'description' => 'Default sender email. Must be a verified sender identity in SendGrid.',
+				'description' => smliser__( 'Default sender email. Must be a verified sender identity in SendGrid.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Default sender display name.',
+				'description' => smliser__( 'Default sender display name.' ),
 			],
 		];
 	}
@@ -305,7 +305,7 @@ class SendGridProvider extends AbstractRestEmailProvider {
 			$errors = $data['errors'] ?? [];
 			$error  = ! empty( $errors )
 				? implode( ' | ', array_column( $errors, 'message' ) )
-				: 'Unknown SendGrid API error.';
+				: smliser__( 'Unknown SendGrid API error.' );
 
 			throw new EmailTransportException(
 				"SendGridProvider: API returned HTTP {$response->status_code} — {$error}"

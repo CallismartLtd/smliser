@@ -31,22 +31,22 @@ class PHPMailProvider implements EmailProviderInterface {
 	}
 
 	public static function get_name() : string {
-		return 'PHP Mail';
+		return smliser__( 'PHP Mail' );
 	}
 
 	public static function get_settings_schema() : array {
 		return [
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => true,
-				'description' => 'Default sender email address.',
+				'description' => smliser__( 'Default sender email address.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Default sender name.',
+				'description' => smliser__( 'Default sender name.' ),
 			],
 		];
 	}
@@ -65,7 +65,7 @@ class PHPMailProvider implements EmailProviderInterface {
 
 	public function send( EmailMessage $message ) : EmailResponse {
 		if ( ! \function_exists( 'mail' ) ) {
-			throw new EmailTransportException( 'Cannot send email. The function "mail()" does not exist.' );
+			throw new EmailTransportException( smliser__( 'Cannot send email. The function "mail()" does not exist.' ) );
 		}
 
 		$to      = $this->sanitize_address_list( $message->get( 'to', [] ) );
@@ -73,7 +73,7 @@ class PHPMailProvider implements EmailProviderInterface {
 		$body    = $message->get( 'body', '' );
 
 		if ( '' === $to ) {
-			throw new EmailTransportException( 'Cannot send email. No valid "to" recipient was provided.' );
+			throw new EmailTransportException( smliser__( 'Cannot send email. No valid "to" recipient was provided.' ) );
 		}
 
 		// Resolve sender — message-level 'from' takes precedence over settings.
@@ -82,7 +82,7 @@ class PHPMailProvider implements EmailProviderInterface {
 		$from_name  = ( $from['name'] ?? $this->settings['from_name'] ) ?: $this->default_sender_name;
 
 		if ( ! filter_var( $from_email, FILTER_VALIDATE_EMAIL ) ) {
-			throw new EmailTransportException( 'Cannot send email. The resolved "from" address is invalid.' );
+			throw new EmailTransportException( smliser__( 'Cannot send email. The resolved "from" address is invalid.' ) );
 		}
 
 		$attachments = $message->get( 'attachments', [] );
@@ -94,7 +94,7 @@ class PHPMailProvider implements EmailProviderInterface {
 			: $body;
 
 		if ( ! mail( $to, $subject, $mime_body, implode( "\r\n", $headers ) ) ) {
-			throw new EmailTransportException( 'Failed to send email via PHP mail().' );
+			throw new EmailTransportException( smliser__( 'Failed to send email via PHP mail().' ) );
 		}
 
 		return EmailResponse::ok( '' );

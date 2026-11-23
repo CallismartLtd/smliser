@@ -94,13 +94,13 @@ class BackgroundManagement {
 		$task_id = (string) $request->get( 'task_id', '' );
 
 		if ( '' !== $task_id && ! $this->scheduler->has_task( $task_id ) ) {
-			return $this->fail( sprintf( 'No scheduled task "%s" is registered.', $task_id ), 404 );
+			return $this->fail( sprintf( smliser__( 'No scheduled task "%s" is registered.' ), $task_id ), 404 );
 		}
 
 		$task_ids = '' !== $task_id ? [ $task_id ] : array_keys( $this->scheduler->get_due_tasks() );
 
 		if ( empty( $task_ids ) ) {
-			return $this->ok( 'No tasks are due.', [] );
+			return $this->ok( smliser__( 'No tasks are due.' ), [] );
 		}
 
 		$this->allow_time();
@@ -128,11 +128,11 @@ class BackgroundManagement {
 		$ran    = count( $results );
 
 		$message = 1 === $ran && '' !== $task_id
-			? ( 0 === $failed ? sprintf( '"%s" ran successfully.', $results[0]['label'] ) : sprintf( '"%s" failed: %s', $results[0]['label'], $results[0]['error'] ) )
-			: sprintf( 'Ran %d task(s); %d failed.', $ran, $failed );
+			? ( 0 === $failed ? sprintf( smliser__( '"%s" ran successfully.' ), $results[0]['label'] ) : sprintf( '"%s" failed: %s', $results[0]['label'], $results[0]['error'] ) )
+			: sprintf( smliser__( 'Ran %d task(s); %d failed.' ), $ran, $failed );
 
 		if ( $stopped ) {
-			$message .= ' An update started; the remaining tasks stay due.';
+			$message .= smliser__( ' An update started; the remaining tasks stay due.' );
 		}
 
 		return 0 === $failed ? $this->ok( $message, $results ) : $this->fail( $message, 500, $results );
@@ -158,7 +158,7 @@ class BackgroundManagement {
 		}
 
 		if ( $this->update_job_queued() ) {
-			return $this->fail( 'An update is queued. It can only be installed by the queue worker running from the console (`queue work`), so the queue is not processed from here until it has run.', 409 );
+			return $this->fail( smliser__( 'An update is queued. It can only be installed by the queue worker running from the console (`queue work`), so the queue is not processed from here until it has run.' ), 409 );
 		}
 
 		$this->allow_time();
@@ -183,8 +183,8 @@ class BackgroundManagement {
 
 		return $this->ok(
 			0 === $processed
-				? 'No jobs were ready to run.'
-				: sprintf( 'Processed %d job(s); %d still pending.', $processed, $pending ),
+				? smliser__( 'No jobs were ready to run.' )
+				: sprintf( smliser__( 'Processed %d job(s); %d still pending.' ), $processed, $pending ),
 			array_slice( $log, -self::LOG_LIMIT )
 		);
 	}
@@ -202,7 +202,7 @@ class BackgroundManagement {
 
 		$released = $this->job_queue->release_stale_running_jobs();
 
-		return $this->ok( sprintf( 'Released %d stale job(s) back to the queue.', $released ) );
+		return $this->ok( sprintf( smliser__( 'Released %d stale job(s) back to the queue.' ), $released ) );
 	}
 
 	/**
@@ -221,7 +221,7 @@ class BackgroundManagement {
 		$days   = max( 0, (int) $request->get( 'days', 7 ) );
 		$purged = $this->job_queue->purge_completed_jobs( $days );
 
-		return $this->ok( sprintf( 'Purged %d completed job(s) older than %d day(s).', $purged, $days ) );
+		return $this->ok( sprintf( smliser__( 'Purged %d completed job(s) older than %d day(s).' ), $purged, $days ) );
 	}
 
 	/**
@@ -240,7 +240,7 @@ class BackgroundManagement {
 		$days   = max( 0, (int) $request->get( 'days', 30 ) );
 		$purged = $this->job_queue->purge_failed_jobs( $days );
 
-		return $this->ok( sprintf( 'Purged %d failed job record(s) older than %d day(s).', $purged, $days ) );
+		return $this->ok( sprintf( smliser__( 'Purged %d failed job record(s) older than %d day(s).' ), $purged, $days ) );
 	}
 
 	/*
@@ -258,7 +258,7 @@ class BackgroundManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( null === $principal || ! $principal->is( 'system_admin' ) ) {
-			return $this->fail( 'Only system administrators can run background tasks.', 403 );
+			return $this->fail( smliser__( 'Only system administrators can run background tasks.' ), 403 );
 		}
 
 		return null;
@@ -275,9 +275,9 @@ class BackgroundManagement {
 		}
 
 		return match ( $this->code_changes->reason() ) {
-			CodeChangeDetector::REASON_UPDATING => $this->fail( 'The application is being updated. Try again once the update has finished.', 409 ),
-			CodeChangeDetector::REASON_CHANGED  => $this->fail( 'An update has not finished: the files are installed but the finish step has not run. Run `smliser update finish` (or roll back) first.', 409 ),
-			CodeChangeDetector::REASON_PAUSED   => $this->fail( 'Maintenance mode pauses background work. Turn maintenance off first, or switch it on again with background work kept running.', 409 ),
+			CodeChangeDetector::REASON_UPDATING => $this->fail( smliser__( 'The application is being updated. Try again once the update has finished.' ), 409 ),
+			CodeChangeDetector::REASON_CHANGED  => $this->fail( smliser__( 'An update has not finished: the files are installed but the finish step has not run. Run `smliser update finish` (or roll back) first.' ), 409 ),
+			CodeChangeDetector::REASON_PAUSED   => $this->fail( smliser__( 'Maintenance mode pauses background work. Turn maintenance off first, or switch it on again with background work kept running.' ), 409 ),
 			default                             => null,
 		};
 	}

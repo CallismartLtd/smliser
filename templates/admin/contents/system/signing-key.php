@@ -25,26 +25,26 @@ $menu_args  = $page_handler->get_top_menu_args( $request );
 $configured = HostingAttestation::KEY_CONFIGURED === $signing['status'];
 $missing    = HostingAttestation::KEY_MISSING === $signing['status'];
 $required   = $signing['required_types'];
-$refused    = [] === $required ? '' : sprintf( ' New packages of these types are refused until a valid key is set: %s.', implode( ', ', $required ) );
+$refused    = [] === $required ? '' : sprintf( smliser__( ' New packages of these types are refused until a valid key is set: %s.' ), implode( ', ', $required ) );
 
 [ $tone, $icon, $title, $message ] = match ( $signing['status'] ) {
 	HostingAttestation::KEY_CONFIGURED => [
 		'pass',
 		'ti ti-shield-check',
-		'Packages are signed',
-		'Every app package uploaded from now on is signed with this site\'s key, so apps that trust the public key below can check their updates.',
+		smliser__( 'Packages are signed' ),
+		smliser__( 'Every app package uploaded from now on is signed with this site\'s key, so apps that trust the public key below can check their updates.' ),
 	],
 	HostingAttestation::KEY_INVALID => [
 		'critical',
 		'ti ti-shield-x',
-		'The signing key is not valid',
-		sprintf( '%s is set, but it is not a base64 Ed25519 secret key. Packages are stored unsigned.%s', $signing['env_key'], $refused ),
+		smliser__( 'The signing key is not valid' ),
+		sprintf( smliser__( '%s is set, but it is not a base64 Ed25519 secret key. Packages are stored unsigned.%s' ), $signing['env_key'], $refused ),
 	],
 	default => [
 		[] === $required ? 'warning' : 'critical',
 		'ti ti-shield-off',
-		'Packages are not signed',
-		sprintf( 'No signing key is set, so apps cannot check that their updates came from this site.%s', $refused ),
+		smliser__( 'Packages are not signed' ),
+		sprintf( smliser__( 'No signing key is set, so apps cannot check that their updates came from this site.%s' ), $refused ),
 	],
 };
 
@@ -61,7 +61,7 @@ $snippet = static function ( string $value ) : void {
 	?>
 	<div class="smliser-bg-snippet">
 		<pre><code><?php echo escHtml( $value ); ?></code></pre>
-		<button type="button" class="smliser-btn smliser-btn-glass smliser-click-to-copy" data-copy-snippet data-copy-value="<?php echo escAttr( $value ); ?>" title="Copy"><i class="ti ti-copy"></i></button>
+		<button type="button" class="smliser-btn smliser-btn-glass smliser-click-to-copy" data-copy-snippet data-copy-value="<?php echo escAttr( $value ); ?>" title="<?php smliser_esc_attr_e( 'Copy' ); ?>"><i class="ti ti-copy"></i></button>
 	</div>
 	<?php
 };
@@ -85,7 +85,7 @@ $snippet = static function ( string $value ) : void {
 				<summary class="smliser-diagnostics-panel-summary">
 					<span class="smliser-diagnostics-panel-summary-left">
 						<span class="smliser-diagnostics-panel-icon"><i class="ti ti-key"></i></span>
-						<span class="smliser-diagnostics-panel-title">Public key</span>
+						<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Public key' ); ?></span>
 					</span>
 					<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 				</summary>
@@ -93,23 +93,23 @@ $snippet = static function ( string $value ) : void {
 					<ul class="smliser-health-checks">
 						<li class="smliser-health-check">
 							<div class="smliser-health-check-body">
-								<div class="smliser-health-check-header"><span class="smliser-health-check-label">Key</span></div>
+								<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Key' ); ?></span></div>
 								<?php $snippet( (string) $signing['public_key'] ); ?>
-								<p class="smliser-health-check-message">Developers put this key in their apps; apps then accept only packages this site signed. It cannot sign anything, so it is safe to share.</p>
+								<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Developers put this key in their apps; apps then accept only packages this site signed. It cannot sign anything, so it is safe to share.' ); ?></p>
 							</div>
 						</li>
 						<li class="smliser-health-check">
 							<div class="smliser-health-check-body">
-								<div class="smliser-health-check-header"><span class="smliser-health-check-label">Fingerprint</span></div>
+								<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Fingerprint' ); ?></span></div>
 								<?php $snippet( (string) $signing['fingerprint'] ); ?>
-								<p class="smliser-health-check-message">Publish the fingerprint somewhere other than this site, such as your company website, so developers can check that the key they copied was not replaced by someone who broke into this site.</p>
+								<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Publish the fingerprint somewhere other than this site, such as your company website, so developers can check that the key they copied was not replaced by someone who broke into this site.' ); ?></p>
 							</div>
 						</li>
 						<li class="smliser-health-check">
 							<div class="smliser-health-check-body">
-								<div class="smliser-health-check-header"><span class="smliser-health-check-label">Public page</span></div>
+								<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Public page' ); ?></span></div>
 								<p class="smliser-health-check-message">
-									Developers find the key, and how to use it, at
+									<?php smliser_esc_html_e( 'Developers find the key, and how to use it, at' ); ?>
 									<a href="<?php echo escUrl( $signing['public_url'] ); ?>" target="_blank" rel="noopener"><?php echo escHtml( $signing['public_url'] ); ?></a>.
 								</p>
 							</div>
@@ -124,7 +124,7 @@ $snippet = static function ( string $value ) : void {
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-info-circle"></i></span>
-					<span class="smliser-diagnostics-panel-title">What is signed</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'What is signed' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -132,21 +132,21 @@ $snippet = static function ( string $value ) : void {
 				<ul class="smliser-health-checks">
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Main packages</span></div>
-							<p class="smliser-health-check-message">Each app's main package is signed when it is uploaded, and the signature names the app, so it cannot be reused for another app. Packages uploaded before the key was set stay unsigned until they are uploaded again.</p>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Main packages' ); ?></span></div>
+							<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Each app\'s main package is signed when it is uploaded, and the signature names the app, so it cannot be reused for another app. Packages uploaded before the key was set stay unsigned until they are uploaded again.' ); ?></p>
 						</div>
 					</li>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Artifacts</span></div>
-							<p class="smliser-health-check-message">Other files of an app are not signed by this site. Developers who want them verified sign them with their own key.</p>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Artifacts' ); ?></span></div>
+							<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Other files of an app are not signed by this site. Developers who want them verified sign them with their own key.' ); ?></p>
 						</div>
 					</li>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">App types that must be signed</span></div>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'App types that must be signed' ); ?></span></div>
 							<p class="smliser-health-check-message">
-								<?php echo escHtml( [] === $required ? 'None. Every app type can be uploaded without a key.' : implode( ', ', $required ) . '. Their packages are refused without a valid key.' ); ?>
+								<?php echo escHtml( [] === $required ? smliser__( 'None. Every app type can be uploaded without a key.' ) : implode( ', ', $required ) . smliser__( '. Their packages are refused without a valid key.' ) ); ?>
 							</p>
 						</div>
 					</li>
@@ -159,7 +159,7 @@ $snippet = static function ( string $value ) : void {
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-settings"></i></span>
-					<span class="smliser-diagnostics-panel-title"><?php echo escHtml( $configured ? 'Replacing the key' : 'Setting up a key' ); ?></span>
+					<span class="smliser-diagnostics-panel-title"><?php echo escHtml( $configured ? smliser__( 'Replacing the key' ) : smliser__( 'Setting up a key' ) ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -168,36 +168,36 @@ $snippet = static function ( string $value ) : void {
 					<?php if ( $configured ) : ?>
 						<li class="smliser-health-check">
 							<div class="smliser-health-check-body">
-								<div class="smliser-health-check-header"><span class="smliser-health-check-label">Warn developers first</span></div>
-								<p class="smliser-health-check-message">Apps that trust only the current key refuse every package signed with a new one. Publish the new public key first, give developers time to ship app updates that trust both keys, and only then switch.</p>
+								<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Warn developers first' ); ?></span></div>
+								<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Apps that trust only the current key refuse every package signed with a new one. Publish the new public key first, give developers time to ship app updates that trust both keys, and only then switch.' ); ?></p>
 							</div>
 						</li>
 					<?php endif; ?>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">With a terminal</span></div>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'With a terminal' ); ?></span></div>
 							<?php if ( $missing ) : ?>
-								<p class="smliser-health-check-message">From the application folder, run the command below. It adds the missing key to the .env file and leaves every value already set untouched:</p>
+								<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'From the application folder, run the command below. It adds the missing key to the .env file and leaves every value already set untouched:' ); ?></p>
 								<?php $snippet( 'php smliser installer make:dotenv' ); ?>
 							<?php else : ?>
-								<p class="smliser-health-check-message">Generate a key, then replace the value of <?php echo escHtml( $signing['env_key'] ); ?> in the .env file with it:</p>
+								<p class="smliser-health-check-message"><?php /* translators: %s: an environment variable name. */ printf( smliser_esc_html__( 'Generate a key, then replace the value of %s in the .env file with it:' ), escHtml( $signing['env_key'] ) ); ?></p>
 								<?php $snippet( $generate ); ?>
 							<?php endif; ?>
 						</div>
 					</li>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Without a terminal</span></div>
-							<p class="smliser-health-check-message">On any computer with PHP, generate a key:</p>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Without a terminal' ); ?></span></div>
+							<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'On any computer with PHP, generate a key:' ); ?></p>
 							<?php $snippet( $generate ); ?>
-							<p class="smliser-health-check-message">Then open the .env file in your host's File Manager and set:</p>
+							<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Then open the .env file in your host\'s File Manager and set:' ); ?></p>
 							<?php $snippet( $signing['env_key'] . '=<the generated key>' ); ?>
 						</div>
 					</li>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Keep it secret</span></div>
-							<p class="smliser-health-check-message">The generated value is the private key. Anyone who has it can sign packages your users' apps will trust. Keep a backup somewhere safe: if it is lost, every app has to be updated to trust a new key.</p>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Keep it secret' ); ?></span></div>
+							<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'The generated value is the private key. Anyone who has it can sign packages your users\' apps will trust. Keep a backup somewhere safe: if it is lost, every app has to be updated to trust a new key.' ); ?></p>
 						</div>
 					</li>
 				</ol>

@@ -102,7 +102,7 @@ class IdentityService extends AbstractIdentityProvider implements PasswordIdenti
 	private function unsupported() : RequestException {
 		return new RequestException(
 			'password_auth_unavailable',
-			'Password sign-in is not available here.'
+			smliser__( 'Password sign-in is not available here.' )
 		);
 	}
 }

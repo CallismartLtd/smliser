@@ -194,18 +194,18 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$trashed = $this->trashed_dir( $type, $slug );
 
 		if ( $this->occupied( $trashed ) ) {
-			$this->fail( StorageException::ALREADY_EXISTS, sprintf( 'A trashed %s already has the slug "%s"; purge it first.', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::ALREADY_EXISTS, sprintf( smliser__( 'A trashed %s already has the slug "%s"; purge it first.' ), $type, $slug ), $type, $slug );
 		}
 
 		if ( ! $this->fs->mkdir( dirname( $trashed ) ) || ! $this->fs->move( $live, $trashed ) ) {
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The %s "%s" could not be moved to the trash.', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The %s "%s" could not be moved to the trash.' ), $type, $slug ), $type, $slug );
 		}
 
 		// Without its timestamp the app would be missing from list_trashed(),
 		// so a failed write puts it back.
 		if ( ! $this->fs->put_contents( $trashed . '/' . self::TRASH_METADATA_FILE, (string) time() ) ) {
 			$this->fs->move( $trashed, $live );
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The trash time of %s "%s" could not be recorded.', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The trash time of %s "%s" could not be recorded.' ), $type, $slug ), $type, $slug );
 		}
 	}
 
@@ -219,11 +219,11 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$trashed = $this->trashed_dir( $type, $slug );
 
 		if ( ! $this->fs->is_dir( $trashed ) ) {
-			$this->fail( StorageException::NOT_FOUND, sprintf( 'No trashed %s has the slug "%s".', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::NOT_FOUND, sprintf( smliser__( 'No trashed %s has the slug "%s".' ), $type, $slug ), $type, $slug );
 		}
 
 		if ( $this->occupied( $live ) ) {
-			$this->fail( StorageException::ALREADY_EXISTS, sprintf( 'A live %s already has the slug "%s".', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::ALREADY_EXISTS, sprintf( smliser__( 'A live %s already has the slug "%s".' ), $type, $slug ), $type, $slug );
 		}
 
 		// The timestamp is removed first so a restored app never carries it;
@@ -233,7 +233,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$trashed_at = $has_meta ? $this->fs->get_contents( $meta ) : false;
 
 		if ( $has_meta && ! $this->fs->delete( $meta ) ) {
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The trashed %s "%s" could not be restored.', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The trashed %s "%s" could not be restored.' ), $type, $slug ), $type, $slug );
 		}
 
 		if ( ! $this->fs->move( $trashed, $live ) ) {
@@ -241,7 +241,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 				$this->fs->put_contents( $meta, $trashed_at );
 			}
 
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The trashed %s "%s" could not be restored.', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The trashed %s "%s" could not be restored.' ), $type, $slug ), $type, $slug );
 		}
 	}
 
@@ -257,12 +257,12 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		);
 
 		if ( [] === $dirs ) {
-			$this->fail( StorageException::NOT_FOUND, sprintf( 'No live or trashed %s has the slug "%s".', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::NOT_FOUND, sprintf( smliser__( 'No live or trashed %s has the slug "%s".' ), $type, $slug ), $type, $slug );
 		}
 
 		foreach ( $dirs as $dir ) {
 			if ( ! $this->fs->delete( $dir, true ) ) {
-				$this->fail( StorageException::IO_ERROR, sprintf( 'The %s "%s" could not be deleted.', $type, $slug ), $type, $slug );
+				$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The %s "%s" could not be deleted.' ), $type, $slug ), $type, $slug );
 			}
 		}
 	}
@@ -277,7 +277,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$this->check_app( $type, $to );
 
 		if ( $from === $to ) {
-			$this->fail( StorageException::INVALID_PATH, sprintf( 'The %s already has the slug "%s".', $type, $to ), $type, $from );
+			$this->fail( StorageException::INVALID_PATH, sprintf( smliser__( 'The %s already has the slug "%s".' ), $type, $to ), $type, $from );
 		}
 
 		$this->require_app( $type, $from );
@@ -286,7 +286,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$new_dir = $this->app_dir( $type, $to );
 
 		if ( $this->occupied( $new_dir ) || $this->occupied( $this->trashed_dir( $type, $to ) ) ) {
-			$this->fail( StorageException::ALREADY_EXISTS, sprintf( 'A live or trashed %s already has the slug "%s".', $type, $to ), $type, $to );
+			$this->fail( StorageException::ALREADY_EXISTS, sprintf( smliser__( 'A live or trashed %s already has the slug "%s".' ), $type, $to ), $type, $to );
 		}
 
 		$has_package = $this->occupied( $old_dir . '/' . $from . '.zip' );
@@ -294,16 +294,16 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		// A document may not take the package's name, so the new package
 		// name must be free inside the app too.
 		if ( $has_package && $this->occupied( $old_dir . '/' . $to . '.zip' ) ) {
-			$this->fail( StorageException::ALREADY_EXISTS, sprintf( 'The %s "%s" holds a file named "%s.zip".', $type, $from, $to ), $type, $from );
+			$this->fail( StorageException::ALREADY_EXISTS, sprintf( smliser__( 'The %s "%s" holds a file named "%s.zip".' ), $type, $from, $to ), $type, $from );
 		}
 
 		if ( ! $this->fs->move( $old_dir, $new_dir ) ) {
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The %s "%s" could not be renamed to "%s".', $type, $from, $to ), $type, $from );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The %s "%s" could not be renamed to "%s".' ), $type, $from, $to ), $type, $from );
 		}
 
 		if ( $has_package && ! $this->fs->move( $new_dir . '/' . $from . '.zip', $new_dir . '/' . $to . '.zip' ) ) {
 			$this->fs->move( $new_dir, $old_dir );
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The package of %s "%s" could not be renamed to "%s.zip".', $type, $from, $to ), $type, $from );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The package of %s "%s" could not be renamed to "%s.zip".' ), $type, $from, $to ), $type, $from );
 		}
 	}
 
@@ -350,7 +350,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 
 		if ( ! $this->fs->is_dir( $app_dir ) ) {
 			if ( $this->occupied( $app_dir ) || ! $this->fs->mkdir( $app_dir ) ) {
-				$this->fail( StorageException::IO_ERROR, sprintf( 'The %s "%s" could not be created.', $type, $slug ), $type, $slug );
+				$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The %s "%s" could not be created.' ), $type, $slug ), $type, $slug );
 			}
 
 			$created = true;
@@ -388,7 +388,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$json = $this->fs->get_contents( $path );
 
 		if ( false === $json ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be read', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be read' ), $file );
 		}
 
 		$data = json_decode( $json, true );
@@ -405,11 +405,11 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$json = \smliser_safe_json_encode( $manifest, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES );
 
 		if ( false === $json ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be encoded as JSON', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be encoded as JSON' ), $file );
 		}
 
 		if ( ! $this->fs->put_contents( $path, $json ) ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be written', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be written' ), $file );
 		}
 	}
 
@@ -433,7 +433,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$json = $this->fs->get_contents( $path );
 
 		if ( false === $json ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be read', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be read' ), $file );
 		}
 
 		$data = json_decode( $json, true );
@@ -452,7 +452,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$file = AppFile::attestation( $type, $slug );
 
 		if ( ! self::is_attestation( $attestation ) ) {
-			$this->fail_file( StorageException::INVALID_PATH, 'needs non-empty "checksums" and "signature" strings', $file );
+			$this->fail_file( StorageException::INVALID_PATH, smliser__( 'needs non-empty "checksums" and "signature" strings' ), $file );
 		}
 
 		$path = $this->resolve( $file );
@@ -462,11 +462,11 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		);
 
 		if ( false === $json ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be encoded as JSON', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be encoded as JSON' ), $file );
 		}
 
 		if ( ! $this->fs->put_contents( $path, $json ) ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be written', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be written' ), $file );
 		}
 	}
 
@@ -514,11 +514,11 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		}
 
 		if ( $this->occupied( $to_path ) ) {
-			$this->fail_file( StorageException::ALREADY_EXISTS, 'already exists', $to_file );
+			$this->fail_file( StorageException::ALREADY_EXISTS, smliser__( 'already exists' ), $to_file );
 		}
 
 		if ( ! $this->fs->move( $from_path, $to_path ) ) {
-			$this->fail_file( StorageException::IO_ERROR, sprintf( 'could not be renamed to "%s"', $to ), $from_file );
+			$this->fail_file( StorageException::IO_ERROR, sprintf( smliser__( 'could not be renamed to "%s"' ), $to ), $from_file );
 		}
 	}
 
@@ -579,7 +579,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$contents = $this->fs->get_contents( $path );
 
 		if ( false === $contents ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be read', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be read' ), $file );
 		}
 
 		return $contents;
@@ -593,7 +593,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$path = $this->resolve( $file );
 
 		if ( $this->fs->is_dir( $path ) || ! $this->fs->put_contents( $path, $contents ) ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be written', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be written' ), $file );
 		}
 	}
 
@@ -615,18 +615,18 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	 */
 	public function read_stream( AppFile $file, int $offset = 0, ?int $length = null ) : mixed {
 		if ( $offset < 0 || ( null !== $length && $length < 0 ) ) {
-			$this->fail_file( StorageException::INVALID_PATH, 'cannot be read from a negative offset or length', $file );
+			$this->fail_file( StorageException::INVALID_PATH, smliser__( 'cannot be read from a negative offset or length' ), $file );
 		}
 
 		$stream = $this->fs->read_stream( $this->resolve_existing( $file ) );
 
 		if ( false === $stream ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be opened', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be opened' ), $file );
 		}
 
 		if ( $offset > 0 && 0 !== fseek( $stream, $offset ) ) {
 			fclose( $stream );
-			$this->fail_file( StorageException::IO_ERROR, 'could not be read from the requested offset', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be read from the requested offset' ), $file );
 		}
 
 		return $stream;
@@ -649,7 +649,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	 */
 	public function temporary_url( AppFile $file, int $ttl ) : ?string {
 		if ( $ttl < 1 ) {
-			$this->fail_file( StorageException::INVALID_PATH, 'needs a URL lifetime of at least one second', $file );
+			$this->fail_file( StorageException::INVALID_PATH, smliser__( 'needs a URL lifetime of at least one second' ), $file );
 		}
 
 		$this->resolve_existing( $file );
@@ -669,7 +669,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	public function browse( string $type = '', string $slug = '' ) : array {
 		if ( '' === $type ) {
 			if ( '' !== $slug ) {
-				$this->fail( StorageException::INVALID_PATH, 'Browsing an app needs its type.', '', $slug );
+				$this->fail( StorageException::INVALID_PATH, smliser__( 'Browsing an app needs its type.' ), '', $slug );
 			}
 
 			$entries = [];
@@ -755,7 +755,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	protected function fail_file( string $code, string $what, AppFile $file ) : never {
 		$label = '' === $file->name ? $file->kind : sprintf( '%s "%s"', $file->kind, $file->name );
 
-		$this->fail( $code, sprintf( 'The %s of %s "%s" %s.', $label, $file->type, $file->slug, $what ), $file->type, $file->slug, $file->name );
+		$this->fail( $code, sprintf( smliser__( 'The %s of %s "%s" %s.' ), $label, $file->type, $file->slug, $what ), $file->type, $file->slug, $file->name );
 	}
 
 	/**
@@ -769,7 +769,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		AppFile::check_type( $type );
 
 		if ( ! isset( $this->type_dirs[ $type ] ) ) {
-			$this->fail( StorageException::INVALID_PATH, sprintf( 'This storage does not serve the app type "%s".', $type ), $type );
+			$this->fail( StorageException::INVALID_PATH, sprintf( smliser__( 'This storage does not serve the app type "%s".' ), $type ), $type );
 		}
 	}
 
@@ -796,7 +796,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	 */
 	protected function require_app( string $type, string $slug ) : void {
 		if ( ! $this->has_app( $type, $slug ) ) {
-			$this->fail( StorageException::NOT_FOUND, sprintf( 'No live %s has the slug "%s".', $type, $slug ), $type, $slug );
+			$this->fail( StorageException::NOT_FOUND, sprintf( smliser__( 'No live %s has the slug "%s".' ), $type, $slug ), $type, $slug );
 		}
 	}
 
@@ -875,7 +875,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 			$reserved = [ self::MANIFEST_FILE, self::ATTESTATION_FILE, $file->slug . '.zip', self::ARTIFACTS_DIR, self::ASSETS_DIR ];
 
 			if ( in_array( $file->name, $reserved, true ) ) {
-				$this->fail_file( StorageException::INVALID_PATH, 'uses a name reserved for another kind of file', $file );
+				$this->fail_file( StorageException::INVALID_PATH, smliser__( 'uses a name reserved for another kind of file' ), $file );
 			}
 		}
 
@@ -894,14 +894,14 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		// broken link on the way cannot be judged at all.
 		while ( false === realpath( $probe ) && $probe !== $app_dir ) {
 			if ( @is_link( $probe ) ) {
-				$this->fail_file( StorageException::INVALID_PATH, 'is a broken link', $file );
+				$this->fail_file( StorageException::INVALID_PATH, smliser__( 'is a broken link' ), $file );
 			}
 
 			$probe = dirname( $probe );
 		}
 
 		if ( false === $app_real || ! $this->is_inside( $probe, $app_real ) ) {
-			$this->fail_file( StorageException::INVALID_PATH, 'leads outside the app', $file );
+			$this->fail_file( StorageException::INVALID_PATH, smliser__( 'leads outside the app' ), $file );
 		}
 
 		return $path;
@@ -918,7 +918,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$path = $this->resolve( $file );
 
 		if ( ! $this->fs->is_file( $path ) ) {
-			$this->fail_file( StorageException::NOT_FOUND, 'does not exist', $file );
+			$this->fail_file( StorageException::NOT_FOUND, smliser__( 'does not exist' ), $file );
 		}
 
 		return $path;
@@ -934,11 +934,11 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 	 */
 	protected function check_local_file( AppFile $file, string $local_path ) : void {
 		if ( '' === $local_path || ! $this->fs->exists( $local_path ) ) {
-			$this->fail_file( StorageException::NOT_FOUND, 'cannot be stored: the local file does not exist', $file );
+			$this->fail_file( StorageException::NOT_FOUND, smliser__( 'cannot be stored: the local file does not exist' ), $file );
 		}
 
 		if ( @is_link( $local_path ) || ! $this->fs->is_file( $local_path ) ) {
-			$this->fail_file( StorageException::WRONG_TYPE, 'cannot be stored: the local path is not a regular file', $file );
+			$this->fail_file( StorageException::WRONG_TYPE, smliser__( 'cannot be stored: the local path is not a regular file' ), $file );
 		}
 	}
 
@@ -956,11 +956,11 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$replaces = $this->occupied( $target );
 
 		if ( $replaces && ! $overwrite ) {
-			$this->fail_file( StorageException::ALREADY_EXISTS, 'already exists', $file );
+			$this->fail_file( StorageException::ALREADY_EXISTS, smliser__( 'already exists' ), $file );
 		}
 
 		if ( $replaces && ! $this->fs->is_file( $target ) ) {
-			$this->fail_file( StorageException::IO_ERROR, 'cannot replace something that is not a file', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'cannot replace something that is not a file' ), $file );
 		}
 
 		$dir    = dirname( $target );
@@ -970,12 +970,12 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 
 		if ( ! $this->fs->mkdir( $dir ) || ! $this->fs->rename( $local_path, $staged ) ) {
 			$this->undo_stage( $staged, $local_path );
-			$this->fail_file( StorageException::IO_ERROR, 'could not be stored', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be stored' ), $file );
 		}
 
 		if ( $replaces && ! $this->fs->rename( $target, $backup ) ) {
 			$this->undo_stage( $staged, $local_path );
-			$this->fail_file( StorageException::IO_ERROR, 'could not be replaced', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be replaced' ), $file );
 		}
 
 		if ( ! $this->fs->rename( $staged, $target ) ) {
@@ -984,7 +984,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 			}
 
 			$this->undo_stage( $staged, $local_path );
-			$this->fail_file( StorageException::IO_ERROR, 'could not be stored', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be stored' ), $file );
 		}
 
 		// Uploads arrive with restrictive temporary-file permissions.
@@ -1026,7 +1026,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$path = $this->resolve_existing( $file );
 
 		if ( ! $this->fs->delete( $path ) ) {
-			$this->fail_file( StorageException::IO_ERROR, 'could not be deleted', $file );
+			$this->fail_file( StorageException::IO_ERROR, smliser__( 'could not be deleted' ), $file );
 		}
 	}
 
@@ -1052,13 +1052,13 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$app_real = (string) realpath( $this->app_dir( $type, $slug ) );
 
 		if ( ! $this->is_inside( $dir, $app_real ) ) {
-			$this->fail( StorageException::INVALID_PATH, sprintf( 'The %s directory of %s "%s" leads outside the app.', $subdir, $type, $slug ), $type, $slug );
+			$this->fail( StorageException::INVALID_PATH, sprintf( smliser__( 'The %s directory of %s "%s" leads outside the app.' ), $subdir, $type, $slug ), $type, $slug );
 		}
 
 		$entries = $this->fs->list_dir( $dir );
 
 		if ( false === $entries ) {
-			$this->fail( StorageException::IO_ERROR, sprintf( 'The %s of %s "%s" could not be listed.', $subdir, $type, $slug ), $type, $slug );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( 'The %s of %s "%s" could not be listed.' ), $subdir, $type, $slug ), $type, $slug );
 		}
 
 		$files = [];
@@ -1097,7 +1097,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$stat = $this->fs->stat( $path );
 
 		if ( false === $stat ) {
-			$this->fail( StorageException::IO_ERROR, sprintf( '"%s" could not be read.', $this->name_of( $path ) ) );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( '"%s" could not be read.' ), $this->name_of( $path ) ) );
 		}
 
 		return [
@@ -1184,7 +1184,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$listed = $this->fs->list_dir( $dir );
 
 		if ( false === $listed ) {
-			$this->fail( StorageException::IO_ERROR, sprintf( '"%s" could not be listed.', '' === $prefix ? 'The app' : $prefix ) );
+			$this->fail( StorageException::IO_ERROR, sprintf( smliser__( '"%s" could not be listed.' ), '' === $prefix ? 'The app' : $prefix ) );
 		}
 
 		foreach ( $listed as $entry ) {
@@ -1270,7 +1270,7 @@ class DirectoryAppStorage implements AppStorageAdapterInterface {
 		$entries = $this->fs->list_dir( $dir );
 
 		if ( false === $entries ) {
-			$this->fail( StorageException::IO_ERROR, 'An app directory could not be read.' );
+			$this->fail( StorageException::IO_ERROR, smliser__( 'An app directory could not be read.' ) );
 		}
 
 		$slugs = [];

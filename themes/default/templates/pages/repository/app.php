@@ -25,8 +25,8 @@
 
 $details_partial = 'repository.details-' . $type['slug'];
 ?>
-<nav class="crumbs" aria-label="Breadcrumb">
-	<a href="<?php echo escUrl( $this->urls()->repository_url()->url() ); ?>">Repository</a>
+<nav class="crumbs" aria-label="<?php smliser_esc_attr_e( 'Breadcrumb' ); ?>">
+	<a href="<?php echo escUrl( $this->urls()->repository_url()->url() ); ?>"><?php smliser_esc_html_e( 'Repository' ); ?></a>
 	<span aria-hidden="true">/</span>
 	<a href="<?php echo escUrl( $type['url'] ); ?>"><?php echo escHtml( $type['plural'] ); ?></a>
 </nav>
@@ -39,7 +39,7 @@ $details_partial = 'repository.details-' . $type['slug'];
 
 		<?php if ( '' !== $card['author'] ) : ?>
 			<p class="app-author">
-				By
+				<?php smliser_esc_html_e( 'By' ); ?>
 				<?php if ( '' !== $links['author'] ) : ?>
 					<a href="<?php echo escUrl( $links['author'] ); ?>" rel="nofollow noopener"><?php echo escHtml( $card['author'] ); ?></a>
 				<?php else : ?>
@@ -54,20 +54,20 @@ $details_partial = 'repository.details-' . $type['slug'];
 
 		<div class="actions">
 			<?php if ( $download['monetized'] ) : ?>
-				<span class="badge">Requires a license</span>
+				<span class="badge"><?php smliser_esc_html_e( 'Requires a license' ); ?></span>
 				<?php if ( [] !== $pricing ) : ?>
-					<a class="btn btn-accent" href="#pricing">See pricing</a>
+					<a class="btn btn-accent" href="#pricing"><?php smliser_esc_html_e( 'See pricing' ); ?></a>
 				<?php endif; ?>
 			<?php else : ?>
-				<a class="btn btn-accent" href="<?php echo escUrl( $download['url'] ); ?>"><?php echo escHtml( '' !== $card['version'] ? sprintf( 'Download %s', $card['version'] ) : 'Download' ); ?></a>
+				<a class="btn btn-accent" href="<?php echo escUrl( $download['url'] ); ?>"><?php echo escHtml( '' !== $card['version'] ? sprintf( smliser__( 'Download %s' ), $card['version'] ) : 'Download' ); ?></a>
 			<?php endif; ?>
 
 			<?php if ( '' !== $links['homepage'] && $links['homepage'] !== $card['url'] ) : ?>
-				<a class="btn" href="<?php echo escUrl( $links['homepage'] ); ?>" rel="noopener">Homepage</a>
+				<a class="btn" href="<?php echo escUrl( $links['homepage'] ); ?>" rel="noopener"><?php smliser_esc_html_e( 'Homepage' ); ?></a>
 			<?php endif; ?>
 
 			<?php if ( '' !== $links['support'] ) : ?>
-				<a class="btn" href="<?php echo escUrl( $links['support'] ); ?>" rel="noopener">Support</a>
+				<a class="btn" href="<?php echo escUrl( $links['support'] ); ?>" rel="noopener"><?php smliser_esc_html_e( 'Support' ); ?></a>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -81,7 +81,7 @@ $details_partial = 'repository.details-' . $type['slug'];
 
 		<?php if ( [] !== $screenshots ) : ?>
 			<section class="app-section">
-				<h2>Screenshots</h2>
+				<h2><?php smliser_esc_html_e( 'Screenshots' ); ?></h2>
 				<ul class="shots">
 					<?php foreach ( $screenshots as $shot ) : ?>
 						<li>
@@ -103,19 +103,19 @@ $details_partial = 'repository.details-' . $type['slug'];
 		<?php endforeach; ?>
 
 		<?php if ( [] === $sections && [] === $screenshots ) : ?>
-			<p class="muted">This app has no description yet.</p>
+			<p class="muted"><?php smliser_esc_html_e( 'This app has no description yet.' ); ?></p>
 		<?php endif; ?>
 	</div>
 
 	<aside class="app-aside">
 		<dl class="facts">
-			<div><dt>Type</dt><dd><a href="<?php echo escUrl( $type['url'] ); ?>"><?php echo escHtml( $type['label'] ); ?></a></dd></div>
+			<div><dt><?php smliser_esc_html_e( 'Type' ); ?></dt><dd><a href="<?php echo escUrl( $type['url'] ); ?>"><?php echo escHtml( $type['label'] ); ?></a></dd></div>
 
 			<?php if ( '' !== $card['version'] ) : ?>
-				<div><dt>Version</dt><dd><code><?php echo escHtml( $card['version'] ); ?></code></dd></div>
+				<div><dt><?php smliser_esc_html_e( 'Version' ); ?></dt><dd><code><?php echo escHtml( $card['version'] ); ?></code></dd></div>
 			<?php endif; ?>
 
-			<div><dt>Updated</dt><dd><time datetime="<?php echo escAttr( $card['updated']->format( DATE_ATOM ) ); ?>"><?php echo escHtml( $card['updated']->format( 'M j, Y' ) ); ?></time></dd></div>
+			<div><dt><?php smliser_esc_html_e( 'Updated' ); ?></dt><dd><time datetime="<?php echo escAttr( $card['updated']->format( DATE_ATOM ) ); ?>"><?php echo escHtml( $card['updated']->format( 'M j, Y' ) ); ?></time></dd></div>
 
 			<?php if ( $this->has_partial( $details_partial ) ) : ?>
 				<?php $this->partial( $details_partial, [ 'app' => $app ] ); ?>
@@ -123,7 +123,7 @@ $details_partial = 'repository.details-' . $type['slug'];
 
 			<?php if ( '' !== $license['license'] ) : ?>
 				<div>
-					<dt>License</dt>
+					<dt><?php smliser_esc_html_e( 'License' ); ?></dt>
 					<dd>
 						<?php if ( '' !== $license['license_uri'] ) : ?>
 							<a href="<?php echo escUrl( $license['license_uri'] ); ?>" rel="noopener"><?php echo escHtml( $license['license'] ); ?></a>
@@ -136,7 +136,7 @@ $details_partial = 'repository.details-' . $type['slug'];
 		</dl>
 
 		<?php if ( [] !== $tags ) : ?>
-			<ul class="tags" aria-label="Tags">
+			<ul class="tags" aria-label="<?php smliser_esc_attr_e( 'Tags' ); ?>">
 				<?php foreach ( $tags as $tag ) : ?>
 					<li><?php echo escHtml( $tag ); ?></li>
 				<?php endforeach; ?>

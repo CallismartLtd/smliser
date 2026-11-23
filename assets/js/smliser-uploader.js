@@ -162,11 +162,11 @@
 			this.zone.className = 'smliser-uploader__zone';
 			this.zone.tabIndex  = 0;
 			this.zone.setAttribute( 'role', 'button' );
-			this.zone.setAttribute( 'aria-label', this.input.dataset.label || ( this.multiple ? 'Choose files' : 'Choose a file' ) );
+			this.zone.setAttribute( 'aria-label', this.input.dataset.label || ( this.multiple ? smliserI18n.__( 'Choose files' ) : smliserI18n.__( 'Choose a file' ) ) );
 
 			const prompt = document.createElement( 'span' );
 			prompt.className   = 'smliser-uploader__prompt';
-			prompt.textContent = this.input.dataset.label || ( this.multiple ? 'Drop files here or click to choose' : 'Drop a file here or click to choose' );
+			prompt.textContent = this.input.dataset.label || ( this.multiple ? smliserI18n.__( 'Drop files here or click to choose' ) : smliserI18n.__( 'Drop a file here or click to choose' ) );
 			this.zone.appendChild( prompt );
 
 			if ( hints.length ) {
@@ -257,9 +257,9 @@
 
 			incoming.forEach( ( file ) => {
 				if ( this.accept && ! isAccepted( file, this.accept ) ) {
-					refused.push( `${ file.name } is not an accepted type (${ formatAccept( this.accept ) }).` );
+					refused.push( smliserI18n.sprintf( smliserI18n.__( '%1$s is not an accepted type (%2$s).' ), file.name, formatAccept( this.accept ) ) );
 				} else if ( this.maxSize && file.size > this.maxSize ) {
-					refused.push( `${ file.name } is larger than ${ formatSize( this.maxSize ) }.` );
+					refused.push( smliserI18n.sprintf( smliserI18n.__( '%1$s is larger than %2$s.' ), file.name, formatSize( this.maxSize ) ) );
 				} else {
 					accepted.push( file );
 				}
@@ -356,7 +356,7 @@
 				const remove = document.createElement( 'button' );
 				remove.type        = 'button';
 				remove.className   = 'smliser-uploader__remove';
-				remove.textContent = 'Remove';
+				remove.textContent = smliserI18n.__( 'Remove' );
 				remove.setAttribute( 'aria-label', `Remove ${ file.name }` );
 				remove.addEventListener( 'click', () => this.remove( index ) );
 

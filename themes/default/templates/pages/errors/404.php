@@ -11,12 +11,12 @@ $this->partial(
 	'status',
 	[
 		'diagram' => 'missing',
-		'heading' => 'Not Found',
-		'message' => 'The requested resource could not be found.',
+		'heading' => smliser__( 'Not Found' ),
+		'message' => smliser__( 'The requested resource could not be found.' ),
 		'actions' => [
-			[ 'label' => 'Go back', 'action' => 'back' ],
-			[ 'label' => 'Home', 'url' => $this->url( '/' )->url() ],
+			[ 'label' => smliser__( 'Go back' ), 'action' => 'back' ],
+			[ 'label' => smliser__( 'Home' ), 'url' => $this->url( '/' )->url() ],
 		],
-		'detail'  => sprintf( 'HTTP 404 · %s', $path ),
+		'detail'  => sprintf( smliser__( 'HTTP 404 · %s' ), $path ),
 	]
 );

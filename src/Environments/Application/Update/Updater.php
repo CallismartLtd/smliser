@@ -147,47 +147,47 @@ final class Updater {
 		$this->make_dir( $staging );
 
 		try {
-			$this->report( $progress, 'stage', self::STATUS_INFO, sprintf( 'Extracting %s to %s.', basename( $zip ), $this->relative( $staging ) ) );
+			$this->report( $progress, 'stage', self::STATUS_INFO, sprintf( smliser__( 'Extracting %s to %s.' ), basename( $zip ), $this->relative( $staging ) ) );
 			$this->extract( $zip, $staging );
 
 			$root     = $this->staged_root();
 			$manifest = ReleaseManifest::load( $this->fs, $root );
 
 			if ( null === $manifest ) {
-				throw new UpdateException( sprintf( '%s is not a release package (it has no %s).', basename( $zip ), ReleaseManifest::FILE ) );
+				throw new UpdateException( sprintf( smliser__( '%s is not a release package (it has no %s).' ), basename( $zip ), ReleaseManifest::FILE ) );
 			}
 
 			if ( UpdateServer::APP_SLUG !== $manifest->name || UpdateServer::TARGET !== $manifest->target ) {
-				throw new UpdateException( sprintf( 'The package is %s for "%s"; this installation needs %s for "%s".', $manifest->name, $manifest->target, UpdateServer::APP_SLUG, UpdateServer::TARGET ) );
+				throw new UpdateException( sprintf( smliser__( 'The package is %s for "%s"; this installation needs %s for "%s".' ), $manifest->name, $manifest->target, UpdateServer::APP_SLUG, UpdateServer::TARGET ) );
 			}
 
 			if ( null !== $expected_version && $expected_version !== $manifest->version ) {
-				throw new UpdateException( sprintf( 'The update server announced %s, but the package contains %s. Nothing was changed.', $expected_version, $manifest->version ) );
+				throw new UpdateException( sprintf( smliser__( 'The update server announced %s, but the package contains %s. Nothing was changed.' ), $expected_version, $manifest->version ) );
 			}
 
 			$compare = version_compare( $manifest->version, \SMLISER_VER );
 
 			if ( $compare < 0 ) {
-				throw new UpdateException( sprintf( 'The package is version %s, older than the installed %s. Downgrades are not supported.', $manifest->version, \SMLISER_VER ) );
+				throw new UpdateException( sprintf( smliser__( 'The package is version %s, older than the installed %s. Downgrades are not supported.' ), $manifest->version, \SMLISER_VER ) );
 			}
 
 			if ( 0 === $compare && ! $reinstall ) {
-				throw new UpdateException( sprintf( 'Version %s is already installed. Use --reinstall to replace the files anyway.', $manifest->version ) );
+				throw new UpdateException( sprintf( smliser__( 'Version %s is already installed. Use --reinstall to replace the files anyway.' ), $manifest->version ) );
 			}
 
 			$this->assert_requirements( $manifest->requires );
 
 			if ( ! $this->fs->is_dir( $root . 'system' ) ) {
-				throw new UpdateException( 'The package has no system/ directory.' );
+				throw new UpdateException( smliser__( 'The package has no system/ directory.' ) );
 			}
 
 			$check = $manifest->verify( $this->fs, $root );
 
 			if ( ! $check->passed() ) {
-				throw new UpdateException( 'The package contents do not match its manifest: ' . implode( ' ', $check->messages( 5 ) ) );
+				throw new UpdateException( smliser__( 'The package contents do not match its manifest: ' ) . implode( ' ', $check->messages( 5 ) ) );
 			}
 
-			$this->report( $progress, 'stage', self::STATUS_OK, sprintf( 'Staged %s %s for %s: requirements met, every file matches the package manifest.', $manifest->name, $manifest->version, $manifest->target ) );
+			$this->report( $progress, 'stage', self::STATUS_OK, sprintf( smliser__( 'Staged %s %s for %s: requirements met, every file matches the package manifest.' ), $manifest->name, $manifest->version, $manifest->target ) );
 		} catch ( Throwable $e ) {
 			$this->remove( $staging );
 
@@ -239,11 +239,11 @@ final class Updater {
 
 		$this->flag->write(
 			MaintenanceFlag::REASON_UPDATE,
-			sprintf( '%s is being updated. Please try again in a few minutes.', \SMLISER_APP_NAME ),
+			sprintf( smliser__( '%s is being updated. Please try again in a few minutes.' ), \SMLISER_APP_NAME ),
 			120
 		);
 
-		$this->report( $progress, 'apply', self::STATUS_INFO, 'Maintenance mode is on.' );
+		$this->report( $progress, 'apply', self::STATUS_INFO, smliser__( 'Maintenance mode is on.' ) );
 
 		$this->write_journal( $journal );
 
@@ -265,7 +265,7 @@ final class Updater {
 
 				$this->rename( $staged . $dir, $live );
 
-				$this->report( $progress, 'apply', self::STATUS_OK, $had_live ? sprintf( 'Replaced %s/ (previous copy in %s/%s/).', $dir, $this->relative( $backup ), $dir ) : sprintf( 'Added %s/.', $dir ) );
+				$this->report( $progress, 'apply', self::STATUS_OK, $had_live ? sprintf( smliser__( 'Replaced %s/ (previous copy in %s/%s/).' ), $dir, $this->relative( $backup ), $dir ) : sprintf( 'Added %s/.', $dir ) );
 			}
 
 			foreach ( $this->root_files( $manifest ) as $relative ) {
@@ -278,7 +278,7 @@ final class Updater {
 					$mode = is_array( $stat ) && is_string( $stat['perms'] ?? null ) ? octdec( $stat['perms'] ) & 0777 : null;
 
 					if ( ! $this->fs->copy( $live, $backup . '/' . $relative, true, $mode ?? false ) ) {
-						throw new UpdateException( sprintf( 'Could not back up %s.', $relative ) );
+						throw new UpdateException( sprintf( smliser__( 'Could not back up %s.' ), $relative ) );
 					}
 
 					$journal['replaced'][] = $relative;
@@ -309,11 +309,11 @@ final class Updater {
 			$journal['stage'] = self::STAGE_SWAPPED;
 			$this->write_journal( $journal );
 		} catch ( Throwable $e ) {
-			$this->report( $progress, 'apply', self::STATUS_WARNING, sprintf( 'Failed (%s); restoring the previous files.', $e->getMessage() ) );
+			$this->report( $progress, 'apply', self::STATUS_WARNING, sprintf( smliser__( 'Failed (%s); restoring the previous files.' ), $e->getMessage() ) );
 			$this->restore( $journal );
 
 			throw new UpdateException(
-				sprintf( 'The update to %s failed and the previous files were restored: %s', $manifest->version, $e->getMessage() ),
+				sprintf( smliser__( 'The update to %s failed and the previous files were restored: %s' ), $manifest->version, $e->getMessage() ),
 				0,
 				$e
 			);
@@ -342,11 +342,11 @@ final class Updater {
 		$journal = $this->read_journal();
 
 		if ( null === $journal || self::STAGE_SWAPPED !== ( $journal['stage'] ?? null ) ) {
-			throw new UpdateException( 'There is no update waiting to be finished.' );
+			throw new UpdateException( smliser__( 'There is no update waiting to be finished.' ) );
 		}
 
 		if ( \SMLISER_VER !== $journal['to'] ) {
-			throw new UpdateException( sprintf( 'This process runs version %s, not the new %s. Run the finish step again in a new process.', \SMLISER_VER, $journal['to'] ) );
+			throw new UpdateException( sprintf( smliser__( 'This process runs version %s, not the new %s. Run the finish step again in a new process.' ), \SMLISER_VER, $journal['to'] ) );
 		}
 
 		$state       = $this->state->read();
@@ -356,19 +356,19 @@ final class Updater {
 
 		if ( $changed ) {
 			if ( null === $migrate ) {
-				$this->report( $progress, 'finish', self::STATUS_WARNING, sprintf( 'The database schema changes (%s to %s) and no migration is available; restoring the previous version.', $schema_from, $schema_to ) );
+				$this->report( $progress, 'finish', self::STATUS_WARNING, sprintf( smliser__( 'The database schema changes (%s to %s) and no migration is available; restoring the previous version.' ), $schema_from, $schema_to ) );
 				$this->rollback( $progress );
 
-				throw new UpdateException( sprintf( 'Version %s changes the database (schema %s to %s), which this installation cannot migrate yet. The previous version was restored.', $journal['to'], $schema_from, $schema_to ) );
+				throw new UpdateException( sprintf( smliser__( 'Version %s changes the database (schema %s to %s), which this installation cannot migrate yet. The previous version was restored.' ), $journal['to'], $schema_from, $schema_to ) );
 			}
 
-			$this->report( $progress, 'finish', self::STATUS_INFO, sprintf( 'Migrating the database from schema %s to %s.', $schema_from, $schema_to ) );
+			$this->report( $progress, 'finish', self::STATUS_INFO, sprintf( smliser__( 'Migrating the database from schema %s to %s.' ), $schema_from, $schema_to ) );
 
 			try {
 				$migrate( $schema_from, $schema_to );
 			} catch ( Throwable $e ) {
 				throw new UpdateException(
-					sprintf( 'The database migration from schema %s to %s failed: %s The site stays in maintenance; restore your database backup before rolling back.', $schema_from, $schema_to, $e->getMessage() ),
+					sprintf( smliser__( 'The database migration from schema %s to %s failed: %s The site stays in maintenance; restore your database backup before rolling back.' ), $schema_from, $schema_to, $e->getMessage() ),
 					0,
 					$e
 				);
@@ -385,7 +385,7 @@ final class Updater {
 		$this->restore_flag( $journal['previous_flag'] ?? null );
 		$this->discard_working_files();
 
-		$this->report( $progress, 'finish', self::STATUS_OK, sprintf( 'Recorded version %s (schema %s); maintenance mode is off.', \SMLISER_VER, $schema_to ) );
+		$this->report( $progress, 'finish', self::STATUS_OK, sprintf( smliser__( 'Recorded version %s (schema %s); maintenance mode is off.' ), \SMLISER_VER, $schema_to ) );
 
 		return [
 			'from'           => (string) $journal['from'],
@@ -417,22 +417,22 @@ final class Updater {
 		$stage   = $journal['stage'] ?? null;
 
 		if ( null === $journal || ! in_array( $stage, [ self::STAGE_APPLYING, self::STAGE_SWAPPED, self::STAGE_FINISHED ], true ) ) {
-			throw new UpdateException( 'There is no update to roll back.' );
+			throw new UpdateException( smliser__( 'There is no update to roll back.' ) );
 		}
 
 		if ( self::STAGE_FINISHED === $stage && ! empty( $journal['schema_changed'] ) ) {
-			throw new UpdateException( sprintf( 'The update to %s migrated the database, so its files cannot be rolled back on their own. Restore a full backup instead.', $journal['to'] ) );
+			throw new UpdateException( sprintf( smliser__( 'The update to %s migrated the database, so its files cannot be rolled back on their own. Restore a full backup instead.' ), $journal['to'] ) );
 		}
 
 		$previous_flag = self::STAGE_FINISHED === $stage ? $this->flag->read() : ( $journal['previous_flag'] ?? null );
 
 		if ( self::STAGE_FINISHED === $stage ) {
-			$this->flag->write( MaintenanceFlag::REASON_UPDATE, sprintf( '%s is being restored. Please try again in a few minutes.', \SMLISER_APP_NAME ), 120 );
+			$this->flag->write( MaintenanceFlag::REASON_UPDATE, sprintf( smliser__( '%s is being restored. Please try again in a few minutes.' ), \SMLISER_APP_NAME ), 120 );
 		}
 
 		$journal['previous_flag'] = $previous_flag;
 
-		$this->report( $progress, 'rollback', self::STATUS_INFO, sprintf( 'Restoring the files of %s from %s/.', $journal['from'], $this->relative( $this->path( 'backup' ) ) ) );
+		$this->report( $progress, 'rollback', self::STATUS_INFO, sprintf( smliser__( 'Restoring the files of %s from %s/.' ), $journal['from'], $this->relative( $this->path( 'backup' ) ) ) );
 		$this->restore( $journal );
 
 		if ( self::STAGE_FINISHED === $stage ) {
@@ -442,7 +442,7 @@ final class Updater {
 			$this->state->mark_installed( [ 'app' => (string) $journal['from'], 'schema' => $schema ] );
 		}
 
-		$this->report( $progress, 'rollback', self::STATUS_OK, sprintf( 'Version %s is back in place.', $journal['from'] ) );
+		$this->report( $progress, 'rollback', self::STATUS_OK, sprintf( smliser__( 'Version %s is back in place.' ), $journal['from'] ) );
 
 		return (string) $journal['from'];
 	}
@@ -491,7 +491,7 @@ final class Updater {
 		$stage = $this->read_journal()['stage'] ?? null;
 
 		if ( self::STAGE_APPLYING === $stage || self::STAGE_SWAPPED === $stage ) {
-			throw new UpdateException( 'A previous update is not finished. Finish it or roll it back first.' );
+			throw new UpdateException( smliser__( 'A previous update is not finished. Finish it or roll it back first.' ) );
 		}
 	}
 
@@ -595,7 +595,7 @@ final class Updater {
 		$php = (string) ( $requires['php'] ?? '' );
 
 		if ( '' !== $php && false === self::php_satisfies( $php, PHP_VERSION ) ) {
-			throw new UpdateException( sprintf( 'The new version needs PHP %s; this server runs %s.', $php, PHP_VERSION ) );
+			throw new UpdateException( sprintf( smliser__( 'The new version needs PHP %s; this server runs %s.' ), $php, PHP_VERSION ) );
 		}
 
 		$missing = array_filter(
@@ -604,7 +604,7 @@ final class Updater {
 		);
 
 		if ( ! empty( $missing ) ) {
-			throw new UpdateException( sprintf( 'The new version needs these PHP extensions: %s.', implode( ', ', $missing ) ) );
+			throw new UpdateException( sprintf( smliser__( 'The new version needs these PHP extensions: %s.' ), implode( ', ', $missing ) ) );
 		}
 	}
 
@@ -659,13 +659,13 @@ final class Updater {
 	 */
 	private function extract( string $zip, string $target ) : void {
 		if ( ! class_exists( ZipArchive::class ) ) {
-			throw new UpdateException( 'The zip PHP extension is needed to apply updates.' );
+			throw new UpdateException( smliser__( 'The zip PHP extension is needed to apply updates.' ) );
 		}
 
 		$archive = new ZipArchive();
 
 		if ( true !== $archive->open( $zip, ZipArchive::RDONLY ) ) {
-			throw new UpdateException( sprintf( 'Could not open %s as a zip archive.', basename( $zip ) ) );
+			throw new UpdateException( sprintf( smliser__( 'Could not open %s as a zip archive.' ), basename( $zip ) ) );
 		}
 
 		$prefix = UpdateServer::APP_SLUG . '/';
@@ -680,12 +680,12 @@ final class Updater {
 					|| str_contains( $name, ':' )
 					|| in_array( '..', explode( '/', $name ), true )
 				) {
-					throw new UpdateException( sprintf( 'The package holds an unexpected path (%s); it was not extracted.', $name ) );
+					throw new UpdateException( sprintf( smliser__( 'The package holds an unexpected path (%s); it was not extracted.' ), $name ) );
 				}
 			}
 
 			if ( ! $archive->extractTo( $target ) ) {
-				throw new UpdateException( sprintf( 'Could not extract %s; check the free disk space.', basename( $zip ) ) );
+				throw new UpdateException( sprintf( smliser__( 'Could not extract %s; check the free disk space.' ), basename( $zip ) ) );
 			}
 		} finally {
 			$archive->close();
@@ -721,7 +721,7 @@ final class Updater {
 	 */
 	private function rename( string $from, string $to ) : void {
 		if ( ! $this->fs->rename( $from, $to ) ) {
-			throw new UpdateException( sprintf( 'Could not move %s to %s.', $this->relative( $from ), $this->relative( $to ) ) );
+			throw new UpdateException( sprintf( smliser__( 'Could not move %s to %s.' ), $this->relative( $from ), $this->relative( $to ) ) );
 		}
 	}
 
@@ -734,7 +734,7 @@ final class Updater {
 	 */
 	private function make_dir( string $dir ) : void {
 		if ( ! $this->fs->mkdir( $dir ) ) {
-			throw new UpdateException( sprintf( 'Could not create %s; check the permissions of the application folder.', $this->relative( $dir ) ) );
+			throw new UpdateException( sprintf( smliser__( 'Could not create %s; check the permissions of the application folder.' ), $this->relative( $dir ) ) );
 		}
 	}
 
@@ -779,7 +779,7 @@ final class Updater {
 		$handle = @fopen( $this->path( 'lock' ), 'c' );
 
 		if ( false === $handle ) {
-			throw new UpdateException( 'Could not create the update lock; check the permissions of the application folder.' );
+			throw new UpdateException( smliser__( 'Could not create the update lock; check the permissions of the application folder.' ) );
 		}
 
 		if ( ! flock( $handle, LOCK_EX | LOCK_NB ) ) {
@@ -883,7 +883,7 @@ final class Updater {
 		try {
 			$this->state->set_update_section( InstallationState::UPDATE_RUN, $journal );
 		} catch ( \RuntimeException $e ) {
-			throw new UpdateException( 'Could not record the update progress: ' . $e->getMessage(), 0, $e );
+			throw new UpdateException( smliser__( 'Could not record the update progress: ' ) . $e->getMessage(), 0, $e );
 		}
 	}
 }

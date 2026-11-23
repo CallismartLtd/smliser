@@ -313,7 +313,7 @@ class Organization extends DataStore implements OwnerSubjectInterface {
 			$exists_by_slug = self::fetch_by( 'slug', $this->get_slug(), $table );
 
 			if ( $exists_by_slug && ! $this->exists() ) {
-				throw new Exception( 'org_slug_exists', 'The provided slug is not available.', ['status' => 409] );
+				throw new Exception( 'org_slug_exists', smliser__( 'The provided slug is not available.' ), ['status' => 409] );
 			}
 
 			$now = new DateTimeImmutable( 'now', new DateTimeZone( 'UTC' ) );

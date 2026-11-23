@@ -33,7 +33,7 @@ $assets = $assets_manager->get_email_editor_assets();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo \escHtml( $label ); ?> — Email Editor</title>
+    <title><?php echo \escHtml( $label ); ?> <?php smliser_esc_html_e( '— Email Editor' ); ?></title>
 
     <?php foreach ( $assets['styles'] as $style ) : ?>
         <link rel="stylesheet"
@@ -81,7 +81,7 @@ $assets = $assets_manager->get_email_editor_assets();
             <a href="<?php echo \escHtml( $back_url->url() ); ?>"
                class="smliser-editor-back"
                id="smliser-editor-back"
-               title="Back to Email Templates">
+               title="<?php smliser_esc_attr_e( 'Back to Email Templates' ); ?>">
                 <span class="ti ti-arrow-left"></span>
             </a>
 
@@ -96,20 +96,20 @@ $assets = $assets_manager->get_email_editor_assets();
                       id="smliser-status-badge">
                     <span class="smliser-editor-badge__dot"></span>
                     <span id="smliser-status-label">
-                        <?php echo $is_enabled ? 'Enabled' : 'Disabled'; ?>
+                        <?php echo $is_enabled ? smliser__( 'Enabled' ) : smliser__( 'Disabled' ); ?>
                     </span>
                 </span>
 
                 <span class="smliser-editor-badge smliser-editor-badge--custom"
                       id="smliser-custom-badge"
                       style="<?php echo $has_custom ? '' : 'display:none;'; ?>">
-                    Custom
+                    <?php smliser_esc_html_e( 'Custom' ); ?>
                 </span>
 
                 <span class="smliser-editor-badge smliser-editor-badge--unsaved"
                       id="smliser-unsaved-badge"
                       style="display:none;">
-                    Unsaved changes
+                    <?php smliser_esc_html_e( 'Unsaved changes' ); ?>
                 </span>
             </div>
 
@@ -127,7 +127,7 @@ $assets = $assets_manager->get_email_editor_assets();
                 <span class="ti <?php echo $is_enabled ? 'ti-eye-off' : 'ti-eye'; ?>"
                       id="smliser-toggle-icon"></span>
                 <span id="smliser-toggle-label">
-                    <?php echo $is_enabled ? 'Disable' : 'Enable'; ?>
+                    <?php echo $is_enabled ? smliser__( 'Disable' ) : smliser__( 'Enable' ); ?>
                 </span>
             </button>
 
@@ -138,7 +138,7 @@ $assets = $assets_manager->get_email_editor_assets();
                     data-key="<?php echo \escHtml( $key ); ?>"
                     <?php echo ! $has_custom ? 'disabled' : ''; ?>>
                 <span class="ti ti-rotate"></span>
-                Reset
+                <?php smliser_esc_html_e( 'Reset' ); ?>
             </button>
 
             <!-- Save -->
@@ -147,7 +147,7 @@ $assets = $assets_manager->get_email_editor_assets();
                     id="smliser-save-btn"
                     data-key="<?php echo \escHtml( $key ); ?>">
                 <span class="ti ti-cloud-upload" id="smliser-save-icon"></span>
-                <span id="smliser-save-label">Save Template</span>
+                <span id="smliser-save-label"><?php smliser_esc_html_e( 'Save Template' ); ?></span>
             </button>
 
         </div>
@@ -171,14 +171,14 @@ $assets = $assets_manager->get_email_editor_assets();
                         data-tab="styles"
                         id="smliser-tab-styles">
                     <span class="ti ti-palette"></span>
-                    Styles
+                    <?php smliser_esc_html_e( 'Styles' ); ?>
                 </button>
                 <button type="button"
                         class="smliser-sidebar-tab"
                         data-tab="block"
                         id="smliser-tab-block">
                     <span class="ti ti-box"></span>
-                    Block
+                    <?php smliser_esc_html_e( 'Block' ); ?>
                 </button>
             </div>
 
@@ -193,10 +193,10 @@ $assets = $assets_manager->get_email_editor_assets();
                 <div class="smliser-style-group">
                     <div class="smliser-style-group__title">
                         <span class="ti ti-layout-navbar"></span>
-                        Header
+                        <?php smliser_esc_html_e( 'Header' ); ?>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Background</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Background' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -209,7 +209,7 @@ $assets = $assets_manager->get_email_editor_assets();
                         </div>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Text Color</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Text Color' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -218,7 +218,7 @@ $assets = $assets_manager->get_email_editor_assets();
                                    class="smliser-color-hex"
                                    data-style="header_color"
                                    maxlength="7"
-                                   placeholder="#ffffff">
+                                   placeholder="<?php smliser_esc_attr_e( '#ffffff' ); ?>">
                         </div>
                     </div>
                 </div>
@@ -227,10 +227,10 @@ $assets = $assets_manager->get_email_editor_assets();
                 <div class="smliser-style-group">
                     <div class="smliser-style-group__title">
                         <span class="ti ti-layout-bottombar"></span>
-                        Body
+                        <?php smliser_esc_html_e( 'Body' ); ?>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Background</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Background' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -243,7 +243,7 @@ $assets = $assets_manager->get_email_editor_assets();
                         </div>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Primary Text</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Primary Text' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -256,7 +256,7 @@ $assets = $assets_manager->get_email_editor_assets();
                         </div>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Muted Text</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Muted Text' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -274,10 +274,10 @@ $assets = $assets_manager->get_email_editor_assets();
                 <div class="smliser-style-group">
                     <div class="smliser-style-group__title">
                         <span class="ti ti-color-swatch"></span>
-                        Accent Color
+                        <?php smliser_esc_html_e( 'Accent Color' ); ?>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Buttons &amp; Links</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Buttons & Links' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -295,10 +295,10 @@ $assets = $assets_manager->get_email_editor_assets();
                 <div class="smliser-style-group">
                     <div class="smliser-style-group__title">
                         <span class="ti ti-layout-navbar-inactive"></span>
-                        Footer
+                        <?php smliser_esc_html_e( 'Footer' ); ?>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Background</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Background' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -307,11 +307,11 @@ $assets = $assets_manager->get_email_editor_assets();
                                    class="smliser-color-hex"
                                    data-style="footer_bg"
                                    maxlength="7"
-                                   placeholder="#f8fafc">
+                                   placeholder="<?php smliser_esc_attr_e( '#f8fafc' ); ?>">
                         </div>
                     </div>
                     <div class="smliser-style-row">
-                        <label class="smliser-style-label">Text Color</label>
+                        <label class="smliser-style-label"><?php smliser_esc_html_e( 'Text Color' ); ?></label>
                         <div class="smliser-color-field">
                             <input type="color"
                                    class="smliser-color-picker"
@@ -338,7 +338,7 @@ $assets = $assets_manager->get_email_editor_assets();
                 <!-- Empty state — shown when no block is selected -->
                 <div class="smliser-block-editor-empty" id="smliser-block-editor-empty">
                     <span class="ti ti-cursor-text" style="font-size:40px;color:#e2e8f0;"></span>
-                    <p>Click a block on the canvas to edit it here.</p>
+                    <p><?php smliser_esc_html_e( 'Click a block on the canvas to edit it here.' ); ?></p>
                 </div>
 
                 <!-- Block editor fields — shown when a block is selected -->
@@ -352,72 +352,72 @@ $assets = $assets_manager->get_email_editor_assets();
                         <button type="button"
                                 class="smliser-block-editor__close"
                                 id="smliser-block-editor-close"
-                                title="Close">
+                                title="<?php smliser_esc_attr_e( 'Close' ); ?>">
                             <span class="ti ti-x"></span>
                         </button>
                     </div>
 
                     <!-- Content — greeting, text, banner, closing -->
                     <div class="smliser-field-group" id="smliser-field-content" style="display:none;">
-                        <label class="smliser-field-label">Content</label>
+                        <label class="smliser-field-label"><?php smliser_esc_html_e( 'Content' ); ?></label>
                         <textarea class="smliser-field-textarea"
                                   id="smliser-block-content"
                                   rows="5"
-                                  placeholder="Block content..."></textarea>
+                                  placeholder="<?php smliser_esc_attr_e( 'Block content...' ); ?>"></textarea>
                         <p class="smliser-field-help">
-                            Use <code>{{token}}</code> placeholders for dynamic values.
+                            <?php /* translators: %s: a placeholder example such as {{token}}. */ printf( smliser_esc_html__( 'Use %s placeholders for dynamic values.' ), '<code>{{token}}</code>' ); ?>
                         </p>
                     </div>
 
                     <!-- Tone — banner only -->
                     <div class="smliser-field-group" id="smliser-field-tone" style="display:none;">
-                        <label class="smliser-field-label">Tone</label>
+                        <label class="smliser-field-label"><?php smliser_esc_html_e( 'Tone' ); ?></label>
                         <div class="smliser-tone-picker" id="smliser-tone-picker">
                             <button type="button" class="smliser-tone-btn" data-tone="success">
                                 <span class="smliser-tone-dot smliser-tone-dot--success"></span>
-                                Success
+                                <?php smliser_esc_html_e( 'Success' ); ?>
                             </button>
                             <button type="button" class="smliser-tone-btn" data-tone="warning">
                                 <span class="smliser-tone-dot smliser-tone-dot--warning"></span>
-                                Warning
+                                <?php smliser_esc_html_e( 'Warning' ); ?>
                             </button>
                             <button type="button" class="smliser-tone-btn" data-tone="error">
                                 <span class="smliser-tone-dot smliser-tone-dot--error"></span>
-                                Error
+                                <?php smliser_esc_html_e( 'Error' ); ?>
                             </button>
                             <button type="button" class="smliser-tone-btn" data-tone="info">
                                 <span class="smliser-tone-dot smliser-tone-dot--info"></span>
-                                Info
+                                <?php smliser_esc_html_e( 'Info' ); ?>
                             </button>
                         </div>
                     </div>
 
                     <!-- Button label + URL — button block only -->
                     <div class="smliser-field-group" id="smliser-field-button-label" style="display:none;">
-                        <label class="smliser-field-label">Button Label</label>
+                        <label class="smliser-field-label"><?php smliser_esc_html_e( 'Button Label' ); ?></label>
                         <input type="text"
                                class="smliser-field-input"
                                id="smliser-block-button-label"
-                               placeholder="Click Here">
+                               placeholder="<?php smliser_esc_attr_e( 'Click Here' ); ?>">
                     </div>
 
                     <div class="smliser-field-group" id="smliser-field-button-url" style="display:none;">
-                        <label class="smliser-field-label">Button URL</label>
+                        <label class="smliser-field-label"><?php smliser_esc_html_e( 'Button URL' ); ?></label>
                         <input type="text"
                                class="smliser-field-input"
                                id="smliser-block-button-url"
                                placeholder="{{reset_url}}">
                         <p class="smliser-field-help">
-                            Use a <code>{{token}}</code> or a full URL.
+                            <?php /* translators: %s: a placeholder example such as {{token}}. */ printf( smliser_esc_html__( 'Use a %s placeholder or a full URL.' ), '<code>{{token}}</code>' ); ?>
                         </p>
                     </div>
 
                     <!-- Detail card rows -->
                     <div class="smliser-field-group" id="smliser-field-rows" style="display:none;">
-                        <label class="smliser-field-label">Rows</label>
+                        <label class="smliser-field-label"><?php smliser_esc_html_e( 'Rows' ); ?></label>
                         <div class="smliser-card-rows" id="smliser-card-rows"></div>
                         <p class="smliser-field-help">
-                            Labels and values support <code>{{token}}</code> placeholders.
+                            <?php /* translators: %s: a placeholder example such as {{token}}. */ printf( smliser_esc_html__( 'Labels and values support %s placeholders.' ), '<code>{{token}}</code>' ); ?>
                         </p>
                     </div>
 
@@ -439,9 +439,9 @@ $assets = $assets_manager->get_email_editor_assets();
             <div class="smliser-block-list-wrap">
                 <div class="smliser-block-list-header">
                     <span class="ti ti-layout-list"></span>
-                    Blocks
+                    <?php smliser_esc_html_e( 'Blocks' ); ?>
                     <span class="smliser-block-list-hint">
-                        Drag to reorder &nbsp;·&nbsp; Click to edit
+                        <?php smliser_esc_html_e( 'Drag to reorder  ·  Click to edit' ); ?>
                     </span>
                 </div>
                 <div class="smliser-block-list" id="smliser-block-list">
@@ -453,13 +453,13 @@ $assets = $assets_manager->get_email_editor_assets();
             <div class="smliser-preview-wrap">
                 <div class="smliser-preview-header">
                     <span class="ti ti-eye"></span>
-                    Preview
+                    <?php smliser_esc_html_e( 'Preview' ); ?>
                     <span class="smliser-preview-note">
-                        Placeholder values are used — live data resolves on send.
+                        <?php smliser_esc_html_e( 'Placeholder values are used — live data resolves on send.' ); ?>
                     </span>
                     <div class="smliser-preview-loader" id="smliser-preview-loader" style="display:none;">
                         <span class="smliser-spinner"></span>
-                        Updating preview...
+                        <?php smliser_esc_html_e( 'Updating preview...' ); ?>
                     </div>
                 </div>
 
@@ -470,12 +470,12 @@ $assets = $assets_manager->get_email_editor_assets();
                         <span class="smliser-preview-browser__dot smliser-preview-browser__dot--yellow"></span>
                         <span class="smliser-preview-browser__dot smliser-preview-browser__dot--green"></span>
                         <span class="smliser-preview-browser__bar">
-                            <?php echo \escHtml( $label ); ?> — Preview
+                            <?php echo \escHtml( $label ); ?> <?php smliser_esc_html_e( '— Preview' ); ?>
                         </span>
                     </div>
                     <iframe id="smliser-preview-frame"
                             class="smliser-preview-frame"
-                            title="Email Preview">
+                            title="<?php smliser_esc_attr_e( 'Email Preview' ); ?>">
                     </iframe>
                 </div>
             </div>

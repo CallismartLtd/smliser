@@ -1163,7 +1163,7 @@ class License extends DataStore {
 						: $db->insert( $meta_table, [ 'license_id' => $this->id, 'meta_key' => $key, 'meta_value' => $stored ] );
 
 					if ( false === $done ) {
-						throw new Exception( 'license_meta_error', sprintf( 'Saving the license meta "%s" failed: %s', $key, $db->get_last_error() ) );
+						throw new Exception( 'license_meta_error', sprintf( smliser__( 'Saving the license meta "%s" failed: %s' ), $key, $db->get_last_error() ) );
 					}
 				}
 
@@ -1239,20 +1239,20 @@ class License extends DataStore {
 			$exists = $db->get_row( $lock_sql, $lock_query->get_bindings() );
 
 			if ( ! $exists ) {
-				throw new Exception( 'delete_error', 'License record locked or already removed by a concurrent request.' );
+				throw new Exception( 'delete_error', smliser__( 'License record locked or already removed by a concurrent request.' ) );
 			}
 
 			if ( 0 === $db->execute( $delete_meta_sql->build(), $delete_meta_sql->get_bindings() ) && ! empty( $db->get_last_error() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping license metadata entries.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping license metadata entries.' ) );
 			}
 
 			// A license may have no activations, so 0 fails only with an error.
 			if ( 0 === $db->execute( $delete_activations->build(), $delete_activations->get_bindings() ) && ! empty( $db->get_last_error() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping license activations.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping license activations.' ) );
 			}
 
 			if ( 0 === $db->execute( $delete_license_sql->build(), $delete_license_sql->get_bindings() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping primary license record.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping primary license record.' ) );
 			}
 
 			$deleted = true;
@@ -1392,7 +1392,7 @@ class License extends DataStore {
 	 */
 	public function activate_domain( string|URL $url, string $secret_hash ) : true|Exception {
 		if ( ! $this->id ) {
-			return new Exception( 'license_error', 'The license does not exist.', [ 'status' => 404 ] );
+			return new Exception( 'license_error', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		$url = $this->ensure_domain( $url );
@@ -1405,18 +1405,18 @@ class License extends DataStore {
 				$row  = $db->get_row( $lock->build(), $lock->get_bindings() );
 
 				if ( ! $row ) {
-					throw new Exception( 'license_error', 'The license does not exist.', [ 'status' => 404 ] );
+					throw new Exception( 'license_error', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
 				}
 
 				$current = LicenseActivation::get_for_license( $this->id );
 				$limit   = (int) $row['max_allowed_domains'];
 
 				if ( isset( $current[ $url->get_host() ] ) ) {
-					throw new Exception( 'domain_already_active', sprintf( 'The license is already activated on %s.', $url->get_host() ), [ 'status' => 409 ] );
+					throw new Exception( 'domain_already_active', sprintf( smliser__( 'The license is already activated on %s.' ), $url->get_host() ), [ 'status' => 409 ] );
 				}
 
 				if ( -1 !== $limit && count( $current ) >= $limit ) {
-					throw new Exception( 'license_error', 'Maximum allowed domains has been reached.', [ 'status' => 409 ] );
+					throw new Exception( 'license_error', smliser__( 'Maximum allowed domains has been reached.' ), [ 'status' => 409 ] );
 				}
 
 				$inserted = $db->insert( TableName::LICENSE_ACTIVATIONS->table(), [
@@ -1428,7 +1428,7 @@ class License extends DataStore {
 				] );
 
 				if ( false === $inserted ) {
-					throw new Exception( 'license_error', 'The activation could not be saved.', [ 'status' => 503 ] );
+					throw new Exception( 'license_error', smliser__( 'The activation could not be saved.' ), [ 'status' => 503 ] );
 				}
 			} );
 		} catch ( Exception $e ) {
@@ -1548,7 +1548,7 @@ class License extends DataStore {
 		if ( ! $this->is_issued() ) {
 			return new Exception(
 				'license_error',
-				'License is not issued to any application.',
+				smliser__( 'License is not issued to any application.' ),
 				[ 'status' => 400 ]
 			);
 		}
@@ -1556,7 +1556,7 @@ class License extends DataStore {
 		if ( $app_id !== $this->get_app_id() ) {
 			return new Exception(
 				'license_error',
-				'License was not issued to this application.',
+				smliser__( 'License was not issued to this application.' ),
 				[ 'status' => 403 ] // fixed
 			);
 		}
@@ -1694,7 +1694,7 @@ class License extends DataStore {
 		if ( $attempt >= max( 1, $tries ) && $count > 0 ) {
 			throw new Exception(
 				'license_regeneration_failed',
-				'Unable to generate a unique license key after multiple attempts.',
+				smliser__( 'Unable to generate a unique license key after multiple attempts.' ),
 				[ 'status' => 500 ]
 			);
 		}

@@ -114,7 +114,7 @@ class AccessControlPage implements AdminPageInterface {
 		$entity_class = User::class;
 		$type         = 'user';
 
-		$description    = 'Manage users';
+		$description    = smliser__( 'Manage users' );
 		$page_handler   = $this;
 		$avatar_manager = $this->avatar;
 		$vars           = compact( 'request', 'all', 'entity_class', 'type', 'description',
@@ -168,7 +168,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => 'off',
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Enter full name',
+						'placeholder'  => smliser__( 'Enter full name' ),
 						'style'        => 'width: unset'
 					]
 				]
@@ -184,7 +184,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => \microtime( true ),
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Enter email address'
+						'placeholder'  => smliser__( 'Enter email address' )
 					]
 				]
 			],
@@ -199,7 +199,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => 'new-password',
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Enter password',
+						'placeholder'  => smliser__( 'Enter password' ),
 						'disabled'     => true
 					]
 				]
@@ -215,7 +215,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => 'confirm-password',
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Confirm passowrd',
+						'placeholder'  => smliser__( 'Confirm passowrd' ),
 						'disabled'     => true
 					]
 				]
@@ -259,7 +259,7 @@ class AccessControlPage implements AdminPageInterface {
 			$avatar_url = $this->default_avatar_url();
 		}
 
-		$avatar_name = $user ? 'View image' : $avatar_url->basename();
+		$avatar_name = $user ? smliser__( 'View image' ) : $avatar_url->basename();
 		
 		// Notice we are not passing the `OwnerSubjectInterface` parameter,
 		// An individual user extends the `OwnerSubjectInterface`, the context service
@@ -299,7 +299,7 @@ class AccessControlPage implements AdminPageInterface {
 		$all            = Organization::get_all( $page, $limit );
 		$entity_class   = Organization::class;
 		$type           = 'organization';
-		$description    = 'An organization is an account that represents a group, business, or other entity under which users, service accounts, resources, and access policies can be managed collectively.';
+		$description    = smliser__( 'An organization is an account that represents a group, business, or other entity under which users, service accounts, resources, and access policies can be managed collectively.' );
 		$page_handler   = $this;
 		$avatar_manager = $this->avatar;
 		$vars           = compact( 'request', 'all', 'entity_class', 'type', 'description',
@@ -353,7 +353,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => 'off',
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Enter full name',
+						'placeholder'  => smliser__( 'Enter full name' ),
 						'style'        => 'width: unset',
 						// Accessibility
 						'aria-required' => 'true',
@@ -371,7 +371,7 @@ class AccessControlPage implements AdminPageInterface {
 					'attr'  => [
 						'autocomplete' => 'off',
 						'spellcheck'   => 'off',
-						'placeholder'  => 'Enter organization slug',
+						'placeholder'  => smliser__( 'Enter organization slug' ),
 						// Accessibility
 						'aria-label' => __( 'Organization Slug', 'smliser' ),
 					]
@@ -403,7 +403,7 @@ class AccessControlPage implements AdminPageInterface {
 			$avatar_url = $this->default_avatar_url();
 		}
 
-		$avatar_name    = $organization ? 'View image' : $avatar_url->basename();
+		$avatar_name    = $organization ? smliser__( 'View image' ) : $avatar_url->basename();
 		$page_handler   = $this;
 		$urlmanager     = $this->urlmanager;
 		$avatar_manager = $this->avatar;
@@ -428,7 +428,7 @@ class AccessControlPage implements AdminPageInterface {
 		$member       = $organization?->get_members()->get( $id );
 		$org_name     = $organization?->get_display_name();
 
-		$title = sprintf( '%s Member in %s ', $member ? 'Edit' : 'Add New', $org_name );
+		$title = sprintf( smliser__( '%s Member in %s ' ), $member ? 'Edit' : 'Add New', $org_name );
 
 		$_org_statuses   = Organization::get_allowed_statuses();
 		$_status_titles  = array_map( 'ucwords', array_values( $_org_statuses ) );
@@ -538,7 +538,7 @@ class AccessControlPage implements AdminPageInterface {
 			$avatar_url = $this->default_avatar_url();
 		}
 
-		$avatar_name  = $member ? 'View image' : $avatar_url->basename();
+		$avatar_name  = $member ? smliser__( 'View image' ) : $avatar_url->basename();
 		$page_handler = $this;
 		$urlmanager   = $this->urlmanager;
 		$back_url     = $urlmanager->admin_accounts_page_url( 'organizations', [
@@ -584,7 +584,7 @@ class AccessControlPage implements AdminPageInterface {
 		$owner_id = $request->get( 'id' );
 		$owner    = Owner::get_by_id( (int) $owner_id );
 
-		$title           = sprintf( '%s Resource Owner', $owner ? 'Edit' : 'Add New' );
+		$title           = sprintf( smliser__( '%s Resource Owner' ), $owner ? 'Edit' : 'Add New' );
 		$_owner_statuses = Owner::get_allowed_statuses();
 		$_status_titles  = array_map( 'ucwords', array_values( $_owner_statuses ) );
 		$_status_keys    = $_owner_statuses;
@@ -601,7 +601,7 @@ class AccessControlPage implements AdminPageInterface {
 			$_entity_class = ContextServiceProvider::get_entity_classname( $_owner_type );
 			$subject       = $_entity_class ? $_entity_class::get_by_id( $subject_id ) : '';
 
-			$pr_name = $subject ? $subject->get_display_name() : '[Deleted entity]';
+			$pr_name = $subject ? $subject->get_display_name() : smliser__( '[Deleted entity]' );
 
 			$subject_option = [$subject_id => $pr_name];
 			
@@ -646,7 +646,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => 'off',
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Enter owner name'
+						'placeholder'  => smliser__( 'Enter owner name' )
 					]
 				]
 			],
@@ -718,8 +718,8 @@ class AccessControlPage implements AdminPageInterface {
 		$limit        = (int) $request->get( 'limit', 25 );
 		$all          = ServiceAccount::get_all( $page, $limit );
 		$entity_class = ServiceAccount::class;
-		$type         = 'Service Account';
-		$description  = 'A service account is a non-human account used by software, an application, server, or automated process to authenticate and access resources.';
+		$type         = smliser__( 'Service Account' );
+		$description  = smliser__( 'A service account is a non-human account used by software, an application, server, or automated process to authenticate and access resources.' );
 
 		$page_handler   = $this;
 		$avatar_manager = $this->avatar;
@@ -738,7 +738,7 @@ class AccessControlPage implements AdminPageInterface {
 		$user_id = $request->get( 'id' );
 		$sa_acc  = ServiceAccount::get_by_id( (int) $user_id );
 
-		$title = sprintf( '%s Service Account', $sa_acc ? 'Edit' : 'Add New' );
+		$title = sprintf( smliser__( '%s Service Account' ), $sa_acc ? 'Edit' : 'Add New' );
 
 		$_sa_statuses   = ServiceAccount::get_allowed_statuses();
 		$_status_titles = array_map( 'ucwords', array_values( $_sa_statuses ) );
@@ -760,7 +760,7 @@ class AccessControlPage implements AdminPageInterface {
 				unset( $collection );
 			}
 
-			$owner_name   = $owner ? $owner->get_name() : '[Deleted Owner]';
+			$owner_name   = $owner ? $owner->get_name() : smliser__( '[Deleted Owner]' );
 			$owner_id     = $owner ? $owner->get_id() : 0;
 			$owner_option = [$owner_id => $owner_name];
 			
@@ -796,7 +796,7 @@ class AccessControlPage implements AdminPageInterface {
 						'autocomplete' => 'off',
 						'spellcheck'   => 'off',
 						'required'     => true,
-						'placeholder'  => 'Enter rest api credential name',
+						'placeholder'  => smliser__( 'Enter rest api credential name' ),
 						'style'        => 'width: unset'
 					]
 				]
@@ -856,7 +856,7 @@ class AccessControlPage implements AdminPageInterface {
 					'attr'  => [
 						'autocomplete' => 'off',
 						'spellcheck'   => 'off',
-						'placeholder'  => 'Enter description'
+						'placeholder'  => smliser__( 'Enter description' )
 					]
 				]
 			],
@@ -869,7 +869,7 @@ class AccessControlPage implements AdminPageInterface {
 			$avatar_url = $this->default_avatar_url();
 		}
 
-		$avatar_name  = $sa_acc ? 'View image' : $avatar_url->basename();
+		$avatar_name  = $sa_acc ? smliser__( 'View image' ) : $avatar_url->basename();
 		$page_handler = $this;
 		$urlmanager   = $this->urlmanager;
 		$back_url     = $urlmanager->admin_accounts_page_url( 'service-accounts' );
@@ -888,11 +888,11 @@ class AccessControlPage implements AdminPageInterface {
 	public function print_header( Request $request ) {
 		$tab   = $request->get( 'tab' ) ?? $request->route_param( 'tab' );
 		$title = match( $tab ) {
-			'users'            => 'Users',
-			'organizations'    => 'Organizations',
-			'owners'           => 'Resource Owners',
-			'service-accounts' => 'Service Accounts',
-			default            => 'Accounts Overview'
+			'users'            => smliser__( 'Users' ),
+			'organizations'    => smliser__( 'Organizations' ),
+			'owners'           => smliser__( 'Resource Owners' ),
+			'service-accounts' => smliser__( 'Service Accounts' ),
+			default            => smliser__( 'Accounts Overview' )
 
 		};
 
@@ -904,32 +904,32 @@ class AccessControlPage implements AdminPageInterface {
 			],
 			'actions' => [
 				[
-					'title'  => 'Users',
-					'label'  => 'Users',
+					'title'  => smliser__( 'Users' ),
+					'label'  => smliser__( 'Users' ),
 					'url'    => $this->urlmanager->admin_accounts_page_url( 'users' ),
 					'icon'   => 'ti ti-user',
 					'active' => 'users' === $tab
 				],
 
 				[
-					'title'  => 'REST API Service Accounts',
-					'label'  => 'Service Accounts',
+					'title'  => smliser__( 'REST API Service Accounts' ),
+					'label'  => smliser__( 'Service Accounts' ),
 					'url'    => $this->urlmanager->admin_accounts_page_url( 'service-accounts' ),
 					'icon'   => 'ti ti-robot',
 					'active' => 'service-accounts' === $tab
 				],
 
 				[
-					'title'  => 'Resource Owners',
-					'label'  => 'Owners',
+					'title'  => smliser__( 'Resource Owners' ),
+					'label'  => smliser__( 'Owners' ),
 					'url'    => $this->urlmanager->admin_accounts_page_url( 'owners' ),
 					'icon'   => 'ti ti-source-code',
 					'active' => 'owners' === $tab
 				],
 
 				[
-					'title'  => 'Organizations',
-					'label'  => 'Organizations',
+					'title'  => smliser__( 'Organizations' ),
+					'label'  => smliser__( 'Organizations' ),
 					'url'    => $this->urlmanager->admin_accounts_page_url( 'organizations' ),
 					'icon'   => 'ti ti-users-group',
 					'active' => 'organizations' === $tab
@@ -939,7 +939,7 @@ class AccessControlPage implements AdminPageInterface {
 
 		if ( $tab && 'index' !== $tab ) {
 			$home = [
-				'label' => 'Accounts Overview',
+				'label' => smliser__( 'Accounts Overview' ),
 				'url'   => $this->urlmanager->admin_accounts_page_url(),
 				'icon'  => 'ti ti-home'
 			];
@@ -975,31 +975,31 @@ class AccessControlPage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'Accounts overview',
+				'title'      => smliser__( 'Accounts overview' ),
 				'slug'       => 'index',
 				'callback'   => [$this, 'dashboard'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Users',
+				'title'      => smliser__( 'Users' ),
 				'slug'       => 'users',
 				'callback'   => [$this, 'users_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Service Accounts',
+				'title'      => smliser__( 'Service Accounts' ),
 				'slug'       => 'service-accounts',
 				'callback'   => [$this, 'service_accounts_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Resource Owners',
+				'title'      => smliser__( 'Resource Owners' ),
 				'slug'       => 'owners',
 				'callback'   => [$this, 'owners_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Organizations',
+				'title'      => smliser__( 'Organizations' ),
 				'slug'       => 'organizations',
 				'callback'   => [$this, 'organizations_page'],
 				'visibility' => true,
@@ -1014,7 +1014,7 @@ class AccessControlPage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Accounts',
+			'title'      => smliser__( 'Accounts' ),
 			'slug'       => 'accounts',
 			'handler'    => $this,
 			'icon'       => 'ti ti-cloud-lock',

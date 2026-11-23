@@ -122,7 +122,7 @@ final class BootModeResolver {
 		\smliser_log_error( '[BootModeResolver] Failing closed to maintenance: ' . $reason );
 
 		$this->installation_in_progress = false;
-		$this->message                  = sprintf( '%s is temporarily unavailable. Please try again shortly.', \SMLISER_APP_NAME );
+		$this->message                  = sprintf( smliser__( '%s is temporarily unavailable. Please try again shortly.' ), \SMLISER_APP_NAME );
 		$this->retry_after              = self::DEFAULT_RETRY_AFTER;
 
 		return $this->mode = BootMode::Maintenance;
@@ -208,7 +208,7 @@ final class BootModeResolver {
 		$state = $this->state->read();
 
 		if ( false === $state ) {
-			return $this->fail_closed( 'The installation state could not be read.' );
+			return $this->fail_closed( smliser__( 'The installation state could not be read.' ) );
 		}
 
 		if ( null === $state || empty( $state['installed_at'] ) ) {
@@ -225,7 +225,7 @@ final class BootModeResolver {
 	 */
 	private function installation() : BootMode {
 		$this->message = sprintf(
-			'We are setting things up behind the scenes. %s will be ready shortly, please check back in a few minutes.',
+			smliser__( 'We are setting things up behind the scenes. %s will be ready shortly, please check back in a few minutes.' ),
 			\SMLISER_APP_NAME
 		);
 		$this->retry_after = self::INSTALLATION_RETRY_AFTER;
@@ -242,7 +242,7 @@ final class BootModeResolver {
 	private function maintenance( array $flag ) : BootMode {
 		$this->message = isset( $flag['message'] ) && is_string( $flag['message'] ) && '' !== $flag['message']
 			? $flag['message']
-			: sprintf( '%s is undergoing scheduled maintenance. Please try again shortly.', \SMLISER_APP_NAME );
+			: sprintf( smliser__( '%s is undergoing scheduled maintenance. Please try again shortly.' ), \SMLISER_APP_NAME );
 
 		if ( isset( $flag['retry_after'] ) && is_numeric( $flag['retry_after'] ) ) {
 			$this->retry_after = max( 0, (int) $flag['retry_after'] );

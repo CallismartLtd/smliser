@@ -62,6 +62,6 @@ final class DaysOfMonth implements DayMatcher {
 	 * {@inheritdoc}
 	 */
 	public function describe() : string {
-		return 'Monthly on day(s) ' . implode( ', ', $this->days );
+		return smliser__( 'Monthly on day(s) ' ) . implode( ', ', $this->days );
 	}
 }

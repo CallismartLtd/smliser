@@ -22,8 +22,8 @@
 	<?php if ( 'upload' === $section ) :
 		$form_fields	= [
 			[
-				'label'	=> 'Package (.zip)',
-				'help'	=> 'A zip holding one folder named after the extension (extension.json, src/ and an optional assets/). PHP is allowed anywhere except assets/; links, server configuration files and paths outside the extension folder are refused.',
+				'label'	=> smliser__( 'Package (.zip)' ),
+				'help'	=> smliser__( 'A zip holding one folder named after the extension (extension.json, src/ and an optional assets/). PHP is allowed anywhere except assets/; links, server configuration files and paths outside the extension folder are refused.' ),
 				'input'	=> [
 					'type'	=> 'file',
 					'name'	=> 'package',
@@ -35,7 +35,7 @@
 				]
 			],
 			[
-				'label'	=> 'Checksums (.sha256)',
+				'label'	=> smliser__( 'Checksums (.sha256)' ),
 				'help'	=> '',
 				'input'	=> [
 					'type'	=> 'file',
@@ -47,7 +47,7 @@
 				]
 			],
 			[
-				'label'	=> 'Signature (.sha256.sig)',
+				'label'	=> smliser__( 'Signature (.sha256.sig)' ),
 				'help'	=> '',
 				'input'	=> [
 					'type'	=> 'file',
@@ -59,8 +59,8 @@
 				]
 			],
 			[
-				'label'	=> 'Overwrite',
-				'help'	=> 'Replace the installed extension of the same slug (same or newer version; downgrades are refused)',
+				'label'	=> smliser__( 'Overwrite' ),
+				'help'	=> smliser__( 'Replace the installed extension of the same slug (same or newer version; downgrades are refused)' ),
 				'input'	=> [
 					'type'	=> 'checkbox',
 					'name'	=> 'replace',
@@ -68,8 +68,8 @@
 				]
 			],
 			[
-				'label'	=> 'Trust Package',
-				'help'	=> 'Trust this package without a valid signature (only for a package you built or received directly: once enabled, its PHP runs on every request)',
+				'label'	=> smliser__( 'Trust Package' ),
+				'help'	=> smliser__( 'Trust this package without a valid signature (only for a package you built or received directly: once enabled, its PHP runs on every request)' ),
 				'input'	=> [
 					'type'	=> 'checkbox',
 					'name'	=> 'trust_unsigned',
@@ -77,8 +77,8 @@
 				]
 			],
 			[
-				'label'	=> 'Enable it once installed',
-				'help'	=> 'Enable this extension after installing? It loads from the next request on.',
+				'label'	=> smliser__( 'Enable it once installed' ),
+				'help'	=> smliser__( 'Enable this extension after installing? It loads from the next request on.' ),
 				'input'	=> [
 					'type'	=> 'checkbox',
 					'name'	=> 'enable',
@@ -111,7 +111,7 @@
 			</div>
 
 			<button type="submit" class="smliser-btn smliser-btn-glass">
-				<i class="ti ti-upload"></i> Upload and install
+				<i class="ti ti-upload"></i> <?php smliser_esc_html_e( 'Upload and install' ); ?>
 			</button>
 
 		</form>
@@ -119,16 +119,16 @@
 		<div class="smliser-modules-toolbar">
 			<p class="smliser-section-description">
 				<i class="ti ti-info-circle"></i>
-				Extensions add features to this installation. An enabled extension's PHP runs on every request, so enable only extensions you trust; changes apply from the next request.
+				<?php smliser_esc_html_e( 'Extensions add features to this installation. An enabled extension\'s PHP runs on every request, so enable only extensions you trust; changes apply from the next request.' ); ?>
 			</p>
 			<div class="smliser-modules-toolbar-actions">
-				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="check"><i class="ti ti-refresh"></i> Check for updates</button>
-				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="publish" data-confirm="Publish every installed extension's assets in the public folder again?"><i class="ti ti-world-upload"></i> Republish assets</button>
+				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="check"><i class="ti ti-refresh"></i> <?php smliser_esc_html_e( 'Check for updates' ); ?></button>
+				<button type="button" class="smliser-btn smliser-btn-glass" data-module-page-action="publish" data-confirm="<?php smliser_esc_attr_e( 'Publish every installed extension\'s assets in the public folder again?' ); ?>"><i class="ti ti-world-upload"></i> <?php smliser_esc_html_e( 'Republish assets' ); ?></button>
 			</div>
 		</div>
 
 		<?php if ( [] === $cards ) : ?>
-			<p class="smliser-modules-empty"><i class="ti ti-mood-empty"></i> No extension is installed. Upload a package, or install one from the marketplace.</p>
+			<p class="smliser-modules-empty"><i class="ti ti-mood-empty"></i> <?php smliser_esc_html_e( 'No extension is installed. Upload a package, or install one from the marketplace.' ); ?></p>
 		<?php else : ?>
 			<div class="smliser-module-grid">
 				<?php foreach ( $cards as $card ) : ?>

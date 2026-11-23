@@ -199,7 +199,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		if ( ! $wp_user ) {
 			return new RequestException(
 				'user_not_created',
-				'Unable to create WordPress user, try again.'
+				smliser__( 'Unable to create WordPress user, try again.' )
 			);
 		}
 
@@ -364,16 +364,16 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		if ( \is_user_logged_in() && ! $this->guard->has_principal() ) {
 			$current_user = \wp_get_current_user();
 			if ( ! User::email_exists( $current_user->user_email ) ) {
-				return new RequestException( 'authentication_error', 'Signup to access this portal.' );
+				return new RequestException( 'authentication_error', smliser__( 'Signup to access this portal.' ) );
 			}
 
-			return new RequestException( 'authentication_error', 'Please use the password reset option to recover your account.' );
+			return new RequestException( 'authentication_error', smliser__( 'Please use the password reset option to recover your account.' ) );
 		}
 
 		$principal = $this->guard->get_principal();
 
 		if ( ! $principal ) {
-			return new RequestException( 'authentication_error', 'Login failed, contact us if you need further assistance.' );
+			return new RequestException( 'authentication_error', smliser__( 'Login failed, contact us if you need further assistance.' ) );
 		}
 
 		return $principal;
@@ -408,7 +408,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 			$message = \strip_tags( $wp_user->get_error_message() );
 
 			if ( 'incorrect_password' === $code ) {
-				$message = 'The password you entered is incorrect.';
+				$message = smliser__( 'The password you entered is incorrect.' );
 			}
 
 			return new RequestException( $code, $message );
@@ -429,7 +429,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		if ( ! User::email_exists( $email ) ) {
 			return new RequestException(
 				'invalid_user',
-				'Unknown email address.',
+				smliser__( 'Unknown email address.' ),
 				['status' => 401]
 			);
 		}
@@ -458,7 +458,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 			if ( ! $wp_user ) {
 				return new RequestException(
 					'invalid_user',
-					'Unknown email address.'
+					smliser__( 'Unknown email address.' )
 				);
 			}
 		}
@@ -483,7 +483,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		if ( $request->isEmpty( 'email' ) ) {
 			return new RequestException(
 				'required_param',
-				'Email is required.',
+				smliser__( 'Email is required.' ),
 				['status' => 400]
 			);
 		}
@@ -493,7 +493,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		if ( ! filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
 			return new RequestException(
 				'invalid_email',
-				'The email address is invalid.',
+				smliser__( 'The email address is invalid.' ),
 				['status' => 400]
 			);
 		}
@@ -501,7 +501,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		if ( ! $this->accounts->acquire_signup_lock( $email ) ) {
 			return new RequestException(
 				'signup_locked',
-				'Too many signup attempts, please try again later.',
+				smliser__( 'Too many signup attempts, please try again later.' ),
 				['status' => 429 ]
 			);
 		}
@@ -543,7 +543,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 			if ( ! $this->guard->has_principal() ) {
 				throw new RequestException(
 					'authentication_error',
-					'Login failed, contact us if you need further assistance.'
+					smliser__( 'Login failed, contact us if you need further assistance.' )
 				);
 			}
 
@@ -554,7 +554,7 @@ final class IdentityService extends AbstractIdentityProvider implements Password
 		} catch ( \Throwable ) {
 			return new RequestException(
 				'signup_error',
-				'An error occurred during signup, please try again.',
+				smliser__( 'An error occurred during signup, please try again.' ),
 				['status' => 500 ]
 			);
 		} finally {

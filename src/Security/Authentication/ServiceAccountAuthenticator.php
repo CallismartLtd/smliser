@@ -37,7 +37,7 @@ class ServiceAccountAuthenticator implements AuthenticatorInterface {
 			return AuthenticationResult::failure(
 				AuthenticationResult::STATUS_MISSING_CREDENTIALS,
 				'empty_api_key',
-				'API key was not provided.'
+				smliser__( 'API key was not provided.' )
 			);
 		}
 
@@ -49,7 +49,7 @@ class ServiceAccountAuthenticator implements AuthenticatorInterface {
 			if ( ! $owner || ! $owner->exists() ) {
 				throw new Exception(
 					'authentication_error',
-					'Sorry, the service account owner does not exist.',
+					smliser__( 'Sorry, the service account owner does not exist.' ),
 					[ 'status' => 403 ]
 				);
 			}
@@ -59,7 +59,7 @@ class ServiceAccountAuthenticator implements AuthenticatorInterface {
 			if ( ! $owner_subject ) {
 				throw new Exception(
 					'authentication_error',
-					'Sorry, you can no longer act for this resource owner.',
+					smliser__( 'Sorry, you can no longer act for this resource owner.' ),
 					[ 'status' => 403 ]
 				);
 			}
@@ -69,7 +69,7 @@ class ServiceAccountAuthenticator implements AuthenticatorInterface {
 			if ( ! $role ) {
 				throw new Exception(
 					'authentication_error',
-					'Sorry, you do not have a valid role.',
+					smliser__( 'Sorry, you do not have a valid role.' ),
 					[ 'status' => 403 ]
 				);
 			}
@@ -78,7 +78,7 @@ class ServiceAccountAuthenticator implements AuthenticatorInterface {
 				actor: $actor,
 				owner: $owner,
 				role: $role,
-				message: 'Successfully authenticated.'
+				message: smliser__( 'Successfully authenticated.' )
 			);
 
 		} catch ( Exception $e ) {

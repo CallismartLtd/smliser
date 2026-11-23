@@ -20,23 +20,23 @@ class PurchaseRequestReceivedEmail extends PurchaseRequestEmail {
 	}
 
 	protected function subject() : string {
-		return sprintf( 'We received your purchase request #%d', $this->request->get_id() );
+		return sprintf( smliser__( 'We received your purchase request #%d' ), $this->request->get_id() );
 	}
 
 	protected function preheader() : string {
-		return 'Your payment receipt is being reviewed. Your license follows once the payment is confirmed.';
+		return smliser__( 'Your payment receipt is being reviewed. Your license follows once the payment is confirmed.' );
 	}
 
 	public function label() : string {
-		return 'Purchase Request Received';
+		return smliser__( 'Purchase Request Received' );
 	}
 
 	public function description() : string {
-		return 'Sent to a buyer when their purchase request and payment receipt are received.';
+		return smliser__( 'Sent to a buyer when their purchase request and payment receipt are received.' );
 	}
 
 	public static function preview() : static {
-		return new static( static::preview_request(), 'jane@example.com', 'Demo Plugin — Yearly' );
+		return new static( static::preview_request(), 'jane@example.com', smliser__( 'Demo Plugin — Yearly' ) );
 	}
 
 	public function get_blocks() : array {
@@ -44,14 +44,14 @@ class PurchaseRequestReceivedEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{buyer_name}},',
+				'content'   => smliser__( 'Hi {{buyer_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Thank you. We received your purchase request and your payment receipt. We will check the payment and email your license as soon as it is confirmed.',
+				'content'   => smliser__( 'Thank you. We received your purchase request and your payment receipt. We will check the payment and email your license as soon as it is confirmed.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -59,9 +59,9 @@ class PurchaseRequestReceivedEmail extends PurchaseRequestEmail {
 				'id'        => 'details',
 				'type'      => 'detail_card',
 				'rows'      => [
-					[ 'label' => 'Request', 'value' => '#{{request_id}}' ],
-					[ 'label' => 'Product', 'value' => '{{product}}' ],
-					[ 'label' => 'Price', 'value' => '{{price}}' ],
+					[ 'label' => smliser__( 'Request' ), 'value' => '#{{request_id}}' ],
+					[ 'label' => smliser__( 'Product' ), 'value' => '{{product}}' ],
+					[ 'label' => smliser__( 'Price' ), 'value' => '{{price}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -69,7 +69,7 @@ class PurchaseRequestReceivedEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you have a question about your request, contact us at {{support_email}} and mention request #{{request_id}}.',
+				'content'   => smliser__( 'If you have a question about your request, contact us at {{support_email}} and mention request #{{request_id}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

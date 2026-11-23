@@ -44,7 +44,7 @@ class SoftwareRepository extends Repository {
 		$readme = static::zip_entry( $zip, $root, 'readme.md' );
 
 		if ( null === $readme ) {
-			throw new Exception( 'readme_missing', 'The uploaded software ZIP file is missing the required readme.md file.', [ 'status' => 400 ] );
+			throw new Exception( 'readme_missing', smliser__( 'The uploaded software ZIP file is missing the required readme.md file.' ), [ 'status' => 400 ] );
 		}
 
 		return [ 'readme.md' => $readme ];

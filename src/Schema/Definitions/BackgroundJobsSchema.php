@@ -27,14 +27,14 @@ class BackgroundJobsSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Background Jobs';
+		return smliser__( 'Background Jobs' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores background jobs.';
+		return smliser__( 'Stores background jobs.' );
 	}
 
 	/**

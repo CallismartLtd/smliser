@@ -24,11 +24,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class PricingTierSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Pricing Tiers';
+		return smliser__( 'Pricing Tiers' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores pricing tier definitions.';
+		return smliser__( 'Stores pricing tier definitions.' );
 	}
 
 	public static function get_table_name() : string {

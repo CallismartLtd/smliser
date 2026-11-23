@@ -506,7 +506,7 @@ class V1 implements RESTVersionInterface {
 						'external_ref' => [
 							'required'    => true,
 							'type'        => 'string',
-							'description' => 'Your reference for the sale the license was issued for.',
+							'description' => smliser__( 'Your reference for the sale the license was issued for.' ),
 						],
 					],
 					'category' => 'licensing',
@@ -572,17 +572,17 @@ class V1 implements RESTVersionInterface {
 			'service_id' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The service id associated with the license key',
+				'description' => smliser__( 'The service id associated with the license key' ),
 			],
 			'license_key' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The license key to activate',
+				'description' => smliser__( 'The license key to activate' ),
 			],
 			'domain' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The domain to associate associate the license activation record with.',
+				'description' => smliser__( 'The domain to associate associate the license activation record with.' ),
 			],
 		];
 	}
@@ -597,17 +597,17 @@ class V1 implements RESTVersionInterface {
 			'license_key' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The license key to deactivate.',
+				'description' => smliser__( 'The license key to deactivate.' ),
 			],
 			'service_id' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The service ID associated with the license.',
+				'description' => smliser__( 'The service ID associated with the license.' ),
 			],
 			'domain' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The URL of the website where the license is currently activated.',
+				'description' => smliser__( 'The URL of the website where the license is currently activated.' ),
 			],
 		];
 	}
@@ -622,17 +622,17 @@ class V1 implements RESTVersionInterface {
 			'license_key' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The license key to uninstall.',
+				'description' => smliser__( 'The license key to uninstall.' ),
 			],
 			'service_id' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The service ID associated with the license.',
+				'description' => smliser__( 'The service ID associated with the license.' ),
 			],
 			'domain' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The URL of the website where the license is currently activated.',
+				'description' => smliser__( 'The URL of the website where the license is currently activated.' ),
 			],
 		];
 	}
@@ -647,32 +647,32 @@ class V1 implements RESTVersionInterface {
 			'tier_id' => [
 				'required'    => true,
 				'type'        => 'integer',
-				'description' => 'The ID of the pricing tier sold; one of your tiers (GET licensing/tiers).',
+				'description' => smliser__( 'The ID of the pricing tier sold; one of your tiers (GET licensing/tiers).' ),
 			],
 			'external_ref' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'Your reference for the sale (order or subscription ID). Issuing again with the same reference returns the license already issued.',
+				'description' => smliser__( 'Your reference for the sale (order or subscription ID). Issuing again with the same reference returns the license already issued.' ),
 			],
 			'licensee_email' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The buyer\'s email address; the license is delivered to it.',
+				'description' => smliser__( 'The buyer\'s email address; the license is delivered to it.' ),
 			],
 			'licensee_name' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'The buyer\'s name.',
+				'description' => smliser__( 'The buyer\'s name.' ),
 			],
 			'service_id' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'The ID the buyer\'s sites activate the license with, together with the license key. Generated when empty.',
+				'description' => smliser__( 'The ID the buyer\'s sites activate the license with, together with the license key. Generated when empty.' ),
 			],
 			'starts_at' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'When the license starts (a date, read as UTC without a time zone). Now when empty.',
+				'description' => smliser__( 'When the license starts (a date, read as UTC without a time zone). Now when empty.' ),
 			],
 		];
 	}
@@ -687,22 +687,22 @@ class V1 implements RESTVersionInterface {
 			'max_allowed_domains' => [
 				'required'    => false,
 				'type'        => 'integer',
-				'description' => 'The number of domains the license can be activated on; -1 for unlimited.',
+				'description' => smliser__( 'The number of domains the license can be activated on; -1 for unlimited.' ),
 			],
 			'features' => [
 				'required'    => false,
 				'type'        => 'array',
-				'description' => 'The features the license includes; a list or a comma-separated string.',
+				'description' => smliser__( 'The features the license includes; a list or a comma-separated string.' ),
 			],
 			'end_date' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'When the license ends (a date); empty or null for no end.',
+				'description' => smliser__( 'When the license ends (a date); empty or null for no end.' ),
 			],
 			'status' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'The license status; empty to calculate it from its dates. "revoked" needs the monetization.license.revoke capability.',
+				'description' => smliser__( 'The license status; empty to calculate it from its dates. "revoked" needs the monetization.license.revoke capability.' ),
 			],
 		];
 	}
@@ -717,17 +717,17 @@ class V1 implements RESTVersionInterface {
 			'license_key' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The license key to validate.',
+				'description' => smliser__( 'The license key to validate.' ),
 			],
 			'service_id' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The service ID associated with the license.',
+				'description' => smliser__( 'The service ID associated with the license.' ),
 			],
 			'domain' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The URL of the website where the license is currently activated.',
+				'description' => smliser__( 'The URL of the website where the license is currently activated.' ),
 			],
 		];
 	}
@@ -768,35 +768,35 @@ class V1 implements RESTVersionInterface {
 			'search' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'The search term',
+				'description' => smliser__( 'The search term' ),
 			],
 			'page' => [
 				'required'    => false,
 				'type'        => 'integer',
 				'default'     => 1,
-				'description' => 'Current pagination number.',
+				'description' => smliser__( 'Current pagination number.' ),
 			],
 			'limit' => [
 				'required'    => false,
 				'type'        => 'integer',
 				'default'     => 25,
-				'description' => 'Maximum number of apps per page.',
+				'description' => smliser__( 'Maximum number of apps per page.' ),
 			],
 			'app_slugs' => [
 				'required'    => false,
 				'type'        => 'array',
-				'description' => 'An array of app slugs to filter by (eg., [\'smart-woo-service-invoicing\', \'woocommerce\', \'astra\'].',
+				'description' => smliser__( 'An array of app slugs to filter by (eg., [\'smart-woo-service-invoicing\', \'woocommerce\', \'astra\'].' ),
 			],
 			'app_types' => [
 				'required'    => false,
 				'type'        => 'array',
-				'description' => 'An array of app types to filter by (e.g., [\'plugin\', \'theme\']); every registered app type when omitted. An unregistered type gets 400.',
+				'description' => smliser__( 'An array of app types to filter by (e.g., [\'plugin\', \'theme\']); every registered app type when omitted. An unregistered type gets 400.' ),
 			],
 			'status' => [
 				'required'    => false,
 				'type'        => 'string',
 				'default'     => 'active',
-				'description' => 'The app status to list: active, deactivated, suspended or trash. Statuses other than active are for system admins only (403 for anyone else).',
+				'description' => smliser__( 'The app status to list: active, deactivated, suspended or trash. Statuses other than active are for system admins only (403 for anyone else).' ),
 			],
 		];
 	}
@@ -820,7 +820,7 @@ class V1 implements RESTVersionInterface {
 			'artifact' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Name of a ZIP artifact to download instead of the main package, e.g. "acme-1.2.0.zip". Its integrity is the developer\'s <name>.sha256 and <name>.sha256.sig artifacts; version and security are then null.',
+				'description' => smliser__( 'Name of a ZIP artifact to download instead of the main package, e.g. "acme-1.2.0.zip". Its integrity is the developer\'s <name>.sha256 and <name>.sha256.sig artifacts; version and security are then null.' ),
 			],
 		];
 	}
@@ -836,65 +836,65 @@ class V1 implements RESTVersionInterface {
 			'app_name' => [
 				'required'    => in_array( 'POST', $method ),
 				'type'        => 'string',
-				'description' => 'The application name. Required when uploading new app.'
+				'description' => smliser__( 'The application name. Required when uploading new app.' )
 			],
 			'app_author' => [
 				'required'    => in_array( 'POST', $method ),
 				'type'        => 'string',
-				'description' => 'The full name of the application author.'
+				'description' => smliser__( 'The full name of the application author.' )
 			],
 			'app_author_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'The author URL.'
+				'description' => smliser__( 'The author URL.' )
 			],
 			'app_version' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'The application version. For Wordpress plugins and themes, the version will be extracted from the readme.txt and style.css respectively, custom apps should define the app version in the app.json file.'
+				'description' => smliser__( 'The application version. For Wordpress plugins and themes, the version will be extracted from the readme.txt and style.css respectively, custom apps should define the app version in the app.json file.' )
 			],
 
 			'app_download_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Optional, leave empty to serve app zip file from this server or specify alternative download URL.'
+				'description' => smliser__( 'Optional, leave empty to serve app zip file from this server or specify alternative download URL.' )
 			],
 			'app_support_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Optional, provide support URL for the application if applicable.'
+				'description' => smliser__( 'Optional, provide support URL for the application if applicable.' )
 			],
 			'app_homepage_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Optional, provide alternative homepage URL for the application.'
+				'description' => smliser__( 'Optional, provide alternative homepage URL for the application.' )
 			],
 			'app_preview_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Optional, provide preview URL for WordPress themes.'
+				'description' => smliser__( 'Optional, provide preview URL for WordPress themes.' )
 			],
 			'app_documentation_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Optional, provide the application documentation URL.'
+				'description' => smliser__( 'Optional, provide the application documentation URL.' )
 			],
 			'app_external_repository_url' => [
 				'required'    => false,
 				'type'        => 'string',
-				'description' => 'Optional, provide external repository URL for WordPress themes.'
+				'description' => smliser__( 'Optional, provide external repository URL for WordPress themes.' )
 			
 			],
 			'app_zip_file' => [
 				'required'    => false,
 				'type'        => 'binary',
-				'description' => 'Submit a zip file for the app, keyed in with this argument in a multipart/form-data request. This is required for new applications.'
+				'description' => smliser__( 'Submit a zip file for the app, keyed in with this argument in a multipart/form-data request. This is required for new applications.' )
 			
 			],
 			'app_json_file' => [
 				'required'    => false,
 				'type'        => 'binary',
-				'description' => 'Submit an app.json file, keyed in with this argument in a multipart/form-data request. The content of this file will be served in the "manifest" property of REST response for the application.'
+				'description' => smliser__( 'Submit an app.json file, keyed in with this argument in a multipart/form-data request. The content of this file will be served in the "manifest" property of REST response for the application.' )
 			
 			],
 		];
@@ -916,22 +916,22 @@ class V1 implements RESTVersionInterface {
 			'domain' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The domain where the plugin is installed.',
+				'description' => smliser__( 'The domain where the plugin is installed.' ),
 			],
 			'license_key' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The license key to reauthenticate.',
+				'description' => smliser__( 'The license key to reauthenticate.' ),
 			],
 			'download_token' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The base64 encoded download token issued during license activation or the last reauthentication token.',
+				'description' => smliser__( 'The base64 encoded download token issued during license activation or the last reauthentication token.' ),
 			],
 			'service_id' => [
 				'required'    => true,
 				'type'        => 'string',
-				'description' => 'The service ID associated with the license.',
+				'description' => smliser__( 'The service ID associated with the license.' ),
 			],
 		];
 	}
@@ -947,23 +947,23 @@ class V1 implements RESTVersionInterface {
 				'required'    => false,
 				'type'        => 'integer',
 				'default'     => 1,
-				'description' => 'Page number for pagination.',
+				'description' => smliser__( 'Page number for pagination.' ),
 			],
 			'limit' => [
 				'required'    => false,
 				'type'        => 'integer',
 				'default'     => 10,
-				'description' => 'Number of messages per page.',
+				'description' => smliser__( 'Number of messages per page.' ),
 			],
 			'app_slugs' => [
 				'required'    => false,
 				'type'        => 'array',
-				'description' => 'An array of app slugs to filter by.',
+				'description' => smliser__( 'An array of app slugs to filter by.' ),
 			],
 			'app_types' => [
 				'required'    => false,
 				'type'        => 'array',
-				'description' => 'An array of app types to filter by (e.g., plugin, theme).',
+				'description' => smliser__( 'An array of app types to filter by (e.g., plugin, theme).' ),
 			],
 		];
 	}

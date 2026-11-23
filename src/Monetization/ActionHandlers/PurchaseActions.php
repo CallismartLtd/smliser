@@ -83,7 +83,7 @@ class PurchaseActions {
 			[
 				'success' => true,
 				'message' => sprintf(
-					'Thank you. Your purchase request #%d has been received and will be reviewed shortly; the license will be sent to %s once your payment is confirmed.',
+					smliser__( 'Thank you. Your purchase request #%d has been received and will be reviewed shortly; the license will be sent to %s once your payment is confirmed.' ),
 					$result->get_id(),
 					$result->get_buyer_email()
 				),

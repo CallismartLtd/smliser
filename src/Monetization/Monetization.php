@@ -326,17 +326,17 @@ class Monetization extends DataStore {
 			$exists   = $db->get_row( $lock_sql, $lock_query->get_bindings() );
 
 			if ( ! $exists ) {
-				throw new Exception( 'delete_error', 'Record locked or already removed by concurrent request.' );
+				throw new Exception( 'delete_error', smliser__( 'Record locked or already removed by concurrent request.' ) );
 			}
 
 			// execute() returns the rows changed, 0 on failure: a monetization may have no tiers, so 0 fails only with an error.
 			if ( 0 === $db->execute( $delete_tiers_sql->build(), $delete_tiers_sql->get_bindings() ) && ! empty( $db->get_last_error() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping pricing tiers.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping pricing tiers.' ) );
 			}
 
 			// The record was just locked, so it exists: deleting it must change a row.
 			if ( 0 === $db->execute( $delete_monetn_sql->build(), $delete_monetn_sql->get_bindings() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping monetization record.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping monetization record.' ) );
 			}
 			
 			$deleted = true;

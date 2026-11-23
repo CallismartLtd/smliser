@@ -24,11 +24,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class ServiceAccountsSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Service Accounts';
+		return smliser__( 'Service Accounts' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores service accounts.';
+		return smliser__( 'Stores service accounts.' );
 	}
 
 	public static function get_table_name() : string {

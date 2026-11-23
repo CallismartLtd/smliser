@@ -16,7 +16,7 @@ use SmartLicenseServer\Schema\TableName;
 /** Adds the tables used by MFA factors, passkeys, and pending ceremonies. */
 final class CreateAuthenticationTables extends AbstractMigration implements ReversibleMigrationInterface {
 	public static function get_description() : string {
-		return 'Create user security, passkey, and authentication challenge tables';
+		return smliser__( 'Create user security, passkey, and authentication challenge tables' );
 	}
 
 	public function up() : void {

@@ -56,21 +56,21 @@ class ResendProvider extends AbstractRestEmailProvider {
 		return [
 			'api_key' => [
 				'type'        => 'password',
-				'label'       => 'API Key',
+				'label'       => smliser__( 'API Key' ),
 				'required'    => true,
-				'description' => 'Your Resend API key. Found under API Keys in your Resend dashboard.',
+				'description' => smliser__( 'Your Resend API key. Found under API Keys in your Resend dashboard.' ),
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => false,
-				'description' => 'Default sender email address(Must be from a verified domain in Resend). Leave blank to use the global from email.',
+				'description' => smliser__( 'Default sender email address(Must be from a verified domain in Resend). Leave blank to use the global from email.' ),
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Sender display name. Leave blank to use the global from name',
+				'description' => smliser__( 'Sender display name. Leave blank to use the global from name' ),
 			],
 		];
 	}
@@ -271,7 +271,7 @@ class ResendProvider extends AbstractRestEmailProvider {
 
 		if ( $response->is_error() ) {
 			$name    = $data['name'] ?? 'Error';
-			$message = $data['message'] ?? 'Unknown Resend API error.';
+			$message = $data['message'] ?? smliser__( 'Unknown Resend API error.' );
 			throw new EmailTransportException(
 				"ResendProvider: API returned HTTP {$response->status_code} ({$name}) — {$message}"
 			);

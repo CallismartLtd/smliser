@@ -63,7 +63,7 @@
 		navigator.clipboard.writeText( button.dataset.copy ).then( () => {
 			const label = button.textContent;
 
-			button.textContent = 'Copied';
+			button.textContent = smliserI18n.__( 'Copied' );
 			setTimeout( () => {
 				button.textContent = label;
 			}, 2000 );

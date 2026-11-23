@@ -30,14 +30,14 @@ class AnalyticsLogsSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Analytics Logs';
+		return smliser__( 'Analytics Logs' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores raw analytics events - source of truth for event data.';
+		return smliser__( 'Stores raw analytics events - source of truth for event data.' );
 	}
 
 	/**

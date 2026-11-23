@@ -29,18 +29,18 @@ $section_icons = [
 
     <?php if ( empty( $diagnostics ) ) : ?>
         <div class="smliser-not-found-container">
-            <p>No diagnostic data available.</p>
+            <p><?php smliser_esc_html_e( 'No diagnostic data available.' ); ?></p>
         </div>
     <?php else : ?>
         <div class="smliser-tools-actions" style="margin: 20px;">
             <div class="smliser-section-description" style="justify-self: center;">
                 <i class="ti ti-info-circle"></i>
-                <span>System Diagnostics</span>
+                <span><?php smliser_esc_html_e( 'System Diagnostics' ); ?></span>
             </div>
             <button type="button" class="smliser-btn smliser-btn-glass"
                 data-support-report="diagnostics"
                 data-report-meta="<?php echo escAttr( (string) \json_encode( $report_meta ) ); ?>"
-            ><i class="ti ti-analyze"></i> Generate report</button>
+            ><i class="ti ti-analyze"></i> <?php smliser_esc_html_e( 'Generate report' ); ?></button>
         </div>
 
         <div class="smliser-diagnostics-grid" id="smliser-diagnostics-grid">

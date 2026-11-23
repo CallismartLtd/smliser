@@ -64,7 +64,7 @@ class OrganizationService {
 	 */
 	public function create( User $creator, string $name ) : Organization|Exception {
 		if ( ! ContextServiceProvider::get_principal_role( $creator )?->has_capability( 'security.organization.create' ) ) {
-			return new Exception( 'organization_create_forbidden', 'Your account cannot create organizations.', [ 'status' => 403 ] );
+			return new Exception( 'organization_create_forbidden', smliser__( 'Your account cannot create organizations.' ), [ 'status' => 403 ] );
 		}
 
 		$name    = trim( $name );
@@ -77,7 +77,7 @@ class OrganizationService {
 		$role = Role::get_by_slug( DefaultRoles::get( 'organization_admin' )['slug'] );
 
 		if ( ! $role ) {
-			return new Exception( 'role_missing', 'The Organization Administrator role is not installed. Ask the site administrator to install the default roles.', [ 'status' => 500 ] );
+			return new Exception( 'role_missing', smliser__( 'The Organization Administrator role is not installed. Ask the site administrator to install the default roles.' ), [ 'status' => 500 ] );
 		}
 
 		$organization = ( new Organization() )
@@ -101,7 +101,7 @@ class OrganizationService {
 				}
 			}
 
-			return new Exception( 'organization_not_created', 'The organization could not be created. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'organization_not_created', smliser__( 'The organization could not be created. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		return $organization;
@@ -135,7 +135,7 @@ class OrganizationService {
 				$owner->set_name( $name )->save();
 			}
 		} catch ( \Throwable ) {
-			return new Exception( 'organization_not_saved', 'The organization could not be renamed. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'organization_not_saved', smliser__( 'The organization could not be renamed. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		return $organization;
@@ -154,7 +154,7 @@ class OrganizationService {
 		if ( $apps > 0 ) {
 			return new Exception(
 				'organization_owns_apps',
-				sprintf( '%s owns %d app(s), including any in the trash. Delete them, or move them to another owner, before deleting the organization.', $organization->get_display_name(), $apps ),
+				sprintf( smliser__( '%s owns %d app(s), including any in the trash. Delete them, or move them to another owner, before deleting the organization.' ), $organization->get_display_name(), $apps ),
 				[ 'status' => 409 ]
 			);
 		}
@@ -163,7 +163,7 @@ class OrganizationService {
 			$this->invitations->revoke_all( $organization );
 			ContextServiceProvider::delete_entity( $organization );
 		} catch ( \Throwable ) {
-			return new Exception( 'organization_not_deleted', 'The organization could not be deleted. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'organization_not_deleted', smliser__( 'The organization could not be deleted. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		return true;
@@ -189,7 +189,7 @@ class OrganizationService {
 		try {
 			$this->save_member( $organization, $user, $role );
 		} catch ( \Throwable ) {
-			return new Exception( 'member_not_saved', sprintf( '%s could not be added. Please try again.', $user->get_display_name() ), [ 'status' => 500 ] );
+			return new Exception( 'member_not_saved', sprintf( smliser__( '%s could not be added. Please try again.' ), $user->get_display_name() ), [ 'status' => 500 ] );
 		}
 
 		return true;
@@ -206,11 +206,11 @@ class OrganizationService {
 	 */
 	public function change_role( Organization $organization, User $member, string $role_slug, User $by ) : true|Exception {
 		if ( $member->get_id() === $by->get_id() ) {
-			return new Exception( 'self_role_change', 'You cannot change your own role; another Organization Administrator must.', [ 'status' => 409 ] );
+			return new Exception( 'self_role_change', smliser__( 'You cannot change your own role; another Organization Administrator must.' ), [ 'status' => 409 ] );
 		}
 
 		if ( ! $this->is_member( $organization, $member ) ) {
-			return new Exception( 'not_a_member', sprintf( '%s is not a member of %s.', $member->get_display_name(), $organization->get_display_name() ), [ 'status' => 404 ] );
+			return new Exception( 'not_a_member', sprintf( smliser__( '%s is not a member of %s.' ), $member->get_display_name(), $organization->get_display_name() ), [ 'status' => 404 ] );
 		}
 
 		$role = $this->resolve_role( $role_slug );
@@ -230,7 +230,7 @@ class OrganizationService {
 		try {
 			$this->save_member( $organization, $member, $role );
 		} catch ( \Throwable ) {
-			return new Exception( 'member_not_saved', 'The role could not be changed. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'member_not_saved', smliser__( 'The role could not be changed. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		return true;
@@ -248,7 +248,7 @@ class OrganizationService {
 		$leaving = $member->get_id() === $by->get_id();
 
 		if ( ! $this->is_member( $organization, $member ) ) {
-			return new Exception( 'not_a_member', sprintf( '%s is not a member of %s.', $leaving ? 'You are' : $member->get_display_name() . ' is', $organization->get_display_name() ), [ 'status' => 404 ] );
+			return new Exception( 'not_a_member', sprintf( smliser__( '%s is not a member of %s.' ), $leaving ? 'You are' : $member->get_display_name() . ' is', $organization->get_display_name() ), [ 'status' => 404 ] );
 		}
 
 		$problem = $this->assert_admin_remains( $organization, $member, $leaving );
@@ -266,7 +266,7 @@ class OrganizationService {
 			$organization->get_members()->add( $record );
 			ContextServiceProvider::delete_organization_member( $record, $organization );
 		} catch ( \Throwable ) {
-			return new Exception( 'member_not_removed', $leaving ? 'You could not leave the organization. Please try again.' : 'The member could not be removed. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'member_not_removed', $leaving ? smliser__( 'You could not leave the organization. Please try again.' ) : smliser__( 'The member could not be removed. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		return true;
@@ -360,8 +360,8 @@ class OrganizationService {
 		return new Exception(
 			'last_organization_admin',
 			$leaving
-				? sprintf( 'You are the only Organization Administrator of %s. Make another member an Organization Administrator before you leave.', $organization->get_display_name() )
-				: sprintf( '%s is the only Organization Administrator of %s. Make another member an Organization Administrator first.', $member->get_display_name(), $organization->get_display_name() ),
+				? sprintf( smliser__( 'You are the only Organization Administrator of %s. Make another member an Organization Administrator before you leave.' ), $organization->get_display_name() )
+				: sprintf( smliser__( '%s is the only Organization Administrator of %s. Make another member an Organization Administrator first.' ), $member->get_display_name(), $organization->get_display_name() ),
 			[ 'status' => 409 ]
 		);
 	}
@@ -395,7 +395,7 @@ class OrganizationService {
 
 		return $role ?? new Exception(
 			'invalid_role',
-			sprintf( 'Choose one of these roles: %s.', implode( ', ', $this->get_assignable_roles() ) ),
+			sprintf( smliser__( 'Choose one of these roles: %s.' ), implode( ', ', $this->get_assignable_roles() ) ),
 			[ 'status' => 400, 'field_id' => 'role' ]
 		);
 	}
@@ -418,11 +418,11 @@ class OrganizationService {
 	 */
 	protected function check_name( string $name ) : ?Exception {
 		if ( '' === $name ) {
-			return new Exception( 'missing_name', 'Enter the organization\'s name.', [ 'status' => 400, 'field_id' => 'name' ] );
+			return new Exception( 'missing_name', smliser__( 'Enter the organization\'s name.' ), [ 'status' => 400, 'field_id' => 'name' ] );
 		}
 
 		if ( mb_strlen( $name ) > self::MAX_NAME_LENGTH ) {
-			return new Exception( 'name_too_long', sprintf( 'The name can be at most %d characters long.', self::MAX_NAME_LENGTH ), [ 'status' => 400, 'field_id' => 'name' ] );
+			return new Exception( 'name_too_long', sprintf( smliser__( 'The name can be at most %d characters long.' ), self::MAX_NAME_LENGTH ), [ 'status' => 400, 'field_id' => 'name' ] );
 		}
 
 		return null;

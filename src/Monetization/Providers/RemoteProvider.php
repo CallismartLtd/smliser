@@ -40,7 +40,7 @@ class RemoteProvider implements MonetizationProviderInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_name() : string {
-		return 'Remote store';
+		return smliser__( 'Remote store' );
 	}
 
 	/**
@@ -69,14 +69,14 @@ class RemoteProvider implements MonetizationProviderInterface {
 
 		$description = empty( $options )
 			? ( $app->get_owner_id()
-				? 'This app\'s owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page.'
-				: 'There is no active service account. Create one under Accounts → Service Accounts, then reload this page.' )
-			: 'The service account the store uses. Only it can issue licenses from this tier.';
+				? smliser__( 'This app\'s owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page.' )
+				: smliser__( 'There is no active service account. Create one under Accounts → Service Accounts, then reload this page.' ) )
+			: smliser__( 'The service account the store uses. Only it can issue licenses from this tier.' );
 
 		return [
 			'service_account' => [
 				'type'        => 'select',
-				'label'       => 'Store service account',
+				'label'       => smliser__( 'Store service account' ),
 				'default'     => '',
 				'description' => $description,
 				'required'    => true,
@@ -84,16 +84,16 @@ class RemoteProvider implements MonetizationProviderInterface {
 			],
 			'price' => [
 				'type'        => 'text',
-				'label'       => 'Price',
+				'label'       => smliser__( 'Price' ),
 				'default'     => '',
-				'description' => 'The price as buyers read it, e.g. "$49 / year". Shown as is.',
+				'description' => smliser__( 'The price as buyers read it, e.g. "$49 / year". Shown as is.' ),
 				'required'    => false,
 			],
 			'checkout_url' => [
 				'type'        => 'url',
-				'label'       => 'Checkout URL',
+				'label'       => smliser__( 'Checkout URL' ),
 				'default'     => '',
-				'description' => 'Where buyers buy this tier on the store.',
+				'description' => smliser__( 'Where buyers buy this tier on the store.' ),
 				'required'    => false,
 			],
 		];
@@ -108,11 +108,11 @@ class RemoteProvider implements MonetizationProviderInterface {
 		$checkout_url = trim( (string) ( $input['checkout_url'] ?? '' ) );
 
 		if ( ! isset( $this->bindable_accounts( $app )[ $identifier ] ) ) {
-			return new Exception( 'invalid_service_account', 'Choose an active service account of this app\'s owner.', [ 'status' => 400, 'field_id' => 'service_account' ] );
+			return new Exception( 'invalid_service_account', smliser__( 'Choose an active service account of this app\'s owner.' ), [ 'status' => 400, 'field_id' => 'service_account' ] );
 		}
 
 		if ( '' !== $checkout_url && ! static::is_http_url( $checkout_url ) ) {
-			return new Exception( 'invalid_checkout_url', 'The checkout URL must be an http or https URL.', [ 'status' => 400, 'field_id' => 'checkout_url' ] );
+			return new Exception( 'invalid_checkout_url', smliser__( 'The checkout URL must be an http or https URL.' ), [ 'status' => 400, 'field_id' => 'checkout_url' ] );
 		}
 
 		return [

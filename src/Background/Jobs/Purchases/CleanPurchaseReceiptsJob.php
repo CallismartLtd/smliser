@@ -65,7 +65,7 @@ class CleanPurchaseReceiptsJob implements JobHandlerInterface {
 
 		if ( $days > 0 ) {
 			$before = ( new DateTimeImmutable( 'now', new DateTimeZone( 'UTC' ) ) )->modify( sprintf( '-%d days', $days ) );
-			$reason = sprintf( 'Receipt file deleted automatically, %d days after the decision (receipt retention).', $days );
+			$reason = sprintf( smliser__( 'Receipt file deleted automatically, %d days after the decision (receipt retention).' ), $days );
 
 			foreach ( PurchaseRequest::get_with_receipts_reviewed_before( $before, $batch_size ) as $request ) {
 				$this->requests->remove_receipt( $request, $reason ) instanceof Exception ? $failed++ : $removed++;
@@ -87,13 +87,13 @@ class CleanPurchaseReceiptsJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Clean Purchase Receipts';
+		return smliser__( 'Clean Purchase Receipts' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Delete the payment receipts of decided purchase requests after the receipt retention period, and receipt files no request refers to.';
+		return smliser__( 'Delete the payment receipts of decided purchase requests after the receipt retention period, and receipt files no request refers to.' );
 	}
 }

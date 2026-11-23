@@ -157,18 +157,18 @@ class PurchaseRequestService {
 		$tier = PricingTier::get_by_id( $tier_id );
 
 		if ( ! $tier || LocalProvider::get_id() !== $tier->get_provider_id() ) {
-			return new Exception( 'tier_not_found', 'This product is not sold here.', [ 'status' => 404 ] );
+			return new Exception( 'tier_not_found', smliser__( 'This product is not sold here.' ), [ 'status' => 404 ] );
 		}
 
 		if ( ! $tier->is_active() ) {
-			return new Exception( 'tier_archived', 'This option is no longer sold.', [ 'status' => 410 ] );
+			return new Exception( 'tier_archived', smliser__( 'This option is no longer sold.' ), [ 'status' => 410 ] );
 		}
 
 		$monetization = Monetization::get_by_id( $tier->get_monetization_id() );
 		$app          = $monetization?->get_app();
 
 		if ( ! $monetization || ! $monetization->is_enabled() || ! ( $app instanceof AbstractHostedApp ) || ! $app->is_active() ) {
-			return new Exception( 'not_for_sale', 'This product is not for sale at the moment.', [ 'status' => 410 ] );
+			return new Exception( 'not_for_sale', smliser__( 'This product is not for sale at the moment.' ), [ 'status' => 410 ] );
 		}
 
 		return $tier;
@@ -204,19 +204,19 @@ class PurchaseRequestService {
 		$name  = '' === $name && $user ? $user->get_display_name() : $name;
 
 		if ( '' === $name ) {
-			return new Exception( 'missing_name', 'Enter the name the license is issued to.', [ 'status' => 400, 'field_id' => 'buyer_name' ] );
+			return new Exception( 'missing_name', smliser__( 'Enter the name the license is issued to.' ), [ 'status' => 400, 'field_id' => 'buyer_name' ] );
 		}
 
 		if ( false === filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-			return new Exception( 'invalid_email', 'Enter a valid email address; the license is sent there.', [ 'status' => 400, 'field_id' => 'buyer_email' ] );
+			return new Exception( 'invalid_email', smliser__( 'Enter a valid email address; the license is sent there.' ), [ 'status' => 400, 'field_id' => 'buyer_email' ] );
 		}
 
 		if ( PurchaseRequest::has_pending( $email, $tier->get_id() ) ) {
-			return new Exception( 'request_pending', 'A purchase request for this option from this email address is already awaiting review. You will get an email once it is reviewed.', [ 'status' => 409 ] );
+			return new Exception( 'request_pending', smliser__( 'A purchase request for this option from this email address is already awaiting review. You will get an email once it is reviewed.' ), [ 'status' => 409 ] );
 		}
 
 		if ( '' !== $ip && PurchaseRequest::count_pending_from_ip( $ip ) >= self::MAX_PENDING_PER_IP ) {
-			return new Exception( 'too_many_requests', 'Too many purchase requests are awaiting review from your network. Please wait until they are reviewed.', [ 'status' => 429 ] );
+			return new Exception( 'too_many_requests', smliser__( 'Too many purchase requests are awaiting review from your network. Please wait until they are reviewed.' ), [ 'status' => 429 ] );
 		}
 
 		$problem = $this->check_receipt( $receipt );
@@ -238,7 +238,7 @@ class PurchaseRequestService {
 		try {
 			$stored = $receipt->move( static::receipts_dir() . $subdir, $name_on_disk );
 		} catch ( \Throwable $e ) {
-			return new Exception( 'receipt_not_saved', 'Your receipt could not be saved. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'receipt_not_saved', smliser__( 'Your receipt could not be saved. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		$request = ( new PurchaseRequest() )
@@ -258,7 +258,7 @@ class PurchaseRequestService {
 		} catch ( \Throwable $e ) {
 			$this->fs->delete( $stored );
 
-			return new Exception( 'request_not_saved', 'Your purchase request could not be saved. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'request_not_saved', smliser__( 'Your purchase request could not be saved. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		$this->email( $request, PurchaseRequestEmailJob::EVENT_RECEIVED );
@@ -292,7 +292,7 @@ class PurchaseRequestService {
 	 */
 	public function add_note( PurchaseRequest $request, int $reviewer_id, string $body, bool $send_to_buyer ) : PurchaseRequestNote|Exception {
 		if ( '' === trim( $body ) ) {
-			return new Exception( 'missing_note', 'Write the note.', [ 'status' => 400, 'field_id' => 'note' ] );
+			return new Exception( 'missing_note', smliser__( 'Write the note.' ), [ 'status' => 400, 'field_id' => 'note' ] );
 		}
 
 		$note = PurchaseRequestNote::make( $request->get_id(), $reviewer_id, $body, $send_to_buyer );
@@ -300,7 +300,7 @@ class PurchaseRequestService {
 		try {
 			$note->save();
 		} catch ( \Throwable $e ) {
-			return new Exception( 'note_not_saved', 'The note could not be saved. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'note_not_saved', smliser__( 'The note could not be saved. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		if ( $send_to_buyer ) {
@@ -326,13 +326,13 @@ class PurchaseRequestService {
 	 */
 	public function approve( PurchaseRequest $request, int $reviewer_id, string $message = '' ) : License|Exception {
 		if ( ! $request->can_approve() ) {
-			return new Exception( 'request_decided', sprintf( 'This request was already approved; its license is #%d.', $request->get_license_id() ), [ 'status' => 409 ] );
+			return new Exception( 'request_decided', sprintf( smliser__( 'This request was already approved; its license is #%d.' ), $request->get_license_id() ), [ 'status' => 409 ] );
 		}
 
 		$tier = $request->get_tier();
 
 		if ( ! $tier ) {
-			return new Exception( 'tier_not_found', 'The pricing tier of this request was deleted, so no license can be issued from it. Reject the request instead.', [ 'status' => 409 ] );
+			return new Exception( 'tier_not_found', smliser__( 'The pricing tier of this request was deleted, so no license can be issued from it. Reject the request instead.' ), [ 'status' => 409 ] );
 		}
 
 		$license = $this->licensing->issue(
@@ -356,7 +356,7 @@ class PurchaseRequestService {
 		try {
 			$request->save();
 		} catch ( \Throwable $e ) {
-			return new Exception( 'request_not_saved', sprintf( 'License #%d was issued, but the request could not be marked approved. Please try again.', $license->get_id() ), [ 'status' => 500 ] );
+			return new Exception( 'request_not_saved', sprintf( smliser__( 'License #%d was issued, but the request could not be marked approved. Please try again.' ), $license->get_id() ), [ 'status' => 500 ] );
 		}
 
 		$this->email( $request, PurchaseRequestEmailJob::EVENT_APPROVED );
@@ -374,11 +374,11 @@ class PurchaseRequestService {
 	 */
 	public function reject( PurchaseRequest $request, int $reviewer_id, string $reason ) : PurchaseRequest|Exception {
 		if ( ! $request->can_reject() ) {
-			return new Exception( 'request_decided', sprintf( 'This request was already %s; only a pending request can be rejected.', $request->get_status() ), [ 'status' => 409 ] );
+			return new Exception( 'request_decided', sprintf( smliser__( 'This request was already %s; only a pending request can be rejected.' ), $request->get_status() ), [ 'status' => 409 ] );
 		}
 
 		if ( '' === trim( $reason ) ) {
-			return new Exception( 'missing_reason', 'Tell the buyer why the request is rejected.', [ 'status' => 400, 'field_id' => 'reason' ] );
+			return new Exception( 'missing_reason', smliser__( 'Tell the buyer why the request is rejected.' ), [ 'status' => 400, 'field_id' => 'reason' ] );
 		}
 
 		$request->set_review( PurchaseRequest::STATUS_REJECTED, $reviewer_id, $reason );
@@ -386,7 +386,7 @@ class PurchaseRequestService {
 		try {
 			$request->save();
 		} catch ( \Throwable $e ) {
-			return new Exception( 'request_not_saved', 'The request could not be rejected. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'request_not_saved', smliser__( 'The request could not be rejected. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		$this->email( $request, PurchaseRequestEmailJob::EVENT_REJECTED );
@@ -405,7 +405,7 @@ class PurchaseRequestService {
 	 */
 	protected function record_rejection( PurchaseRequest $request ) : void {
 		$body = sprintf(
-			"Rejected on %s, before this approval. Reason sent to the buyer:\n%s",
+			smliser__( "Rejected on %s, before this approval. Reason sent to the buyer:\n%s" ),
 			$request->get_reviewed_at()?->format( \smliser_datetime_format() ) ?? 'an unknown date',
 			$request->get_review_note()
 		);
@@ -479,13 +479,13 @@ class PurchaseRequestService {
 	 */
 	public function render_receipt_pages( PurchaseRequest $request ) : int|Exception {
 		if ( 'application/pdf' !== $request->get_receipt_mime() ) {
-			return new Exception( 'not_pdf', 'The receipt is not a PDF.' );
+			return new Exception( 'not_pdf', smliser__( 'The receipt is not a PDF.' ) );
 		}
 
 		$path = $this->get_receipt_path( $request );
 
 		if ( null === $path ) {
-			return new Exception( 'receipt_missing', 'The receipt file is missing.' );
+			return new Exception( 'receipt_missing', smliser__( 'The receipt file is missing.' ) );
 		}
 
 		return $this->rasterizer->rasterize( $path, static::receipt_pages_dir( $path ), self::RECEIPT_PAGES, self::RECEIPT_DPI );
@@ -537,10 +537,10 @@ class PurchaseRequestService {
 
 		try {
 			if ( ! $request->delete() ) {
-				return new Exception( 'request_not_deleted', 'The purchase request could not be deleted. Please try again.', [ 'status' => 500 ] );
+				return new Exception( 'request_not_deleted', smliser__( 'The purchase request could not be deleted. Please try again.' ), [ 'status' => 500 ] );
 			}
 		} catch ( \Throwable $e ) {
-			return new Exception( 'request_not_deleted', 'The purchase request could not be deleted. Please try again.', [ 'status' => 500 ] );
+			return new Exception( 'request_not_deleted', smliser__( 'The purchase request could not be deleted. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		if ( null !== $path ) {
@@ -564,7 +564,7 @@ class PurchaseRequestService {
 	 */
 	public function remove_receipt( PurchaseRequest $request, string $reason ) : true|Exception {
 		if ( $request->is_pending() ) {
-			return new Exception( 'request_pending', 'The receipt of a pending request is kept until it is decided.', [ 'status' => 409 ] );
+			return new Exception( 'request_pending', smliser__( 'The receipt of a pending request is kept until it is decided.' ), [ 'status' => 409 ] );
 		}
 
 		if ( '' === $request->get_receipt_file() ) {
@@ -575,7 +575,7 @@ class PurchaseRequestService {
 
 		// A file already missing is cleared all the same.
 		if ( null !== $path && ! $this->delete_receipt_files( $path ) ) {
-			return new Exception( 'receipt_not_deleted', 'The receipt file could not be deleted.', [ 'status' => 500 ] );
+			return new Exception( 'receipt_not_deleted', smliser__( 'The receipt file could not be deleted.' ), [ 'status' => 500 ] );
 		}
 
 		$request->clear_receipt_file();
@@ -584,7 +584,7 @@ class PurchaseRequestService {
 			$request->save();
 		} catch ( \Throwable $e ) {
 			// The file is gone; clean_orphaned_receipts() never needs it, and the next run clears the record.
-			return new Exception( 'request_not_saved', 'The receipt file was deleted, but the request could not be updated.', [ 'status' => 500 ] );
+			return new Exception( 'request_not_saved', smliser__( 'The receipt file was deleted, but the request could not be updated.' ), [ 'status' => 500 ] );
 		}
 
 		try {
@@ -715,7 +715,7 @@ class PurchaseRequestService {
 	 */
 	protected function check_receipt( ?UploadedFile $receipt ) : ?Exception {
 		if ( ! $receipt || ! $receipt->exists() ) {
-			return new Exception( 'missing_receipt', 'Upload your payment receipt.', [ 'status' => 400, 'field_id' => 'receipt' ] );
+			return new Exception( 'missing_receipt', smliser__( 'Upload your payment receipt.' ), [ 'status' => 400, 'field_id' => 'receipt' ] );
 		}
 
 		if ( ! $receipt->is_upload_successful() ) {
@@ -723,13 +723,13 @@ class PurchaseRequestService {
 		}
 
 		if ( (int) $receipt->get_size() > self::MAX_RECEIPT_BYTES ) {
-			return new Exception( 'receipt_too_large', sprintf( 'The receipt must be %d MB or smaller.', self::MAX_RECEIPT_BYTES / 1024 / 1024 ), [ 'status' => 413, 'field_id' => 'receipt' ] );
+			return new Exception( 'receipt_too_large', sprintf( smliser__( 'The receipt must be %d MB or smaller.' ), self::MAX_RECEIPT_BYTES / 1024 / 1024 ), [ 'status' => 413, 'field_id' => 'receipt' ] );
 		}
 
 		$mime = (string) $receipt->get_detected_mime();
 
 		if ( ! isset( self::RECEIPT_TYPES[ $mime ] ) ) {
-			return new Exception( 'receipt_type', sprintf( 'The receipt must be a %s file.', implode( ', ', self::RECEIPT_TYPES ) ), [ 'status' => 415, 'field_id' => 'receipt' ] );
+			return new Exception( 'receipt_type', sprintf( smliser__( 'The receipt must be a %s file.' ), implode( ', ', self::RECEIPT_TYPES ) ), [ 'status' => 415, 'field_id' => 'receipt' ] );
 		}
 
 		return 'application/pdf' === $mime
@@ -752,13 +752,13 @@ class PurchaseRequestService {
 		$info = @getimagesize( $path );
 
 		if ( false === $info || $info['mime'] !== $mime ) {
-			return new Exception( 'receipt_unreadable', 'The receipt image could not be read. Please upload it again or send a PDF.', [ 'status' => 422, 'field_id' => 'receipt' ] );
+			return new Exception( 'receipt_unreadable', smliser__( 'The receipt image could not be read. Please upload it again or send a PDF.' ), [ 'status' => 422, 'field_id' => 'receipt' ] );
 		}
 
 		[ $width, $height ] = $info;
 
 		if ( $width < 1 || $height < 1 || $width > self::MAX_IMAGE_SIDE || $height > self::MAX_IMAGE_SIDE || $width * $height > self::MAX_IMAGE_PIXELS ) {
-			return new Exception( 'receipt_dimensions', sprintf( 'The receipt image is too large (%d × %d pixels). Please send a smaller image or a PDF.', $width, $height ), [ 'status' => 422, 'field_id' => 'receipt' ] );
+			return new Exception( 'receipt_dimensions', sprintf( smliser__( 'The receipt image is too large (%d × %d pixels). Please send a smaller image or a PDF.' ), $width, $height ), [ 'status' => 422, 'field_id' => 'receipt' ] );
 		}
 
 		return null;
@@ -778,7 +778,7 @@ class PurchaseRequestService {
 	 */
 	protected function check_pdf( string $contents ) : ?Exception {
 		if ( ! str_starts_with( $contents, '%PDF-' ) || ! str_contains( substr( $contents, -1024 ), '%%EOF' ) ) {
-			return new Exception( 'receipt_unreadable', 'The receipt PDF is incomplete or damaged. Please upload it again.', [ 'status' => 422, 'field_id' => 'receipt' ] );
+			return new Exception( 'receipt_unreadable', smliser__( 'The receipt PDF is incomplete or damaged. Please upload it again.' ), [ 'status' => 422, 'field_id' => 'receipt' ] );
 		}
 
 		// Names may spell characters as #xx ("/J#61vaScript"); read them as written out.
@@ -787,7 +787,7 @@ class PurchaseRequestService {
 		foreach ( self::PDF_ACTIVE_CONTENT as $name ) {
 			// A name ends at a delimiter: "/JS" must not match "/JSomething".
 			if ( preg_match( '#' . preg_quote( $name, '#' ) . '(?![A-Za-z0-9])#', $names ) ) {
-				return new Exception( 'receipt_active_content', 'The receipt PDF contains scripts or embedded files, which receipts do not need. Please export or print it to a plain PDF and upload that.', [ 'status' => 422, 'field_id' => 'receipt' ] );
+				return new Exception( 'receipt_active_content', smliser__( 'The receipt PDF contains scripts or embedded files, which receipts do not need. Please export or print it to a plain PDF and upload that.' ), [ 'status' => 422, 'field_id' => 'receipt' ] );
 			}
 		}
 

@@ -32,7 +32,7 @@ class LicenseIssuedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Your License Key is Ready';
+		return smliser__( 'Your License Key is Ready' );
 	}
 
 	protected function recipient() : string {
@@ -40,7 +40,7 @@ class LicenseIssuedEmail extends EmailTemplate {
 	}
 
 	protected function preheader() : string {
-		return 'Your license key has been issued. Find your key and activation details inside.';
+		return smliser__( 'Your license key has been issued. Find your key and activation details inside.' );
 	}
 
 	protected function variables() : array {
@@ -64,14 +64,27 @@ class LicenseIssuedEmail extends EmailTemplate {
 		$activation_limit = \escHtml( $vars['{{activation_limit}}'] );
 		$support          = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			smliser_esc_html__( 'Your license has been successfully issued. Below are your license details. Please keep this information safe.' ),
+			smliser_esc_html__( 'License Key' ),
+			smliser_esc_html__( 'Start Date' ),
+			smliser_esc_html__( 'Expiry Date' ),
+			smliser_esc_html__( 'Activation Limit' ),
+			/* translators: %s: activation limit */
+			sprintf( smliser_esc_html__( '%s site(s)' ), $activation_limit ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not request this license or believe this was issued in error, please contact us immediately at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            Your license has been successfully issued. Below are your license details.
-            Please keep this information safe.
+            {$i18n[1]}
         </p>
 
         <!-- License details card -->
@@ -83,7 +96,7 @@ class LicenseIssuedEmail extends EmailTemplate {
 
                     <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                        License Key
+                        {$i18n[2]}
                     </p>
                     <p style="margin:0 0 20px;font-size:18px;font-weight:700;
                                color:#1a1a2e;font-family:monospace;letter-spacing:0.05em;">
@@ -95,7 +108,7 @@ class LicenseIssuedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 0 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Start Date
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$start_date}
@@ -104,7 +117,7 @@ class LicenseIssuedEmail extends EmailTemplate {
                             <td width="50%" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Expiry Date
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$end_date}
@@ -115,10 +128,10 @@ class LicenseIssuedEmail extends EmailTemplate {
                             <td colspan="2" style="padding-top:16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Activation Limit
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
-                                    {$activation_limit} site(s)
+                                    {$i18n[6]}
                                 </p>
                             </td>
                         </tr>
@@ -129,19 +142,17 @@ class LicenseIssuedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not request this license or believe this was issued in error,
-            please contact us immediately at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[7]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Issued';
+		return smliser__( 'License Issued' );
 	}
 	
 	public function description() : string {
-		return 'Sent when a new license is created and assigned to a licensee.';
+		return smliser__( 'Sent when a new license is created and assigned to a licensee.' );
 	}
 
 	public static function preview() : static {
@@ -161,14 +172,14 @@ class LicenseIssuedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Your license has been successfully issued. Below are your license details. Please keep this information safe.',
+				'content'   => smliser__( 'Your license has been successfully issued. Below are your license details. Please keep this information safe.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -176,10 +187,10 @@ class LicenseIssuedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'License Key',       'value' => '{{license_key}}' ],
-					[ 'label' => 'Start Date',        'value' => '{{start_date}}' ],
-					[ 'label' => 'Expiry Date',       'value' => '{{end_date}}' ],
-					[ 'label' => 'Activation Limit',  'value' => '{{activation_limit}} site(s)' ],
+					[ 'label' => smliser__( 'License Key' ),       'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Start Date' ),        'value' => '{{start_date}}' ],
+					[ 'label' => smliser__( 'Expiry Date' ),       'value' => '{{end_date}}' ],
+					[ 'label' => smliser__( 'Activation Limit' ),  'value' => '{{activation_limit}} site(s)' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -187,7 +198,7 @@ class LicenseIssuedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not request this license or believe this was issued in error, please contact us immediately at {{support_email}}.',
+				'content'   => smliser__( 'If you did not request this license or believe this was issued in error, please contact us immediately at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

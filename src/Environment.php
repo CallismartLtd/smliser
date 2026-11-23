@@ -46,6 +46,9 @@ use SmartLicenseServer\FileSystem\Adapters\DirectFileSystem;
 use SmartLicenseServer\FileSystem\Adapters\FileSystemAdapterInterface;
 use SmartLicenseServer\FileSystem\FileSystem;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\Translator;
+use SmartLicenseServer\I18n\TranslatorInterface;
 use SmartLicenseServer\Monetization\MonetizationRegistry;
 use SmartLicenseServer\Schema\DatabaseAdapterRegistry;
 use SmartLicenseServer\Schema\SchemaRegistry;
@@ -94,6 +97,9 @@ abstract class Environment {
 
 		$this->registerDependencies();
 		$this->validateEnvironment();
+
+		// The global translation helpers use the environment's translator.
+		I18n::set_translator( $this->container->get( TranslatorInterface::class ) );
 	}
 
 	/**
@@ -188,6 +194,24 @@ abstract class Environment {
 		$this->container->singleton(
 			Request::class,
 			fn () : Request => Request::createFromGlobals()
+		);
+
+		/*
+		 * Translations: bundled catalogs first, then the site's own
+		 * `<storage>/languages` directory, which takes precedence and
+		 * survives application updates.
+		 */
+		$this->container->singleton(
+			TranslatorInterface::class,
+			function () : TranslatorInterface {
+				$translator = new Translator();
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN, \SMLISER_RUNTIME_DIR . 'languages' );
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN, \SMLISER_STORAGE_DIR . 'languages' );
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN . '-js', \SMLISER_RUNTIME_DIR . 'languages' );
+				$translator->add_directory( TranslatorInterface::DEFAULT_DOMAIN . '-js', \SMLISER_STORAGE_DIR . 'languages' );
+
+				return $translator;
+			}
 		);
 	}
 

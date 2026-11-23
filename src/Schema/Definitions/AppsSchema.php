@@ -26,11 +26,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class AppsSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Apps';
+		return smliser__( 'Apps' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores hosted apps of every type.';
+		return smliser__( 'Stores hosted apps of every type.' );
 	}
 
 	public static function get_table_name() : string {

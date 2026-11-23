@@ -49,7 +49,7 @@ class PopplerRasterizer implements PdfRasterizerInterface {
 		$pdftoppm = Process::find_executable( 'pdftoppm' );
 
 		if ( null === $pdftoppm ) {
-			return new Exception( 'rasterizer_unavailable', 'Poppler (pdftoppm) is not installed.' );
+			return new Exception( 'rasterizer_unavailable', smliser__( 'Poppler (pdftoppm) is not installed.' ) );
 		}
 
 		$run = Process::run(
@@ -63,7 +63,7 @@ class PopplerRasterizer implements PdfRasterizerInterface {
 			return new Exception(
 				'rasterize_failed',
 				$run['timed_out']
-					? sprintf( 'pdftoppm took longer than %d seconds.', self::TIMEOUT )
+					? sprintf( smliser__( 'pdftoppm took longer than %d seconds.' ), self::TIMEOUT )
 					: sprintf( 'pdftoppm exited with code %d%s', $run['exit_code'], '' === $said ? '.' : ': ' . substr( $said, 0, 500 ) )
 			);
 		}
@@ -88,10 +88,10 @@ class PopplerRasterizer implements PdfRasterizerInterface {
 			$name = sprintf( 'page-%d.png', $count );
 
 			if ( $file !== $name && ! $this->fs->move( FileSystemHelper::join_path( $out_dir, $file ), FileSystemHelper::join_path( $out_dir, $name ) ) ) {
-				return new Exception( 'rasterize_failed', sprintf( 'Page %d could not be renamed.', $count ) );
+				return new Exception( 'rasterize_failed', sprintf( smliser__( 'Page %d could not be renamed.' ), $count ) );
 			}
 		}
 
-		return $count > 0 ? $count : new Exception( 'rasterize_failed', 'pdftoppm wrote no pages.' );
+		return $count > 0 ? $count : new Exception( 'rasterize_failed', smliser__( 'pdftoppm wrote no pages.' ) );
 	}
 }

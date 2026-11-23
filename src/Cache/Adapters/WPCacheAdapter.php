@@ -74,7 +74,7 @@ class WPCacheAdapter implements CacheAdapterInterface {
 
 		_doing_it_wrong(
 			__METHOD__,
-			'wp_cache_flush_group() is not available. Falling back to wp_cache_flush(), which clears the entire object cache.',
+			smliser__( 'wp_cache_flush_group() is not available. Falling back to wp_cache_flush(), which clears the entire object cache.' ),
 			'0.2.0'
 		);
 
@@ -190,7 +190,7 @@ class WPCacheAdapter implements CacheAdapterInterface {
 	}
 
 	public static function get_name() : string {
-		return 'WP Cache';
+		return smliser__( 'WP Cache' );
 	}
 
 	public function get_settings_schema() : array {

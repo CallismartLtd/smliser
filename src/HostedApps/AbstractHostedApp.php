@@ -975,7 +975,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 				$now        = new DateTimeImmutable( 'now', new DateTimeZone( 'UTC' ) );
 
 				if ( null === $repo_class ) {
-					throw new Exception( 'repo_error', sprintf( 'No repository is registered for the app type "%s".', $this->get_type() ), [ 'status' => 500 ] );
+					throw new Exception( 'repo_error', sprintf( smliser__( 'No repository is registered for the app type "%s".' ), $this->get_type() ), [ 'status' => 500 ] );
 				}
 
 				$data['updated_at'] = $now->format( 'Y-m-d H:i:s' );
@@ -1000,7 +1000,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 
 				} else {
 					if ( ! $has_upload ) {
-						throw new Exception( 'required_file', sprintf( 'No %s file provided for upload.', $this->get_type() ), [ 'status' => 400 ] );
+						throw new Exception( 'required_file', sprintf( smliser__( 'No %s file provided for upload.' ), $this->get_type() ), [ 'status' => 400 ] );
 					}
 
 					// The same slug upload_zip() will store the package under.
@@ -1011,7 +1011,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 						throw new Exception(
 							'slug_not_set',
 							\sprintf(
-								'No slug was acquired after uploading this %s.',
+								smliser__( 'No slug was acquired after uploading this %s.' ),
 								$this->get_type()
 							)
 						);
@@ -1040,7 +1040,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 					if ( Repository::slug_from( $this->get_slug() ) !== $this->get_slug() ) {
 						throw new Exception(
 							'slug_mismatch',
-							sprintf( 'The slug "%s" cannot be used to store this %s.', $this->get_slug(), $this->get_type() ),
+							sprintf( smliser__( 'The slug "%s" cannot be used to store this %s.' ), $this->get_slug(), $this->get_type() ),
 							[ 'status' => 400 ]
 						);
 					}
@@ -1102,7 +1102,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 			$record   = $db->get_row( $lock_sql, $lock_query->get_bindings() );
 
 			if ( ! $record ) {
-				throw new Exception( 'delete_error', 'The application record is locked or has already been removed.' );
+				throw new Exception( 'delete_error', smliser__( 'The application record is locked or has already been removed.' ) );
 			}
 
 			if ( ! empty( $record['slug'] ) ) {
@@ -1114,12 +1114,12 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 
 			// execute() returns the rows changed, 0 on failure: an app may have no metadata, so 0 fails only with an error.
 			if ( 0 === $db->execute( $delete_meta_sql->build(), $delete_meta_sql->get_bindings() ) && ! empty( $db->get_last_error() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping application metadata rows.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping application metadata rows.' ) );
 			}
 
 			// The record was just locked, so it exists: deleting it must change a row.
 			if ( 0 === $db->execute( $delete_app_sql->build(), $delete_app_sql->get_bindings() ) ) {
-				throw new Exception( 'delete_error', 'Database execution failure dropping primary application entry.' );
+				throw new Exception( 'delete_error', smliser__( 'Database execution failure dropping primary application entry.' ) );
 			}
 
 			$deleted = true;
@@ -1438,7 +1438,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 		$package = $this->get_package();
 
 		if ( null === $package ) {
-			return new Exception( 'file_not_found', sprintf( 'This %s has no package.', $this->get_type() ), [ 'status' => 404 ] );
+			return new Exception( 'file_not_found', sprintf( smliser__( 'This %s has no package.' ), $this->get_type() ), [ 'status' => 404 ] );
 		}
 
 		try {
@@ -1448,7 +1448,7 @@ abstract class AbstractHostedApp extends DataStore implements HostedAppsInterfac
 		}
 
 		if ( null === $path ) {
-			return new Exception( 'file_not_local', sprintf( 'The package of this %s is not stored on this server.', $this->get_type() ), [ 'status' => 500 ] );
+			return new Exception( 'file_not_local', sprintf( smliser__( 'The package of this %s is not stored on this server.' ), $this->get_type() ), [ 'status' => 500 ] );
 		}
 
 		return $path;

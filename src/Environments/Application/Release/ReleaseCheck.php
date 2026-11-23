@@ -45,11 +45,11 @@ final readonly class ReleaseCheck {
 		$messages = [];
 
 		if ( ! empty( $this->missing ) ) {
-			$messages[] = sprintf( '%d file(s) are missing: %s', count( $this->missing ), self::names( $this->missing, $limit ) );
+			$messages[] = sprintf( smliser__( '%d file(s) are missing: %s' ), count( $this->missing ), self::names( $this->missing, $limit ) );
 		}
 
 		if ( ! empty( $this->modified ) ) {
-			$messages[] = sprintf( '%d file(s) do not match the release: %s', count( $this->modified ), self::names( $this->modified, $limit ) );
+			$messages[] = sprintf( smliser__( '%d file(s) do not match the release: %s' ), count( $this->modified ), self::names( $this->modified, $limit ) );
 		}
 
 		return $messages;
@@ -66,6 +66,6 @@ final readonly class ReleaseCheck {
 		$listed = implode( ', ', array_slice( $names, 0, $limit ) );
 		$more   = count( $names ) - $limit;
 
-		return $more > 0 ? sprintf( '%s and %d more', $listed, $more ) : $listed;
+		return $more > 0 ? sprintf( smliser__( '%s and %d more' ), $listed, $more ) : $listed;
 	}
 }

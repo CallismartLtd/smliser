@@ -31,14 +31,14 @@ class UpdateInstalledEmail extends UpdateEmail {
 	 * {@inheritdoc}
 	 */
 	protected function subject() : string {
-		return sprintf( '%s was updated to %s', \SMLISER_APP_NAME, $this->new_version );
+		return sprintf( smliser__( '%s was updated to %s' ), \SMLISER_APP_NAME, $this->new_version );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	protected function preheader() : string {
-		return sprintf( 'Automatic update from %s to %s completed. The previous version can be restored for %d days.', $this->current_version, $this->new_version, UpdateService::BACKUP_DAYS );
+		return sprintf( smliser__( 'Automatic update from %s to %s completed. The previous version can be restored for %d days.' ), $this->current_version, $this->new_version, UpdateService::BACKUP_DAYS );
 	}
 
 	/**
@@ -52,14 +52,14 @@ class UpdateInstalledEmail extends UpdateEmail {
 	 * {@inheritdoc}
 	 */
 	public function label() : string {
-		return 'Update Installed';
+		return smliser__( 'Update Installed' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function description() : string {
-		return 'Sent to the site administration email after an automatic update installed a new release.';
+		return smliser__( 'Sent to the site administration email after an automatic update installed a new release.' );
 	}
 
 	/**
@@ -89,7 +89,7 @@ class UpdateInstalledEmail extends UpdateEmail {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => '{{app_name}} was updated',
+				'content'   => smliser__( '{{app_name}} was updated' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -97,34 +97,34 @@ class UpdateInstalledEmail extends UpdateEmail {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => '{{product_name}} was updated automatically from {{current_version}} to {{new_version}}.',
+				'content'   => smliser__( '{{product_name}} was updated automatically from {{current_version}} to {{new_version}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'      => 'backup',
 				'type'    => 'text',
-				'content' => 'A backup of version {{current_version}} is kept for {{backup_days}} days. If anything is wrong after the update, you can restore it from the Updates page.',
+				'content' => smliser__( 'A backup of version {{current_version}} is kept for {{backup_days}} days. If anything is wrong after the update, you can restore it from the Updates page.' ),
 			],
 			[
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Previous Version', 'value' => '{{current_version}}' ],
-					[ 'label' => 'New Version', 'value' => '{{new_version}}' ],
-					[ 'label' => 'Release Type', 'value' => '{{release_type}}' ],
-					[ 'label' => 'Signed By', 'value' => '{{signed_by}}' ],
+					[ 'label' => smliser__( 'Previous Version' ), 'value' => '{{current_version}}' ],
+					[ 'label' => smliser__( 'New Version' ), 'value' => '{{new_version}}' ],
+					[ 'label' => smliser__( 'Release Type' ), 'value' => '{{release_type}}' ],
+					[ 'label' => smliser__( 'Signed By' ), 'value' => '{{signed_by}}' ],
 				],
 			],
 			[
 				'id'      => 'source',
 				'type'    => 'text',
-				'content' => 'The package was downloaded from {{package_source}} and verified before it was installed.',
+				'content' => smliser__( 'The package was downloaded from {{package_source}} and verified before it was installed.' ),
 			],
 			[
 				'id'    => 'button',
 				'type'  => 'button',
-				'label' => 'Open the Updates Page',
+				'label' => smliser__( 'Open the Updates Page' ),
 				'url'   => '{{updates_url}}',
 			],
 			$this->closing_block(),

@@ -8,11 +8,11 @@
 
 defined( 'SMLISER_ROOT' ) || exit;
 
-$title        = sprintf( 'Edit WordPress Plugin: %s', $app->get_name() );
+$title        = sprintf( smliser__( 'Edit WordPress Plugin: %s' ), $app->get_name() );
 $other_fields = [
 	[
 		'label' => __( 'Required PHP Version', 'smliser' ),
-		'help'  => 'Use plugin readme.txt file to edit the plugin\'s required PHP version.',
+		'help'  => smliser__( 'Use plugin readme.txt file to edit the plugin\'s required PHP version.' ),
 		'input' => [
 			'type'  => 'text',
 			'name'  => 'app_required_php_version',
@@ -27,7 +27,7 @@ $other_fields = [
 
 	[
 		'label' => __( 'Required WordPress Version', 'smliser' ),
-		'help'  => 'Use plugin readme.txt file to edit the minimum WordPress version required to install this plugin',
+		'help'  => smliser__( 'Use plugin readme.txt file to edit the minimum WordPress version required to install this plugin' ),
 		'input' => [
 			'type'  => 'text',
 			'name'  => 'app_required_wp_version',
@@ -42,7 +42,7 @@ $other_fields = [
 
 	[
 		'label' => __( 'Tested WordPress Version', 'smliser' ),
-		'help'  => 'Use plugin the readme.txt file to edit the WordPress version this plugin has been tested up to.',
+		'help'  => smliser__( 'Use plugin the readme.txt file to edit the WordPress version this plugin has been tested up to.' ),
 		'input' => [
 			'type'  => 'text',
 			'name'  => 'app_tested_wp_version',
@@ -122,17 +122,17 @@ foreach( $app->get_screenshots() as $screenshot ) {
 
 $assets = [
 	'icon' => [
-		'title'  => 'Icons',
+		'title'  => smliser__( 'Icons' ),
 		'images' => $app->get_icons(),
 		'total'  => count( array_filter( $app->get_icons() ) )
 	],
 	'banner' => [
-		'title'  => 'Banners',
+		'title'  => smliser__( 'Banners' ),
 		'images' => $app->get_banners(),
 		'total'  => count( array_filter( $app->get_banners() ) )
 	],
 	'screenshot' => [
-		'title'  => 'Screenshots',
+		'title'  => smliser__( 'Screenshots' ),
 		'images' => $screenshots,
 		'total'  => count( array_filter( $screenshots ) )
 	],

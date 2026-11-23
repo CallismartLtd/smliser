@@ -43,7 +43,7 @@ class PaymentFailedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Payment Failed — Action Required';
+		return smliser__( 'Payment Failed — Action Required' );
 	}
 
 	protected function recipient() : string {
@@ -95,9 +95,22 @@ class PaymentFailedEmail extends EmailTemplate {
             RETRY
 			: '';
 
+		$i18n = [
+			/* translators: %s: recipient name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $recipient_name ),
+			/* translators: 1: amount, currency (formatted), 2: payment date (formatted) */
+			sprintf( smliser_esc_html__( '❌ Your payment of %1$s on %2$s could not be processed. Please review your payment details and try again.' ), '<strong>' . $amount . ' ' . $currency . '</strong>', '<strong>' . $payment_date . '</strong>' ),
+			smliser_esc_html__( 'Amount' ),
+			smliser_esc_html__( 'Date Attempted' ),
+			smliser_esc_html__( 'Description' ),
+			smliser_esc_html__( 'Reason' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you continue to experience issues or need assistance, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$recipient_name},
+            {$i18n[0]}
         </p>
 
         <!-- Failure banner -->
@@ -107,9 +120,7 @@ class PaymentFailedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#991b1b;line-height:1.5;">
-                        &#10060;&nbsp; Your payment of <strong>{$amount} {$currency}</strong>
-                        on <strong>{$payment_date}</strong> could not be processed.
-                        Please review your payment details and try again.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -126,7 +137,7 @@ class PaymentFailedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Amount
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$amount} {$currency}
@@ -135,7 +146,7 @@ class PaymentFailedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Date Attempted
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$payment_date}
@@ -146,7 +157,7 @@ class PaymentFailedEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Description
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
                                     {$description}
@@ -157,7 +168,7 @@ class PaymentFailedEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Reason
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#991b1b;line-height:1.6;">
                                     {$reason}
@@ -172,28 +183,26 @@ class PaymentFailedEmail extends EmailTemplate {
         {$retry_button}
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you continue to experience issues or need assistance,
-            please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Payment Failed';
+		return smliser__( 'Payment Failed' );
 	}
 	public function description() : string {
-		return 'Sent when a payment attempt fails.';
+		return smliser__( 'Sent when a payment attempt fails.' );
 	}
 	public static function preview() : static {
 		return new static(
 			'preview@example.com',
-			'Jane Doe',
+			smliser__( 'Jane Doe' ),
 			'$49.00',
 			'USD',
 			gmdate( 'D, d M Y' ),
-			'License renewal — My Awesome Plugin (Pro)',
-			'Your card was declined. Please check your payment details.',
+			smliser__( 'License renewal — My Awesome Plugin (Pro)' ),
+			smliser__( 'Your card was declined. Please check your payment details.' ),
 			'https://example.com/billing/retry'
 		);
 	}
@@ -203,7 +212,7 @@ class PaymentFailedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{recipient_name}},',
+				'content'   => smliser__( 'Hi {{recipient_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -211,7 +220,7 @@ class PaymentFailedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'error',
-				'content'   => 'Your payment of {{amount}} {{currency}} on {{payment_date}} could not be processed. Please review your payment details and try again.',
+				'content'   => smliser__( 'Your payment of {{amount}} {{currency}} on {{payment_date}} could not be processed. Please review your payment details and try again.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -219,10 +228,10 @@ class PaymentFailedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Amount',         'value' => '{{amount}} {{currency}}' ],
-					[ 'label' => 'Date Attempted', 'value' => '{{payment_date}}' ],
-					[ 'label' => 'Description',    'value' => '{{description}}' ],
-					[ 'label' => 'Reason',         'value' => '{{reason}}' ],
+					[ 'label' => smliser__( 'Amount' ),         'value' => '{{amount}} {{currency}}' ],
+					[ 'label' => smliser__( 'Date Attempted' ), 'value' => '{{payment_date}}' ],
+					[ 'label' => smliser__( 'Description' ),    'value' => '{{description}}' ],
+					[ 'label' => smliser__( 'Reason' ),         'value' => '{{reason}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -230,7 +239,7 @@ class PaymentFailedEmail extends EmailTemplate {
 			[
 				'id'        => 'button',
 				'type'      => 'button',
-				'label'     => 'Retry Payment',
+				'label'     => smliser__( 'Retry Payment' ),
 				'url'       => '{{retry_url}}',
 				'editable'  => true,
 				'removable' => true,
@@ -238,7 +247,7 @@ class PaymentFailedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you continue to experience issues or need assistance, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you continue to experience issues or need assistance, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

@@ -208,7 +208,7 @@ class FileResponse extends Response {
 		}
 
 		if ( ! $this->fs->is_readable( $this->file ) ) {
-			$this->set_exception( new FileRequestException( 'file_reading_error', 'File not readable' ) );
+			$this->set_exception( new FileRequestException( 'file_reading_error', smliser__( 'File not readable' ) ) );
 			return;
 		}
 
@@ -479,8 +479,8 @@ class FileResponse extends Response {
 	protected static function range_error() : FileRequestException {
 		return new FileRequestException(
 			'invalid_range',
-			'The requested range cannot be satisfied.',
-			[ 'status' => 416, 'title' => 'Range Not Satisfiable' ]
+			smliser__( 'The requested range cannot be satisfied.' ),
+			[ 'status' => 416, 'title' => smliser__( 'Range Not Satisfiable' ) ]
 		);
 	}
 

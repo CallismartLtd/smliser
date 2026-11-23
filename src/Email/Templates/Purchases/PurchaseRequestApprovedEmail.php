@@ -54,11 +54,11 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 	}
 
 	protected function subject() : string {
-		return sprintf( 'Your license for %s', $this->product );
+		return sprintf( smliser__( 'Your license for %s' ), $this->product );
 	}
 
 	protected function preheader() : string {
-		return 'Your payment is confirmed. Your license key and its terms are inside.';
+		return smliser__( 'Your payment is confirmed. Your license key and its terms are inside.' );
 	}
 
 	protected function request_variables() : array {
@@ -98,11 +98,11 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 	}
 
 	public function label() : string {
-		return 'Purchase Request Approved';
+		return smliser__( 'Purchase Request Approved' );
 	}
 
 	public function description() : string {
-		return 'Sent to a buyer when their purchase request is approved: the license key and terms, with the license document attached.';
+		return smliser__( 'Sent to a buyer when their purchase request is approved: the license key and terms, with the license document attached.' );
 	}
 
 	public static function preview() : static {
@@ -118,9 +118,9 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 		);
 
 		return new static(
-			static::preview_request( [ 'status' => 'approved', 'review_note' => 'Thanks for your purchase!', 'license_id' => 77 ] ),
+			static::preview_request( [ 'status' => 'approved', 'review_note' => smliser__( 'Thanks for your purchase!' ), 'license_id' => 77 ] ),
 			'jane@example.com',
-			'Demo Plugin — Yearly',
+			smliser__( 'Demo Plugin — Yearly' ),
 			$license,
 			'https://example.com/auth/signup?email=jane%40example.com'
 		);
@@ -131,14 +131,14 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{buyer_name}},',
+				'content'   => smliser__( 'Hi {{buyer_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Your payment for {{product}} is confirmed. Here is your license; the license document is attached. Please keep them safe.',
+				'content'   => smliser__( 'Your payment for {{product}} is confirmed. Here is your license; the license document is attached. Please keep them safe.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -147,10 +147,10 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 				'id'        => 'details',
 				'type'      => 'detail_card',
 				'rows'      => [
-					[ 'label' => 'License Key', 'value' => '{{license_key}}' ],
-					[ 'label' => 'Start Date', 'value' => '{{start_date}}' ],
-					[ 'label' => 'Expiry Date', 'value' => '{{end_date}}' ],
-					[ 'label' => 'Activation Limit', 'value' => '{{activation_limit}} site(s)' ],
+					[ 'label' => smliser__( 'License Key' ), 'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Start Date' ), 'value' => '{{start_date}}' ],
+					[ 'label' => smliser__( 'Expiry Date' ), 'value' => '{{end_date}}' ],
+					[ 'label' => smliser__( 'Activation Limit' ), 'value' => '{{activation_limit}} site(s)' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -158,7 +158,7 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'signup_intro',
 				'type'      => 'text',
-				'content'   => 'You asked for an account. Sign up with this email address and verify it; this license then appears in your account.',
+				'content'   => smliser__( 'You asked for an account. Sign up with this email address and verify it; this license then appears in your account.' ),
 				'editable'  => true,
 				'removable' => true,
 				'visible'   => '' !== $this->signup_url,
@@ -166,7 +166,7 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'signup',
 				'type'      => 'button',
-				'label'     => 'Create my account',
+				'label'     => smliser__( 'Create my account' ),
 				'url'       => '{{signup_url}}',
 				'editable'  => true,
 				'removable' => true,
@@ -175,7 +175,7 @@ class PurchaseRequestApprovedEmail extends PurchaseRequestEmail {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you have a question about your license, contact us at {{support_email}} and mention request #{{request_id}}.',
+				'content'   => smliser__( 'If you have a question about your license, contact us at {{support_email}} and mention request #{{request_id}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

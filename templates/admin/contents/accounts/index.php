@@ -81,7 +81,7 @@ function smliser_get_status_class( bool $has_issues ) {
 					<div class="smliser-account-domain-header">
 						<h2 class="smliser-account-domain-title">
 							<i class="ti ti-category"></i>
-							Account Overview
+							<?php smliser_esc_html_e( 'Account Overview' ); ?>
 						</h2>
 					</div>
 
@@ -115,7 +115,7 @@ function smliser_get_status_class( bool $has_issues ) {
 					<div class="smliser-account-domain-header">
 						<h2 class="smliser-account-domain-title">
 							<i class="ti ti-shield"></i>
-							Data Integrity
+							<?php smliser_esc_html_e( 'Data Integrity' ); ?>
 						</h2>
 					</div>
 
@@ -145,8 +145,8 @@ function smliser_get_status_class( bool $has_issues ) {
 						<?php if ( $account_summaries['integrity']['has_issues'] ?? false ) : ?>
 							<div class="smliser-account-info-block smliser-account-warning">
 								<i class="ti ti-info-circle"></i>
-								<strong>Action Required:</strong>
-								<span>Orphaned records detected. Please review and clean up data integrity issues.</span>
+								<strong><?php smliser_esc_html_e( 'Action Required:' ); ?></strong>
+								<span><?php smliser_esc_html_e( 'Orphaned records detected. Please review and clean up data integrity issues.' ); ?></span>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -159,7 +159,7 @@ function smliser_get_status_class( bool $has_issues ) {
 					<div class="smliser-account-domain-header">
 						<h2 class="smliser-account-domain-title">
 							<i class="ti ti-chart-line"></i>
-							Service Account Usage
+							<?php smliser_esc_html_e( 'Service Account Usage' ); ?>
 						</h2>
 					</div>
 
@@ -191,8 +191,8 @@ function smliser_get_status_class( bool $has_issues ) {
 
 			<div class="smliser-account-empty-state">
 				<i class="ti ti-alert-triangle"></i>
-				<h3>No Account Summary Data Available</h3>
-				<p>There are currently no account summaries to display. Check back later or contact support if you believe this is an error.</p>
+				<h3><?php smliser_esc_html_e( 'No Account Summary Data Available' ); ?></h3>
+				<p><?php smliser_esc_html_e( 'There are currently no account summaries to display. Check back later or contact support if you believe this is an error.' ); ?></p>
 			</div>
 
 		<?php endif; ?>

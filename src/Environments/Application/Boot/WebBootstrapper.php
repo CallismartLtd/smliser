@@ -32,6 +32,8 @@ use SmartLicenseServer\Environments\Application\Web\HttpExecutionHandler;
 use SmartLicenseServer\Environments\Application\Web\RestAPIProvider;
 use SmartLicenseServer\Environments\Application\Web\HttpDispatcher;
 use SmartLicenseServer\FileSystem\FileSystem;
+use SmartLicenseServer\I18n\LocaleResolver;
+use SmartLicenseServer\I18n\TranslatorInterface;
 use SmartLicenseServer\RESTAPI\RESTProviderInterface;
 use SmartLicenseServer\RESTAPI\Versions\V1;
 use SmartLicenseServer\Routing\Router;
@@ -45,6 +47,7 @@ use SmartLicenseServer\Security\Authentication\PasskeyStore;
 use SmartLicenseServer\Security\Authentication\WebAuthnManager;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\Security\CSRF\CSRF;
+use SmartLicenseServer\SettingsAPI\Settings;
 use SmartLicenseServer\SettingsAPI\UserSettings;
 use SmartLicenseServer\Templates\TemplateDiscovery;
 
@@ -222,13 +225,21 @@ class WebBootstrapper implements BootstrapperInterface {
 		// Force evaluation of FileSystem API initialization.
 		$container->get( FileSystem::class );
 
-		$guard = $container->get( Guard::class );
+		$guard       = $container->get( Guard::class );
+		$user_locale = null;
+
 		if ( $guard->has_principal() ) {
-			$container->singleton(
-				UserSettings::class,
-				UserSettings::for( $guard->principal()->get_actor() )
-			);
+			$user_settings = UserSettings::for( $guard->principal()->get_actor() );
+			$container->singleton( UserSettings::class, $user_settings );
+
+			try {
+				$user_locale = $user_settings->get( UserSettings::LOCALE );
+			} catch ( \Throwable ) {
+				$user_locale = null;
+			}
 		}
+
+		$this->apply_locale( $container, is_string( $user_locale ) ? $user_locale : null );
 
 		// Views put their assets on the request's AssetsManager.
 		View::use_assets( fn () : AssetsManager => $container->get( AssetsManager::class ) );
@@ -239,5 +250,32 @@ class WebBootstrapper implements BootstrapperInterface {
 		
 		$container->get( TemplateDiscovery::class )
 			->discover( 'core', \SMLISER_RUNTIME_DIR . '/templates/', 0 );
+	}
+
+	/**
+	 * Switch the translator to the request's language.
+	 *
+	 * @see LocaleResolver for the precedence rules.
+	 *
+	 * @param Container   $container
+	 * @param string|null $user_locale The signed-in user's preference.
+	 */
+	private function apply_locale( Container $container, ?string $user_locale ) : void {
+		try {
+			$translator  = $container->get( TranslatorInterface::class );
+			$site_locale = $container->get( Settings::class )->get( Settings::SITE_LOCALE, '' );
+			$resolver    = new LocaleResolver( $translator->available_locales() );
+
+			$translator->set_locale(
+				$resolver->resolve_request(
+					$container->get( Request::class ),
+					$user_locale,
+					is_string( $site_locale ) ? $site_locale : null
+				)
+			);
+		} catch ( \Throwable $e ) {
+			// A broken catalog or setting must never take the site down: stay in English.
+			smliser_log_error( $e );
+		}
 	}
 }

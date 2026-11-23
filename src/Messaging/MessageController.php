@@ -44,13 +44,13 @@ class MessageController {
 			$subject = $request->post( 'subject', '' );
 
 			if ( empty( $subject ) ) {
-				throw new RequestException( 'required_param', 'The message subject is required.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'The message subject is required.' ), ['status' => 400] );
 			}
 
 			$body = $request->get( 'message_body', '', false );
 			
 			if ( empty( $body ) ) {
-				throw new RequestException( 'required_param', 'The message body is required.', ['status' => 400] );
+				throw new RequestException( 'required_param', smliser__( 'The message body is required.' ), ['status' => 400] );
 			}
 
 			$message_id      = $request->post( 'message_id', 0 );
@@ -61,7 +61,7 @@ class MessageController {
 				$message = BulkMessageService::raw()->get_message( $message_id );
 
 				if ( ! $message ) {
-					throw new RequestException( 'not_found', 'The specified message was not found.', ['status' => 404] );
+					throw new RequestException( 'not_found', smliser__( 'The specified message was not found.' ), ['status' => 404] );
 				}
 
 				$is_new_message = false;
@@ -76,7 +76,7 @@ class MessageController {
 			$service = BulkMessageService::with_message( $message );
 
 			if ( ! $service->save() ) {
-				throw new RequestException( 'save_failed', 'Failed to save the bulk message.', ['status' => 500] );
+				throw new RequestException( 'save_failed', smliser__( 'Failed to save the bulk message.' ), ['status' => 500] );
 			}
 
 			$request->set( 'message_id', $message->get_message_id() );
@@ -84,7 +84,7 @@ class MessageController {
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message'      => $is_new_message ? 'Message has been published.' : 'Message has been updated.',
+					'message'      => $is_new_message ? smliser__( 'Message has been published.' ) : smliser__( 'Message has been updated.' ),
 					'message_id'   => $message->get_message_id(),
 					'redirect_url' => $this->urlmanager->admin_broadcasts_page_url( 'edit',
 						[
@@ -117,7 +117,7 @@ class MessageController {
 			$allowed_actions = ['delete'];
 
 			if ( ! in_array( $action, $allowed_actions, true ) ) {
-				throw new RequestException( 'invalid_action', 'The specified action is not allowed.', ['status' => 400] );
+				throw new RequestException( 'invalid_action', smliser__( 'The specified action is not allowed.' ), ['status' => 400] );
 			}
 			$affected = 0;
 

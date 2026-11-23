@@ -114,7 +114,7 @@ final class ThemeInstaller extends ModuleInstaller {
 	 * {@inheritdoc}
 	 */
 	protected function publish_action() : string {
-		return 'run `theme publish`';
+		return smliser__( 'run `theme publish`' );
 	}
 
 	/**
@@ -122,7 +122,7 @@ final class ThemeInstaller extends ModuleInstaller {
 	 */
 	protected function reserved_message( string $slug ) : ?string {
 		return ThemeManager::DEFAULT_SLUG === $slug
-			? 'The default theme ships with the application; it is updated with the application, and cannot be installed, replaced or removed here.'
+			? smliser__( 'The default theme ships with the application; it is updated with the application, and cannot be installed, replaced or removed here.' )
 			: null;
 	}
 
@@ -135,11 +135,11 @@ final class ThemeInstaller extends ModuleInstaller {
 		}
 
 		if ( ! $this->themes->is_installed( $module->parent ) ) {
-			throw new ThemeException( sprintf( 'The theme "%s" needs its parent theme "%s"; install the parent first.', $module->slug, $module->parent ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" needs its parent theme "%s"; install the parent first.' ), $module->slug, $module->parent ) );
 		}
 
 		if ( null !== $this->themes->find( $module->parent )->parent ) {
-			throw new ThemeException( sprintf( 'The parent "%s" of the theme "%s" has a parent itself; only one level is supported.', $module->parent, $module->slug ) );
+			throw new ThemeException( sprintf( smliser__( 'The parent "%s" of the theme "%s" has a parent itself; only one level is supported.' ), $module->parent, $module->slug ) );
 		}
 	}
 
@@ -149,7 +149,7 @@ final class ThemeInstaller extends ModuleInstaller {
 	protected function php_refusal( string $path ) : ?string {
 		return str_starts_with( $path, 'templates/' )
 			? null
-			: sprintf( 'The package holds the PHP file %s outside templates/; PHP runs only from templates/.', $path );
+			: sprintf( smliser__( 'The package holds the PHP file %s outside templates/; PHP runs only from templates/.' ), $path );
 	}
 
 	/**
@@ -157,13 +157,13 @@ final class ThemeInstaller extends ModuleInstaller {
 	 */
 	protected function assert_removable( string $slug ) : void {
 		if ( $this->themes->active_slug() === $slug ) {
-			throw new ThemeException( sprintf( 'The theme "%s" is active; activate another theme before removing it.', $slug ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" is active; activate another theme before removing it.' ), $slug ) );
 		}
 
 		$children = $this->themes->children( $slug );
 
 		if ( [] !== $children ) {
-			throw new ThemeException( sprintf( 'The theme "%s" is the parent of %s; remove those first.', $slug, implode( ', ', $children ) ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" is the parent of %s; remove those first.' ), $slug, implode( ', ', $children ) ) );
 		}
 	}
 }

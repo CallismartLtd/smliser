@@ -13,8 +13,8 @@
  */
 
 $empty = '' === $search
-	? sprintf( 'No %s are hosted here yet.', $type['plural'] )
-	: 'Nothing matches your search.';
+	? sprintf( smliser__( 'No %s are hosted here yet.' ), $type['plural'] )
+	: smliser__( 'Nothing matches your search.' );
 ?>
 <div class="page-heading">
 	<h1><?php echo escHtml( $view->get_title() ); ?></h1>

@@ -22,6 +22,8 @@ use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Email\EmailProviderIcons;
 use SmartLicenseServer\Email\EmailProvidersRegistry;
 use SmartLicenseServer\Email\Templates\EmailTemplateRegistry;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\WPTranslator;
 use SmartLicenseServer\Monetization\MonetizationRegistry;
 use SmartLicenseServer\SettingsAPI\Settings;
 use SmartLicenseServer\Templates\TemplateLocator;
@@ -333,8 +335,8 @@ class OptionsPage implements AdminPageInterface {
 	protected function email_settings_fields() : array {
 		return [
 			[
-				'label' => 'Default Email Provider',
-				'help'  => 'The email provider used for all outgoing system emails. Configure individual providers using the cards below.',
+				'label' => smliser__( 'Default Email Provider' ),
+				'help'  => smliser__( 'The email provider used for all outgoing system emails. Configure individual providers using the cards below.' ),
 				'input' => [
 					'type'    => 'select',
 					'name'    => EmailProvidersRegistry::DEFAULT_PROVIDER_KEY,
@@ -348,8 +350,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Default From Name',
-				'help'  => 'Sender name used in outgoing emails when the active provider does not have a From Name configured.',
+				'label' => smliser__( 'Default From Name' ),
+				'help'  => smliser__( 'Sender name used in outgoing emails when the active provider does not have a From Name configured.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => EmailProvidersRegistry::DEFAULT_SENDER_NAME_KEY,
@@ -362,8 +364,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Default From Address',
-				'help'  => 'Sender email address used in outgoing emails when the active provider does not have a From Email configured.',
+				'label' => smliser__( 'Default From Address' ),
+				'help'  => smliser__( 'Sender email address used in outgoing emails when the active provider does not have a From Email configured.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => EmailProvidersRegistry::DEFAULT_SENDER_EMAIL_KEY,
@@ -387,8 +389,8 @@ class OptionsPage implements AdminPageInterface {
 
 		return [
 			[
-				'label' => 'Repository Name',
-				'help'  => 'Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces.',
+				'label' => smliser__( 'Repository Name' ),
+				'help'  => smliser__( 'Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::REPOSITORY_NAME,
@@ -401,8 +403,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Administration Email',
-				'help'  => 'Primary email address for receiving system notifications, error reports, and administrative alerts.',
+				'label' => smliser__( 'Administration Email' ),
+				'help'  => smliser__( 'Primary email address for receiving system notifications, error reports, and administrative alerts.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::ADMIN_EMAIL,
@@ -415,8 +417,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Hosting Email',
-				'help'  => 'Designated contact email for server, infrastructure, or application hosting-related issues and notifications.',
+				'label' => smliser__( 'Hosting Email' ),
+				'help'  => smliser__( 'Designated contact email for server, infrastructure, or application hosting-related issues and notifications.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::HOSTING_EMAIL,
@@ -429,8 +431,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Support Email',
-				'help'  => 'Customer-facing support email address used in license communications and support responses.',
+				'label' => smliser__( 'Support Email' ),
+				'help'  => smliser__( 'Customer-facing support email address used in license communications and support responses.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::SUPPORT_EMAIL,
@@ -443,8 +445,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'License Key Prefix',
-				'help'  => 'Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system.',
+				'label' => smliser__( 'License Key Prefix' ),
+				'help'  => smliser__( 'Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::LICENSE_KEY_PREFIX,
@@ -457,8 +459,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Default License Duration (Days)',
-				'help'  => 'Default number of days a newly generated license remains valid when no expiration date is specified.',
+				'label' => smliser__( 'Default License Duration (Days)' ),
+				'help'  => smliser__( 'Default number of days a newly generated license remains valid when no expiration date is specified.' ),
 				'input' => [
 					'type'  => 'number',
 					'name'  => Settings::DEFAULT_LICENSE_DURATION,
@@ -468,8 +470,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Default License Activation Limit',
-				'help'  => 'Default number of activations allowed per license key.',
+				'label' => smliser__( 'Default License Activation Limit' ),
+				'help'  => smliser__( 'Default number of activations allowed per license key.' ),
 				'input' => [
 					'type'  => 'number',
 					'name'  => Settings::DEFAULT_ACTIVATION_LIMIT,
@@ -479,8 +481,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'API Rate Limit (Per Minute)',
-				'help'  => 'Maximum number of API requests allowed per client within a one-minute window.',
+				'label' => smliser__( 'API Rate Limit (Per Minute)' ),
+				'help'  => smliser__( 'Maximum number of API requests allowed per client within a one-minute window.' ),
 				'input' => [
 					'type'  => 'number',
 					'name'  => Settings::API_RATE_LIMIT,
@@ -490,8 +492,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Log Retention (Days)',
-				'help'  => 'Number of days system logs are retained before automatic cleanup.',
+				'label' => smliser__( 'Log Retention (Days)' ),
+				'help'  => smliser__( 'Number of days system logs are retained before automatic cleanup.' ),
 				'input' => [
 					'type'  => 'number',
 					'name'  => Settings::LOG_RETENTION_DAYS,
@@ -501,8 +503,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Receipt Retention (Days)',
-				'help'  => 'Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever.',
+				'label' => smliser__( 'Receipt Retention (Days)' ),
+				'help'  => smliser__( 'Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever.' ),
 				'input' => [
 					'type'  => 'number',
 					'name'  => Settings::RECEIPT_RETENTION_DAYS,
@@ -512,23 +514,25 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Environment Mode',
-				'help'  => 'Defines whether this repository operates in production, staging, or development mode.',
+				'label' => smliser__( 'Environment Mode' ),
+				'help'  => smliser__( 'Defines whether this repository operates in production, staging, or development mode.' ),
 				'input' => [
 					'type'    => 'select',
 					'name'    => Settings::ENVIRONMENT_MODE,
 					'value'   => $settings->get( Settings::ENVIRONMENT_MODE, 'production' ),
 					'options' => [
-						'production'  => 'Production',
-						'staging'     => 'Staging',
-						'development' => 'Development',
+						'production'  => smliser__( 'Production' ),
+						'staging'     => smliser__( 'Staging' ),
+						'development' => smliser__( 'Development' ),
 					],
 				],
 			],
 
+			...$this->site_language_fields(),
+
 			[
-				'label' => 'Terms URL',
-				'help'  => 'Full URL to your Terms of Service or license agreement page.',
+				'label' => smliser__( 'Terms URL' ),
+				'help'  => smliser__( 'Full URL to your Terms of Service or license agreement page.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::TERMS_URL,
@@ -541,8 +545,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Privacy Policy URL',
-				'help'  => 'Full URL to your privacy policy page.',
+				'label' => smliser__( 'Privacy Policy URL' ),
+				'help'  => smliser__( 'Full URL to your privacy policy page.' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => Settings::PRIVACY_POLICY_URL,
@@ -557,6 +561,31 @@ class OptionsPage implements AdminPageInterface {
 	}
 
 	/**
+	 * The site language field. Under WordPress the language comes from
+	 * WordPress' own settings, so the field is not offered.
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	private function site_language_fields() : array {
+		if ( I18n::translator() instanceof WPTranslator ) {
+			return [];
+		}
+
+		return [
+			[
+				'label' => smliser__( 'Site Language' ),
+				'help'  => smliser__( 'Language of the admin and client dashboards, emails and public pages. Users can still choose their own language in their preferences. "Automatic" follows each visitor\'s browser language when a translation is installed.' ),
+				'input' => [
+					'type'    => 'select',
+					'name'    => Settings::SITE_LOCALE,
+					'value'   => $this->settings->get( Settings::SITE_LOCALE, '' ),
+					'options' => [ '' => smliser__( 'Automatic (browser language)' ) ] + I18n::language_options(),
+				],
+			],
+		];
+	}
+
+	/**
 	 * Get routing settings form fields.
 	 *
 	 * @return array<int, array<string, mixed>>
@@ -564,8 +593,8 @@ class OptionsPage implements AdminPageInterface {
 	public function get_routing_fields() : array {
 		return [
 			[
-				'label' => 'Admin URL Prefix',
-				'help'  => 'The URL segment that appears before the admin url. For example: https://example.com/smliser-admin/',
+				'label' => smliser__( 'Admin URL Prefix' ),
+				'help'  => smliser__( 'The URL segment that appears before the admin url. For example: https://example.com/smliser-admin/' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => URLManagerInterface::ADMIN_URL_PREFIX_KEY,
@@ -577,8 +606,8 @@ class OptionsPage implements AdminPageInterface {
 				],
 			],
 			[
-				'label' => 'Client Dashboard URL Prefix',
-				'help'  => 'The URL segment that appears before the client dashboard page. For example: https://example.com/dashboard/',
+				'label' => smliser__( 'Client Dashboard URL Prefix' ),
+				'help'  => smliser__( 'The URL segment that appears before the client dashboard page. For example: https://example.com/dashboard/' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => URLManagerInterface::CLIENT_DASHBOARD_URL_PREFIX_KEY,
@@ -590,8 +619,8 @@ class OptionsPage implements AdminPageInterface {
 				],
 			],
 			[
-				'label' => 'Repository URL Prefix',
-				'help'  => 'The URL segment that appears before repository pages. For example: https://example.com/repository/',
+				'label' => smliser__( 'Repository URL Prefix' ),
+				'help'  => smliser__( 'The URL segment that appears before repository pages. For example: https://example.com/repository/' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => URLManagerInterface::REPOSITORY_URL_PREFIX_KEY,
@@ -604,8 +633,8 @@ class OptionsPage implements AdminPageInterface {
 			],
 
 			[
-				'label' => 'Downloads URL Prefix',
-				'help'  => 'The URL segment that appears before download pages. For example: https://example.com/downloads/',
+				'label' => smliser__( 'Downloads URL Prefix' ),
+				'help'  => smliser__( 'The URL segment that appears before download pages. For example: https://example.com/downloads/' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => URLManagerInterface::DOWNLOADS_URL_PREFIX_KEY,
@@ -617,8 +646,8 @@ class OptionsPage implements AdminPageInterface {
 				],
 			],
 			[
-				'label' => 'Authentication URL prefix',
-				'help'  => 'The URL segment the appears before authentication pages. For example https://example.com/auth',
+				'label' => smliser__( 'Authentication URL prefix' ),
+				'help'  => smliser__( 'The URL segment the appears before authentication pages. For example https://example.com/auth' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => URLManagerInterface::LOGIN_URL_PREFIX_KEY,
@@ -648,19 +677,19 @@ class OptionsPage implements AdminPageInterface {
 		$section = $request->get( 'section' );
 
 		$title = match ( true ) {
-			'routes' === $tab                            => 'Page Routing',
-			'monetization' === $tab                      => 'Monetization Providers',
-			'email' === $tab && 'templates' === $section => 'Email Templates',
-			'email' === $tab                             => 'Email Providers',
-			'cache' === $tab && 'stats' === $section     => 'Cache Statistics',
-			'cache' === $tab                             => 'Cache Adapters',
-			default                                      => 'General Settings',
+			'routes' === $tab                            => smliser__( 'Page Routing' ),
+			'monetization' === $tab                      => smliser__( 'Monetization Providers' ),
+			'email' === $tab && 'templates' === $section => smliser__( 'Email Templates' ),
+			'email' === $tab                             => smliser__( 'Email Providers' ),
+			'cache' === $tab && 'stats' === $section     => smliser__( 'Cache Statistics' ),
+			'cache' === $tab                             => smliser__( 'Cache Adapters' ),
+			default                                      => smliser__( 'General Settings' ),
 		};
 
 		return [
 			'breadcrumbs' => [
 				[
-					'label' => 'General Settings',
+					'label' => smliser__( 'General Settings' ),
 					'url'   => $this->urlmanager->admin_options_url(),
 					'icon'  => 'ti ti-home',
 				],
@@ -670,43 +699,43 @@ class OptionsPage implements AdminPageInterface {
 			],
 			'actions' => [
 				[
-					'title'  => 'Monetization Provider Settings',
-					'label'  => 'Monetizations',
+					'title'  => smliser__( 'Monetization Provider Settings' ),
+					'label'  => smliser__( 'Monetizations' ),
 					'url'    => $this->urlmanager->admin_options_url( 'monetization' ),
 					'icon'   => 'ti ti-basket-dollar',
 					'active' => 'monetization' === $tab,
 				],
 				[
-					'title'  => 'Email Provider Settings',
-					'label'  => 'Email Providers',
+					'title'  => smliser__( 'Email Provider Settings' ),
+					'label'  => smliser__( 'Email Providers' ),
 					'url'    => $this->urlmanager->admin_options_url( 'email' ),
 					'icon'   => 'ti ti-mail',
 					'active' => 'email' === $tab && 'templates' !== $section,
 				],
 				[
-					'title'  => 'Email Templates',
-					'label'  => 'Email Templates',
+					'title'  => smliser__( 'Email Templates' ),
+					'label'  => smliser__( 'Email Templates' ),
 					'url'    => $this->urlmanager->admin_options_url( 'email' )->add_query_param( 'section', 'templates' ),
 					'icon'   => 'ti ti-template',
 					'active' => 'email' === $tab && 'templates' === $section,
 				],
 				[
-					'title'  => 'Cache Adapters',
-					'label'  => 'Cache',
+					'title'  => smliser__( 'Cache Adapters' ),
+					'label'  => smliser__( 'Cache' ),
 					'url'    => $this->urlmanager->admin_options_url( 'cache' ),
 					'icon'   => 'ti ti-database-search',
 					'active' => 'cache' === $tab && 'stats' !== $section,
 				],
 				[
-					'title'  => 'Cache Statistics',
-					'label'  => 'Cache Stats',
+					'title'  => smliser__( 'Cache Statistics' ),
+					'label'  => smliser__( 'Cache Stats' ),
 					'url'    => $this->urlmanager->admin_options_url( 'cache' )->add_query_param( 'section', 'stats' ),
 					'icon'   => 'ti ti-chart-bar',
 					'active' => 'cache' === $tab && 'stats' === $section,
 				],
 				[
-					'title'  => 'Routes Settings',
-					'label'  => 'Routes',
+					'title'  => smliser__( 'Routes Settings' ),
+					'label'  => smliser__( 'Routes' ),
 					'url'    => $this->urlmanager->admin_options_url( 'routes' ),
 					'icon'   => 'ti ti-globe',
 					'active' => 'routes' === $tab,
@@ -731,31 +760,31 @@ class OptionsPage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'General',
+				'title'      => smliser__( 'General' ),
 				'slug'       => 'index',
 				'callback'   => [$this, 'general_settings'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Monetization',
+				'title'      => smliser__( 'Monetization' ),
 				'slug'       => 'monetization',
 				'callback'   => [$this, 'monetization_options'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Email',
+				'title'      => smliser__( 'Email' ),
 				'slug'       => 'email',
 				'callback'   => [$this, 'email_options'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Cache',
+				'title'      => smliser__( 'Cache' ),
 				'slug'       => 'cache',
 				'callback'   => [$this, 'cache_options'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Routes',
+				'title'      => smliser__( 'Routes' ),
 				'slug'       => 'routes',
 				'callback'   => [$this, 'routes_setting'],
 				'visibility' => true,
@@ -769,7 +798,7 @@ class OptionsPage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Settings',
+			'title'      => smliser__( 'Settings' ),
 			'slug'       => 'settings',
 			'handler'    => $this,
 			'icon'       => 'ti ti-settings',

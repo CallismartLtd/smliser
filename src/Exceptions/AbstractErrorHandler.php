@@ -145,7 +145,7 @@ abstract class AbstractErrorHandler {
 		}
 
 		$this->message = $this->sanitizeMessage( $message );
-		$this->title   = $title ?: $this->title ?: 'Fatal Error';
+		$this->title   = $title ?: $this->title ?: smliser__( 'Fatal Error' );
 		$this->code    = $this->config['code'];
 
 		return $this;
@@ -198,10 +198,10 @@ abstract class AbstractErrorHandler {
 	 */
 	public function getMessage() : string {
 		if ( ! $this->isDebug() && $this->isFatalOrInternal() ) {
-			return 'An unexpected internal error occurred. Please contact us if the issue persists.';
+			return smliser__( 'An unexpected internal error occurred. Please contact us if the issue persists.' );
 		}
 
-		return $this->message ?: 'An unknown fatal error occurred.';
+		return $this->message ?: smliser__( 'An unknown fatal error occurred.' );
 	}
 
 	/**
@@ -221,7 +221,7 @@ abstract class AbstractErrorHandler {
 	 * @return string
 	 */
 	public function getTitle() : string {
-		return $this->title ?: 'Fatal Error';
+		return $this->title ?: smliser__( 'Fatal Error' );
 	}
 
 	/*
@@ -552,14 +552,14 @@ abstract class AbstractErrorHandler {
 		
 		$output = "\n" . $divider . "\n";
 		$output .= sprintf( "[%s] %s: %s\n", $data['timestamp'], $data['type'], $data['message'] );
-		$output .= sprintf( "Location : %s on line %d\n", $data['file'], $data['line'] );
+		$output .= sprintf( smliser__( "Location : %s on line %d\n" ), $data['file'], $data['line'] );
 
 		if ( ! empty( $data['code'] ) ) {
 			$output .= sprintf( "Code     : %s\n", $data['code'] );
 		}
 
 		if ( ! empty( $data['trace'] ) ) {
-			$output .= "Stack Trace:\n";
+			$output .= smliser__( "Stack Trace:\n" );
 			// Indent each line of the stack trace for clean visual hierarchy
 			$lines    = explode( "\n", $data['trace'] );
 			$indented = array_map( static fn( string $line ) : string => '  ' . $line, $lines );
@@ -631,7 +631,7 @@ abstract class AbstractErrorHandler {
 
 		// Mask raw message in production if it's an internal server error
 		if ( ! $this->isDebug() && $this->isFatalOrInternal() ) {
-			$this->message = 'An unexpected internal error occurred. Please contact system support if the issue persists.';
+			$this->message = smliser__( 'An unexpected internal error occurred. Please contact system support if the issue persists.' );
 		} else {
 			$this->message = $throwable->getMessage();
 		}
@@ -776,23 +776,23 @@ abstract class AbstractErrorHandler {
 
 		if ( null === $error_types ) {
 			$error_types = [
-				E_ERROR             => 'Fatal Error',
-				E_WARNING           => 'Warning',
-				E_PARSE             => 'Parse Error',
-				E_NOTICE            => 'Notice',
-				E_CORE_ERROR        => 'Core Fatal Error',
-				E_CORE_WARNING      => 'Core Warning',
-				E_COMPILE_ERROR     => 'Compile Error',
-				E_COMPILE_WARNING   => 'Compile Warning',
-				E_USER_ERROR        => 'User Error',
-				E_USER_WARNING      => 'User Warning',
-				E_USER_NOTICE       => 'User Notice',
-				E_RECOVERABLE_ERROR => 'Recoverable Error',
-				E_DEPRECATED        => 'Deprecated',
-				E_USER_DEPRECATED   => 'User Deprecated',
+				E_ERROR             => smliser__( 'Fatal Error' ),
+				E_WARNING           => smliser__( 'Warning' ),
+				E_PARSE             => smliser__( 'Parse Error' ),
+				E_NOTICE            => smliser__( 'Notice' ),
+				E_CORE_ERROR        => smliser__( 'Core Fatal Error' ),
+				E_CORE_WARNING      => smliser__( 'Core Warning' ),
+				E_COMPILE_ERROR     => smliser__( 'Compile Error' ),
+				E_COMPILE_WARNING   => smliser__( 'Compile Warning' ),
+				E_USER_ERROR        => smliser__( 'User Error' ),
+				E_USER_WARNING      => smliser__( 'User Warning' ),
+				E_USER_NOTICE       => smliser__( 'User Notice' ),
+				E_RECOVERABLE_ERROR => smliser__( 'Recoverable Error' ),
+				E_DEPRECATED        => smliser__( 'Deprecated' ),
+				E_USER_DEPRECATED   => smliser__( 'User Deprecated' ),
 			];
 		}
 
-		return $error_types[ $error_type ] ?? 'Unknown Error';
+		return $error_types[ $error_type ] ?? smliser__( 'Unknown Error' );
 	}
 }

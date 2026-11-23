@@ -18,7 +18,7 @@ class SmliserModal {
         const hasExplicitTheme = Object.prototype.hasOwnProperty.call( options, 'theme' );
 
         this.options = {
-            title: options.title || 'Modal Title',
+            title: options.title || smliserI18n.__( 'Modal Title' ),
             body: options.body || '',
             footer: options.footer || null,
             showCloseButton: options.showCloseButton !== false,
@@ -155,7 +155,7 @@ class SmliserModal {
             closeBtn.setAttribute( 'type', 'button' );
             closeBtn.setAttribute(
                 'aria-label',
-                `Close ${this.options.title} dialog`
+                smliserI18n.sprintf( smliserI18n.__( 'Close %s dialog' ), this.options.title )
             );
 
             closeBtn.innerHTML = '&times;';
@@ -879,10 +879,10 @@ class SmliserModal {
             }
 
             const config = {
-                title: options.title || 'Confirm',
-                message: options.message || 'Are you sure?',
+                title: options.title || smliserI18n.__( 'Confirm' ),
+                message: options.message || smliserI18n.__( 'Are you sure?' ),
                 confirmText: options.confirmText || 'OK',
-                cancelText: options.cancelText || 'Cancel',
+                cancelText: options.cancelText || smliserI18n.__( 'Cancel' ),
                 confirmClass: options.confirmClass || 'smliser-btn-primary',
                 cancelClass: options.cancelClass || 'smliser-btn-secondary',
                 danger: options.danger || false,
@@ -992,7 +992,7 @@ class SmliserModal {
             }
 
             const config = {
-                title: options.title || 'Alert',
+                title: options.title || smliserI18n.__( 'Alert' ),
                 message: options.message || '',
                 buttonText: options.buttonText || 'OK',
                 type: options.type || 'info',
@@ -1101,13 +1101,13 @@ class SmliserModal {
             }
 
             const config = {
-                title: options.title || 'Input',
-                message: options.message || 'Please enter a value:',
+                title: options.title || smliserI18n.__( 'Input' ),
+                message: options.message || smliserI18n.__( 'Please enter a value:' ),
                 defaultValue: options.defaultValue || '',
                 placeholder: options.placeholder || '',
                 inputType: options.inputType || 'text',
                 confirmText: options.confirmText || 'OK',
-                cancelText: options.cancelText || 'Cancel',
+                cancelText: options.cancelText || smliserI18n.__( 'Cancel' ),
                 validator: options.validator || null,
                 required: options.required || false,
                 confirmClass: options.confirmClass || 'smliser-btn-primary',
@@ -1182,7 +1182,7 @@ class SmliserModal {
             const validateInput = ( value ) => {
                 // Required check
                 if ( config.required && ! value.trim() ) {
-                    return 'This field is required';
+                    return smliserI18n.__( 'This field is required' );
                 }
                 
                 // Custom validator
@@ -1295,8 +1295,8 @@ class SmliserModal {
     static choice( options ) {
         return new Promise( ( resolve ) => {
             const config = {
-                title: options.title || 'Choose',
-                message: options.message || 'Please select an option:',
+                title: options.title || smliserI18n.__( 'Choose' ),
+                message: options.message || smliserI18n.__( 'Please select an option:' ),
                 buttons: options.buttons || [],
                 icon: options.icon || SmliserModal.icons.question,
             };
@@ -1384,7 +1384,7 @@ class SmliserModal {
             title: title,
             message: message,
             type: 'success',
-            buttonText: 'Close'
+            buttonText: smliserI18n.__( 'Close' )
         });
     };
 

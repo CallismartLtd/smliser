@@ -406,24 +406,24 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 		return [
 			'hostname' => [
 				'type'        => 'text',
-				'label'       => 'Server Host',
+				'label'       => smliser__( 'Server Host' ),
 				'required'    => true,
 				'default'     => 'localhost',
-				'description' => 'Memcached server hostname or IP address.',
+				'description' => smliser__( 'Memcached server hostname or IP address.' ),
 			],
 			'port' => [
 				'type'        => 'number',
-				'label'       => 'Port',
+				'label'       => smliser__( 'Port' ),
 				'required'    => false,
 				'default'     => 11211,
-				'description' => 'Memcached server port. Typically 11211.',
+				'description' => smliser__( 'Memcached server port. Typically 11211.' ),
 			],
 			'prefix' => [
 				'type'        => 'text',
-				'label'       => 'Key Prefix',
+				'label'       => smliser__( 'Key Prefix' ),
 				'required'    => false,
 				'default'     => '',
-				'description' => 'Optional string prepended to every cache key to avoid collisions in shared environments.',
+				'description' => smliser__( 'Optional string prepended to every cache key to avoid collisions in shared environments.' ),
 			],
 		];
 	}
@@ -604,7 +604,7 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 	public function test( array $settings = [] ) : bool {
 		if ( ! $this->is_supported() ) {
 			throw new CacheTestException(
-				'The Memcached extension is not available on this server.'
+				smliser__( 'The Memcached extension is not available on this server.' )
 			);
 		}
 
@@ -622,7 +622,7 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 			if ( ! $sandbox->set( $probe, 1, 10 ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not write to Memcached at %s:%d (result: %s). Check that the server is running and accepting connections.',
+						smliser__( 'Could not write to Memcached at %s:%d (result: %s). Check that the server is running and accepting connections.' ),
 						$hostname,
 						$port,
 						$sandbox->getResultMessage()
@@ -637,7 +637,7 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 			if ( \Memcached::RES_SUCCESS !== $result_code ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not read probe key from Memcached at %s:%d (result: %s).',
+						smliser__( 'Could not read probe key from Memcached at %s:%d (result: %s).' ),
 						$hostname,
 						$port,
 						$sandbox->getResultMessage()
@@ -647,7 +647,7 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 
 			if ( 1 !== $value ) {
 				throw new CacheTestException(
-					'Probe read returned unexpected data — the value was corrupted in transit.'
+					smliser__( 'Probe read returned unexpected data — the value was corrupted in transit.' )
 				);
 			}
 
@@ -655,7 +655,7 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 			if ( ! $sandbox->delete( $probe ) ) {
 				throw new CacheTestException(
 					sprintf(
-						'Could not delete probe key from Memcached at %s:%d (result: %s).',
+						smliser__( 'Could not delete probe key from Memcached at %s:%d (result: %s).' ),
 						$hostname,
 						$port,
 						$sandbox->getResultMessage()
@@ -670,7 +670,7 @@ class MemcachedCacheAdapter implements CacheAdapterInterface {
 		} catch ( \Throwable $e ) {
 			throw new CacheTestException(
 				sprintf(
-					'Unexpected error while testing Memcached at %s:%d — %s',
+					smliser__( 'Unexpected error while testing Memcached at %s:%d — %s' ),
 					$hostname,
 					$port,
 					$e->getMessage()

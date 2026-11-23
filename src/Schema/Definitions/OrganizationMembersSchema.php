@@ -27,14 +27,14 @@ class OrganizationMembersSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Organization Members';
+		return smliser__( 'Organization Members' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Maps members to organizations.';
+		return smliser__( 'Maps members to organizations.' );
 	}
 
 	/**

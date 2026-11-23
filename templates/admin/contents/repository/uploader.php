@@ -41,25 +41,25 @@ if ( ! isset( $app ) ) {
         <input type="hidden" name="app_id" value="<?php printf( '%s', escHtml( $request->query( 'app_id' ) ) ) ?>">
         <div class="app-uploader-top-section">
             <div class="app-uploader-left">
-                <h3><?php echo escHtml( $type_title ) ?> Details</h3>
+                <h3><?php echo escHtml( $type_title ) ?> <?php smliser_esc_html_e( 'Details' ); ?></h3>
                 <?php foreach( $essential_fields as $field ) : ?>
                     <?php smliser_render_input_field( $field ); ?>
                 <?php endforeach; ?>
             </div>
             <div class="app-uploader-right">
-                <h3><?php printf( 'Upload %s Zip File', $type_title ) ?></h3>
-                <em>Max Upload Size: <?php echo escHtml( $max_upload_size ); ?></em>
+                <h3><?php printf( smliser__( 'Upload %s Zip File' ), $type_title ) ?></h3>
+                <em><?php smliser_esc_html_e( 'Max Upload Size:' ); ?> <?php echo escHtml( $max_upload_size ); ?></em>
                 <div class="smliser-form-file-row">
                     <input type="file" name="app_zip_file" id="smliser-file-input"  style="display: none;">
                     <div class="smliser-file-info">
-                        <span>No file selected.</span>
+                        <span><?php smliser_esc_html_e( 'No file selected.' ); ?></span>
                     </div>
-                    <button type="button" class="smliser-upload-btn">Drag over or click to upload file</button>
-                    <button type="button" class="smliser-file-remove button smliser-hide"><span class="ti ti-x" title="remove file"></span> Clear</button>
+                    <button type="button" class="smliser-upload-btn"><?php smliser_esc_html_e( 'Drag over or click to upload file' ); ?></button>
+                    <button type="button" class="smliser-file-remove button smliser-hide"><span class="ti ti-x" title="<?php smliser_esc_attr_e( 'remove file' ); ?>"></span> <?php smliser_esc_html_e( 'Clear' ); ?></button>
                 </div>
 
                 <?php if ( $is_edit ) : ?>
-                    <em><?php printf( 'Manage other distributable artifacts for this %s <a href="%s">here</a>', escHtml( $type_title ), $urlmanager->admin_repo_url( 'edit-artifacts', smliser_get_current_url()->get_query_params() ) ); ?></em>
+                    <em><?php printf( smliser__( 'Manage other distributable artifacts for this %s <a href="%s">here</a>' ), escHtml( $type_title ), $urlmanager->admin_repo_url( 'edit-artifacts', smliser_get_current_url()->get_query_params() ) ); ?></em>
                 <?php endif; ?>
             </div>
         </div>
@@ -77,7 +77,7 @@ if ( ! isset( $app ) ) {
 
             <?php if ( ! empty( $assets ) ) : ?>
                 <div class="app-uploader-below-section_assets">
-                    <h2><?php printf( '%s Assets', escHtml( $type_title ) ) ?></h2>
+                    <h2><?php printf( smliser__( '%s Assets' ), escHtml( $type_title ) ) ?></h2>
                     <?php foreach( $assets as $key => $data ) : ?>
                         <div class="app-uploader-asset-container <?php echo escHtml( $key ) ?>">
                             <h3><?php echo escHtml( $data['title'] ?? '' ) ?></h3>
@@ -97,8 +97,8 @@ if ( ! isset( $app ) ) {
                                         <div class="app-uploader-image-preview">
                                             <img src="<?php echo escUrl( $url ); ?>" id="<?php echo escAttr( explode( '.', $asset_name )[0] ); ?>" alt="<?php echo escAttr( $asset_name ) ?>" loading="lazy" title="<?php echo escAttr( $asset_name ) ?>">
                                             <div class="app-uploader-image-preview_edit">
-                                                <span class="ti ti-edit edit-image" data-config="<?php echo urlencode( $json_data ) ?>" data-action="openModal" title="Edit"></span>
-                                                <span class="ti ti-trash delete-image" data-config="<?php echo urlencode( $json_data ) ?>" data-action="deleteImage" title="Delete"></span>
+                                                <span class="ti ti-edit edit-image" data-config="<?php echo urlencode( $json_data ) ?>" data-action="openModal" title="<?php smliser_esc_attr_e( 'Edit' ); ?>"></span>
+                                                <span class="ti ti-trash delete-image" data-config="<?php echo urlencode( $json_data ) ?>" data-action="deleteImage" title="<?php smliser_esc_attr_e( 'Delete' ); ?>"></span>
                                             </div>
                                         </div>
                                     <?php endif; ?>
@@ -121,7 +121,7 @@ if ( ! isset( $app ) ) {
                 </div>
             <?php endif; ?>
         </div>        
-        <button type="submit" class="button authoritatively"><?php printf( 'Save %s', escHtml( $type_title ) ); ?></button>
+        <button type="submit" class="button authoritatively"><?php printf( smliser__( 'Save %s' ), escHtml( $type_title ) ); ?></button>
     </form>
 </div>
 <?php if ( $is_edit ) : ?>

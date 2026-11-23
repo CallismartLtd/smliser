@@ -20,19 +20,19 @@ class PasskeyRemovedEmail extends SecurityEmailTemplate {
 	}
 
 	protected function action() : string {
-		return 'Passkey removed';
+		return smliser__( 'Passkey removed' );
 	}
 
 	protected function summary() : string {
-		return 'A passkey was removed from your account. It can no longer be used to sign in.';
+		return smliser__( 'A passkey was removed from your account. It can no longer be used to sign in.' );
 	}
 
 	public function label() : string {
-		return 'Passkey Removed';
+		return smliser__( 'Passkey Removed' );
 	}
 
 	public function description() : string {
-		return 'Sent after a passkey has been removed from a user\'s account.';
+		return smliser__( 'Sent after a passkey has been removed from a user\'s account.' );
 	}
 
 	public static function preview() : static {

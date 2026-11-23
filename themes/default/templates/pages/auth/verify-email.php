@@ -14,10 +14,10 @@
 
 $message    = $reason;
 if ( $verified ) {
-	$message = sprintf( '%s is verified.', $email );
+	$message = sprintf( smliser__( '%s is verified.' ), $email );
 
 	if ( $linked > 0 ) {
-		$message .= sprintf( ' %d %s issued to this address %s now in your account.', $linked, 1 === $linked ? 'license' : 'licenses', 1 === $linked ? 'is' : 'are' );
+		$message .= sprintf( smliser__( ' %d %s issued to this address %s now in your account.' ), $linked, 1 === $linked ? 'license' : 'licenses', 1 === $linked ? 'is' : 'are' );
 	}
 }
 
@@ -26,11 +26,11 @@ $this->partial(
 	[
 		'tone'    => $verified ? 'success' : 'failure',
 		'diagram' => $verified ? 'connected' : 'missing',
-		'heading' => $verified ? 'Email verified' : 'This link did not work',
+		'heading' => $verified ? smliser__( 'Email verified' ) : smliser__( 'This link did not work' ),
 		'message' => $message,
 		'actions' => [
-			[ 'label' => 'Go to your dashboard', 'url' => $this->urls()->client_dashboard_url()->url(), 'accent' => true ],
-			[ 'label' => 'Return to home', 'url' => $this->url( '/' )->url() ],
+			[ 'label' => smliser__( 'Go to your dashboard' ), 'url' => $this->urls()->client_dashboard_url()->url(), 'accent' => true ],
+			[ 'label' => smliser__( 'Return to home' ), 'url' => $this->url( '/' )->url() ],
 		],
 	]
 );
@@ -39,7 +39,7 @@ $this->partial(
 	<div class="panel">
 		<form method="post" action="<?php echo escUrl( $action ); ?>" data-smliser-form>
 			<div class="notice" data-smliser-form-message hidden></div>
-			<button type="submit" class="btn btn-block">Send me a new link</button>
+			<button type="submit" class="btn btn-block"><?php smliser_esc_html_e( 'Send me a new link' ); ?></button>
 		</form>
 	</div>
 <?php endif; ?>

@@ -330,7 +330,7 @@ class BulkMessage {
 	 */
 	public function print_associated_apps_summary( $show_slugs = false, $as_html = false ) {
 		if ( empty( $this->associated_apps ) ) {
-			return $as_html ? '<em>No associated apps</em>' : 'No associated apps';
+			return $as_html ? '<em>No associated apps</em>' : smliser__( 'No associated apps' );
 		}
 
 		$output = [];

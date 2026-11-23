@@ -27,14 +27,14 @@ class AppDownloadTokenSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'App Download Tokens';
+		return smliser__( 'App Download Tokens' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores download tokens.';
+		return smliser__( 'Stores download tokens.' );
 	}
 
 	/**

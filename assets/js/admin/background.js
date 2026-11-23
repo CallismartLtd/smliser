@@ -68,7 +68,7 @@
 	 * @param {string}           type  Toast type.
 	 */
 	function report( data, type ) {
-		const message = data?.message || ( 'success' === type ? 'Done.' : 'The request failed.' );
+		const message = data?.message || ( 'success' === type ? smliserI18n.__( 'Done.' ) : smliserI18n.__( 'The request failed.' ) );
 		const details = formatResults( data?.results );
 
 		SmliserToast.show( message, { type } );

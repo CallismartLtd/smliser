@@ -87,14 +87,14 @@
 			if ( 'check' === action ) {
 				restore();
 				showUpdates( root, response?.data?.updates || {} );
-				SmliserToast.show( response?.data?.message || 'Done.', { type: 'success', duration: 10000 } );
+				SmliserToast.show( response?.data?.message || smliserI18n.__( 'Done.' ), { type: 'success', duration: 10000 } );
 				return;
 			}
 
 			done( response, restore );
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'The request failed.', { type: 'error' } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'The request failed.' ), { type: 'error' } );
 		}
 	}
 
@@ -110,9 +110,9 @@
 
 		if ( body.get( 'trust_unsigned' ) ) {
 			const ok = await SmliserModal.confirm( {
-				title: 'Trust an unsigned package',
-				message: 'The package will be installed even if its signature is missing or invalid. Continue only for a package you built or received directly.',
-				confirmText: 'Install anyway',
+				title: smliserI18n.__( 'Trust an unsigned package' ),
+				message: smliserI18n.__( 'The package will be installed even if its signature is missing or invalid. Continue only for a package you built or received directly.' ),
+				confirmText: smliserI18n.__( 'Install anyway' ),
 				danger: true,
 			} );
 
@@ -127,7 +127,7 @@
 			done( await post( root.dataset.moduleKind, form.dataset.moduleForm, body ), restore );
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'The module could not be installed.', { type: 'error', duration: 15000 } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'The module could not be installed.' ), { type: 'error', duration: 15000 } );
 		}
 	}
 
@@ -149,7 +149,7 @@
 	 */
 	function done( response, restore ) {
 		( response?.data?.warnings || [] ).forEach( ( warning ) => SmliserToast.show( warning, { type: 'warning', duration: 10000 } ) );
-		SmliserToast.show( response?.data?.message || 'Done.', { type: 'success', duration: 10000 } );
+		SmliserToast.show( response?.data?.message || smliserI18n.__( 'Done.' ), { type: 'success', duration: 10000 } );
 
 		if ( afterAction ) {
 			restore();
@@ -178,8 +178,8 @@
 			status.hidden       = false;
 			status.dataset.tone = result.error ? 'danger' : ( result.update ? 'info' : 'active' );
 			status.textContent  = result.error
-				? `Could not check: ${ result.error }`
-				: ( result.update ? `Version ${ result.latest } is available.` : 'Up to date.' );
+				? smliserI18n.sprintf( smliserI18n.__( 'Could not check: %s' ), result.error )
+				: ( result.update ? smliserI18n.sprintf( smliserI18n.__( 'Version %s is available.' ), result.latest ) : smliserI18n.__( 'Up to date.' ) );
 		} );
 	}
 
@@ -261,7 +261,7 @@
 			root.dataset.section    = state.section;
 			root.dataset.moduleKind = kind;
 			input.value             = state.search;
-			input.placeholder       = 'Search by name, slug or author';
+			input.placeholder       = smliserI18n.__( 'Search by name, slug or author' );
 			form.querySelector( 'input[name="section"]' ).value = state.section;
 
 			tabs.forEach( ( tab ) => tab.classList.toggle( 'active', tab.dataset.section === state.section ) );
@@ -309,7 +309,7 @@
 			controller = current;
 
 			show();
-			results.replaceChildren( messageNode( `${ SPINNER }`, 'Loading the marketplace…' ) );
+			results.replaceChildren( messageNode( `${ SPINNER }`, smliserI18n.__( 'Loading the marketplace…' ) ) );
 
 			const body = new FormData();
 
@@ -333,7 +333,7 @@
 					return;
 				}
 
-				results.replaceChildren( messageNode( 'ti ti-cloud-off', `The marketplace could not be read: ${ error?.message || 'the request failed.' }` ) );
+				results.replaceChildren( messageNode( 'ti ti-cloud-off', `The marketplace could not be read: ${ error?.message || smliserI18n.__( 'the request failed.' ) }` ) );
 			}
 		};
 
@@ -393,7 +393,7 @@
 		if ( 0 === modules.length ) {
 			results.replaceChildren( messageNode(
 				'ti ti-mood-empty',
-				'' === state.search ? `The marketplace publishes no ${ kind }s yet.` : `No ${ kind } matches "${ state.search }".`
+				'' === state.search ? smliserI18n.sprintf( smliserI18n.__( 'The marketplace publishes no %ss yet.' ), kind ) : smliserI18n.sprintf( smliserI18n.__( 'No %1$s matches "%2$s".' ), kind, state.search )
 			) );
 			return;
 		}
@@ -407,16 +407,16 @@
 		if ( pagination && pagination.total_pages > 1 ) {
 			const pager = el( 'nav', 'smliser-modules-pagination' );
 
-			pager.setAttribute( 'aria-label', 'Pages' );
+			pager.setAttribute( 'aria-label', smliserI18n.__( 'Pages' ) );
 
 			if ( pagination.page > 1 ) {
-				pager.append( pageButton( 'ti ti-chevron-left', 'Previous', pagination.page - 1, goTo, true ) );
+				pager.append( pageButton( 'ti ti-chevron-left', smliserI18n.__( 'Previous' ), pagination.page - 1, goTo, true ) );
 			}
 
-			pager.append( el( 'span', '', `Page ${ pagination.page } of ${ pagination.total_pages }` ) );
+			pager.append( el( 'span', '', smliserI18n.sprintf( smliserI18n.__( 'Page %1$s of %2$s' ), pagination.page, pagination.total_pages ) ) );
 
 			if ( pagination.page < pagination.total_pages ) {
-				pager.append( pageButton( 'ti ti-chevron-right', 'Next', pagination.page + 1, goTo, false ) );
+				pager.append( pageButton( 'ti ti-chevron-right', smliserI18n.__( 'Next' ), pagination.page + 1, goTo, false ) );
 			}
 
 			nodes.push( pager );
@@ -438,14 +438,14 @@
 		const homepage = safeUrl( module.homepage );
 
 		if ( null === module.installed ) {
-			actions.push( { action: 'install', label: 'Install', icon: 'ti ti-download', confirm: '', danger: false } );
+			actions.push( { action: 'install', label: smliserI18n.__( 'Install' ), icon: 'ti ti-download', confirm: '', danger: false } );
 		} else if ( module.update ) {
 			badges.push( [ `Installed ${ module.installed }`, 'info' ] );
 			actions.push( {
 				action: 'install',
-				label: `Update to ${ module.version }`,
+				label: smliserI18n.sprintf( smliserI18n.__( 'Update to %s' ), module.version ),
 				icon: 'ti ti-download',
-				confirm: `Update ${ module.name } from ${ module.installed } to ${ module.version }? Its files are replaced.`,
+				confirm: smliserI18n.sprintf( smliserI18n.__( 'Update %1$s from %2$s to %3$s? Its files are replaced.' ), module.name, module.installed, module.version ),
 				danger: false,
 			} );
 		} else {

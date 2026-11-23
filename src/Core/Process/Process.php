@@ -87,14 +87,14 @@ final class Process {
 		$result = [ 'exit_code' => -1, 'output' => '', 'error' => '', 'timed_out' => false ];
 
 		if ( ! self::can_run() || [] === $command ) {
-			$result['error'] = 'Programs cannot be started from this PHP (proc_open is unavailable).';
+			$result['error'] = smliser__( 'Programs cannot be started from this PHP (proc_open is unavailable).' );
 			return $result;
 		}
 
 		$process = @proc_open( $command, [ 0 => [ 'pipe', 'r' ], 1 => [ 'pipe', 'w' ], 2 => [ 'pipe', 'w' ] ], $pipes, $cwd );
 
 		if ( ! is_resource( $process ) ) {
-			$result['error'] = sprintf( 'The program "%s" could not be started.', $command[0] );
+			$result['error'] = sprintf( smliser__( 'The program "%s" could not be started.' ), $command[0] );
 			return $result;
 		}
 

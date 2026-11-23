@@ -48,7 +48,7 @@ class WPPluginRepository extends Repository {
 		$readme = static::zip_entry( $zip, $root, 'readme.txt' );
 
 		if ( null === $readme ) {
-			throw new Exception( 'readme_missing', 'The plugin ZIP file must contain a readme.txt file.', [ 'status' => 400 ] );
+			throw new Exception( 'readme_missing', smliser__( 'The plugin ZIP file must contain a readme.txt file.' ), [ 'status' => 400 ] );
 		}
 
 		return [ 'readme.txt' => $readme ];
@@ -227,7 +227,7 @@ class WPPluginRepository extends Repository {
 			$description = trim( $matches[1] );
 
 			// Step 2: Remove official sections that might appear afterwards.
-			$official_sections = ['Installation', 'Changelog', 'Frequently Asked Questions', 'Screenshots', 'Upgrade Notice'];
+			$official_sections = ['Installation', 'Changelog', smliser__( 'Frequently Asked Questions' ), 'Screenshots', smliser__( 'Upgrade Notice' )];
 			foreach ( $official_sections as $section ) {
 				$pattern     = '/==\s*' . preg_quote( $section, '/' ) . '\s*==.*?(?=^==\s*\w.*==|\z)/msi';
 				$description = preg_replace( $pattern, '', $description );
@@ -235,7 +235,7 @@ class WPPluginRepository extends Repository {
 
 			// Step 3: Optional cleanup of stray metadata lines
 			$lines   = explode( "\n", $description );
-			$exclude = ['Contributors:', 'Tags:', 'Stable tag:', 'Requires PHP:', 'License:', 'License URI:', 'Requires at least:', 'Tested up to:', 'WooCommerce tested up to:'];
+			$exclude = ['Contributors:', 'Tags:', smliser__( 'Stable tag:' ), smliser__( 'Requires PHP:' ), 'License:', smliser__( 'License URI:' ), smliser__( 'Requires at least:' ), smliser__( 'Tested up to:' ), smliser__( 'WooCommerce tested up to:' )];
 			$cleaned = [];
 			foreach ( $lines as $line ) {
 				$line = trim( $line );

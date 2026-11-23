@@ -47,14 +47,14 @@ class RequestController {
 			if ( ! $provider_id ) {
 				throw new RequestException(
 					'required_param',
-					'The default mailer is required.'
+					smliser__( 'The default mailer is required.' )
 				);
 			}
 
 			if ( ! $registry->has( $provider_id ) ) {
 				throw new RequestException(
 					'validation_failed',
-					sprintf( 'Invalid email provider.' )
+					sprintf( smliser__( 'Invalid email provider.' ) )
 				);
 			}
 
@@ -64,14 +64,14 @@ class RequestController {
 			if ( empty( $sender_name ) ) {
 				throw new RequestException(
 					'required_param',
-					'The default sender name is required'
+					smliser__( 'The default sender name is required' )
 				);
 			}
 
 			if ( empty( $sender_email ) ) {
 				throw new RequestException(
 					'required_param',
-					'The default sender email is required'
+					smliser__( 'The default sender email is required' )
 				);
 			}
 
@@ -82,7 +82,7 @@ class RequestController {
 			$response_data = [
 				'success' => true,
 				'data'    => [
-					'message' => 'Saved successfully.'
+					'message' => smliser__( 'Saved successfully.' )
 				]
 			];
 			return ( new Response( 200, [], $response_data ) )
@@ -118,7 +118,7 @@ class RequestController {
 			if ( ! $provider_id ) {
 				throw new RequestException(
 					'required_param',
-					'Provider ID is required.'
+					smliser__( 'Provider ID is required.' )
 				);
 			}
 
@@ -127,7 +127,7 @@ class RequestController {
 			if ( null === $provider ) {
 				throw new RequestException(
 					'validation_failed',
-					'Invalid email provider.'
+					smliser__( 'Invalid email provider.' )
 				);
 			}
 
@@ -171,7 +171,7 @@ class RequestController {
 				throw new RequestException(
 					'required_param',
 					sprintf(
-						'The following fields are required: %s.',
+						smliser__( 'The following fields are required: %s.' ),
 						implode( ', ', $missing_fields )
 					)
 				);
@@ -200,7 +200,7 @@ class RequestController {
 			return ( new Response( 200, [], [
 				'success' => true,
 				'data'    => [
-					'message'    => sprintf( '%s settings saved successfully.', $provider::get_name() ),
+					'message'    => sprintf( smliser__( '%s settings saved successfully.' ), $provider::get_name() ),
 					'is_default' => EmailProvidersRegistry::get_default_provider_id() === $provider_id,
 				],
 			] ) )->set_header( 'Content-Type', 'application/json; charset=utf-8' );
@@ -233,21 +233,21 @@ class RequestController {
 			if ( ! $provider_id ) {
 				throw new RequestException(
 					'required_param',
-					'Provider ID is required.'
+					smliser__( 'Provider ID is required.' )
 				);
 			}
 
 			if ( ! $recipient ) {
 				throw new RequestException(
 					'required_param',
-					'A recipient email address is required to send a test email.'
+					smliser__( 'A recipient email address is required to send a test email.' )
 				);
 			}
 
 			if ( ! filter_var( $recipient, FILTER_VALIDATE_EMAIL ) ) {
 				throw new RequestException(
 					'validation_failed',
-					sprintf( '"%s" is not a valid email address.', $recipient )
+					sprintf( smliser__( '"%s" is not a valid email address.' ), $recipient )
 				);
 			}
 
@@ -256,7 +256,7 @@ class RequestController {
 			if ( null === $provider ) {
 				throw new RequestException(
 					'validation_failed',
-					'Invalid email provider.'
+					smliser__( 'Invalid email provider.' )
 				);
 			}
 
@@ -270,7 +270,7 @@ class RequestController {
 				'success' => true,
 				'data'    => [
 					'message' => sprintf(
-						'Test email sent successfully to %s via %s.',
+						smliser__( 'Test email sent successfully to %s via %s.' ),
 						$recipient,
 						$provider->get_name()
 					),

@@ -26,8 +26,8 @@
 	const STATUSES   = [ 'critical', 'warning', 'info', 'pass' ];
 	const TONE       = 'smliser-health-tone--';
 	const TITLES     = {
-		health: 'Site Health',
-		diagnostics: 'System Diagnostics',
+		health: smliserI18n.__( 'Site Health' ),
+		diagnostics: smliserI18n.__( 'System Diagnostics' ),
 	};
 
 	const generated  = {};
@@ -61,7 +61,7 @@
 				: diagnosticsReport( meta );
 		} catch ( error ) {
 			restore();
-			SmliserToast.show( error?.message || 'The report could not be built.', { type: 'error' } );
+			SmliserToast.show( error?.message || smliserI18n.__( 'The report could not be built.' ), { type: 'error' } );
 			return;
 		}
 
@@ -93,8 +93,8 @@
 
 		SmliserToast.show(
 			copied
-				? 'Report generated and copied. Paste it into your support request.'
-				: 'Report generated. Press Ctrl+C (Cmd+C) to copy the selected text.',
+				? smliserI18n.__( 'Report generated and copied. Paste it into your support request.' )
+				: smliserI18n.__( 'Report generated. Press Ctrl+C (Cmd+C) to copy the selected text.' ),
 			{ type: copied ? 'success' : 'warning' }
 		);
 	}
@@ -115,7 +115,7 @@
 	function baseReport( kind, meta ) {
 		return {
 			kind,
-			product: meta.product || 'Smart License Server',
+			product: meta.product || smliserI18n.__( 'Smart License Server' ),
 			generated: new Date().toISOString(),
 			site: meta.site || window.location.origin,
 			version: meta.version || 'unknown',
@@ -202,7 +202,7 @@
 	 * @return {string}
 	 */
 	function formatChecks( report ) {
-		const lines = [ '== Health Checks ==' ];
+		const lines = [ smliserI18n.__( '== Health Checks ==' ) ];
 
 		report.checks.forEach( ( check ) => {
 			lines.push( `[${ check.status.toUpperCase() }] ${ check.label }: ${ check.message }` );
@@ -213,7 +213,7 @@
 		} );
 
 		if ( report.pending > 0 ) {
-			lines.push( `(${ report.pending } additional check(s) were still running when this report was generated.)` );
+			lines.push( smliserI18n.sprintf( smliserI18n.__( '(%s additional check(s) were still running when this report was generated.)' ), report.pending ) );
 		}
 
 		return lines.join( '\n' ) + '\n';
@@ -227,7 +227,7 @@
 	 */
 	function formatDiagnostics( report ) {
 		if ( report.diagnostics_error ) {
-			return `== System Diagnostics ==\nCould not be collected: ${ report.diagnostics_error }\n`;
+			return smliserI18n.sprintf( smliserI18n.__( '== System Diagnostics ==\nCould not be collected: %s\n' ), report.diagnostics_error );
 		}
 
 		return Object.entries( report.diagnostics ).map( ( [ section, rows ] ) => {
@@ -370,7 +370,7 @@
 		area.remove();
 
 		if ( ! copied ) {
-			throw new Error( 'Copy command was refused.' );
+			throw new Error( smliserI18n.__( 'Copy command was refused.' ) );
 		}
 	}
 
@@ -422,7 +422,7 @@
 		area.readOnly      = true;
 		area.spellcheck    = false;
 		area.style.cssText = 'width:100%;min-height:360px;box-sizing:border-box;font-family:monospace;font-size:12px;resize:none;';
-		area.setAttribute( 'aria-label', 'Support report' );
+		area.setAttribute( 'aria-label', smliserI18n.__( 'Support report' ) );
 
 		const stamp  = report.generated.replace( /[-:]/g, '' ).replace( /\.\d+Z$/, '' ).replace( 'T', '-' );
 		const name   = fileName( report );
@@ -430,8 +430,8 @@
 
 		footer.style.cssText = 'display:flex;gap:8px;justify-content:flex-end;';
 		footer.append(
-			downloadButton( 'Download .txt', () => download( `${ name }.txt`, value, 'text/plain' ) ),
-			downloadButton( 'Download .json', () => download( `${ name }.json`, JSON.stringify( report, null, 2 ), 'application/json' ) )
+			downloadButton( smliserI18n.__( 'Download .txt' ), () => download( `${ name }.txt`, value, 'text/plain' ) ),
+			downloadButton( smliserI18n.__( 'Download .json' ), () => download( `${ name }.json`, JSON.stringify( report, null, 2 ), 'application/json' ) )
 		);
 
 		const modal = new SmliserModal( {

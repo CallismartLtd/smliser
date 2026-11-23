@@ -83,13 +83,13 @@ class LogDownloadJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Log Download';
+		return smliser__( 'Log Download' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously writes a download log entry and updates the app lifetime download counter.';
+		return smliser__( 'Asynchronously writes a download log entry and updates the app lifetime download counter.' );
 	}
 }

@@ -49,7 +49,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-activity-heartbeat"></i></span>
-					<span class="smliser-diagnostics-panel-title">Live status</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Live status' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -71,8 +71,8 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 					<?php endforeach; ?>
 				</ul>
 				<div class="smliser-health-async-footer">
-					<span class="smliser-health-async-time" id="smliser-background-checked">Each runner records its last run. This list refreshes every 30 seconds while the page is open.</span>
-					<button type="button" class="smliser-btn smliser-btn-glass" id="smliser-background-refresh"><i class="ti ti-refresh"></i> Check again</button>
+					<span class="smliser-health-async-time" id="smliser-background-checked"><?php smliser_esc_html_e( 'Each runner records its last run. This list refreshes every 30 seconds while the page is open.' ); ?></span>
+					<button type="button" class="smliser-btn smliser-btn-glass" id="smliser-background-refresh"><i class="ti ti-refresh"></i> <?php smliser_esc_html_e( 'Check again' ); ?></button>
 				</div>
 			</div>
 		</details>
@@ -82,7 +82,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-adjustments"></i></span>
-					<span class="smliser-diagnostics-panel-title">How should background work run?</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'How should background work run?' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -96,7 +96,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 									<i class="<?php echo escAttr( $info['icon'] ); ?>"></i>
 									<span class="smliser-health-check-label"><?php echo escHtml( $info['label'] ); ?></span>
 									<span class="smliser-bg-badge"><?php echo escHtml( $info['badge'] ); ?></span>
-									<span class="smliser-bg-badge smliser-bg-badge--running" data-running-badge="<?php echo escAttr( $mode ); ?>" <?php echo $mode === $running ? '' : 'hidden'; ?>>Running now</span>
+									<span class="smliser-bg-badge smliser-bg-badge--running" data-running-badge="<?php echo escAttr( $mode ); ?>" <?php echo $mode === $running ? '' : 'hidden'; ?>><?php smliser_esc_html_e( 'Running now' ); ?></span>
 								</span>
 								<span class="smliser-health-check-message"><?php echo escHtml( $info['description'] ); ?></span>
 							</label>
@@ -111,12 +111,12 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<details
 				class="smliser-diagnostics-panel smliser-health-panel smliser-health-tone--info"
 				data-mode-config="<?php echo escAttr( $mode ); ?>"
-				<?php echo $mode === $selected ? 'open' : 'hidden open'; ?>
+				<?php echo $mode === $selected ? 'open' : smliser__( 'hidden open' ); ?>
 			>
 				<summary class="smliser-diagnostics-panel-summary">
 					<span class="smliser-diagnostics-panel-summary-left">
 						<span class="smliser-diagnostics-panel-icon"><i class="ti ti-terminal-2"></i></span>
-						<span class="smliser-diagnostics-panel-title">Set up: <?php echo escHtml( $modes[ $mode ]['label'] ); ?></span>
+						<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Set up:' ); ?> <?php echo escHtml( $modes[ $mode ]['label'] ); ?></span>
 					</span>
 					<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 				</summary>
@@ -131,7 +131,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 									<?php if ( null !== $step['content'] ) : ?>
 										<div class="smliser-bg-snippet">
 											<pre><code><?php echo escHtml( $step['content'] ); ?></code></pre>
-											<button type="button" class="smliser-btn smliser-btn-glass" data-copy-snippet title="Copy"><i class="ti ti-copy"></i></button>
+											<button type="button" class="smliser-btn smliser-btn-glass" data-copy-snippet title="<?php smliser_esc_attr_e( 'Copy' ); ?>"><i class="ti ti-copy"></i></button>
 										</div>
 									<?php endif; ?>
 									<?php if ( null !== $step['note'] ) : ?>
@@ -151,7 +151,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 
 					<p class="smliser-health-check-recommendation">
 						<i class="ti ti-activity-heartbeat"></i>
-						<span>Once it is set up, its first run shows under Live status, usually within a few minutes.</span>
+						<span><?php smliser_esc_html_e( 'Once it is set up, its first run shows under Live status, usually within a few minutes.' ); ?></span>
 					</p>
 				</div>
 			</details>

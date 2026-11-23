@@ -47,7 +47,7 @@ if ( $render_image_only ) {
         
 
         <div class="smliser-two-rows">
-            <div class="smliser-two-rows_left" role="group" aria-label="Form fields">
+            <div class="smliser-two-rows_left" role="group" aria-label="<?php smliser_esc_attr_e( 'Form fields' ); ?>">
                 <?php foreach( $form_fields as $field ) : ?>
                     <?php smliser_render_input_field( $field ); ?>
                 <?php endforeach; ?>
@@ -65,7 +65,7 @@ if ( $render_image_only ) {
                                 class="smliser-avatar-upload_image-preview"
                                 src="<?php echo escUrl( $avatar_url->url() ); ?>"
                                 title="<?php echo escAttr( $avatar_url->basename() ); ?>"
-                                alt="<?php echo escAttr( 'User avatar preview' ); ?>"
+                                alt="<?php echo smliser_esc_attr__( 'User avatar preview' ); ?>"
                             >
                         </div>
 
@@ -80,7 +80,7 @@ if ( $render_image_only ) {
                                 aria-describedby="avatar-upload-help"
                             >
 
-                            <div class="smliser-avatar-upload_buttons-row" role="group" aria-label="Avatar actions">
+                            <div class="smliser-avatar-upload_buttons-row" role="group" aria-label="<?php smliser_esc_attr_e( 'Avatar actions' ); ?>">
 
                                 <button
                                     type="button"
@@ -88,22 +88,22 @@ if ( $render_image_only ) {
                                     aria-controls="smliser-avatar-input"
                                 >
                                     <i class="ti ti-camera" aria-hidden="true"></i>
-                                    <span>Upload Image</span>
+                                    <span><?php smliser_esc_html_e( 'Upload Image' ); ?></span>
                                 </button>
 
                                 <button
                                     type="button"
                                     class="button clear smliser-hide"
-                                    aria-label="Clear selected avatar image"
+                                    aria-label="<?php smliser_esc_attr_e( 'Clear selected avatar image' ); ?>"
                                 >
                                     <i class="ti ti-x" aria-hidden="true"></i>
-                                    <span>Clear</span>
+                                    <span><?php smliser_esc_html_e( 'Clear' ); ?></span>
                                 </button>
 
                             </div>
 
                             <em id="avatar-upload-help">
-                                Upload an image (170 x 170 pixels recommended).
+                                <?php smliser_esc_html_e( 'Upload an image (170 x 170 pixels recommended).' ); ?>
                             </em>
 
                             <span 
@@ -120,13 +120,13 @@ if ( $render_image_only ) {
 
             <?php elseif ( $render_image_only ) : ?>
 
-                <div class="smliser-two-rows_right" role="region" aria-label="Current avatar">
+                <div class="smliser-two-rows_right" role="region" aria-label="<?php smliser_esc_attr_e( 'Current avatar' ); ?>">
                     <div class="smliser-avatar-upload">
                         <div class="smliser-avatar-upload_image-holder">
                             <img
                                 class="smliser-avatar-upload_image-preview avatar-only"
                                 src="<?php echo escUrl( $avatar_url->url() ); ?>"
-                                alt="<?php echo escAttr( 'Current avatar image' ); ?>"
+                                alt="<?php echo smliser_esc_attr__( 'Current avatar image' ); ?>"
                             >
                         </div>
                     </div>
@@ -139,7 +139,7 @@ if ( $render_image_only ) {
             class="smliser-spinner" 
             role="status" 
             aria-live="polite" 
-            aria-label="Processing"
+            aria-label="<?php smliser_esc_attr_e( 'Processing' ); ?>"
         ></div>
 
         <?php if ( 'organizations' === $current_tab && 'edit' === $current_section ) : ?>
@@ -150,7 +150,7 @@ if ( $render_image_only ) {
             >
 
                 <h2 id="org-members-heading" class="screen-reader-text">
-                    Organization Members
+                    <?php smliser_esc_html_e( 'Organization Members' ); ?>
                 </h2>
 
                 <ul class="smliser-organization-members-list" role="list">
@@ -164,7 +164,7 @@ if ( $render_image_only ) {
                                     src="<?php
 										echo escUrl( $avatar_manager->url( $member->get_unique_identifier(), $member->get_type() )->url() );
                     	?>" 
-                                    alt="<?php echo escAttr( 'Member avatar' ); ?>" 
+                                    alt="<?php echo smliser_esc_attr__( 'Member avatar' ); ?>" 
                                     width="38" 
                                     height="38"
                                 >
@@ -179,17 +179,17 @@ if ( $render_image_only ) {
                             <table 
                                 class="smliser-org-member_meta"
                                 role="presentation"
-                                aria-label="Member details"
+                                aria-label="<?php smliser_esc_attr_e( 'Member details' ); ?>"
                             >
                                 <tr>
-                                    <th scope="row">Role:</th>
+                                    <th scope="row"><?php smliser_esc_html_e( 'Role:' ); ?></th>
                                     <td>
                                         <?php echo escHtml( $role ? $role->get_label() : 'Unknown' ); ?>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <th scope="row">Member Since:</th>
+                                    <th scope="row"><?php smliser_esc_html_e( 'Member Since:' ); ?></th>
                                     <td>
                                         <?php echo escHtml( $member->get_created_at()->format( smliser_datetime_format() ) ); ?>
                                     </td>
@@ -206,7 +206,7 @@ if ( $render_image_only ) {
                                     class="button edit-member"
                                     data-member-id="<?php echo intval( $member->get_id() ); ?>"
                                 >
-                                    Edit
+                                    <?php smliser_esc_html_e( 'Edit' ); ?>
                                 </button>
 
                                 <button
@@ -214,7 +214,7 @@ if ( $render_image_only ) {
                                     class="button delete-member"
                                     data-member-id="<?php echo intval( $member->get_id() ); ?>"
                                 >
-                                    Delete
+                                    <?php smliser_esc_html_e( 'Delete' ); ?>
                                 </button>
                             </div>
 
@@ -227,10 +227,10 @@ if ( $render_image_only ) {
                         <button
                             type="button"
                             class="smliser-add-member-to-org-btn"
-                            aria-label="Add new member to organization"
+                            aria-label="<?php smliser_esc_attr_e( 'Add new member to organization' ); ?>"
                         >
                             <i class="ti ti-user-plus" aria-hidden="true"></i>
-                            <span>Add member</span>
+                            <span><?php smliser_esc_html_e( 'Add member' ); ?></span>
                         </button>
 
                     </li>
@@ -247,7 +247,7 @@ if ( $render_image_only ) {
                 id="smliser-roles-title"
                 class="smliser-access-control-role-deading"
             >
-                Manage Roles & Permissions
+                <?php smliser_esc_html_e( 'Manage Roles & Permissions' ); ?>
             </h2>
 
             <div
@@ -265,9 +265,9 @@ if ( $render_image_only ) {
         <button
             type="submit"
             class="button smliser-save-button"
-            aria-label="Save changes"
+            aria-label="<?php smliser_esc_attr_e( 'Save changes' ); ?>"
         >
-            Save
+            <?php smliser_esc_html_e( 'Save' ); ?>
         </button>
 
     </form>

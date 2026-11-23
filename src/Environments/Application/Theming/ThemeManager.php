@@ -117,7 +117,7 @@ final class ThemeManager implements ModuleManager {
 		}
 
 		if ( 1 !== preg_match( Theme::SLUG_PATTERN, $slug ) || ! $this->fs->is_dir( $this->installed_dir . '/' . $slug ) ) {
-			throw new ThemeException( sprintf( 'The theme "%s" is not installed.', $slug ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" is not installed.' ), $slug ) );
 		}
 
 		return $this->loaded[ $slug ] = Theme::from_directory( $this->fs, $this->installed_dir . '/' . $slug );
@@ -161,7 +161,7 @@ final class ThemeManager implements ModuleManager {
 			$theme = $this->find( $slug );
 
 			if ( ! $theme->supports( $this->app_version ) ) {
-				throw new ThemeException( sprintf( 'The theme "%s" requires app version %s or later; this is %s.', $slug, $theme->requires, $this->app_version ) );
+				throw new ThemeException( sprintf( smliser__( 'The theme "%s" requires app version %s or later; this is %s.' ), $slug, $theme->requires, $this->app_version ) );
 			}
 
 			$this->chain( $theme );
@@ -188,7 +188,7 @@ final class ThemeManager implements ModuleManager {
 			$parent = $this->find( $theme->parent );
 
 			if ( null !== $parent->parent ) {
-				throw new ThemeException( sprintf( 'The parent "%s" of the theme "%s" has a parent itself; only one level is supported.', $parent->slug, $theme->slug ) );
+				throw new ThemeException( sprintf( smliser__( 'The parent "%s" of the theme "%s" has a parent itself; only one level is supported.' ), $parent->slug, $theme->slug ) );
 			}
 
 			$chain[] = $parent;
@@ -297,7 +297,7 @@ final class ThemeManager implements ModuleManager {
 	public function activate( string $slug ) : Theme {
 		if ( self::DEFAULT_SLUG === $slug ) {
 			if ( $this->fs->is_file( $this->active_file ) && ! $this->fs->delete( $this->active_file ) ) {
-				throw new ThemeException( sprintf( 'Could not write %s; check the permissions of the storage folder.', $this->active_file ) );
+				throw new ThemeException( sprintf( smliser__( 'Could not write %s; check the permissions of the storage folder.' ), $this->active_file ) );
 			}
 
 			return $this->default_theme();
@@ -308,7 +308,7 @@ final class ThemeManager implements ModuleManager {
 		$theme = $this->find( $slug );
 
 		if ( ! $theme->supports( $this->app_version ) ) {
-			throw new ThemeException( sprintf( 'The theme "%s" requires app version %s or later; this is %s.', $slug, $theme->requires, $this->app_version ) );
+			throw new ThemeException( sprintf( smliser__( 'The theme "%s" requires app version %s or later; this is %s.' ), $slug, $theme->requires, $this->app_version ) );
 		}
 
 		$this->chain( $theme );
@@ -316,7 +316,7 @@ final class ThemeManager implements ModuleManager {
 		$record = (string) json_encode( [ 'active' => $slug, 'activated_at' => gmdate( DATE_ATOM ) ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
 
 		if ( ! $this->fs->put_contents( $this->active_file, $record . "\n" ) ) {
-			throw new ThemeException( sprintf( 'Could not write %s; check the permissions of the storage folder.', $this->active_file ) );
+			throw new ThemeException( sprintf( smliser__( 'Could not write %s; check the permissions of the storage folder.' ), $this->active_file ) );
 		}
 
 		return $theme;

@@ -384,7 +384,7 @@
             // Drag handle.
             const handle = document.createElement( 'span' );
             handle.className = 'smliser-block-drag-handle ti ti-grip-vertical';
-            handle.title     = 'Drag to reorder';
+            handle.title     = smliserI18n.__( 'Drag to reorder' );
 
             // Type badge.
             const type = document.createElement( 'span' );
@@ -404,7 +404,7 @@
             const visBtn = document.createElement( 'button' );
             visBtn.type      = 'button';
             visBtn.className = 'smliser-block-action-btn is-visible-btn';
-            visBtn.title     = isHidden ? 'Show block' : 'Hide block';
+            visBtn.title     = isHidden ? smliserI18n.__( 'Show block' ) : smliserI18n.__( 'Hide block' );
             visBtn.innerHTML = `<span class="ti ${ isHidden ? 'ti-eye' : 'ti-eye-off' }"></span>`;
 
             visBtn.addEventListener( 'click', ( e ) => {
@@ -419,7 +419,7 @@
                 const removeBtn = document.createElement( 'button' );
                 removeBtn.type      = 'button';
                 removeBtn.className = 'smliser-block-action-btn';
-                removeBtn.title     = 'Remove block';
+                removeBtn.title     = smliserI18n.__( 'Remove block' );
                 removeBtn.innerHTML = '<span class="ti ti-x"></span>';
 
                 removeBtn.addEventListener( 'click', ( e ) => {
@@ -463,7 +463,7 @@
                 case 'detail_card':
                     return block.rows
                         ? block.rows.map( r => r.label ).join( ', ' ).substring( 0, 60 )
-                        : 'Detail card';
+                        : smliserI18n.__( 'Detail card' );
 
                 default:
                     return block.id || block.type;
@@ -721,12 +721,12 @@
                 const labelInput = document.createElement( 'input' );
                 labelInput.type        = 'text';
                 labelInput.value       = row.label || '';
-                labelInput.placeholder = 'Label';
+                labelInput.placeholder = smliserI18n.__( 'Label' );
 
                 const valueInput = document.createElement( 'input' );
                 valueInput.type        = 'text';
                 valueInput.value       = row.value || '';
-                valueInput.placeholder = '{{token}} or value';
+                valueInput.placeholder = smliserI18n.__( '{{token}} or value' );
 
                 labelInput.addEventListener( 'input', () => {
                     this._updateCardRow( index, 'label', labelInput.value );
@@ -875,7 +875,7 @@
             const key       = this.editor.config.key;
 
             this.saveBtn.disabled = true;
-            label.textContent     = 'Saving...';
+            label.textContent     = smliserI18n.__( 'Saving...' );
             icon.className        = 'ti ti-loader-2 smliser-spin';
             
             const payload = new FormData();
@@ -900,20 +900,20 @@
                     // Enable reset button now that a custom template exists.
                     this.resetBtn.disabled = false;
 
-                    label.textContent = 'Saved';
+                    label.textContent = smliserI18n.__( 'Saved' );
                     icon.className    = 'ti ti-circle-check';
 
                     await SmliserModal.success(
-                        response?.data?.message || 'Template saved successfully.'
+                        response?.data?.message || smliserI18n.__( 'Template saved successfully.' )
                     );
 
-                    label.textContent = 'Save Template';
+                    label.textContent = smliserI18n.__( 'Save Template' );
                     icon.className    = 'ti ti-cloud-upload';
                 }
             } )
             .catch( err => {
                 SmliserModal.error( err.message, 'Save Failed' );
-                label.textContent = 'Save Template';
+                label.textContent = smliserI18n.__( 'Save Template' );
                 icon.className    = 'ti ti-cloud-upload';
             } )
             .finally( () => {
@@ -923,8 +923,8 @@
 
         async _reset() {
             const confirmed = await SmliserModal.confirm(
-                'This will permanently remove your custom template and restore the system default. Are you sure?',
-                'Reset Template'
+                smliserI18n.__( 'This will permanently remove your custom template and restore the system default. Are you sure?' ),
+                smliserI18n.__( 'Reset Template' )
             );
 
             if ( ! confirmed ) return;
@@ -945,7 +945,7 @@
             .then( async response => {
                 if ( response.success ) {
                     await SmliserModal.success(
-                        response?.data?.message || 'Template reset to default.'
+                        response?.data?.message || smliserI18n.__( 'Template reset to default.' )
                     );
                     // Reload to reflect system default state.
                     window.location.reload();
@@ -984,7 +984,7 @@
                     const icon  = document.getElementById( 'smliser-toggle-icon' );
                     const label = document.getElementById( 'smliser-toggle-label' );
                     icon.className    = enabling ? 'ti ti-eye-off' : 'ti ti-eye';
-                    label.textContent = enabling ? 'Disable' : 'Enable';
+                    label.textContent = enabling ? smliserI18n.__( 'Disable' ) : smliserI18n.__( 'Enable' );
 
                     // Update status badge.
                     const badge      = document.getElementById( 'smliser-status-badge' );
@@ -992,10 +992,10 @@
                     badge.className  = 'smliser-editor-badge ' + ( enabling
                         ? 'smliser-editor-badge--enabled'
                         : 'smliser-editor-badge--disabled' );
-                    statusText.textContent = enabling ? 'Enabled' : 'Disabled';
+                    statusText.textContent = enabling ? smliserI18n.__( 'Enabled' ) : smliserI18n.__( 'Disabled' );
 
                     await SmliserModal.success(
-                        response?.data?.message || 'Template status updated.'
+                        response?.data?.message || smliserI18n.__( 'Template status updated.' )
                     );
                 }
             } )

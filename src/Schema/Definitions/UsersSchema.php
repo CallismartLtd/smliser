@@ -27,14 +27,14 @@ class UsersSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Users';
+		return smliser__( 'Users' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores human user accounts with credentials.';
+		return smliser__( 'Stores human user accounts with credentials.' );
 	}
 
 	/**

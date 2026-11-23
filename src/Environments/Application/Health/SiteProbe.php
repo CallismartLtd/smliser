@@ -124,13 +124,13 @@ class SiteProbe {
 		if ( null === $status ) {
 			return $this->make_check(
 				'critical',
-				\sprintf( '%s did not answer: %s.', $probe['url'], \rtrim( (string) $probe['error'], '.' ) ),
-				'Check that the web server and PHP are running, and read their error logs. This request is made from this server: if visitors can reach the site, DNS or a firewall inside the server may differ.'
+				\sprintf( smliser__( '%s did not answer: %s.' ), $probe['url'], \rtrim( (string) $probe['error'], '.' ) ),
+				smliser__( 'Check that the web server and PHP are running, and read their error logs. This request is made from this server: if visitors can reach the site, DNS or a firewall inside the server may differ.' )
 			);
 		}
 
 		$answer = \sprintf(
-			'%s answered %d %s in %s%s.',
+			smliser__( '%s answered %d %s in %s%s.' ),
 			$probe['url'],
 			$status,
 			$probe['reason'],
@@ -139,11 +139,11 @@ class SiteProbe {
 		);
 
 		return match ( true ) {
-			$status >= 500 => $this->make_check( 'critical', $answer, 'The site answers with a server error. Read the PHP and web server error logs; if it is in maintenance mode, finish or roll back the update.' ),
-			$status >= 400 => $this->make_check( 'warning', $answer, 'The site answers, but not with its page. Check the application URL (SMLISER_APP_URL) and the web server configuration.' ),
-			$status >= 300 => $this->make_check( 'warning', $answer, 'The redirects did not end at a page. Check for a redirect loop between the web server and the application URL.' ),
+			$status >= 500 => $this->make_check( 'critical', $answer, smliser__( 'The site answers with a server error. Read the PHP and web server error logs; if it is in maintenance mode, finish or roll back the update.' ) ),
+			$status >= 400 => $this->make_check( 'warning', $answer, smliser__( 'The site answers, but not with its page. Check the application URL (SMLISER_APP_URL) and the web server configuration.' ) ),
+			$status >= 300 => $this->make_check( 'warning', $answer, smliser__( 'The redirects did not end at a page. Check for a redirect loop between the web server and the application URL.' ) ),
 			$status >= 200 => $this->make_check( 'pass', $answer ),
-			default        => $this->make_check( 'warning', $answer, 'The site answered with an unexpected status.' ),
+			default        => $this->make_check( 'warning', $answer, smliser__( 'The site answered with an unexpected status.' ) ),
 		};
 	}
 
@@ -158,7 +158,7 @@ class SiteProbe {
 	private function make_check( string $status, string $message, ?string $recommendation = null ) : array {
 		return [
 			'id'             => 'site_reachable',
-			'label'          => 'Site Reachable',
+			'label'          => smliser__( 'Site Reachable' ),
 			'status'         => $status,
 			'message'        => $message,
 			'recommendation' => $recommendation,

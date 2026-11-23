@@ -110,7 +110,7 @@ final class ExtensionBootstrapper implements BootstrapperInterface {
 				$instance = $container->get( $extension->entry );
 
 				if ( ! $instance instanceof ExtensionInterface ) {
-					throw new ExtensionException( sprintf( 'The entry class "%s" of the extension "%s" does not implement %s.', $extension->entry, $extension->slug, ExtensionInterface::class ) );
+					throw new ExtensionException( sprintf( smliser__( 'The entry class "%s" of the extension "%s" does not implement %s.' ), $extension->entry, $extension->slug, ExtensionInterface::class ) );
 				}
 
 				$instance->register( $container );

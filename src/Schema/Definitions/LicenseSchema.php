@@ -40,14 +40,14 @@ class LicenseSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Licenses';
+		return smliser__( 'Licenses' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores license records with keys, service identifiers, and validity dates.';
+		return smliser__( 'Stores license records with keys, service identifiers, and validity dates.' );
 	}
 
 	/**

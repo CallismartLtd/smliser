@@ -12,12 +12,12 @@ $this->partial(
 	'status',
 	[
 		'diagram' => 'missing',
-		'heading' => 'Method Not Allowed',
-		'message' => sprintf( '%s is not supported here. This address accepts %s.', $method, implode( ', ', $allowed ) ),
+		'heading' => smliser__( 'Method Not Allowed' ),
+		'message' => sprintf( smliser__( '%s is not supported here. This address accepts %s.' ), $method, implode( ', ', $allowed ) ),
 		'actions' => [
-			[ 'label' => 'Go back', 'action' => 'back' ],
-			[ 'label' => 'Home', 'url' => $this->url( '/' )->url() ],
+			[ 'label' => smliser__( 'Go back' ), 'action' => 'back' ],
+			[ 'label' => smliser__( 'Home' ), 'url' => $this->url( '/' )->url() ],
 		],
-		'detail'  => 'HTTP 405',
+		'detail'  => smliser__( 'HTTP 405' ),
 	]
 );

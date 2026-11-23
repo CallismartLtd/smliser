@@ -62,7 +62,7 @@ class LicensingService {
 		?DateTimeImmutable $starts_at = null
 	) : License|Exception {
 		if ( '' !== $external_ref && '' === $provider_id ) {
-			return new Exception( 'invalid_source', 'A provider reference needs a provider ID.', [ 'status' => 400 ] );
+			return new Exception( 'invalid_source', smliser__( 'A provider reference needs a provider ID.' ), [ 'status' => 400 ] );
 		}
 
 		$existing = License::get_by_source( $provider_id, $external_ref );
@@ -72,21 +72,21 @@ class LicensingService {
 		}
 
 		if ( ! $tier->exists() ) {
-			return new Exception( 'tier_not_found', 'The pricing tier does not exist.', [ 'status' => 404 ] );
+			return new Exception( 'tier_not_found', smliser__( 'The pricing tier does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		if ( ! $tier->is_active() ) {
-			return new Exception( 'tier_archived', sprintf( 'The pricing tier "%s" is archived and issues no new licenses.', $tier->get_name() ), [ 'status' => 409 ] );
+			return new Exception( 'tier_archived', sprintf( smliser__( 'The pricing tier "%s" is archived and issues no new licenses.' ), $tier->get_name() ), [ 'status' => 409 ] );
 		}
 
 		if ( '' !== $provider_id && $provider_id !== $tier->get_provider_id() ) {
-			return new Exception( 'tier_not_sold_by_provider', sprintf( 'The pricing tier "%s" is not sold by the provider "%s".', $tier->get_name(), $provider_id ), [ 'status' => 403 ] );
+			return new Exception( 'tier_not_sold_by_provider', sprintf( smliser__( 'The pricing tier "%s" is not sold by the provider "%s".' ), $tier->get_name(), $provider_id ), [ 'status' => 403 ] );
 		}
 
 		$app = Monetization::get_by_id( $tier->get_monetization_id() )?->get_app();
 
 		if ( ! ( $app instanceof AbstractHostedApp ) ) {
-			return new Exception( 'app_not_found', 'The app this pricing tier belongs to does not exist.', [ 'status' => 404 ] );
+			return new Exception( 'app_not_found', smliser__( 'The app this pricing tier belongs to does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		$license = new License();
@@ -98,7 +98,7 @@ class LicensingService {
 		}
 
 		if ( '' === $license->get_licensee_email() ) {
-			return new Exception( 'missing_email', 'The licensee email is required.', [ 'status' => 400 ] );
+			return new Exception( 'missing_email', smliser__( 'The licensee email is required.' ), [ 'status' => 400 ] );
 		}
 
 		$contract = $tier->to_license_contract( $starts_at ?? new DateTimeImmutable( 'now', new DateTimeZone( 'UTC' ) ) );
@@ -123,7 +123,7 @@ class LicensingService {
 		if ( ! $license->save() ) {
 			// Another request may have issued it under the same reference first.
 			return License::get_by_source( $provider_id, $external_ref )
-				?? new Exception( 'license_not_saved', 'The license could not be saved.', [ 'status' => 500 ] );
+				?? new Exception( 'license_not_saved', smliser__( 'The license could not be saved.' ), [ 'status' => 500 ] );
 		}
 
 		return $license;
@@ -141,7 +141,7 @@ class LicensingService {
 	 */
 	public function extend( License $license, ?DateTimeImmutable $ends_at ) : true|Exception {
 		if ( ! $license->exists() ) {
-			return new Exception( 'license_not_found', 'The license does not exist.', [ 'status' => 404 ] );
+			return new Exception( 'license_not_found', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		$license->set_end_date( $ends_at );
@@ -163,11 +163,11 @@ class LicensingService {
 	 */
 	public function set_status( License $license, string $status ) : true|Exception {
 		if ( ! $license->exists() ) {
-			return new Exception( 'license_not_found', 'The license does not exist.', [ 'status' => 404 ] );
+			return new Exception( 'license_not_found', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		if ( '' !== $status && ! in_array( $status, License::get_allowed_statuses(), true ) ) {
-			return new Exception( 'invalid_status', sprintf( 'Unknown license status "%s". Use one of: %s.', $status, implode( ', ', License::get_allowed_statuses() ) ), [ 'status' => 400 ] );
+			return new Exception( 'invalid_status', sprintf( smliser__( 'Unknown license status "%s". Use one of: %s.' ), $status, implode( ', ', License::get_allowed_statuses() ) ), [ 'status' => 400 ] );
 		}
 
 		$license->set_status( $status );
@@ -188,13 +188,13 @@ class LicensingService {
 	 */
 	public function update_contract( License $license, array $terms ) : true|Exception {
 		if ( ! $license->exists() ) {
-			return new Exception( 'license_not_found', 'The license does not exist.', [ 'status' => 404 ] );
+			return new Exception( 'license_not_found', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		$unknown = array_diff( array_keys( $terms ), [ 'max_allowed_domains', 'end_date', 'features' ] );
 
 		if ( ! empty( $unknown ) ) {
-			return new Exception( 'invalid_terms', sprintf( 'Unknown license terms: %s.', implode( ', ', $unknown ) ), [ 'status' => 400 ] );
+			return new Exception( 'invalid_terms', sprintf( smliser__( 'Unknown license terms: %s.' ), implode( ', ', $unknown ) ), [ 'status' => 400 ] );
 		}
 
 		if ( array_key_exists( 'max_allowed_domains', $terms ) ) {
@@ -232,6 +232,6 @@ class LicensingService {
 	protected function save( License $license ) : true|Exception {
 		return $license->save()
 			? true
-			: new Exception( 'license_not_saved', 'The license could not be saved.', [ 'status' => 500 ] );
+			: new Exception( 'license_not_saved', smliser__( 'The license could not be saved.' ), [ 'status' => 500 ] );
 	}
 }

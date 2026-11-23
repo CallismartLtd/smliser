@@ -174,7 +174,7 @@ class LicenseMonitorMiddleware implements MiddlewareInterface {
 	 */
 	protected function blocked_response( int $retry_after ) : Response {
 		return Response::error(
-			new RequestException( 'rate_limited', 'Too many license requests. Please wait and try again.', [ 'status' => 429 ] ),
+			new RequestException( 'rate_limited', smliser__( 'Too many license requests. Please wait and try again.' ), [ 'status' => 429 ] ),
 			429,
 			[ 'Retry-After' => (string) $retry_after ]
 		);

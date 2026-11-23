@@ -74,56 +74,56 @@ class RoleBuilder {
         this.container.classList.add('smliser-role-builder');
 
         this.container.setAttribute('role', 'application');
-        this.container.setAttribute('aria-label', 'Role Builder');
+        this.container.setAttribute('aria-label', smliserI18n.__( 'Role Builder' ));
 
         this.container.innerHTML = `
             <div class="rb-header" role="region" aria-labelledby="rb-header-title">
-                <h2 id="rb-header-title" class="screen-reader-text">Role Configuration</h2>
+                <h2 id="rb-header-title" class="screen-reader-text">${ smliserI18n.esc( smliserI18n.__( 'Role Configuration' ) ) }</h2>
 
                 <div class="rb-field">
-                    <label for="role-select">Role preset</label>
+                    <label for="role-select">${ smliserI18n.esc( smliserI18n.__( 'Role preset' ) ) }</label>
                     <select
                         class="rb-role-select"
                         id="role-select"
-                        aria-label="Select role preset"
+                        aria-label="${ smliserI18n.esc( smliserI18n.__( 'Select role preset' ) ) }"
                         aria-controls="rb-capabilities-area"
                     >
-                        <option value="">Create role</option>
+                        <option value="">${ smliserI18n.esc( smliserI18n.__( 'Create role' ) ) }</option>
                         ${this.renderRoleOptions()}
                     </select>
                 </div>
 
                 <div class="rb-field">
-                    <label for="role-name">Role name</label>
+                    <label for="role-name">${ smliserI18n.esc( smliserI18n.__( 'Role name' ) ) }</label>
                     <input
                         type="text"
                         class="rb-role-name"
                         id="role-name"
-                        placeholder="Enter role name"
+                        placeholder="${ smliserI18n.esc( smliserI18n.__( 'Enter role name' ) ) }"
                         autocomplete="off"
                         spellcheck="off"
                         aria-required="true"
                         aria-describedby="role-name-desc"
                     />
                     <span id="role-name-desc" class="screen-reader-text">
-                        Human readable name for the role
+                        ${ smliserI18n.esc( smliserI18n.__( 'Human readable name for the role' ) ) }
                     </span>
                 </div>
 
                 <div class="rb-field">
-                    <label for="role-slug">Role Slug</label>
+                    <label for="role-slug">${ smliserI18n.esc( smliserI18n.__( 'Role Slug' ) ) }</label>
                     <input
                         type="text"
                         class="rb-role-slug"
                         id="role-slug"
-                        placeholder="Enter role slug"
+                        placeholder="${ smliserI18n.esc( smliserI18n.__( 'Enter role slug' ) ) }"
                         autocomplete="off"
                         spellcheck="off"
                         aria-required="true"
                         aria-describedby="role-slug-desc"
                     />
                     <span id="role-slug-desc" class="screen-reader-text">
-                        Machine readable identifier for the role
+                        ${ smliserI18n.esc( smliserI18n.__( 'Machine readable identifier for the role' ) ) }
                     </span>
                 </div>
             </div>
@@ -136,16 +136,16 @@ class RoleBuilder {
                 aria-live="polite"
             >
                 <div class="rb-capabilities-header">
-                    <h3 id="rb-capabilities-title">Capabilities</h3>
+                    <h3 id="rb-capabilities-title">${ smliserI18n.esc( smliserI18n.__( 'Capabilities' ) ) }</h3>
                     <label class="rb-select-all-global" for="rb-select-all">
                         <input
                             type="checkbox"
                             id="rb-select-all"
                             class="rb-select-all-checkbox"
-                            aria-label="Select all capabilities"
+                            aria-label="${ smliserI18n.esc( smliserI18n.__( 'Select all capabilities' ) ) }"
                             autocomplete="off"
                         />
-                        <span>Select all</span>
+                        <span>${ smliserI18n.esc( smliserI18n.__( 'Select all' ) ) }</span>
                     </label>
                 </div>
 
@@ -189,7 +189,7 @@ class RoleBuilder {
                                 aria-label="Select all ${this.humanize(domain)} capabilities"
                                 autocomplete="off"
                             />
-                            <span>select all</span>
+                            <span>${ smliserI18n.esc( smliserI18n.__( 'select all' ) ) }</span>
                         </label>
                     </legend>
 

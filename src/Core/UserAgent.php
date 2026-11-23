@@ -514,7 +514,7 @@ final class UserAgent {
 	 * @return string
 	 */
 	public function get_description() : string {
-		$description = '' !== $this->get_client() ? $this->get_client() : 'Unknown';
+		$description = '' !== $this->get_client() ? $this->get_client() : smliser__( 'Unknown' );
 
 		if ( '' !== $this->get_os() ) {
 			$description .= ' on ' . $this->get_os();
@@ -659,7 +659,7 @@ final class UserAgent {
 				if ( null !== $app ) {
 					$this->set_client( $app[0], $app[1], self::TYPE_APP );
 				} else {
-					$this->set_client( 'Android WebView', $match[1], self::TYPE_BROWSER );
+					$this->set_client( smliser__( 'Android WebView' ), $match[1], self::TYPE_BROWSER );
 				}
 				return;
 			}

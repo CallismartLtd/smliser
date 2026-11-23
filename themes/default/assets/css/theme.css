@@ -2079,3 +2079,21 @@ code {
 		position: static;
 	}
 }
+/* Language picker (smliser_language_switcher()). */
+.smliser-language-switcher {
+	display: inline-flex;
+	align-items: center;
+	gap: .35rem;
+	margin-inline-start: auto;
+	font-size: .875rem;
+}
+
+.smliser-language-switcher select {
+	font: inherit;
+	padding: .25rem .5rem;
+	border-radius: 6px;
+	border: 1px solid currentColor;
+	background: transparent;
+	color: inherit;
+	max-width: 12rem;
+}

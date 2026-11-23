@@ -53,6 +53,12 @@ class Settings {
 	public const REPOSITORY_NAME = 'repository_name';
 
 	/**
+	 * The option name for the site language (a locale code such as `fr_FR`).
+	 * Empty means "use the visitor's browser language".
+	 */
+	public const SITE_LOCALE = 'site_locale';
+
+	/**
 	 * The option name for the administration email.
 	 */
 	public const ADMIN_EMAIL = 'admin_email';

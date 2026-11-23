@@ -32,7 +32,7 @@ class TestEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Test Email — Your Email Provider is Working';
+		return smliser__( 'Test Email — Your Email Provider is Working' );
 	}
 
 	protected function recipient() : string {
@@ -57,9 +57,21 @@ class TestEmail extends EmailTemplate {
 		$app_name      = \escHtml( $vars['{{app_name}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			smliser_esc_html__( 'Email Configuration Test' ),
+			smliser_esc_html__( '✓ Your email provider is configured correctly. This test email was delivered successfully.' ),
+			/* translators: %s: app name (formatted) */
+			sprintf( smliser_esc_html__( 'This is an automated test email sent from %s to verify that your email provider is set up and working correctly. No action is required.' ), '<strong>' . $app_name . '</strong>' ),
+			smliser_esc_html__( 'Provider' ),
+			smliser_esc_html__( 'Sent At' ),
+			smliser_esc_html__( 'Delivered To' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not expect this email or have any concerns, contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Email Configuration Test
+            {$i18n[0]}
         </p>
 
         <!-- Success banner -->
@@ -69,17 +81,14 @@ class TestEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#166534;line-height:1.5;">
-                        &#10003;&nbsp; Your email provider is configured correctly.
-                        This test email was delivered successfully.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
         </table>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            This is an automated test email sent from <strong>{$app_name}</strong>
-            to verify that your email provider is set up and working correctly.
-            No action is required.
+            {$i18n[2]}
         </p>
 
         <!-- Test details card -->
@@ -93,7 +102,7 @@ class TestEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Provider
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$provider_name}
@@ -102,7 +111,7 @@ class TestEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Sent At
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$sent_at}
@@ -113,7 +122,7 @@ class TestEmail extends EmailTemplate {
                             <td colspan="2" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Delivered To
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;font-weight:600;">
                                     {$this->to}
@@ -126,21 +135,20 @@ class TestEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not expect this email or have any concerns, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Test Email';
+		return smliser__( 'Test Email' );
 	}
 	public function description() : string {
-		return 'Sent when an administrator tests an email provider configuration.';
+		return smliser__( 'Sent when an administrator tests an email provider configuration.' );
 	}
 
 	public static function preview() : static {
-		$providers = ['PHP Mail', 'SMTP', 'Brevo', 'SendGrid', 'Mailgun', 'Postmark' ];
+		$providers = [smliser__( 'PHP Mail' ), 'SMTP', 'Brevo', 'SendGrid', 'Mailgun', 'Postmark' ];
 		$provider  = $providers[\random_int( 0, count( $providers ) - 1 )];
 		return new static( 'preview@example.com', $provider );
 	}
@@ -150,7 +158,7 @@ class TestEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Email Configuration Test',
+				'content'   => smliser__( 'Email Configuration Test' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -158,14 +166,14 @@ class TestEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => 'Your email provider is configured correctly. This test email was delivered successfully.',
+				'content'   => smliser__( 'Your email provider is configured correctly. This test email was delivered successfully.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required.',
+				'content'   => smliser__( 'This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required.' ),
 				'editable'  => true,
 				'removable' => true,
 			],
@@ -173,9 +181,9 @@ class TestEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Provider',     'value' => '{{provider_name}}' ],
-					[ 'label' => 'Sent At',      'value' => '{{sent_at}}' ],
-					[ 'label' => 'Delivered To', 'value' => '{{recipient}}' ],
+					[ 'label' => smliser__( 'Provider' ),     'value' => '{{provider_name}}' ],
+					[ 'label' => smliser__( 'Sent At' ),      'value' => '{{sent_at}}' ],
+					[ 'label' => smliser__( 'Delivered To' ), 'value' => '{{recipient}}' ],
 				],
 				'editable'  => true,
 				'removable' => true,
@@ -183,7 +191,7 @@ class TestEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not expect this email or have any concerns, contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you did not expect this email or have any concerns, contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => true,
 			],

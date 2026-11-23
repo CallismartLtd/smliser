@@ -166,7 +166,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $status_labels,
 					'datasets' => [
 						[
-							'label' => 'Apps by Status',
+							'label' => smliser__( 'Apps by Status' ),
 							'data'  => $status_data,
 						]
 					]
@@ -175,7 +175,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'position' => 'bottom' ],
-						'title'  => [ 'display' => true, 'text' => 'Apps Distribution by Status' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Apps Distribution by Status' ) ]
 					]
 				]
 			],
@@ -255,7 +255,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $downloads_30_labels,
 					'datasets' => [
 						[
-							'label'                => 'Downloads',
+							'label'                => smliser__( 'Downloads' ),
 							'data'                 => $downloads_30_data,
 							'borderColor'          => '#3b82f6',     // Modern Blue
 							'backgroundColor'      => 'rgba(59, 130, 246, 0.08)', // Very subtle fill
@@ -271,7 +271,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'display' => false ],
-						'title'  => [ 'display' => true, 'text' => 'Downloads Last 30 Days' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Downloads Last 30 Days' ) ]
 					],
 					'scales' => [
 						'y' => [ 'beginAtZero' => true ]
@@ -284,7 +284,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $downloads_7_labels,
 					'datasets' => [
 						[
-							'label'                => 'Downloads',
+							'label'                => smliser__( 'Downloads' ),
 							'data'                 => $downloads_7_data,
 							'borderColor'          => '#3b82f6',     // Modern Blue
 							'backgroundColor'      => 'rgba(59, 130, 246, 0.08)', // Very subtle fill
@@ -299,7 +299,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'display' => false ],
-						'title'  => [ 'display' => true, 'text' => 'Downloads This Week' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Downloads This Week' ) ]
 					],
 					'scales' => [
 						'y' => [ 'beginAtZero' => true ]
@@ -309,10 +309,10 @@ class DashboardPage implements AdminPageInterface {
 			'downloads_by_type' => [
 				'type' => 'doughnut',
 				'data' => [
-					'labels'   => ['WordPress Plugins', 'WordPress Themes', 'Software'],
+					'labels'   => [smliser__( 'WordPress Plugins' ), smliser__( 'WordPress Themes' ), smliser__( 'Software' )],
 					'datasets' => [
 						[
-							'label' => 'Downloads',
+							'label' => smliser__( 'Downloads' ),
 							'data'  => array_values( $downloads_by_type ),
 						]
 					]
@@ -321,7 +321,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'position' => 'bottom' ],
-						'title'  => [ 'display' => true, 'text' => 'Downloads by Type (30 Days)' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Downloads by Type (30 Days)' ) ]
 					]
 				]
 			]
@@ -357,7 +357,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $accesses_30_labels,
 					'datasets' => [
 						[
-							'label'           => 'Client Accesses',
+							'label'           => smliser__( 'Client Accesses' ),
 							'data'            => $accesses_30_data,
 							'fill'            => true,
 							'backgroundColor' => 'rgba(153, 102, 255, 0.2)',
@@ -370,7 +370,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'display' => false ],
-						'title'  => [ 'display' => true, 'text' => 'Client Accesses Last 30 Days' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Client Accesses Last 30 Days' ) ]
 					],
 					'scales' => [
 						'y' => [ 'beginAtZero' => true ]
@@ -383,7 +383,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $accesses_7_labels,
 					'datasets' => [
 						[
-							'label'           => 'Accesses',
+							'label'           => smliser__( 'Accesses' ),
 							'data'            => $accesses_7_data,
 							'backgroundColor' => 'rgba(255, 159, 64, 0.5)',
 						]
@@ -393,7 +393,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'display' => false ],
-						'title'  => [ 'display' => true, 'text' => 'Client Accesses This Week' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Client Accesses This Week' ) ]
 					],
 					'scales' => [
 						'y' => [ 'beginAtZero' => true ]
@@ -403,10 +403,10 @@ class DashboardPage implements AdminPageInterface {
 			'installations_by_type' => [
 				'type' => 'bar',
 				'data' => [
-					'labels'   => ['WordPress Plugins', 'WordPress Themes', 'Software'],
+					'labels'   => [smliser__( 'WordPress Plugins' ), smliser__( 'WordPress Themes' ), smliser__( 'Software' )],
 					'datasets' => [
 						[
-							'label'           => 'Active Installations',
+							'label'           => smliser__( 'Active Installations' ),
 							'data'            => array_values( $installations_by_type ),
 							'backgroundColor' => [
 								'rgba(255, 99, 132, 0.5)',
@@ -420,7 +420,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'display' => false ],
-						'title'  => [ 'display' => true, 'text' => 'Active Installations by Type (30 Days)' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Active Installations by Type (30 Days)' ) ]
 					],
 					'scales' => [
 						'y' => [ 'beginAtZero' => true ]
@@ -481,7 +481,7 @@ class DashboardPage implements AdminPageInterface {
 					],
 					'plugins' => [
 						'legend' => [ 'position' => 'top' ],
-						'title'  => [ 'display' => true, 'text' => 'License Activity Per Day (30 Days)' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'License Activity Per Day (30 Days)' ) ]
 					]
 				]
 			],
@@ -491,7 +491,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => array_map( 'ucfirst', array_keys( $event_totals ) ),
 					'datasets' => [
 						[
-							'label' => 'Events',
+							'label' => smliser__( 'Events' ),
 							'data'  => array_values( $event_totals ),
 						]
 					]
@@ -500,7 +500,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'position' => 'bottom' ],
-						'title'  => [ 'display' => true, 'text' => 'License Events Distribution (30 Days)' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'License Events Distribution (30 Days)' ) ]
 					]
 				]
 			]
@@ -522,7 +522,7 @@ class DashboardPage implements AdminPageInterface {
 				$app_t             = (string) $app['app_type'] ?? '';
 				$app_s             = (string) $app['app_slug'] ?? '';
 				$app_obj           = HostedApplicationService::get_app_by_slug( $app_t, $app_s );
-				$label             = $app_obj ? $app_obj->get_name() : 'Unknown';
+				$label             = $app_obj ? $app_obj->get_name() : smliser__( 'Unknown' );
 				$top_apps_labels[] = $label;
 				$top_apps_data[]   = (int) ( $app['metric_total'] ?? 0 );
 			}
@@ -550,7 +550,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $top_apps_labels,
 					'datasets' => [
 						[
-							'label'           => 'Downloads',
+							'label'           => smliser__( 'Downloads' ),
 							'data'            => $top_apps_data,
 							'backgroundColor' => 'rgba(75, 192, 192, 0.5)',
 						]
@@ -581,7 +581,7 @@ class DashboardPage implements AdminPageInterface {
 					'labels'   => $maintenance_labels,
 					'datasets' => [
 						[
-							'label'       => 'Apps Updated',
+							'label'       => smliser__( 'Apps Updated' ),
 							'data'        => $maintenance_data,
 							'borderColor' => 'rgb(255, 99, 132)',
 							'tension'     => 0.1
@@ -592,7 +592,7 @@ class DashboardPage implements AdminPageInterface {
 					'responsive' => true,
 					'plugins'    => [
 						'legend' => [ 'display' => false ],
-						'title'  => [ 'display' => true, 'text' => 'Maintenance Velocity (6 Months)' ]
+						'title'  => [ 'display' => true, 'text' => smliser__( 'Maintenance Velocity (6 Months)' ) ]
 					],
 					'scales' => [
 						'y' => [ 'beginAtZero' => true ]
@@ -614,7 +614,7 @@ class DashboardPage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Overview',
+			'title'      => smliser__( 'Overview' ),
 			'handler'    => $this,
 			'slug'       => 'overview',
 			'icon'       => 'ti ti-home',

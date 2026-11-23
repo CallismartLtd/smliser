@@ -28,14 +28,14 @@ class BulkMessagesSchema implements DatabaseSchemaInterface {
 	 * @inheritDoc
 	 */
 	public static function get_label() : string {
-		return 'Bulk Messages';
+		return smliser__( 'Bulk Messages' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public static function get_description() : string {
-		return 'Stores bulk messages.';
+		return smliser__( 'Stores bulk messages.' );
 	}
 
 	/**

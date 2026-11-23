@@ -26,13 +26,13 @@ defined( 'SMLISER_ROOT' ) || exit;
 		data-app-slug="<?php echo escAttr( $slug ); ?>"
 	>
 		<div class="smliser-repo-browser__bar">
-			<nav class="smliser-repo-browser__path" aria-label="Location"></nav>
+			<nav class="smliser-repo-browser__path" aria-label="<?php smliser_esc_attr_e( 'Location' ); ?>"></nav>
 			<div class="smliser-repo-browser__app-actions"></div>
 		</div>
 
 		<div class="smliser-repo-browser__body">
 			<div class="smliser-repo-browser__listing" aria-live="polite"></div>
-			<aside class="smliser-repo-browser__preview" aria-label="Selected file" hidden></aside>
+			<aside class="smliser-repo-browser__preview" aria-label="<?php smliser_esc_attr_e( 'Selected file' ); ?>" hidden></aside>
 		</div>
 	</div>
 </div>

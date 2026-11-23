@@ -288,20 +288,20 @@ class LicensePage implements AdminPageInterface {
 		$tab = $request->get( 'tab' ) ?? $request->route_param( 'tab' );
 
 		$title = match ( $tab ) {
-			'logs'              => 'License Activity Logs',
-			'add-new'           => 'Add new license',
-			'edit'              => 'Edit license',
-			'view'              => 'License Details',
-			'search'            => 'Search Licenses',
-			'purchase-requests' => 'Purchase Requests',
-			'purchase-request'  => 'Purchase Request',
-			default             => 'Licenses'
+			'logs'              => smliser__( 'License Activity Logs' ),
+			'add-new'           => smliser__( 'Add new license' ),
+			'edit'              => smliser__( 'Edit license' ),
+			'view'              => smliser__( 'License Details' ),
+			'search'            => smliser__( 'Search Licenses' ),
+			'purchase-requests' => smliser__( 'Purchase Requests' ),
+			'purchase-request'  => smliser__( 'Purchase Request' ),
+			default             => smliser__( 'Licenses' )
 		};
 
 		$args = [
 			'breadcrumbs' => [
 				[
-					'label' => 'Licenses',
+					'label' => smliser__( 'Licenses' ),
 					'url'   => $this->urlmanager->admin_license_page_url(),
 					'icon'  => 'ti ti-home'
 				],
@@ -311,8 +311,8 @@ class LicensePage implements AdminPageInterface {
 			],
 			'actions' => [
 				[
-					'title' => 'Settings',
-					'label' => 'Settings',
+					'title' => smliser__( 'Settings' ),
+					'label' => smliser__( 'Settings' ),
 					'url'   => $this->urlmanager->admin_options_url(),
 					'icon'  => 'ti ti-settings'
 				]
@@ -337,7 +337,7 @@ class LicensePage implements AdminPageInterface {
 		
 		return [
 			[
-				'label' => 'License ID',
+				'label' => smliser__( 'License ID' ),
 				'input' => [
 					'type'  => 'hidden',
 					'name'  => 'license_id',
@@ -345,116 +345,116 @@ class LicensePage implements AdminPageInterface {
 				]
 			],
 			[
-				'label' => 'Licensee Name',
+				'label' => smliser__( 'Licensee Name' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => 'licensee_fullname',
 					'value' => $license?->get_licensee_fullname() ?? '',
 					'attr'  => [
-						'aria-label' => 'Licensee full name'
+						'aria-label' => smliser__( 'Licensee full name' )
 					]
 
 				]
 			],
 
 			[
-				'label' => 'Licensee Email',
+				'label' => smliser__( 'Licensee Email' ),
 				'input' => [
 					'type'  => 'email',
 					'name'  => 'licensee_email',
 					'value' => $license?->get_licensee_email() ?? '',
 					'attr'  => [
-						'aria-label' => 'Licensee email address',
-						'title'      => 'The license is delivered to this address. A registered user with this verified address is linked to the license.',
+						'aria-label' => smliser__( 'Licensee email address' ),
+						'title'      => smliser__( 'The license is delivered to this address. A registered user with this verified address is linked to the license.' ),
 						'required'   => 'required',
 					]
 				]
 			],
 
 			[
-				'label' => 'Service ID',
+				'label' => smliser__( 'Service ID' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => 'service_id',
 					'value' => $license?->get_service_id() ?? '',
 					'attr'  => [
-						'aria-label' => 'Enter Service ID',
-						'title'      => 'The ID a client activates the license with, together with the license key. Leave empty to generate one.',
+						'aria-label' => smliser__( 'Enter Service ID' ),
+						'title'      => smliser__( 'The ID a client activates the license with, together with the license key. Leave empty to generate one.' ),
 					]
 				]
 			],
 			[
-				'label' => 'Hosted Application',
+				'label' => smliser__( 'Hosted Application' ),
 				'input' => [
 					'type'  => 'select',
 					'name'  => 'app_prop',
 					'value' => $app_prop,
 					'attr'  => [
-						'aria-label' => 'Select hosted application.',
+						'aria-label' => smliser__( 'Select hosted application.' ),
 						'class'      => 'license-app-select'
 					],
 					'options' => $app_prop ?[$app_prop => $license->get_app()->get_name()] : []
 				]
 			],
 			[
-				'label' => 'Status',
+				'label' => smliser__( 'Status' ),
 				'input' => [
 					'type'  => 'select',
 					'name'  => 'status',
 					'value' => $license?->get_status( 'edit' ) ?? '',
 					'attr'  => [
-						'aria-label' => 'Select license status.'
+						'aria-label' => smliser__( 'Select license status.' )
 					],
-					'options' => ['' => 'Automatic Calculation'] + $_statuses
+					'options' => ['' => smliser__( 'Automatic Calculation' )] + $_statuses
 				]
 			],
 			[
-				'label' => 'Maximum Domains',
+				'label' => smliser__( 'Maximum Domains' ),
 				'input' => [
 					'type'  => 'number',
 					'name'  => 'max_allowed_domains',
 					'value' => $license?->get_max_allowed_domains( 'edit' ) ?? '',
 					'attr'  => [
-						'aria-label' => 'Maximum domains',
-						'title'      => 'Enter the maximum number of domains allowed to install this license.'
+						'aria-label' => smliser__( 'Maximum domains' ),
+						'title'      => smliser__( 'Enter the maximum number of domains allowed to install this license.' )
 					]
 				]
 			],
 			[
-				'label' => 'Start Date',
+				'label' => smliser__( 'Start Date' ),
 				'input' => [
 					'type'  => 'datetime-local',
 					'name'  => 'start_date',
 					'value' => $license?->get_start_date()?->format( 'Y-m-d H:i:s' ) ?? '',
 					'attr'  => [
-						'aria-label'          => 'Enter license start date.',
+						'aria-label'          => smliser__( 'Enter license start date.' ),
 						'smliser-date-picker' => 'datetime'
 					]
 				]
 			],
 
 			[
-				'label' => 'End Date',
+				'label' => smliser__( 'End Date' ),
 				'input' => [
 					'type'  => 'datetime-local',
 					'name'  => 'end_date',
 					'value' => $license?->get_end_date()?->format( 'Y-m-d H:i:s' ) ?? '',
 					'attr'  => [
-						'aria-label'          => 'Enter license end date.',
+						'aria-label'          => smliser__( 'Enter license end date.' ),
 						'smliser-date-picker' => 'datetime'
 					]
 				]
 			],
 
 			[
-				'label' => 'Features',
+				'label' => smliser__( 'Features' ),
 				'input' => [
 					'type'  => 'textarea',
 					'name'  => 'features',
 					'value' => implode( ', ', $license?->get_features() ?? [] ),
 					'attr'  => [
-						'aria-label'  => 'License features',
-						'placeholder' => 'example: feature1, feature2, feature3',
+						'aria-label'  => smliser__( 'License features' ),
+						'placeholder' => smliser__( 'example: feature1, feature2, feature3' ),
 					]
 				]
 			],
@@ -477,49 +477,49 @@ class LicensePage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'All licenses',
+				'title'      => smliser__( 'All licenses' ),
 				'slug'       => 'index',
 				'callback'   => [$this, 'dashboard'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Add New',
+				'title'      => smliser__( 'Add New' ),
 				'slug'       => 'add-new',
 				'callback'   => [ $this, 'add_license_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Activity Logs',
+				'title'      => smliser__( 'Activity Logs' ),
 				'slug'       => 'logs',
 				'callback'   => [$this, 'license_logs_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Search Licenses',
+				'title'      => smliser__( 'Search Licenses' ),
 				'slug'       => 'search',
 				'callback'   => [$this, 'search_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Purchase Requests',
+				'title'      => smliser__( 'Purchase Requests' ),
 				'slug'       => 'purchase-requests',
 				'callback'   => [$this, 'purchase_requests_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Purchase Request',
+				'title'      => smliser__( 'Purchase Request' ),
 				'slug'       => 'purchase-request',
 				'callback'   => [$this, 'purchase_request_page'],
 				'visibility' => false
 			],
 			[
-				'title'      => 'View License',
+				'title'      => smliser__( 'View License' ),
 				'slug'       => 'view',
 				'callback'   => [$this, 'view_license_page'],
 				'visibility' => false
 			],
 			[
-				'title'      => 'Edit License',
+				'title'      => smliser__( 'Edit License' ),
 				'slug'       => 'edit',
 				'callback'   => [$this, 'edit_license_page'],
 				'visibility' => false
@@ -533,7 +533,7 @@ class LicensePage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Licenses',
+			'title'      => smliser__( 'Licenses' ),
 			'slug'       => 'licenses',
 			'handler'    => $this,
 			'icon'       => 'ti ti-license',

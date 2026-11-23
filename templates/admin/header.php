@@ -12,6 +12,7 @@
  * @var string $title
  * @var string $theme
  * @var bool $collapsed
+ * @var string $preferences_url Where the language picker saves the user's choice.
  * @var \SmartLicenseServer\Admin\AdminDashboardRegistry $registry
  * @var \SmartLicenseServer\Assets\AssetsManager $assets_manager
  */
@@ -20,12 +21,12 @@ use SmartLicenseServer\Assets\AssetsManager;
 
 ?>
 <!DOCTYPE html>
-<html lang="en" data-theme="<?php echo $theme ? escAttr( $theme ) : ''; ?>" data-menu-state="<?php echo $collapsed ? ' is-collapsed' : '' ?>">
+<html <?php echo smliser_language_attributes(); // phpcs:ignore -- escaped. ?> data-theme="<?php echo $theme ? escAttr( $theme ) : ''; ?>" data-menu-state="<?php echo $collapsed ? ' is-collapsed' : '' ?>">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="noindex, nofollow">
-	<title><?php echo escHtml( $title ?? 'Dashboard' ); ?></title>
+	<title><?php echo escHtml( $title ?? smliser__( 'Dashboard' ) ); ?></title>
 
 	<?php $assets_manager->print_style( 'view-transition' ); ?>
 	<?php $assets_manager->print_category_styles( AssetsManager::CATEGORY_ADMIN_DASHBOARD ); ?>
@@ -39,15 +40,16 @@ use SmartLicenseServer\Assets\AssetsManager;
     <div class="dashboard-wrapper" id="dashboard-wrapper">
 		<header class="dashboard-top-menu">
 			<div class="dashboard-top-menu-left">
-				<button type="button" class="dashboard-menu-toggle" id="dashboard-menu-toggle" aria-label="Collapse menu" aria-controls="dashboard-wrapper">
+				<button type="button" class="dashboard-menu-toggle" id="dashboard-menu-toggle" aria-label="<?php smliser_esc_attr_e( 'Collapse menu' ); ?>" aria-controls="dashboard-wrapper">
 					<span></span><span></span><span></span>
 				</button>
-				<button type="button" class="dashboard-mobile-menu-toggle" id="dashboard-mobile-menu-toggle" aria-label="Open menu" aria-controls="dashboard-wrapper">
+				<button type="button" class="dashboard-mobile-menu-toggle" id="dashboard-mobile-menu-toggle" aria-label="<?php smliser_esc_attr_e( 'Open menu' ); ?>" aria-controls="dashboard-wrapper">
 					<span></span><span></span><span></span>
 				</button>
 			</div>
 
 			<div class="dashboard-top-menu-right">
+				<?php echo smliser_language_switcher( $preferences_url ?? '', 'dashboard-language' ); // phpcs:ignore -- escaped. ?>
 				<?php foreach ( $registry->get_top_menus() as $key => $item ) : ?>
 					<?php echo render_top_menu_item( $item ); ?>
 				<?php endforeach; ?>

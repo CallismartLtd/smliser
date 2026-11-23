@@ -87,7 +87,7 @@ class Installer {
 		foreach( $tables as $table ) {
 
 			if ( $inspector->table_exists( $table ) ) {
-				$errors->add( 'table_exists', sprintf( '%s table exists, skipping', $table ) );
+				$errors->add( 'table_exists', sprintf( smliser__( '%s table exists, skipping' ), $table ) );
 				continue;
 			}
 
@@ -96,7 +96,7 @@ class Installer {
 			if ( ! $created_table ) {
 				$errors->add(
 					'unable_to_create_table',
-					sprintf( 'Unable to create tabe "%s", error: %s',
+					sprintf( smliser__( 'Unable to create tabe "%s", error: %s' ),
 						$table, $db->get_last_error()
 					)
 				);

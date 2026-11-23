@@ -21,10 +21,10 @@ defined( 'SMLISER_ROOT' ) || exit;
 $args = $page_handler->get_menu_args( $request );
 
 $filters = [
-	'all'                            => sprintf( 'All (%d)', array_sum( $status_counts ) ),
-	PurchaseRequest::STATUS_PENDING  => sprintf( 'Pending (%d)', $status_counts[ PurchaseRequest::STATUS_PENDING ] ),
-	PurchaseRequest::STATUS_APPROVED => sprintf( 'Approved (%d)', $status_counts[ PurchaseRequest::STATUS_APPROVED ] ),
-	PurchaseRequest::STATUS_REJECTED => sprintf( 'Rejected (%d)', $status_counts[ PurchaseRequest::STATUS_REJECTED ] ),
+	'all'                            => sprintf( smliser__( 'All (%d)' ), array_sum( $status_counts ) ),
+	PurchaseRequest::STATUS_PENDING  => sprintf( smliser__( 'Pending (%d)' ), $status_counts[ PurchaseRequest::STATUS_PENDING ] ),
+	PurchaseRequest::STATUS_APPROVED => sprintf( smliser__( 'Approved (%d)' ), $status_counts[ PurchaseRequest::STATUS_APPROVED ] ),
+	PurchaseRequest::STATUS_REJECTED => sprintf( smliser__( 'Rejected (%d)' ), $status_counts[ PurchaseRequest::STATUS_REJECTED ] ),
 ];
 $last_filter = array_key_last( $filters );
 ?>
@@ -43,17 +43,17 @@ $last_filter = array_key_last( $filters );
 		</p>
 
 		<?php if ( empty( $purchase_requests ) ) : ?>
-			<?php echo sanitize_html( smliser_not_found_container( 'Purchase requests buyers send for tiers sold by manual payment will appear here.' ) ); ?>
+			<?php echo sanitize_html( smliser_not_found_container( smliser__( 'Purchase requests buyers send for tiers sold by manual payment will appear here.' ) ) ); ?>
 		<?php else : ?>
 			<?php // The row checkboxes belong to this form through their form attribute, so each row can hold its own delete form. ?>
 			<form id="smliser-purchase-requests-bulk" method="post" action="<?php echo escUrl( $delete_url ); ?>" data-smliser-form
-				data-confirm="Delete the selected purchase requests, with their notes and receipts? Licenses issued from them are kept. This cannot be undone." data-confirm-label="Delete" data-confirm-danger>
+				data-confirm="<?php smliser_esc_attr_e( 'Delete the selected purchase requests, with their notes and receipts? Licenses issued from them are kept. This cannot be undone.' ); ?>" data-confirm-label="Delete" data-confirm-danger>
 				<div class="notice" data-smliser-form-message hidden></div>
 				<input type="hidden" name="status" value="<?php echo escAttr( $status ); ?>">
 				<div class="smliser-actions-wrapper">
 					<div class="smliser-bulk-actions">
 						<button type="submit" class="smliser-btn smliser-btn-danger" data-smliser-needs-selection hidden>
-							<i class="ti ti-trash"></i> Delete selected (<span data-smliser-selection-count>0</span>)
+							<i class="ti ti-trash"></i> <?php smliser_esc_html_e( 'Delete selected (' ); ?><span data-smliser-selection-count>0</span>)
 						</button>
 					</div>
 				</div>
@@ -61,13 +61,13 @@ $last_filter = array_key_last( $filters );
 			<table class="smliser-table widefat striped">
 				<thead>
 					<tr>
-						<th><input type="checkbox" id="smliser-select-all" aria-label="Select all"></th>
-						<th><?php echo escHtml( 'Request' ); ?></th>
-						<th><?php echo escHtml( 'Buyer' ); ?></th>
-						<th><?php echo escHtml( 'Bought' ); ?></th>
-						<th><?php echo escHtml( 'Price' ); ?></th>
-						<th><?php echo escHtml( 'Status' ); ?></th>
-						<th><?php echo escHtml( 'Submitted' ); ?></th>
+						<th><input type="checkbox" id="smliser-select-all" aria-label="<?php smliser_esc_attr_e( 'Select all' ); ?>"></th>
+						<th><?php echo smliser_esc_html__( 'Request' ); ?></th>
+						<th><?php echo smliser_esc_html__( 'Buyer' ); ?></th>
+						<th><?php echo smliser_esc_html__( 'Bought' ); ?></th>
+						<th><?php echo smliser_esc_html__( 'Price' ); ?></th>
+						<th><?php echo smliser_esc_html__( 'Status' ); ?></th>
+						<th><?php echo smliser_esc_html__( 'Submitted' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -75,19 +75,19 @@ $last_filter = array_key_last( $filters );
 						$tier = $purchase->get_tier();
 						?>
 						<tr>
-							<td><input type="checkbox" class="smliser-checkbox" form="smliser-purchase-requests-bulk" name="ids[]" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>" aria-label="<?php echo escAttr( sprintf( 'Select request #%d', $purchase->get_id() ) ); ?>"></td>
+							<td><input type="checkbox" class="smliser-checkbox" form="smliser-purchase-requests-bulk" name="ids[]" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>" aria-label="<?php echo escAttr( sprintf( smliser__( 'Select request #%d' ), $purchase->get_id() ) ); ?>"></td>
 							<td class="smliser-edit-row">
 								#<?php echo escHtml( (string) $purchase->get_id() ); ?>
 								<div class="smliser-edit-link">
-									<a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'purchase-request', [ 'id' => $purchase->get_id() ] )->url() ); ?>">review</a> |
+									<a href="<?php echo escUrl( $urlmanager->admin_license_page_url( 'purchase-request', [ 'id' => $purchase->get_id() ] )->url() ); ?>"><?php smliser_esc_html_e( 'review' ); ?></a> |
 									<form class="smliser-row-action" method="post" action="<?php echo escUrl( $delete_url ); ?>" data-smliser-form
 										data-confirm="<?php echo escAttr( $purchase->get_license_id()
-											? sprintf( 'Delete purchase request #%d, with its notes and receipt? License #%d is kept. This cannot be undone.', $purchase->get_id(), $purchase->get_license_id() )
-											: sprintf( 'Delete purchase request #%d, with its notes and receipt? This cannot be undone.', $purchase->get_id() ) ); ?>"
+											? sprintf( smliser__( 'Delete purchase request #%d, with its notes and receipt? License #%d is kept. This cannot be undone.' ), $purchase->get_id(), $purchase->get_license_id() )
+											: sprintf( smliser__( 'Delete purchase request #%d, with its notes and receipt? This cannot be undone.' ), $purchase->get_id() ) ); ?>"
 										data-confirm-label="Delete" data-confirm-danger>
 										<input type="hidden" name="request_id" value="<?php echo escAttr( (string) $purchase->get_id() ); ?>">
 										<input type="hidden" name="status" value="<?php echo escAttr( $status ); ?>">
-										<button type="submit" class="smliser-row-action__delete">delete</button>
+										<button type="submit" class="smliser-row-action__delete"><?php smliser_esc_html_e( 'delete' ); ?></button>
 										<span class="notice" data-smliser-form-message hidden></span>
 									</form>
 								</div>
@@ -96,7 +96,7 @@ $last_filter = array_key_last( $filters );
 								<?php echo escHtml( $purchase->get_buyer_name() ); ?><br>
 								<small><?php echo escHtml( $purchase->get_buyer_email() ); ?></small>
 							</td>
-							<td><?php echo escHtml( $tier ? $tier->get_name() : sprintf( 'Deleted tier #%d', $purchase->get_tier_id() ) ); ?></td>
+							<td><?php echo escHtml( $tier ? $tier->get_name() : sprintf( smliser__( 'Deleted tier #%d' ), $purchase->get_tier_id() ) ); ?></td>
 							<td><?php echo escHtml( $purchase->get_price() ); ?></td>
 							<td><?php echo escHtml( ucfirst( $purchase->get_status() ) ); ?></td>
 							<td><?php echo escHtml( $purchase->get_created_at()?->format( smliser_datetime_format() ) ?? '' ); ?></td>

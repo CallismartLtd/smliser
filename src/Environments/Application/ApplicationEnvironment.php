@@ -383,7 +383,7 @@ class ApplicationEnvironment extends Environment {
 			$installer->mark_installed();
 			$resolver->refresh();
 		} catch ( \Throwable $e ) {
-			$resolver->fail_closed( 'Could not verify an existing installation: ' . $e->getMessage() );
+			$resolver->fail_closed( smliser__( 'Could not verify an existing installation: ' ) . $e->getMessage() );
 		}
 	}
 

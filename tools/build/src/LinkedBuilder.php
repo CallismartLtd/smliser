@@ -34,7 +34,7 @@ final class LinkedBuilder {
 	/**
 	 * Repository directories linked into the runtime directory.
 	 */
-	private const SOURCE_DIRS = [ 'src', 'templates', 'assets', 'themes' ];
+	private const SOURCE_DIRS = [ 'src', 'templates', 'assets', 'themes', 'languages' ];
 
 	/**
 	 * Constructor.
@@ -179,6 +179,7 @@ final class LinkedBuilder {
 			$target->templates_path() => 'templates',
 			$target->assets_path()    => 'assets',
 			$target->themes_path()    => 'themes',
+			$target->languages_path() => 'languages',
 			BuildContext::join( $target->composer_path(), 'vendor' ) => 'vendor',
 		];
 

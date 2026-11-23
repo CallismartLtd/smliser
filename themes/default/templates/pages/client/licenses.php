@@ -18,15 +18,15 @@ $tones = [
 	'suspended' => 'failure',
 ];
 ?>
-<p class="dash-lead">Licenses issued to you. Use the key on each site you activate.</p>
+<p class="dash-lead"><?php smliser_esc_html_e( 'Licenses issued to you. Use the key on each site you activate.' ); ?></p>
 
 <?php if ( [] === $licenses ) : ?>
 	<div class="cell">
-		<h3>No licenses yet</h3>
+		<h3><?php smliser_esc_html_e( 'No licenses yet' ); ?></h3>
 		<p>
 			<?php echo escHtml( $verified
-				? 'Licenses you buy appear here once they are issued.'
-				: 'Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up.' ); ?>
+				? smliser__( 'Licenses you buy appear here once they are issued.' )
+				: smliser__( 'Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up.' ) ); ?>
 		</p>
 	</div>
 <?php else : ?>
@@ -40,18 +40,18 @@ $tones = [
 
 				<dl class="record-facts">
 					<div>
-						<dt>License key</dt>
+						<dt><?php smliser_esc_html_e( 'License key' ); ?></dt>
 						<dd class="record-key">
 							<code><?php echo escHtml( $license['partial_key'] ); ?></code>
-							<button type="button" class="btn btn-small" data-copy="<?php echo escAttr( $license['key'] ); ?>">Copy key</button>
+							<button type="button" class="btn btn-small" data-copy="<?php echo escAttr( $license['key'] ); ?>"><?php smliser_esc_html_e( 'Copy key' ); ?></button>
 						</dd>
 					</div>
 					<div>
-						<dt>Expires</dt>
+						<dt><?php smliser_esc_html_e( 'Expires' ); ?></dt>
 						<dd><?php echo escHtml( $license['expires'] ); ?></dd>
 					</div>
 					<div>
-						<dt>Sites</dt>
+						<dt><?php smliser_esc_html_e( 'Sites' ); ?></dt>
 						<dd><?php echo escHtml( $license['sites'] ); ?></dd>
 					</div>
 				</dl>
@@ -59,11 +59,11 @@ $tones = [
 				<div class="record-actions">
 					<a class="btn btn-small" href="<?php echo escUrl( $license['document_url'] ); ?>" download>
 						<i class="ti ti-file-download" aria-hidden="true"></i>
-						<span>Download License</span>
+						<span><?php smliser_esc_html_e( 'Download License' ); ?></span>
 					</a>
 					<a class="btn btn-small" href="<?php echo escUrl( $license['app_download_url'] ); ?>" download>
 						<i class="ti ti-download" aria-hidden="true"></i>
-						<span>Download <?php echo escHtml( $license['app'] ); ?></span>
+						<span><?php smliser_esc_html_e( 'Download' ); ?> <?php echo escHtml( $license['app'] ); ?></span>
 					</a>
 				</div>
 			</li>

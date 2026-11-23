@@ -34,7 +34,7 @@ class LicenseDeactivatedEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'License Deactivated';
+		return smliser__( 'License Deactivated' );
 	}
 
 	protected function recipient() : string {
@@ -61,14 +61,23 @@ class LicenseDeactivatedEmail extends EmailTemplate {
 		$domain        = \escHtml( $vars['{{domain}}'] );
 		$support       = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			/* translators: %s: licensee name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $licensee_name ),
+			smliser_esc_html__( 'Your license has been deactivated from the domain below. You can reactivate it on the same or a different domain at any time.' ),
+			smliser_esc_html__( 'Deactivated Domain' ),
+			smliser_esc_html__( 'License Key' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not request this deactivation, please contact us immediately at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$licensee_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
-            Your license has been deactivated from the domain below.
-            You can reactivate it on the same or a different domain at any time.
+            {$i18n[1]}
         </p>
 
         <!-- Deactivation details card -->
@@ -82,7 +91,7 @@ class LicenseDeactivatedEmail extends EmailTemplate {
                             <td style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Deactivated Domain
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:15px;color:#1a1a2e;font-weight:600;">
                                     {$domain}
@@ -93,7 +102,7 @@ class LicenseDeactivatedEmail extends EmailTemplate {
                             <td style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    License Key
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;
                                            font-family:monospace;font-weight:600;letter-spacing:0.05em;">
@@ -107,17 +116,16 @@ class LicenseDeactivatedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not request this deactivation, please contact us immediately at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[4]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'License Deactivated';
+		return smliser__( 'License Deactivated' );
 	}
 	public function description() : string {
-		return 'Sent when a license is deactivated from a domain.';
+		return smliser__( 'Sent when a license is deactivated from a domain.' );
 	}
 	public static function preview() : static {
 		$license = License::from_array( [
@@ -132,14 +140,14 @@ class LicenseDeactivatedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{licensee_name}},',
+				'content'   => smliser__( 'Hi {{licensee_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
 			[
 				'id'        => 'intro',
 				'type'      => 'text',
-				'content'   => 'Your license has been deactivated from the domain below. You can reactivate it on the same or a different domain at any time.',
+				'content'   => smliser__( 'Your license has been deactivated from the domain below. You can reactivate it on the same or a different domain at any time.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -147,8 +155,8 @@ class LicenseDeactivatedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Deactivated Domain', 'value' => '{{domain}}' ],
-					[ 'label' => 'License Key',         'value' => '{{license_key}}' ],
+					[ 'label' => smliser__( 'Deactivated Domain' ), 'value' => '{{domain}}' ],
+					[ 'label' => smliser__( 'License Key' ),         'value' => '{{license_key}}' ],
 				],
 				'editable'  => true,
 				'removable' => false,
@@ -156,7 +164,7 @@ class LicenseDeactivatedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not request this deactivation, please contact us immediately at {{support_email}}.',
+				'content'   => smliser__( 'If you did not request this deactivation, please contact us immediately at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

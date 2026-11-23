@@ -50,9 +50,7 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 	 * shows when a request fails outright, so keep the two in sync.
 	 */
 	private const REMOTE_CHECK_ID    = 'remote_service_connection';
-	private const REMOTE_CHECK_LABEL = 'Update Server Connection';
 	private const CACHE_CHECK_ID     = 'cache_persistence';
-	private const CACHE_CHECK_LABEL  = 'Cache Persistence';
 
 	public function __construct(
 		protected HttpClient $http_client,
@@ -110,14 +108,14 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 		} catch ( \Throwable $e ) {
 			return $this->seed_response(
 				null,
-				$this->cache_failure( \sprintf( 'The "%s" cache adapter could not store a value: %s', $adapter_id, $e->getMessage() ) )
+				$this->cache_failure( \sprintf( smliser__( 'The "%s" cache adapter could not store a value: %s' ), $adapter_id, $e->getMessage() ) )
 			);
 		}
 
 		if ( ! $written ) {
 			return $this->seed_response(
 				null,
-				$this->cache_failure( \sprintf( 'The "%s" cache adapter could not store a value.', $adapter_id ) )
+				$this->cache_failure( \sprintf( smliser__( 'The "%s" cache adapter could not store a value.' ), $adapter_id ) )
 			);
 		}
 
@@ -141,7 +139,7 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 
 		if ( 1 !== \preg_match( '/^[a-f0-9]{32}$/', $token ) ) {
 			return Response::json(
-				data: [ 'message' => 'Missing or invalid cache probe token.' ],
+				data: [ 'message' => smliser__( 'Missing or invalid cache probe token.' ) ],
 				status_code: 400
 			);
 		}
@@ -160,22 +158,22 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 			$this->cache->delete( $key );
 		} catch ( \Throwable $e ) {
 			return $this->checks_response( [
-				$this->cache_failure( \sprintf( 'The "%s" cache adapter could not read a value: %s', $adapter_id, $e->getMessage() ) ),
+				$this->cache_failure( \sprintf( smliser__( 'The "%s" cache adapter could not read a value: %s' ), $adapter_id, $e->getMessage() ) ),
 			] );
 		}
 
 		if ( $read !== $token ) {
 			$message = RuntimeCacheAdapter::get_id() === $adapter_id
-				? 'The active cache adapter is the in-memory runtime cache, so a value written in one request was gone in the next.'
-				: \sprintf( 'A value written to the "%s" cache adapter in one request was gone in the next.', $adapter_id );
+				? smliser__( 'The active cache adapter is the in-memory runtime cache, so a value written in one request was gone in the next.' )
+				: \sprintf( smliser__( 'A value written to the "%s" cache adapter in one request was gone in the next.' ), $adapter_id );
 
 			return $this->checks_response( [
 				$this->make_check(
 					self::CACHE_CHECK_ID,
-					self::CACHE_CHECK_LABEL,
+					smliser__( 'Cache Persistence' ),
 					'critical',
-					$message . ' Password resets, email OTPs and rate limiting cannot work reliably.',
-					'Configure Redis, Memcached, APCu or SQLite as the cache adapter, and check that its backing service is running and not evicting keys.'
+					$message . smliser__( ' Password resets, email OTPs and rate limiting cannot work reliably.' ),
+					smliser__( 'Configure Redis, Memcached, APCu or SQLite as the cache adapter, and check that its backing service is running and not evicting keys.' )
 				),
 			] );
 		}
@@ -183,10 +181,10 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 		return $this->checks_response( [
 			$this->make_check(
 				self::CACHE_CHECK_ID,
-				self::CACHE_CHECK_LABEL,
+				smliser__( 'Cache Persistence' ),
 				'pass',
 				\sprintf(
-					'The "%s" cache adapter kept a value between two separate requests, so password resets, email OTPs and rate limiting can rely on it.',
+					smliser__( 'The "%s" cache adapter kept a value between two separate requests, so password resets, email OTPs and rate limiting can rely on it.' ),
 					$adapter_id
 				)
 			),
@@ -217,28 +215,28 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 		} catch ( HttpTimeoutException $e ) {
 			return $this->make_check(
 				self::REMOTE_CHECK_ID,
-				self::REMOTE_CHECK_LABEL,
+				smliser__( 'Update Server Connection' ),
 				'critical',
 				\sprintf(
-					'Request to the update server %s timed out after %d seconds (%s). Automatic updates will fail until the server can reach it.',
+					smliser__( 'Request to the update server %s timed out after %d seconds (%s). Automatic updates will fail until the server can reach it.' ),
 					self::DEPENDENT_HOST,
 					self::PROBE_TIMEOUT,
 					$adapter
 				),
-				'Check that the server firewall allows outbound HTTPS traffic and that DNS resolves the host.'
+				smliser__( 'Check that the server firewall allows outbound HTTPS traffic and that DNS resolves the host.' )
 			);
 		} catch ( \Throwable $e ) {
 			return $this->make_check(
 				self::REMOTE_CHECK_ID,
-				self::REMOTE_CHECK_LABEL,
+				smliser__( 'Update Server Connection' ),
 				'critical',
 				\sprintf(
-					'Could not reach the update server %s (%s), so automatic updates will fail: %s',
+					smliser__( 'Could not reach the update server %s (%s), so automatic updates will fail: %s' ),
 					self::DEPENDENT_HOST,
 					$adapter,
 					$e->getMessage()
 				),
-				'Check outbound HTTPS access, DNS resolution, and the server\'s CA certificate bundle.'
+				smliser__( 'Check outbound HTTPS access, DNS resolution, and the server\'s CA certificate bundle.' )
 			);
 		}
 
@@ -247,23 +245,23 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 		if ( ! $response->is_success() ) {
 			return $this->make_check(
 				self::REMOTE_CHECK_ID,
-				self::REMOTE_CHECK_LABEL,
+				smliser__( 'Update Server Connection' ),
 				'warning',
 				\sprintf(
-					'The update server %s is reachable but did not return a success response (%d ms, %s). Update checks may fail until it recovers.',
+					smliser__( 'The update server %s is reachable but did not return a success response (%d ms, %s). Update checks may fail until it recovers.' ),
 					self::DEPENDENT_HOST,
 					$elapsed_ms,
 					$adapter
 				),
-				'The connection works; the update server may be down or rejecting requests. Retry later before changing server configuration.'
+				smliser__( 'The connection works; the update server may be down or rejecting requests. Retry later before changing server configuration.' )
 			);
 		}
 
 		return $this->make_check(
 			self::REMOTE_CHECK_ID,
-			self::REMOTE_CHECK_LABEL,
+			smliser__( 'Update Server Connection' ),
 			'pass',
-			\sprintf( 'Reached the update server %s in %d ms via %s.', self::DEPENDENT_HOST, $elapsed_ms, $adapter )
+			\sprintf( smliser__( 'Reached the update server %s in %d ms via %s.' ), self::DEPENDENT_HOST, $elapsed_ms, $adapter )
 		);
 	}
 
@@ -281,15 +279,15 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 
 		if ( ! $this->cache->is_supported() ) {
 			return $this->cache_failure(
-				\sprintf( 'The active "%s" cache adapter cannot run on this server.', $adapter_id ),
-				'Enable the PHP extension this adapter requires, or select a different adapter.'
+				\sprintf( smliser__( 'The active "%s" cache adapter cannot run on this server.' ), $adapter_id ),
+				smliser__( 'Enable the PHP extension this adapter requires, or select a different adapter.' )
 			);
 		}
 
 		if ( ! $this->cache->is_active() ) {
 			return $this->cache_failure(
-				\sprintf( 'The "%s" cache adapter is configured but not active.', $adapter_id ),
-				'Check the adapter\'s connection settings (host, port, credentials) in the cache settings.'
+				\sprintf( smliser__( 'The "%s" cache adapter is configured but not active.' ), $adapter_id ),
+				smliser__( 'Check the adapter\'s connection settings (host, port, credentials) in the cache settings.' )
 			);
 		}
 
@@ -312,10 +310,10 @@ class SystemManagement implements SystemSettingsHandlerInterface {
 	private function cache_failure( string $message, ?string $recommendation = null ) : array {
 		return $this->make_check(
 			self::CACHE_CHECK_ID,
-			self::CACHE_CHECK_LABEL,
+			smliser__( 'Cache Persistence' ),
 			'critical',
 			$message,
-			$recommendation ?? 'Check the adapter\'s connection settings and that its backing service is running.'
+			$recommendation ?? smliser__( 'Check the adapter\'s connection settings and that its backing service is running.' )
 		);
 	}
 

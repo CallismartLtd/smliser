@@ -10,10 +10,10 @@
 
 // The theme's own assets: enqueued before head(), which prints them with the page's.
 $this->enqueue_style( 'style', 'css/theme.css' );
-$this->enqueue_script( 'script', 'js/theme.js' );
+$this->enqueue_script( 'script', 'js/theme.js', [ 'i18n' ] );
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html <?php echo smliser_language_attributes(); // phpcs:ignore -- escaped. ?>>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -20,6 +20,7 @@ It ships with a UI and tooling to monitor app usage and licensing, monetize your
   - [As a WordPress Plugin](#as-a-wordpress-plugin)
   - [As a Standalone Application](#as-a-standalone-application)
 - [Configuration](#configuration)
+- [Translations](#translations)
 - [License](#license)
 
 ---
@@ -39,6 +40,7 @@ It ships with a UI and tooling to monitor app usage and licensing, monetize your
 - **Versioned REST API** — a dedicated, versioned API layer for licenses, hosted apps, and bulk messaging.
 - **Pluggable email delivery** — 8 supported providers out of the box.
 - **Pluggable caching layer** — 5 supported cache adapters out of the box.
+- **Translatable** — gettext-based translations (PO/MO), per-user and per-site language, right-to-left support, plural rules for every language. See [docs/i18n.md](docs/i18n.md).
 - **Modern PHP** — built for PHP 8.4+, including PHP 8.5.
 
 ## Requirements
@@ -123,6 +125,18 @@ wp plugin install https://apiv1.callismart.com.ng/downloads/wpplugin/smart-licen
 ## Configuration
 
 Configuration details (database connection, cache adapter selection, email provider setup) will be documented here once the configuration reference is finalized.
+
+## Translations
+
+The interface can be translated into any language with standard gettext tools (Poedit, Weblate, Crowdin, Loco Translate). Administrators pick the site language under **Settings → General**, and each user can choose their own from the language picker. To add a language:
+
+```bash
+smliser i18n make-pot
+smliser i18n init fr_FR    # translate languages/smliser-fr_FR.po
+smliser i18n compile fr_FR
+```
+
+See [docs/i18n.md](docs/i18n.md) for the developer and translator guide.
 
 ## License
 

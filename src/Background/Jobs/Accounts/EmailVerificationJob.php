@@ -41,11 +41,11 @@ class EmailVerificationJob implements JobHandlerInterface {
 		$user = User::get_by_id( (int) ( $payload['user_id'] ?? 0 ) );
 
 		if ( ! $user ) {
-			return [ 'success' => false, 'message' => 'User does not exist.' ];
+			return [ 'success' => false, 'message' => smliser__( 'User does not exist.' ) ];
 		}
 
 		if ( $user->is_email_verified() ) {
-			return [ 'success' => true, 'message' => 'The email address is already verified.' ];
+			return [ 'success' => true, 'message' => smliser__( 'The email address is already verified.' ) ];
 		}
 
 		// The verification page (AuthPages::verify_email()).
@@ -54,7 +54,7 @@ class EmailVerificationJob implements JobHandlerInterface {
 		$message = ( new VerifyEmailEmail( $user, $user->get_email(), (string) $verify_url, EmailVerificationToken::TTL_HOURS ) )->to_message();
 
 		if ( null === $message ) {
-			return [ 'success' => false, 'message' => 'The "Verify Email" template is disabled.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The "Verify Email" template is disabled.' ) ];
 		}
 
 		return $this->mailer->send( $message )->to_array();
@@ -64,13 +64,13 @@ class EmailVerificationJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Email Verification';
+		return smliser__( 'Send Email Verification' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously send a user a link to verify their email address.';
+		return smliser__( 'Asynchronously send a user a link to verify their email address.' );
 	}
 }

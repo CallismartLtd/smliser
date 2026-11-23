@@ -56,13 +56,13 @@ class OrganizationInviteEmailJob implements JobHandlerInterface {
 		$email = (string) ( $payload['email'] ?? '' );
 
 		if ( '' === $token || false === filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-			return [ 'success' => false, 'message' => 'The invitation payload is incomplete.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The invitation payload is incomplete.' ) ];
 		}
 
 		$organization = Organization::get_by_id( (int) ( $payload['organization_id'] ?? 0 ) );
 
 		if ( ! $organization ) {
-			return [ 'success' => false, 'message' => 'The organization no longer exists.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The organization no longer exists.' ) ];
 		}
 
 		$owner   = ContextServiceProvider::get_owner_for( $organization ) ?? ContextServiceProvider::ensure_owner( $organization );
@@ -80,7 +80,7 @@ class OrganizationInviteEmailJob implements JobHandlerInterface {
 		) )->to_message();
 
 		if ( null === $message ) {
-			return [ 'success' => false, 'message' => 'The "Organization Invite" template is disabled.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The "Organization Invite" template is disabled.' ) ];
 		}
 
 		return $this->mailer->send( $message )->to_array();
@@ -90,13 +90,13 @@ class OrganizationInviteEmailJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Organization Invitation';
+		return smliser__( 'Send Organization Invitation' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Email someone a link to join an organization.';
+		return smliser__( 'Email someone a link to join an organization.' );
 	}
 }

@@ -64,7 +64,7 @@ class EmailOtpJob implements JobHandlerInterface {
 		$code = $this->factors->open_code( (string) ( $payload['code'] ?? '' ) );
 
 		if ( null === $code ) {
-			return [ 'success' => false, 'message' => 'The verification code could not be read.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The verification code could not be read.' ) ];
 		}
 
 		$email = new EmailOtpEmail(
@@ -82,7 +82,7 @@ class EmailOtpJob implements JobHandlerInterface {
 		$message = $email->to_message();
 
 		if ( null === $message ) {
-			return [ 'success' => false, 'message' => 'The "Email Verification Code" template is disabled.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The "Email Verification Code" template is disabled.' ) ];
 		}
 
 		$response = $this->mailer->send( $message );
@@ -104,10 +104,10 @@ class EmailOtpJob implements JobHandlerInterface {
 	 */
 	protected static function purpose_label( string $purpose ) : string {
 		return match ( $purpose ) {
-			'login_email'   => 'Sign-in verification code',
-			'enroll_email'  => 'Enable email two-factor authentication',
-			'disable_email' => 'Disable email two-factor authentication',
-			default         => 'Verification code',
+			'login_email'   => smliser__( 'Sign-in verification code' ),
+			'enroll_email'  => smliser__( 'Enable email two-factor authentication' ),
+			'disable_email' => smliser__( 'Disable email two-factor authentication' ),
+			default         => smliser__( 'Verification code' ),
 		};
 	}
 
@@ -115,13 +115,13 @@ class EmailOtpJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Email Verification Code';
+		return smliser__( 'Send Email Verification Code' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously send a one-time sign-in or two-factor confirmation code by email.';
+		return smliser__( 'Asynchronously send a one-time sign-in or two-factor confirmation code by email.' );
 	}
 }

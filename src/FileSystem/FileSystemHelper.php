@@ -478,12 +478,12 @@ class FileSystemHelper {
 		}
 
 		if ( false !== strpos( $path, "\0" ) ) {
-			return new Exception( 'invalid_path', 'Null bytes are not allowed.' );
+			return new Exception( 'invalid_path', smliser__( 'Null bytes are not allowed.' ) );
 		}
 
 		// Catch encoded traversal attempts on raw input: %2e, %252e, &#46;, &#x2e; etc.
 		if ( preg_match( '/(%[0-9a-fA-F]{2}|&#\d+;|&#x[0-9a-fA-F]+;)/i', $path ) ) {
-			return new Exception( 'invalid_path', 'Encoded characters are not allowed.' );
+			return new Exception( 'invalid_path', smliser__( 'Encoded characters are not allowed.' ) );
 		}
 
 		$path                   = str_replace( '\\', '/', $path );
@@ -538,12 +538,12 @@ class FileSystemHelper {
 
 			// Block any segment containing ".." (e.g., "..", "wp-content..", "..foo").
 			if ( str_contains( $segment, '..' ) ) {
-				return new Exception( 'invalid_path', 'Directory traversal sequences are not allowed.' );
+				return new Exception( 'invalid_path', smliser__( 'Directory traversal sequences are not allowed.' ) );
 			}
 
 			// Block dot-only segments (catches "...", "....", etc. not caught above).
 			if ( preg_match( '/^\.+$/', $segment ) ) {
-				return new Exception( 'invalid_path', 'Dot-only path segments are not allowed.' );
+				return new Exception( 'invalid_path', smliser__( 'Dot-only path segments are not allowed.' ) );
 			}
 
 			// Block trailing dots ("wp-content.", "file.png." etc.).

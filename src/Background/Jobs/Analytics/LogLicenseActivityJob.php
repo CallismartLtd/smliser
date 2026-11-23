@@ -65,13 +65,13 @@ class LogLicenseActivityJob implements JobHandlerInterface {
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Log License Activity';
+		return smliser__( 'Log License Activity' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously appends a license activity entry to the activity log.';
+		return smliser__( 'Asynchronously appends a license activity entry to the activity log.' );
 	}
 }

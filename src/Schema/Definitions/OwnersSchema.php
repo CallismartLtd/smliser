@@ -15,11 +15,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class OwnersSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Owners';
+		return smliser__( 'Owners' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores resource owners.';
+		return smliser__( 'Stores resource owners.' );
 	}
 
 	public static function get_table_name() : string {

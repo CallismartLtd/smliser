@@ -93,7 +93,7 @@ final class ExtensionManager implements ModuleManager {
 		}
 
 		if ( 1 !== preg_match( Extension::SLUG_PATTERN, $slug ) || ! $this->fs->is_dir( $this->installed_dir . '/' . $slug ) ) {
-			throw new ExtensionException( sprintf( 'The extension "%s" is not installed.', $slug ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension "%s" is not installed.' ), $slug ) );
 		}
 
 		return $this->loaded[ $slug ] = Extension::from_directory( $this->fs, $this->installed_dir . '/' . $slug );
@@ -121,13 +121,13 @@ final class ExtensionManager implements ModuleManager {
 				$extension = $this->find( $slug );
 
 				if ( ! $extension->supports( $this->app_version ) ) {
-					throw new ExtensionException( sprintf( 'The extension "%s" requires app version %s or later; this is %s.', $slug, (string) $extension->requires, $this->app_version ) );
+					throw new ExtensionException( sprintf( smliser__( 'The extension "%s" requires app version %s or later; this is %s.' ), $slug, (string) $extension->requires, $this->app_version ) );
 				}
 
 				$key = strtolower( $extension->namespace );
 
 				if ( isset( $namespaces[ $key ] ) ) {
-					throw new ExtensionException( sprintf( 'The namespace "%s" of the extension "%s" is already used by "%s".', $extension->namespace, $slug, $namespaces[ $key ] ) );
+					throw new ExtensionException( sprintf( smliser__( 'The namespace "%s" of the extension "%s" is already used by "%s".' ), $extension->namespace, $slug, $namespaces[ $key ] ) );
 				}
 
 				$namespaces[ $key ]  = $slug;
@@ -144,7 +144,7 @@ final class ExtensionManager implements ModuleManager {
 			foreach ( $candidates as $slug => $extension ) {
 				foreach ( $extension->depends as $dependency ) {
 					if ( ! isset( $candidates[ $dependency ] ) ) {
-						$skipped[ $slug ] = sprintf( 'The extension "%s" requires "%s", which is not enabled or cannot be loaded.', $slug, $dependency );
+						$skipped[ $slug ] = sprintf( smliser__( 'The extension "%s" requires "%s", which is not enabled or cannot be loaded.' ), $slug, $dependency );
 						unset( $candidates[ $slug ] );
 						$changed = true;
 						continue 2;
@@ -175,7 +175,7 @@ final class ExtensionManager implements ModuleManager {
 
 			if ( ! $progress ) {
 				foreach ( array_keys( $remaining ) as $slug ) {
-					$skipped[ $slug ] = sprintf( 'The extension "%s" is part of, or depends on, a dependency cycle.', $slug );
+					$skipped[ $slug ] = sprintf( smliser__( 'The extension "%s" is part of, or depends on, a dependency cycle.' ), $slug );
 				}
 
 				break;
@@ -332,14 +332,14 @@ final class ExtensionManager implements ModuleManager {
 		$extension = $this->find( $slug );
 
 		if ( ! $extension->supports( $this->app_version ) ) {
-			throw new ExtensionException( sprintf( 'The extension "%s" requires app version %s or later; this is %s.', $slug, (string) $extension->requires, $this->app_version ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension "%s" requires app version %s or later; this is %s.' ), $slug, (string) $extension->requires, $this->app_version ) );
 		}
 
 		$enabled = $this->enabled_slugs();
 
 		foreach ( $extension->depends as $dependency ) {
 			if ( ! in_array( $dependency, $enabled, true ) ) {
-				throw new ExtensionException( sprintf( 'Enable the extension "%s" first: "%s" requires it.', $dependency, $slug ) );
+				throw new ExtensionException( sprintf( smliser__( 'Enable the extension "%s" first: "%s" requires it.' ), $dependency, $slug ) );
 			}
 		}
 
@@ -355,7 +355,7 @@ final class ExtensionManager implements ModuleManager {
 			}
 
 			if ( 0 === strcasecmp( $other_extension->namespace, $extension->namespace ) ) {
-				throw new ExtensionException( sprintf( 'The namespace "%s" of the extension "%s" is already used by the enabled extension "%s".', $extension->namespace, $slug, $other ) );
+				throw new ExtensionException( sprintf( smliser__( 'The namespace "%s" of the extension "%s" is already used by the enabled extension "%s".' ), $extension->namespace, $slug, $other ) );
 			}
 		}
 
@@ -386,7 +386,7 @@ final class ExtensionManager implements ModuleManager {
 		$dependents = $this->dependents( $slug );
 
 		if ( [] !== $dependents ) {
-			throw new ExtensionException( sprintf( 'The extension "%s" is required by %s; disable that first.', $slug, implode( ', ', $dependents ) ) );
+			throw new ExtensionException( sprintf( smliser__( 'The extension "%s" is required by %s; disable that first.' ), $slug, implode( ', ', $dependents ) ) );
 		}
 
 		$this->write_enabled( array_values( array_diff( $enabled, [ $slug ] ) ) );
@@ -403,7 +403,7 @@ final class ExtensionManager implements ModuleManager {
 		$record = (string) json_encode( [ 'enabled' => array_values( $slugs ) ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
 
 		if ( ! $this->fs->put_contents( $this->enabled_file, $record . "\n" ) ) {
-			throw new ExtensionException( sprintf( 'Could not write %s; check the permissions of the storage folder.', $this->enabled_file ) );
+			throw new ExtensionException( sprintf( smliser__( 'Could not write %s; check the permissions of the storage folder.' ), $this->enabled_file ) );
 		}
 	}
 

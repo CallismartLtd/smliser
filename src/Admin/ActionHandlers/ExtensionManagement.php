@@ -59,7 +59,7 @@ class ExtensionManagement {
 		return $this->run( function () use ( $request ) : Response {
 			$extension = $this->extensions->enable( $this->slug( $request ) );
 
-			return $this->ok( \sprintf( '%s is enabled and loads from the next request on.', $extension->name ) );
+			return $this->ok( \sprintf( smliser__( '%s is enabled and loads from the next request on.' ), $extension->name ) );
 		} );
 	}
 
@@ -77,7 +77,7 @@ class ExtensionManagement {
 
 			$this->extensions->disable( $slug );
 
-			return $this->ok( \sprintf( 'The extension "%s" is disabled and stops loading from the next request on.', $slug ) );
+			return $this->ok( \sprintf( smliser__( 'The extension "%s" is disabled and stops loading from the next request on.' ), $slug ) );
 		} );
 	}
 
@@ -97,7 +97,7 @@ class ExtensionManagement {
 			$result = $this->installer->install_from_marketplace( $slug );
 
 			if ( null === $result ) {
-				return $this->ok( \sprintf( 'The extension "%s" is already the latest version.', $slug ) );
+				return $this->ok( \sprintf( smliser__( 'The extension "%s" is already the latest version.' ), $slug ) );
 			}
 
 			return $this->installed( $result, '1' === (string) $request->get( 'enable', '' ) );
@@ -120,7 +120,7 @@ class ExtensionManagement {
 			$package = $request->get_file( 'package' );
 
 			if ( null === $package ) {
-				return $this->fail( 'Choose the extension package (.zip) to upload.', 400 );
+				return $this->fail( smliser__( 'Choose the extension package (.zip) to upload.' ), 400 );
 			}
 
 			$result = $this->installer->install_upload(
@@ -149,7 +149,7 @@ class ExtensionManagement {
 			$result = $this->installer->update( $slug );
 
 			return null === $result
-				? $this->ok( \sprintf( 'The extension "%s" is up to date.', $slug ) )
+				? $this->ok( \sprintf( smliser__( 'The extension "%s" is up to date.' ), $slug ) )
 				: $this->installed( $result, false );
 		} );
 	}
@@ -169,10 +169,10 @@ class ExtensionManagement {
 			$failed    = \count( \array_filter( $updates, static fn ( array $u ) : bool => null !== $u['error'] ) );
 
 			$message = match ( true ) {
-				[] === $updates => 'No installed extension comes from the marketplace.',
-				$failed > 0     => \sprintf( 'The marketplace could not be asked about %d extension(s); see the status of each card.', $failed ),
-				$available > 0  => \sprintf( '%d extension update(s) available.', $available ),
-				default         => 'Every marketplace extension is up to date.',
+				[] === $updates => smliser__( 'No installed extension comes from the marketplace.' ),
+				$failed > 0     => \sprintf( smliser__( 'The marketplace could not be asked about %d extension(s); see the status of each card.' ), $failed ),
+				$available > 0  => \sprintf( smliser__( '%d extension update(s) available.' ), $available ),
+				default         => smliser__( 'Every marketplace extension is up to date.' ),
 			};
 
 			return $this->ok( $message, [ 'updates' => $updates ] );
@@ -199,7 +199,7 @@ class ExtensionManagement {
 			);
 
 			return $this->ok(
-				'The marketplace was read.',
+				smliser__( 'The marketplace was read.' ),
 				[
 					'modules'    => $listing[ ExtensionInstaller::LIST_KEY ],
 					'pagination' => $listing['pagination'],
@@ -221,7 +221,7 @@ class ExtensionManagement {
 			$slug     = $this->slug( $request );
 			$warnings = $this->installer->remove_extension( $slug );
 
-			return $this->ok( \sprintf( 'The extension "%s" was removed.', $slug ), [ 'warnings' => $warnings ] );
+			return $this->ok( \sprintf( smliser__( 'The extension "%s" was removed.' ), $slug ), [ 'warnings' => $warnings ] );
 		} );
 	}
 
@@ -242,7 +242,7 @@ class ExtensionManagement {
 				$lines[] = \sprintf( '%s: %s', $slug, $result );
 			}
 
-			return $this->ok( [] === $lines ? 'No extension is installed.' : 'Extension assets published: ' . \implode( '; ', $lines ) . '.' );
+			return $this->ok( [] === $lines ? smliser__( 'No extension is installed.' ) : smliser__( 'Extension assets published: ' ) . \implode( '; ', $lines ) . '.' );
 		} );
 	}
 
@@ -262,7 +262,7 @@ class ExtensionManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( null === $principal || ! $principal->is( 'system_admin' ) ) {
-			return $this->fail( 'Only system administrators can manage extensions.', 403 );
+			return $this->fail( smliser__( 'Only system administrators can manage extensions.' ), 403 );
 		}
 
 		try {
@@ -285,16 +285,16 @@ class ExtensionManagement {
 	private function installed( array $result, bool $enable ) : Response {
 		$extension = $result['extension'];
 		$message   = null === $result['previous']
-			? \sprintf( 'Installed %s %s.', $extension->name, $extension->version )
-			: \sprintf( 'Updated %s from %s to %s.', $extension->name, $result['previous'], $extension->version );
+			? \sprintf( smliser__( 'Installed %s %s.' ), $extension->name, $extension->version )
+			: \sprintf( smliser__( 'Updated %s from %s to %s.' ), $extension->name, $result['previous'], $extension->version );
 
 		if ( $enable ) {
 			try {
 				$this->extensions->enable( $extension->slug );
 
-				$message .= ' It is enabled and loads from the next request on.';
+				$message .= smliser__( ' It is enabled and loads from the next request on.' );
 			} catch ( ExtensionException $e ) {
-				$message .= ' It was not enabled: ' . $e->getMessage();
+				$message .= smliser__( ' It was not enabled: ' ) . $e->getMessage();
 			}
 		}
 
@@ -312,7 +312,7 @@ class ExtensionManagement {
 		$slug = \trim( (string) $request->get( 'slug', '' ) );
 
 		if ( '' === $slug ) {
-			throw new ExtensionException( 'Name the extension (its slug).' );
+			throw new ExtensionException( smliser__( 'Name the extension (its slug).' ) );
 		}
 
 		return $slug;

@@ -555,7 +555,7 @@ class Scheduler {
 			[ $this->core_schedules, 'markExpiredLicenses' ]
 		)
 			->daily_at( '00:30' )
-			->label( 'Expire Licenses' );
+			->label( smliser__( 'Expire Licenses' ) );
 
 		// Send 7-day expiry reminder to licensees.
 		$this->call(
@@ -563,7 +563,7 @@ class Scheduler {
 			[ $this->core_schedules, 'sendExpiringLicense7Days' ]
 		)
 			->daily_at( '08:00' )
-			->label( 'License Expiry Reminder - 7 Days' );
+			->label( smliser__( 'License Expiry Reminder - 7 Days' ) );
 
 		// Send 3-day expiry reminder to licensees.
 		$this->call(
@@ -571,7 +571,7 @@ class Scheduler {
 			[ $this->core_schedules, 'sendExpiringLicense3Days' ]
 		)
 			->daily_at( '08:00' )
-			->label( 'License Expiry Reminder - 3 Days' );
+			->label( smliser__( 'License Expiry Reminder - 3 Days' ) );
 
 		// Prune orphaned license meta rows weekly.
 		$this->call(
@@ -579,7 +579,7 @@ class Scheduler {
 			[ $this->core_schedules, 'pruneOphanedLicenseMeta' ]
 		)
 			->weekly_on( 'sunday', '04:00' )
-			->label( 'Prune License Meta' );
+			->label( smliser__( 'Prune License Meta' ) );
 
 		// Clean expired download tokens every 4 hours.
 		$this->call(
@@ -587,7 +587,7 @@ class Scheduler {
 			[ $this->core_schedules, 'pruneExpiredDownloadtoken' ]
 		)
 			->every_hours( 4 )
-			->label( 'Clean Expired Download Tokens' );
+			->label( smliser__( 'Clean Expired Download Tokens' ) );
 
 		// Permanently delete trashed apps older than 30 days - weekly.
 		$this->call(
@@ -595,7 +595,7 @@ class Scheduler {
 			[ $this->core_schedules, 'deleteTrashedApps' ]
 		)
 			->weekly_on( 'sunday', '05:00' )
-			->label( 'Clean Trashed Apps' );
+			->label( smliser__( 'Clean Trashed Apps' ) );
 
 		// Delete purchase receipts past their retention, and orphaned ones - daily.
 		$this->call(
@@ -603,7 +603,7 @@ class Scheduler {
 			[ $this->core_schedules, 'cleanPurchaseReceipts' ]
 		)
 			->daily_at( '05:30' )
-			->label( 'Clean Purchase Receipts' );
+			->label( smliser__( 'Clean Purchase Receipts' ) );
 
 		// Release stale running jobs every 15 minutes.
 		$this->call(
@@ -611,7 +611,7 @@ class Scheduler {
 			[ $this->core_schedules, 'releaseStaleJobs' ]
 		)
 			->every_minutes( 15 )
-			->label( 'Release Stale Running Jobs' );
+			->label( smliser__( 'Release Stale Running Jobs' ) );
 
 		// Check for updates twice a day; queues the automatic update when allowed.
 		// An interval rather than fixed times spreads installations' requests to the update server.
@@ -620,7 +620,7 @@ class Scheduler {
 			[ $this->core_schedules, 'checkForUpdates' ]
 		)
 			->every_hours( 12 )
-			->label( 'Check for Updates' );
+			->label( smliser__( 'Check for Updates' ) );
 
 		// Purge completed jobs older than log retention days, nightly.
 		$this->call(
@@ -628,7 +628,7 @@ class Scheduler {
 			[ $this->core_schedules, 'purgeCompletedJobs' ]
 		)
 			->daily_at( '01:00' )
-			->label( 'Purge Completed Jobs' );
+			->label( smliser__( 'Purge Completed Jobs' ) );
 
 		// Purge failed jobs older than log retention days, nightly.
 		$this->call(
@@ -636,6 +636,6 @@ class Scheduler {
 			[ $this->core_schedules, 'purgeFailedJobs' ]
 		)
 			->daily_at( '03:00' )
-			->label( 'Purge Failed Jobs' );
+			->label( smliser__( 'Purge Failed Jobs' ) );
 	}
 }

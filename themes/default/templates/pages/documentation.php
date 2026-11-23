@@ -17,8 +17,8 @@
 </div>
 
 <?php if ( [] !== $categories ) : ?>
-	<nav class="pills" aria-label="Categories">
-		<a href="<?php echo escUrl( $this->url( 'documentation' )->url() ); ?>"<?php echo null === $category ? ' aria-current="page"' : ''; ?>>All</a>
+	<nav class="pills" aria-label="<?php smliser_esc_attr_e( 'Categories' ); ?>">
+		<a href="<?php echo escUrl( $this->url( 'documentation' )->url() ); ?>"<?php echo null === $category ? ' aria-current="page"' : ''; ?>><?php smliser_esc_html_e( 'All' ); ?></a>
 		<?php foreach ( $categories as $key => $label ) : ?>
 			<a href="<?php echo escUrl( $this->url( 'documentation/' . $key . '/' )->url() ); ?>"<?php echo $key === $category ? ' aria-current="page"' : ''; ?>><?php echo escHtml( $label ); ?></a>
 		<?php endforeach; ?>
@@ -26,7 +26,7 @@
 <?php endif; ?>
 
 <?php if ( [] === $versions ) : ?>
-	<p class="muted">No routes are registered.</p>
+	<p class="muted"><?php smliser_esc_html_e( 'No routes are registered.' ); ?></p>
 <?php endif; ?>
 
 <?php foreach ( $versions as $namespace => $groups ) : ?>

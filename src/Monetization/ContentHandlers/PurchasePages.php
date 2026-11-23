@@ -70,7 +70,7 @@ class PurchasePages {
 			$status = (int) ( $tier->get_error_data()['status'] ?? 404 );
 
 			return View::make( 'purchase', [ 'unavailable' => $tier->get_error_message() ], $status )
-				->set_title( 'Not available' )
+				->set_title( smliser__( 'Not available' ) )
 				->set_header( 'Cache-Control', 'no-store' );
 		}
 
@@ -100,7 +100,7 @@ class PurchasePages {
 				'max_bytes'    => PurchaseRequestService::MAX_RECEIPT_BYTES,
 			]
 		)
-			->set_title( sprintf( 'Buy %s — %s', (string) $app?->get_name(), $tier->get_name() ) )
+			->set_title( sprintf( smliser__( 'Buy %s — %s' ), (string) $app?->get_name(), $tier->get_name() ) )
 			->set_header( 'Cache-Control', 'no-store' )
 			->add_script( View::FORMS_SCRIPT )
 			->add_script( View::UPLOADER_ASSET )

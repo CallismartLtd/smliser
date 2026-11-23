@@ -83,11 +83,11 @@ class RepositoryPage implements AdminPageInterface {
 			$add_url = $add_url->add_query_param( 'type', $current_url->get_query_param( 'type' ) );
 		}
 
-		$page_title        = '' === (string) $type ? 'Repository' : \sprintf( '%s Repository', HostedAppsRegistry::instance()->get_app_type_label( (string) $type ) );
+		$page_title        = '' === (string) $type ? smliser__( 'Repository' ) : \sprintf( '%s Repository', HostedAppsRegistry::instance()->get_app_type_label( (string) $type ) );
 		$app_type_actions = $this->app_type_actions( (string) $type );
 
 		if ( $has_status ) {
-			$page_title = sprintf( 'Status: %s', $status );
+			$page_title = sprintf( smliser__( 'Status: %s' ), $status );
 		}
 
 		$urlmanager = $this->urlmanager;
@@ -144,17 +144,17 @@ class RepositoryPage implements AdminPageInterface {
 		$menu_args = [
 			'breadcrumbs' => [
 				[
-					'title' => 'Repository',
-					'label' => 'Repository',
+					'title' => smliser__( 'Repository' ),
+					'label' => smliser__( 'Repository' ),
 					'url'   => $this->urlmanager->admin_repo_url()->url()
 				],
-				[ 'label' => 'Search Repository' ]
+				[ 'label' => smliser__( 'Search Repository' ) ]
 			],
 			'actions' => array_merge(
 				[
 					[
-						'title' => 'Upload New Application',
-						'label' => 'Upload New',
+						'title' => smliser__( 'Upload New Application' ),
+						'label' => smliser__( 'Upload New' ),
 						'url'   => $add_url->url(),
 						'icon'  => 'ti ti-upload',
 					],
@@ -176,20 +176,20 @@ class RepositoryPage implements AdminPageInterface {
 		$type = $request->get( 'type', null );
 
 		if ( $type && ! HostedApplicationService::app_type_is_allowed( $type ) ) {
-			echo smliser_not_found_container( 'This hosted app type is not registered.' );
+			echo smliser_not_found_container( smliser__( 'This hosted app type is not registered.' ) );
 			return;
 		}
 
 		$slug = $type ? 'uploader' : 'upload';
 
 		$type_title = $type ? HostedAppsRegistry::instance()->get_app_type_label( $type ) : '';
-		$title      = \sprintf( 'Upload New %s', $type_title );
+		$title      = \sprintf( smliser__( 'Upload New %s' ), $type_title );
 		$app_type_options = $this->app_type_options();
 
 		$essential_fields = self::prepare_essential_app_fields( $request );
 		$app_action       = [
-			'title' => 'Repository',
-			'label' => 'Repository',
+			'title' => smliser__( 'Repository' ),
+			'label' => smliser__( 'Repository' ),
 			'url'   => $this->urlmanager->admin_repo_url(),
 			'icon'  => 'ti ti-arrow-back'
 		];
@@ -232,8 +232,8 @@ class RepositoryPage implements AdminPageInterface {
 		}
 
 		$app_action = [
-			'title' => 'View App',
-			'label' => 'View App',
+			'title' => smliser__( 'View App' ),
+			'label' => smliser__( 'View App' ),
 			'url'   => smliser_get_current_url()->add_query_params(
 				[
 					'app_id' => $app->get_id(),
@@ -285,8 +285,8 @@ class RepositoryPage implements AdminPageInterface {
 		}
 
 		$app_action = [
-			'title' => 'View App',
-			'label' => 'View App',
+			'title' => smliser__( 'View App' ),
+			'label' => smliser__( 'View App' ),
 			'url'   => smliser_get_current_url()->add_query_params(
 				[
 					'app_id' => $app->get_id(),
@@ -350,7 +350,7 @@ class RepositoryPage implements AdminPageInterface {
 			'short_description' => $app->get_short_description(),
 			'buttons'           => [
 				[
-					'text'  => 'Repository',
+					'text'  => smliser__( 'Repository' ),
 					'url'   => $url->url(),
 					'icon'  => 'ti ti-home',
 					'class' => ['smliser-btn', 'smliser-btn-glass'],
@@ -358,7 +358,7 @@ class RepositoryPage implements AdminPageInterface {
 				],
 				
 				[
-					'text'  => 'Artifacts',
+					'text'  => smliser__( 'Artifacts' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'edit-artifacts', ['app_id' => $app->get_id(), 'type' => $app->get_type()] )->url(),
 					'icon'  => 'ti ti-files',
 					'class' => ['smliser-btn', 'smliser-btn-glass'],
@@ -366,7 +366,7 @@ class RepositoryPage implements AdminPageInterface {
 				],
 
 				[
-					'text'  => 'Files',
+					'text'  => smliser__( 'Files' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'files', ['type' => $app->get_type(), 'slug' => $app->get_slug()] )->url(),
 					'icon'  => 'ti ti-folder-open',
 					'class' => ['smliser-btn', 'smliser-btn-glass'],
@@ -374,7 +374,7 @@ class RepositoryPage implements AdminPageInterface {
 				],
 
 				[
-					'text'  => 'Monetization',
+					'text'  => smliser__( 'Monetization' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'monetization', ['app_id' => $app->get_id(), 'type' => $app->get_type()] )->url(),
 					'icon'  => 'ti ti-basket-dollar',
 					'class' => ['smliser-btn', 'smliser-btn-glass'],
@@ -382,7 +382,7 @@ class RepositoryPage implements AdminPageInterface {
 				],
 
 				[
-					'text'  => sprintf( 'Edit %s', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
+					'text'  => sprintf( smliser__( 'Edit %s' ), HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
 					'url'   => $this->urlmanager->admin_repo_url( 'edit', ['app_id' => $app->get_id(), 'type' => $app->get_type()] )->url(),
 					'icon'  => 'ti ti-edit',
 					'class' => ['smliser-btn', 'smliser-btn-glass'],
@@ -390,7 +390,7 @@ class RepositoryPage implements AdminPageInterface {
 				],
 
 				[
-					'text'  => sprintf( 'Download %s', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
+					'text'  => sprintf( smliser__( 'Download %s' ), HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
 					'url'   => $download_url->url(),
 					'icon'  => 'ti ti-download',
 					'class' => ['smliser-btn', 'smliser-btn-glass'],
@@ -401,7 +401,7 @@ class RepositoryPage implements AdminPageInterface {
 
 		if ( $app->can_be_restored() ) {
 			$template_header['buttons'][] = [
-				'text'  => sprintf( 'Restore %s', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
+				'text'  => sprintf( smliser__( 'Restore %s' ), HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
 				'url'   => '',
 				'icon'  => 'ti ti-arrow-back-up',
 				'class' => ['smliser-btn', 'smliser-btn-glass', 'smliser-app-restore-button'],
@@ -409,7 +409,7 @@ class RepositoryPage implements AdminPageInterface {
 			];
 		} elseif ( $app->can_be_trashed() ) {
 			$template_header['buttons'][] = [
-				'text'  => sprintf( 'Trash %s', HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
+				'text'  => sprintf( smliser__( 'Trash %s' ), HostedAppsRegistry::instance()->get_app_type_label( $app->get_type() ) ),
 				'url'   => '',
 				'icon'  => 'ti ti-trash',
 				'class' => ['smliser-btn', 'smliser-btn-danger', 'smliser-app-delete-button'],
@@ -468,18 +468,18 @@ class RepositoryPage implements AdminPageInterface {
 		$menu_args = [
 			'breadcrumbs' => [
 				[
-					'label' => 'Repository',
+					'label' => smliser__( 'Repository' ),
 					'url'   => $this->urlmanager->admin_repo_url()->url(),
 					'icon'  => 'ti ti-home-filled'
 				],
 				[
-					'label' => 'App Storage'
+					'label' => smliser__( 'App Storage' )
 				]
 			],
 			'actions' => [
 				[
-					'title' => 'Upload New Application',
-					'label' => 'Upload New',
+					'title' => smliser__( 'Upload New Application' ),
+					'label' => smliser__( 'Upload New' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'add-new' )->url(),
 					'icon'  => 'ti ti-upload',
 				],
@@ -571,7 +571,7 @@ class RepositoryPage implements AdminPageInterface {
 			$options[] = [
 				'type'        => $type,
 				'label'       => $label,
-				'description' => $data['description'] ?? sprintf( 'Upload and manage %s.', strtolower( $registry->get_app_type_label( $type, true ) ) ),
+				'description' => $data['description'] ?? sprintf( smliser__( 'Upload and manage %s.' ), strtolower( $registry->get_app_type_label( $type, true ) ) ),
 				'icon'        => $data['icon'] ?? 'ti ti-package',
 				'url'         => $this->urlmanager->admin_repo_url( 'add-new', [ 'type' => $type ] )->url(),
 			];
@@ -606,7 +606,7 @@ class RepositoryPage implements AdminPageInterface {
 		return [
 			[
 				'label' => __( 'Name', 'smliser' ),
-				'help'  => 'The name of the application',
+				'help'  => smliser__( 'The name of the application' ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => 'app_name',
@@ -621,7 +621,7 @@ class RepositoryPage implements AdminPageInterface {
 			],
 			[
 				'label' => __( 'Version', 'smliser' ),
-				'help'  => \sprintf( 'Use %s file to edit %s version', $manifest_filename, $type ),
+				'help'  => \sprintf( smliser__( 'Use %s file to edit %s version' ), $manifest_filename, $type ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => 'app_version',
@@ -636,7 +636,7 @@ class RepositoryPage implements AdminPageInterface {
 			],
 			[
 				'label' => __( 'Author Name', 'smliser' ),
-				'help'  => sprintf( 'Enter the name of the %s author.', $type ),
+				'help'  => sprintf( smliser__( 'Enter the name of the %s author.' ), $type ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => 'app_author',
@@ -650,7 +650,7 @@ class RepositoryPage implements AdminPageInterface {
 			],
 			[
 				'label' => __( 'Author Profile URL', 'smliser' ),
-				'help'  => sprintf( 'Enter the URL of the %s author profile.', $type ),
+				'help'  => sprintf( smliser__( 'Enter the URL of the %s author profile.' ), $type ),
 				'input' => [
 					'type'  => 'text',
 					'name'  => 'app_author_url',
@@ -679,7 +679,7 @@ class RepositoryPage implements AdminPageInterface {
 			],
 			[
 				'label' => __( 'Status', 'smliser' ),
-				'help'  => sprintf( 'Enter the %s status', $type ),
+				'help'  => sprintf( smliser__( 'Enter the %s status' ), $type ),
 				'input' => [
 					'type'  => 'select',
 					'name'  => 'app_status',
@@ -710,17 +710,17 @@ class RepositoryPage implements AdminPageInterface {
 
 		$title = match( $tab ) {
 			'monetization'   => sprintf( '%s Monetization', $app_type ),
-			'edit'           => sprintf( 'Edit %s: %s', $app_type, $app_name ),
+			'edit'           => sprintf( smliser__( 'Edit %s: %s' ), $app_type, $app_name ),
 			'view'           => $app_name,
-			'add-new'        => 'Add New',
-			'edit-artifacts' => sprintf( '%s Distributable Artifacts', $app_type ),
+			'add-new'        => smliser__( 'Add New' ),
+			'edit-artifacts' => sprintf( smliser__( '%s Distributable Artifacts' ), $app_type ),
 			default          => ''
 		};
 		
 		return [
 			'breadcrumbs' => [
 				[
-					'label' => 'Repository',
+					'label' => smliser__( 'Repository' ),
 					'url'   => $this->urlmanager->admin_repo_url()->url(),
 					'icon'  => 'ti ti-home-filled'
 				],
@@ -736,8 +736,8 @@ class RepositoryPage implements AdminPageInterface {
 			],
 			'actions' => [
 				[
-					'title' => 'Edit App',
-					'label' => 'Edit',
+					'title' => smliser__( 'Edit App' ),
+					'label' => smliser__( 'Edit' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'edit',
 						[
 							'app_id' => $app?->get_id() ?? 0,
@@ -749,8 +749,8 @@ class RepositoryPage implements AdminPageInterface {
 				],
 
 				[
-					'title' => 'View App',
-					'label' => 'View',
+					'title' => smliser__( 'View App' ),
+					'label' => smliser__( 'View' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'view',
 						[
 							'app_id' => $app?->get_id() ?? 0,
@@ -762,8 +762,8 @@ class RepositoryPage implements AdminPageInterface {
 				],
 
 				[
-					'title' => 'App monetization',
-					'label' => 'Monetization',
+					'title' => smliser__( 'App monetization' ),
+					'label' => smliser__( 'Monetization' ),
 					'url'   => $this->urlmanager->admin_repo_url( 'monetization',
 						[
 							'app_id' => $app?->get_id() ?? 0,
@@ -963,7 +963,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( isset( $downloads['total'] ) ) {
 				$stats[] = [
 					'icon'  => 'ti ti-download',
-					'label' => 'Total Downloads',
+					'label' => smliser__( 'Total Downloads' ),
 					'value' => Format::number( $downloads['total'] ),
 					'color' => '#3b82f6',
 				];
@@ -972,7 +972,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( isset( $downloads['today'] ) ) {
 				$stats[] = [
 					'icon'  => 'ti ti-chart-arrows',
-					'label' => 'Today\'s Downloads',
+					'label' => smliser__( 'Today\'s Downloads' ),
 					'value' => Format::number( $downloads['today'] ),
 					'color' => '#3b82f6',
 				];
@@ -981,7 +981,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( isset( $downloads['average'] ) ) {
 				$stats[] = [
 					'icon'  => 'ti ti-chart-infographic',
-					'label' => 'Avg Downloads/Day',
+					'label' => smliser__( 'Avg Downloads/Day' ),
 					'value' => Format::number( $downloads['average'], 1 ),
 					'color' => '#3b82f6',
 				];
@@ -991,7 +991,7 @@ class RepositoryPage implements AdminPageInterface {
 				$growth  = (float) $downloads['growth'];
 				$stats[] = [
 					'icon'      => $growth >= 0 ? 'ti ti-chart-dots-2' : 'ti ti-chart-line',
-					'label'     => 'Download Growth',
+					'label'     => smliser__( 'Download Growth' ),
 					'value'     => ( $growth >= 0 ? '+' : '' ) . Format::number( $growth, 1 ) . '%',
 					'color'     => $growth >= 0 ? '#10b981' : '#ef4444',
 					'highlight' => true,
@@ -1001,7 +1001,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( ! empty( $downloads['peak_day'] ) && isset( $downloads['peak_day']['count'] ) ) {
 				$stats[] = [
 					'icon'     => 'ti ti-trophy',
-					'label'    => 'Peak Day',
+					'label'    => smliser__( 'Peak Day' ),
 					'value'    => Format::number( $downloads['peak_day']['count'] ),
 					'subtitle' => date( 'M j, Y', strtotime( $downloads['peak_day']['date'] ) ),
 					'color'    => '#8b5cf6',
@@ -1016,7 +1016,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( isset( $access['total'] ) ) {
 				$stats[] = [
 					'icon'  => 'ti ti-world-www',
-					'label' => 'Total Client Access',
+					'label' => smliser__( 'Total Client Access' ),
 					'value' => Format::number( $access['total'] ),
 					'color' => '#10b981',
 				];
@@ -1025,7 +1025,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( isset( $access['average'] ) ) {
 				$stats[] = [
 					'icon'  => 'ti ti-percentage-33',
-					'label' => 'Avg Access/Day',
+					'label' => smliser__( 'Avg Access/Day' ),
 					'value' => Format::number( $access['average'], 1 ),
 					'color' => '#10b981',
 				];
@@ -1035,7 +1035,7 @@ class RepositoryPage implements AdminPageInterface {
 				$growth  = (float) $access['growth'];
 				$stats[] = [
 					'icon'      => $growth >= 0 ? 'ti ti-chart-dots-2' : 'ti ti-chart-line',
-					'label'     => 'Access Growth',
+					'label'     => smliser__( 'Access Growth' ),
 					'value'     => ( $growth >= 0 ? '+' : '' ) . Format::number( $growth, 1 ) . '%',
 					'color'     => $growth >= 0 ? '#10b981' : '#ef4444',
 					'highlight' => true,
@@ -1045,7 +1045,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( isset( $access['active_installs'] ) ) {
 				$stats[] = [
 					'icon'      => 'ti ti-bolt',
-					'label'     => 'Active Installs',
+					'label'     => smliser__( 'Active Installs' ),
 					'value'     => '~' . Format::number( $access['active_installs'] ),
 					'color'     => '#f59e0b',
 					'highlight' => true,
@@ -1055,7 +1055,7 @@ class RepositoryPage implements AdminPageInterface {
 			if ( ! empty( $access['peak_day'] ) && isset( $access['peak_day']['count'] ) ) {
 				$stats[] = [
 					'icon'     => 'ti ti-trophy',
-					'label'    => 'Peak Access Day',
+					'label'    => smliser__( 'Peak Access Day' ),
 					'value'    => Format::number( $access['peak_day']['count'] ),
 					'subtitle' => date( 'M j, Y', strtotime( $access['peak_day']['date'] ) ),
 					'color'    => '#8b5cf6',
@@ -1111,49 +1111,49 @@ class RepositoryPage implements AdminPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'Hosted apps',
+				'title'      => smliser__( 'Hosted apps' ),
 				'slug'       => 'index',
 				'callback'   => [ $this, 'dashboard'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Add New',
+				'title'      => smliser__( 'Add New' ),
 				'slug'       => 'add-new',
 				'callback'   => [ $this, 'upload_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Search Repository',
+				'title'      => smliser__( 'Search Repository' ),
 				'slug'       => 'search',
 				'callback'   => [$this, 'search_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'App Storage',
+				'title'      => smliser__( 'App Storage' ),
 				'slug'       => 'files',
 				'callback'   => [$this, 'files_page'],
 				'visibility' => true,
 			],
 			[
-				'title'      => 'Edit App',
+				'title'      => smliser__( 'Edit App' ),
 				'slug'       => 'edit',
 				'callback'   => [$this, 'edit_page'],
 				'visibility' => false,
 			],
 			[
-				'title'      => 'View App',
+				'title'      => smliser__( 'View App' ),
 				'slug'       => 'view',
 				'callback'   => [$this, 'view_page'],
 				'visibility' => false,
 			],
 			[
-				'title'      => 'Monetize App',
+				'title'      => smliser__( 'Monetize App' ),
 				'slug'       => 'monetization',
 				'callback'   => [$this, 'monetization_page'],
 				'visibility' => false,
 			],
 			[
-				'title'      => 'Edit App Artifacts',
+				'title'      => smliser__( 'Edit App Artifacts' ),
 				'slug'       => 'edit-artifacts',
 				'callback'   => [$this, 'edit_app_artifacts'],
 				'visibility' => false,
@@ -1167,7 +1167,7 @@ class RepositoryPage implements AdminPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Repository',
+			'title'      => smliser__( 'Repository' ),
 			'slug'       => 'repository',
 			'handler'    => $this,
 			'icon'       => 'ti ti-folder-open',

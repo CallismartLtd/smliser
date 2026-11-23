@@ -64,7 +64,7 @@ class PurchaseRequestEmailJob implements JobHandlerInterface {
 		$request = PurchaseRequest::get_by_id( (int) ( $payload['request_id'] ?? 0 ) );
 
 		if ( ! $request ) {
-			return [ 'success' => false, 'message' => 'The purchase request does not exist.' ];
+			return [ 'success' => false, 'message' => smliser__( 'The purchase request does not exist.' ) ];
 		}
 
 		$email = $this->build( $request, (string) ( $payload['event'] ?? '' ), (int) ( $payload['note_id'] ?? 0 ) );
@@ -76,7 +76,7 @@ class PurchaseRequestEmailJob implements JobHandlerInterface {
 		$message = $email->to_message();
 
 		if ( null === $message ) {
-			return [ 'success' => false, 'message' => sprintf( 'The "%s" email template is disabled.', $email->label() ) ];
+			return [ 'success' => false, 'message' => sprintf( smliser__( 'The "%s" email template is disabled.' ), $email->label() ) ];
 		}
 
 		return $this->mailer->send( $message )->to_array();
@@ -140,20 +140,20 @@ class PurchaseRequestEmailJob implements JobHandlerInterface {
 				return new PurchaseRequestRejectedEmail( $request, $buyer, $product );
 		}
 
-		return sprintf( 'Unknown purchase request email "%s".', $event );
+		return sprintf( smliser__( 'Unknown purchase request email "%s".' ), $event );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_name() : string {
-		return 'Send Purchase Request Email';
+		return smliser__( 'Send Purchase Request Email' );
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public static function get_job_description() : string {
-		return 'Asynchronously send an email about a purchase request: receipt, admin notice, note, approval or rejection.';
+		return smliser__( 'Asynchronously send an email about a purchase request: receipt, admin notice, note, approval or rejection.' );
 	}
 }

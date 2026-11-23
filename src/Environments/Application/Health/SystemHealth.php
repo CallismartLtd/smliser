@@ -215,16 +215,16 @@ class SystemHealth {
 			$info  = $this->get_database_info();
 			$check = $this->make_check(
 				'database_connection',
-				'Database Connection',
+				smliser__( 'Database Connection' ),
 				'pass',
-				\sprintf( 'Connected to %s%s.', $info->product ?? $info->engine, $info->version ? " {$info->version}" : '' )
+				\sprintf( smliser__( 'Connected to %s%s.' ), $info->product ?? $info->engine, $info->version ? " {$info->version}" : '' )
 			);
 		} catch ( \Throwable $e ) {
 			$check = $this->make_check(
 				'database_connection',
-				'Database Connection',
+				smliser__( 'Database Connection' ),
 				'critical',
-				'Unable to inspect the active database connection.',
+				smliser__( 'Unable to inspect the active database connection.' ),
 				$e->getMessage()
 			);
 		}
@@ -358,7 +358,7 @@ class SystemHealth {
 		foreach ( $this->extensions->installed() as $slug => $extension ) {
 			$key = 'Extension: ' . $slug;
 			if ( $extension instanceof ExtensionException ) {
-				$rows[ $key ] = 'Invalid package: ' . $extension->getMessage();
+				$rows[ $key ] = smliser__( 'Invalid package: ' ) . $extension->getMessage();
 				continue;
 			}
 			$rows[ $key ] = sprintf( '%s; version %s; %s', $extension->name, $extension->version, in_array( $slug, $enabled, true ) ? 'enabled' : 'disabled' );
@@ -367,14 +367,14 @@ class SystemHealth {
 		foreach ( $this->themes->installed() as $slug => $theme ) {
 			$key = 'Theme: ' . $slug;
 			if ( $theme instanceof ThemeException ) {
-				$rows[ $key ] = 'Invalid package: ' . $theme->getMessage();
+				$rows[ $key ] = smliser__( 'Invalid package: ' ) . $theme->getMessage();
 				continue;
 			}
 			$rows[ $key ] = sprintf( '%s; version %s; %s', $theme->name, $theme->version, $slug === $active_theme ? 'active' : 'installed' );
 		}
 
 		if ( [] === $rows ) {
-			$rows['Installed Modules'] = 'No third-party extensions or themes are installed.';
+			$rows['Installed Modules'] = smliser__( 'No third-party extensions or themes are installed.' );
 		}
 
 		return $rows;
@@ -399,8 +399,8 @@ class SystemHealth {
 			'Failed Jobs'    => (string) $queue_stats['failed'],
 			'Completed Jobs' => (string) $queue_stats['completed'],
 			'Waiting Since'  => null === $waiting['oldest']
-				? 'No job is waiting'
-				: \sprintf( '%d job(s) ready to run; the oldest since %s', $waiting['count'], $this->format_time( $waiting['oldest'] ) ),
+				? smliser__( 'No job is waiting' )
+				: \sprintf( smliser__( '%d job(s) ready to run; the oldest since %s' ), $waiting['count'], $this->format_time( $waiting['oldest'] ) ),
 			'Scheduled Tasks' => (string) \count( $tasks ),
 			'Overdue Tasks'   => empty( $overdue )
 				? 'None'
@@ -423,7 +423,7 @@ class SystemHealth {
 
 		$rows = [
 			'State File' => match ( true ) {
-				false === $state => 'Damaged or unreadable (' . $this->state->path() . ')',
+				false === $state => smliser__( 'Damaged or unreadable (' ) . $this->state->path() . ')',
 				null === $state  => 'Missing (' . $this->state->path() . ')',
 				default          => 'OK',
 			},
@@ -451,10 +451,10 @@ class SystemHealth {
 			}
 
 			$rows['Database Tables'] = empty( $missing )
-				? \sprintf( 'All %d present', \count( $tables ) )
-				: \sprintf( '%d of %d missing (%s)', \count( $missing ), \count( $tables ), \implode( ', ', $missing ) );
+				? \sprintf( smliser__( 'All %d present' ), \count( $tables ) )
+				: \sprintf( smliser__( '%d of %d missing (%s)' ), \count( $missing ), \count( $tables ), \implode( ', ', $missing ) );
 		} catch ( \Throwable $e ) {
-			$rows['Database Tables'] = 'Unable to inspect';
+			$rows['Database Tables'] = smliser__( 'Unable to inspect' );
 		}
 
 		$roles         = DefaultRoles::all();
@@ -467,8 +467,8 @@ class SystemHealth {
 		}
 
 		$rows['Default Roles'] = empty( $missing_roles )
-			? \sprintf( 'All %d installed', \count( $roles ) )
-			: \sprintf( '%d of %d missing (%s)', \count( $missing_roles ), \count( $roles ), \implode( ', ', $missing_roles ) );
+			? \sprintf( smliser__( 'All %d installed' ), \count( $roles ) )
+			: \sprintf( smliser__( '%d of %d missing (%s)' ), \count( $missing_roles ), \count( $roles ), \implode( ', ', $missing_roles ) );
 
 		return $rows;
 	}
@@ -489,26 +489,26 @@ class SystemHealth {
 		return [
 			'Automatic Updates' => match ( $overview['auto'] ) {
 				UpdateService::AUTO_OFF => 'Off',
-				UpdateService::AUTO_ALL => 'All releases',
-				default                 => 'Security releases only',
+				UpdateService::AUTO_ALL => smliser__( 'All releases' ),
+				default                 => smliser__( 'Security releases only' ),
 			},
 			'Last Check'     => '' === (string) $check['checked_at'] ? 'Never' : (string) $check['checked_at'],
 			'Latest Release' => null === $check['latest']
 				? 'Unknown'
-				: $check['latest'] . ( $check['security'] ? ' (security release)' : '' ) . ( $check['available'] ? ' (available)' : ' (installed)' ),
-			'Last Check Error' => (string) ( $check['error'] ?? '' ) ?: 'None',
+				: $check['latest'] . ( $check['security'] ? smliser__( ' (security release)' ) : '' ) . ( $check['available'] ? ' (available)' : ' (installed)' ),
+			'Last Check Error' => (string) ( $check['error'] ?? '' ) ?: smliser__( 'None' ),
 			'Update Blockers'  => empty( $overview['blockers'] ) ? 'None' : \implode( ' ', $overview['blockers'] ),
 			'Queued Install'   => null === $overview['queued']
 				? 'None'
-				: \sprintf( '%s, by %s at %s', $overview['queued']['version'] ?? '?', $overview['queued']['by'] ?? '?', $overview['queued']['at'] ?? '?' ),
+				: \sprintf( smliser__( '%s, by %s at %s' ), $overview['queued']['version'] ?? '?', $overview['queued']['by'] ?? '?', $overview['queued']['at'] ?? '?' ),
 			'Verified Package' => null === $ready ? 'None' : \sprintf( '%s, prepared %s', $ready['version'] ?? '?', $ready['prepared_at'] ?? '?' ),
 			'Last Update'      => null === $run
 				? 'None'
-				: \sprintf( '%s to %s: %s (started %s)', $run['from'] ?? '?', $run['to'] ?? '?', $run['stage'] ?? '?', $run['started_at'] ?? '?' ),
+				: \sprintf( smliser__( '%s to %s: %s (started %s)' ), $run['from'] ?? '?', $run['to'] ?? '?', $run['stage'] ?? '?', $run['started_at'] ?? '?' ),
 			'Last Queued Attempt' => null === $attempt
 				? 'None'
 				: \sprintf( '%s %s at %s', $attempt['action'] ?? '?', ! empty( $attempt['ok'] ) ? 'succeeded' : 'failed', $attempt['at'] ?? '?' ),
-			'Backup' => null === $backup ? 'None' : \sprintf( 'Version %s, made %s', $backup['version'], $backup['made_at'] ),
+			'Backup' => null === $backup ? 'None' : \sprintf( smliser__( 'Version %s, made %s' ), $backup['version'], $backup['made_at'] ),
 		];
 	}
 
@@ -633,12 +633,12 @@ class SystemHealth {
 		];
 
 		$db_extensions = [
-			'mysqli'     => 'MySQL (mysqli)',
-			'pdo_mysql'  => 'MySQL (PDO)',
+			'mysqli'     => smliser__( 'MySQL (mysqli)' ),
+			'pdo_mysql'  => smliser__( 'MySQL (PDO)' ),
 			'sqlite3'    => 'SQLite3',
-			'pdo_sqlite' => 'SQLite (PDO)',
-			'pdo_pgsql'  => 'PostgreSQL (PDO)',
-			'pdo'        => 'PDO Core',
+			'pdo_sqlite' => smliser__( 'SQLite (PDO)' ),
+			'pdo_pgsql'  => smliser__( 'PostgreSQL (PDO)' ),
+			'pdo'        => smliser__( 'PDO Core' ),
 		];
 
 		foreach ( $db_extensions as $ext => $label ) {
@@ -662,7 +662,7 @@ class SystemHealth {
 		}
 
 		$rows['Persistent Cache Available'] = empty( $active_caches )
-			? 'No — falling back to in-memory array cache'
+			? smliser__( 'No — falling back to in-memory array cache' )
 			: 'Yes (' . \implode( ', ', $active_caches ) . ')';
 
 		return $rows;
@@ -766,7 +766,7 @@ class SystemHealth {
 
 		if ( null === $db_size_bytes ) {
 			return \sprintf(
-				'%s (application directory only — database size could not be determined)',
+				smliser__( '%s (application directory only — database size could not be determined)' ),
 				Format::bytes( $app_size_bytes )
 			);
 		}
@@ -782,7 +782,7 @@ class SystemHealth {
 	 */
 	private function collect_opcache_diagnostics() : array {
 		if ( ! \function_exists( 'opcache_get_status' ) ) {
-			return [ 'OPcache' => 'Not available' ];
+			return [ 'OPcache' => smliser__( 'Not available' ) ];
 		}
 
 		$status = @\opcache_get_status( false );
@@ -847,7 +847,7 @@ class SystemHealth {
 			$size     = $this->get_dir_size( $path );
 
 			$rows[ $label ] = \sprintf(
-				'Readable: %s, Writable: %s, Size: %s',
+				smliser__( 'Readable: %s, Writable: %s, Size: %s' ),
 				Format::yes_no( $readable ),
 				Format::yes_no( $writable ),
 				Format::bytes( $size )
@@ -963,14 +963,14 @@ class SystemHealth {
 				'label'   => $label,
 				'status'  => $ok ? 'pass' : 'critical',
 				'message' => match ( true ) {
-					! $exists   => \sprintf( '%s does not exist.', $path ),
-					! $readable => \sprintf( '%s exists but is not readable.', $path ),
-					! $writable => \sprintf( '%s exists but is not writable.', $path ),
-					default     => \sprintf( '%s is readable and writable.', $path ),
+					! $exists   => \sprintf( smliser__( '%s does not exist.' ), $path ),
+					! $readable => \sprintf( smliser__( '%s exists but is not readable.' ), $path ),
+					! $writable => \sprintf( smliser__( '%s exists but is not writable.' ), $path ),
+					default     => \sprintf( smliser__( '%s is readable and writable.' ), $path ),
 				},
 				'recommendation' => $ok
 					? null
-					: \sprintf( 'Create %s if missing and ensure the web server process can read and write to it.', $path ),
+					: \sprintf( smliser__( 'Create %s if missing and ensure the web server process can read and write to it.' ), $path ),
 			];
 		}
 
@@ -989,27 +989,27 @@ class SystemHealth {
 		$failed_count = $this->job_queue->count_failed_jobs();
 		$checks[]     = [
 			'id'      => 'failed_jobs',
-			'label'   => 'Failed Jobs',
+			'label'   => smliser__( 'Failed Jobs' ),
 			'status'  => 0 === $failed_count ? 'pass' : ( $failed_count < 50 ? 'warning' : 'critical' ),
 			'message' => 0 === $failed_count
-				? 'No failed jobs in the archive.'
-				: \sprintf( '%d failed job(s) in the archive.', $failed_count ),
+				? smliser__( 'No failed jobs in the archive.' )
+				: \sprintf( smliser__( '%d failed job(s) in the archive.' ), $failed_count ),
 			'recommendation' => 0 === $failed_count
 				? null
-				: 'Review the Queue Monitor → Failed tab to diagnose recurring failures.',
+				: smliser__( 'Review the Queue Monitor → Failed tab to diagnose recurring failures.' ),
 		];
 
 		$running_count = $this->job_queue->count_jobs_by_status( 'running' );
 		$checks[]      = [
 			'id'      => 'stuck_jobs',
-			'label'   => 'Jobs Stuck Running',
+			'label'   => smliser__( 'Jobs Stuck Running' ),
 			'status'  => 0 === $running_count ? 'pass' : 'warning',
 			'message' => 0 === $running_count
-				? 'No jobs currently running.'
-				: \sprintf( '%d job(s) currently in a running state.', $running_count ),
+				? smliser__( 'No jobs currently running.' )
+				: \sprintf( smliser__( '%d job(s) currently in a running state.' ), $running_count ),
 			'recommendation' => 0 === $running_count
 				? null
-				: 'If this count stays elevated across page reloads, a worker may have died mid-job. Run `queue release-stale` from the CLI.',
+				: smliser__( 'If this count stays elevated across page reloads, a worker may have died mid-job. Run `queue release-stale` from the CLI.' ),
 		];
 
 		// Scheduled task errors.
@@ -1021,14 +1021,14 @@ class SystemHealth {
 		}
 		$checks[] = [
 			'id'      => 'scheduled_task_errors',
-			'label'   => 'Scheduled Task Errors',
+			'label'   => smliser__( 'Scheduled Task Errors' ),
 			'status'  => 0 === $tasks_with_errors ? 'pass' : 'critical',
 			'message' => 0 === $tasks_with_errors
-				? 'All scheduled tasks last ran without error.'
-				: \sprintf( '%d scheduled task(s) recorded an error on their last run.', $tasks_with_errors ),
+				? smliser__( 'All scheduled tasks last ran without error.' )
+				: \sprintf( smliser__( '%d scheduled task(s) recorded an error on their last run.' ), $tasks_with_errors ),
 			'recommendation' => 0 === $tasks_with_errors
 				? null
-				: 'Open the Schedules tab and review the error detail for each affected task.',
+				: smliser__( 'Open the Schedules tab and review the error detail for each affected task.' ),
 		];
 
 		$checks[] = $this->package_signing_check();
@@ -1055,28 +1055,28 @@ class SystemHealth {
 	private function package_signing_check() : array {
 		$status   = $this->attestation->key_status();
 		$required = $this->registry->attestation_required_types();
-		$refused  = [] === $required ? '' : \sprintf( ' Uploads of %s are refused until it is.', \implode( ', ', \array_map( fn( string $type ) : string => $this->registry->get_app_type_label( $type, true ), $required ) ) );
-		$fix      = \sprintf( 'See Tools → Signing Key for how to set %s.', HostingAttestation::ENV_KEY );
+		$refused  = [] === $required ? '' : \sprintf( smliser__( ' Uploads of %s are refused until it is.' ), \implode( ', ', \array_map( fn( string $type ) : string => $this->registry->get_app_type_label( $type, true ), $required ) ) );
+		$fix      = \sprintf( smliser__( 'See Tools → Signing Key for how to set %s.' ), HostingAttestation::ENV_KEY );
 
 		return match ( $status ) {
 			HostingAttestation::KEY_CONFIGURED => $this->make_check(
 				'package_signing',
-				'Package Signing',
+				smliser__( 'Package Signing' ),
 				'pass',
-				\sprintf( 'App packages are signed. Key fingerprint: %s.', (string) $this->attestation->fingerprint() )
+				\sprintf( smliser__( 'App packages are signed. Key fingerprint: %s.' ), (string) $this->attestation->fingerprint() )
 			),
 			HostingAttestation::KEY_INVALID => $this->make_check(
 				'package_signing',
-				'Package Signing',
+				smliser__( 'Package Signing' ),
 				'critical',
-				\sprintf( '%s is set but is not a base64 Ed25519 secret key, so packages are stored unsigned.%s', HostingAttestation::ENV_KEY, $refused ),
+				\sprintf( smliser__( '%s is set but is not a base64 Ed25519 secret key, so packages are stored unsigned.%s' ), HostingAttestation::ENV_KEY, $refused ),
 				$fix
 			),
 			default => $this->make_check(
 				'package_signing',
-				'Package Signing',
+				smliser__( 'Package Signing' ),
 				[] === $required ? 'warning' : 'critical',
-				\sprintf( 'No signing key is set, so apps cannot check that their updates came from this site.%s', $refused ),
+				\sprintf( smliser__( 'No signing key is set, so apps cannot check that their updates came from this site.%s' ), $refused ),
 				$fix
 			),
 		};
@@ -1099,8 +1099,8 @@ class SystemHealth {
 					'extension_' . Format::slugify( $slug ),
 					sprintf( 'Extension: %s', $slug ),
 					$is_enabled ? 'critical' : 'warning',
-					'Invalid installed extension: ' . $extension->getMessage(),
-					$is_enabled ? 'Disable or reinstall this extension before relying on its functionality.' : 'Reinstall or remove this extension folder.'
+					smliser__( 'Invalid installed extension: ' ) . $extension->getMessage(),
+					$is_enabled ? smliser__( 'Disable or reinstall this extension before relying on its functionality.' ) : smliser__( 'Reinstall or remove this extension folder.' )
 				);
 			}
 		}
@@ -1108,10 +1108,10 @@ class SystemHealth {
 		foreach ( $resolved['skipped'] as $slug => $reason ) {
 			$checks[] = $this->make_check(
 				'extension_unavailable_' . Format::slugify( $slug ),
-				sprintf( 'Extension Unavailable: %s', $slug ),
+				sprintf( smliser__( 'Extension Unavailable: %s' ), $slug ),
 				'critical',
 				$reason,
-				'Fix the reported manifest, compatibility, namespace, dependency, or load-order issue, then re-enable the extension.'
+				smliser__( 'Fix the reported manifest, compatibility, namespace, dependency, or load-order issue, then re-enable the extension.' )
 			);
 		}
 
@@ -1123,8 +1123,8 @@ class SystemHealth {
 					'theme_' . Format::slugify( $slug ),
 					sprintf( 'Theme: %s', $slug ),
 					$is_active ? 'critical' : 'warning',
-					'Invalid installed theme: ' . $theme->getMessage(),
-					$is_active ? 'Switch to another installed theme or reinstall this theme.' : 'Reinstall or remove this theme folder.'
+					smliser__( 'Invalid installed theme: ' ) . $theme->getMessage(),
+					$is_active ? smliser__( 'Switch to another installed theme or reinstall this theme.' ) : smliser__( 'Reinstall or remove this theme folder.' )
 				);
 			}
 		}
@@ -1137,12 +1137,12 @@ class SystemHealth {
 				}
 				$this->themes->chain( $theme );
 			} catch ( \Throwable $e ) {
-				$checks[] = $this->make_check( 'active_theme', 'Active Theme', 'critical', $e->getMessage(), 'Install a compatible theme or switch to another installed theme.' );
+				$checks[] = $this->make_check( 'active_theme', smliser__( 'Active Theme' ), 'critical', $e->getMessage(), smliser__( 'Install a compatible theme or switch to another installed theme.' ) );
 			}
 		}
 
 		if ( [] === $checks ) {
-			$checks[] = $this->make_check( 'modules', 'Installed Modules', 'pass', 'Installed extensions and themes are valid; enabled extensions resolve and the active theme is available.' );
+			$checks[] = $this->make_check( 'modules', smliser__( 'Installed Modules' ), 'pass', smliser__( 'Installed extensions and themes are valid; enabled extensions resolve and the active theme is available.' ) );
 		}
 
 		return $checks;
@@ -1161,10 +1161,10 @@ class SystemHealth {
 		if ( false === $state ) {
 			$checks[] = $this->make_check(
 				'installation_state',
-				'Installation State',
+				smliser__( 'Installation State' ),
 				'critical',
-				\sprintf( '%s is damaged or unreadable. Updates and the installer refuse to change it.', $this->state->path() ),
-				'Restore the file from a backup, or check its permissions. Do not delete it: it records that this site is installed.'
+				\sprintf( smliser__( '%s is damaged or unreadable. Updates and the installer refuse to change it.' ), $this->state->path() ),
+				smliser__( 'Restore the file from a backup, or check its permissions. Do not delete it: it records that this site is installed.' )
 			);
 		}
 
@@ -1173,32 +1173,33 @@ class SystemHealth {
 		if ( null !== $reason ) {
 			$checks[] = $this->make_check(
 				'maintenance_mode',
-				'Maintenance Mode',
+				smliser__( 'Maintenance Mode' ),
 				MaintenanceFlag::REASON_UPDATE === $reason ? 'critical' : 'warning',
 				MaintenanceFlag::REASON_UPDATE === $reason
-					? 'The site is in maintenance because an update is being installed or did not finish. Visitors cannot use the site.'
+					? smliser__( 'The site is in maintenance because an update is being installed or did not finish. Visitors cannot use the site.' )
 					: \sprintf(
-						'The site is in maintenance mode (%s). Visitors cannot use the site%s.',
-						$reason,
-						$this->maintenance->background_paused() ? ', and scheduled tasks and queued jobs wait until it ends' : ''
+						$this->maintenance->background_paused()
+							? smliser__( 'The site is in maintenance mode (%s). Visitors cannot use the site, and scheduled tasks and queued jobs wait until it ends.' )
+							: smliser__( 'The site is in maintenance mode (%s). Visitors cannot use the site.' ),
+						$reason
 					),
 				MaintenanceFlag::REASON_UPDATE === $reason
-					? 'If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back.'
-					: 'Turn maintenance mode off once the work is done: Tools > Maintenance, or `smliser maintenance off`.'
+					? smliser__( 'If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back.' )
+					: smliser__( 'Turn maintenance mode off once the work is done: Tools > Maintenance, or `smliser maintenance off`.' )
 			);
 		}
 
 		if ( CodeChangeDetector::REASON_CHANGED === $this->code_changes->reason() ) {
 			$checks[] = $this->make_check(
 				'unfinished_update',
-				'Unfinished Update',
+				smliser__( 'Unfinished Update' ),
 				'critical',
 				\sprintf(
-					'The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has.',
+					smliser__( 'The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has.' ),
 					\SMLISER_VER,
 					$this->code_changes->installed_version() ?? 'another version'
 				),
-				'Run `smliser update finish` from the console, or roll the update back.'
+				smliser__( 'Run `smliser update finish` from the console, or roll the update back.' )
 			);
 		}
 
@@ -1215,19 +1216,19 @@ class SystemHealth {
 		$delayed = $this->delayed_jobs( self::JOB_DELAY_WARNING_MINUTES );
 
 		if ( 0 === $delayed['count'] ) {
-			$checks[] = $this->make_check( 'delayed_jobs', 'Queue Worker', 'pass', 'No job has been waiting to run for more than ' . self::JOB_DELAY_WARNING_MINUTES . ' minutes.' );
+			$checks[] = $this->make_check( 'delayed_jobs', smliser__( 'Queue Worker' ), 'pass', smliser__( 'No job has been waiting to run for more than ' ) . self::JOB_DELAY_WARNING_MINUTES . ' minutes.' );
 		} else {
 			$critical = $delayed['oldest']->getTimestamp() < \time() - self::JOB_DELAY_CRITICAL_MINUTES * 60;
 			$checks[] = $this->make_check(
 				'delayed_jobs',
-				'Queue Worker',
+				smliser__( 'Queue Worker' ),
 				$critical ? 'critical' : 'warning',
 				\sprintf(
-					'%d job(s) are ready to run but have not been picked up; the oldest has waited since %s. Emails, notifications and updates are delayed until a worker takes them.',
+					smliser__( '%d job(s) are ready to run but have not been picked up; the oldest has waited since %s. Emails, notifications and updates are delayed until a worker takes them.' ),
 					$delayed['count'],
 					$this->format_time( $delayed['oldest'] )
 				),
-				'Tools > Background Processing shows what runs jobs on this site and how to set it up. To clear the backlog now, use "Process queue" on the Queue Monitor page.'
+				smliser__( 'Tools > Background Processing shows what runs jobs on this site and how to set it up. To clear the backlog now, use "Process queue" on the Queue Monitor page.' )
 			);
 		}
 
@@ -1235,7 +1236,7 @@ class SystemHealth {
 		$total   = \count( $this->scheduler->get_tasks() );
 
 		if ( empty( $overdue ) ) {
-			$checks[] = $this->make_check( 'overdue_tasks', 'Scheduler', 'pass', 'Every scheduled task ran on time.' );
+			$checks[] = $this->make_check( 'overdue_tasks', 'Scheduler', 'pass', smliser__( 'Every scheduled task ran on time.' ) );
 		} else {
 			$all      = \count( $overdue ) === $total;
 			$last_run = $this->last_task_run();
@@ -1245,19 +1246,19 @@ class SystemHealth {
 				$all ? 'critical' : 'warning',
 				$all
 					? \sprintf(
-						'No scheduled task is running on time%s, so the scheduler is not being called. Update checks, license expiry and clean-up tasks are not running.',
+						smliser__( 'No scheduled task is running on time%s, so the scheduler is not being called. Update checks, license expiry and clean-up tasks are not running.' ),
 						null === $last_run ? ' (none has ever run)' : ' (the last ran ' . $this->format_time( $last_run ) . ')'
 					)
 					: \sprintf(
-						'%d of %d scheduled tasks are more than %d minutes overdue: %s.',
+						smliser__( '%d of %d scheduled tasks are more than %d minutes overdue: %s.' ),
 						\count( $overdue ),
 						$total,
 						self::TASK_OVERDUE_MINUTES,
 						\implode( ', ', \array_map( static fn( array $task ) : string => $task['label'], $overdue ) )
 					),
 				$all
-					? 'Set up background processing in Tools > Background Processing. To run the due tasks now, use "Run due tasks" on the Schedules page.'
-					: 'Open the Schedules page: a task that keeps failing or running too long can hold the others back. "Run due tasks" runs them now.'
+					? smliser__( 'Set up background processing in Tools > Background Processing. To run the due tasks now, use "Run due tasks" on the Schedules page.' )
+					: smliser__( 'Open the Schedules page: a task that keeps failing or running too long can hold the others back. "Run due tasks" runs them now.' )
 			);
 		}
 
@@ -1273,60 +1274,60 @@ class SystemHealth {
 	private function background_setup_checks() : array {
 		$detected = $this->background->detect();
 		$last     = $detected['last'];
-		$page     = 'Tools > Background Processing';
+		$page     = smliser__( 'Tools > Background Processing' );
 
 		if ( null === $detected['mode'] ) {
 			if ( $detected['scheduler'] || $detected['worker'] ) {
 				$message = $detected['scheduler']
-					? 'The standalone scheduler is running, but queued jobs need a queue worker to process them.'
-					: 'The queue worker is running, but scheduled tasks need an automatic scheduler trigger.';
+					? smliser__( 'The standalone scheduler is running, but queued jobs need a queue worker to process them.' )
+					: smliser__( 'The queue worker is running, but scheduled tasks need an automatic scheduler trigger.' );
 				$recommendation = $detected['scheduler']
-					? 'Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead.'
-					: 'Add the scheduler cron job shown in Tools > Background Processing, or use the combined `smliser cron` command.';
+					? smliser__( 'Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead.' )
+					: smliser__( 'Add the scheduler cron job shown in Tools > Background Processing, or use the combined `smliser cron` command.' );
 
-				return [ $this->make_check( 'background_processing', 'Background Processing', 'warning', $message, $recommendation ) ];
+				return [ $this->make_check( 'background_processing', smliser__( 'Background Processing' ), 'warning', $message, $recommendation ) ];
 			}
 
 			if ( null === $last ) {
 				return [ $this->make_check(
 					'background_processing',
-					'Background Processing',
+					smliser__( 'Background Processing' ),
 					'critical',
-					'Background processing has never run on this site. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them.',
-					\sprintf( 'Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough.', $page )
+					smliser__( 'Background processing has never run on this site. Update checks, security updates, license expiry, emails and clean-up wait until an administrator runs them.' ),
+					\sprintf( smliser__( 'Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough.' ), $page )
 				) ];
 			}
 
 			if ( $detected['worker'] ) {
 				return [ $this->make_check(
 					'background_processing',
-					'Background Processing',
+					smliser__( 'Background Processing' ),
 					'warning',
-					'The queue worker is running, but nothing runs the scheduled tasks, so update checks, license expiry and clean-up do not happen.',
-					\sprintf( 'Add the scheduler cron job shown in %s under "Server cron and queue worker".', $page )
+					smliser__( 'The queue worker is running, but nothing runs the scheduled tasks, so update checks, license expiry and clean-up do not happen.' ),
+					\sprintf( smliser__( 'Add the scheduler cron job shown in %s under "Server cron and queue worker".' ), $page )
 				) ];
 			}
 
 			return [ $this->make_check(
 				'background_processing',
-				'Background Processing',
+				smliser__( 'Background Processing' ),
 				'critical',
 				\sprintf(
-					'Background processing stopped: it last ran %s ago (%s). Scheduled tasks and queued jobs are waiting.',
+					smliser__( 'Background processing stopped: it last ran %s ago (%s). Scheduled tasks and queued jobs are waiting.' ),
 					BackgroundSetup::describe_age( $last['age'] ),
 					$this->runner_label( $last['source'] )
 				),
-				\sprintf( 'Check that the cron job or external service still runs. %s shows each runner\'s last run and the configuration for this server.', $page )
+				\sprintf( smliser__( 'Check that the cron job or external service still runs. %s shows each runner\'s last run and the configuration for this server.' ), $page )
 			) ];
 		}
 
 		$source = $this->runner_label( $last['source'] ?? '' );
 		$checks = [ $this->make_check(
 			'background_processing',
-			'Background Processing',
+			smliser__( 'Background Processing' ),
 			'pass',
 			\sprintf(
-				'%s runs background work; it last ran %s ago.',
+				smliser__( '%s runs background work; it last ran %s ago.' ),
 				$this->background->modes()[ $detected['mode'] ]['label'] ?? $source,
 				BackgroundSetup::describe_age( (int) ( $last['age'] ?? 0 ) )
 			)
@@ -1335,10 +1336,10 @@ class SystemHealth {
 		if ( BackgroundSetup::MODE_URL === $detected['mode'] ) {
 			$checks[] = $this->make_check(
 				'background_alternative',
-				'Background Processing Reliability',
+				smliser__( 'Background Processing Reliability' ),
 				'info',
-				'Background work runs only when the external cron service calls the cron URL. If that service stops, so do updates and emails, and each call is limited like any web request.',
-				\sprintf( 'If your hosting offers cron jobs, use the hosting panel cron job in %s instead; on a VPS, use cron with a queue worker.', $page )
+				smliser__( 'Background work runs only when the external cron service calls the cron URL. If that service stops, so do updates and emails, and each call is limited like any web request.' ),
+				\sprintf( smliser__( 'If your hosting offers cron jobs, use the hosting panel cron job in %s instead; on a VPS, use cron with a queue worker.' ), $page )
 			);
 		}
 
@@ -1375,13 +1376,13 @@ class SystemHealth {
 		$blockers = \array_values( \array_diff_key( $this->updates->blockers(), [ 'unfinished' => true ] ) );
 
 		$checks[] = empty( $blockers )
-			? $this->make_check( 'update_readiness', 'Update Readiness', 'pass', 'Nothing prevents installing updates.' )
+			? $this->make_check( 'update_readiness', smliser__( 'Update Readiness' ), 'pass', smliser__( 'Nothing prevents installing updates.' ) )
 			: $this->make_check(
 				'update_readiness',
-				'Update Readiness',
+				smliser__( 'Update Readiness' ),
 				'critical',
-				'Updates cannot be installed: ' . \implode( ' ', $blockers ),
-				'Fix the problems listed; security releases cannot be installed until then. The Updates page shows the same list.'
+				smliser__( 'Updates cannot be installed: ' ) . \implode( ' ', $blockers ),
+				smliser__( 'Fix the problems listed; security releases cannot be installed until then. The Updates page shows the same list.' )
 			);
 
 		$checked_at = \strtotime( (string) $check['checked_at'] );
@@ -1389,38 +1390,39 @@ class SystemHealth {
 		if ( null !== $check['error'] ) {
 			$checks[] = $this->make_check(
 				'update_check',
-				'Update Check',
+				smliser__( 'Update Check' ),
 				'warning',
-				'The last check for updates failed: ' . $check['error'],
-				'Check outbound HTTPS access to the update server (see "Update Server Connection"), then use "Check now" on the Updates page.'
+				smliser__( 'The last check for updates failed: ' ) . $check['error'],
+				smliser__( 'Check outbound HTTPS access to the update server (see "Update Server Connection"), then use "Check now" on the Updates page.' )
 			);
 		} elseif ( false === $checked_at || $checked_at < \time() - self::UPDATE_CHECK_STALE_HOURS * 3600 ) {
 			$checks[] = $this->make_check(
 				'update_check',
-				'Update Check',
+				smliser__( 'Update Check' ),
 				'warning',
 				false === $checked_at
-					? 'This site has never checked for updates.'
-					: \sprintf( 'The last check for updates was on %s; the scheduler checks every 12 hours.', $check['checked_at'] ),
-				'Make sure the scheduler runs (see "Scheduler"), or use "Check now" on the Updates page.'
+					? smliser__( 'This site has never checked for updates.' )
+					: \sprintf( smliser__( 'The last check for updates was on %s; the scheduler checks every 12 hours.' ), $check['checked_at'] ),
+				smliser__( 'Make sure the scheduler runs (see "Scheduler"), or use "Check now" on the Updates page.' )
 			);
 		} elseif ( $check['available'] ) {
 			$checks[] = $this->make_check(
 				'update_check',
-				'Update Check',
+				smliser__( 'Update Check' ),
 				$check['security'] ? 'critical' : 'warning',
 				\sprintf(
-					'Version %s is available%s; this site runs %s.',
+					$check['security']
+						? smliser__( 'Version %1$s is available and fixes a security issue; this site runs %2$s.' )
+						: smliser__( 'Version %1$s is available; this site runs %2$s.' ),
 					$check['latest'],
-					$check['security'] ? ' and fixes a security issue' : '',
 					\SMLISER_VER
 				),
 				null !== $overview['queued']
-					? 'An install is queued; make sure the queue worker is running.'
-					: 'Install it from the Updates page.'
+					? smliser__( 'An install is queued; make sure the queue worker is running.' )
+					: smliser__( 'Install it from the Updates page.' )
 			);
 		} else {
-			$checks[] = $this->make_check( 'update_check', 'Update Check', 'pass', \sprintf( '%s %s is the latest version (checked %s).', \SMLISER_APP_NAME, \SMLISER_VER, $check['checked_at'] ) );
+			$checks[] = $this->make_check( 'update_check', smliser__( 'Update Check' ), 'pass', \sprintf( smliser__( '%s %s is the latest version (checked %s).' ), \SMLISER_APP_NAME, \SMLISER_VER, $check['checked_at'] ) );
 		}
 
 		$attempt = $overview['attempt'];
@@ -1428,20 +1430,20 @@ class SystemHealth {
 		if ( null !== $attempt && empty( $attempt['ok'] ) && null === $overview['queued'] ) {
 			$checks[] = $this->make_check(
 				'update_attempt',
-				'Last Update Attempt',
+				smliser__( 'Last Update Attempt' ),
 				'warning',
-				\sprintf( 'The last queued %s, at %s, failed.', 'rollback' === ( $attempt['action'] ?? '' ) ? 'rollback' : 'update', $attempt['at'] ?? '?' ),
-				'The Updates page shows its output under History.'
+				\sprintf( smliser__( 'The last queued %s, at %s, failed.' ), 'rollback' === ( $attempt['action'] ?? '' ) ? 'rollback' : 'update', $attempt['at'] ?? '?' ),
+				smliser__( 'The Updates page shows its output under History.' )
 			);
 		}
 
 		if ( UpdateService::AUTO_OFF === $overview['auto'] ) {
 			$checks[] = $this->make_check(
 				'automatic_updates',
-				'Automatic Updates',
+				smliser__( 'Automatic Updates' ),
 				'info',
-				'Automatic updates are off, so security releases are only installed when an administrator does it.',
-				'Consider installing security releases automatically (Updates page).'
+				smliser__( 'Automatic updates are off, so security releases are only installed when an administrator does it.' ),
+				smliser__( 'Consider installing security releases automatically (Updates page).' )
 			);
 		}
 
@@ -1493,9 +1495,9 @@ class SystemHealth {
 
 		$check = [
 			'id'             => 'document_root',
-			'label'          => 'Web Server Document Root',
+			'label'          => smliser__( 'Web Server Document Root' ),
 			'status'         => 'pass',
-			'message'        => \sprintf( 'The web server serves %s, so only public files can be reached.', $public ),
+			'message'        => \sprintf( smliser__( 'The web server serves %s, so only public files can be reached.' ), $public ),
 			'recommendation' => null,
 		];
 
@@ -1516,10 +1518,10 @@ class SystemHealth {
 
 		$check['status']  = $protected ? 'warning' : 'critical';
 		$check['message'] = $protected
-			? \sprintf( 'The web server serves %s instead of its public folder. The .htaccess file in that folder keeps everything outside public unreachable, but the whole application folder depends on it.', $document_root )
-			: \sprintf( 'The web server serves %s instead of its public folder, and nothing stops visitors from downloading files outside public, such as .env with the database password and application secrets.', $document_root );
+			? \sprintf( smliser__( 'The web server serves %s instead of its public folder. The .htaccess file in that folder keeps everything outside public unreachable, but the whole application folder depends on it.' ), $document_root )
+			: \sprintf( smliser__( 'The web server serves %s instead of its public folder, and nothing stops visitors from downloading files outside public, such as .env with the database password and application secrets.' ), $document_root );
 		$check['recommendation'] = \sprintf(
-			'In your hosting control panel (or web server configuration), set the document root of this site to %s.%s',
+			smliser__( 'In your hosting control panel (or web server configuration), set the document root of this site to %s.%s' ),
 			$public,
 			$protected
 				? ' Until then, do not delete or edit the Smart License Server block in ' . $htaccess . '.'

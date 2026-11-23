@@ -80,8 +80,8 @@ class UpdateManagement {
 
 		return $this->ok(
 			$check['available']
-				? sprintf( 'Version %s is available.', $check['latest'] )
-				: sprintf( '%s %s is up to date.', \SMLISER_APP_NAME, \SMLISER_VER )
+				? sprintf( smliser__( 'Version %s is available.' ), $check['latest'] )
+				: sprintf( smliser__( '%s %s is up to date.' ), \SMLISER_APP_NAME, \SMLISER_VER )
 		);
 	}
 
@@ -118,12 +118,14 @@ class UpdateManagement {
 
 		return $this->ok(
 			null === $result['version']
-				? sprintf( '%s %s is up to date; nothing would be installed.', \SMLISER_APP_NAME, \SMLISER_VER )
+				? sprintf( smliser__( '%s %s is up to date; nothing would be installed.' ), \SMLISER_APP_NAME, \SMLISER_VER )
 				: sprintf(
-					'Version %s is downloaded from %s, verified%s and ready to install.',
+					empty( $result['package']['signed_by'] )
+						? smliser__( 'Version %1$s is downloaded from %2$s, verified and ready to install.' )
+						: smliser__( 'Version %1$s is downloaded from %2$s, verified (signed by %3$s) and ready to install.' ),
 					$result['version'],
-					$result['package']['source'] ?? 'the update server',
-					empty( $result['package']['signed_by'] ) ? '' : sprintf( ' (signed by %s)', $result['package']['signed_by'] )
+					$result['package']['source'] ?? smliser__( 'the update server' ),
+					$result['package']['signed_by'] ?? ''
 				)
 		);
 	}
@@ -145,11 +147,11 @@ class UpdateManagement {
 		$overview  = $this->updates->overview();
 
 		if ( $overview['in_progress'] ) {
-			return $this->fail( 'An update is being installed.', 409 );
+			return $this->fail( smliser__( 'An update is being installed.' ), 409 );
 		}
 
 		if ( ! $reinstall && ! $overview['check']['available'] ) {
-			return $this->fail( sprintf( '%s %s is up to date. Check for updates first, or reinstall.', \SMLISER_APP_NAME, \SMLISER_VER ), 409 );
+			return $this->fail( sprintf( smliser__( '%s %s is up to date. Check for updates first, or reinstall.' ), \SMLISER_APP_NAME, \SMLISER_VER ), 409 );
 		}
 
 		$this->allow_time();
@@ -163,9 +165,9 @@ class UpdateManagement {
 		$version = isset( $result['prepared'] ) ? $result['prepared']['manifest']->version : \SMLISER_VER;
 
 		return match ( $result['status'] ) {
-			UpdateRunner::UP_TO_DATE => $this->ok( sprintf( '%s %s is up to date.', \SMLISER_APP_NAME, \SMLISER_VER ) ),
-			UpdateRunner::PENDING    => $this->ok( sprintf( 'Version %s is installed. It finishes as this page reloads.', $version ) ),
-			default                  => $this->ok( sprintf( 'Version %s was installed.', $version ) ),
+			UpdateRunner::UP_TO_DATE => $this->ok( sprintf( smliser__( '%s %s is up to date.' ), \SMLISER_APP_NAME, \SMLISER_VER ) ),
+			UpdateRunner::PENDING    => $this->ok( sprintf( smliser__( 'Version %s is installed. It finishes as this page reloads.' ), $version ) ),
+			default                  => $this->ok( sprintf( smliser__( 'Version %s was installed.' ), $version ) ),
 		};
 	}
 
@@ -181,7 +183,7 @@ class UpdateManagement {
 		}
 
 		if ( null === $this->updater->backup() ) {
-			return $this->fail( 'There is no backup to restore.', 409 );
+			return $this->fail( smliser__( 'There is no backup to restore.' ), 409 );
 		}
 
 		$this->allow_time();
@@ -192,7 +194,7 @@ class UpdateManagement {
 			return $this->fail( $e->getMessage(), 409 );
 		}
 
-		return $this->ok( sprintf( 'Version %s was restored.', $version ) );
+		return $this->ok( sprintf( smliser__( 'Version %s was restored.' ), $version ) );
 	}
 
 	/**
@@ -214,7 +216,7 @@ class UpdateManagement {
 			return $this->fail( $e->getMessage(), 400 );
 		}
 
-		return $this->ok( 'Automatic update setting saved.' );
+		return $this->ok( smliser__( 'Automatic update setting saved.' ) );
 	}
 
 	/**
@@ -234,7 +236,7 @@ class UpdateManagement {
 			return $this->fail( $e->getMessage(), 409 );
 		}
 
-		return $this->ok( $deleted ? 'The backup was deleted.' : 'There is no backup.' );
+		return $this->ok( $deleted ? smliser__( 'The backup was deleted.' ) : smliser__( 'There is no backup.' ) );
 	}
 
 	/*
@@ -252,7 +254,7 @@ class UpdateManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( null === $principal || ! $principal->is( 'system_admin' ) ) {
-			return $this->fail( 'Only system administrators can manage updates.', 403 );
+			return $this->fail( smliser__( 'Only system administrators can manage updates.' ), 403 );
 		}
 
 		return null;

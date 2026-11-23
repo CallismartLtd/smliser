@@ -96,19 +96,19 @@ class Licenses {
 		$hosted_app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 		if ( ! $hosted_app ) {
-			$response = new RequestException( 'license_error', sprintf( 'The %s with this slug "%s" does not exist', $app_type, $app_slug ), [ 'status' => 404 ] );
+			$response = new RequestException( 'license_error', sprintf( smliser__( 'The %s with this slug "%s" does not exist' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 			return $response;
 		}
 
 		$license = License::get_license( $service_id, $license_key );
 
 		if ( ! $license ) {
-			$response = new RequestException( 'license_error', 'The license could not be found. The license key or service ID may be incorrect.', [ 'status' => 404 ] );
+			$response = new RequestException( 'license_error', smliser__( 'The license could not be found. The license key or service ID may be incorrect.' ), [ 'status' => 404 ] );
 			return $response;
 		}
 
 		if ( ! $license->is_issued() ) {
-			$error = new RequestException( 'license_error', 'Activation not allowed for unissued licenses.', ['status' => 400] );
+			$error = new RequestException( 'license_error', smliser__( 'Activation not allowed for unissued licenses.' ), ['status' => 400] );
 
 			return $error;
 		}
@@ -166,11 +166,11 @@ class Licenses {
 		$token = smliser_generate_item_token( $license, self::ACTIVATION_TOKEN_LIFETIME, $host );
 
 		if ( false === $token ) {
-			return Response::error( new RequestException( 'download_token_error', 'The license is active on this domain, but a download token could not be issued. Activate again to get one.', [ 'status' => 500 ] ), 500 );
+			return Response::error( new RequestException( 'download_token_error', smliser__( 'The license is active on this domain, but a download token could not be issued. Activate again to get one.' ), [ 'status' => 500 ] ), 500 );
 		}
 
 		$response_data = [
-			'message' => sprintf( 'License has been activated for your domain "%s"', $domain ),
+			'message' => sprintf( smliser__( 'License has been activated for your domain "%s"' ), $domain ),
 			'data'    => [
 				'license_key'    => $license_key,
 				'service_id'     => $service_id,
@@ -215,7 +215,7 @@ class Licenses {
 		if ( ! $license ) {
 			$response = new RequestException(
 				'license_error',
-				'The license could not be found. The license key or service ID may be incorrect.',
+				smliser__( 'The license could not be found. The license key or service ID may be incorrect.' ),
 				[ 'status' => 404 ]
 			);
 
@@ -223,7 +223,7 @@ class Licenses {
 		}
 
 		if ( $license->is_deactivated() ) {
-			return new RequestException( 'license_deactivated', 'The license is already deactivated. Its owner must resolve it.', [ 'status' => 409 ] );
+			return new RequestException( 'license_deactivated', smliser__( 'The license is already deactivated. Its owner must resolve it.' ), [ 'status' => 409 ] );
 		}
 
 		$request->set( 'smliser_resource', $license );
@@ -255,7 +255,7 @@ class Licenses {
 
 		if ( $license->save() ) {
 			$response_data = [
-				'message' => 'License has been deactivated',
+				'message' => smliser__( 'License has been deactivated' ),
 				'data'    => [
 					'license_status' => $license->get_status(),
 					'date'           => gmdate( 'Y-m-d' )
@@ -266,7 +266,7 @@ class Licenses {
 
 		} else {
 			$response_data = [
-				'message' => 'Unable to process this request at the moment.',
+				'message' => smliser__( 'Unable to process this request at the moment.' ),
 				'data'    => [
 					'license_status' => $original_status,
 					'date'           => gmdate( 'Y-m-d' )
@@ -301,13 +301,13 @@ class Licenses {
 		$license = License::get_license( $request->get( 'service_id' ), $request->get( 'license_key' ) );
 
 		if ( ! $license ) {
-			return new RequestException( 'license_error', 'The license could not be found. The license key or service ID may be incorrect.', [ 'status' => 404 ] );
+			return new RequestException( 'license_error', smliser__( 'The license could not be found. The license key or service ID may be incorrect.' ), [ 'status' => 404 ] );
 		}
 
 		$domain = (string) $request->get( 'domain' );
 
 		if ( $license->is_new_domain( $domain ) ) {
-			return new RequestException( 'domain_not_active', sprintf( 'The license is not activated on %s.', $domain ), [ 'status' => 404 ] );
+			return new RequestException( 'domain_not_active', sprintf( smliser__( 'The license is not activated on %s.' ), $domain ), [ 'status' => 404 ] );
 		}
 
 		$request->set( 'smliser_resource', $license );
@@ -349,10 +349,10 @@ class Licenses {
 		];
 
 		if ( $removed ) {
-			$response_data['message'] = sprintf( 'The license uninstalled for the domain "%s" successfully.', $domain );
+			$response_data['message'] = sprintf( smliser__( 'The license uninstalled for the domain "%s" successfully.' ), $domain );
 			$status_code              = 200;
 		} else {
-			$response_data['message'] = sprintf( 'Unable to unstall %s please try again later.', $domain );
+			$response_data['message'] = sprintf( smliser__( 'Unable to unstall %s please try again later.' ), $domain );
 			$status_code              = 503;
 		}
 
@@ -378,14 +378,14 @@ class Licenses {
 		$hosted_app  = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 		if ( ! $hosted_app ) {
-			$response = new RequestException( 'license_error', sprintf( 'The %s with this slug "%s" does not exist', $app_type, $app_slug ), [ 'status' => 404 ] );
+			$response = new RequestException( 'license_error', sprintf( smliser__( 'The %s with this slug "%s" does not exist' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 			return $response;
 		}
 
 		$license = License::get_license( $service_id, $license_key );
 		
 		if ( ! $license ) {
-			$response = new RequestException( 'license_error', 'The license could not be found. The license key or service ID may be incorrect.', [ 'status' => 404 ] );
+			$response = new RequestException( 'license_error', smliser__( 'The license could not be found. The license key or service ID may be incorrect.' ), [ 'status' => 404 ] );
 			return $response;
 		}
 
@@ -400,7 +400,7 @@ class Licenses {
 		$download_token = $request->get_header( 'x-download-token' );
 
 		if ( ! $download_token ) {
-			return new RequestException( 'missing_download_token', 'Please provide the X-Download-Token header value', [ 'status' => 400 ] );
+			return new RequestException( 'missing_download_token', smliser__( 'Please provide the X-Download-Token header value' ), [ 'status' => 400 ] );
 		}
 
 		return true;
@@ -424,7 +424,7 @@ class Licenses {
 		$token_validity = smliser_verify_item_token( $download_token, $hosted_app );
 		
 		$response_data = [
-			'message' => 'License validity test result is ready.',
+			'message' => smliser__( 'License validity test result is ready.' ),
 			'data'    => [
 				'license' => [
 					'status'      => $license->get_status(),
@@ -467,12 +467,12 @@ class Licenses {
 		$hosted_app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
 		if ( ! $hosted_app ) {
-			$response = new RequestException( 'license_error', sprintf( 'The %s with this slug "%s" does not exist', $app_type, $app_slug ), [ 'status' => 404 ] );
+			$response = new RequestException( 'license_error', sprintf( smliser__( 'The %s with this slug "%s" does not exist' ), $app_type, $app_slug ), [ 'status' => 404 ] );
 			return $response;
 		}
 
 		if ( ! $license ) {
-			$response = new RequestException( 'license_error', 'The license could not be found. The license key or service ID may be incorrect.', [ 'status' => 404 ] );
+			$response = new RequestException( 'license_error', smliser__( 'The license could not be found. The license key or service ID may be incorrect.' ), [ 'status' => 404 ] );
 			return $response;
 		}
 
@@ -493,14 +493,14 @@ class Licenses {
 
 		if ( $record instanceof Exception ) {
 			return 'download_token_expired' === $record->get_error_code()
-				? new RequestException( 'download_token_expired', 'The download token has expired. Activate the license on this domain again to get a new one.', [ 'status' => 401 ] )
-				: new RequestException( 'download_token_invalid', sprintf( '%s Activate the license on this domain again to get a new one.', $record->get_error_message() ), [ 'status' => 403 ] );
+				? new RequestException( 'download_token_expired', smliser__( 'The download token has expired. Activate the license on this domain again to get a new one.' ), [ 'status' => 401 ] )
+				: new RequestException( 'download_token_invalid', sprintf( smliser__( '%s Activate the license on this domain again to get a new one.' ), $record->get_error_message() ), [ 'status' => 403 ] );
 		}
 
 		$host = License::activation_host( (string) $request->get( 'domain' ) );
 
 		if ( ! hash_equals( $record->get_license_key(), $license->get_license_key() ) || ! $record->belongs_to_host( $host ) ) {
-			return new RequestException( 'download_token_invalid', 'The download token was not issued to this license on this domain.', [ 'status' => 403 ] );
+			return new RequestException( 'download_token_invalid', smliser__( 'The download token was not issued to this license on this domain.' ), [ 'status' => 403 ] );
 		}
 
 		$request->set( 'download_token_record', $record );
@@ -526,13 +526,13 @@ class Licenses {
 		$token   = smliser_generate_item_token( $license, self::REAUTH_TOKEN_LIFETIME, $record->get_activation_host() );
 
 		if ( false === $token ) {
-			return Response::error( new RequestException( 'download_token_error', 'A new download token could not be issued. Your current token is still valid; try again later.', [ 'status' => 500 ] ), 500 );
+			return Response::error( new RequestException( 'download_token_error', smliser__( 'A new download token could not be issued. Your current token is still valid; try again later.' ), [ 'status' => 500 ] ), 500 );
 		}
 
 		$record->delete();
 
 		$response_data = [
-			'message' => 'Download token has been refreshed.',
+			'message' => smliser__( 'Download token has been refreshed.' ),
 			'data'    => [
 				'download_token' => $token,
 				'token_expiry'   => gmdate( 'Y-m-d', DownloadToken::expiry_for( $license, self::REAUTH_TOKEN_LIFETIME ) ),
@@ -554,7 +554,7 @@ class Licenses {
 
 		if ( $license->is_new_domain( $domain ) ) {
 			if ( $license->has_reached_max_allowed_domains() ) {
-				return new RequestException( 'license_error', 'Maximum allowed domains has been reached.', [ 'status' => 409 ] );
+				return new RequestException( 'license_error', smliser__( 'Maximum allowed domains has been reached.' ), [ 'status' => 409 ] );
 				
 			}
 			
@@ -582,26 +582,26 @@ class Licenses {
 		$domain_data = $license->get_active_domain( $domain );
 
 		if ( ! isset( $domain_data['secret'] ) ) {
-			return new RequestException( 'site_token_missing', sprintf( 'Invalid domain, please activate the domain %s to access this route', $domain ), [ 'status' => 401 ] );
+			return new RequestException( 'site_token_missing', sprintf( smliser__( 'Invalid domain, please activate the domain %s to access this route' ), $domain ), [ 'status' => 401 ] );
 		}
 
 		$known_secret  = $domain_data['secret'];
 		$client_secret = trim( (string) $request->get_header( self::SITE_SECRET_HEADER, '' ) );
 
 		if ( '' === $client_secret ) {
-			return new RequestException( 'site_secret_missing', sprintf( 'Send the site secret for this domain in the %s header.', self::SITE_SECRET_HEADER ), [ 'status' => 400 ] );
+			return new RequestException( 'site_secret_missing', sprintf( smliser__( 'Send the site secret for this domain in the %s header.' ), self::SITE_SECRET_HEADER ), [ 'status' => 400 ] );
 		}
 
 		$client_secret = base64_decode( $client_secret );
 
 		if ( ! $client_secret ) {
-			return new RequestException( 'invalid_token_format', 'Token could not be decoded properly, please be sure that the token is base64 encoded or not double encoding it.', [ 'status' => 400 ] );
+			return new RequestException( 'invalid_token_format', smliser__( 'Token could not be decoded properly, please be sure that the token is base64 encoded or not double encoding it.' ), [ 'status' => 400 ] );
 		}
 
 		$client_secret_hash = DownloadToken::hash_site_secret( $client_secret );
 
 		if ( ! hash_equals( $known_secret, $client_secret_hash ) ) {
-			return new RequestException( 'site_secret_invalid', 'The site secret is not valid for this domain.', [ 'status' => 401 ] );
+			return new RequestException( 'site_secret_invalid', smliser__( 'The site secret is not valid for this domain.' ), [ 'status' => 401 ] );
 		}
 
 		return true;

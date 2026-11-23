@@ -117,7 +117,7 @@ class HostedApps extends DataStore {
 					return Response::error(
 						new RequestException(
 							'invalid_input',
-							sprintf( 'Unknown app type "%s". Registered app types: %s.', (string) $type, implode( ', ', $this->registry->app_types() ) ),
+							sprintf( smliser__( 'Unknown app type "%s". Registered app types: %s.' ), (string) $type, implode( ', ', $this->registry->app_types() ) ),
 							[ 'status' => 400 ]
 						),
 						400
@@ -132,7 +132,7 @@ class HostedApps extends DataStore {
 
 		if ( ! $this->visibility->can_view_status( $status ) ) {
 			return Response::error(
-				new RequestException( 'unauthorized_scope', 'Only system administrators can list applications that are not active.', [ 'status' => 403 ] ),
+				new RequestException( 'unauthorized_scope', smliser__( 'Only system administrators can list applications that are not active.' ), [ 'status' => 403 ] ),
 				403
 			);
 		}
@@ -517,8 +517,8 @@ class HostedApps extends DataStore {
 		
 		$total     = $files?->count() ?? 0;
 		$error_map = match ( true ) {
-			$total < 1 => ['required_file', 'Please upload {app_type} asset file.'],
-			$total > 1 => ['payload_too_large', 'Sorry, a maximum of 1 file is required when updating a {app_type} asset.'],
+			$total < 1 => ['required_file', smliser__( 'Please upload {app_type} asset file.' )],
+			$total > 1 => ['payload_too_large', smliser__( 'Sorry, a maximum of 1 file is required when updating a {app_type} asset.' )],
 			default    => null,
 		};
 

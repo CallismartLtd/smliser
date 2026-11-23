@@ -62,9 +62,21 @@ class AppPublishedEmail extends EmailTemplate {
 		$app_slug    = \escHtml( $vars['{{app_slug}}'] );
 		$support     = \escHtml( $vars['{{support_email}}'] );
 
+		$i18n = [
+			smliser_esc_html__( 'Your application is now live.' ),
+			/* translators: %s: app name (formatted) */
+			sprintf( smliser_esc_html__( '✓ %s has been published successfully.' ), '<strong>' . $app_name . '</strong>' ),
+			smliser_esc_html__( 'Application Name' ),
+			smliser_esc_html__( 'Type' ),
+			smliser_esc_html__( 'Version' ),
+			smliser_esc_html__( 'Slug' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you have any questions or concerns, contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
+
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Your application is now live.
+            {$i18n[0]}
         </p>
 
         <!-- Success banner -->
@@ -74,7 +86,7 @@ class AppPublishedEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#166534;line-height:1.5;">
-                        &#10003;&nbsp; <strong>{$app_name}</strong> has been published successfully.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -91,7 +103,7 @@ class AppPublishedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Application Name
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_name}
@@ -100,7 +112,7 @@ class AppPublishedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Type
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_type}
@@ -111,7 +123,7 @@ class AppPublishedEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 0 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Version
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$app_version}
@@ -120,7 +132,7 @@ class AppPublishedEmail extends EmailTemplate {
                             <td width="50%" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Slug
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;
                                            font-family:monospace;font-weight:600;">
@@ -134,17 +146,16 @@ class AppPublishedEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you have any questions or concerns, contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Application Published';
+		return smliser__( 'Application Published' );
 	}
 	public function description() : string {
-		return 'Sent to the app owner when a hosted application is published.';
+		return smliser__( 'Sent to the app owner when a hosted application is published.' );
 	}
 	public static function preview() : static {
 		$app = WPPlugin::from_array_minimal( [
@@ -161,7 +172,7 @@ class AppPublishedEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Your application is now live.',
+				'content'   => smliser__( 'Your application is now live.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -169,7 +180,7 @@ class AppPublishedEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'success',
-				'content'   => '{{app_name}} has been published successfully and is now available to licensed users.',
+				'content'   => smliser__( '{{app_name}} has been published successfully and is now available to licensed users.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -177,10 +188,10 @@ class AppPublishedEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Application Name', 'value' => '{{app_name}}' ],
-					[ 'label' => 'Type',             'value' => '{{app_type}}' ],
-					[ 'label' => 'Version',          'value' => '{{app_version}}' ],
-					[ 'label' => 'Slug',             'value' => '{{app_slug}}' ],
+					[ 'label' => smliser__( 'Application Name' ), 'value' => '{{app_name}}' ],
+					[ 'label' => smliser__( 'Type' ),             'value' => '{{app_type}}' ],
+					[ 'label' => smliser__( 'Version' ),          'value' => '{{app_version}}' ],
+					[ 'label' => smliser__( 'Slug' ),             'value' => '{{app_slug}}' ],
 				],
 				'editable'  => true,
 				'removable' => true,
@@ -188,7 +199,7 @@ class AppPublishedEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you have any questions or concerns, contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you have any questions or concerns, contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

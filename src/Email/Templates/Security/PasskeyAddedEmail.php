@@ -20,19 +20,19 @@ class PasskeyAddedEmail extends SecurityEmailTemplate {
 	}
 
 	protected function action() : string {
-		return 'Passkey added';
+		return smliser__( 'Passkey added' );
 	}
 
 	protected function summary() : string {
-		return 'A new passkey was added to your account. It can now be used to sign in without your password.';
+		return smliser__( 'A new passkey was added to your account. It can now be used to sign in without your password.' );
 	}
 
 	public function label() : string {
-		return 'Passkey Added';
+		return smliser__( 'Passkey Added' );
 	}
 
 	public function description() : string {
-		return 'Sent after a passkey has been added to a user\'s account.';
+		return smliser__( 'Sent after a passkey has been added to a user\'s account.' );
 	}
 
 	public static function preview() : static {

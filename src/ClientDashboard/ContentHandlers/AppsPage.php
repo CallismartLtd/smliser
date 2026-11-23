@@ -78,7 +78,7 @@ final class AppsPage implements ClientPageInterface {
 
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Apps',
+			'title'      => smliser__( 'Apps' ),
 			'slug'       => 'apps',
 			'handler'    => $this,
 			'icon'       => 'ti ti-apps',
@@ -89,7 +89,7 @@ final class AppsPage implements ClientPageInterface {
 	public function get_submenu() : array {
 		return [
 			[
-				'title'      => 'Upload an app',
+				'title'      => smliser__( 'Upload an app' ),
 				'slug'       => 'new',
 				'callback'   => [ $this, 'upload' ],
 				'visibility' => fn () : bool => null !== $this->owner_id() && $this->can( 'hosted_apps.create' ),
@@ -147,7 +147,7 @@ final class AppsPage implements ClientPageInterface {
 			$result['items']
 		);
 
-		$filters = [ [ 'label' => 'All', 'url' => $list_url( [] ), 'current' => '' === $status ] ];
+		$filters = [ [ 'label' => smliser__( 'All' ), 'url' => $list_url( [] ), 'current' => '' === $status ] ];
 
 		foreach ( $statuses as $key => $label ) {
 			$filters[] = [ 'label' => $label, 'url' => $list_url( [ 'status' => $key ] ), 'current' => $key === $status ];
@@ -229,13 +229,13 @@ final class AppsPage implements ClientPageInterface {
 			return View::make(
 				'client.not-found',
 				[
-					'message'    => 'This app does not exist, or it belongs to someone else. Switch to its owner to manage it.',
+					'message'    => smliser__( 'This app does not exist, or it belongs to someone else. Switch to its owner to manage it.' ),
 					'back_url'   => $this->urlmanager->client_dashboard_url( 'apps' )->url(),
-					'back_label' => 'Your apps',
+					'back_label' => smliser__( 'Your apps' ),
 				]
 			)
 				->set_status_code( 404 )
-				->set_title( 'App not found' );
+				->set_title( smliser__( 'App not found' ) );
 		}
 
 		$registry = HostedAppsRegistry::instance();
@@ -245,12 +245,12 @@ final class AppsPage implements ClientPageInterface {
 		$assets   = [];
 
 		// How each kind of image must be named, where the name decides it.
-		$names = static fn ( array $stems ) : string => sprintf( 'Name each file %s, with its image extension.', implode( ' or ', $stems ) );
+		$names = static fn ( array $stems ) : string => sprintf( smliser__( 'Name each file %s, with its image extension.' ), implode( ' or ', $stems ) );
 		$hints = [
 			'icon'        => $names( Repository::ALLOWED_ICON_NAMES ),
 			'banner'      => $names( array_values( WPPluginRepository::ALLOWED_BANNER_NAMES ) ),
-			'cover'       => 'One image; delete the current one to upload another.',
-			'screenshot'  => 'wptheme' === $app->get_type() ? 'One image; delete the current one to upload another.' : 'Numbered in the order added; name a file screenshot-2 to give it that place.',
+			'cover'       => smliser__( 'One image; delete the current one to upload another.' ),
+			'screenshot'  => 'wptheme' === $app->get_type() ? smliser__( 'One image; delete the current one to upload another.' ) : smliser__( 'Numbered in the order added; name a file screenshot-2 to give it that place.' ),
 			'screenshots' => 'Numbered in the order added; name a file screenshot-2 to give it that place.',
 		];
 
@@ -266,25 +266,25 @@ final class AppsPage implements ClientPageInterface {
 		};
 
 		$fields = [
-			[ 'name' => 'app_name', 'label' => 'Name', 'value' => $app->get_name(), 'type' => 'text', 'required' => true, 'hint' => '' ],
-			[ 'name' => 'app_author', 'label' => 'Author', 'value' => $app->get_author(), 'type' => 'text', 'required' => true, 'hint' => '' ],
-			[ 'name' => 'app_author_url', 'label' => 'Author profile URL', 'value' => $string( $app->get_author_profile() ), 'type' => 'url', 'required' => false, 'hint' => '' ],
-			[ 'name' => 'app_homepage_url', 'label' => 'Homepage URL', 'value' => $string( $app->get_homepage() ), 'type' => 'url', 'required' => false, 'hint' => '' ],
+			[ 'name' => 'app_name', 'label' => smliser__( 'Name' ), 'value' => $app->get_name(), 'type' => 'text', 'required' => true, 'hint' => '' ],
+			[ 'name' => 'app_author', 'label' => smliser__( 'Author' ), 'value' => $app->get_author(), 'type' => 'text', 'required' => true, 'hint' => '' ],
+			[ 'name' => 'app_author_url', 'label' => smliser__( 'Author profile URL' ), 'value' => $string( $app->get_author_profile() ), 'type' => 'url', 'required' => false, 'hint' => '' ],
+			[ 'name' => 'app_homepage_url', 'label' => smliser__( 'Homepage URL' ), 'value' => $string( $app->get_homepage() ), 'type' => 'url', 'required' => false, 'hint' => '' ],
 		];
 
 		// The app type's own fields: what HostingController::update_{type}() reads.
 		$extra = match ( $app->get_type() ) {
 			'wptheme'  => [
-				'app_preview_url'             => [ 'Preview URL', $app->get_meta( 'preview_url' ) ],
-				'app_external_repository_url' => [ 'External repository URL', $app->get_meta( 'external_repository_url' ) ],
+				'app_preview_url'             => [ smliser__( 'Preview URL' ), $app->get_meta( 'preview_url' ) ],
+				'app_external_repository_url' => [ smliser__( 'External repository URL' ), $app->get_meta( 'external_repository_url' ) ],
 			],
 			'software' => [
-				'app_documentation_url' => [ 'Documentation URL', $app->get_meta( 'documentation_url' ) ],
+				'app_documentation_url' => [ smliser__( 'Documentation URL' ), $app->get_meta( 'documentation_url' ) ],
 			],
 			default    => [],
 		};
 
-		$extra['app_support_url']  = [ 'Support URL', $app->get_support_url() ];
+		$extra['app_support_url']  = [ smliser__( 'Support URL' ), $app->get_support_url() ];
 
 		foreach ( $extra as $name => [ $label, $value ] ) {
 			$fields[] = [ 'name' => $name, 'label' => $label, 'value' => $string( $value ), 'type' => 'url', 'required' => false, 'hint' => '' ];
@@ -293,11 +293,11 @@ final class AppsPage implements ClientPageInterface {
 		// Only a link elsewhere is stored; empty means this site serves the download.
 		$fields[] = [
 			'name'     => 'app_download_url',
-			'label'    => 'Download URL',
+			'label'    => smliser__( 'Download URL' ),
 			'value'    => $string( $app->get_custom_download_url() ),
 			'type'     => 'url',
 			'required' => false,
-			'hint'     => sprintf( 'Leave empty to serve downloads from this site, at %s', $this->urlmanager->app_downloads_url( $app->get_type(), $app->get_slug() )->url() ),
+			'hint'     => sprintf( smliser__( 'Leave empty to serve downloads from this site, at %s' ), $this->urlmanager->app_downloads_url( $app->get_type(), $app->get_slug() )->url() ),
 		];
 
 		return View::make(

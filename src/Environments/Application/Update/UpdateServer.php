@@ -136,7 +136,7 @@ final class UpdateServer {
 			$url .= '?' . http_build_query( [ 'artifact' => $artifact ] );
 		}
 
-		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( 'Asking %s for the release.', $url ) );
+		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( smliser__( 'Asking %s for the release.' ), $url ) );
 
 		try {
 			$response = $this->http->get(
@@ -148,33 +148,33 @@ final class UpdateServer {
 				options: [ 'timeout' => self::TIMEOUT ]
 			);
 		} catch ( Throwable $e ) {
-			throw new UpdateException( sprintf( 'Could not reach the update server: %s', $e->getMessage() ), 0, $e );
+			throw new UpdateException( sprintf( smliser__( 'Could not reach the update server: %s' ), $e->getMessage() ), 0, $e );
 		}
 
 		if ( 404 === $response->status_code ) {
 			throw new UpdateException(
 				null !== $artifact
-					? sprintf( 'The update server does not publish %s yet; try again later.', $artifact )
+					? sprintf( smliser__( 'The update server does not publish %s yet; try again later.' ), $artifact )
 					: ( self::APP_TYPE === $app_type && self::APP_SLUG === $app_slug
-						? 'The update server does not publish this application.'
-						: sprintf( 'The update server does not publish "%s".', $app_slug ) )
+						? smliser__( 'The update server does not publish this application.' )
+						: sprintf( smliser__( 'The update server does not publish "%s".' ), $app_slug ) )
 			);
 		}
 
 		if ( ! $response->is_success() ) {
-			throw new UpdateException( sprintf( 'The update server answered with HTTP %d; try again later.', $response->status_code ) );
+			throw new UpdateException( sprintf( smliser__( 'The update server answered with HTTP %d; try again later.' ), $response->status_code ) );
 		}
 
 		$body    = $response->json();
 		$release = is_array( $body ) ? ( $body['release'] ?? null ) : null;
 
 		if ( ! is_array( $release ) || ! self::is_release( $release ) ) {
-			throw new UpdateException( 'The update server did not describe a release; try again later.' );
+			throw new UpdateException( smliser__( 'The update server did not describe a release; try again later.' ) );
 		}
 
 		// The release must be the one asked for, so its identity can be checked against the attestation.
 		if ( $app_type !== $release['type'] || $app_slug !== $release['slug'] || ( null !== $artifact && $artifact !== $release['package']['name'] ) ) {
-			throw new UpdateException( 'The update server described a different release than the one asked for.' );
+			throw new UpdateException( smliser__( 'The update server described a different release than the one asked for.' ) );
 		}
 
 		$release['source'] = $url;
@@ -208,7 +208,7 @@ final class UpdateServer {
 		$release = $this->release( $app_type, $app_slug, null, $progress );
 		$version = self::assert_version( $release );
 
-		$this->report( $progress, 'check', self::STATUS_OK, sprintf( 'The update server publishes %s %s%s.', $app_slug, $version, $release['security'] ? ' (security release)' : '' ) );
+		$this->report( $progress, 'check', self::STATUS_OK, sprintf( $release['security'] ? smliser__( 'The update server publishes %s %s (security release).' ) : smliser__( 'The update server publishes %s %s.' ), $app_slug, $version ) );
 
 		return [
 			'version'  => $version,
@@ -241,7 +241,7 @@ final class UpdateServer {
 
 		$url = self::HOST . self::API_PATH . '/repository/?' . http_build_query( $query );
 
-		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( 'Asking %s for its %s apps.', self::HOST, $app_type ) );
+		$this->report( $progress, 'check', self::STATUS_INFO, sprintf( smliser__( 'Asking %s for its %s apps.' ), self::HOST, $app_type ) );
 
 		try {
 			$response = $this->http->get(
@@ -253,18 +253,18 @@ final class UpdateServer {
 				options: [ 'timeout' => self::TIMEOUT ]
 			);
 		} catch ( Throwable $e ) {
-			throw new UpdateException( sprintf( 'Could not reach the update server: %s', $e->getMessage() ), 0, $e );
+			throw new UpdateException( sprintf( smliser__( 'Could not reach the update server: %s' ), $e->getMessage() ), 0, $e );
 		}
 
 		if ( ! $response->is_success() ) {
-			throw new UpdateException( sprintf( 'The update server answered with HTTP %d; try again later.', $response->status_code ) );
+			throw new UpdateException( sprintf( smliser__( 'The update server answered with HTTP %d; try again later.' ), $response->status_code ) );
 		}
 
 		$body = $response->json();
 		$apps = is_array( $body ) ? ( $body['apps'] ?? null ) : null;
 
 		if ( ! is_array( $apps ) || ! is_array( $body['pagination'] ?? null ) ) {
-			throw new UpdateException( 'The update server did not answer with a repository listing; try again later.' );
+			throw new UpdateException( smliser__( 'The update server did not answer with a repository listing; try again later.' ) );
 		}
 
 		return [
@@ -313,13 +313,13 @@ final class UpdateServer {
 	 */
 	public function download_module( array $release, string $dir, ?callable $progress = null ) : array {
 		if ( ! self::is_release( $release ) ) {
-			throw new UpdateException( 'The module release is not a release from release().' );
+			throw new UpdateException( smliser__( 'The module release is not a release from release().' ) );
 		}
 
 		$identity = [ 'type' => $release['type'], 'slug' => $release['slug'], 'artifact' => $release['slug'] . '.zip' ];
 
 		if ( $identity['artifact'] !== $release['package']['name'] ) {
-			throw new UpdateException( sprintf( 'Marketplace modules install from their main package, not from %s.', $release['package']['name'] ) );
+			throw new UpdateException( sprintf( smliser__( 'Marketplace modules install from their main package, not from %s.' ), $release['package']['name'] ) );
 		}
 
 		return $this->fetch_verified( $release, $dir, $this->marketplace_verifier, false, $identity, $progress );
@@ -346,7 +346,7 @@ final class UpdateServer {
 		$version = $release['version'] ?? null;
 
 		if ( ! is_string( $version ) || 1 !== preg_match( '/^\d+\.\d+\.\d+([.+-][0-9A-Za-z.+-]+)?$/', $version ) ) {
-			throw new UpdateException( 'The update server did not report a valid version; try again later.' );
+			throw new UpdateException( smliser__( 'The update server did not report a valid version; try again later.' ) );
 		}
 
 		return $version;
@@ -366,7 +366,7 @@ final class UpdateServer {
 	 */
 	private function fetch_verified( array $release, string $dir, PackageVerifier $verifier, bool $trust_unsigned, ?array $identity, ?callable $progress ) : array {
 		if ( $release['requires_token'] ) {
-			throw new UpdateException( sprintf( '%s needs a download token, which this installation cannot send yet.', $release['package']['name'] ) );
+			throw new UpdateException( sprintf( smliser__( '%s needs a download token, which this installation cannot send yet.' ), $release['package']['name'] ) );
 		}
 
 		$url = $release['package']['url'];
@@ -385,15 +385,15 @@ final class UpdateServer {
 			);
 		} catch ( Throwable $e ) {
 			$this->discard( $zip );
-			throw new UpdateException( sprintf( 'The download of %s failed: %s', basename( $zip ), $e->getMessage() ), 0, $e );
+			throw new UpdateException( sprintf( smliser__( 'The download of %s failed: %s' ), basename( $zip ), $e->getMessage() ), 0, $e );
 		}
 
 		if ( ! $response->is_success() ) {
 			$this->discard( $zip );
-			throw new UpdateException( sprintf( 'The download of %s failed with HTTP %d.', basename( $zip ), $response->status_code ) );
+			throw new UpdateException( sprintf( smliser__( 'The download of %s failed with HTTP %d.' ), basename( $zip ), $response->status_code ) );
 		}
 
-		$this->report( $progress, 'download', self::STATUS_OK, sprintf( 'Downloaded %s (%s) to %s.', basename( $zip ), $this->size( $zip ), $zip ) );
+		$this->report( $progress, 'download', self::STATUS_OK, sprintf( smliser__( 'Downloaded %s (%s) to %s.' ), basename( $zip ), $this->size( $zip ), $zip ) );
 
 		$checksums = $release['integrity']['checksums'] ?? null;
 		$signature = $release['integrity']['signature'] ?? null;

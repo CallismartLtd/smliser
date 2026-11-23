@@ -17,7 +17,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
     	[
     		'breadcrumbs' => [
     			[
-    				'label' => 'Repository',
+    				'label' => smliser__( 'Repository' ),
     				'url'   => $urlmanager->admin_repo_url(),
     				'icon'  => 'ti ti-home-filled'
     			],
@@ -29,8 +29,8 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
     		'actions' => [
     			$app_action,
     			[
-    				'title' => 'Settings',
-    				'label' => 'Settings',
+    				'title' => smliser__( 'Settings' ),
+    				'label' => smliser__( 'Settings' ),
     				'url'   => $urlmanager->admin_options_url(),
     				'icon'  => 'ti ti-settings'
     			]
@@ -40,25 +40,23 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
     <div class="smliser-admin-page smliser-upload-page ">
 
         <header class="smliser-page-header">
-            <h1 class="smliser-page-title">Upload a Hosted App</h1>
+            <h1 class="smliser-page-title"><?php smliser_esc_html_e( 'Upload a Hosted App' ); ?></h1>
             <p class="smliser-page-subtitle">
-                Choose the app type you want to upload to this repository.
-                Before you proceed, there are a couple of things to keep in mind.
+                <?php smliser_esc_html_e( 'Choose the app type you want to upload to this repository. Before you proceed, there are a couple of things to keep in mind.' ); ?>
             </p>
         </header>
 
         <section class="smliser-upload-instructions notice notice-info">
-            <h2 class="smliser-instructions-title">Before you upload</h2>
+            <h2 class="smliser-instructions-title"><?php smliser_esc_html_e( 'Before you upload' ); ?></h2>
             <p>
-                Prepare the app package (WordPress plugins, themes, or any registered application type)
-                you want to upload and compress it into a ZIP file.
+                <?php smliser_esc_html_e( 'Prepare the app package (WordPress plugins, themes, or any registered application type) you want to upload and compress it into a ZIP file.' ); ?>
             </p>
         </section>
 
         <section class="smliser-upload-types">
-            <h2 class="smliser-upload-types-title">Select app type</h2>
+            <h2 class="smliser-upload-types-title"><?php smliser_esc_html_e( 'Select app type' ); ?></h2>
             <p class="smliser-upload-types-subtitle">
-                Click one of the options below to start uploading your app.
+                <?php smliser_esc_html_e( 'Click one of the options below to start uploading your app.' ); ?>
             </p>
 
             <div class="smliser-upload-cards">

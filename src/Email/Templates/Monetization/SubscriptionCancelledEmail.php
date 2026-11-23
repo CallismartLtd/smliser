@@ -42,7 +42,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 	}
 
 	protected function subject() : string {
-		return 'Your Subscription Has Been Cancelled';
+		return smliser__( 'Your Subscription Has Been Cancelled' );
 	}
 
 	protected function recipient() : string {
@@ -73,12 +73,25 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 		$support        = \escHtml( $vars['{{support_email}}'] );
 
 		$cancelled_by = $this->self_cancelled
-			? 'You have cancelled your subscription.'
-			: 'Your subscription has been cancelled by an administrator.';
+			? smliser__( 'You have cancelled your subscription.' )
+			: smliser__( 'Your subscription has been cancelled by an administrator.' );
+
+		$i18n = [
+			/* translators: %s: recipient name */
+			sprintf( smliser_esc_html__( 'Hi %s,' ), $recipient_name ),
+			/* translators: 1: plan name (formatted), 2: access until (formatted) */
+			sprintf( smliser_esc_html__( '⚠ Your access to %1$s features will remain active until %2$s, after which your account will be downgraded.' ), '<strong>' . $plan_name . '</strong>', '<strong>' . $access_until . '</strong>' ),
+			smliser_esc_html__( 'Plan' ),
+			smliser_esc_html__( 'Cancelled On' ),
+			smliser_esc_html__( 'Access Until' ),
+			smliser_esc_html__( 'Reason' ),
+			/* translators: %s: support (formatted) */
+			sprintf( smliser_esc_html__( 'If you did not request this cancellation or would like to reactivate your subscription, please contact us at %s.' ), '<a href="mailto:' . $support . '" style="color:#6366f1;text-decoration:none;">' . $support . '</a>' ),
+		];
 
 		return <<<HTML
         <p style="margin:0 0 24px;font-size:16px;font-weight:600;color:#1a1a2e;">
-            Hi {$recipient_name},
+            {$i18n[0]}
         </p>
 
         <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
@@ -92,9 +105,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
             <tr>
                 <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:14px;font-weight:600;color:#92400e;line-height:1.5;">
-                        &#9888;&nbsp; Your access to <strong>{$plan_name}</strong> features
-                        will remain active until <strong>{$access_until}</strong>,
-                        after which your account will be downgraded.
+                        {$i18n[1]}
                     </p>
                 </td>
             </tr>
@@ -111,7 +122,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 16px 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Plan
+                                    {$i18n[2]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$plan_name}
@@ -120,7 +131,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 0 16px;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Cancelled On
+                                    {$i18n[3]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$cancelled_on}
@@ -131,7 +142,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
                             <td width="50%" style="padding:0 16px 0 0;vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Access Until
+                                    {$i18n[4]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#1a1a2e;font-weight:600;">
                                     {$access_until}
@@ -140,7 +151,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
                             <td width="50%" style="vertical-align:top;">
                                 <p style="margin:0 0 4px;font-size:11px;font-weight:700;
                                            text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">
-                                    Reason
+                                    {$i18n[5]}
                                 </p>
                                 <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
                                     {$reason}
@@ -153,28 +164,26 @@ class SubscriptionCancelledEmail extends EmailTemplate {
         </table>
 
         <p style="margin:0 0 16px;font-size:14px;color:#64748b;line-height:1.6;">
-            If you did not request this cancellation or would like to reactivate
-            your subscription, please contact us at
-            <a href="mailto:{$support}" style="color:#6366f1;text-decoration:none;">{$support}</a>.
+            {$i18n[6]}
         </p>
         HTML;
 	}
 
 	public function label() : string {
-		return 'Subscription Cancelled';
+		return smliser__( 'Subscription Cancelled' );
 	}
 	public function description() : string {
-		return 'Sent when a subscription is cancelled by the user or an administrator.';
+		return smliser__( 'Sent when a subscription is cancelled by the user or an administrator.' );
 	}
 	public static function preview() : static {
 		return new static(
 			'preview@example.com',
-			'Jane Doe',
-			'My Awesome Plugin — Pro Plan',
+			smliser__( 'Jane Doe' ),
+			smliser__( 'My Awesome Plugin — Pro Plan' ),
 			gmdate( 'D, d M Y' ),
 			gmdate( 'D, d M Y', strtotime( '+30 days' ) ),
 			true,
-			'Switching to a different plan.'
+			smliser__( 'Switching to a different plan.' )
 		);
 	}
 
@@ -183,7 +192,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 			[
 				'id'        => 'greeting',
 				'type'      => 'greeting',
-				'content'   => 'Hi {{recipient_name}},',
+				'content'   => smliser__( 'Hi {{recipient_name}},' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -191,8 +200,8 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 				'id'      => 'intro',
 				'type'    => 'text',
 				'content' => $this->self_cancelled
-					? 'You have cancelled your subscription.'
-					: 'Your subscription has been cancelled by an administrator.',
+					? smliser__( 'You have cancelled your subscription.' )
+					: smliser__( 'Your subscription has been cancelled by an administrator.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -200,7 +209,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 				'id'        => 'banner',
 				'type'      => 'banner',
 				'tone'      => 'warning',
-				'content'   => 'Your access to {{plan_name}} features will remain active until {{access_until}}, after which your account will be downgraded.',
+				'content'   => smliser__( 'Your access to {{plan_name}} features will remain active until {{access_until}}, after which your account will be downgraded.' ),
 				'editable'  => true,
 				'removable' => false,
 			],
@@ -208,10 +217,10 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 				'id'   => 'details',
 				'type' => 'detail_card',
 				'rows' => [
-					[ 'label' => 'Plan',          'value' => '{{plan_name}}' ],
-					[ 'label' => 'Cancelled On',  'value' => '{{cancelled_on}}' ],
-					[ 'label' => 'Access Until',  'value' => '{{access_until}}' ],
-					[ 'label' => 'Reason',        'value' => '{{reason}}' ],
+					[ 'label' => smliser__( 'Plan' ),          'value' => '{{plan_name}}' ],
+					[ 'label' => smliser__( 'Cancelled On' ),  'value' => '{{cancelled_on}}' ],
+					[ 'label' => smliser__( 'Access Until' ),  'value' => '{{access_until}}' ],
+					[ 'label' => smliser__( 'Reason' ),        'value' => '{{reason}}' ],
 				],
 				'editable'  => true,
 				'removable' => true,
@@ -219,7 +228,7 @@ class SubscriptionCancelledEmail extends EmailTemplate {
 			[
 				'id'        => 'closing',
 				'type'      => 'closing',
-				'content'   => 'If you did not request this cancellation or would like to reactivate your subscription, please contact us at {{support_email}}.',
+				'content'   => smliser__( 'If you did not request this cancellation or would like to reactivate your subscription, please contact us at {{support_email}}.' ),
 				'editable'  => true,
 				'removable' => false,
 			],

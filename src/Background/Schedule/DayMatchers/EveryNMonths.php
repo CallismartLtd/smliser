@@ -78,7 +78,7 @@ final class EveryNMonths implements DayMatcher {
 	 */
 	public function describe() : string {
 		return 1 === $this->n
-			? sprintf( 'Monthly on day %d', $this->day_of_month )
-			: sprintf( 'Every %d month(s) on day %d', $this->n, $this->day_of_month );
+			? sprintf( smliser__( 'Monthly on day %d' ), $this->day_of_month )
+			: sprintf( smliser__( 'Every %d month(s) on day %d' ), $this->n, $this->day_of_month );
 	}
 }

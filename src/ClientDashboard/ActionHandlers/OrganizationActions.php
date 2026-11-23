@@ -90,7 +90,7 @@ final class OrganizationActions {
 
 		$this->identity->switch_context( $organization );
 
-		return $this->success( sprintf( '%s is created. You now act for it.', $organization->get_display_name() ), $this->page_url( 'organization' ) );
+		return $this->success( sprintf( smliser__( '%s is created. You now act for it.' ), $organization->get_display_name() ), $this->page_url( 'organization' ) );
 	}
 
 	/**
@@ -108,7 +108,7 @@ final class OrganizationActions {
 		}
 
 		if ( ! $organization ) {
-			return $this->failure( new Exception( 'organization_not_found', 'This organization does not exist.', [ 'status' => 404 ] ) );
+			return $this->failure( new Exception( 'organization_not_found', smliser__( 'This organization does not exist.' ), [ 'status' => 404 ] ) );
 		}
 
 		$result = $this->organizations->remove_member( $organization, $user, $user );
@@ -119,7 +119,7 @@ final class OrganizationActions {
 
 		$this->act_for_self_if_in( $organization );
 
-		return $this->success( sprintf( 'You left %s.', $organization->get_display_name() ), $this->page_url( 'organizations' ) );
+		return $this->success( sprintf( smliser__( 'You left %s.' ), $organization->get_display_name() ), $this->page_url( 'organizations' ) );
 	}
 
 	/**
@@ -165,7 +165,7 @@ final class OrganizationActions {
 
 		$this->identity->switch_context( $organization );
 
-		return $this->success( sprintf( 'Welcome to %s. You now act for it.', $organization->get_display_name() ), $this->page_url() );
+		return $this->success( sprintf( smliser__( 'Welcome to %s. You now act for it.' ), $organization->get_display_name() ), $this->page_url() );
 	}
 
 	/**
@@ -189,7 +189,7 @@ final class OrganizationActions {
 
 		$this->invitations->consume( $invitation );
 
-		return $this->success( sprintf( 'You declined the invitation to %s.', $organization->get_display_name() ), $this->page_url( 'organizations' ) );
+		return $this->success( sprintf( smliser__( 'You declined the invitation to %s.' ), $organization->get_display_name() ), $this->page_url( 'organizations' ) );
 	}
 
 	/*
@@ -208,7 +208,7 @@ final class OrganizationActions {
 		return $this->in_organization( 'security.organization.update', function ( Organization $organization ) use ( $request ) {
 			$result = $this->organizations->rename( $organization, (string) $request->get( 'name', '' ) );
 
-			return $result instanceof Exception ? $result : sprintf( 'Renamed to %s.', $result->get_display_name() );
+			return $result instanceof Exception ? $result : sprintf( smliser__( 'Renamed to %s.' ), $result->get_display_name() );
 		} );
 	}
 
@@ -228,7 +228,7 @@ final class OrganizationActions {
 
 			$this->act_for_self_if_in( $organization );
 
-			return [ sprintf( '%s is deleted.', $organization->get_display_name() ), $this->page_url( 'organizations' ) ];
+			return [ sprintf( smliser__( '%s is deleted.' ), $organization->get_display_name() ), $this->page_url( 'organizations' ) ];
 		} );
 	}
 
@@ -243,12 +243,12 @@ final class OrganizationActions {
 			$member = User::get_by_id( (int) $request->get( 'user_id', 0 ) );
 
 			if ( ! $member ) {
-				return new Exception( 'member_not_found', 'This member does not exist.', [ 'status' => 404 ] );
+				return new Exception( 'member_not_found', smliser__( 'This member does not exist.' ), [ 'status' => 404 ] );
 			}
 
 			$result = $this->organizations->change_role( $organization, $member, (string) $request->get( 'role', '' ), $user );
 
-			return $result instanceof Exception ? $result : sprintf( '%s\'s role is changed.', $member->get_display_name() );
+			return $result instanceof Exception ? $result : sprintf( smliser__( '%s\'s role is changed.' ), $member->get_display_name() );
 		} );
 	}
 
@@ -263,16 +263,16 @@ final class OrganizationActions {
 			$member = User::get_by_id( (int) $request->get( 'user_id', 0 ) );
 
 			if ( ! $member ) {
-				return new Exception( 'member_not_found', 'This member does not exist.', [ 'status' => 404 ] );
+				return new Exception( 'member_not_found', smliser__( 'This member does not exist.' ), [ 'status' => 404 ] );
 			}
 
 			if ( $member->get_id() === $user->get_id() ) {
-				return new Exception( 'remove_self', 'To leave the organization, use Leave on the Organizations page.', [ 'status' => 409 ] );
+				return new Exception( 'remove_self', smliser__( 'To leave the organization, use Leave on the Organizations page.' ), [ 'status' => 409 ] );
 			}
 
 			$result = $this->organizations->remove_member( $organization, $member, $user );
 
-			return $result instanceof Exception ? $result : sprintf( '%s is removed.', $member->get_display_name() );
+			return $result instanceof Exception ? $result : sprintf( smliser__( '%s is removed.' ), $member->get_display_name() );
 		} );
 	}
 
@@ -294,7 +294,7 @@ final class OrganizationActions {
 				$invitee && $this->organizations->is_member( $organization, $invitee )
 			);
 
-			return $result instanceof Exception ? $result : sprintf( 'An invitation is on its way to %s. It is valid for %d hours.', $result['email'], OrganizationInvitations::TTL_HOURS );
+			return $result instanceof Exception ? $result : sprintf( smliser__( 'An invitation is on its way to %s. It is valid for %d hours.' ), $result['email'], OrganizationInvitations::TTL_HOURS );
 		} );
 	}
 
@@ -308,7 +308,7 @@ final class OrganizationActions {
 		return $this->in_organization( 'security.user.invite', function ( Organization $organization, User $user ) use ( $request ) {
 			$result = $this->invitations->resend( $organization, (string) $request->get( 'id', '' ), $user );
 
-			return $result instanceof Exception ? $result : sprintf( 'A new invitation is on its way to %s; the earlier link no longer works.', $result['email'] );
+			return $result instanceof Exception ? $result : sprintf( smliser__( 'A new invitation is on its way to %s; the earlier link no longer works.' ), $result['email'] );
 		} );
 	}
 
@@ -321,8 +321,8 @@ final class OrganizationActions {
 	public function revoke_invitation( Request $request ) : Response {
 		return $this->in_organization( 'security.user.invite', function ( Organization $organization ) use ( $request ) {
 			return $this->invitations->revoke( $organization, (string) $request->get( 'id', '' ) )
-				? 'The invitation is revoked; its link no longer works.'
-				: new Exception( 'invitation_not_found', 'This invitation has already expired or was revoked.', [ 'status' => 404 ] );
+				? smliser__( 'The invitation is revoked; its link no longer works.' )
+				: new Exception( 'invitation_not_found', smliser__( 'This invitation has already expired or was revoked.' ), [ 'status' => 404 ] );
 		} );
 	}
 
@@ -352,11 +352,11 @@ final class OrganizationActions {
 		}
 
 		if ( ! $organization ) {
-			return $this->failure( new Exception( 'no_organization', 'Switch to the organization first.', [ 'status' => 409 ] ) );
+			return $this->failure( new Exception( 'no_organization', smliser__( 'Switch to the organization first.' ), [ 'status' => 409 ] ) );
 		}
 
 		if ( ! $principal->can( $capability ) ) {
-			return $this->failure( new Exception( 'forbidden', sprintf( 'Your role in %s does not allow this.', $organization->get_display_name() ), [ 'status' => 403 ] ) );
+			return $this->failure( new Exception( 'forbidden', sprintf( smliser__( 'Your role in %s does not allow this.' ), $organization->get_display_name() ), [ 'status' => 403 ] ) );
 		}
 
 		$result = $action( $organization, $user );
@@ -382,15 +382,15 @@ final class OrganizationActions {
 		$organization = $invitation ? Organization::get_by_id( (int) $invitation['organization_id'] ) : null;
 
 		if ( ! $invitation || ! $organization ) {
-			return [ new Exception( 'invitation_not_found', 'This invitation has expired or was revoked. Ask for a new one.', [ 'status' => 404 ] ), null ];
+			return [ new Exception( 'invitation_not_found', smliser__( 'This invitation has expired or was revoked. Ask for a new one.' ), [ 'status' => 404 ] ), null ];
 		}
 
 		if ( strtolower( $user->get_email() ) !== $invitation['email'] ) {
-			return [ new Exception( 'invitation_for_another', sprintf( 'This invitation was sent to %s. Sign in with that address to answer it.', $invitation['email'] ), [ 'status' => 403 ] ), null ];
+			return [ new Exception( 'invitation_for_another', sprintf( smliser__( 'This invitation was sent to %s. Sign in with that address to answer it.' ), $invitation['email'] ), [ 'status' => 403 ] ), null ];
 		}
 
 		if ( Organization::STATUS_ACTIVE !== $organization->get_status() ) {
-			return [ new Exception( 'organization_inactive', sprintf( '%s is not active at the moment.', $organization->get_display_name() ), [ 'status' => 409 ] ), null ];
+			return [ new Exception( 'organization_inactive', sprintf( smliser__( '%s is not active at the moment.' ), $organization->get_display_name() ), [ 'status' => 409 ] ), null ];
 		}
 
 		return [ $invitation, $organization ];
@@ -443,7 +443,7 @@ final class OrganizationActions {
 	 * @return Response
 	 */
 	private function signed_out() : Response {
-		return $this->failure( new RequestException( 'not_signed_in', 'Sign in to continue.', [ 'status' => 401 ] ) );
+		return $this->failure( new RequestException( 'not_signed_in', smliser__( 'Sign in to continue.' ), [ 'status' => 401 ] ) );
 	}
 
 	/**

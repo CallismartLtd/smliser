@@ -43,7 +43,7 @@ class TwoFactorDisabledEmail extends SecurityEmailTemplate {
 	}
 
 	protected function action() : string {
-		return 'Two-factor authentication disabled';
+		return smliser__( 'Two-factor authentication disabled' );
 	}
 
 	protected function summary() : string {
@@ -52,15 +52,15 @@ class TwoFactorDisabledEmail extends SecurityEmailTemplate {
 			default => 'an authenticator app',
 		};
 
-		return sprintf( 'Two-factor authentication with %s was turned off for your account. Your account is now less protected.', $method );
+		return sprintf( smliser__( 'Two-factor authentication with %s was turned off for your account. Your account is now less protected.' ), $method );
 	}
 
 	public function label() : string {
-		return 'Two-Factor Authentication Disabled';
+		return smliser__( 'Two-Factor Authentication Disabled' );
 	}
 
 	public function description() : string {
-		return 'Sent after a user turns off email codes or an authenticator app as a second sign-in factor.';
+		return smliser__( 'Sent after a user turns off email codes or an authenticator app as a second sign-in factor.' );
 	}
 
 	public static function preview() : static {

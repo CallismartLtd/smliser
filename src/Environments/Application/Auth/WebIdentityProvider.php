@@ -94,13 +94,13 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 		$user = $this->guard->get_principal()?->get_actor();
 
 		if ( ! $user instanceof User ) {
-			return new RequestException( 'not_signed_in', 'Sign in to switch who you act for.', [ 'status' => 401 ] );
+			return new RequestException( 'not_signed_in', smliser__( 'Sign in to switch who you act for.' ), [ 'status' => 401 ] );
 		}
 
 		$role = ContextServiceProvider::get_context_role( $user, $subject );
 
 		if ( ! $role ) {
-			return new RequestException( 'context_forbidden', sprintf( 'You cannot act for %s.', $subject->get_display_name() ), [ 'status' => 403 ] );
+			return new RequestException( 'context_forbidden', sprintf( smliser__( 'You cannot act for %s.' ), $subject->get_display_name() ), [ 'status' => 403 ] );
 		}
 
 		try {
@@ -110,7 +110,7 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 
 			$this->sessions->update_claims( [ 'owner_id' => $owner?->get_id() ] );
 		} catch ( \Throwable $e ) {
-			return new RequestException( 'context_switch_failed', 'Switching failed. Please try again.', [ 'status' => 500 ] );
+			return new RequestException( 'context_switch_failed', smliser__( 'Switching failed. Please try again.' ), [ 'status' => 500 ] );
 		}
 
 		$principal = new Principal( $user, $role, $owner );
@@ -197,7 +197,7 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 	 */
 	public function complete_login( AuthenticationResult $auth_result, bool $remember = false ) : Principal|RequestException {
 		if ( ! $auth_result->is_authenticated() || ! $auth_result->actor instanceof User || ! $auth_result->role ) {
-			return new RequestException( 'invalid_authentication_state', 'Authentication could not be completed.' );
+			return new RequestException( 'invalid_authentication_state', smliser__( 'Authentication could not be completed.' ) );
 		}
 
 		return $this->complete_login_for_user( $auth_result->actor, $remember );
@@ -213,12 +213,12 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 	public function complete_login_for_user( User $user, bool $remember = false ) : Principal|RequestException {
 
 		if ( ! $user->can_authenticate() ) {
-			return new RequestException( 'account_inactive', 'This account is not active. Contact the site administrator.' );
+			return new RequestException( 'account_inactive', smliser__( 'This account is not active. Contact the site administrator.' ) );
 		}
 
 		$role = ContextServiceProvider::get_context_role( $user, $user );
 		if ( ! $role ) {
-			return new RequestException( 'invalid_role', 'Authentication denied due to invalid role.' );
+			return new RequestException( 'invalid_role', smliser__( 'Authentication denied due to invalid role.' ) );
 		}
 		try {
 			$owner = ContextServiceProvider::get_self_owner( $user, $role );
@@ -240,11 +240,11 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 		$email = trim( (string) $request->get( 'email', '' ) );
 
 		if ( '' === $email || false === filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-			return new RequestException( 'invalid_email', 'Please provide a valid email address.', [ 'status' => 400 ] );
+			return new RequestException( 'invalid_email', smliser__( 'Please provide a valid email address.' ), [ 'status' => 400 ] );
 		}
 
 		if ( ! $this->accounts->acquire_signup_lock( $email ) ) {
-			return new RequestException( 'signup_locked', 'Too many signup attempts, please try again later.', [ 'status' => 429 ] );
+			return new RequestException( 'signup_locked', smliser__( 'Too many signup attempts, please try again later.' ), [ 'status' => 429 ] );
 		}
 
 		try {
@@ -256,7 +256,7 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 			}
 
 			if ( User::email_exists( $email ) ) {
-				return new RequestException( 'email_exists', 'An account with this email address already exists. Sign in, or reset your password.', [ 'status' => 409 ] );
+				return new RequestException( 'email_exists', smliser__( 'An account with this email address already exists. Sign in, or reset your password.' ), [ 'status' => 409 ] );
 			}
 
 			$user = $this->accounts->create_user( $email, $password, (string) $request->get( 'full_name', '' ) );
@@ -267,12 +267,12 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 			$this->sessions->create( $user->get_id() );
 
 			return $this->authenticate()
-				?? new RequestException( 'authentication_error', 'Your account was created, but signing in failed. Please sign in.', [ 'status' => 500 ] );
+				?? new RequestException( 'authentication_error', smliser__( 'Your account was created, but signing in failed. Please sign in.' ), [ 'status' => 500 ] );
 
 		} catch ( RequestException $e ) {
 			return $e;
 		} catch ( \Throwable ) {
-			return new RequestException( 'signup_error', 'An error occurred during signup, please try again.', [ 'status' => 500 ] );
+			return new RequestException( 'signup_error', smliser__( 'An error occurred during signup, please try again.' ), [ 'status' => 500 ] );
 		} finally {
 			$this->accounts->release_signup_lock( $email );
 		}

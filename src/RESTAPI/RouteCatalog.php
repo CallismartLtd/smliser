@@ -166,7 +166,7 @@ class RouteCatalog {
 			$route    = $route_config['route'];
 			$methods  = is_array( $route_config['methods'] ) ? $route_config['methods'] : [ $route_config['methods'] ];
 			$args     = $this->format_args( $route_config['args'] ?? [] );
-			$name     = $route_config['name'] ?? 'Unnamed Route';
+			$name     = $route_config['name'] ?? smliser__( 'Unnamed Route' );
 			$category = $route_config['category'] ?? null;
 
 			if ( ! isset( $grouped[ $route ] ) ) {
@@ -203,7 +203,7 @@ class RouteCatalog {
 				'name'        => $arg_name,
 				'type'        => $arg_config['type'] ?? 'mixed',
 				'required'    => ! empty( $arg_config['required'] ),
-				'description' => $arg_config['description'] ?? 'No description',
+				'description' => $arg_config['description'] ?? smliser__( 'No description' ),
 				'default'     => $arg_config['default'] ?? null,
 			];
 		}

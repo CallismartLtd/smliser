@@ -32,17 +32,17 @@
 	const GROUPS = [
 		{
 			id: 'canonical',
-			title: 'Package and documents',
+			title: smliserI18n.__( 'Package and documents' ),
 			kinds: [ 'package', 'manifest', 'attestation', 'document' ],
-			note: 'Read-only. Upload a new version of the app to change these.',
+			note: smliserI18n.__( 'Read-only. Upload a new version of the app to change these.' ),
 		},
-		{ id: 'assets', title: 'Assets', kinds: [ 'asset' ], note: '' },
-		{ id: 'artifacts', title: 'Artifacts', kinds: [ 'artifact' ], note: '' },
+		{ id: 'assets', title: smliserI18n.__( 'Assets' ), kinds: [ 'asset' ], note: '' },
+		{ id: 'artifacts', title: smliserI18n.__( 'Artifacts' ), kinds: [ 'artifact' ], note: '' },
 		{
 			id: 'other',
-			title: 'Other files',
+			title: smliserI18n.__( 'Other files' ),
 			kinds: [ null ],
-			note: 'Stored with the app but not managed by it.',
+			note: smliserI18n.__( 'Stored with the app but not managed by it.' ),
 		},
 	];
 
@@ -52,9 +52,9 @@
 	 * @type {Object<string, string>}
 	 */
 	const KIND_LABELS = {
-		package: 'Main package',
+		package: smliserI18n.__( 'Main package' ),
 		manifest: 'Manifest',
-		attestation: 'Hosting attestation',
+		attestation: smliserI18n.__( 'Hosting attestation' ),
 		document: 'Document',
 		asset: 'Asset',
 		artifact: 'Artifact',
@@ -211,7 +211,7 @@
 			this.renderPath();
 			this.appBar.replaceChildren();
 			this.hidePreview();
-			this.listing.replaceChildren( this.message( 'Loading…', 'ti ti-loader-2 smliser-repo-browser__spin' ) );
+			this.listing.replaceChildren( this.message( smliserI18n.__( 'Loading…' ), 'ti ti-loader-2 smliser-repo-browser__spin' ) );
 
 			let response;
 
@@ -287,7 +287,7 @@
 		 * Render the location as links back up the tree.
 		 */
 		renderPath() {
-			const crumbs = [ { label: 'All types', type: '', slug: '' } ];
+			const crumbs = [ { label: smliserI18n.__( 'All types' ), type: '', slug: '' } ];
 
 			if ( this.type ) {
 				crumbs.push( { label: this.type, type: this.type, slug: '' } );
@@ -333,20 +333,20 @@
 			const buttons = [];
 
 			if ( actions.includes( 'upload_asset' ) ) {
-				buttons.push( this.button( 'Upload assets', 'ti ti-photo-up', () => this.uploadAssets() ) );
+				buttons.push( this.button( smliserI18n.__( 'Upload assets' ), 'ti ti-photo-up', () => this.uploadAssets() ) );
 			}
 
 			if ( actions.includes( 'upload_artifact' ) ) {
-				buttons.push( this.button( 'Upload artifact', 'ti ti-file-upload', () => this.uploadArtifact() ) );
+				buttons.push( this.button( smliserI18n.__( 'Upload artifact' ), 'ti ti-file-upload', () => this.uploadArtifact() ) );
 			}
 
 			if ( actions.includes( 'rename_app' ) ) {
-				buttons.push( this.button( 'Change slug', 'ti ti-forms', () => this.renameApp() ) );
+				buttons.push( this.button( smliserI18n.__( 'Change slug' ), 'ti ti-forms', () => this.renameApp() ) );
 			}
 
 			if ( data?.app?.view_url ) {
 				buttons.push( el( 'a', { class: 'smliser-btn smliser-btn-glass', href: data.app.view_url },
-					el( 'i', { class: 'ti ti-eye', 'aria-hidden': 'true' } ), 'Open app'
+					el( 'i', { class: 'ti ti-eye', 'aria-hidden': 'true' } ), smliserI18n.__( 'Open app' )
 				) );
 			}
 
@@ -368,7 +368,7 @@
 
 			if ( null === this.data.app ) {
 				sections.push( this.message(
-					'These files have no app record, so they can be viewed but not changed.',
+					smliserI18n.__( 'These files have no app record, so they can be viewed but not changed.' ),
 					'ti ti-info-circle'
 				) );
 			}
@@ -396,7 +396,7 @@
 		renderFolders( entries, level ) {
 			if ( ! entries.length ) {
 				return this.message(
-					'root' === level ? 'No app types are stored yet.' : `No ${ this.type } has files in storage yet.`,
+					'root' === level ? smliserI18n.__( 'No app types are stored yet.' ) : smliserI18n.sprintf( smliserI18n.__( 'No %s has files in storage yet.' ), this.type ),
 					'ti ti-folder-off'
 				);
 			}
@@ -441,7 +441,7 @@
 
 			if ( ! items.length ) {
 				section.append( el( 'p', { class: 'smliser-repo-browser__empty' },
-					'assets' === group.id ? 'No assets yet.' : 'No artifacts yet.'
+					'assets' === group.id ? smliserI18n.__( 'No assets yet.' ) : smliserI18n.__( 'No artifacts yet.' )
 				) );
 
 				return section;
@@ -481,7 +481,7 @@
 				el( 'img', { src: entry.file_url, alt: '', loading: 'lazy', decoding: 'async' } )
 			),
 			el( 'span', { class: 'smliser-repo-browser__thumb-name' }, entry.name ),
-			el( 'span', { class: 'smliser-repo-browser__meta' }, this.assetTypeLabel( entry ) || 'Unrecognised name' )
+			el( 'span', { class: 'smliser-repo-browser__meta' }, this.assetTypeLabel( entry ) || smliserI18n.__( 'Unrecognised name' ) )
 			);
 
 			button.addEventListener( 'click', () => this.select( entry ) );
@@ -573,8 +573,8 @@
 				}
 			};
 
-			detail( 'Kind', entry.kind ? KIND_LABELS[ entry.kind ] : 'Not an app file' );
-			detail( 'Asset type', this.assetTypeLabel( entry ) );
+			detail( 'Kind', entry.kind ? KIND_LABELS[ entry.kind ] : smliserI18n.__( 'Not an app file' ) );
+			detail( smliserI18n.__( 'Asset type' ), this.assetTypeLabel( entry ) );
 			detail( 'Size', formatBytes( entry.size ) );
 			detail( 'Changed', formatDate( entry.mtime ) );
 			detail( 'Path', entry.path );
@@ -597,8 +597,8 @@
 
 			this.preview.replaceChildren( el( 'div', { class: 'smliser-repo-browser__panel-empty' },
 				el( 'i', { class: 'ti ti-hand-click', 'aria-hidden': 'true' } ),
-				el( 'p', {}, 'No file selected' ),
-				el( 'span', { class: 'smliser-repo-browser__meta' }, 'Select a file to preview it, see its details and manage it.' )
+				el( 'p', {}, smliserI18n.__( 'No file selected' ) ),
+				el( 'span', { class: 'smliser-repo-browser__meta' }, smliserI18n.__( 'Select a file to preview it, see its details and manage it.' ) )
 			) );
 			this.preview.hidden = false;
 		}
@@ -672,12 +672,12 @@
 		 */
 		async renderPreviewBody( entry, body ) {
 			if ( ! entry.file_url ) {
-				body.append( this.message( 'This file is not one of the app\'s files, so it cannot be opened here.', 'ti ti-lock' ) );
+				body.append( this.message( smliserI18n.__( 'This file is not one of the app\'s files, so it cannot be opened here.' ), 'ti ti-lock' ) );
 				return;
 			}
 
 			if ( 'asset' === entry.kind ) {
-				const zoom = el( 'button', { type: 'button', class: 'smliser-repo-browser__preview-zoom', 'aria-label': `View ${ entry.name } full size` },
+				const zoom = el( 'button', { type: 'button', class: 'smliser-repo-browser__preview-zoom', 'aria-label': smliserI18n.sprintf( smliserI18n.__( 'View %s full size' ), entry.name ) },
 					el( 'img', { class: 'smliser-repo-browser__preview-image', src: entry.file_url, alt: '' } )
 				);
 
@@ -694,7 +694,7 @@
 			}
 
 			if ( entry.size > TEXT_PREVIEW_LIMIT ) {
-				body.append( this.message( 'This file is too large to preview. Download it instead.', 'ti ti-file-alert' ) );
+				body.append( this.message( smliserI18n.__( 'This file is too large to preview. Download it instead.' ), 'ti ti-file-alert' ) );
 				return;
 			}
 
@@ -723,29 +723,29 @@
 
 			// Images are viewed on the page; other files are served as downloads, so they are offered as one.
 			if ( actions.includes( 'view' ) && 'asset' === entry.kind ) {
-				bar.append( this.button( 'View', 'ti ti-maximize', () => viewImage( entry ) ) );
+				bar.append( this.button( smliserI18n.__( 'View' ), 'ti ti-maximize', () => viewImage( entry ) ) );
 			}
 
 			if ( actions.includes( 'download' ) || ( actions.includes( 'view' ) && 'asset' !== entry.kind ) ) {
-				bar.append( this.button( 'Download', 'ti ti-download', () => this.download( entry ) ) );
+				bar.append( this.button( smliserI18n.__( 'Download' ), 'ti ti-download', () => this.download( entry ) ) );
 			}
 
 			if ( actions.includes( 'replace' ) ) {
-				bar.append( this.button( 'Replace', 'ti ti-replace', () => {
+				bar.append( this.button( smliserI18n.__( 'Replace' ), 'ti ti-replace', () => {
 					'asset' === entry.kind ? this.replaceAsset( entry ) : this.replaceArtifact( entry );
 				} ) );
 			}
 
 			if ( actions.includes( 'rename' ) ) {
-				bar.append( this.button( 'Rename', 'ti ti-cursor-text', () => this.renameArtifact( entry ) ) );
+				bar.append( this.button( smliserI18n.__( 'Rename' ), 'ti ti-cursor-text', () => this.renameArtifact( entry ) ) );
 			}
 
 			if ( actions.includes( 'delete' ) ) {
-				bar.append( this.button( 'Delete', 'ti ti-trash', () => this.deleteFile( entry ), 'smliser-btn-danger' ) );
+				bar.append( this.button( smliserI18n.__( 'Delete' ), 'ti ti-trash', () => this.deleteFile( entry ), 'smliser-btn-danger' ) );
 			}
 
 			if ( ! bar.children.length ) {
-				bar.append( el( 'p', { class: 'smliser-repo-browser__note' }, 'You can view this file but not change it.' ) );
+				bar.append( el( 'p', { class: 'smliser-repo-browser__note' }, smliserI18n.__( 'You can view this file but not change it.' ) ) );
 			}
 
 			return bar;
@@ -793,11 +793,11 @@
 			}
 
 			const assetType = 1 === types.length ? types[ 0 ][ 0 ] : await SmliserModal.choice( {
-				title: 'Upload assets',
-				message: 'What are you uploading?',
+				title: smliserI18n.__( 'Upload assets' ),
+				message: smliserI18n.__( 'What are you uploading?' ),
 				buttons: [
 					...types.map( ( [ value, text ], index ) => ( { text, value, primary: 0 === index } ) ),
-					{ text: 'Cancel', value: '', class: 'smliser-btn-secondary' },
+					{ text: smliserI18n.__( 'Cancel' ), value: '', class: 'smliser-btn-secondary' },
 				],
 			} );
 
@@ -821,11 +821,11 @@
 				const failed   = Object.entries( response.result?.failed ?? {} );
 
 				if ( uploaded.length ) {
-					SmliserToast.success( 1 === uploaded.length ? `Uploaded ${ uploaded[ 0 ]}.` : `Uploaded ${ uploaded.length } assets.` );
+					SmliserToast.success( 1 === uploaded.length ? `Uploaded ${ uploaded[ 0 ]}.` : smliserI18n.sprintf( smliserI18n.__( 'Uploaded %s assets.' ), uploaded.length ) );
 				}
 
 				if ( failed.length ) {
-					showError( failed.map( ( [ name, reasons ] ) => `${ name }: ${ flattenMessages( reasons ) }` ), 'Some assets were not uploaded' );
+					showError( failed.map( ( [ name, reasons ] ) => `${ name }: ${ flattenMessages( reasons ) }` ), smliserI18n.__( 'Some assets were not uploaded' ) );
 				}
 			} );
 		}
@@ -867,10 +867,10 @@
 			}
 
 			const name = await SmliserModal.prompt( {
-				title: 'Upload artifact',
-				message: 'Name the artifact as it will be downloaded.',
+				title: smliserI18n.__( 'Upload artifact' ),
+				message: smliserI18n.__( 'Name the artifact as it will be downloaded.' ),
 				defaultValue: file.name,
-				confirmText: 'Upload artifact',
+				confirmText: smliserI18n.__( 'Upload artifact' ),
 				required: true,
 			} );
 
@@ -920,10 +920,10 @@
 		 */
 		async renameArtifact( entry ) {
 			const name = await SmliserModal.prompt( {
-				title: 'Rename artifact',
-				message: `New name for ${ entry.name }`,
+				title: smliserI18n.__( 'Rename artifact' ),
+				message: smliserI18n.sprintf( smliserI18n.__( 'New name for %s' ), entry.name ),
 				defaultValue: entry.name,
-				confirmText: 'Rename artifact',
+				confirmText: smliserI18n.__( 'Rename artifact' ),
 				required: true,
 			} );
 
@@ -937,7 +937,7 @@
 			body.set( 'canonical_filename', name.trim() );
 
 			await this.send( 'app-artifacts', 'PATCH', body, ( response ) => {
-				SmliserToast.success( `Renamed to ${ response.data?.filename ?? name }.` );
+				SmliserToast.success( smliserI18n.sprintf( smliserI18n.__( 'Renamed to %s.' ), response.data?.filename ?? name ) );
 			}, `artifacts/${ name.trim() }` );
 		}
 
@@ -950,8 +950,8 @@
 		async deleteFile( entry ) {
 			const confirmed = await SmliserModal.confirm( {
 				title: `Delete ${ KIND_LABELS[ entry.kind ].toLowerCase() }`,
-				message: `Delete <strong>${ StringUtils.escHtml( entry.name ) }</strong>? This cannot be undone.`,
-				confirmText: 'Delete',
+				message: `Delete <strong>${ StringUtils.escHtml( entry.name ) }</strong>${ smliserI18n.esc( smliserI18n.__( '? This cannot be undone.' ) ) }`,
+				confirmText: smliserI18n.__( 'Delete' ),
 				danger: true,
 			} );
 
@@ -983,10 +983,10 @@
 		 */
 		async renameApp() {
 			const slug = await SmliserModal.prompt( {
-				title: 'Change slug',
-				message: `The slug is the app's public name in download and update URLs. Licenses, tokens, analytics and messages move with it, but copies already installed elsewhere keep asking for "${ this.slug }" and stop receiving updates.`,
+				title: smliserI18n.__( 'Change slug' ),
+				message: smliserI18n.sprintf( smliserI18n.__( 'The slug is the app\'s public name in download and update URLs. Licenses, tokens, analytics and messages move with it, but copies already installed elsewhere keep asking for "%s" and stop receiving updates.' ), this.slug ),
 				defaultValue: this.slug,
-				confirmText: 'Change slug',
+				confirmText: smliserI18n.__( 'Change slug' ),
 				required: true,
 			} );
 
@@ -1006,10 +1006,10 @@
 					credentials: 'same-origin',
 				} );
 
-				SmliserToast.success( response.data?.message ?? `Slug changed to ${ newSlug }.` );
+				SmliserToast.success( response.data?.message ?? smliserI18n.sprintf( smliserI18n.__( 'Slug changed to %s.' ), newSlug ) );
 				this.open( this.type, response.data?.slug ?? newSlug );
 			} catch ( error ) {
-				showError( error.message, 'The slug was not changed' );
+				showError( error.message, smliserI18n.__( 'The slug was not changed' ) );
 			}
 		}
 
@@ -1044,7 +1044,7 @@
 				} );
 
 				if ( false === response?.success ) {
-					throw new Error( response?.data?.message ?? 'The request was refused.' );
+					throw new Error( response?.data?.message ?? smliserI18n.__( 'The request was refused.' ) );
 				}
 
 				await this.closeModal();
@@ -1172,7 +1172,7 @@
 	 */
 	async function viewImage( entry ) {
 		const opener = document.activeElement;
-		const close  = el( 'button', { type: 'button', class: 'smliser-repo-browser__viewer-close', 'aria-label': 'Close' },
+		const close  = el( 'button', { type: 'button', class: 'smliser-repo-browser__viewer-close', 'aria-label': smliserI18n.__( 'Close' ) },
 			el( 'i', { class: 'ti ti-x', 'aria-hidden': 'true' } )
 		);
 		const viewer = el( 'div', { class: 'smliser-repo-browser__viewer', role: 'dialog', 'aria-modal': 'true', 'aria-label': entry.name },

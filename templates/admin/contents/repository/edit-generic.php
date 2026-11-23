@@ -8,7 +8,7 @@
 
 defined( 'SMLISER_ROOT' ) || exit;
 
-$title = sprintf( 'Edit %s: %s', $type_title, $app->get_name() );
+$title = sprintf( smliser__( 'Edit %s: %s' ), $type_title, $app->get_name() );
 $other_fields = [
 	[
 		'label' => __( 'Support URL', 'smliser' ),

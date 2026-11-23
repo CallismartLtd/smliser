@@ -24,11 +24,11 @@ use Callismart\DBPrism\Utils\ColumnType;
 class PurchaseRequestNotesSchema implements DatabaseSchemaInterface {
 
 	public static function get_label() : string {
-		return 'Purchase Request Notes';
+		return smliser__( 'Purchase Request Notes' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores reviewers\' notes on purchase requests, and whether each was emailed to the buyer.';
+		return smliser__( 'Stores reviewers\' notes on purchase requests, and whether each was emailed to the buyer.' );
 	}
 
 	public static function get_table_name() : string {

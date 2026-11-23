@@ -25,19 +25,19 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
         <?php endif; ?>
 
         <?php if ( empty( $messages ) ) : ?>
-            <?php echo smliser_not_found_container( '<span class="ti ti-email"></span> All bulk messages with be listed here' ); ?>
+            <?php echo smliser_not_found_container( smliser__( '<span class="ti ti-email"></span> All bulk messages with be listed here' ) ); ?>
         <?php else : ?>
             <form id="smliser-bulk-action-form" method="post">
             
                 <div class="smliser-actions-wrapper">
                     <div class="smliser-bulk-actions">
                         <select name="bulk_action" id="smliser-bulk-action" class="smliser-bulk-action-select" required>
-                            <option value=""><?php echo escHtml( 'Bulk action' ); ?></option>
-                            <option value="delete"><?php echo escHtml( 'Delete' ); ?></option>
+                            <option value=""><?php echo smliser_esc_html__( 'Bulk action' ); ?></option>
+                            <option value="delete"><?php echo smliser_esc_html__( 'Delete' ); ?></option>
                         </select>
-                        <button type="submit" class="button action smliser-bulk-action-button"><?php echo escHtml( 'Apply' ); ?></button>
+                        <button type="submit" class="button action smliser-bulk-action-button"><?php echo smliser_esc_html__( 'Apply' ); ?></button>
                     </div>
-                    <a href="<?php echo escUrl( $urlmanager->admin_broadcasts_page_url( 'search' )->url() ); ?>" class="smliser-btn smliser-surface-btn">Search Messages</a>
+                    <a href="<?php echo escUrl( $urlmanager->admin_broadcasts_page_url( 'search' )->url() ); ?>" class="smliser-btn smliser-surface-btn"><?php smliser_esc_html_e( 'Search Messages' ); ?></a>
                 </div>
             
                 <input type="hidden" name="action" value="smliser_bulk_action">
@@ -47,10 +47,10 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                         <tr>
                             <th><input type="checkbox" id="smliser-select-all"></th>
                             <th><?php echo escHtml( 'ID' ); ?></th>
-                            <th><?php echo escHtml( 'Message ID' ); ?></th>
-                            <th><?php echo escHtml( 'Subject' ); ?></th>
-                            <th><?php echo escHtml( 'Body' ); ?></th>
-                            <th><?php echo escHtml( 'Apps' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Message ID' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Subject' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Body' ); ?></th>
+                            <th><?php echo smliser_esc_html__( 'Apps' ); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +61,7 @@ defined( 'SMLISER_ROOT' ) || exit; ?>
                                 <td class="smliser-edit-row">
                                     <?php echo escHtml( $message->get_id() ); ?>
                                     <p class="smliser-edit-link">
-                                        <a href="<?php echo escUrl( $urlmanager->admin_broadcasts_page_url( 'edit', ['msg_id' => $message->get_message_id() ] )->url() ); ?>">Edit</a>
+                                        <a href="<?php echo escUrl( $urlmanager->admin_broadcasts_page_url( 'edit', ['msg_id' => $message->get_message_id() ] )->url() ); ?>"><?php smliser_esc_html_e( 'Edit' ); ?></a>
                                     </p>
                                 </td>
                             

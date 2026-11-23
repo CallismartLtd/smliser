@@ -73,7 +73,7 @@
 			logoutLink.addEventListener( 'click', async e => {
 				e.preventDefault();
 
-				if ( ! await SmliserModal.confirm( 'Are you sure you want to logout?' ) ) {
+				if ( ! await SmliserModal.confirm( smliserI18n.__( 'Are you sure you want to logout?' ) ) ) {
 					return;
 				}
 
@@ -82,7 +82,7 @@
 				try {
 					let response = await smliserFetchJSON( url, { method: 'POST', credentials: 'same-origin' } );
 					if ( ! response.success ) {
-						throw new Error( response.message ?? response.data.message ?? 'Unknown error occurred.' );	
+						throw new Error( response.message ?? response.data.message ?? smliserI18n.__( 'Unknown error occurred.' ) );	
 					}
 
 					await SmliserModal.success( response.message );
@@ -183,7 +183,7 @@
             const button = document.createElement( 'button' );
             button.type = 'button';
             button.className = 'notice-dismiss';
-            button.setAttribute( 'aria-label', 'Dismiss this notice' );
+            button.setAttribute( 'aria-label', smliserI18n.__( 'Dismiss this notice' ) );
             button.innerHTML = '<i class="ti ti-x" aria-hidden="true"></i>';
 
             notice.appendChild( button );

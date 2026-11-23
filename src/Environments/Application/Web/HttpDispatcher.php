@@ -277,7 +277,7 @@ final class HttpDispatcher {
 						[
 							'success' => false,
 							'data'    => [
-								'message' => 'Form slug or action path is required.'
+								'message' => smliser__( 'Form slug or action path is required.' )
 							]
 						],
 						400
@@ -1083,13 +1083,13 @@ final class HttpDispatcher {
 	private function fallback( Request $request, string $path, int $status, array $allowed = [] ) : Response {
 		$urlmanager = $this->container->get( URLManager::class );
 		$message    = 405 === $status
-			? 'The request method is not allowed on this server.'
-			: 'The requested resource could not be found.';
+			? smliser__( 'The request method is not allowed on this server.' )
+			: smliser__( 'The requested resource could not be found.' );
 
 		if ( $request->wantsJson() || $this->path_in( $path, RESTProviderInterface::PREFIX ) ) {
 			$body = 405 === $status
-				? [ 'error' => 'Not Allowed', 'data' => [ 'message' => $message ] ]
-				: [ 'error' => 'Not found', 'message' => $message, 'data' => [ 'message' => $message ] ];
+				? [ 'error' => smliser__( 'Not Allowed' ), 'data' => [ 'message' => $message ] ]
+				: [ 'error' => smliser__( 'Not found' ), 'message' => $message, 'data' => [ 'message' => $message ] ];
 
 			$response = Response::json( $body, $status );
 		} elseif ( $this->path_in( $path, $urlmanager->admin_url_prefix() ) ) {

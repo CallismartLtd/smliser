@@ -47,51 +47,51 @@ $busy = $overview['in_progress'] || null !== $queued;
 	$overview['in_progress'] => [
 		'pending',
 		'ti ti-loader-2 smliser-health-spin',
-		'Update in progress',
-		sprintf( 'Version %s is being installed. The site is briefly unavailable while files are swapped.', $run['to'] ?? '' ),
+		smliser__( 'Update in progress' ),
+		sprintf( smliser__( 'Version %s is being installed. The site is briefly unavailable while files are swapped.' ), $run['to'] ?? '' ),
 	],
 	null !== $queued => [
 		'pending',
 		'ti ti-loader-2 smliser-health-spin',
-		'Update queued',
-		sprintf( 'Automatic update to %s queued %s; background processing installs it at its next run.', $queued['version'] ?? '', $when( $queued['at'] ?? null ) ),
+		smliser__( 'Update queued' ),
+		sprintf( smliser__( 'Automatic update to %s queued %s; background processing installs it at its next run.' ), $queued['version'] ?? '', $when( $queued['at'] ?? null ) ),
 	],
 	! empty( $blockers ) => [
 		'critical',
 		'ti ti-circle-x',
-		'Updates are blocked',
-		'This installation cannot update until the problems below are fixed.',
+		smliser__( 'Updates are blocked' ),
+		smliser__( 'This installation cannot update until the problems below are fixed.' ),
 	],
 	$check['available'] && $check['security'] => [
 		'critical',
 		'ti ti-shield-exclamation',
-		sprintf( 'Security update available: %s', $check['latest'] ),
-		'Install it as soon as possible.',
+		sprintf( smliser__( 'Security update available: %s' ), $check['latest'] ),
+		smliser__( 'Install it as soon as possible.' ),
 	],
 	$check['available'] => [
 		'warning',
 		'ti ti-arrow-up-circle',
-		sprintf( 'Version %s is available', $check['latest'] ),
-		sprintf( 'You are running %s.', $overview['installed'] ),
+		sprintf( smliser__( 'Version %s is available' ), $check['latest'] ),
+		sprintf( smliser__( 'You are running %s.' ), $overview['installed'] ),
 	],
 	null !== $check['error'] => [
 		'warning',
 		'ti ti-alert-triangle',
-		'Could not check for updates',
+		smliser__( 'Could not check for updates' ),
 		$check['error'],
 	],
 	default => [
 		'pass',
 		'ti ti-circle-check',
-		'Up to date',
-		sprintf( '%s %s is the latest version.', \SMLISER_APP_NAME, $overview['installed'] ),
+		smliser__( 'Up to date' ),
+		sprintf( smliser__( '%s %s is the latest version.' ), \SMLISER_APP_NAME, $overview['installed'] ),
 	],
 };
 
 $auto_modes = [
-	UpdateService::AUTO_OFF      => [ 'Off', 'Updates are installed only when you start them.' ],
-	UpdateService::AUTO_SECURITY => [ 'Security releases', 'Security releases are installed automatically; other releases wait for you.' ],
-	UpdateService::AUTO_ALL      => [ 'All releases', 'Every new release is installed automatically.' ],
+	UpdateService::AUTO_OFF      => [ 'Off', smliser__( 'Updates are installed only when you start them.' ) ],
+	UpdateService::AUTO_SECURITY => [ smliser__( 'Security releases' ), smliser__( 'Security releases are installed automatically; other releases wait for you.' ) ],
+	UpdateService::AUTO_ALL      => [ smliser__( 'All releases' ), smliser__( 'Every new release is installed automatically.' ) ],
 ];
 
 $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>';
@@ -110,11 +110,11 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 		<ul class="smliser-health-overview-counts">
 			<li class="smliser-health-count">
 				<span class="smliser-health-count-value"><?php echo escHtml( $overview['installed'] ); ?></span>
-				<span class="smliser-health-count-label">Installed</span>
+				<span class="smliser-health-count-label"><?php smliser_esc_html_e( 'Installed' ); ?></span>
 			</li>
 			<li class="smliser-health-count">
 				<span class="smliser-health-count-value"><?php echo escHtml( (string) ( $check['latest'] ?? '—' ) ); ?></span>
-				<span class="smliser-health-count-label">Latest</span>
+				<span class="smliser-health-count-label"><?php smliser_esc_html_e( 'Latest' ); ?></span>
 			</li>
 		</ul>
 	</div>
@@ -126,7 +126,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-package"></i></span>
-					<span class="smliser-diagnostics-panel-title">Release</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Release' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -134,16 +134,16 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 				<ul class="smliser-health-checks">
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Latest version</span></div>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Latest version' ); ?></span></div>
 							<p class="smliser-health-check-message">
 								<?php echo escHtml( (string) ( $check['latest'] ?? 'Unknown — check for updates.' ) ); ?>
-								<?php echo $check['security'] ? escHtml( ' (security release)' ) : ''; ?>
+								<?php echo $check['security'] ? smliser_esc_html__( ' (security release)' ) : ''; ?>
 							</p>
 						</div>
 					</li>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Last checked</span></div>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Last checked' ); ?></span></div>
 							<p class="smliser-health-check-message"><?php echo escHtml( $when( $check['checked_at'] ?: null ) ); ?></p>
 							<?php if ( null !== $check['error'] ) : ?>
 								<p class="smliser-health-check-recommendation"><i class="ti ti-alert-triangle"></i><span><?php echo escHtml( $check['error'] ); ?></span></p>
@@ -153,9 +153,9 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 					<?php if ( null !== $overview['ready'] ) : ?>
 						<li class="smliser-health-check">
 							<div class="smliser-health-check-body">
-								<div class="smliser-health-check-header"><span class="smliser-health-check-label">Ready to install</span></div>
+								<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Ready to install' ); ?></span></div>
 								<p class="smliser-health-check-message">
-									<?php echo escHtml( sprintf( 'Version %s was downloaded and verified %s; installing it will not download it again.', $overview['ready']['version'] ?? '', $when( $overview['ready']['prepared_at'] ?? null ) ) ); ?>
+									<?php echo escHtml( sprintf( smliser__( 'Version %s was downloaded and verified %s; installing it will not download it again.' ), $overview['ready']['version'] ?? '', $when( $overview['ready']['prepared_at'] ?? null ) ) ); ?>
 								</p>
 							</div>
 						</li>
@@ -163,18 +163,18 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 				</ul>
 				<div class="smliser-health-async-footer">
 					<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="check" <?php echo $busy ? 'disabled' : ''; ?>>
-						<i class="ti ti-refresh"></i> Check now
+						<i class="ti ti-refresh"></i> <?php smliser_esc_html_e( 'Check now' ); ?>
 					</button>
 					<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="dry-run" <?php echo $busy || ! empty( $blockers ) ? 'disabled' : ''; ?>>
-						<i class="ti ti-flask"></i> Dry run
+						<i class="ti ti-flask"></i> <?php smliser_esc_html_e( 'Dry run' ); ?>
 					</button>
 					<?php if ( $check['available'] ) : ?>
-						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="install" data-confirm="<?php echo escAttr( sprintf( 'Install version %s now? The site will be unavailable for the few seconds it takes. Back up your database first.', $check['latest'] ) ); ?>" <?php echo $busy || ! empty( $blockers ) ? 'disabled' : ''; ?>>
-							<i class="ti ti-download"></i> <?php echo escHtml( sprintf( 'Install %s', $check['latest'] ) ); ?>
+						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="install" data-confirm="<?php echo escAttr( sprintf( smliser__( 'Install version %s now? The site will be unavailable for the few seconds it takes. Back up your database first.' ), $check['latest'] ) ); ?>" <?php echo $busy || ! empty( $blockers ) ? 'disabled' : ''; ?>>
+							<i class="ti ti-download"></i> <?php echo escHtml( sprintf( smliser__( 'Install %s' ), $check['latest'] ) ); ?>
 						</button>
 					<?php else : ?>
-						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="install" data-reinstall="1" data-confirm="<?php echo escAttr( sprintf( 'Reinstall version %s to repair its files? The site will be unavailable for the few seconds it takes.', $overview['installed'] ) ); ?>" <?php echo $busy || ! empty( $blockers ) ? 'disabled' : ''; ?>>
-							<i class="ti ti-tool"></i> Reinstall
+						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="install" data-reinstall="1" data-confirm="<?php echo escAttr( sprintf( smliser__( 'Reinstall version %s to repair its files? The site will be unavailable for the few seconds it takes.' ), $overview['installed'] ) ); ?>" <?php echo $busy || ! empty( $blockers ) ? 'disabled' : ''; ?>>
+							<i class="ti ti-tool"></i> <?php smliser_esc_html_e( 'Reinstall' ); ?>
 						</button>
 					<?php endif; ?>
 				</div>
@@ -186,7 +186,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="<?php echo empty( $blockers ) ? 'ti ti-circle-check' : 'ti ti-circle-x'; ?>"></i></span>
-					<span class="smliser-diagnostics-panel-title">Requirements</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Requirements' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right">
 					<span class="smliser-diagnostics-panel-count"><?php echo escHtml( (string) \count( $blockers ) ); ?></span>
@@ -199,7 +199,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 						<li class="smliser-health-check smliser-health-tone--pass">
 							<span class="smliser-health-check-icon"><i class="ti ti-circle-check"></i></span>
 							<div class="smliser-health-check-body">
-								<p class="smliser-health-check-message">Nothing on this server blocks an update. A dry run also checks the release itself.</p>
+								<p class="smliser-health-check-message"><?php smliser_esc_html_e( 'Nothing on this server blocks an update. A dry run also checks the release itself.' ); ?></p>
 							</div>
 						</li>
 					<?php endif; ?>
@@ -214,7 +214,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 				</ul>
 				<p class="smliser-health-check-recommendation">
 					<i class="ti ti-bulb"></i>
-					<span>These are checked for this web request. Installing from this page runs as the web server's PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with <code>smliser update status</code>.</span>
+					<span><?php smliser_esc_html_e( 'These are checked for this web request. Installing from this page runs as the web server\'s PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with' ); ?> <code>smliser update status</code>.</span>
 				</p>
 			</div>
 		</details>
@@ -224,7 +224,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-clock-cog"></i></span>
-					<span class="smliser-diagnostics-panel-title">Automatic updates</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'Automatic updates' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -244,8 +244,8 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 						<?php endforeach; ?>
 					</ul>
 					<div class="smliser-health-async-footer">
-						<span class="smliser-health-async-time">Checked twice a day by the scheduler; installed by background processing.</span>
-						<button type="submit" class="smliser-btn smliser-btn-glass"><i class="ti ti-device-floppy"></i> Save</button>
+						<span class="smliser-health-async-time"><?php smliser_esc_html_e( 'Checked twice a day by the scheduler; installed by background processing.' ); ?></span>
+						<button type="submit" class="smliser-btn smliser-btn-glass"><i class="ti ti-device-floppy"></i> <?php smliser_esc_html_e( 'Save' ); ?></button>
 					</div>
 				</form>
 			</div>
@@ -256,7 +256,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 			<summary class="smliser-diagnostics-panel-summary">
 				<span class="smliser-diagnostics-panel-summary-left">
 					<span class="smliser-diagnostics-panel-icon"><i class="ti ti-history"></i></span>
-					<span class="smliser-diagnostics-panel-title">History and backup</span>
+					<span class="smliser-diagnostics-panel-title"><?php smliser_esc_html_e( 'History and backup' ); ?></span>
 				</span>
 				<span class="smliser-diagnostics-panel-summary-right"><?php echo $chevron; // phpcs:ignore -- static markup. ?></span>
 			</summary>
@@ -264,14 +264,14 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 				<ul class="smliser-health-checks">
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Last update</span></div>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Last update' ); ?></span></div>
 							<p class="smliser-health-check-message">
 								<?php
 								echo escHtml(
 									null === $run
-										? 'No update has run on this installation.'
+										? smliser__( 'No update has run on this installation.' )
 										: sprintf(
-											'%s to %s: %s (started %s%s).',
+											smliser__( '%s to %s: %s (started %s%s).' ),
 											$run['from'] ?? '?',
 											$run['to'] ?? '?',
 											match ( $run['stage'] ?? '' ) {
@@ -293,7 +293,7 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 						<li class="smliser-health-check smliser-health-tone--<?php echo escAttr( $attempt['ok'] ? 'pass' : 'warning' ); ?>">
 							<div class="smliser-health-check-body">
 								<div class="smliser-health-check-header">
-									<span class="smliser-health-check-label"><?php echo escHtml( sprintf( 'Last queued %s, %s', $attempt['action'] ?? 'update', $when( $attempt['at'] ?? null ) ) ); ?></span>
+									<span class="smliser-health-check-label"><?php echo escHtml( sprintf( smliser__( 'Last queued %s, %s' ), $attempt['action'] ?? 'update', $when( $attempt['at'] ?? null ) ) ); ?></span>
 								</div>
 								<p class="smliser-health-check-message"><?php echo escHtml( $attempt['ok'] ? 'Completed.' : 'Failed.' ); ?></p>
 								<?php if ( '' !== (string) ( $attempt['message'] ?? '' ) ) : ?>
@@ -304,13 +304,13 @@ $chevron = '<svg class="smliser-diagnostics-panel-chevron" viewBox="0 0 24 24" w
 					<?php endif; ?>
 					<li class="smliser-health-check">
 						<div class="smliser-health-check-body">
-							<div class="smliser-health-check-header"><span class="smliser-health-check-label">Backup</span></div>
+							<div class="smliser-health-check-header"><span class="smliser-health-check-label"><?php smliser_esc_html_e( 'Backup' ); ?></span></div>
 							<p class="smliser-health-check-message">
 								<?php
 echo escHtml(
 	null === $backup
-		? 'There is no backup of a previous version.'
-		: sprintf( 'The files of version %s, from %s. Kept for %d days, until the next update, or until you delete it.', $backup['version'], $when( $backup['made_at'] ), UpdateService::BACKUP_DAYS )
+		? smliser__( 'There is no backup of a previous version.' )
+		: sprintf( smliser__( 'The files of version %s, from %s. Kept for %d days, until the next update, or until you delete it.' ), $backup['version'], $when( $backup['made_at'] ), UpdateService::BACKUP_DAYS )
 );
 ?>
 							</p>
@@ -319,11 +319,11 @@ echo escHtml(
 				</ul>
 				<?php if ( null !== $backup ) : ?>
 					<div class="smliser-health-async-footer">
-						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="rollback" data-confirm="<?php echo escAttr( sprintf( 'Restore version %s? This is only possible when the update did not change the database.', $backup['version'] ) ); ?>" <?php echo $busy ? 'disabled' : ''; ?>>
-							<i class="ti ti-arrow-back-up"></i> <?php echo escHtml( sprintf( 'Restore %s', $backup['version'] ) ); ?>
+						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="rollback" data-confirm="<?php echo escAttr( sprintf( smliser__( 'Restore version %s? This is only possible when the update did not change the database.' ), $backup['version'] ) ); ?>" <?php echo $busy ? 'disabled' : ''; ?>>
+							<i class="ti ti-arrow-back-up"></i> <?php echo escHtml( sprintf( smliser__( 'Restore %s' ), $backup['version'] ) ); ?>
 						</button>
-						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="backup-delete" data-confirm="Delete the backup? Restoring the previous version will no longer be possible." <?php echo $busy ? 'disabled' : ''; ?>>
-							<i class="ti ti-trash"></i> Delete backup
+						<button type="button" class="smliser-btn smliser-btn-glass" data-update-action="backup-delete" data-confirm="<?php smliser_esc_attr_e( 'Delete the backup? Restoring the previous version will no longer be possible.' ); ?>" <?php echo $busy ? 'disabled' : ''; ?>>
+							<i class="ti ti-trash"></i> <?php smliser_esc_html_e( 'Delete backup' ); ?>
 						</button>
 					</div>
 				<?php endif; ?>

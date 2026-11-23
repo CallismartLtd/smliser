@@ -43,7 +43,7 @@ function smliser_readable_duration( $duration ) : string {
 	}
 
 	if ( ! is_numeric( $duration ) ) {
-		return 'Invalid duration';
+		return smliser__( 'Invalid duration' );
 	}
 
 	return Format::duration_ago( (float) $duration );

@@ -40,7 +40,7 @@ final class OverviewPage implements ClientPageInterface {
 	 */
 	public function get_menu_data() : array {
 		return [
-			'title'      => 'Overview',
+			'title'      => smliser__( 'Overview' ),
 			'slug'       => 'overview',
 			'handler'    => $this,
 			'icon'       => 'ti ti-home',

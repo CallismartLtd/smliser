@@ -16,11 +16,11 @@ use SmartLicenseServer\Schema\TableName;
 /** Stores WebAuthn credentials registered by human users. */
 final class UserPasskeysSchema implements DatabaseSchemaInterface {
 	public static function get_label() : string {
-		return 'User Passkeys';
+		return smliser__( 'User Passkeys' );
 	}
 
 	public static function get_description() : string {
-		return 'Stores registered WebAuthn passkey credential records.';
+		return smliser__( 'Stores registered WebAuthn passkey credential records.' );
 	}
 
 	public static function get_table_name() : string {

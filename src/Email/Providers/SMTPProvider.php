@@ -132,19 +132,19 @@ class SMTPProvider implements EmailProviderInterface {
 		return [
 			'host' => [
 				'type'        => 'text',
-				'label'       => 'SMTP Host',
+				'label'       => smliser__( 'SMTP Host' ),
 				'required'    => true,
-				'description' => 'SMTP server hostname. e.g. smtp.gmail.com',
+				'description' => smliser__( 'SMTP server hostname. e.g. smtp.gmail.com' ),
 			],
 			'port' => [
 				'type'        => 'number',
-				'label'       => 'Port',
+				'label'       => smliser__( 'Port' ),
 				'required'    => true,
-				'description' => 'Typically 25 (plain), 465 (SSL), or 587 (STARTTLS/TLS).',
+				'description' => smliser__( 'Typically 25 (plain), 465 (SSL), or 587 (STARTTLS/TLS).' ),
 			],
 			'encryption' => [
 				'type'     => 'select',
-				'label'    => 'Encryption',
+				'label'    => smliser__( 'Encryption' ),
 				'required' => false,
 				'options'  => [
 					static::ENCRYPTION_NONE     => 'None',
@@ -152,46 +152,46 @@ class SMTPProvider implements EmailProviderInterface {
 					static::ENCRYPTION_TLS      => 'TLS',
 					static::ENCRYPTION_STARTTLS => 'STARTTLS',
 				],
-				'description' => 'Transport encryption method.',
+				'description' => smliser__( 'Transport encryption method.' ),
 			],
 			'username' => [
 				'type'        => 'text',
-				'label'       => 'Username',
+				'label'       => smliser__( 'Username' ),
 				'required'    => false,
-				'description' => 'SMTP username. Leave blank for open relay.',
+				'description' => smliser__( 'SMTP username. Leave blank for open relay.' ),
 			],
 			'password' => [
 				'type'        => 'password',
-				'label'       => 'Password',
+				'label'       => smliser__( 'Password' ),
 				'required'    => false,
-				'description' => 'SMTP password. Leave blank for open relay.',
+				'description' => smliser__( 'SMTP password. Leave blank for open relay.' ),
 			],
 			'from_email' => [
 				'type'        => 'text',
-				'label'       => 'From Email',
+				'label'       => smliser__( 'From Email' ),
 				'required'    => false,
-				'description' => 'Sender email address. Leave blank to use the global from email.',
+				'description' => smliser__( 'Sender email address. Leave blank to use the global from email.' ),
 				'default'     => ''
 			],
 			'from_name' => [
 				'type'        => 'text',
-				'label'       => 'From Name',
+				'label'       => smliser__( 'From Name' ),
 				'required'    => false,
-				'description' => 'Sender display name. Leave blank to use the global from name.',
+				'description' => smliser__( 'Sender display name. Leave blank to use the global from name.' ),
 				'default'     => ''
 			],
 			'timeout' => [
 				'type'        => 'number',
-				'label'       => 'Connection Timeout (seconds)',
+				'label'       => smliser__( 'Connection Timeout (seconds)' ),
 				'required'    => false,
-				'description' => 'Socket connection timeout. Default: ' . static::DEFAULT_TIMEOUT . 's.',
+				'description' => smliser__( 'Socket connection timeout. Default: ' ) . static::DEFAULT_TIMEOUT . 's.',
 				'default'     => static::DEFAULT_TIMEOUT
 			],
 			'helo_hostname' => [
 				'type'        => 'text',
-				'label'       => 'EHLO Hostname',
+				'label'       => smliser__( 'EHLO Hostname' ),
 				'required'    => false,
-				'description' => 'Hostname sent in the EHLO command. Must be an FQDN or IP literal like [1.2.3.4]. Leave blank to auto-detect.',
+				'description' => smliser__( 'Hostname sent in the EHLO command. Must be an FQDN or IP literal like [1.2.3.4]. Leave blank to auto-detect.' ),
 				'default'     => ''
 			],
 		];
@@ -380,14 +380,14 @@ class SMTPProvider implements EmailProviderInterface {
 			// Only attempt STARTTLS if the server advertised it.
 			if ( ! isset( $this->extensions['starttls'] ) ) {
 				throw new EmailTransportException(
-					'SMTPProvider: STARTTLS requested but server did not advertise STARTTLS capability.'
+					smliser__( 'SMTPProvider: STARTTLS requested but server did not advertise STARTTLS capability.' )
 				);
 			}
 
 			$this->command( 'STARTTLS', 220 );
 
 			if ( ! stream_socket_enable_crypto( $this->socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT ) ) {
-				throw new EmailTransportException( 'SMTPProvider: STARTTLS negotiation failed.' );
+				throw new EmailTransportException( smliser__( 'SMTPProvider: STARTTLS negotiation failed.' ) );
 			}
 
 			// Re-introduce after TLS upgrade — server resets its capability list.
@@ -541,8 +541,8 @@ class SMTPProvider implements EmailProviderInterface {
 		}
 
 		throw new EmailTransportException(
-			'SMTPProvider: server does not support AUTH PLAIN or AUTH LOGIN. '
-			. 'Offered mechanisms: ' . implode( ', ', $this->auth_mechanisms ) . '.'
+			smliser__( 'SMTPProvider: server does not support AUTH PLAIN or AUTH LOGIN. ' )
+			. smliser__( 'Offered mechanisms: ' ) . implode( ', ', $this->auth_mechanisms ) . '.'
 		);
 	}
 
@@ -831,7 +831,7 @@ class SMTPProvider implements EmailProviderInterface {
 	 */
 	protected function write_raw( string $data ) : void {
 		if ( false === fwrite( $this->socket, $data ) ) {
-			throw new EmailTransportException( 'SMTPProvider: failed to write to socket.' );
+			throw new EmailTransportException( smliser__( 'SMTPProvider: failed to write to socket.' ) );
 		}
 	}
 
@@ -866,7 +866,7 @@ class SMTPProvider implements EmailProviderInterface {
 
 			if ( false === $line ) {
 				throw new EmailTransportException(
-					'SMTPProvider: connection closed unexpectedly while reading response.'
+					smliser__( 'SMTPProvider: connection closed unexpectedly while reading response.' )
 				);
 			}
 
@@ -894,7 +894,7 @@ class SMTPProvider implements EmailProviderInterface {
 
 		if ( $lines_read >= $max_lines ) {
 			throw new EmailTransportException(
-				'SMTPProvider: server response exceeded maximum line limit.'
+				smliser__( 'SMTPProvider: server response exceeded maximum line limit.' )
 			);
 		}
 
@@ -904,7 +904,7 @@ class SMTPProvider implements EmailProviderInterface {
 		if ( $actual_code !== $expected_code ) {
 			throw new EmailTransportException(
 				"SMTPProvider: expected {$expected_code}, got {$actual_code}. "
-				. 'Server said: ' . trim( $response )
+				. smliser__( 'Server said: ' ) . trim( $response )
 			);
 		}
 

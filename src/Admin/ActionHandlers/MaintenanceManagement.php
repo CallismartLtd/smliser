@@ -59,7 +59,7 @@ class MaintenanceManagement {
 		$keep        = '1' === (string) $request->get( 'keep_background', '' );
 
 		if ( ! \is_string( $message ) ) {
-			return $this->fail( 'The visitor message must be text.', 400 );
+			return $this->fail( smliser__( 'The visitor message must be text.' ), 400 );
 		}
 
 		if ( '' === (string) $retry_after ) {
@@ -67,7 +67,7 @@ class MaintenanceManagement {
 		}
 
 		if ( ! \is_scalar( $retry_after ) || ! \ctype_digit( (string) $retry_after ) ) {
-			return $this->fail( 'Retry after must be a whole number of seconds.', 400 );
+			return $this->fail( smliser__( 'Retry after must be a whole number of seconds.' ), 400 );
 		}
 
 		try {
@@ -78,7 +78,7 @@ class MaintenanceManagement {
 
 		return $this->with_bypass(
 			$token,
-			\sprintf( 'Maintenance mode is on. Visitors get the maintenance page; this browser keeps access.%s', $keep ? '' : ' Background work is paused.' )
+			\sprintf( smliser__( 'Maintenance mode is on. Visitors get the maintenance page; this browser keeps access.%s' ), $keep ? '' : ' Background work is paused.' )
 		);
 	}
 
@@ -99,7 +99,7 @@ class MaintenanceManagement {
 			return $this->fail( $e->getMessage(), 409 );
 		}
 
-		$response = $this->ok( $was_on ? 'Maintenance mode is off; the site is open.' : 'Maintenance mode was already off.' );
+		$response = $this->ok( $was_on ? smliser__( 'Maintenance mode is off; the site is open.' ) : smliser__( 'Maintenance mode was already off.' ) );
 		$response->set_header( 'Set-Cookie', MaintenanceBypass::expired_cookie( \url()->is_ssl() ) );
 
 		return $response;
@@ -125,7 +125,7 @@ class MaintenanceManagement {
 			return $this->fail( $e->getMessage(), 409 );
 		}
 
-		return $this->with_bypass( $token, 'New bypass link made; earlier links stop working.' );
+		return $this->with_bypass( $token, smliser__( 'New bypass link made; earlier links stop working.' ) );
 	}
 
 	/*
@@ -168,7 +168,7 @@ class MaintenanceManagement {
 		$principal = $this->guard->get_principal();
 
 		if ( null === $principal || ! $principal->is( 'system_admin' ) ) {
-			return $this->fail( 'Only system administrators can switch maintenance mode.', 403 );
+			return $this->fail( smliser__( 'Only system administrators can switch maintenance mode.' ), 403 );
 		}
 
 		return null;

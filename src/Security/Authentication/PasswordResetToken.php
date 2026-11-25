@@ -66,7 +66,7 @@ final class PasswordResetToken {
 		$signature = static::hmac_hash( $payload, $this->derive_key(), 'sha256' );
 		$token     = static::base64url_encode( sprintf( '%s.%s', $payload, $signature ) );
 
-		$this->cache->set( $this->key( (int) $user->get_id() ), hash( 'sha256', $token ), self::TTL_MINUTES * 60 );
+		$this->cache->set( $this->key( $user->get_id() ), hash( 'sha256', $token ), self::TTL_MINUTES * 60 );
 
 		return $token;
 	}
@@ -122,7 +122,7 @@ final class PasswordResetToken {
 	 * @return void
 	 */
 	public function consume( User $user ) : void {
-		$this->cache->delete( $this->key( (int) $user->get_id() ) );
+		$this->cache->delete( $this->key( $user->get_id() ) );
 	}
 
 	/**

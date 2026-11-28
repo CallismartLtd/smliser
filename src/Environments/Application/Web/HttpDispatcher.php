@@ -29,6 +29,7 @@ use SmartLicenseServer\Auth\ActionHandlers\AuthManagement;
 use SmartLicenseServer\Auth\ContentHandlers\AuthPages;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\ContextSwitch;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\AppActions;
+use SmartLicenseServer\ClientDashboard\ActionHandlers\LicenseActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\OrganizationActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\PreferenceManagement;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\SecurityManagement;
@@ -829,6 +830,13 @@ final class HttpDispatcher {
 					$this->router->post(
 						pattern: 'apps/artifacts/delete',
 						handler: [AppActions::class, 'delete_artifact']
+					);
+
+					// The signed-in user's own licenses (LicenseActions). A holder can only
+					// deactivate a license; no route frees a site or reactivates a license.
+					$this->router->post(
+						pattern: 'licenses/deactivate',
+						handler: [LicenseActions::class, 'deactivate']
 					);
 				},
 					middleware: [

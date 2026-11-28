@@ -59,23 +59,23 @@ final class SecurityPage implements ClientPageInterface {
 			return View::make( 'errors.404', [] )->set_status_code( 404 );
 		}
 
-		$user_id = (int) $user->get_id();
-		$status  = $this->factors->status( $user_id );
-		$email_token = (string) $request->get( 'email_challenge', '', false );
-		$totp_token  = (string) $request->get( 'totp_challenge', '', false );
-		$email_challenge = $this->factors->get_challenge( $email_token, 'enroll_email' );
-		$email_disable_token = (string) $request->get( 'email_disable_challenge', '', false );
-		$email_disable = $this->factors->get_challenge( $email_disable_token, 'disable_email' );
-		$totp_challenge  = $this->factors->get_challenge( $totp_token, 'enroll_totp' );
-		$email_challenge = $email_challenge && (int) $email_challenge['user_id'] === $user_id ? $email_challenge : null;
-		$email_disable = $email_disable && (int) $email_disable['user_id'] === $user_id ? $email_disable : null;
-		$totp_challenge  = $totp_challenge && (int) $totp_challenge['user_id'] === $user_id ? $totp_challenge : null;
-		$totp_secret     = $totp_challenge
+		$user_id				= (int) $user->get_id();
+		$status					= $this->factors->status( $user_id );
+		$email_token			= (string) $request->get( 'email_challenge', '', false );
+		$totp_token				= (string) $request->get( 'totp_challenge', '', false );
+		$email_challenge		= $this->factors->get_challenge( $email_token, 'enroll_email' );
+		$email_disable_token	= (string) $request->get( 'email_disable_challenge', '', false );
+		$email_disable			= $this->factors->get_challenge( $email_disable_token, 'disable_email' );
+		$totp_challenge			= $this->factors->get_challenge( $totp_token, 'enroll_totp' );
+		$email_challenge		= $email_challenge && (int) $email_challenge['user_id'] === $user_id ? $email_challenge : null;
+		$email_disable			= $email_disable && (int) $email_disable['user_id'] === $user_id ? $email_disable : null;
+		$totp_challenge			= $totp_challenge && (int) $totp_challenge['user_id'] === $user_id ? $totp_challenge : null;
+		$totp_secret			= $totp_challenge
 			? $this->factors->decrypt_totp_secret( (string) ( $totp_challenge['payload']['secret'] ?? '' ) )
 			: null;
-		$issuer = (string) SMLISER_APP_NAME;
-		$label  = rawurlencode( $issuer . ':' . $user->get_email() );
-		$uri    = null !== $totp_secret
+		$issuer	= (string) SMLISER_APP_NAME;
+		$label	= rawurlencode( $issuer . ':' . $user->get_email() );
+		$uri	= null !== $totp_secret
 			? sprintf( 'otpauth://totp/%s?secret=%s&issuer=%s&algorithm=SHA1&digits=6&period=30', $label, rawurlencode( $totp_secret ), rawurlencode( $issuer ) )
 			: '';
 		$qr_code = '';

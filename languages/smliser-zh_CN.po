@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 11:00+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: 中文（中国）\n"
 "Language: zh_CN\n"
@@ -1250,7 +1250,7 @@ msgstr "访问/下载比："
 msgid "Accesses"
 msgstr "访问次数"
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: themes/default/templates/frames/client-dashboard.php:59 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr "账户"
 
@@ -1294,7 +1294,7 @@ msgstr "账户概览"
 msgid "Accounts overview"
 msgstr "账户概览"
 
-#: themes/default/templates/frames/client-dashboard.php:74 themes/default/templates/frames/client-dashboard.php:83
+#: themes/default/templates/frames/client-dashboard.php:75 themes/default/templates/frames/client-dashboard.php:84
 msgid "Acting as"
 msgstr "当前身份"
 
@@ -1482,7 +1482,7 @@ msgstr "附加检查发现 %s 个问题。"
 msgid "Additional verification could not be started. Please try again."
 msgstr "无法开始附加验证。请重试。"
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "管理"
 
@@ -2220,6 +2220,10 @@ msgstr "自动计算"
 msgid "Automatic (browser language)"
 msgstr "自动（浏览器语言）"
 
+#: themes/default/templates/pages/client/settings.php:53
+msgid "Automatic (site default)"
+msgstr "自动（站点默认）"
+
 #: src/Admin/ContentHandlers/LicensePage.php:408
 msgid "Automatic Calculation"
 msgstr "自动计算"
@@ -2267,6 +2271,10 @@ msgstr ""
 #: src/Environments/Application/Update/UpdateService.php:636
 msgid "Automatic updates on this site install security releases only, so this release will not be installed automatically."
 msgstr "此站点的自动更新仅安装安全版本，因此不会自动安装此版本。"
+
+#: themes/default/templates/pages/client/settings.php:58
+msgid "Automatic uses the site language, or your browser's language when the site has none."
+msgstr "“自动”使用站点语言；如果站点未设置，则使用浏览器语言。"
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:107
 msgid "Available"
@@ -2766,6 +2774,10 @@ msgstr "请选择此应用所有者的一个活跃服务账户。"
 msgid "Choose files"
 msgstr "选择文件"
 
+#: themes/default/templates/pages/client/settings.php:27
+msgid "Choose how the dashboard looks and which language it speaks to you in. These settings follow your account to every device."
+msgstr "选择仪表板的外观以及显示的语言。这些设置随您的账户同步到所有设备。"
+
 #: themes/default/templates/pages/client/security.php:28
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr "选择您的登录方式以及账户的保护方式。每种方式在启用前都会经过验证。"
@@ -2936,7 +2948,7 @@ msgstr "全部折叠"
 msgid "Collapse all nodes"
 msgstr "折叠所有节点"
 
-#: templates/admin/header.php:43
+#: templates/admin/header.php:42
 msgid "Collapse menu"
 msgstr "折叠菜单"
 
@@ -3498,9 +3510,13 @@ msgstr "面向客户的支持邮箱，用于许可证通信和支持回复。"
 msgid "Damaged or unreadable ("
 msgstr "已损坏或无法读取（"
 
-#: templates/admin/header.php:29 themes/default/templates/frames/client-dashboard.php:27 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
+#: templates/admin/header.php:28 themes/default/templates/frames/client-dashboard.php:28 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
 msgid "Dashboard"
 msgstr "仪表板"
+
+#: themes/default/templates/pages/client/settings.php:76
+msgid "Dashboard theme"
+msgstr "仪表板主题"
 
 #: templates/admin/contents/accounts/index.php:118
 msgid "Data Integrity"
@@ -3994,7 +4010,7 @@ msgstr "磁盘存储上限（MB）"
 msgid "Dismiss notification"
 msgstr "关闭通知"
 
-#: assets/js/admin/dashboard.js:186
+#: assets/js/admin/dashboard.js:202
 msgid "Dismiss this notice"
 msgstr "关闭此提示"
 
@@ -5383,7 +5399,7 @@ msgstr "命中率"
 msgid "Hits"
 msgstr "命中"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "首页"
 
@@ -6222,7 +6238,7 @@ msgstr "标签"
 msgid "Labels and values support %s placeholders."
 msgstr "标签和值支持 %s 占位符。"
 
-#: src/Environments/Application/Installation/InstallerPage.php:716
+#: src/Environments/Application/Installation/InstallerPage.php:716 themes/default/templates/pages/client/settings.php:21 themes/default/templates/pages/client/settings.php:42
 msgid "Language"
 msgstr "语言"
 
@@ -6555,6 +6571,10 @@ msgstr "您购买的许可证签发后将显示在此处。"
 #: themes/default/templates/pages/client/licenses.php:29
 msgid "Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up."
 msgstr "您购买的许可证签发后将显示在此处。验证您的电子邮件地址，即可看到注册前用该地址购买的许可证。"
+
+#: themes/default/templates/pages/client/settings.php:69
+msgid "Light or dark colors for the admin and client dashboards. System follows your device's setting."
+msgstr "管理和客户仪表板使用浅色或深色。选择“跟随系统”时与设备的设置保持一致。"
 
 #: templates/admin/contents/system/background.php:52
 msgid "Live status"
@@ -7867,7 +7887,7 @@ msgstr "只有系统管理员可以运行后台任务。"
 msgid "Only system administrators can switch maintenance mode."
 msgstr "只有系统管理员可以切换维护模式。"
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:64
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:69
 msgid "Only user accounts have preferences."
 msgstr "只有用户账户才有偏好设置。"
 
@@ -7885,7 +7905,7 @@ msgstr "打开应用"
 msgid "Open date picker"
 msgstr "打开日期选择器"
 
-#: templates/admin/header.php:46
+#: templates/admin/header.php:45
 msgid "Open menu"
 msgstr "打开菜单"
 
@@ -9700,6 +9720,10 @@ msgstr "保存模板"
 msgid "Save changes"
 msgstr "保存更改"
 
+#: themes/default/templates/pages/client/settings.php:60
+msgid "Save language"
+msgstr "保存语言"
+
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr "保存站点地址"
@@ -9717,7 +9741,7 @@ msgstr "已保存"
 msgid "Saved successfully."
 msgstr "保存成功。"
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:94 assets/js/admin/updates.js:100
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:115 assets/js/admin/updates.js:100 assets/js/i18n.js:232
 msgid "Saved."
 msgstr "已保存。"
 
@@ -10057,7 +10081,7 @@ msgstr "提交审核"
 msgid "Send invitation"
 msgstr "发送邀请"
 
-#: themes/default/templates/frames/client-dashboard.php:127 themes/default/templates/pages/auth/verify-email.php:42
+#: themes/default/templates/frames/client-dashboard.php:128 themes/default/templates/pages/auth/verify-email.php:42
 msgid "Send me a new link"
 msgstr "给我发送新链接"
 
@@ -10375,8 +10399,9 @@ msgstr "设置密钥"
 msgid "Setting up&hellip;"
 msgstr "正在设置&hellip;"
 
-#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 templates/admin/contents/index.php:31
-#: templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32 templates/admin/contents/repository/upload.php:33
+#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 src/ClientDashboard/ContentHandlers/SettingsPage.php:56
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:139 templates/admin/contents/index.php:31 templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32
+#: templates/admin/contents/repository/upload.php:33 themes/default/templates/pages/client/settings.php:26 themes/default/templates/pages/client/settings.php:31
 msgid "Settings"
 msgstr "设置"
 
@@ -10453,7 +10478,7 @@ msgstr "请使用用户账户登录以管理安全设置。"
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "使用指纹、面容、屏幕锁或安全密钥代替密码登录。通行密钥本身已证明是您本人，因此用它登录会跳过下面的第二步。"
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "退出登录"
 
@@ -10907,7 +10932,7 @@ msgstr "暂停"
 msgid "Suspicious activity detected."
 msgstr "检测到可疑活动。"
 
-#: themes/default/templates/frames/client-dashboard.php:71
+#: themes/default/templates/frames/client-dashboard.php:72
 msgid "Switch account"
 msgstr "切换账户"
 
@@ -11101,7 +11126,7 @@ msgstr "该数据库用户不存在。请检查用户名。"
 msgid "That factor is not enabled."
 msgstr "该验证因素未启用。"
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:83
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:88
 msgid "That language is not available."
 msgstr "该语言不可用。"
 
@@ -11112,6 +11137,10 @@ msgstr "找不到该通行密钥。"
 #: src/Environments/Application/Installation/WebInstaller.php:374
 msgid "That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again."
 msgstr "该安装令牌不正确。请从文件中重新复制（仅复制引号之间的字母和数字）后重试。"
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:96 assets/js/i18n.js:287
+msgid "That theme is not available."
+msgstr "该主题不可用。"
 
 #: src/RESTAPI/RouteArguments.php:208
 #, php-format
@@ -11944,6 +11973,10 @@ msgstr "未安装语言“%1$s”。请使用以下之一：%2$s。"
 msgid "The language \"%s\" is not installed."
 msgstr "未安装语言“%s”。"
 
+#: themes/default/templates/pages/client/settings.php:43
+msgid "The language of the dashboards, the pages of this site and the emails sent to you."
+msgstr "仪表板、本站页面以及发送给您的电子邮件所使用的语言。"
+
 #: src/Console/Commands/Installer.php:130
 msgid "The language of the installation, e.g. fr_FR. Saved as the site language (run)"
 msgstr "安装语言，例如 fr_FR。保存为站点语言（run）"
@@ -12339,12 +12372,12 @@ msgstr "插件 ZIP 文件必须包含 readme.txt 文件。"
 msgid "The plugin does not exist, please check the typography or the plugin slug."
 msgstr "插件不存在，请检查拼写或插件 slug。"
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:95 assets/js/i18n.js:213
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:116 assets/js/dashboard-settings.js:140 assets/js/dashboard-settings.js:159 assets/js/i18n.js:229
 msgid "The preference could not be saved."
 msgstr "无法保存偏好设置。"
 
 #. translators: %s: comma-separated list of preference names.
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:72
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:77
 #, php-format
 msgid "The preference must be one of: %s."
 msgstr "偏好设置必须是以下之一：%s。"
@@ -13176,6 +13209,10 @@ msgstr "主题支持 URL"
 #: src/Admin/ActionHandlers/ThemeManagement.php:221
 msgid "Theme assets published: "
 msgstr "主题资源已发布： "
+
+#: assets/js/dashboard-settings.js:157
+msgid "Theme saved."
+msgstr "主题已保存。"
 
 #: src/Admin/ContentHandlers/ModulesPage.php:352
 msgid "Themes"
@@ -14660,7 +14697,7 @@ msgstr "启用邮件验证码前，请先验证您的邮箱地址。"
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr "启用邮件登录验证码前，请先验证您的邮箱地址。"
 
-#: themes/default/templates/frames/client-dashboard.php:123
+#: themes/default/templates/frames/client-dashboard.php:124
 #, php-format
 msgid "Verify your email address, %s. Licenses bought with it are added to your account once it is verified."
 msgstr "请验证您的邮箱地址，%s。验证后，使用该邮箱购买的许可证将添加到您的账户。"
@@ -15207,7 +15244,7 @@ msgstr "您必须同意条款和条件才能创建账户。"
 msgid "You must be logged in to access this resource."
 msgstr "您必须登录才能访问此资源。"
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:58
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:63
 msgid "You must be signed in to change your preferences."
 msgstr "您必须登录才能更改偏好设置。"
 
@@ -15361,6 +15398,10 @@ msgstr "您的邮件提供商配置正确。此测试邮件已成功送达。"
 #: src/Environments/Application/Installation/WebInstaller.php:266
 msgid "Your installer session expired. Enter the setup token to continue."
 msgstr "您的安装会话已过期。请输入安装令牌以继续。"
+
+#: themes/default/templates/pages/client/settings.php:51
+msgid "Your language"
+msgstr "您的语言"
 
 #: src/Console/Commands/Installer.php:1299
 msgid "Your language could not be saved to your account. Choose it later in your preferences."
@@ -15588,6 +15629,26 @@ msgstr "无法存储：本地路径不是普通文件"
 #: src/HostedApps/Storage/DirectoryAppStorage.php:963
 msgid "cannot replace something that is not a file"
 msgstr "无法替换非文件对象"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:101
+msgctxt "color scheme"
+msgid "Dark"
+msgstr "深色"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:100
+msgctxt "color scheme"
+msgid "Light"
+msgstr "浅色"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:99
+msgctxt "color scheme"
+msgid "System"
+msgstr "跟随系统"
+
+#: themes/default/templates/pages/client/settings.php:22 themes/default/templates/pages/client/settings.php:68
+msgctxt "color scheme"
+msgid "Theme"
+msgstr "主题"
 
 #: src/Core/Container/Container.php:440
 msgid "consider registering a factory for this service."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 11:00+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: العربية\n"
 "Language: ar\n"
@@ -1255,7 +1255,7 @@ msgstr "نسبة الوصول إلى التنزيل:"
 msgid "Accesses"
 msgstr "مرات الوصول"
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: themes/default/templates/frames/client-dashboard.php:59 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr "الحساب"
 
@@ -1299,7 +1299,7 @@ msgstr "نظرة عامة على الحسابات"
 msgid "Accounts overview"
 msgstr "نظرة عامة على الحسابات"
 
-#: themes/default/templates/frames/client-dashboard.php:74 themes/default/templates/frames/client-dashboard.php:83
+#: themes/default/templates/frames/client-dashboard.php:75 themes/default/templates/frames/client-dashboard.php:84
 msgid "Acting as"
 msgstr "تعمل بصفة"
 
@@ -1487,7 +1487,7 @@ msgstr "وجدت الفحوصات الإضافية %s مشكلة."
 msgid "Additional verification could not be started. Please try again."
 msgstr "تعذّر بدء التحقق الإضافي. يرجى المحاولة مرة أخرى."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "المسؤول"
 
@@ -2225,6 +2225,10 @@ msgstr "حساب تلقائي"
 msgid "Automatic (browser language)"
 msgstr "تلقائي (لغة المتصفح)"
 
+#: themes/default/templates/pages/client/settings.php:53
+msgid "Automatic (site default)"
+msgstr "تلقائي (افتراضي الموقع)"
+
 #: src/Admin/ContentHandlers/LicensePage.php:408
 msgid "Automatic Calculation"
 msgstr "الحساب التلقائي"
@@ -2272,6 +2276,10 @@ msgstr ""
 #: src/Environments/Application/Update/UpdateService.php:636
 msgid "Automatic updates on this site install security releases only, so this release will not be installed automatically."
 msgstr "التحديثات التلقائية على هذا الموقع تثبّت الإصدارات الأمنية فقط، لذا لن يُثبَّت هذا الإصدار تلقائيًا."
+
+#: themes/default/templates/pages/client/settings.php:58
+msgid "Automatic uses the site language, or your browser's language when the site has none."
+msgstr "«تلقائي» يستخدم لغة الموقع، أو لغة متصفحك إذا لم يحدد الموقع لغة."
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:107
 msgid "Available"
@@ -2771,6 +2779,10 @@ msgstr "اختر حساب خدمة نشطًا لمالك هذا التطبيق."
 msgid "Choose files"
 msgstr "اختر ملفات"
 
+#: themes/default/templates/pages/client/settings.php:27
+msgid "Choose how the dashboard looks and which language it speaks to you in. These settings follow your account to every device."
+msgstr "اختر مظهر لوحة التحكم واللغة التي تخاطبك بها. ترافق هذه الإعدادات حسابك على جميع أجهزتك."
+
 #: themes/default/templates/pages/client/security.php:28
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr "اختر طريقة تسجيل الدخول وكيفية حماية حسابك. يتم التحقق من كل طريقة قبل تفعيلها."
@@ -2941,7 +2953,7 @@ msgstr "طي الكل"
 msgid "Collapse all nodes"
 msgstr "طي جميع العقد"
 
-#: templates/admin/header.php:43
+#: templates/admin/header.php:42
 msgid "Collapse menu"
 msgstr "طي القائمة"
 
@@ -3503,9 +3515,13 @@ msgstr "عنوان بريد الدعم الموجّه للعملاء، ويُس�
 msgid "Damaged or unreadable ("
 msgstr "تالف أو غير قابل للقراءة ("
 
-#: templates/admin/header.php:29 themes/default/templates/frames/client-dashboard.php:27 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
+#: templates/admin/header.php:28 themes/default/templates/frames/client-dashboard.php:28 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
 msgid "Dashboard"
 msgstr "لوحة التحكم"
+
+#: themes/default/templates/pages/client/settings.php:76
+msgid "Dashboard theme"
+msgstr "سمة لوحة التحكم"
 
 #: templates/admin/contents/accounts/index.php:118
 msgid "Data Integrity"
@@ -3999,7 +4015,7 @@ msgstr "حد التخزين على القرص (ميغابايت)"
 msgid "Dismiss notification"
 msgstr "تجاهل الإشعار"
 
-#: assets/js/admin/dashboard.js:186
+#: assets/js/admin/dashboard.js:202
 msgid "Dismiss this notice"
 msgstr "تجاهل هذا التنبيه"
 
@@ -5393,7 +5409,7 @@ msgstr "معدل الإصابة"
 msgid "Hits"
 msgstr "الإصابات"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -6232,7 +6248,7 @@ msgstr "التسمية"
 msgid "Labels and values support %s placeholders."
 msgstr "تدعم التسميات والقيم العناصر النائبة %s."
 
-#: src/Environments/Application/Installation/InstallerPage.php:716
+#: src/Environments/Application/Installation/InstallerPage.php:716 themes/default/templates/pages/client/settings.php:21 themes/default/templates/pages/client/settings.php:42
 msgid "Language"
 msgstr "اللغة"
 
@@ -6565,6 +6581,10 @@ msgstr "تظهر هنا التراخيص التي تشتريها بمجرد إص
 #: themes/default/templates/pages/client/licenses.php:29
 msgid "Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up."
 msgstr "تظهر هنا التراخيص التي تشتريها بمجرد إصدارها. وثّق عنوان بريدك الإلكتروني لترى التراخيص المشتراة به قبل تسجيلك."
+
+#: themes/default/templates/pages/client/settings.php:69
+msgid "Light or dark colors for the admin and client dashboards. System follows your device's setting."
+msgstr "ألوان فاتحة أو داكنة للوحتي تحكم المسؤول والعميل. «النظام» يتبع إعداد جهازك."
 
 #: templates/admin/contents/system/background.php:52
 msgid "Live status"
@@ -7877,7 +7897,7 @@ msgstr "لا يمكن إلا لمسؤولي النظام تشغيل مهام ا�
 msgid "Only system administrators can switch maintenance mode."
 msgstr "لا يمكن إلا لمسؤولي النظام تبديل وضع الصيانة."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:64
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:69
 msgid "Only user accounts have preferences."
 msgstr "التفضيلات متاحة لحسابات المستخدمين فقط."
 
@@ -7895,7 +7915,7 @@ msgstr "فتح التطبيق"
 msgid "Open date picker"
 msgstr "فتح منتقي التاريخ"
 
-#: templates/admin/header.php:46
+#: templates/admin/header.php:45
 msgid "Open menu"
 msgstr "فتح القائمة"
 
@@ -9710,6 +9730,10 @@ msgstr "حفظ القالب"
 msgid "Save changes"
 msgstr "حفظ التغييرات"
 
+#: themes/default/templates/pages/client/settings.php:60
+msgid "Save language"
+msgstr "حفظ اللغة"
+
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr "حفظ عنوان الموقع"
@@ -9727,7 +9751,7 @@ msgstr "تم الحفظ"
 msgid "Saved successfully."
 msgstr "تم الحفظ بنجاح."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:94 assets/js/admin/updates.js:100
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:115 assets/js/admin/updates.js:100 assets/js/i18n.js:232
 msgid "Saved."
 msgstr "تم الحفظ."
 
@@ -10067,7 +10091,7 @@ msgstr "إرسال للمراجعة"
 msgid "Send invitation"
 msgstr "إرسال الدعوة"
 
-#: themes/default/templates/frames/client-dashboard.php:127 themes/default/templates/pages/auth/verify-email.php:42
+#: themes/default/templates/frames/client-dashboard.php:128 themes/default/templates/pages/auth/verify-email.php:42
 msgid "Send me a new link"
 msgstr "أرسل لي رابطًا جديدًا"
 
@@ -10385,8 +10409,9 @@ msgstr "إعداد مفتاح"
 msgid "Setting up&hellip;"
 msgstr "جارٍ الإعداد&hellip;"
 
-#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 templates/admin/contents/index.php:31
-#: templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32 templates/admin/contents/repository/upload.php:33
+#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 src/ClientDashboard/ContentHandlers/SettingsPage.php:56
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:139 templates/admin/contents/index.php:31 templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32
+#: templates/admin/contents/repository/upload.php:33 themes/default/templates/pages/client/settings.php:26 themes/default/templates/pages/client/settings.php:31
 msgid "Settings"
 msgstr "الإعدادات"
 
@@ -10463,7 +10488,7 @@ msgstr "سجّل الدخول بحساب مستخدم لإدارة إعدادا�
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة أو مفتاح أمان بدلًا من كلمة المرور. مفتاح المرور يثبت هويتك بالفعل، لذا يتخطى تسجيل الدخول به الخطوة الثانية أدناه."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
@@ -10917,7 +10942,7 @@ msgstr "تعليق"
 msgid "Suspicious activity detected."
 msgstr "تم اكتشاف نشاط مريب."
 
-#: themes/default/templates/frames/client-dashboard.php:71
+#: themes/default/templates/frames/client-dashboard.php:72
 msgid "Switch account"
 msgstr "تبديل الحساب"
 
@@ -11111,7 +11136,7 @@ msgstr "مستخدم قاعدة البيانات هذا غير موجود. تح�
 msgid "That factor is not enabled."
 msgstr "هذا العامل غير مفعّل."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:83
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:88
 msgid "That language is not available."
 msgstr "هذه اللغة غير متاحة."
 
@@ -11122,6 +11147,10 @@ msgstr "تعذر العثور على مفتاح المرور هذا."
 #: src/Environments/Application/Installation/WebInstaller.php:374
 msgid "That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again."
 msgstr "رمز الإعداد هذا غير صحيح. انسخه مجددًا من الملف (الحروف والأرقام بين علامتي الاقتباس فقط) ثم حاول مرة أخرى."
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:96 assets/js/i18n.js:287
+msgid "That theme is not available."
+msgstr "هذه السمة غير متاحة."
 
 #: src/RESTAPI/RouteArguments.php:208
 #, php-format
@@ -11954,6 +11983,10 @@ msgstr "اللغة «%1$s» غير مثبتة. استخدم إحدى اللغا�
 msgid "The language \"%s\" is not installed."
 msgstr "اللغة «%s» غير مثبتة."
 
+#: themes/default/templates/pages/client/settings.php:43
+msgid "The language of the dashboards, the pages of this site and the emails sent to you."
+msgstr "لغة لوحات التحكم وصفحات هذا الموقع والرسائل المرسلة إليك."
+
 #: src/Console/Commands/Installer.php:130
 msgid "The language of the installation, e.g. fr_FR. Saved as the site language (run)"
 msgstr "لغة التثبيت، مثل fr_FR. تُحفظ كلغة الموقع (run)"
@@ -12349,12 +12382,12 @@ msgstr "يجب أن يحتوي ملف ZIP للإضافة على ملف readme.tx
 msgid "The plugin does not exist, please check the typography or the plugin slug."
 msgstr "الإضافة غير موجودة، يرجى التحقق من التهجئة أو معرّف الإضافة."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:95 assets/js/i18n.js:213
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:116 assets/js/dashboard-settings.js:140 assets/js/dashboard-settings.js:159 assets/js/i18n.js:229
 msgid "The preference could not be saved."
 msgstr "تعذر حفظ التفضيل."
 
 #. translators: %s: comma-separated list of preference names.
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:72
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:77
 #, php-format
 msgid "The preference must be one of: %s."
 msgstr "يجب أن يكون التفضيل أحد القيم التالية: %s."
@@ -13186,6 +13219,10 @@ msgstr "رابط دعم القالب"
 #: src/Admin/ActionHandlers/ThemeManagement.php:221
 msgid "Theme assets published: "
 msgstr "تم نشر أصول القالب: "
+
+#: assets/js/dashboard-settings.js:157
+msgid "Theme saved."
+msgstr "تم حفظ السمة."
 
 #: src/Admin/ContentHandlers/ModulesPage.php:352
 msgid "Themes"
@@ -14670,7 +14707,7 @@ msgstr "تحقق من عنوان بريدك قبل تفعيل رموز البر�
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr "تحقق من عنوان بريدك قبل تفعيل رموز تسجيل الدخول عبر البريد."
 
-#: themes/default/templates/frames/client-dashboard.php:123
+#: themes/default/templates/frames/client-dashboard.php:124
 #, php-format
 msgid "Verify your email address, %s. Licenses bought with it are added to your account once it is verified."
 msgstr "تحقق من عنوان بريدك، %s. تُضاف التراخيص المشتراة به إلى حسابك بعد التحقق منه."
@@ -15217,7 +15254,7 @@ msgstr "يجب أن توافق على الشروط والأحكام لإنشاء
 msgid "You must be logged in to access this resource."
 msgstr "يجب تسجيل الدخول للوصول إلى هذا المورد."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:58
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:63
 msgid "You must be signed in to change your preferences."
 msgstr "يجب تسجيل الدخول لتغيير تفضيلاتك."
 
@@ -15371,6 +15408,10 @@ msgstr "مزوّد البريد لديك مُعد بشكل صحيح. تم تسل
 #: src/Environments/Application/Installation/WebInstaller.php:266
 msgid "Your installer session expired. Enter the setup token to continue."
 msgstr "انتهت جلسة المثبّت. أدخل رمز الإعداد للمتابعة."
+
+#: themes/default/templates/pages/client/settings.php:51
+msgid "Your language"
+msgstr "لغتك"
 
 #: src/Console/Commands/Installer.php:1299
 msgid "Your language could not be saved to your account. Choose it later in your preferences."
@@ -15598,6 +15639,26 @@ msgstr "لا يمكن تخزينه: المسار المحلي ليس ملفًا 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:963
 msgid "cannot replace something that is not a file"
 msgstr "لا يمكن استبدال شيء ليس ملفًا"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:101
+msgctxt "color scheme"
+msgid "Dark"
+msgstr "داكن"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:100
+msgctxt "color scheme"
+msgid "Light"
+msgstr "فاتح"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:99
+msgctxt "color scheme"
+msgid "System"
+msgstr "النظام"
+
+#: themes/default/templates/pages/client/settings.php:22 themes/default/templates/pages/client/settings.php:68
+msgctxt "color scheme"
+msgid "Theme"
+msgstr "السمة"
 
 #: src/Core/Container/Container.php:440
 msgid "consider registering a factory for this service."

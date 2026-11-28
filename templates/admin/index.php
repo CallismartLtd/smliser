@@ -49,7 +49,8 @@ if ( ! $principal->is( 'system_admin' ) ) {
 */
 
 $settings  = UserSettings::for( $principal->get_actor() );
-$theme     = (string) $settings->get( UserSettings::DASHBOARD_THEME_NAME, 'auto' );
+// '' until the user chooses one: theme.js then applies a theme kept in the browser.
+$theme     = (string) $settings->get( UserSettings::DASHBOARD_THEME_NAME, '' );
 $collapsed = (bool) $settings->get( UserSettings::DASHBOARD_SIDEBAR_COLLAPSED_NAME, false );
 
 
@@ -77,7 +78,6 @@ if ( $request->isEmpty( 'noheader' ) ) {
 		'collapsed'      => $collapsed,
 		'registry'       => $registry,
 		'assets_manager' => $assets_manager,
-		'preferences_url' => $urlmanager->client_dashboard_url( 'json/preferences' )->url(),
 	] );
 
 	/*

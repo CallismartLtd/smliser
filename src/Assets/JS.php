@@ -171,6 +171,13 @@ final class JS {
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],
+			// Client dashboard Settings page: language and theme tabs (SettingsPage).
+			'dashboard-settings' => [
+				'url'          => $this->urlmanager->assets_url( sprintf( 'js/dashboard-settings%s.js', $suffix ) ),
+				'dependencies' => [ 'i18n' ],
+				'version'      => SMLISER_VER,
+				'footer'       => true,
+			],
 			// Enhances input[type="file"][data-smliser-uploader] into a drop zone (View::UPLOADER_ASSET).
 			'smliser-uploader' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/smliser-uploader%s.js', $suffix ) ),

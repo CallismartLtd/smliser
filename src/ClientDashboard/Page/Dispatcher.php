@@ -19,6 +19,8 @@ use SmartLicenseServer\Environments\Application\Theming\View;
 use SmartLicenseServer\Security\Actors\User;
 use SmartLicenseServer\Security\Context\ContextServiceProvider;
 use SmartLicenseServer\Security\Context\Guard;
+use SmartLicenseServer\SettingsAPI\UserSettings;
+use Throwable;
 
 /**
  * The client dashboard's page handler, built from the registry.
@@ -49,13 +51,16 @@ use SmartLicenseServer\Security\Context\Guard;
  *             current: string,
  *             options: list<array{value: string, label: string, role: string, type: string, avatar: string, current: bool}>
  *         },
- *         account: array{name: string, email: string, verified: bool, resend_url: string}
+ *         account: array{name: string, email: string, verified: bool, resend_url: string},
+ *         theme: string
  *     }
  *     context is who the user can act for (ContextServiceProvider::get_acting_contexts()),
  *     the user themselves first; a theme shows a switcher posting "context" to
  *     context.action when there is more than one option. account.verified is
  *     false until the user verifies their email; a theme shows a notice with
- *     a button posting to account.resend_url.
+ *     a button posting to account.resend_url. theme is the user's dashboard
+ *     theme (UserSettings::DASHBOARD_THEME_NAME): 'light' or 'dark', which a
+ *     theme puts on html[data-theme], or 'auto' to follow the system.
  *   - the title of the current submenu or menu, unless the page set one.
  *
  * An unknown or hidden page or tab is the theme's 404 page.
@@ -204,7 +209,29 @@ final class Dispatcher {
 			'current'  => [ 'menu' => $current_key, 'submenu' => $current_submenu ],
 			'context'  => $this->context(),
 			'account'  => $this->account(),
+			'theme'    => $this->theme(),
 		];
+	}
+
+	/**
+	 * The signed-in user's dashboard theme: 'auto', 'light' or 'dark'.
+	 *
+	 * @return string
+	 */
+	private function theme() : string {
+		$user = $this->guard->get_principal()?->get_actor();
+
+		if ( ! $user instanceof User ) {
+			return 'auto';
+		}
+
+		try {
+			$theme = UserSettings::for( $user )->get( UserSettings::DASHBOARD_THEME_NAME, 'auto' );
+		} catch ( Throwable ) {
+			return 'auto';
+		}
+
+		return is_string( $theme ) && in_array( $theme, [ 'light', 'dark' ], true ) ? $theme : 'auto';
 	}
 
 	/**

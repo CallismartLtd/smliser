@@ -118,12 +118,28 @@
 	}
 
 	/**
-	 * Toggle between light and dark theme and persist the choice.
+	 * Toggle between light and dark theme and persist the choice, in this
+	 * browser and in the user's account, the same as the client dashboard's
+	 * Settings > Theme (window.smliserPreferences, assets/js/i18n.js).
 	 */
 	function toggleTheme() {
-		var root        = document.documentElement;
+		var root         = document.documentElement;
 		var currentTheme = root.getAttribute( 'data-theme' );
-		var nextTheme    = 'dark' === currentTheme ? 'light' : 'dark';
+
+		if ( 'dark' !== currentTheme && 'light' !== currentTheme ) {
+			// Following the system: start from what is shown.
+			currentTheme = window.matchMedia && window.matchMedia( '(prefers-color-scheme: dark)' ).matches ? 'dark' : 'light';
+		}
+
+		var nextTheme = 'dark' === currentTheme ? 'light' : 'dark';
+
+		if ( window.smliserPreferences ) {
+			window.smliserPreferences.setTheme( nextTheme ).catch( function ( error ) {
+				// Shown and kept in this browser; the account was not updated.
+				window.console && window.console.warn( error.message );
+			} );
+			return;
+		}
 
 		root.setAttribute( 'data-theme', nextTheme );
 

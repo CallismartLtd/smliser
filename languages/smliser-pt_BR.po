@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 11:00+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: Português (Brasil)\n"
 "Language: pt_BR\n"
@@ -1251,7 +1251,7 @@ msgstr "Proporção acessos/downloads:"
 msgid "Accesses"
 msgstr "Acessos"
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: themes/default/templates/frames/client-dashboard.php:59 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr "Conta"
 
@@ -1295,7 +1295,7 @@ msgstr "Visão geral das contas"
 msgid "Accounts overview"
 msgstr "Visão geral das contas"
 
-#: themes/default/templates/frames/client-dashboard.php:74 themes/default/templates/frames/client-dashboard.php:83
+#: themes/default/templates/frames/client-dashboard.php:75 themes/default/templates/frames/client-dashboard.php:84
 msgid "Acting as"
 msgstr "Atuando como"
 
@@ -1483,7 +1483,7 @@ msgstr "As verificações adicionais encontraram %s problema(s)."
 msgid "Additional verification could not be started. Please try again."
 msgstr "Não foi possível iniciar a verificação adicional. Tente novamente."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "Admin"
 
@@ -2221,6 +2221,10 @@ msgstr "Cálculo auto"
 msgid "Automatic (browser language)"
 msgstr "Automático (idioma do navegador)"
 
+#: themes/default/templates/pages/client/settings.php:53
+msgid "Automatic (site default)"
+msgstr "Automático (padrão do site)"
+
 #: src/Admin/ContentHandlers/LicensePage.php:408
 msgid "Automatic Calculation"
 msgstr "Cálculo automático"
@@ -2268,6 +2272,10 @@ msgstr ""
 #: src/Environments/Application/Update/UpdateService.php:636
 msgid "Automatic updates on this site install security releases only, so this release will not be installed automatically."
 msgstr "Neste site, as atualizações automáticas instalam apenas versões de segurança, então esta versão não será instalada automaticamente."
+
+#: themes/default/templates/pages/client/settings.php:58
+msgid "Automatic uses the site language, or your browser's language when the site has none."
+msgstr "\"Automático\" usa o idioma do site ou, quando o site não tem um, o idioma do seu navegador."
 
 #: src/Email/Templates/System/UpdateAvailableEmail.php:107
 msgid "Available"
@@ -2767,6 +2775,10 @@ msgstr "Escolha uma conta de serviço ativa do proprietário deste aplicativo."
 msgid "Choose files"
 msgstr "Escolher arquivos"
 
+#: themes/default/templates/pages/client/settings.php:27
+msgid "Choose how the dashboard looks and which language it speaks to you in. These settings follow your account to every device."
+msgstr "Escolha a aparência do painel e o idioma em que ele fala com você. Essas configurações acompanham sua conta em todos os dispositivos."
+
 #: themes/default/templates/pages/client/security.php:28
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr "Escolha como você entra e como sua conta é protegida. Cada método é verificado antes de ser ativado."
@@ -2937,7 +2949,7 @@ msgstr "Recolher tudo"
 msgid "Collapse all nodes"
 msgstr "Recolher todos os nós"
 
-#: templates/admin/header.php:43
+#: templates/admin/header.php:42
 msgid "Collapse menu"
 msgstr "Recolher menu"
 
@@ -3499,9 +3511,13 @@ msgstr "E-mail de suporte voltado aos clientes, usado nas comunicações de lice
 msgid "Damaged or unreadable ("
 msgstr "Danificado ou ilegível ("
 
-#: templates/admin/header.php:29 themes/default/templates/frames/client-dashboard.php:27 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
+#: templates/admin/header.php:28 themes/default/templates/frames/client-dashboard.php:28 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
 msgid "Dashboard"
 msgstr "Painel"
+
+#: themes/default/templates/pages/client/settings.php:76
+msgid "Dashboard theme"
+msgstr "Tema do painel"
 
 #: templates/admin/contents/accounts/index.php:118
 msgid "Data Integrity"
@@ -3995,7 +4011,7 @@ msgstr "Limite de armazenamento em disco (MB)"
 msgid "Dismiss notification"
 msgstr "Dispensar notificação"
 
-#: assets/js/admin/dashboard.js:186
+#: assets/js/admin/dashboard.js:202
 msgid "Dismiss this notice"
 msgstr "Dispensar este aviso"
 
@@ -5385,7 +5401,7 @@ msgstr "Taxa de acertos"
 msgid "Hits"
 msgstr "Acertos"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "Início"
 
@@ -6224,7 +6240,7 @@ msgstr "Rótulo"
 msgid "Labels and values support %s placeholders."
 msgstr "Rótulos e valores aceitam marcadores %s."
 
-#: src/Environments/Application/Installation/InstallerPage.php:716
+#: src/Environments/Application/Installation/InstallerPage.php:716 themes/default/templates/pages/client/settings.php:21 themes/default/templates/pages/client/settings.php:42
 msgid "Language"
 msgstr "Idioma"
 
@@ -6557,6 +6573,10 @@ msgstr "As licenças que você compra aparecem aqui assim que são emitidas."
 #: themes/default/templates/pages/client/licenses.php:29
 msgid "Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up."
 msgstr "As licenças que você compra aparecem aqui assim que são emitidas. Verifique seu endereço de e-mail para ver as licenças compradas com ele antes do seu cadastro."
+
+#: themes/default/templates/pages/client/settings.php:69
+msgid "Light or dark colors for the admin and client dashboards. System follows your device's setting."
+msgstr "Cores claras ou escuras para os painéis de administração e do cliente. \"Sistema\" segue a configuração do seu dispositivo."
 
 #: templates/admin/contents/system/background.php:52
 msgid "Live status"
@@ -7869,7 +7889,7 @@ msgstr "Somente administradores do sistema podem executar tarefas em segundo pla
 msgid "Only system administrators can switch maintenance mode."
 msgstr "Somente administradores do sistema podem alternar o modo de manutenção."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:64
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:69
 msgid "Only user accounts have preferences."
 msgstr "Somente contas de usuário têm preferências."
 
@@ -7887,7 +7907,7 @@ msgstr "Abrir aplicativo"
 msgid "Open date picker"
 msgstr "Abrir seletor de data"
 
-#: templates/admin/header.php:46
+#: templates/admin/header.php:45
 msgid "Open menu"
 msgstr "Abrir menu"
 
@@ -9702,6 +9722,10 @@ msgstr "Salvar modelo"
 msgid "Save changes"
 msgstr "Salvar alterações"
 
+#: themes/default/templates/pages/client/settings.php:60
+msgid "Save language"
+msgstr "Salvar idioma"
+
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr "Salvar o endereço do site"
@@ -9719,7 +9743,7 @@ msgstr "Salvo"
 msgid "Saved successfully."
 msgstr "Salvo com sucesso."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:94 assets/js/admin/updates.js:100
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:115 assets/js/admin/updates.js:100 assets/js/i18n.js:232
 msgid "Saved."
 msgstr "Salvo."
 
@@ -10059,7 +10083,7 @@ msgstr "Enviar para análise"
 msgid "Send invitation"
 msgstr "Enviar convite"
 
-#: themes/default/templates/frames/client-dashboard.php:127 themes/default/templates/pages/auth/verify-email.php:42
+#: themes/default/templates/frames/client-dashboard.php:128 themes/default/templates/pages/auth/verify-email.php:42
 msgid "Send me a new link"
 msgstr "Enviar-me um novo link"
 
@@ -10377,8 +10401,9 @@ msgstr "Configurando uma chave"
 msgid "Setting up&hellip;"
 msgstr "Configurando&hellip;"
 
-#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 templates/admin/contents/index.php:31
-#: templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32 templates/admin/contents/repository/upload.php:33
+#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 src/ClientDashboard/ContentHandlers/SettingsPage.php:56
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:139 templates/admin/contents/index.php:31 templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32
+#: templates/admin/contents/repository/upload.php:33 themes/default/templates/pages/client/settings.php:26 themes/default/templates/pages/client/settings.php:31
 msgid "Settings"
 msgstr "Configurações"
 
@@ -10455,7 +10480,7 @@ msgstr "Entre com uma conta de usuário para gerenciar as configurações de seg
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "Entre com sua impressão digital, rosto, bloqueio de tela ou uma chave de segurança em vez de senha. Uma chave de acesso já comprova que é você, então entrar com ela pula a segunda etapa abaixo."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "Sair"
 
@@ -10909,7 +10934,7 @@ msgstr "Suspender"
 msgid "Suspicious activity detected."
 msgstr "Atividade suspeita detectada."
 
-#: themes/default/templates/frames/client-dashboard.php:71
+#: themes/default/templates/frames/client-dashboard.php:72
 msgid "Switch account"
 msgstr "Trocar de conta"
 
@@ -11103,7 +11128,7 @@ msgstr "Esse usuário do banco de dados não existe. Verifique o nome de usuári
 msgid "That factor is not enabled."
 msgstr "Esse fator não está ativado."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:83
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:88
 msgid "That language is not available."
 msgstr "Esse idioma não está disponível."
 
@@ -11114,6 +11139,10 @@ msgstr "Essa chave de acesso não foi encontrada."
 #: src/Environments/Application/Installation/WebInstaller.php:374
 msgid "That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again."
 msgstr "Esse token de configuração não está correto. Copie-o novamente do arquivo (apenas as letras e números entre as aspas) e tente outra vez."
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:96 assets/js/i18n.js:287
+msgid "That theme is not available."
+msgstr "Esse tema não está disponível."
 
 #: src/RESTAPI/RouteArguments.php:208
 #, php-format
@@ -11946,6 +11975,10 @@ msgstr "O idioma \"%1$s\" não está instalado. Use um destes: %2$s."
 msgid "The language \"%s\" is not installed."
 msgstr "O idioma \"%s\" não está instalado."
 
+#: themes/default/templates/pages/client/settings.php:43
+msgid "The language of the dashboards, the pages of this site and the emails sent to you."
+msgstr "O idioma dos painéis, das páginas deste site e dos e-mails enviados a você."
+
 #: src/Console/Commands/Installer.php:130
 msgid "The language of the installation, e.g. fr_FR. Saved as the site language (run)"
 msgstr "O idioma da instalação, ex.: fr_FR. Salvo como idioma do site (run)"
@@ -12341,12 +12374,12 @@ msgstr "O arquivo ZIP do plugin deve conter um arquivo readme.txt."
 msgid "The plugin does not exist, please check the typography or the plugin slug."
 msgstr "O plugin não existe; verifique a grafia ou o slug do plugin."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:95 assets/js/i18n.js:213
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:116 assets/js/dashboard-settings.js:140 assets/js/dashboard-settings.js:159 assets/js/i18n.js:229
 msgid "The preference could not be saved."
 msgstr "Não foi possível salvar a preferência."
 
 #. translators: %s: comma-separated list of preference names.
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:72
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:77
 #, php-format
 msgid "The preference must be one of: %s."
 msgstr "A preferência deve ser uma destas: %s."
@@ -13178,6 +13211,10 @@ msgstr "URL de suporte do tema"
 #: src/Admin/ActionHandlers/ThemeManagement.php:221
 msgid "Theme assets published: "
 msgstr "Recursos do tema publicados: "
+
+#: assets/js/dashboard-settings.js:157
+msgid "Theme saved."
+msgstr "Tema salvo."
 
 #: src/Admin/ContentHandlers/ModulesPage.php:352
 msgid "Themes"
@@ -14662,7 +14699,7 @@ msgstr "Verifique seu endereço de e-mail antes de ativar códigos por e-mail."
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr "Verifique seu endereço de e-mail antes de ativar códigos de login por e-mail."
 
-#: themes/default/templates/frames/client-dashboard.php:123
+#: themes/default/templates/frames/client-dashboard.php:124
 #, php-format
 msgid "Verify your email address, %s. Licenses bought with it are added to your account once it is verified."
 msgstr "Verifique seu endereço de e-mail, %s. As licenças compradas com ele são adicionadas à sua conta depois da verificação."
@@ -15209,7 +15246,7 @@ msgstr "Você precisa aceitar os termos e condições para criar uma conta."
 msgid "You must be logged in to access this resource."
 msgstr "Você precisa estar conectado para acessar este recurso."
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:58
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:63
 msgid "You must be signed in to change your preferences."
 msgstr "Você precisa estar conectado para alterar suas preferências."
 
@@ -15363,6 +15400,10 @@ msgstr "Seu provedor de e-mail está configurado corretamente. Este e-mail de te
 #: src/Environments/Application/Installation/WebInstaller.php:266
 msgid "Your installer session expired. Enter the setup token to continue."
 msgstr "Sua sessão do instalador expirou. Informe o token de configuração para continuar."
+
+#: themes/default/templates/pages/client/settings.php:51
+msgid "Your language"
+msgstr "Seu idioma"
 
 #: src/Console/Commands/Installer.php:1299
 msgid "Your language could not be saved to your account. Choose it later in your preferences."
@@ -15590,6 +15631,26 @@ msgstr "não pode ser armazenado: o caminho local não é um arquivo comum"
 #: src/HostedApps/Storage/DirectoryAppStorage.php:963
 msgid "cannot replace something that is not a file"
 msgstr "não é possível substituir algo que não é um arquivo"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:101
+msgctxt "color scheme"
+msgid "Dark"
+msgstr "Escuro"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:100
+msgctxt "color scheme"
+msgid "Light"
+msgstr "Claro"
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:99
+msgctxt "color scheme"
+msgid "System"
+msgstr "Sistema"
+
+#: themes/default/templates/pages/client/settings.php:22 themes/default/templates/pages/client/settings.php:68
+msgctxt "color scheme"
+msgid "Theme"
+msgstr "Tema"
 
 #: src/Core/Container/Container.php:440
 msgid "consider registering a factory for this service."

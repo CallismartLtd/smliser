@@ -18,6 +18,7 @@ use SmartLicenseServer\Core\URL;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\I18n\I18n;
 use SmartLicenseServer\I18n\TranslatorInterface;
+use SmartLicenseServer\Security\Actors\User;
 use SmartLicenseServer\Security\CSRF\CSRF;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\Security\Permission\Capability;
@@ -1129,6 +1130,11 @@ final class AssetsManager {
 				'roles'        => Role::all( true ),
 				'capabilities' => Capability::get_caps()
 			];
+
+			// Where scripts save the signed-in user's preferences (theme, language): assets/js/i18n.js.
+			if ( ! \is_wp() && $this->guard->get_principal()?->get_actor() instanceof User ) {
+				$consts['preferences_url'] = $this->urlmanager->client_dashboard_url( 'json/preferences' )->url();
+			}
 		}
 
 		$this->register_js_constant( 'smliser_var', $consts );

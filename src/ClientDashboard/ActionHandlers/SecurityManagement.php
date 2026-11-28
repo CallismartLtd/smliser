@@ -14,6 +14,10 @@ use SmartLicenseServer\Background\Queue\QueueAwareTrait;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
 use SmartLicenseServer\Core\URLManager;
+use SmartLicenseServer\Environments\Application\Auth\WebIdentityProvider;
+use SmartLicenseServer\Security\Accounts\PasswordConfirmation;
+use SmartLicenseServer\Security\Authentication\UserAccounts;
+use SmartLicenseServer\Security\SecurityLogger;
 use SmartLicenseServer\Security\Actors\User;
 use SmartLicenseServer\Security\Authentication\AuthenticationFactorManager;
 use SmartLicenseServer\Security\Authentication\PasskeyStore;
@@ -34,7 +38,10 @@ final class SecurityManagement {
 		private URLManager $urls,
 		private WebAuthnManager $webauthn,
 		private PasskeyStore $passkeys,
-		JobQueue $job_queue
+		JobQueue $job_queue,
+		private UserAccounts $accounts,
+		private WebIdentityProvider $identity,
+		private SecurityLogger $logger
 	) {
 		$this->job_queue = $job_queue;
 	}
@@ -236,13 +243,80 @@ final class SecurityManagement {
 		return $this->answer( true, ucfirst( $factor ) . smliser__( ' two-factor authentication is disabled.' ), 200, $this->urls->client_dashboard_url( 'security' )->url() );
 	}
 
+	/**
+	 * Change the password while signed in.
+	 *
+	 * Fields: current_password, password_1, password_2. The new password
+	 * follows the signup and reset rules (UserAccounts::validate_password())
+	 * and must differ from the current one. Every other session then ends;
+	 * this one stays signed in. A security notice goes to the user.
+	 */
+	public function change_password( Request $request ) : Response {
+		$user = $this->current_user();
+		if ( ! $user ) {
+			return $this->answer( false, smliser__( 'Sign in with a user account to manage security settings.' ), 403 );
+		}
+		if ( \is_wp() ) {
+			return $this->answer( false, smliser__( 'WordPress manages your password. Change it from your WordPress profile.' ), 409 );
+		}
+		if ( ! $this->password_matches( $user, (string) $request->post( 'current_password', '' ) ) ) {
+			return $this->answer( false, smliser__( 'Your current password is incorrect.' ), 403 );
+		}
+
+		$password = (string) $request->post( 'password_1', '' );
+		$problem  = $this->accounts->validate_password( $password, (string) $request->post( 'password_2', '' ) );
+		if ( null !== $problem ) {
+			return $this->answer( false, $problem->get_error_message(), 400 );
+		}
+		if ( password_verify( $password, $user->get_password_hash() ) ) {
+			return $this->answer( false, smliser__( 'Choose a new password that is different from your current one.' ), 400 );
+		}
+
+		try {
+			$this->accounts->change_password( $user, $password );
+		} catch ( \Throwable $e ) {
+			\smliser_log_error( sprintf( '[Authentication] User #%d could not change their password: %s', $user->get_id(), $e->getMessage() ) );
+			return $this->answer( false, smliser__( 'Your password could not be changed. Please try again.' ), 500 );
+		}
+
+		// Whoever held the old password may hold a session: end them, keep this one.
+		$this->identity->logout_other_sessions();
+		$this->logger->info( 'password_changed', sprintf( 'User #%d changed their password from the client dashboard.', $user->get_id() ), [ 'ip' => $request->ip() ] );
+		$this->notify( $user, 'password_changed', $request );
+
+		return $this->answer( true, smliser__( 'Your password was changed. You were signed out on every other device.' ), 200, $this->urls->client_dashboard_url( 'security' )->url() );
+	}
+
+	/**
+	 * Sign out of every other session, keeping this one (UserSessionCutoff).
+	 *
+	 * Sessions are stateless cookies, so they cannot be listed one by one:
+	 * every session that signed in before now ends on its next request.
+	 */
+	public function sign_out_other_sessions( Request $request ) : Response {
+		$user = $this->current_user();
+		if ( ! $user ) {
+			return $this->answer( false, smliser__( 'Sign in with a user account to manage security settings.' ), 403 );
+		}
+		if ( \is_wp() ) {
+			return $this->answer( false, smliser__( 'WordPress manages your sessions. Sign out of other sessions from your WordPress profile.' ), 409 );
+		}
+		if ( ! $this->identity->logout_other_sessions() ) {
+			return $this->answer( false, smliser__( 'Your other sessions could not be signed out. Please try again.' ), 500 );
+		}
+
+		$this->logger->info( 'sessions_revoked', sprintf( 'User #%d signed out of their other sessions.', $user->get_id() ), [ 'ip' => $request->ip() ] );
+
+		return $this->answer( true, smliser__( 'You were signed out on every other device. This one stays signed in.' ), 200, $this->urls->client_dashboard_url( 'security' )->url() );
+	}
+
 	private function current_user() : ?User {
 		$actor = $this->guard->get_principal()?->get_actor();
 		return $actor instanceof User ? $actor : null;
 	}
 
 	private function password_matches( User $user, string $password ) : bool {
-		return '' !== $password && password_verify( $password, $user->get_password_hash() );
+		return PasswordConfirmation::matches( $user, $password );
 	}
 
 	/**

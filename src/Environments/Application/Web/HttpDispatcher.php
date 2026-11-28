@@ -33,6 +33,7 @@ use SmartLicenseServer\ClientDashboard\ActionHandlers\LicenseActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\AppLicenseActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\OrganizationActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\PreferenceManagement;
+use SmartLicenseServer\ClientDashboard\ActionHandlers\AccountManagement;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\SecurityManagement;
 use SmartLicenseServer\ClientDashboard\Page\Dispatcher as ClientDashboardDispatcher;
 use SmartLicenseServer\Core\Container\Container;
@@ -729,6 +730,17 @@ final class HttpDispatcher {
 					$this->router->post( 'security/passkey/finish', [ SecurityManagement::class, 'finish_passkey' ] );
 					$this->router->post( 'security/passkey/revoke', [ SecurityManagement::class, 'revoke_passkey' ] );
 					$this->router->post( 'security/disable', [ SecurityManagement::class, 'disable' ] );
+					$this->router->post( 'security/password', [ SecurityManagement::class, 'change_password' ] );
+					$this->router->post( 'security/sessions/revoke', [ SecurityManagement::class, 'sign_out_other_sessions' ] );
+
+					// The user's own account (AccountManagement).
+					$this->router->post( 'account/profile', [ AccountManagement::class, 'update_profile' ] );
+					$this->router->post( 'account/email/start', [ AccountManagement::class, 'start_email_change' ] );
+					$this->router->post( 'account/email/verify', [ AccountManagement::class, 'verify_email_change' ] );
+					$this->router->post( 'account/notifications', [ AccountManagement::class, 'save_notifications' ] );
+					$this->router->post( 'account/export', [ AccountManagement::class, 'request_export' ] );
+					$this->router->get( 'account/export/download', [ AccountManagement::class, 'download_export' ] );
+					$this->router->post( 'account/delete', [ AccountManagement::class, 'delete_account' ] );
 
 					$this->router->post(
 						pattern: 'context',

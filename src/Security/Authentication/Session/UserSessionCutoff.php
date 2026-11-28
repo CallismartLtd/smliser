@@ -57,10 +57,15 @@ final class UserSessionCutoff implements SessionRevocationCheck {
 	 * The caller should also remove the current browser's cookie
 	 * (SessionManager::invalidate()) and send the user to the login page.
 	 *
-	 * @param User $user The user.
+	 * To keep the current browser signed in, re-issue its session with a
+	 * sign-in time after the cut-off (SessionManager::reauthenticate(), see
+	 * WebIdentityProvider::logout_other_sessions()).
+	 *
+	 * @param User     $user The user.
+	 * @param int|null $at   The cut-off as a Unix timestamp; null for now.
 	 * @return bool Whether the cut-off was saved.
 	 */
-	public function revoke_all( User $user ) : bool {
-		return UserSettings::for( $user )->set( UserSettings::SESSIONS_VALID_AFTER, time() );
+	public function revoke_all( User $user, ?int $at = null ) : bool {
+		return UserSettings::for( $user )->set( UserSettings::SESSIONS_VALID_AFTER, $at ?? time() );
 	}
 }

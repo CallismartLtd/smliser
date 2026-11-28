@@ -36,6 +36,7 @@ declare( strict_types=1 );
 namespace SmartLicenseServer\Email\Templates;
 
 use SmartLicenseServer\Email\EmailMessage;
+use SmartLicenseServer\Email\EmailPreferences;
 use SmartLicenseServer\SettingsAPI\Settings;
 
 abstract class EmailTemplate {
@@ -1092,10 +1093,14 @@ abstract class EmailTemplate {
 	 *   $message?->attach( $invoice_pdf_path );
 	 *   $mailer->send( $message );
 	 *
-	 * @return EmailMessage|null Populated DTO, or null if the template is disabled.
+	 * Also null when the email is optional and its recipient turned its
+	 * category off (EmailPreferences): the one place user preferences are
+	 * enforced, whoever sends the email.
+	 *
+	 * @return EmailMessage|null Populated DTO, or null if the template is disabled or unwanted.
 	 */
 	public function to_message() : ?EmailMessage {
-		if ( ! $this->is_enabled() ) {
+		if ( ! $this->is_enabled() || ! $this->recipient_accepts() ) {
 			return null;
 		}
 
@@ -1106,6 +1111,28 @@ abstract class EmailTemplate {
 			'body'    => $this->render(),
 			'text'    => $this->text(),
 		] ) );
+	}
+
+	/**
+	 * The email preference category of this template.
+	 *
+	 * Null (mandatory: always sent) unless the template is one of
+	 * EmailPreferences::OPTIONAL_TEMPLATES. Optional templates of extensions
+	 * override this with one of the EmailPreferences categories.
+	 *
+	 * @return string|null
+	 */
+	public static function preference_category() : ?string {
+		return EmailPreferences::category_of( static::template_key() );
+	}
+
+	/**
+	 * Whether the recipient wants this email (EmailPreferences::accepts()).
+	 *
+	 * @return bool
+	 */
+	final public function recipient_accepts() : bool {
+		return EmailPreferences::accepts( static::preference_category(), $this->recipient() );
 	}
 
 	/**

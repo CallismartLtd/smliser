@@ -29,7 +29,8 @@ class Controller {
 	public function __construct(
 		protected MonetizationRegistry $registry,
 		protected URLManager $urlmanager,
-		Guard $guard
+		Guard $guard,
+		protected LicensingService $licensing
 	) {
 		$this->guard = $guard;
 	}
@@ -466,17 +467,22 @@ class Controller {
 				throw new RequestException( 'resource_not_found', __( 'This license does not exist.', 'smliser' ), ['status' => 404] );
 			}
 
-			$app = $license->get_app();
+			// Fails closed: a license whose app does not resolve is a system administrator's only.
+			LicenseAppAccess::assert( $this->guard, $license );
 
-			if ( $app ) $this->check_app_ownership( $app );
+			// The rules, token revocation and the activity log are the Licensing API's,
+			// shared with the app owner's client dashboard.
+			$freed = $this->licensing->free_site( $license, (string) $domain, [
+				'ip_address' => $request->ip(),
+				'user_agent' => (string) $request->userAgent(),
+				'duration'   => microtime( true ) - $request->startTime(),
+			] );
 
-			if ( $license->is_new_domain( $domain ) ) {
+			if ( $freed instanceof Exception && 'domain_not_active' === $freed->get_error_code() ) {
 				throw new RequestException( 'is_new_domain', __( 'The domain provided does not exist in this license.', 'smliser' ), ['status' => 404] );
 			}
 
-			$removed = $license->remove_activated_domain( $domain );
-			$message = $removed ? \sprintf( smliser__( 'The domain "%s" has been uninstalled' ), $domain ) : \sprintf( smliser__( 'Unable to uninstall "%s"' ), $domain );
-			
+			$message = true === $freed ? \sprintf( smliser__( 'The domain "%s" has been uninstalled' ), $domain ) : \sprintf( smliser__( 'Unable to uninstall "%s"' ), $domain );
 
 			$response_data = [ 'success' => true, 'data' => [ 'message' => $message ] ];
 			return Response::json( $response_data );

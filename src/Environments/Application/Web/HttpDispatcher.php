@@ -30,6 +30,7 @@ use SmartLicenseServer\Auth\ContentHandlers\AuthPages;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\ContextSwitch;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\AppActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\LicenseActions;
+use SmartLicenseServer\ClientDashboard\ActionHandlers\AppLicenseActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\OrganizationActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\PreferenceManagement;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\SecurityManagement;
@@ -837,6 +838,17 @@ final class HttpDispatcher {
 					$this->router->post(
 						pattern: 'licenses/deactivate',
 						handler: [LicenseActions::class, 'deactivate']
+					);
+
+					// The licenses of the current owner's apps (AppLicenseActions).
+					$this->router->post(
+						pattern: 'app-licenses/free-site',
+						handler: [AppLicenseActions::class, 'free_site']
+					);
+
+					$this->router->post(
+						pattern: 'app-licenses/status',
+						handler: [AppLicenseActions::class, 'status']
 					);
 				},
 					middleware: [

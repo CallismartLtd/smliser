@@ -1507,6 +1507,35 @@ code {
 	margin-inline-start: 8px;
 }
 
+/* A list's filters and search, e.g. the licenses of the owner's apps. */
+.dash-search {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+.dash-search .field {
+	flex: 1 1 180px;
+	margin: 0;
+}
+
+.dash-search input[type="search"] {
+	width: 100%;
+	padding: 8px 10px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--ink);
+	font: inherit;
+}
+
+.dash-search-actions {
+	display: flex;
+	gap: 8px;
+}
+
 /* An app's images, by kind. */
 .asset-group+.asset-group {
 	margin-top: 8px;

@@ -74,6 +74,7 @@ final class DefaultRoles {
 				'monetization.license.revoke',
 				'monetization.license.issue',
 				'monetization.license.delete',
+				'monetization.license.uninstall_domain',
 
 				// Visibility.
 				'repository.view',
@@ -132,6 +133,7 @@ final class DefaultRoles {
 				'monetization.license.revoke',
 				'monetization.license.issue',
 				'monetization.license.delete',
+				'monetization.license.uninstall_domain',
 
 				// Visibility.
 				'repository.view',
@@ -186,6 +188,7 @@ final class DefaultRoles {
 				'monetization.license.revoke',
 				'monetization.license.issue',
 				'monetization.license.delete',
+				'monetization.license.uninstall_domain',
 
 				// Visibility
 				'repository.view',
@@ -248,6 +251,7 @@ final class DefaultRoles {
 				'monetization.license.issue',
 				'monetization.license.revoke',
 				'monetization.license.deactivate',
+				'monetization.license.uninstall_domain',
 			],
 		],
 

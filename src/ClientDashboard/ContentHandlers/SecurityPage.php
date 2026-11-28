@@ -104,6 +104,8 @@ final class SecurityPage implements ClientPageInterface {
 			'totp_uri'            => $uri,
 			'totp_qr_code'        => $qr_code,
 			'active_tab'          => $active_tab,
+			'wordpress'           => \is_wp(),
+			'wordpress_url'       => \is_wp() && function_exists( 'get_edit_profile_url' ) ? (string) \get_edit_profile_url() : '',
 			'actions'             => [
 				'email_start'     => $this->urls->client_dashboard_url( 'json/security/email/start' )->url(),
 				'email_verify'    => $this->urls->client_dashboard_url( 'json/security/email/verify' )->url(),
@@ -113,6 +115,8 @@ final class SecurityPage implements ClientPageInterface {
 				'passkey_start'   => $this->urls->client_dashboard_url( 'json/security/passkey/start' )->url(),
 				'passkey_finish'  => $this->urls->client_dashboard_url( 'json/security/passkey/finish' )->url(),
 				'passkey_revoke'  => $this->urls->client_dashboard_url( 'json/security/passkey/revoke' )->url(),
+				'password_change' => $this->urls->client_dashboard_url( 'json/security/password' )->url(),
+				'sessions_revoke' => $this->urls->client_dashboard_url( 'json/security/sessions/revoke' )->url(),
 			],
 		] )
 			->set_title( smliser__( 'Account security' ) )

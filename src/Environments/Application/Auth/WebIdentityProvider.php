@@ -308,6 +308,40 @@ class WebIdentityProvider implements PasswordIdentityProviderInterface {
 	}
 
 	/**
+	 * End every other session of the signed-in user, keeping this one.
+	 *
+	 * Sets the user's session cut-off (UserSessionCutoff), which rejects
+	 * every session that signed in until now, this one included, then
+	 * re-issues this browser's session with a sign-in time after the
+	 * cut-off, so it alone stays valid.
+	 *
+	 * @return bool False when nobody is signed in or the cut-off was not saved.
+	 */
+	public function logout_other_sessions() : bool {
+		$session = $this->sessions->resolve();
+		$user    = null !== $session ? User::get_by_id( (int) $session->principal_id ) : null;
+
+		if ( ! $user instanceof User ) {
+			return false;
+		}
+
+		$cutoff = time();
+
+		if ( ! $this->cutoff->revoke_all( $user, $cutoff ) ) {
+			return false;
+		}
+
+		try {
+			$this->sessions->reauthenticate( $cutoff + 1 );
+		} catch ( \Throwable ) {
+			// This browser could not be kept signed in: it signs in again.
+			$this->sessions->invalidate();
+		}
+
+		return true;
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function reset_password( User $user, #[\SensitiveParameter] string $new_pwd ) : bool {

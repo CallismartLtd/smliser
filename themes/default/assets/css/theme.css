@@ -239,6 +239,17 @@ code {
 	cursor: progress;
 }
 
+.btn-danger {
+	border-color: var(--failure);
+	background: var(--failure-bg);
+	color: var(--failure);
+}
+
+.btn-danger:hover {
+	border-color: var(--failure);
+	color: var(--failure);
+}
+
 .btn-small {
 	padding: 4px 10px;
 	font-size: 12.5px;
@@ -545,6 +556,17 @@ code {
 .field {
 	display: block;
 	margin-bottom: 16px;
+}
+
+.field-checkbox {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	font-size: 14px;
+}
+
+.field-checkbox input[type="checkbox"] {
+	margin-top: 3px;
 }
 
 .field-label {

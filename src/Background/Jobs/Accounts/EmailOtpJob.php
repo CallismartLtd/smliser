@@ -44,7 +44,8 @@ class EmailOtpJob implements JobHandlerInterface {
 	 * Expected payload keys:
 	 *   - user_id    (int)    The user the code was issued to.
 	 *   - code       (string) The code, sealed by AuthenticationFactorManager::seal_code().
-	 *   - purpose    (string) Challenge purpose: login_email | enroll_email | disable_email.
+	 *   - purpose    (string) Challenge purpose: login_email | enroll_email | disable_email | change_email.
+	 *   - to         (string) change_email only: the new address being verified, which receives the code.
 	 *   - ip_address (string) IP address the code was requested from.
 	 *   - user_agent (string) User agent the code was requested from.
 	 *   - occurred_at (int)   Unix timestamp of the request.
@@ -67,11 +68,24 @@ class EmailOtpJob implements JobHandlerInterface {
 			return [ 'success' => false, 'message' => smliser__( 'The verification code could not be read.' ) ];
 		}
 
+		$purpose   = (string) ( $payload['purpose'] ?? '' );
+		$recipient = $user->get_email();
+
+		// A new address proves it is reachable by receiving the code itself.
+		if ( 'change_email' === $purpose ) {
+			$recipient = (string) ( $payload['to'] ?? '' );
+
+			if ( false === filter_var( $recipient, FILTER_VALIDATE_EMAIL ) ) {
+				return [ 'success' => false, 'message' => smliser__( 'The new email address is not valid.' ) ];
+			}
+		}
+
 		$email = new EmailOtpEmail(
 			$user,
-			$user->get_email(),
+			$recipient,
 			$code,
-			static::purpose_label( (string) ( $payload['purpose'] ?? '' ) ),
+			// The label is part of the email, so it is in the user's language too.
+			smliser_with_locale( smliser_user_locale( $user ), static fn () : string => static::purpose_label( $purpose ) ),
 			intdiv( AuthenticationFactorManager::CHALLENGE_TTL, 60 ),
 			(string) ( $payload['ip_address'] ?? 'unknown' ),
 			(string) ( $payload['user_agent'] ?? 'unknown' ),
@@ -107,6 +121,7 @@ class EmailOtpJob implements JobHandlerInterface {
 			'login_email'   => smliser__( 'Sign-in verification code' ),
 			'enroll_email'  => smliser__( 'Enable email two-factor authentication' ),
 			'disable_email' => smliser__( 'Disable email two-factor authentication' ),
+			'change_email'  => smliser__( 'Confirm your new email address' ),
 			default         => smliser__( 'Verification code' ),
 		};
 	}

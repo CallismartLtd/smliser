@@ -20,12 +20,48 @@
  * @var string $totp_uri
  * @var string $totp_qr_code
  * @var string $active_tab
+ * @var bool $wordpress Whether WordPress manages the password and sessions.
+ * @var string $wordpress_url The WordPress profile URL.
  * @var array<string,string> $actions
  */
 ?>
 <section class="panel panel-wide security-page">
 	<h1 class="panel-heading"><?php smliser_esc_html_e( 'Account security' ); ?></h1>
 	<p class="panel-lead"><?php smliser_esc_html_e( 'Choose how you sign in and how your account is protected. Each method is verified before it is enabled.' ); ?></p>
+
+	<?php if ( $wordpress ) : ?>
+		<div class="notice" role="status">
+			<?php smliser_esc_html_e( 'WordPress manages your password and sessions. Change them from your WordPress profile.' ); ?>
+			<?php if ( '' !== $wordpress_url ) : ?>
+				<a href="<?php echo escUrl( $wordpress_url ); ?>"><?php smliser_esc_html_e( 'Open your WordPress profile' ); ?></a>
+			<?php endif; ?>
+		</div>
+	<?php else : ?>
+		<section class="security-tab-panel security-password" aria-labelledby="security-password-heading">
+			<div class="security-method-heading">
+				<div><h2 id="security-password-heading"><?php smliser_esc_html_e( 'Password' ); ?></h2><p><?php smliser_esc_html_e( 'Changing your password signs you out on every other device. This one stays signed in, and you get an email about the change.' ); ?></p></div>
+			</div>
+			<form method="post" action="<?php echo escUrl( $actions['password_change'] ); ?>" data-smliser-form>
+				<div class="notice" data-smliser-form-message hidden></div>
+				<input type="text" class="security-email" value="<?php echo escAttr( $email ); ?>" autocomplete="username" tabindex="-1" aria-hidden="true" readonly style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+				<label class="field"><span class="field-label"><?php smliser_esc_html_e( 'Current password' ); ?></span><input type="password" name="current_password" autocomplete="current-password" required></label>
+				<label class="field"><span class="field-label"><?php smliser_esc_html_e( 'New password' ); ?></span><input type="password" name="password_1" autocomplete="new-password" minlength="8" data-password-meter required></label>
+				<label class="field"><span class="field-label"><?php smliser_esc_html_e( 'Type the new password again' ); ?></span><input type="password" name="password_2" autocomplete="new-password" minlength="8" required></label>
+				<span data-password-strength></span>
+				<button type="submit" class="btn btn-accent"><?php smliser_esc_html_e( 'Change password' ); ?></button>
+			</form>
+		</section>
+
+		<section class="security-tab-panel security-sessions" aria-labelledby="security-sessions-heading">
+			<div class="security-method-heading">
+				<div><h2 id="security-sessions-heading"><?php smliser_esc_html_e( 'Sessions' ); ?></h2><p><?php smliser_esc_html_e( 'Signed in on a device you no longer use, or a shared computer? Sign out everywhere else. This device stays signed in.' ); ?></p></div>
+			</div>
+			<form method="post" action="<?php echo escUrl( $actions['sessions_revoke'] ); ?>" data-smliser-form data-confirm="<?php smliser_esc_attr_e( 'Sign out of every other session?' ); ?>" data-confirm-label="<?php smliser_esc_attr_e( 'Sign out' ); ?>">
+				<div class="notice" data-smliser-form-message hidden></div>
+				<button type="submit" class="btn"><?php smliser_esc_html_e( 'Sign out of all other sessions' ); ?></button>
+			</form>
+		</section>
+	<?php endif; ?>
 
 	<section class="security-tab-panel security-passkeys" aria-labelledby="security-passkeys-heading">
 		<div class="security-method-heading">

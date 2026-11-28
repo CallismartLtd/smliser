@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:17+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: العربية\n"
 "Language: ar\n"
@@ -87,7 +87,7 @@ msgstr " على الأرجح بسبب إدخال ملف مكرر"
 msgid " on your account. If this was not you, secure your account now."
 msgstr " على حسابك. إذا لم تكن أنت، فقم بتأمين حسابك الآن."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:236
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:243
 msgid " two-factor authentication is disabled."
 msgstr " تم تعطيل المصادقة الثنائية."
 
@@ -337,12 +337,12 @@ msgstr "%d من %d مهام مجدولة متأخرة بأكثر من %d دقي�
 msgid "%d page(s) rendered."
 msgstr "تم عرض %d صفحة."
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 #, php-format
 msgid "%d recovery codes remain."
 msgstr "يتبقى %d من رموز الاسترداد."
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 #, php-format
 msgid "%d registered"
 msgstr "%d مسجّلة"
@@ -864,7 +864,7 @@ msgstr ". يُرسَل القرار إلى المشتري عبر البريد ا
 msgid ". Their packages are refused without a valid key."
 msgstr ". تُرفض حزمها دون مفتاح صالح."
 
-#: src/Email/Templates/EmailTemplate.php:281 src/Email/Templates/EmailTemplate.php:744
+#: src/Email/Templates/EmailTemplate.php:282 src/Email/Templates/EmailTemplate.php:745
 msgid "0 2px 8px rgba(0,0,0,0.06)"
 msgstr "0 2px 8px rgba(0,0,0,0.06)"
 
@@ -872,7 +872,7 @@ msgstr "0 2px 8px rgba(0,0,0,0.06)"
 msgid "0 4px 12px rgba(0, 0, 0, 0.05)"
 msgstr "0 4px 12px rgba(0, 0, 0, 0.05)"
 
-#: themes/default/templates/pages/client/security.php:61
+#: themes/default/templates/pages/client/security.php:97
 msgid "2Factor Authentication setup"
 msgstr "إعداد المصادقة الثنائية"
 
@@ -931,11 +931,19 @@ msgstr "أرسل مشترٍ إيصال دفع. تحقق من الدفع، ثم �
 msgid "A buyer sent a payment receipt. Review it to issue the license."
 msgstr "أرسل مشترٍ إيصال دفع. راجعه لإصدار الترخيص."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:218
+#: themes/default/templates/pages/client/account.php:54
+msgid "A code is sent to the new address, and the change is made only once you enter it. Licenses already linked to your account stay linked; licenses issued to the new address are linked once it is verified. Your previous address is told about the change."
+msgstr "يُرسَل رمز إلى العنوان الجديد، ولا يتم التغيير إلا بعد إدخاله. تبقى التراخيص المرتبطة بحسابك مرتبطة؛ وتُربط التراخيص الصادرة للعنوان الجديد بمجرد التحقق منه. يُبلَّغ عنوانك السابق بالتغيير."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:150
+msgid "A code was sent a moment ago. Wait a minute before asking for another."
+msgstr "أُرسل رمز للتو. انتظر دقيقة قبل طلب رمز آخر."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:225
 msgid "A confirmation code could not be sent. Please try again."
 msgstr "تعذّر إرسال رمز التأكيد. يرجى المحاولة مرة أخرى."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:220
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:227
 msgid "A confirmation code was sent to your verified email address."
 msgstr "تم إرسال رمز تأكيد إلى عنوان بريدك الإلكتروني الموثّق."
 
@@ -1025,6 +1033,14 @@ msgstr "أصبح إصدار جديد من تطبيقك متاحًا الآن."
 msgid "A new version of {{app_name}} is now available. Your active license entitles you to this update."
 msgstr "يتوفر الآن إصدار جديد من {{app_name}}. يخوّلك ترخيصك النشط الحصول على هذا التحديث."
 
+#: src/Email/EmailPreferences.php:95
+msgid "A notice each time a license is activated on a site or removed from one."
+msgstr "إشعار في كل مرة يُفعَّل فيها ترخيص على موقع أو يُزال منه."
+
+#: src/Email/EmailPreferences.php:99
+msgid "A notice when an app you hold a license for has a new version."
+msgstr "إشعار عندما يصدر إصدار جديد من تطبيق تملك ترخيصًا له."
+
 #: src/Exceptions/RequestException.php:59
 msgid "A parameter has an unexpected type or format."
 msgstr "أحد المعاملات له نوع أو تنسيق غير متوقع."
@@ -1097,7 +1113,13 @@ msgstr "يلزم رمز صالح للوصول إلى ملف مستند التر�
 msgid "A value written to the \"%s\" cache adapter in one request was gone in the next."
 msgstr "اختفت قيمة كُتبت في محوّل التخزين المؤقت «%s» في طلب ما عند الطلب التالي."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:69
+#. translators: %s: the new email address.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:175
+#, php-format
+msgid "A verification code was sent to %s. Enter it to finish the change."
+msgstr "أُرسل رمز التحقق إلى %s. أدخله لإكمال التغيير."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:76
 msgid "A verification code was sent to your email address."
 msgstr "تم إرسال رمز تحقق إلى عنوان بريدك الإلكتروني."
 
@@ -1255,7 +1277,7 @@ msgstr "نسبة الوصول إلى التنزيل:"
 msgid "Accesses"
 msgstr "مرات الوصول"
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: src/ClientDashboard/ContentHandlers/AccountPage.php:56 src/ClientDashboard/ContentHandlers/AccountPage.php:129 themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr "الحساب"
 
@@ -1275,11 +1297,11 @@ msgstr "نوع الحساب"
 msgid "Account created successfully! Check your email to verify your account."
 msgstr "تم إنشاء الحساب بنجاح! تحقق من بريدك الإلكتروني لتوثيق حسابك."
 
-#: src/ClientDashboard/ContentHandlers/SecurityPage.php:118 themes/default/templates/pages/client/security.php:27
+#: src/ClientDashboard/ContentHandlers/SecurityPage.php:122 themes/default/templates/pages/client/security.php:29
 msgid "Account security"
 msgstr "أمان الحساب"
 
-#: themes/default/templates/pages/client/security.php:64
+#: themes/default/templates/pages/client/security.php:100
 msgid "Account security methods"
 msgstr "طرق أمان الحساب"
 
@@ -1303,7 +1325,7 @@ msgstr "نظرة عامة على الحسابات"
 msgid "Acting as"
 msgstr "تعمل بصفة"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:206 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:213 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
 msgid "Action"
 msgstr "الإجراء"
 
@@ -1417,7 +1439,7 @@ msgstr "إضافة فئة تسعير"
 msgid "Add a note"
 msgstr "إضافة ملاحظة"
 
-#: themes/default/templates/pages/client/security.php:56
+#: themes/default/templates/pages/client/security.php:92
 msgid "Add a passkey"
 msgstr "إضافة مفتاح مرور"
 
@@ -1487,7 +1509,7 @@ msgstr "وجدت الفحوصات الإضافية %s مشكلة."
 msgid "Additional verification could not be started. Please try again."
 msgstr "تعذّر بدء التحقق الإضافي. يرجى المحاولة مرة أخرى."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "المسؤول"
 
@@ -1672,7 +1694,7 @@ msgstr "توجد بالفعل حزمة باسم «%s». عدّل تلك الحز
 msgid "An asset named \"%s\" already exists."
 msgstr "يوجد بالفعل أصل باسم «%s»."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:102
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:109
 msgid "An authenticator app is already enabled."
 msgstr "تطبيق المصادقة مفعّل بالفعل."
 
@@ -1785,6 +1807,10 @@ msgstr "سجلات التحليلات"
 #: src/Core/UserAgent.php:662
 msgid "Android WebView"
 msgstr "Android WebView"
+
+#: src/Email/EmailPreferences.php:106
+msgid "Announcements"
+msgstr "الإعلانات"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:954
 #, php-format
@@ -2105,15 +2131,15 @@ msgstr "تعيين الأدوار"
 msgid "Asynchronously appends a license activity entry to the activity log."
 msgstr "يضيف بشكل غير متزامن إدخال نشاط ترخيص إلى سجل النشاط."
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:117
-msgid "Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled."
-msgstr "يُخطر المستخدم بشكل غير متزامن عند إضافة مفتاح مرور أو طريقة مصادقة ثنائية أو إزالتها أو تفعيلها أو تعطيلها."
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:136
+msgid "Asynchronously notify a user when their password or email address changes, or a passkey or two-factor method is added, removed, enabled or disabled."
+msgstr "يُبلغ المستخدم بشكل غير متزامن عند تغيير كلمة مروره أو عنوان بريده الإلكتروني، أو عند إضافة مفتاح مرور أو طريقة مصادقة ثنائية أو إزالتها أو تفعيلها أو تعطيلها."
 
 #: src/Background/Jobs/Accounts/MfaResetEmailJob.php:67
 msgid "Asynchronously send a notification email when 2FA is reset by an administrator."
 msgstr "يرسل بشكل غير متزامن رسالة إشعار عندما يعيد مسؤول تعيين المصادقة الثنائية."
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:125
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:140
 msgid "Asynchronously send a one-time sign-in or two-factor confirmation code by email."
 msgstr "يرسل بشكل غير متزامن عبر البريد رمز دخول لمرة واحدة أو رمز تأكيد ثنائي."
 
@@ -2173,15 +2199,15 @@ msgstr "تم رفض المصادقة بسبب دور غير صالح."
 msgid "Authentication is required for this request but was not provided."
 msgstr "يتطلب هذا الطلب المصادقة لكنها لم تُقدَّم."
 
-#: themes/default/templates/pages/client/security.php:66 themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:102 themes/default/templates/pages/client/security.php:152
 msgid "Authenticator app"
 msgstr "تطبيق المصادقة"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:152
 msgid "Authenticator app enabled. Save these one-time recovery codes now: "
 msgstr "تم تفعيل تطبيق المصادقة. احفظ رموز الاسترداد هذه أحادية الاستخدام الآن: "
 
-#: themes/default/templates/pages/client/security.php:146
+#: themes/default/templates/pages/client/security.php:182
 msgid "Authenticator code"
 msgstr "رمز تطبيق المصادقة"
 
@@ -2189,11 +2215,11 @@ msgstr "رمز تطبيق المصادقة"
 msgid "Authenticator code or recovery code"
 msgstr "رمز تطبيق المصادقة أو رمز الاسترداد"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:114
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:121
 msgid "Authenticator enrollment could not be started. Please try again."
 msgstr "تعذّر بدء تسجيل تطبيق المصادقة. يرجى المحاولة مرة أخرى."
 
-#: themes/default/templates/pages/client/security.php:125
+#: themes/default/templates/pages/client/security.php:161
 msgid "Authenticator or recovery code"
 msgstr "رمز المصادقة أو الاسترداد"
 
@@ -2603,7 +2629,7 @@ msgstr "تغيير حالة التطبيقات المستضافة"
 msgid "Change maintenance"
 msgstr "تغيير الصيانة"
 
-#: themes/default/templates/pages/auth/reset-password.php:33
+#: themes/default/templates/pages/auth/reset-password.php:33 themes/default/templates/pages/client/security.php:51
 msgid "Change password"
 msgstr "تغيير كلمة المرور"
 
@@ -2630,6 +2656,10 @@ msgstr "سجل التغييرات"
 #: templates/admin/contents/options/routing.php:30
 msgid "Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated."
 msgstr "سيؤدي تغيير هذه القيم إلى تحديث الروابط العامة لتطبيقاتك المستضافة. قد تتوقف الروابط الحالية المشتركة مع المستخدمين عن العمل حتى يتم تحديثها."
+
+#: themes/default/templates/pages/client/security.php:42
+msgid "Changing your password signs you out on every other device. This one stays signed in, and you get an email about the change."
+msgstr "تغيير كلمة المرور يسجّل خروجك من جميع الأجهزة الأخرى. يبقى هذا الجهاز مسجّل الدخول، وتصلك رسالة بريد إلكتروني بشأن التغيير."
 
 #: src/Environments/Application/Installation/InstallerPage.php:284
 msgid "Character set"
@@ -2751,11 +2781,15 @@ msgstr "اختر ملفًا"
 msgid "Choose a new password"
 msgstr "اختر كلمة مرور جديدة"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:272
+msgid "Choose a new password that is different from your current one."
+msgstr "اختر كلمة مرور جديدة مختلفة عن كلمة مرورك الحالية."
+
 #: src/Security/Organizations/OrganizationInvitations.php:112
 msgid "Choose a role for the person you invite."
 msgstr "اختر دورًا للشخص الذي تدعوه."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:196
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:203
 msgid "Choose a supported security factor."
 msgstr "اختر عامل أمان مدعومًا."
 
@@ -2771,7 +2805,7 @@ msgstr "اختر حساب خدمة نشطًا لمالك هذا التطبيق."
 msgid "Choose files"
 msgstr "اختر ملفات"
 
-#: themes/default/templates/pages/client/security.php:28
+#: themes/default/templates/pages/client/security.php:30
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr "اختر طريقة تسجيل الدخول وكيفية حماية حسابك. يتم التحقق من كل طريقة قبل تفعيلها."
 
@@ -2799,6 +2833,10 @@ msgstr "اختر لغة التثبيت. تُحفظ أيضًا كلغة المو�
 #: src/Monetization/Controller.php:65
 msgid "Choose the license term"
 msgstr "اختر مدة الترخيص"
+
+#: themes/default/templates/pages/client/account.php:86
+msgid "Choose the optional emails you receive. Emails about your account security, purchases, payments, license keys and invitations are always sent."
+msgstr "اختر رسائل البريد الإلكتروني الاختيارية التي تتلقاها. تُرسَل دائمًا الرسائل المتعلقة بأمان حسابك والمشتريات والمدفوعات ومفاتيح التراخيص والدعوات."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:99
 msgid "Choose the theme package (.zip) to upload."
@@ -2840,7 +2878,7 @@ msgstr "مسح صورة الملف الشخصي المحددة"
 msgid "Clear selected image"
 msgstr "مسح الصورة المحددة"
 
-#: src/Email/Templates/EmailTemplate.php:649 templates/admin/contents/options/email/editor.php:401
+#: src/Email/Templates/EmailTemplate.php:650 templates/admin/contents/options/email/editor.php:401
 msgid "Click Here"
 msgstr "انقر هنا"
 
@@ -3037,6 +3075,10 @@ msgstr "تأكيد إزالة العضو"
 msgid "Confirm Password"
 msgstr "تأكيد كلمة المرور"
 
+#: themes/default/templates/pages/client/account.php:65
+msgid "Confirm new email address"
+msgstr "تأكيد عنوان البريد الإلكتروني الجديد"
+
 #: src/Admin/ContentHandlers/AccessControlPage.php:218
 msgid "Confirm passowrd"
 msgstr "تأكيد كلمة المرور"
@@ -3048,6 +3090,14 @@ msgstr "تأكيد كلمة المرور"
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
 msgstr "أكّد أن هذا عنوان بريدك الإلكتروني لإكمال إعداد حسابك."
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:124
+msgid "Confirm your new email address"
+msgstr "أكّد عنوان بريدك الإلكتروني الجديد"
+
+#: src/Email/EmailPreferences.php:103
+msgid "Confirmations when one of your hosted apps is published or a new version is uploaded."
+msgstr "تأكيدات عند نشر أحد تطبيقاتك المستضافة أو رفع إصدار جديد منه."
 
 #: src/Exceptions/FileRequestException.php:161 src/Exceptions/RequestException.php:170
 msgid "Conflict"
@@ -3486,8 +3536,9 @@ msgstr "الصيانة الحالية"
 msgid "Current pagination number."
 msgstr "رقم الصفحة الحالية."
 
-#: themes/default/templates/pages/client/security.php:45 themes/default/templates/pages/client/security.php:55 themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:90
-#: themes/default/templates/pages/client/security.php:98 themes/default/templates/pages/client/security.php:124 themes/default/templates/pages/client/security.php:153
+#: themes/default/templates/pages/client/account.php:76 themes/default/templates/pages/client/account.php:112 themes/default/templates/pages/client/account.php:144 themes/default/templates/pages/client/security.php:47
+#: themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:91 themes/default/templates/pages/client/security.php:117 themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:134 themes/default/templates/pages/client/security.php:160 themes/default/templates/pages/client/security.php:189
 msgid "Current password"
 msgstr "كلمة المرور الحالية"
 
@@ -3726,6 +3777,10 @@ msgstr "حذف %s؟ لا يمكن التراجع عن ذلك."
 msgid "Delete License"
 msgstr "حذف الترخيص"
 
+#: themes/default/templates/pages/client/account.php:121 themes/default/templates/pages/client/account.php:136
+msgid "Delete account"
+msgstr "حذف الحساب"
+
 #: src/Security/Permission/Capability.php:46
 msgid "Delete app monetization"
 msgstr "حذف تحقيق الدخل من التطبيقات"
@@ -3774,6 +3829,10 @@ msgstr "حذف التراخيص"
 #: src/Security/Permission/Capability.php:50
 msgid "Delete monetization pricing tiers"
 msgstr "حذف فئات تسعير تحقيق الدخل"
+
+#: themes/default/templates/pages/client/account.php:147
+msgid "Delete my account"
+msgstr "حذف حسابي"
 
 #: src/Security/Permission/Capability.php:94
 msgid "Delete organizations"
@@ -3842,6 +3901,10 @@ msgstr "حذف هذا الترخيص نهائيًا."
 msgid "Delete users"
 msgstr "حذف المستخدمين"
 
+#: themes/default/templates/pages/client/account.php:135
+msgid "Delete your account for good? This cannot be undone."
+msgstr "هل تريد حذف حسابك نهائيًا؟ لا يمكن التراجع عن ذلك."
+
 #: assets/js/admin/core.js:1090
 msgid "Deleted"
 msgstr "تم الحذف"
@@ -3885,6 +3948,10 @@ msgstr "يحذف هذا الطلب وملاحظاته وإيصاله. يتم ا�
 #: templates/admin/contents/license/purchase-request.php:206
 msgid "Deletes this request, its notes and its receipt. The buyer is not told."
 msgstr "يحذف هذا الطلب وملاحظاته وإيصاله. لا يتم إبلاغ المشتري."
+
+#: themes/default/templates/pages/client/account.php:122
+msgid "Deleting your account signs you out and removes your profile, preferences, sign-in methods and organization memberships for good. Licenses and purchases are kept for the seller's records, without the link to your account, and are linked again if you sign up later with the same verified email address."
+msgstr "يؤدي حذف حسابك إلى تسجيل خروجك وإزالة ملفك الشخصي وتفضيلاتك وطرق تسجيل الدخول وعضوياتك في المؤسسات نهائيًا. تُحفظ التراخيص والمشتريات في سجلات البائع دون ربطها بحسابك، وتُربط من جديد إذا سجّلت لاحقًا بعنوان البريد الإلكتروني نفسه بعد التحقق منه."
 
 #: src/Email/Templates/System/TestEmail.php:67 src/Email/Templates/System/TestEmail.php:186
 msgid "Delivered To"
@@ -3936,7 +4003,7 @@ msgstr "يضع المطورون هذا المفتاح في تطبيقاتهم؛ 
 msgid "Development"
 msgstr "التطوير"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:209
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:216
 msgid "Device"
 msgstr "الجهاز"
 
@@ -3958,15 +4025,15 @@ msgstr "تعطيل"
 msgid "Disable %s? It stops loading from the next request on."
 msgstr "تعطيل %s؟ سيتوقف تحميله بدءًا من الطلب التالي."
 
-#: themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:162
 msgid "Disable authenticator app"
 msgstr "تعطيل تطبيق المصادقة"
 
-#: themes/default/templates/pages/client/security.php:83
+#: themes/default/templates/pages/client/security.php:119
 msgid "Disable email codes"
 msgstr "تعطيل رموز البريد"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:109
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:123
 msgid "Disable email two-factor authentication"
 msgstr "تعطيل المصادقة الثنائية عبر البريد"
 
@@ -4006,6 +4073,10 @@ msgstr "تجاهل هذا التنبيه"
 #: src/Events/Jobs/AsyncEventJob.php:56
 msgid "Dispatches an event asynchronously in the background."
 msgstr "يرسل حدثًا بشكل غير متزامن في الخلفية."
+
+#: themes/default/templates/pages/client/account.php:41
+msgid "Display name"
+msgstr "الاسم المعروض"
 
 #: templates/admin/contents/license/view.php:159
 msgid "Document Download URL(public)"
@@ -4098,6 +4169,10 @@ msgstr "رابط التنزيل"
 msgid "Download URL:"
 msgstr "رابط التنزيل:"
 
+#: themes/default/templates/pages/client/account.php:107
+msgid "Download a JSON file with your profile, preferences, licenses, purchases, organizations and apps. It never contains passwords, keys or other secrets."
+msgstr "نزّل ملف JSON يحتوي على ملفك الشخصي وتفضيلاتك وتراخيصك ومشترياتك ومؤسساتك وتطبيقاتك. لا يحتوي أبدًا على كلمات مرور أو مفاتيح أو أسرار أخرى."
+
 #: src/Security/Permission/Capability.php:66
 msgid "Download application packages"
 msgstr "تنزيل حزم التطبيقات"
@@ -4110,6 +4185,10 @@ msgstr "تنزيل الحزمة"
 #, javascript-format
 msgid "Download failed: %1$s %2$s (%3$s)"
 msgstr "فشل التنزيل: %1$s %2$s (%3$s)"
+
+#: themes/default/templates/pages/client/account.php:115
+msgid "Download my data"
+msgstr "تنزيل بياناتي"
 
 #: src/Utils/functions/functions.php:131
 msgid "Download token cannot be empty"
@@ -4349,6 +4428,10 @@ msgstr "البريد الإلكتروني"
 msgid "Email Address"
 msgstr "عنوان البريد الإلكتروني"
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:59
+msgid "Email Address Changed"
+msgstr "تم تغيير عنوان البريد الإلكتروني"
+
 #: src/Email/Templates/System/TestEmail.php:61 src/Email/Templates/System/TestEmail.php:161
 msgid "Email Configuration Test"
 msgstr "اختبار إعداد البريد"
@@ -4377,9 +4460,13 @@ msgstr "قوالب البريد"
 msgid "Email Verification Code"
 msgstr "رمز التحقق عبر البريد"
 
-#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/organization.php:76
+#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/account.php:49 themes/default/templates/pages/client/organization.php:76
 msgid "Email address"
 msgstr "عنوان البريد الإلكتروني"
+
+#: src/Email/Templates/Security/EmailChangedEmail.php:47
+msgid "Email address changed"
+msgstr "تم تغيير عنوان البريد الإلكتروني"
 
 #: templates/admin/contents/options/email/index.php:122
 msgid "Email address to deliver the test message to."
@@ -4393,17 +4480,21 @@ msgstr "لم يتم تقديم عنوان البريد الإلكتروني."
 msgid "Email and password are required."
 msgstr "البريد الإلكتروني وكلمة المرور مطلوبان."
 
-#: themes/default/templates/pages/client/security.php:65
+#: themes/default/templates/pages/client/security.php:101
 msgid "Email codes"
 msgstr "رموز البريد"
 
-#: themes/default/templates/pages/client/security.php:82
+#: themes/default/templates/pages/client/security.php:118
 msgid "Email confirmation code"
 msgstr "رمز التأكيد عبر البريد"
 
 #: src/Environments/WordPress/IdentityService.php:486
 msgid "Email is required."
 msgstr "البريد الإلكتروني مطلوب."
+
+#: themes/default/templates/pages/client/account.php:85
+msgid "Email notifications"
+msgstr "إشعارات البريد الإلكتروني"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:100
 msgid "Email someone a link to join an organization."
@@ -4417,19 +4508,19 @@ msgstr "مفتاح قالب البريد غير صالح."
 msgid "Email template key is required."
 msgstr "مفتاح قالب البريد مطلوب."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:89
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:96
 msgid "Email two-factor authentication is enabled."
 msgstr "المصادقة الثنائية عبر البريد مفعّلة."
 
-#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:108
+#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:144
 msgid "Email verification code"
 msgstr "رمز التحقق عبر البريد"
 
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 msgid "Email verification codes"
 msgstr "رموز التحقق عبر البريد"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:55
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:62
 msgid "Email verification is already enabled."
 msgstr "التحقق عبر البريد مفعّل بالفعل."
 
@@ -4459,7 +4550,7 @@ msgstr "تفعيل"
 msgid "Enable \"%s\" %s?"
 msgstr "تفعيل %2$s «%1$s»؟"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:108
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:122
 msgid "Enable email two-factor authentication"
 msgstr "تفعيل المصادقة الثنائية عبر البريد"
 
@@ -4484,7 +4575,7 @@ msgstr "تفعيل هذه الإضافة بعد التثبيت؟ سيتم تحم
 msgid "Enable this template"
 msgstr "تفعيل هذا القالب"
 
-#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 #: assets/js/admin/email-editor.js:995
 msgid "Enabled"
 msgstr "مفعّل"
@@ -4599,6 +4690,12 @@ msgstr "أدخل حالة %s"
 msgid "Enter the URL of the %s author profile."
 msgstr "أدخل رابط الملف الشخصي لمؤلف %s."
 
+#. translators: %s: the new email address.
+#: themes/default/templates/pages/client/account.php:60
+#, php-format
+msgid "Enter the code sent to %s."
+msgstr "أدخل الرمز المُرسَل إلى %s."
+
 #: src/Admin/ContentHandlers/LicensePage.php:419
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "أدخل الحد الأقصى لعدد النطاقات المسموح لها بتثبيت هذا الترخيص."
@@ -4612,6 +4709,10 @@ msgstr "أدخل اسم مؤلف %s."
 msgid "Enter the name the license is issued to."
 msgstr "أدخل الاسم الذي يصدر الترخيص له."
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:101
+msgid "Enter the name to show on your account."
+msgstr "أدخل الاسم الذي سيظهر على حسابك."
+
 #: src/Security/Organizations/OrganizationService.php:421
 msgid "Enter the organization's name."
 msgstr "أدخل اسم المؤسسة."
@@ -4620,7 +4721,7 @@ msgstr "أدخل اسم المؤسسة."
 msgid "Enter the price buyers pay for this tier."
 msgstr "أدخل السعر الذي يدفعه المشترون لهذه الفئة."
 
-#: themes/default/templates/pages/client/security.php:137
+#: themes/default/templates/pages/client/security.php:173
 msgid "Enter the setup key manually"
 msgstr "أدخل مفتاح الإعداد يدويًا"
 
@@ -5106,7 +5207,7 @@ msgstr "نسيت كلمة المرور؟"
 msgid "Form fields"
 msgstr "حقول النموذج"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:281
 msgid "Form slug or action path is required."
 msgstr "معرّف النموذج أو مسار الإجراء مطلوب."
 
@@ -5347,7 +5448,7 @@ msgid "Hi {{buyer_name}},"
 msgstr "مرحبًا {{buyer_name}}،"
 
 #. translators: {{display_name}} is replaced with the user's name; keep it as is.
-#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:189
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:196
 msgid "Hi {{display_name}},"
 msgstr "مرحبًا {{display_name}}،"
 
@@ -5393,7 +5494,7 @@ msgstr "معدل الإصابة"
 msgid "Hits"
 msgstr "الإصابات"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -5467,7 +5568,7 @@ msgstr "المعرّف:"
 msgid "IP Address"
 msgstr "عنوان IP"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:208
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:215
 msgid "IP address"
 msgstr "عنوان IP"
 
@@ -5524,7 +5625,7 @@ msgstr "إذا ظل هذا العدد مرتفعًا بعد إعادة تحمي�
 msgid "If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP)."
 msgstr "إذا كان هذا موقعك، فابدأ الإعداد. يستغرق بضع دقائق، وستحتاج إلى تفاصيل قاعدة البيانات والوصول إلى ملفات الاستضافة (مدير الملفات أو FTP)."
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:232
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:239
 msgid "If this was you, no action is needed. Questions? Contact us at {{support_email}}."
 msgstr "إذا كنت أنت من قام بذلك، فلا حاجة لأي إجراء. لديك أسئلة؟ تواصل معنا على {{support_email}}."
 
@@ -6123,6 +6224,14 @@ msgstr "صادر"
 msgid "Issue licenses"
 msgstr "إصدار التراخيص"
 
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is not verified yet."
+msgstr "لم يتم التحقق منه بعد."
+
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is verified."
+msgstr "تم التحقق منه."
+
 #: src/Monetization/Controller.php:59
 msgid "Item type is required"
 msgstr "نوع العنصر مطلوب"
@@ -6201,11 +6310,11 @@ msgstr "احتفظ به سرًا"
 msgid "Keep me signed in for 7 days"
 msgstr "إبقائي مسجّلًا الدخول لمدة 7 أيام"
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 msgid "Keep them somewhere private."
 msgstr "احتفظ بها في مكان خاص."
 
-#: themes/default/templates/pages/client/security.php:138
+#: themes/default/templates/pages/client/security.php:174
 msgid "Keep this key private. Anyone with it can generate your sign-in codes."
 msgstr "احتفظ بهذا المفتاح سرًا. أي شخص يملكه يمكنه توليد رموز تسجيل الدخول الخاصة بك."
 
@@ -6458,6 +6567,14 @@ msgstr "مدة الترخيص:"
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "License URI:"
 msgstr "رابط الترخيص:"
+
+#: src/Email/EmailPreferences.php:94
+msgid "License activity"
+msgstr "نشاط التراخيص"
+
+#: src/Email/EmailPreferences.php:90
+msgid "License expiry reminders"
+msgstr "تذكيرات انتهاء التراخيص"
 
 #: src/Admin/ContentHandlers/LicensePage.php:456
 msgid "License features"
@@ -7202,6 +7319,10 @@ msgstr "إشعار تسجيل مستخدم جديد"
 msgid "New Version"
 msgstr "الإصدار الجديد"
 
+#: src/Email/EmailPreferences.php:98
+msgid "New app versions"
+msgstr "الإصدارات الجديدة من التطبيقات"
+
 #: templates/admin/contents/system/maintenance.php:114
 msgid "New bypass link"
 msgstr "رابط تجاوز جديد"
@@ -7210,12 +7331,16 @@ msgstr "رابط تجاوز جديد"
 msgid "New bypass link made; earlier links stop working."
 msgstr "تم إنشاء رابط تجاوز جديد؛ تتوقف الروابط السابقة عن العمل."
 
+#: themes/default/templates/pages/client/account.php:72
+msgid "New email address"
+msgstr "عنوان البريد الإلكتروني الجديد"
+
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
 msgstr "اسم جديد لـ %s"
 
-#: themes/default/templates/pages/auth/reset-password.php:25
+#: themes/default/templates/pages/auth/reset-password.php:25 themes/default/templates/pages/client/security.php:48
 msgid "New password"
 msgstr "كلمة مرور جديدة"
 
@@ -7231,6 +7356,10 @@ msgstr "طلب شراء جديد رقم %d للمراجعة"
 #: themes/default/templates/pages/client/app.php:95
 msgid "New version"
 msgstr "إصدار جديد"
+
+#: src/Email/EmailPreferences.php:107
+msgid "News and messages the site sends to its customers."
+msgstr "الأخبار والرسائل التي يرسلها الموقع إلى عملائه."
 
 #: themes/default/templates/partials/repository/pagination.php:22 assets/js/admin/modules.js:419
 msgid "Next"
@@ -7483,7 +7612,7 @@ msgstr "لا توجد مؤسسات بعد"
 msgid "No parameters."
 msgstr "لا توجد معاملات."
 
-#: themes/default/templates/pages/client/security.php:36
+#: themes/default/templates/pages/client/security.php:72
 msgid "No passkeys are registered yet."
 msgstr "لم يتم تسجيل أي مفاتيح مرور بعد."
 
@@ -7628,7 +7757,7 @@ msgstr "لا شيء (تراخيص يصدرها مسؤول)"
 msgid "None given"
 msgstr "لم يُذكر"
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 msgid "None registered"
 msgstr "لا شيء مسجل"
 
@@ -7640,7 +7769,7 @@ msgstr "لا شيء بعد."
 msgid "None. Every app type can be uploaded without a key."
 msgstr "لا شيء. يمكن رفع كل أنواع التطبيقات دون مفتاح."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1103
 msgid "Not Allowed"
 msgstr "غير مسموح"
 
@@ -7664,11 +7793,11 @@ msgstr "ليس ملف تطبيق"
 msgid "Not available"
 msgstr "غير متاح"
 
-#: themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 msgid "Not enabled"
 msgstr "غير مفعّل"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1104 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "غير موجود"
 
@@ -7919,6 +8048,10 @@ msgstr "إعادة فتح الموقع للزوار؟"
 msgid "Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now."
 msgstr "افتح هذا الرابط في متصفح آخر لاستخدام الموقع بينما ينتظر الزوار. احتفظ به سرًا؛ فهو يُعرض الآن فقط."
 
+#: themes/default/templates/pages/client/account.php:32 themes/default/templates/pages/client/security.php:36
+msgid "Open your WordPress profile"
+msgstr "افتح ملفك الشخصي في WordPress"
+
 #. translators: 1: opening <strong> tag, 2: closing <strong> tag
 #: src/Environments/Application/Installation/InstallerPage.php:115
 #, php-format
@@ -8002,7 +8135,7 @@ msgid "Options"
 msgstr "الخيارات"
 
 #. translators: 1: opening link tag, 2: closing link tag.
-#: themes/default/templates/pages/client/security.php:135
+#: themes/default/templates/pages/client/security.php:171
 #, php-format
 msgid "Or %1$sopen the authenticator app%2$s on this device."
 msgstr "أو %1$sافتح تطبيق المصادقة%2$s على هذا الجهاز."
@@ -8206,11 +8339,11 @@ msgstr "تمت إزالة مفتاح مرور"
 msgid "Passkey added"
 msgstr "تمت إضافة مفتاح المرور"
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "Passkey name"
 msgstr "اسم مفتاح المرور"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:173
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:180
 msgid "Passkey registered successfully."
 msgstr "تم تسجيل مفتاح المرور بنجاح."
 
@@ -8218,11 +8351,11 @@ msgstr "تم تسجيل مفتاح المرور بنجاح."
 msgid "Passkey registered."
 msgstr "تم تسجيل مفتاح المرور."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:168
 msgid "Passkey registration could not be started."
 msgstr "تعذّر بدء تسجيل مفتاح المرور."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:170
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:177
 msgid "Passkey registration failed or expired. Please try again."
 msgstr "فشل تسجيل مفتاح المرور أو انتهت صلاحيته. يرجى المحاولة مرة أخرى."
 
@@ -8234,7 +8367,7 @@ msgstr "فشل تسجيل مفتاح المرور."
 msgid "Passkey removed"
 msgstr "تمت إزالة مفتاح المرور"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:187
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:194
 msgid "Passkey removed."
 msgstr "تمت إزالة مفتاح المرور."
 
@@ -8254,12 +8387,12 @@ msgstr "فشل تسجيل الدخول بمفتاح المرور."
 msgid "Passkey sign-in was cancelled."
 msgstr "تم إلغاء تسجيل الدخول بمفتاح المرور."
 
-#: themes/default/templates/pages/client/security.php:32
+#: themes/default/templates/pages/client/security.php:68
 msgid "Passkeys"
 msgstr "مفاتيح المرور"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:375
-#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34
+#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34 themes/default/templates/pages/client/security.php:42
 msgid "Password"
 msgstr "كلمة المرور"
 
@@ -8449,7 +8582,8 @@ msgstr "يرجى الاحتفاظ بهذه الرسالة كإيصال. إذا �
 msgid "Please paste or type some JSON."
 msgstr "يرجى لصق أو كتابة بعض JSON."
 
-#: src/Auth/ActionHandlers/AuthManagement.php:646 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54 src/Security/RequestController.php:201
+#: src/Auth/ActionHandlers/AuthManagement.php:646 src/ClientDashboard/ActionHandlers/AccountManagement.php:141 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54
+#: src/Security/RequestController.php:201
 msgid "Please provide a valid email address."
 msgstr "يرجى تقديم عنوان بريد إلكتروني صالح."
 
@@ -8724,6 +8858,10 @@ msgstr "المنتج"
 msgid "Production"
 msgstr "الإنتاج"
 
+#: themes/default/templates/pages/client/account.php:37
+msgid "Profile"
+msgstr "الملف الشخصي"
+
 #: src/Core/Process/Process.php:90
 msgid "Programs cannot be started from this PHP (proc_open is unavailable)."
 msgstr "لا يمكن لهذا الـ PHP تشغيل البرامج (proc_open غير متاحة)."
@@ -8974,7 +9112,7 @@ msgid "Receipt pages"
 msgstr "صفحات الإيصال"
 
 #. translators: %s: email address.
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 #, php-format
 msgid "Receive a one-time code at %s when you sign in."
 msgstr "تلقَّ رمزًا لمرة واحدة على %s عند تسجيل الدخول."
@@ -9111,6 +9249,10 @@ msgstr "تحرير المهام العالقة"
 msgid "Released %d stale job(s) back to the queue."
 msgstr "تمت إعادة %d مهمة عالقة إلى قائمة الانتظار."
 
+#: src/Email/EmailPreferences.php:91
+msgid "Reminders before a license expires, and a notice when it has expired."
+msgstr "تذكيرات قبل انتهاء الترخيص، وإشعار عند انتهائه."
+
 #: src/Monetization/Providers/RemoteProvider.php:43
 msgid "Remote store"
 msgstr "تخزين بعيد"
@@ -9138,7 +9280,7 @@ msgstr "إزالة الكتلة"
 msgid "Remove members from organizations"
 msgstr "إزالة أعضاء من المؤسسات"
 
-#: themes/default/templates/pages/client/security.php:46
+#: themes/default/templates/pages/client/security.php:82
 msgid "Remove passkey"
 msgstr "إزالة مفتاح المرور"
 
@@ -9710,6 +9852,14 @@ msgstr "حفظ القالب"
 msgid "Save changes"
 msgstr "حفظ التغييرات"
 
+#: themes/default/templates/pages/client/account.php:101
+msgid "Save email preferences"
+msgstr "حفظ تفضيلات البريد الإلكتروني"
+
+#: themes/default/templates/pages/client/account.php:44
+msgid "Save profile"
+msgstr "حفظ الملف الشخصي"
+
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr "حفظ عنوان الموقع"
@@ -9740,15 +9890,15 @@ msgstr "فشل حفظ بيانات الترخيص الوصفية «%s»: %s"
 msgid "Saving..."
 msgstr "جارٍ الحفظ..."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:117
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:124
 msgid "Scan the secret in your authenticator app, then enter its current code."
 msgstr "امسح السر في تطبيق المصادقة، ثم أدخل الرمز الحالي."
 
-#: themes/default/templates/pages/client/security.php:131
+#: themes/default/templates/pages/client/security.php:167
 msgid "Scan this QR code with your authenticator app"
 msgstr "امسح رمز QR هذا بتطبيق المصادقة"
 
-#: themes/default/templates/pages/client/security.php:132
+#: themes/default/templates/pages/client/security.php:168
 msgid "Scan this code with your authenticator app."
 msgstr "امسح هذا الرمز بتطبيق المصادقة."
 
@@ -9995,7 +10145,7 @@ msgstr "الملف المحدد"
 msgid "Send Email Verification"
 msgstr "إرسال التحقق من البريد"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:118
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:133
 msgid "Send Email Verification Code"
 msgstr "إرسال رمز التحقق من البريد"
 
@@ -10015,7 +10165,7 @@ msgstr "إرسال بريد إعادة تعيين كلمة المرور"
 msgid "Send Purchase Request Email"
 msgstr "إرسال بريد طلب الشراء"
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:110
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:129
 msgid "Send Security Notice Email"
 msgstr "إرسال بريد الإشعار الأمني"
 
@@ -10051,11 +10201,11 @@ msgstr "الإرسال مجددًا"
 msgid "Send bulk messages"
 msgstr "إرسال رسائل جماعية"
 
-#: themes/default/templates/pages/client/security.php:91
+#: themes/default/templates/pages/client/security.php:127
 msgid "Send code to disable"
 msgstr "إرسال رمز للتعطيل"
 
-#: themes/default/templates/pages/client/security.php:99
+#: themes/default/templates/pages/client/security.php:135
 msgid "Send enrollment code"
 msgstr "إرسال رمز التفعيل"
 
@@ -10079,6 +10229,10 @@ msgstr "إرسال الرابط"
 #, php-format
 msgid "Send the site secret for this domain in the %s header."
 msgstr "أرسل سر الموقع لهذا النطاق في الترويسة %s."
+
+#: themes/default/templates/pages/client/account.php:79
+msgid "Send verification code"
+msgstr "إرسال رمز التحقق"
 
 #: src/Email/Providers/AmazonSESProvider.php:126 src/Email/Providers/ResendProvider.php:73
 msgid "Sender display name. Leave blank to use the global from name"
@@ -10220,6 +10374,10 @@ msgstr "يُرسل إلى مالك التطبيق عند رفع إصدار جد�
 msgid "Sent to the app owner when the status of their application is changed by an administrator."
 msgstr "يُرسل إلى مالك التطبيق عندما يغيّر مسؤول حالة تطبيقه."
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:63
+msgid "Sent to the previous address after a user changes the email address of their account."
+msgstr "يُرسَل إلى العنوان السابق بعد أن يغيّر المستخدم عنوان البريد الإلكتروني لحسابه."
+
 #: src/Email/Templates/System/UpdateInstalledEmail.php:62
 msgid "Sent to the site administration email after an automatic update installed a new release."
 msgstr "يُرسل إلى بريد إدارة الموقع بعد أن يثبّت تحديث تلقائي إصدارًا جديدًا."
@@ -10352,6 +10510,10 @@ msgstr "حساب الخدمة غير نشط"
 msgid "Session Expired"
 msgstr "انتهت الجلسة"
 
+#: themes/default/templates/pages/client/security.php:57
+msgid "Sessions"
+msgstr "الجلسات"
+
 #: src/Environments/Application/Health/SystemHealth.php:1297
 #, php-format
 msgid "Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough."
@@ -10365,7 +10527,7 @@ msgstr "تعيين محوّل الذاكرة المؤقتة هذا كمزوّد 
 msgid "Set this email provider as the default provider for all mailing operations."
 msgstr "تعيين مزوّد البريد هذا كمزوّد افتراضي لكل عمليات الإرسال."
 
-#: themes/default/templates/pages/client/security.php:154
+#: themes/default/templates/pages/client/security.php:190
 msgid "Set up authenticator app"
 msgstr "إعداد تطبيق المصادقة"
 
@@ -10455,19 +10617,32 @@ msgstr "سجّل الدخول للتحقق من بريدك الإلكتروني.
 msgid "Sign in with a passkey"
 msgstr "تسجيل الدخول بمفتاح مرور"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:46 src/ClientDashboard/ActionHandlers/SecurityManagement.php:77 src/ClientDashboard/ActionHandlers/SecurityManagement.php:96 src/ClientDashboard/ActionHandlers/SecurityManagement.php:125
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:53 src/ClientDashboard/ActionHandlers/SecurityManagement.php:84 src/ClientDashboard/ActionHandlers/SecurityManagement.php:103 src/ClientDashboard/ActionHandlers/SecurityManagement.php:132
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:257 src/ClientDashboard/ActionHandlers/SecurityManagement.php:299
 msgid "Sign in with a user account to manage security settings."
 msgstr "سجّل الدخول بحساب مستخدم لإدارة إعدادات الأمان."
 
-#: themes/default/templates/pages/client/security.php:32
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:427
+msgid "Sign in with a user account to manage your account."
+msgstr "سجّل الدخول بحساب مستخدم لإدارة حسابك."
+
+#: themes/default/templates/pages/client/security.php:68
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة أو مفتاح أمان بدلًا من كلمة المرور. مفتاح المرور يثبت هويتك بالفعل، لذا يتخطى تسجيل الدخول به الخطوة الثانية أدناه."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/pages/client/security.php:59 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:107 src/Email/Templates/Security/EmailOtpEmail.php:121
+#: themes/default/templates/pages/client/security.php:61
+msgid "Sign out of all other sessions"
+msgstr "تسجيل الخروج من جميع الجلسات الأخرى"
+
+#: themes/default/templates/pages/client/security.php:59
+msgid "Sign out of every other session?"
+msgstr "هل تريد تسجيل الخروج من جميع الجلسات الأخرى؟"
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:121 src/Email/Templates/Security/EmailOtpEmail.php:121
 msgid "Sign-in verification code"
 msgstr "رمز التحقق من تسجيل الدخول"
 
@@ -10493,6 +10668,10 @@ msgstr "تم تسجيل الدخول باسم %s."
 #, php-format
 msgid "Signed in as user #%d"
 msgstr "تم تسجيل الدخول كالمستخدم رقم %d"
+
+#: themes/default/templates/pages/client/security.php:57
+msgid "Signed in on a device you no longer use, or a shared computer? Sign out everywhere else. This device stays signed in."
+msgstr "هل سجّلت الدخول على جهاز لم تعد تستخدمه، أو على حاسوب مشترك؟ سجّل الخروج من كل مكان آخر. يبقى هذا الجهاز مسجّل الدخول."
 
 #: assets/js/passkeys.js:85
 msgid "Signed in."
@@ -11107,7 +11286,11 @@ msgstr "قاعدة البيانات هذه غير موجودة. أنشئها أ�
 msgid "That database user does not exist. Check the username."
 msgstr "مستخدم قاعدة البيانات هذا غير موجود. تحقق من اسم المستخدم."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:204
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:147 src/ClientDashboard/ActionHandlers/AccountManagement.php:214
+msgid "That email address is already used by another account."
+msgstr "عنوان البريد الإلكتروني هذا مستخدم بالفعل في حساب آخر."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:211
 msgid "That factor is not enabled."
 msgstr "هذا العامل غير مفعّل."
 
@@ -11115,7 +11298,7 @@ msgstr "هذا العامل غير مفعّل."
 msgid "That language is not available."
 msgstr "هذه اللغة غير متاحة."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:184
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:191
 msgid "That passkey could not be found."
 msgstr "تعذر العثور على مفتاح المرور هذا."
 
@@ -11173,12 +11356,12 @@ msgstr "يجب أن تكون قيمة «%s» للقالب «%s» سلسلة نص
 msgid "The \"%s\" parameter must be %s."
 msgstr "يجب أن يكون المعامل «%s» %s."
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:73
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:78
 #, php-format
 msgid "The \"%s\" template is disabled."
 msgstr "القالب «%s» معطّل."
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:99
 msgid "The \"Email Verification Code\" template is disabled."
 msgstr "قالب «رمز التحقق من البريد» معطّل."
 
@@ -11590,7 +11773,7 @@ msgstr "ليس لدى المستخدم المصادَق عليه إذن للوص
 msgid "The authenticated user does not have permission to perform this action."
 msgstr "ليس لدى المستخدم المصادَق عليه إذن لتنفيذ هذا الإجراء."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:135
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:142
 msgid "The authenticator code is incorrect."
 msgstr "رمز تطبيق المصادقة غير صحيح."
 
@@ -11645,7 +11828,7 @@ msgstr "لا يدرج ملف المجاميع الاختبارية %s."
 msgid "The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has."
 msgstr "الكود على القرص هو الإصدار %s، لكن state.json يسجل %s: تم تثبيت تحديث لكن خطوة إنهائه لم تُشغَّل. المهام المجدولة والمهام في قائمة الانتظار متوقفة حتى يتم ذلك."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:231
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:238
 msgid "The confirmation code is incorrect or expired."
 msgstr "رمز التأكيد غير صحيح أو منتهي الصلاحية."
 
@@ -11753,6 +11936,12 @@ msgstr "تم التحقق من عنوان البريد بالفعل."
 #: src/Environments/WordPress/IdentityService.php:496
 msgid "The email address is invalid."
 msgstr "عنوان البريد غير صالح."
+
+#. translators: %s: the new email address, partly hidden.
+#: src/Email/Templates/Security/EmailChangedEmail.php:53
+#, php-format
+msgid "The email address of your account was changed to %s. Emails about your account now go to that address, and this one can no longer be used to sign in."
+msgstr "تم تغيير عنوان البريد الإلكتروني لحسابك إلى %s. تُرسَل رسائل حسابك الآن إلى ذلك العنوان، ولم يعد بالإمكان استخدام هذا العنوان لتسجيل الدخول."
 
 #: templates/admin/contents/options/email/form.php:38 templates/admin/contents/options/monetization/monetizations.php:41
 #, php-format
@@ -12129,7 +12318,8 @@ msgstr "تعذر تثبيت الوحدة."
 msgid "The module release is not a release from release()."
 msgstr "إصدار الوحدة ليس إصدارًا من release()."
 
-#: src/Security/Organizations/OrganizationService.php:425
+#. translators: %d: maximum number of characters.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:105 src/Security/Organizations/OrganizationService.php:425
 #, php-format
 msgid "The name can be at most %d characters long."
 msgstr "يمكن أن يتكون الاسم من %d حرفًا كحد أقصى."
@@ -12157,6 +12347,10 @@ msgstr "مساحة الأسماء «%s» للإضافة «%s» غير صالحة
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is reserved by the app."
 msgstr "مساحة الأسماء «%s» للإضافة «%s» محجوزة للتطبيق."
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:79
+msgid "The new email address is not valid."
+msgstr "عنوان البريد الإلكتروني الجديد غير صالح."
 
 #: src/FileSystem/Repository.php:242
 msgid "The new filename cannot be empty."
@@ -12591,7 +12785,7 @@ msgstr "فشل الطلب. يرجى المحاولة مجددًا."
 msgid "The request format or parameters provided are improperly structured."
 msgstr "تنسيق الطلب أو معاملاته غير منظمة بشكل صحيح."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1098
 msgid "The request method is not allowed on this server."
 msgstr "طريقة الطلب غير مسموحة على هذا الخادم."
 
@@ -12643,7 +12837,7 @@ msgstr "التطبيق المطلوب لا يحتوي على شيء للتنزي
 msgid "The requested range cannot be satisfied."
 msgstr "لا يمكن تلبية النطاق المطلوب."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1099 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "تعذر العثور على المورد المطلوب."
 
@@ -13110,15 +13304,15 @@ msgstr "لا يمكن أن تكون القيمة فارغة."
 msgid "The value must be an integer."
 msgstr "يجب أن تكون القيمة عددًا صحيحًا."
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:67
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:68
 msgid "The verification code could not be read."
 msgstr "تعذرت قراءة رمز التحقق."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:66
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:169 src/ClientDashboard/ActionHandlers/SecurityManagement.php:73
 msgid "The verification code could not be sent. Please try again."
 msgstr "تعذر إرسال رمز التحقق. يرجى المحاولة مجددًا."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:85
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:205 src/ClientDashboard/ActionHandlers/SecurityManagement.php:92
 msgid "The verification code is incorrect or expired."
 msgstr "رمز التحقق غير صحيح أو منتهي الصلاحية."
 
@@ -13249,6 +13443,10 @@ msgstr "لم تكن هناك جلسة نشطة على هذا الجهاز."
 msgid "These are checked for this web request. Installing from this page runs as the web server's PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with"
 msgstr "تُفحص هذه العناصر لطلب الويب هذا. يعمل التثبيت من هذه الصفحة بمستخدم PHP الخاص بخادم الويب؛ أما التحديثات التلقائية فتعمل حيث تعمل المعالجة في الخلفية، وقد يكون ذلك مستخدمًا آخر أو PHP آخر. تحقق هناك باستخدام"
 
+#: themes/default/templates/pages/client/account.php:88
+msgid "These choices apply once your email address is verified."
+msgstr "تُطبَّق هذه الاختيارات بمجرد التحقق من عنوان بريدك الإلكتروني."
+
 #: assets/js/admin/repository-browser.js:371
 msgid "These files have no app record, so they can be viewed but not changed."
 msgstr "لا تملك هذه الملفات سجل تطبيق، لذا يمكن عرضها لكن لا يمكن تغييرها."
@@ -13323,11 +13521,11 @@ msgstr "علّق مسؤولو الموقع هذا التطبيق، لذا فهو
 msgid "This app's owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page."
 msgstr "ليس لمالك هذا التطبيق حساب خدمة نشط. أنشئ واحدًا للمالك من الحسابات ← حسابات الخدمة، ثم أعد تحميل هذه الصفحة."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:138
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
 msgid "This authenticator setup has already been used."
 msgstr "تم استخدام إعداد تطبيق المصادقة هذا بالفعل."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:129
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:136
 msgid "This authenticator setup has expired. Start again."
 msgstr "انتهت صلاحية إعداد تطبيق المصادقة هذا. ابدأ من جديد."
 
@@ -13347,9 +13545,13 @@ msgstr "يحتفظ هذا المتصفح بالوصول؛ وتحصل على را
 msgid "This check could not run."
 msgstr "تعذر تشغيل هذا الفحص."
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "This device"
 msgstr "هذا الجهاز"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:333
+msgid "This download link has expired. Ask for your data again from your account page."
+msgstr "انتهت صلاحية رابط التنزيل هذا. اطلب بياناتك مرة أخرى من صفحة حسابك."
 
 #: assets/js/admin/core.js:1175
 msgid "This field"
@@ -13424,6 +13626,10 @@ msgstr "هذا تطبيق مدفوع؛ يلزم ترخيص أو رمز صالح 
 #: themes/default/templates/pages/signing-key.php:49
 msgid "This is a public key: it can only check signatures, not make them, and it is safe to share."
 msgstr "هذا مفتاح عام: يمكنه التحقق من التوقيعات فقط، لا إنشاؤها، ومن الآمن مشاركته."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:144
+msgid "This is already your email address."
+msgstr "هذا هو عنوان بريدك الإلكتروني بالفعل."
 
 #. translators: 1: app name (formatted), 2: support (formatted)
 #: src/Email/Templates/System/SystemAlertEmail.php:112
@@ -13599,11 +13805,11 @@ msgstr "انتهت صلاحية رابط التحقق هذا. اطلب رابط�
 msgid "This verification link is not valid."
 msgstr "رابط التحقق هذا غير صالح."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:81
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:201 src/ClientDashboard/ActionHandlers/AccountManagement.php:210 src/ClientDashboard/ActionHandlers/SecurityManagement.php:88
 msgid "This verification request has expired. Start again."
 msgstr "انتهت صلاحية طلب التحقق هذا. ابدأ من جديد."
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:231
 msgid "This wasn't me — secure my account"
 msgstr "لم أكن أنا — أمّن حسابي"
 
@@ -13635,7 +13841,7 @@ msgstr "اسم الفئة مطلوب"
 msgid "Tiers"
 msgstr "الفئات"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:207 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:214 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
 msgid "Time"
 msgstr "الوقت"
 
@@ -13870,13 +14076,27 @@ msgstr "تم تشغيل المصادقة الثنائية عبر %s لحسابك
 msgid "Type"
 msgstr "النوع"
 
+#. translators: %s: the user's email address.
+#: themes/default/templates/pages/client/account.php:140
+#, php-format
+msgid "Type %s to confirm"
+msgstr "اكتب %s للتأكيد"
+
 #: src/Exceptions/RequestException.php:58
 msgid "Type Mismatch"
 msgstr "عدم تطابق النوع"
 
+#: themes/default/templates/pages/client/security.php:49
+msgid "Type the new password again"
+msgstr "اكتب كلمة المرور الجديدة مرة أخرى"
+
 #: src/Environments/Application/Installation/InstallerPage.php:383
 msgid "Type the same password again."
 msgstr "اكتب كلمة المرور نفسها مرة أخرى."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:378
+msgid "Type your email address exactly as shown to confirm."
+msgstr "اكتب عنوان بريدك الإلكتروني تمامًا كما هو معروض للتأكيد."
 
 #: src/Email/Providers/SMTPProvider.php:143
 msgid "Typically 25 (plain), 465 (SSL), or 587 (STARTTLS/TLS)."
@@ -14116,7 +14336,7 @@ msgstr "وضع تحديث تلقائي غير معروف «%s»؛ استخدم o
 msgid "Unknown callable"
 msgstr "كائن قابل للاستدعاء غير معروف"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:254
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:261
 msgid "Unknown device"
 msgstr "جهاز غير معروف"
 
@@ -14143,7 +14363,7 @@ msgstr "شروط ترخيص غير معروفة: %s."
 msgid "Unknown purchase request email \"%s\"."
 msgstr "بريد طلب شراء غير معروف «%s»."
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:67
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:72
 msgid "Unknown security notice."
 msgstr "إشعار أمني غير معروف."
 
@@ -14502,7 +14722,7 @@ msgstr "استخدم منطقة الاتحاد الأوروبي إذا كان ح
 msgid "Use a %s placeholder or a full URL."
 msgstr "استخدم عنصرًا نائبًا %s أو رابطًا كاملًا."
 
-#: themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:152
 msgid "Use an app such as 1Password, Google Authenticator, or Microsoft Authenticator."
 msgstr "استخدم تطبيقًا مثل 1Password أو Google Authenticator أو Microsoft Authenticator."
 
@@ -14630,7 +14850,7 @@ msgstr "فشل التحقق"
 msgid "Value"
 msgstr "القيمة"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:110 src/Email/Templates/Security/EmailOtpEmail.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:125 src/Email/Templates/Security/EmailOtpEmail.php:85 themes/default/templates/pages/client/account.php:62
 msgid "Verification code"
 msgstr "رمز التحقق"
 
@@ -14646,11 +14866,11 @@ msgstr "التحقق من بريدي"
 msgid "Verify Your Email Address"
 msgstr "تحقق من عنوان بريدك الإلكتروني"
 
-#: themes/default/templates/pages/client/security.php:147
+#: themes/default/templates/pages/client/security.php:183
 msgid "Verify and enable"
 msgstr "التحقق والتفعيل"
 
-#: themes/default/templates/pages/client/security.php:109
+#: themes/default/templates/pages/client/security.php:145
 msgid "Verify and enable email codes"
 msgstr "التحقق من رموز البريد وتفعيلها"
 
@@ -14662,11 +14882,11 @@ msgstr "التحقق وتسجيل الدخول"
 msgid "Verify your email"
 msgstr "تحقق من بريدك"
 
-#: themes/default/templates/pages/client/security.php:102
+#: themes/default/templates/pages/client/security.php:138
 msgid "Verify your email address before enabling email codes."
 msgstr "تحقق من عنوان بريدك قبل تفعيل رموز البريد."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:52
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:59
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr "تحقق من عنوان بريدك قبل تفعيل رموز تسجيل الدخول عبر البريد."
 
@@ -14897,7 +15117,7 @@ msgstr "تحذير"
 msgid "Warnings"
 msgstr "تحذيرات"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:217
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
 msgid "Wasn't you? Someone else may have access to your account. Secure it now by resetting your password, then review your sign-in methods."
 msgstr "لم تكن أنت؟ ربما يملك شخص آخر الوصول إلى حسابك. أمّنه الآن بإعادة تعيين كلمة المرور، ثم راجع طرق تسجيل الدخول."
 
@@ -15023,7 +15243,7 @@ msgstr "عندما تشتري ترخيصًا وترسل إيصال الدفع، 
 msgid "When you buy a license and send your payment receipt, it appears here while it is reviewed. Verify your email address to see purchases made with it before you signed in."
 msgstr "عندما تشتري ترخيصًا وترسل إيصال الدفع، يظهر هنا أثناء مراجعته. تحقق من بريدك الإلكتروني لرؤية المشتريات التي تمت به قبل تسجيل دخولك."
 
-#: themes/default/templates/pages/client/security.php:62
+#: themes/default/templates/pages/client/security.php:98
 msgid "When you sign in with your password, you also confirm with one of these. Passkey sign-in does not ask for it."
 msgstr "عند تسجيل الدخول بكلمة المرور، تؤكد أيضًا بإحدى هذه الطرق. تسجيل الدخول بمفتاح المرور لا يطلب ذلك."
 
@@ -15074,6 +15294,26 @@ msgstr "قوالب WordPress"
 #: src/Environments/WordPress/WPDBAdapter.php:80
 msgid "WordPress could not connect to the database: "
 msgstr "تعذر على WordPress الاتصال بقاعدة البيانات: "
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:435
+msgid "WordPress manages this account. Make this change from your WordPress profile."
+msgstr "يدير WordPress هذا الحساب. أجرِ هذا التغيير من ملفك الشخصي في WordPress."
+
+#: themes/default/templates/pages/client/account.php:30
+msgid "WordPress manages your name, email address, password and account. Change them from your WordPress profile."
+msgstr "يدير WordPress اسمك وعنوان بريدك الإلكتروني وكلمة مرورك وحسابك. غيّرها من ملفك الشخصي في WordPress."
+
+#: themes/default/templates/pages/client/security.php:34
+msgid "WordPress manages your password and sessions. Change them from your WordPress profile."
+msgstr "يدير WordPress كلمة مرورك وجلساتك. غيّرها من ملفك الشخصي في WordPress."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:260
+msgid "WordPress manages your password. Change it from your WordPress profile."
+msgstr "يدير WordPress كلمة مرورك. غيّرها من ملفك الشخصي في WordPress."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:302
+msgid "WordPress manages your sessions. Sign out of other sessions from your WordPress profile."
+msgstr "يدير WordPress جلساتك. سجّل الخروج من الجلسات الأخرى من ملفك الشخصي في WordPress."
 
 #: src/Background/BackgroundSetup.php:242
 msgid "Works anywhere"
@@ -15138,6 +15378,16 @@ msgstr "لقد سجّلت الدخول"
 msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator before you leave."
 msgstr "أنت مسؤول المؤسسة الوحيد في %s. عيّن عضوًا آخر مسؤولًا للمؤسسة قبل المغادرة."
 
+#. translators: %s: organization name.
+#: src/Security/Accounts/AccountDeletion.php:111
+#, php-format
+msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator, or delete the organization, first."
+msgstr "أنت مسؤول المؤسسة الوحيد في %s. عيّن عضوًا آخر مسؤولًا للمؤسسة، أو احذف المؤسسة، أولًا."
+
+#: src/Security/Accounts/AccountDeletion.php:117
+msgid "You are the only active system administrator. Make another user an active system administrator first."
+msgstr "أنت مسؤول النظام النشط الوحيد. اجعل مستخدمًا آخر مسؤول نظام نشطًا أولًا."
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:161
 msgid "You asked for an account. Sign up with this email address and verify it; this license then appears in your account."
 msgstr "لقد طلبت حسابًا. سجّل بهذا البريد الإلكتروني وتحقق منه؛ وسيظهر هذا الترخيص بعد ذلك في حسابك."
@@ -15188,6 +15438,10 @@ msgstr "ليست لديك الصلاحية المطلوبة للوصول إلى 
 msgid "You do not have the required permission to perform this action."
 msgstr "ليست لديك الصلاحية المطلوبة لتنفيذ هذا الإجراء."
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:305
+msgid "You downloaded your data a few minutes ago. Please wait before asking again."
+msgstr "نزّلت بياناتك قبل بضع دقائق. يُرجى الانتظار قبل طلبها مرة أخرى."
+
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:76 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:203
 msgid "You have cancelled your subscription."
 msgstr "لقد ألغيت اشتراكك."
@@ -15199,6 +15453,18 @@ msgstr "لقد تجاوزت الحد الأقصى من الطلبات المسم
 #: src/Exceptions/RequestException.php:231
 msgid "You have used all available quota for this operation."
 msgstr "لقد استهلكت كل الحصة المتاحة لهذه العملية."
+
+#. translators: %d: number of apps.
+#: src/Security/Accounts/AccountDeletion.php:99
+#, php-format
+msgid "You host %d app, including any in the trash. Delete it, or move it to another owner, first."
+msgid_plural "You host %d apps, including any in the trash. Delete them, or move them to another owner, first."
+msgstr[0] "تستضيف %d تطبيق، بما في ذلك ما في سلة المهملات. احذفها أو انقلها إلى مالك آخر أولًا."
+msgstr[1] "تستضيف تطبيقًا واحدًا (%d)، بما في ذلك ما في سلة المهملات. احذفها أو انقلها إلى مالك آخر أولًا."
+msgstr[2] "تستضيف تطبيقين (%d)، بما في ذلك ما في سلة المهملات. احذفها أو انقلها إلى مالك آخر أولًا."
+msgstr[3] "تستضيف %d تطبيقات، بما في ذلك ما في سلة المهملات. احذفها أو انقلها إلى مالك آخر أولًا."
+msgstr[4] "تستضيف %d تطبيقًا، بما في ذلك ما في سلة المهملات. احذفها أو انقلها إلى مالك آخر أولًا."
+msgstr[5] "تستضيف %d تطبيق، بما في ذلك ما في سلة المهملات. احذفها أو انقلها إلى مالك آخر أولًا."
 
 #: themes/default/templates/pages/client/organizations.php:53
 msgid "You join an organization when one of its administrators invites you."
@@ -15234,9 +15500,19 @@ msgstr "يجب تقديم معرّف القالب أو الـ slug الخاص ب
 msgid "You now act for %s."
 msgstr "أنت تعمل الآن نيابةً عن %s."
 
+#. translators: %s: email address.
+#: themes/default/templates/pages/client/account.php:51
+#, php-format
+msgid "You sign in with %s."
+msgstr "تسجّل الدخول باستخدام %s."
+
 #: src/Environments/Application/Installation/InstallerPage.php:370
 msgid "You sign in with this address, and password resets are sent to it."
 msgstr "تسجّل الدخول بهذا العنوان، وتُرسل إليه رسائل إعادة تعيين كلمة المرور."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:310
+msgid "You were signed out on every other device. This one stays signed in."
+msgstr "تم تسجيل خروجك من جميع الأجهزة الأخرى. يبقى هذا الجهاز مسجّل الدخول."
 
 #: themes/default/templates/pages/client/organizations.php:100
 msgid "You will run it as its Organization Administrator, and can invite others to it."
@@ -15302,9 +15578,25 @@ msgstr "تم إلغاء اشتراكك"
 msgid "Your access to {{plan_name}} features will remain active until {{access_until}}, after which your account will be downgraded."
 msgstr "سيظل وصولك إلى ميزات {{plan_name}} نشطًا حتى {{access_until}}، وبعد ذلك سيُخفَّض مستوى حسابك."
 
+#: themes/default/templates/pages/client/account.php:25
+msgid "Your account"
+msgstr "حسابك"
+
+#: src/Security/Accounts/AccountDeletion.php:126
+msgid "Your account cannot be deleted yet."
+msgstr "لا يمكن حذف حسابك بعد."
+
+#: themes/default/templates/pages/client/account.php:126
+msgid "Your account cannot be deleted yet:"
+msgstr "لا يمكن حذف حسابك بعد:"
+
 #: src/Security/Organizations/OrganizationService.php:67
 msgid "Your account cannot create organizations."
 msgstr "لا يمكن لحسابك إنشاء مؤسسات."
+
+#: src/Security/Accounts/AccountDeletion.php:175
+msgid "Your account could not be deleted. Nothing was changed. Please try again."
+msgstr "تعذّر حذف حسابك. لم يتم تغيير أي شيء. يُرجى المحاولة مرة أخرى."
 
 #: src/Email/Templates/Accounts/WelcomeEmail.php:43
 msgid "Your account has been created successfully. Get started today."
@@ -15323,6 +15615,14 @@ msgstr "تم إنشاء حسابك على {{app_name}} بنجاح. يمكنك ا
 #: src/Environments/Application/Auth/WebIdentityProvider.php:270
 msgid "Your account was created, but signing in failed. Please sign in."
 msgstr "تم إنشاء حسابك، لكن فشل تسجيل الدخول. يرجى تسجيل الدخول."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:395
+msgid "Your account was deleted. Goodbye."
+msgstr "تم حذف حسابك. إلى اللقاء."
+
+#: src/Email/EmailPreferences.php:102
+msgid "Your app activity"
+msgstr "نشاط تطبيقاتك"
 
 #. translators: 1: opening link tag, 2: closing link tag, 3: URL pattern.
 #: themes/default/templates/pages/signing-key.php:67
@@ -15351,10 +15651,26 @@ msgstr "تم رفض بطاقتك. يرجى التحقق من بيانات الد
 msgid "Your code is %s. It expires in %d minutes."
 msgstr "رمزك هو %s. تنتهي صلاحيته خلال %d دقيقة."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:49 src/ClientDashboard/ActionHandlers/SecurityManagement.php:99 src/ClientDashboard/ActionHandlers/SecurityManagement.php:154 src/ClientDashboard/ActionHandlers/SecurityManagement.php:181
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:199
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:431 src/ClientDashboard/ActionHandlers/SecurityManagement.php:56 src/ClientDashboard/ActionHandlers/SecurityManagement.php:106 src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:188 src/ClientDashboard/ActionHandlers/SecurityManagement.php:206 src/ClientDashboard/ActionHandlers/SecurityManagement.php:263
 msgid "Your current password is incorrect."
 msgstr "كلمة المرور الحالية غير صحيحة."
+
+#: themes/default/templates/pages/client/account.php:106
+msgid "Your data"
+msgstr "بياناتك"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:341
+msgid "Your data could not be exported. Please try again."
+msgstr "تعذّر تصدير بياناتك. يُرجى المحاولة مرة أخرى."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:314
+msgid "Your data is ready. The download starts now."
+msgstr "بياناتك جاهزة. يبدأ التنزيل الآن."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:229
+msgid "Your email address could not be changed. Please try again."
+msgstr "تعذّر تغيير عنوان بريدك الإلكتروني. يُرجى المحاولة مرة أخرى."
 
 #: src/Security/Authentication/UserAccounts.php:185
 msgid "Your email address could not be verified. Please try again."
@@ -15363,6 +15679,18 @@ msgstr "تعذر التحقق من بريدك الإلكتروني. يرجى ا�
 #: src/Auth/ActionHandlers/AuthManagement.php:603
 msgid "Your email address is already verified."
 msgstr "تم التحقق من بريدك الإلكتروني بالفعل."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:253
+msgid "Your email address was changed. We let your previous address know."
+msgstr "تم تغيير عنوان بريدك الإلكتروني. أبلغنا عنوانك السابق."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:279
+msgid "Your email preferences could not be saved. Please try again."
+msgstr "تعذّر حفظ تفضيلات بريدك الإلكتروني. يُرجى المحاولة مرة أخرى."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:278
+msgid "Your email preferences were saved."
+msgstr "تم حفظ تفضيلات بريدك الإلكتروني."
 
 #: src/Email/Templates/System/TestEmail.php:169
 msgid "Your email provider is configured correctly. This test email was delivered successfully."
@@ -15433,6 +15761,14 @@ msgstr "انتهت عضويتك في {{organization_name}}. لم يعد لديك
 msgid "Your name"
 msgstr "اسمك"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:305
+msgid "Your other sessions could not be signed out. Please try again."
+msgstr "تعذّر تسجيل الخروج من جلساتك الأخرى. يُرجى المحاولة مرة أخرى."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:279
+msgid "Your password could not be changed. Please try again."
+msgstr "تعذّر تغيير كلمة مرورك. يُرجى المحاولة مرة أخرى."
+
 #: src/Auth/ActionHandlers/AuthManagement.php:713
 msgid "Your password has been changed. Sign in with the new one."
 msgstr "تم تغيير كلمة المرور. سجّل الدخول بالكلمة الجديدة."
@@ -15456,6 +15792,10 @@ msgstr "تم تغيير كلمة المرور بنجاح في {{changed_at}}."
 msgid "Your password was changed successfully. If this was not you, contact support immediately."
 msgstr "تم تغيير كلمة المرور بنجاح. إذا لم تكن أنت، فتواصل مع الدعم فورًا."
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:287
+msgid "Your password was changed. You were signed out on every other device."
+msgstr "تم تغيير كلمة مرورك. تم تسجيل خروجك من جميع الأجهزة الأخرى."
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:141
 msgid "Your payment for {{product}} is confirmed. Here is your license; the license document is attached. Please keep them safe."
 msgstr "تم تأكيد دفعتك لـ {{product}}. إليك ترخيصك؛ ومستند الترخيص مرفق. يرجى الاحتفاظ بهما في مكان آمن."
@@ -15471,6 +15811,18 @@ msgstr "تعذرت معالجة دفعتك بمبلغ {{amount}} {{currency}} ب
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:27
 msgid "Your payment receipt is being reviewed. Your license follows once the payment is confirmed."
 msgstr "يجري مراجعة إيصال الدفع. سيصلك الترخيص بعد تأكيد الدفع."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:109
+msgid "Your profile could not be saved. Please try again."
+msgstr "تعذّر حفظ ملفك الشخصي. يُرجى المحاولة مرة أخرى."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:112
+msgid "Your profile was saved."
+msgstr "تم حفظ ملفك الشخصي."
+
+#: themes/default/templates/pages/client/account.php:26
+msgid "Your profile, the emails you receive, and your data."
+msgstr "ملفك الشخصي، ورسائل البريد الإلكتروني التي تتلقاها، وبياناتك."
 
 #: src/Email/Templates/Purchases/PurchaseRequestRejectedEmail.php:26
 #, php-format
@@ -15888,7 +16240,7 @@ msgid "{{token}} or value"
 msgstr "{{token}} أو قيمة"
 
 #. translators: %s: year, app name
-#: src/Email/Templates/EmailTemplate.php:892
+#: src/Email/Templates/EmailTemplate.php:893
 #, php-format
 msgid "© %s. All rights reserved."
 msgstr "© %s. جميع الحقوق محفوظة."

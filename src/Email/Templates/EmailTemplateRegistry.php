@@ -41,6 +41,7 @@ use SmartLicenseServer\Email\Templates\Purchases\PurchaseRequestReceivedEmail;
 use SmartLicenseServer\Email\Templates\Purchases\PurchaseRequestRejectedEmail;
 use SmartLicenseServer\Email\Templates\Monetization\PaymentReceivedEmail;
 use SmartLicenseServer\Email\Templates\Monetization\SubscriptionCancelledEmail;
+use SmartLicenseServer\Email\Templates\Security\EmailChangedEmail;
 use SmartLicenseServer\Email\Templates\Security\EmailOtpEmail;
 use SmartLicenseServer\Email\Templates\Security\PasskeyAddedEmail;
 use SmartLicenseServer\Email\Templates\Security\PasskeyRemovedEmail;
@@ -126,6 +127,7 @@ class EmailTemplateRegistry {
 
 			// Security
 			EmailOtpEmail::class,
+			EmailChangedEmail::class,
 			PasskeyAddedEmail::class,
 			PasskeyRemovedEmail::class,
 			TwoFactorEnabledEmail::class,

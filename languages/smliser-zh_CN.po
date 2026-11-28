@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:17+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: 中文（中国）\n"
 "Language: zh_CN\n"
@@ -87,7 +87,7 @@ msgstr " 可能是由于重复的文件条目"
 msgid " on your account. If this was not you, secure your account now."
 msgstr " 在您的账户上。如果这不是您本人操作，请立即保护您的账户。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:236
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:243
 msgid " two-factor authentication is disabled."
 msgstr " 双重身份验证已禁用。"
 
@@ -332,12 +332,12 @@ msgstr "%d / %d 个计划任务已逾期超过 %d 分钟：%s。"
 msgid "%d page(s) rendered."
 msgstr "已渲染 %d 页。"
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 #, php-format
 msgid "%d recovery codes remain."
 msgstr "还剩 %d 个恢复码。"
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 #, php-format
 msgid "%d registered"
 msgstr "已注册 %d 个"
@@ -859,7 +859,7 @@ msgstr "。决定将通过电子邮件发送给买家。被拒绝的请求以后
 msgid ". Their packages are refused without a valid key."
 msgstr "。没有有效密钥时将拒绝它们的软件包。"
 
-#: src/Email/Templates/EmailTemplate.php:281 src/Email/Templates/EmailTemplate.php:744
+#: src/Email/Templates/EmailTemplate.php:282 src/Email/Templates/EmailTemplate.php:745
 msgid "0 2px 8px rgba(0,0,0,0.06)"
 msgstr "0 2px 8px rgba(0,0,0,0.06)"
 
@@ -867,7 +867,7 @@ msgstr "0 2px 8px rgba(0,0,0,0.06)"
 msgid "0 4px 12px rgba(0, 0, 0, 0.05)"
 msgstr "0 4px 12px rgba(0, 0, 0, 0.05)"
 
-#: themes/default/templates/pages/client/security.php:61
+#: themes/default/templates/pages/client/security.php:97
 msgid "2Factor Authentication setup"
 msgstr "双重身份验证设置"
 
@@ -926,11 +926,19 @@ msgstr "一位买家发送了付款凭证。请核实付款，然后批准请求
 msgid "A buyer sent a payment receipt. Review it to issue the license."
 msgstr "一位买家发送了付款凭证。请审核以签发许可证。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:218
+#: themes/default/templates/pages/client/account.php:54
+msgid "A code is sent to the new address, and the change is made only once you enter it. Licenses already linked to your account stay linked; licenses issued to the new address are linked once it is verified. Your previous address is told about the change."
+msgstr "验证码会发送到新地址，只有输入验证码后才会更改。已关联到您账户的许可证保持关联；签发给新地址的许可证会在其验证后关联。您之前的地址会收到更改通知。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:150
+msgid "A code was sent a moment ago. Wait a minute before asking for another."
+msgstr "刚刚已发送验证码。请等待一分钟后再请求。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:225
 msgid "A confirmation code could not be sent. Please try again."
 msgstr "无法发送确认码。请重试。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:220
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:227
 msgid "A confirmation code was sent to your verified email address."
 msgstr "确认码已发送到您已验证的电子邮件地址。"
 
@@ -1020,6 +1028,14 @@ msgstr "您的应用新版本现已上线。"
 msgid "A new version of {{app_name}} is now available. Your active license entitles you to this update."
 msgstr "{{app_name}} 的新版本现已推出。您的有效许可证使您有权获得此更新。"
 
+#: src/Email/EmailPreferences.php:95
+msgid "A notice each time a license is activated on a site or removed from one."
+msgstr "每当许可证在网站上激活或从网站移除时发送通知。"
+
+#: src/Email/EmailPreferences.php:99
+msgid "A notice when an app you hold a license for has a new version."
+msgstr "当您持有许可证的应用发布新版本时发送通知。"
+
 #: src/Exceptions/RequestException.php:59
 msgid "A parameter has an unexpected type or format."
 msgstr "参数的类型或格式不符合预期。"
@@ -1092,7 +1108,13 @@ msgstr "访问许可证文档文件需要有效的令牌。"
 msgid "A value written to the \"%s\" cache adapter in one request was gone in the next."
 msgstr "在一个请求中写入“%s”缓存适配器的值在下一个请求中消失了。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:69
+#. translators: %s: the new email address.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:175
+#, php-format
+msgid "A verification code was sent to %s. Enter it to finish the change."
+msgstr "验证码已发送到 %s。输入验证码以完成更改。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:76
 msgid "A verification code was sent to your email address."
 msgstr "验证码已发送到您的电子邮件地址。"
 
@@ -1250,7 +1272,7 @@ msgstr "访问/下载比："
 msgid "Accesses"
 msgstr "访问次数"
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: src/ClientDashboard/ContentHandlers/AccountPage.php:56 src/ClientDashboard/ContentHandlers/AccountPage.php:129 themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr "账户"
 
@@ -1270,11 +1292,11 @@ msgstr "账户类型"
 msgid "Account created successfully! Check your email to verify your account."
 msgstr "账户创建成功！请查收电子邮件以验证您的账户。"
 
-#: src/ClientDashboard/ContentHandlers/SecurityPage.php:118 themes/default/templates/pages/client/security.php:27
+#: src/ClientDashboard/ContentHandlers/SecurityPage.php:122 themes/default/templates/pages/client/security.php:29
 msgid "Account security"
 msgstr "账户安全"
 
-#: themes/default/templates/pages/client/security.php:64
+#: themes/default/templates/pages/client/security.php:100
 msgid "Account security methods"
 msgstr "账户安全方式"
 
@@ -1298,7 +1320,7 @@ msgstr "账户概览"
 msgid "Acting as"
 msgstr "当前身份"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:206 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:213 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
 msgid "Action"
 msgstr "操作"
 
@@ -1412,7 +1434,7 @@ msgstr "添加定价层级"
 msgid "Add a note"
 msgstr "添加备注"
 
-#: themes/default/templates/pages/client/security.php:56
+#: themes/default/templates/pages/client/security.php:92
 msgid "Add a passkey"
 msgstr "添加通行密钥"
 
@@ -1482,7 +1504,7 @@ msgstr "附加检查发现 %s 个问题。"
 msgid "Additional verification could not be started. Please try again."
 msgstr "无法开始附加验证。请重试。"
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "管理"
 
@@ -1667,7 +1689,7 @@ msgstr "名为“%s”的构件已存在。请编辑该构件以替换它，或�
 msgid "An asset named \"%s\" already exists."
 msgstr "名为“%s”的资源已存在。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:102
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:109
 msgid "An authenticator app is already enabled."
 msgstr "已启用身份验证器应用。"
 
@@ -1780,6 +1802,10 @@ msgstr "分析日志"
 #: src/Core/UserAgent.php:662
 msgid "Android WebView"
 msgstr "Android WebView"
+
+#: src/Email/EmailPreferences.php:106
+msgid "Announcements"
+msgstr "公告"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:954
 #, php-format
@@ -2100,15 +2126,15 @@ msgstr "分配角色"
 msgid "Asynchronously appends a license activity entry to the activity log."
 msgstr "异步向活动日志追加一条许可证活动记录。"
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:117
-msgid "Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled."
-msgstr "在添加、移除、启用或禁用通行密钥或双重验证方式时，异步通知用户。"
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:136
+msgid "Asynchronously notify a user when their password or email address changes, or a passkey or two-factor method is added, removed, enabled or disabled."
+msgstr "当用户的密码或电子邮件地址更改，或添加、移除、启用或停用通行密钥或双重验证方式时，异步通知该用户。"
 
 #: src/Background/Jobs/Accounts/MfaResetEmailJob.php:67
 msgid "Asynchronously send a notification email when 2FA is reset by an administrator."
 msgstr "在管理员重置双重验证时异步发送通知邮件。"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:125
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:140
 msgid "Asynchronously send a one-time sign-in or two-factor confirmation code by email."
 msgstr "异步通过电子邮件发送一次性登录码或双重验证确认码。"
 
@@ -2168,15 +2194,15 @@ msgstr "因角色无效而拒绝身份验证。"
 msgid "Authentication is required for this request but was not provided."
 msgstr "此请求需要身份验证，但未提供。"
 
-#: themes/default/templates/pages/client/security.php:66 themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:102 themes/default/templates/pages/client/security.php:152
 msgid "Authenticator app"
 msgstr "身份验证器应用"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:152
 msgid "Authenticator app enabled. Save these one-time recovery codes now: "
 msgstr "身份验证器应用已启用。请立即保存这些一次性恢复码： "
 
-#: themes/default/templates/pages/client/security.php:146
+#: themes/default/templates/pages/client/security.php:182
 msgid "Authenticator code"
 msgstr "身份验证器验证码"
 
@@ -2184,11 +2210,11 @@ msgstr "身份验证器验证码"
 msgid "Authenticator code or recovery code"
 msgstr "身份验证器验证码或恢复码"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:114
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:121
 msgid "Authenticator enrollment could not be started. Please try again."
 msgstr "无法开始注册身份验证器。请重试。"
 
-#: themes/default/templates/pages/client/security.php:125
+#: themes/default/templates/pages/client/security.php:161
 msgid "Authenticator or recovery code"
 msgstr "身份验证器或恢复码"
 
@@ -2598,7 +2624,7 @@ msgstr "更改托管应用状态"
 msgid "Change maintenance"
 msgstr "更改维护"
 
-#: themes/default/templates/pages/auth/reset-password.php:33
+#: themes/default/templates/pages/auth/reset-password.php:33 themes/default/templates/pages/client/security.php:51
 msgid "Change password"
 msgstr "更改密码"
 
@@ -2625,6 +2651,10 @@ msgstr "更新日志"
 #: templates/admin/contents/options/routing.php:30
 msgid "Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated."
 msgstr "更改这些值将更新您托管应用的公共 URL。与用户共享的现有链接在更新之前可能会失效。"
+
+#: themes/default/templates/pages/client/security.php:42
+msgid "Changing your password signs you out on every other device. This one stays signed in, and you get an email about the change."
+msgstr "更改密码会让您在其他所有设备上退出登录。此设备保持登录，并且您会收到一封有关此更改的电子邮件。"
 
 #: src/Environments/Application/Installation/InstallerPage.php:284
 msgid "Character set"
@@ -2746,11 +2776,15 @@ msgstr "选择文件"
 msgid "Choose a new password"
 msgstr "设置新密码"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:272
+msgid "Choose a new password that is different from your current one."
+msgstr "请选择与当前密码不同的新密码。"
+
 #: src/Security/Organizations/OrganizationInvitations.php:112
 msgid "Choose a role for the person you invite."
 msgstr "为您邀请的人选择角色。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:196
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:203
 msgid "Choose a supported security factor."
 msgstr "请选择受支持的安全因素。"
 
@@ -2766,7 +2800,7 @@ msgstr "请选择此应用所有者的一个活跃服务账户。"
 msgid "Choose files"
 msgstr "选择文件"
 
-#: themes/default/templates/pages/client/security.php:28
+#: themes/default/templates/pages/client/security.php:30
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr "选择您的登录方式以及账户的保护方式。每种方式在启用前都会经过验证。"
 
@@ -2794,6 +2828,10 @@ msgstr "选择安装语言。它也会保存为站点语言和您账户的语言
 #: src/Monetization/Controller.php:65
 msgid "Choose the license term"
 msgstr "选择许可证期限"
+
+#: themes/default/templates/pages/client/account.php:86
+msgid "Choose the optional emails you receive. Emails about your account security, purchases, payments, license keys and invitations are always sent."
+msgstr "选择您要接收的可选电子邮件。有关账户安全、购买、付款、许可证密钥和邀请的电子邮件始终会发送。"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:99
 msgid "Choose the theme package (.zip) to upload."
@@ -2835,7 +2873,7 @@ msgstr "清除所选头像图片"
 msgid "Clear selected image"
 msgstr "清除所选图片"
 
-#: src/Email/Templates/EmailTemplate.php:649 templates/admin/contents/options/email/editor.php:401
+#: src/Email/Templates/EmailTemplate.php:650 templates/admin/contents/options/email/editor.php:401
 msgid "Click Here"
 msgstr "点击此处"
 
@@ -3032,6 +3070,10 @@ msgstr "确认移除成员"
 msgid "Confirm Password"
 msgstr "确认密码"
 
+#: themes/default/templates/pages/client/account.php:65
+msgid "Confirm new email address"
+msgstr "确认新电子邮件地址"
+
 #: src/Admin/ContentHandlers/AccessControlPage.php:218
 msgid "Confirm passowrd"
 msgstr "确认密码"
@@ -3043,6 +3085,14 @@ msgstr "确认密码"
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
 msgstr "确认这是您的电子邮件地址，以完成账户设置。"
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:124
+msgid "Confirm your new email address"
+msgstr "确认您的新电子邮件地址"
+
+#: src/Email/EmailPreferences.php:103
+msgid "Confirmations when one of your hosted apps is published or a new version is uploaded."
+msgstr "当您托管的应用发布或上传新版本时发送确认。"
 
 #: src/Exceptions/FileRequestException.php:161 src/Exceptions/RequestException.php:170
 msgid "Conflict"
@@ -3481,8 +3531,9 @@ msgstr "当前维护"
 msgid "Current pagination number."
 msgstr "当前页码。"
 
-#: themes/default/templates/pages/client/security.php:45 themes/default/templates/pages/client/security.php:55 themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:90
-#: themes/default/templates/pages/client/security.php:98 themes/default/templates/pages/client/security.php:124 themes/default/templates/pages/client/security.php:153
+#: themes/default/templates/pages/client/account.php:76 themes/default/templates/pages/client/account.php:112 themes/default/templates/pages/client/account.php:144 themes/default/templates/pages/client/security.php:47
+#: themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:91 themes/default/templates/pages/client/security.php:117 themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:134 themes/default/templates/pages/client/security.php:160 themes/default/templates/pages/client/security.php:189
 msgid "Current password"
 msgstr "当前密码"
 
@@ -3721,6 +3772,10 @@ msgstr "删除 %s？此操作无法撤消。"
 msgid "Delete License"
 msgstr "删除许可证"
 
+#: themes/default/templates/pages/client/account.php:121 themes/default/templates/pages/client/account.php:136
+msgid "Delete account"
+msgstr "删除账户"
+
 #: src/Security/Permission/Capability.php:46
 msgid "Delete app monetization"
 msgstr "删除应用变现"
@@ -3769,6 +3824,10 @@ msgstr "删除许可证"
 #: src/Security/Permission/Capability.php:50
 msgid "Delete monetization pricing tiers"
 msgstr "删除变现定价层级"
+
+#: themes/default/templates/pages/client/account.php:147
+msgid "Delete my account"
+msgstr "删除我的账户"
 
 #: src/Security/Permission/Capability.php:94
 msgid "Delete organizations"
@@ -3837,6 +3896,10 @@ msgstr "永久删除此许可证。"
 msgid "Delete users"
 msgstr "删除用户"
 
+#: themes/default/templates/pages/client/account.php:135
+msgid "Delete your account for good? This cannot be undone."
+msgstr "永久删除您的账户？此操作无法撤销。"
+
 #: assets/js/admin/core.js:1090
 msgid "Deleted"
 msgstr "已删除"
@@ -3880,6 +3943,10 @@ msgstr "删除此请求及其备注和凭证。许可证 #%d 将保留；请在�
 #: templates/admin/contents/license/purchase-request.php:206
 msgid "Deletes this request, its notes and its receipt. The buyer is not told."
 msgstr "删除此请求及其备注和凭证。不会通知买家。"
+
+#: themes/default/templates/pages/client/account.php:122
+msgid "Deleting your account signs you out and removes your profile, preferences, sign-in methods and organization memberships for good. Licenses and purchases are kept for the seller's records, without the link to your account, and are linked again if you sign up later with the same verified email address."
+msgstr "删除账户会让您退出登录，并永久移除您的个人资料、偏好设置、登录方式和组织成员身份。许可证和购买记录会为卖家存档保留，但不再与您的账户关联；如果您以后使用同一已验证的电子邮件地址注册，它们会重新关联。"
 
 #: src/Email/Templates/System/TestEmail.php:67 src/Email/Templates/System/TestEmail.php:186
 msgid "Delivered To"
@@ -3931,7 +3998,7 @@ msgstr "开发者将此密钥放入他们的应用中；应用随后只接受此
 msgid "Development"
 msgstr "开发"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:209
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:216
 msgid "Device"
 msgstr "设备"
 
@@ -3953,15 +4020,15 @@ msgstr "禁用"
 msgid "Disable %s? It stops loading from the next request on."
 msgstr "禁用 %s？它将从下一个请求开始停止加载。"
 
-#: themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:162
 msgid "Disable authenticator app"
 msgstr "禁用身份验证器应用"
 
-#: themes/default/templates/pages/client/security.php:83
+#: themes/default/templates/pages/client/security.php:119
 msgid "Disable email codes"
 msgstr "禁用邮件验证码"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:109
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:123
 msgid "Disable email two-factor authentication"
 msgstr "禁用电子邮件双重验证"
 
@@ -4001,6 +4068,10 @@ msgstr "关闭此提示"
 #: src/Events/Jobs/AsyncEventJob.php:56
 msgid "Dispatches an event asynchronously in the background."
 msgstr "在后台异步分派事件。"
+
+#: themes/default/templates/pages/client/account.php:41
+msgid "Display name"
+msgstr "显示名称"
 
 #: templates/admin/contents/license/view.php:159
 msgid "Document Download URL(public)"
@@ -4093,6 +4164,10 @@ msgstr "下载 URL"
 msgid "Download URL:"
 msgstr "下载 URL："
 
+#: themes/default/templates/pages/client/account.php:107
+msgid "Download a JSON file with your profile, preferences, licenses, purchases, organizations and apps. It never contains passwords, keys or other secrets."
+msgstr "下载包含您的个人资料、偏好设置、许可证、购买记录、组织和应用的 JSON 文件。其中绝不包含密码、密钥或其他机密信息。"
+
 #: src/Security/Permission/Capability.php:66
 msgid "Download application packages"
 msgstr "下载应用程序包"
@@ -4105,6 +4180,10 @@ msgstr "下载构件"
 #, javascript-format
 msgid "Download failed: %1$s %2$s (%3$s)"
 msgstr "下载失败：%1$s %2$s（%3$s）"
+
+#: themes/default/templates/pages/client/account.php:115
+msgid "Download my data"
+msgstr "下载我的数据"
 
 #: src/Utils/functions/functions.php:131
 msgid "Download token cannot be empty"
@@ -4344,6 +4423,10 @@ msgstr "电子邮件"
 msgid "Email Address"
 msgstr "电子邮件地址"
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:59
+msgid "Email Address Changed"
+msgstr "电子邮件地址已更改"
+
 #: src/Email/Templates/System/TestEmail.php:61 src/Email/Templates/System/TestEmail.php:161
 msgid "Email Configuration Test"
 msgstr "电子邮件配置测试"
@@ -4372,9 +4455,13 @@ msgstr "邮件模板"
 msgid "Email Verification Code"
 msgstr "电子邮件验证码"
 
-#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/organization.php:76
+#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/account.php:49 themes/default/templates/pages/client/organization.php:76
 msgid "Email address"
 msgstr "电子邮件地址"
+
+#: src/Email/Templates/Security/EmailChangedEmail.php:47
+msgid "Email address changed"
+msgstr "电子邮件地址已更改"
 
 #: templates/admin/contents/options/email/index.php:122
 msgid "Email address to deliver the test message to."
@@ -4388,17 +4475,21 @@ msgstr "未提供电子邮件地址。"
 msgid "Email and password are required."
 msgstr "电子邮件和密码为必填项。"
 
-#: themes/default/templates/pages/client/security.php:65
+#: themes/default/templates/pages/client/security.php:101
 msgid "Email codes"
 msgstr "邮件验证码"
 
-#: themes/default/templates/pages/client/security.php:82
+#: themes/default/templates/pages/client/security.php:118
 msgid "Email confirmation code"
 msgstr "电子邮件确认码"
 
 #: src/Environments/WordPress/IdentityService.php:486
 msgid "Email is required."
 msgstr "电子邮件为必填项。"
+
+#: themes/default/templates/pages/client/account.php:85
+msgid "Email notifications"
+msgstr "电子邮件通知"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:100
 msgid "Email someone a link to join an organization."
@@ -4412,19 +4503,19 @@ msgstr "邮件模板键无效。"
 msgid "Email template key is required."
 msgstr "邮件模板键为必填项。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:89
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:96
 msgid "Email two-factor authentication is enabled."
 msgstr "电子邮件双重验证已启用。"
 
-#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:108
+#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:144
 msgid "Email verification code"
 msgstr "电子邮件验证码"
 
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 msgid "Email verification codes"
 msgstr "电子邮件验证码"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:55
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:62
 msgid "Email verification is already enabled."
 msgstr "电子邮件验证已启用。"
 
@@ -4454,7 +4545,7 @@ msgstr "启用"
 msgid "Enable \"%s\" %s?"
 msgstr "启用%2$s“%1$s”？"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:108
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:122
 msgid "Enable email two-factor authentication"
 msgstr "启用电子邮件双重验证"
 
@@ -4479,7 +4570,7 @@ msgstr "安装后启用此扩展？它将从下一个请求开始加载。"
 msgid "Enable this template"
 msgstr "启用此模板"
 
-#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 #: assets/js/admin/email-editor.js:995
 msgid "Enabled"
 msgstr "已启用"
@@ -4594,6 +4685,12 @@ msgstr "输入%s状态"
 msgid "Enter the URL of the %s author profile."
 msgstr "输入%s作者主页的 URL。"
 
+#. translators: %s: the new email address.
+#: themes/default/templates/pages/client/account.php:60
+#, php-format
+msgid "Enter the code sent to %s."
+msgstr "输入发送到 %s 的验证码。"
+
 #: src/Admin/ContentHandlers/LicensePage.php:419
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "输入允许安装此许可证的最大域名数。"
@@ -4607,6 +4704,10 @@ msgstr "输入%s作者的名称。"
 msgid "Enter the name the license is issued to."
 msgstr "输入许可证签发对象的名称。"
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:101
+msgid "Enter the name to show on your account."
+msgstr "输入要在您的账户上显示的名称。"
+
 #: src/Security/Organizations/OrganizationService.php:421
 msgid "Enter the organization's name."
 msgstr "输入组织名称。"
@@ -4615,7 +4716,7 @@ msgstr "输入组织名称。"
 msgid "Enter the price buyers pay for this tier."
 msgstr "输入买家为此层级支付的价格。"
 
-#: themes/default/templates/pages/client/security.php:137
+#: themes/default/templates/pages/client/security.php:173
 msgid "Enter the setup key manually"
 msgstr "手动输入设置密钥"
 
@@ -5096,7 +5197,7 @@ msgstr "忘记密码？"
 msgid "Form fields"
 msgstr "表单字段"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:281
 msgid "Form slug or action path is required."
 msgstr "需要表单别名或操作路径。"
 
@@ -5337,7 +5438,7 @@ msgid "Hi {{buyer_name}},"
 msgstr "{{buyer_name}}，您好："
 
 #. translators: {{display_name}} is replaced with the user's name; keep it as is.
-#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:189
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:196
 msgid "Hi {{display_name}},"
 msgstr "{{display_name}}，您好："
 
@@ -5383,7 +5484,7 @@ msgstr "命中率"
 msgid "Hits"
 msgstr "命中"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "首页"
 
@@ -5457,7 +5558,7 @@ msgstr "ID："
 msgid "IP Address"
 msgstr "IP 地址"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:208
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:215
 msgid "IP address"
 msgstr "IP 地址"
 
@@ -5514,7 +5615,7 @@ msgstr "如果刷新页面后此数字仍然偏高，可能有工作进程在任
 msgid "If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP)."
 msgstr "如果这是您的站点，请开始设置。这需要几分钟，您需要数据库详细信息以及对主机文件的访问权限（文件管理器或 FTP）。"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:232
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:239
 msgid "If this was you, no action is needed. Questions? Contact us at {{support_email}}."
 msgstr "如果是您本人操作，则无需任何操作。有疑问？请通过 {{support_email}} 联系我们。"
 
@@ -6113,6 +6214,14 @@ msgstr "已签发"
 msgid "Issue licenses"
 msgstr "签发许可证"
 
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is not verified yet."
+msgstr "尚未验证。"
+
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is verified."
+msgstr "已验证。"
+
 #: src/Monetization/Controller.php:59
 msgid "Item type is required"
 msgstr "项目类型为必填项"
@@ -6191,11 +6300,11 @@ msgstr "请保密"
 msgid "Keep me signed in for 7 days"
 msgstr "保持登录 7 天"
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 msgid "Keep them somewhere private."
 msgstr "请妥善保管在私密的地方。"
 
-#: themes/default/templates/pages/client/security.php:138
+#: themes/default/templates/pages/client/security.php:174
 msgid "Keep this key private. Anyone with it can generate your sign-in codes."
 msgstr "请妥善保管此密钥。任何拥有它的人都可以生成您的登录验证码。"
 
@@ -6448,6 +6557,14 @@ msgstr "许可证期限："
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "License URI:"
 msgstr "许可证 URI："
+
+#: src/Email/EmailPreferences.php:94
+msgid "License activity"
+msgstr "许可证活动"
+
+#: src/Email/EmailPreferences.php:90
+msgid "License expiry reminders"
+msgstr "许可证到期提醒"
 
 #: src/Admin/ContentHandlers/LicensePage.php:456
 msgid "License features"
@@ -7192,6 +7309,10 @@ msgstr "新用户注册通知"
 msgid "New Version"
 msgstr "新版本"
 
+#: src/Email/EmailPreferences.php:98
+msgid "New app versions"
+msgstr "应用新版本"
+
 #: templates/admin/contents/system/maintenance.php:114
 msgid "New bypass link"
 msgstr "新的绕行链接"
@@ -7200,12 +7321,16 @@ msgstr "新的绕行链接"
 msgid "New bypass link made; earlier links stop working."
 msgstr "已生成新的绕行链接；之前的链接将失效。"
 
+#: themes/default/templates/pages/client/account.php:72
+msgid "New email address"
+msgstr "新电子邮件地址"
+
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
 msgstr "%s 的新名称"
 
-#: themes/default/templates/pages/auth/reset-password.php:25
+#: themes/default/templates/pages/auth/reset-password.php:25 themes/default/templates/pages/client/security.php:48
 msgid "New password"
 msgstr "新密码"
 
@@ -7221,6 +7346,10 @@ msgstr "有新的购买请求 #%d 待审核"
 #: themes/default/templates/pages/client/app.php:95
 msgid "New version"
 msgstr "新版本"
+
+#: src/Email/EmailPreferences.php:107
+msgid "News and messages the site sends to its customers."
+msgstr "网站发送给客户的新闻和消息。"
 
 #: themes/default/templates/partials/repository/pagination.php:22 assets/js/admin/modules.js:419
 msgid "Next"
@@ -7473,7 +7602,7 @@ msgstr "还没有组织"
 msgid "No parameters."
 msgstr "无参数。"
 
-#: themes/default/templates/pages/client/security.php:36
+#: themes/default/templates/pages/client/security.php:72
 msgid "No passkeys are registered yet."
 msgstr "尚未注册任何通行密钥。"
 
@@ -7618,7 +7747,7 @@ msgstr "无（许可证由管理员签发）"
 msgid "None given"
 msgstr "未提供"
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 msgid "None registered"
 msgstr "未注册"
 
@@ -7630,7 +7759,7 @@ msgstr "暂无。"
 msgid "None. Every app type can be uploaded without a key."
 msgstr "无。所有应用类型都可以在没有密钥的情况下上传。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1103
 msgid "Not Allowed"
 msgstr "不允许"
 
@@ -7654,11 +7783,11 @@ msgstr "不是应用文件"
 msgid "Not available"
 msgstr "不可用"
 
-#: themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 msgid "Not enabled"
 msgstr "未启用"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1104 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "未找到"
 
@@ -7909,6 +8038,10 @@ msgstr "重新向访客开放站点？"
 msgid "Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now."
 msgstr "在另一个浏览器中打开此链接，以便在访客等待时使用站点。请保密；它只会显示这一次。"
 
+#: themes/default/templates/pages/client/account.php:32 themes/default/templates/pages/client/security.php:36
+msgid "Open your WordPress profile"
+msgstr "打开您的 WordPress 个人资料"
+
 #. translators: 1: opening <strong> tag, 2: closing <strong> tag
 #: src/Environments/Application/Installation/InstallerPage.php:115
 #, php-format
@@ -7992,7 +8125,7 @@ msgid "Options"
 msgstr "选项"
 
 #. translators: 1: opening link tag, 2: closing link tag.
-#: themes/default/templates/pages/client/security.php:135
+#: themes/default/templates/pages/client/security.php:171
 #, php-format
 msgid "Or %1$sopen the authenticator app%2$s on this device."
 msgstr "或在此设备上%1$s打开身份验证器应用%2$s。"
@@ -8196,11 +8329,11 @@ msgstr "已移除通行密钥"
 msgid "Passkey added"
 msgstr "已添加通行密钥"
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "Passkey name"
 msgstr "通行密钥名称"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:173
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:180
 msgid "Passkey registered successfully."
 msgstr "通行密钥注册成功。"
 
@@ -8208,11 +8341,11 @@ msgstr "通行密钥注册成功。"
 msgid "Passkey registered."
 msgstr "通行密钥已注册。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:168
 msgid "Passkey registration could not be started."
 msgstr "无法开始注册通行密钥。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:170
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:177
 msgid "Passkey registration failed or expired. Please try again."
 msgstr "通行密钥注册失败或已过期。请重试。"
 
@@ -8224,7 +8357,7 @@ msgstr "通行密钥注册失败。"
 msgid "Passkey removed"
 msgstr "已移除通行密钥"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:187
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:194
 msgid "Passkey removed."
 msgstr "通行密钥已移除。"
 
@@ -8244,12 +8377,12 @@ msgstr "通行密钥登录失败。"
 msgid "Passkey sign-in was cancelled."
 msgstr "通行密钥登录已取消。"
 
-#: themes/default/templates/pages/client/security.php:32
+#: themes/default/templates/pages/client/security.php:68
 msgid "Passkeys"
 msgstr "通行密钥"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:375
-#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34
+#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34 themes/default/templates/pages/client/security.php:42
 msgid "Password"
 msgstr "密码"
 
@@ -8439,7 +8572,8 @@ msgstr "请保留此邮件作为收据。如对此付款有任何疑问，请通
 msgid "Please paste or type some JSON."
 msgstr "请粘贴或输入一些 JSON。"
 
-#: src/Auth/ActionHandlers/AuthManagement.php:646 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54 src/Security/RequestController.php:201
+#: src/Auth/ActionHandlers/AuthManagement.php:646 src/ClientDashboard/ActionHandlers/AccountManagement.php:141 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54
+#: src/Security/RequestController.php:201
 msgid "Please provide a valid email address."
 msgstr "请提供有效的电子邮件地址。"
 
@@ -8714,6 +8848,10 @@ msgstr "产品"
 msgid "Production"
 msgstr "生产"
 
+#: themes/default/templates/pages/client/account.php:37
+msgid "Profile"
+msgstr "个人资料"
+
 #: src/Core/Process/Process.php:90
 msgid "Programs cannot be started from this PHP (proc_open is unavailable)."
 msgstr "此 PHP 无法启动程序（proc_open 不可用）。"
@@ -8964,7 +9102,7 @@ msgid "Receipt pages"
 msgstr "凭证页面"
 
 #. translators: %s: email address.
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 #, php-format
 msgid "Receive a one-time code at %s when you sign in."
 msgstr "登录时在 %s 接收一次性验证码。"
@@ -9101,6 +9239,10 @@ msgstr "释放卡住的任务"
 msgid "Released %d stale job(s) back to the queue."
 msgstr "已将 %d 个卡住的任务放回队列。"
 
+#: src/Email/EmailPreferences.php:91
+msgid "Reminders before a license expires, and a notice when it has expired."
+msgstr "许可证到期前的提醒，以及到期后的通知。"
+
 #: src/Monetization/Providers/RemoteProvider.php:43
 msgid "Remote store"
 msgstr "远程存储"
@@ -9128,7 +9270,7 @@ msgstr "删除区块"
 msgid "Remove members from organizations"
 msgstr "从组织中移除成员"
 
-#: themes/default/templates/pages/client/security.php:46
+#: themes/default/templates/pages/client/security.php:82
 msgid "Remove passkey"
 msgstr "删除通行密钥"
 
@@ -9700,6 +9842,14 @@ msgstr "保存模板"
 msgid "Save changes"
 msgstr "保存更改"
 
+#: themes/default/templates/pages/client/account.php:101
+msgid "Save email preferences"
+msgstr "保存电子邮件偏好"
+
+#: themes/default/templates/pages/client/account.php:44
+msgid "Save profile"
+msgstr "保存个人资料"
+
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr "保存站点地址"
@@ -9730,15 +9880,15 @@ msgstr "保存许可证元数据“%s”失败：%s"
 msgid "Saving..."
 msgstr "正在保存..."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:117
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:124
 msgid "Scan the secret in your authenticator app, then enter its current code."
 msgstr "在身份验证器应用中扫描密钥，然后输入其当前验证码。"
 
-#: themes/default/templates/pages/client/security.php:131
+#: themes/default/templates/pages/client/security.php:167
 msgid "Scan this QR code with your authenticator app"
 msgstr "使用身份验证器应用扫描此二维码"
 
-#: themes/default/templates/pages/client/security.php:132
+#: themes/default/templates/pages/client/security.php:168
 msgid "Scan this code with your authenticator app."
 msgstr "使用身份验证器应用扫描此代码。"
 
@@ -9985,7 +10135,7 @@ msgstr "所选文件"
 msgid "Send Email Verification"
 msgstr "发送邮箱验证"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:118
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:133
 msgid "Send Email Verification Code"
 msgstr "发送邮箱验证码"
 
@@ -10005,7 +10155,7 @@ msgstr "发送密码重置邮件"
 msgid "Send Purchase Request Email"
 msgstr "发送购买请求邮件"
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:110
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:129
 msgid "Send Security Notice Email"
 msgstr "发送安全通知邮件"
 
@@ -10041,11 +10191,11 @@ msgstr "重新发送"
 msgid "Send bulk messages"
 msgstr "发送批量消息"
 
-#: themes/default/templates/pages/client/security.php:91
+#: themes/default/templates/pages/client/security.php:127
 msgid "Send code to disable"
 msgstr "发送停用验证码"
 
-#: themes/default/templates/pages/client/security.php:99
+#: themes/default/templates/pages/client/security.php:135
 msgid "Send enrollment code"
 msgstr "发送注册验证码"
 
@@ -10069,6 +10219,10 @@ msgstr "发送链接"
 #, php-format
 msgid "Send the site secret for this domain in the %s header."
 msgstr "在 %s 请求头中发送此域名的站点密钥。"
+
+#: themes/default/templates/pages/client/account.php:79
+msgid "Send verification code"
+msgstr "发送验证码"
 
 #: src/Email/Providers/AmazonSESProvider.php:126 src/Email/Providers/ResendProvider.php:73
 msgid "Sender display name. Leave blank to use the global from name"
@@ -10210,6 +10364,10 @@ msgstr "应用的新版本上传时发送给应用所有者。"
 msgid "Sent to the app owner when the status of their application is changed by an administrator."
 msgstr "管理员更改应用状态时发送给应用所有者。"
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:63
+msgid "Sent to the previous address after a user changes the email address of their account."
+msgstr "在用户更改其账户的电子邮件地址后发送到之前的地址。"
+
 #: src/Email/Templates/System/UpdateInstalledEmail.php:62
 msgid "Sent to the site administration email after an automatic update installed a new release."
 msgstr "自动更新安装新版本后发送到站点管理邮箱。"
@@ -10342,6 +10500,10 @@ msgstr "服务账户未激活"
 msgid "Session Expired"
 msgstr "会话已过期"
 
+#: themes/default/templates/pages/client/security.php:57
+msgid "Sessions"
+msgstr "会话"
+
 #: src/Environments/Application/Health/SystemHealth.php:1297
 #, php-format
 msgid "Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough."
@@ -10355,7 +10517,7 @@ msgstr "将此缓存适配器设为所有缓存操作的默认提供商。"
 msgid "Set this email provider as the default provider for all mailing operations."
 msgstr "将此邮件提供商设为所有邮件发送的默认提供商。"
 
-#: themes/default/templates/pages/client/security.php:154
+#: themes/default/templates/pages/client/security.php:190
 msgid "Set up authenticator app"
 msgstr "设置身份验证器应用"
 
@@ -10445,19 +10607,32 @@ msgstr "登录以验证您的邮箱地址。"
 msgid "Sign in with a passkey"
 msgstr "使用通行密钥登录"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:46 src/ClientDashboard/ActionHandlers/SecurityManagement.php:77 src/ClientDashboard/ActionHandlers/SecurityManagement.php:96 src/ClientDashboard/ActionHandlers/SecurityManagement.php:125
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:53 src/ClientDashboard/ActionHandlers/SecurityManagement.php:84 src/ClientDashboard/ActionHandlers/SecurityManagement.php:103 src/ClientDashboard/ActionHandlers/SecurityManagement.php:132
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:257 src/ClientDashboard/ActionHandlers/SecurityManagement.php:299
 msgid "Sign in with a user account to manage security settings."
 msgstr "请使用用户账户登录以管理安全设置。"
 
-#: themes/default/templates/pages/client/security.php:32
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:427
+msgid "Sign in with a user account to manage your account."
+msgstr "请使用用户账户登录以管理您的账户。"
+
+#: themes/default/templates/pages/client/security.php:68
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "使用指纹、面容、屏幕锁或安全密钥代替密码登录。通行密钥本身已证明是您本人，因此用它登录会跳过下面的第二步。"
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/pages/client/security.php:59 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "退出登录"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:107 src/Email/Templates/Security/EmailOtpEmail.php:121
+#: themes/default/templates/pages/client/security.php:61
+msgid "Sign out of all other sessions"
+msgstr "退出其他所有会话"
+
+#: themes/default/templates/pages/client/security.php:59
+msgid "Sign out of every other session?"
+msgstr "退出其他所有会话？"
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:121 src/Email/Templates/Security/EmailOtpEmail.php:121
 msgid "Sign-in verification code"
 msgstr "登录验证码"
 
@@ -10483,6 +10658,10 @@ msgstr "已以 %s 身份登录。"
 #, php-format
 msgid "Signed in as user #%d"
 msgstr "已以用户 #%d 身份登录"
+
+#: themes/default/templates/pages/client/security.php:57
+msgid "Signed in on a device you no longer use, or a shared computer? Sign out everywhere else. This device stays signed in."
+msgstr "在不再使用的设备或共享电脑上登录过？退出其他所有地方的登录。此设备保持登录。"
 
 #: assets/js/passkeys.js:85
 msgid "Signed in."
@@ -11097,7 +11276,11 @@ msgstr "该数据库不存在。请先在主机控制面板中创建它，然后
 msgid "That database user does not exist. Check the username."
 msgstr "该数据库用户不存在。请检查用户名。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:204
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:147 src/ClientDashboard/ActionHandlers/AccountManagement.php:214
+msgid "That email address is already used by another account."
+msgstr "该电子邮件地址已被其他账户使用。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:211
 msgid "That factor is not enabled."
 msgstr "该验证因素未启用。"
 
@@ -11105,7 +11288,7 @@ msgstr "该验证因素未启用。"
 msgid "That language is not available."
 msgstr "该语言不可用。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:184
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:191
 msgid "That passkey could not be found."
 msgstr "找不到该通行密钥。"
 
@@ -11163,12 +11346,12 @@ msgstr "主题“%2$s”的“%1$s”必须是字符串。"
 msgid "The \"%s\" parameter must be %s."
 msgstr "参数“%s”必须是 %s。"
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:73
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:78
 #, php-format
 msgid "The \"%s\" template is disabled."
 msgstr "“%s”模板已停用。"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:99
 msgid "The \"Email Verification Code\" template is disabled."
 msgstr "“邮箱验证码”模板已停用。"
 
@@ -11580,7 +11763,7 @@ msgstr "已认证用户无权访问此资源。"
 msgid "The authenticated user does not have permission to perform this action."
 msgstr "已认证用户无权执行此操作。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:135
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:142
 msgid "The authenticator code is incorrect."
 msgstr "身份验证器验证码不正确。"
 
@@ -11635,7 +11818,7 @@ msgstr "校验和文件中未列出 %s。"
 msgid "The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has."
 msgstr "磁盘上的代码版本为 %s，但 state.json 记录的是 %s：已安装更新，但其完成步骤尚未运行。在此之前，计划任务和排队任务将暂停。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:231
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:238
 msgid "The confirmation code is incorrect or expired."
 msgstr "确认码不正确或已过期。"
 
@@ -11743,6 +11926,12 @@ msgstr "该邮箱地址已验证。"
 #: src/Environments/WordPress/IdentityService.php:496
 msgid "The email address is invalid."
 msgstr "邮箱地址无效。"
+
+#. translators: %s: the new email address, partly hidden.
+#: src/Email/Templates/Security/EmailChangedEmail.php:53
+#, php-format
+msgid "The email address of your account was changed to %s. Emails about your account now go to that address, and this one can no longer be used to sign in."
+msgstr "您账户的电子邮件地址已更改为 %s。有关您账户的电子邮件现在会发送到该地址，此地址已不能再用于登录。"
 
 #: templates/admin/contents/options/email/form.php:38 templates/admin/contents/options/monetization/monetizations.php:41
 #, php-format
@@ -12119,7 +12308,8 @@ msgstr "无法安装模块。"
 msgid "The module release is not a release from release()."
 msgstr "模块版本并非来自 release()。"
 
-#: src/Security/Organizations/OrganizationService.php:425
+#. translators: %d: maximum number of characters.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:105 src/Security/Organizations/OrganizationService.php:425
 #, php-format
 msgid "The name can be at most %d characters long."
 msgstr "名称最多 %d 个字符。"
@@ -12147,6 +12337,10 @@ msgstr "扩展“%2$s”的命名空间“%1$s”无效：必须以反斜杠结�
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is reserved by the app."
 msgstr "扩展“%2$s”的命名空间“%1$s”为应用保留。"
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:79
+msgid "The new email address is not valid."
+msgstr "新电子邮件地址无效。"
 
 #: src/FileSystem/Repository.php:242
 msgid "The new filename cannot be empty."
@@ -12581,7 +12775,7 @@ msgstr "请求失败，请重试。"
 msgid "The request format or parameters provided are improperly structured."
 msgstr "请求格式或参数结构不正确。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1098
 msgid "The request method is not allowed on this server."
 msgstr "此服务器不允许该请求方法。"
 
@@ -12633,7 +12827,7 @@ msgstr "请求的应用没有可下载的内容。"
 msgid "The requested range cannot be satisfied."
 msgstr "无法满足请求的范围。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1099 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "找不到请求的资源。"
 
@@ -13100,15 +13294,15 @@ msgstr "值不能为空。"
 msgid "The value must be an integer."
 msgstr "值必须为整数。"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:67
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:68
 msgid "The verification code could not be read."
 msgstr "无法读取验证码。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:66
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:169 src/ClientDashboard/ActionHandlers/SecurityManagement.php:73
 msgid "The verification code could not be sent. Please try again."
 msgstr "无法发送验证码，请重试。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:85
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:205 src/ClientDashboard/ActionHandlers/SecurityManagement.php:92
 msgid "The verification code is incorrect or expired."
 msgstr "验证码不正确或已过期。"
 
@@ -13239,6 +13433,10 @@ msgstr "此设备上没有活动会话。"
 msgid "These are checked for this web request. Installing from this page runs as the web server's PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with"
 msgstr "这些项目是针对此 Web 请求检查的。从此页面安装时以 Web 服务器的 PHP 用户运行；自动更新则在后台处理运行的地方执行，可能是其他用户或其他 PHP。请在那里检查，使用"
 
+#: themes/default/templates/pages/client/account.php:88
+msgid "These choices apply once your email address is verified."
+msgstr "这些选择将在您的电子邮件地址验证后生效。"
+
 #: assets/js/admin/repository-browser.js:371
 msgid "These files have no app record, so they can be viewed but not changed."
 msgstr "这些文件没有应用记录，因此只能查看，不能更改。"
@@ -13313,11 +13511,11 @@ msgstr "此应用已被站点管理员暂停，因此不对外提供。请联系
 msgid "This app's owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page."
 msgstr "此应用的所有者没有活动的服务账户。请在“账户 → 服务账户”下为其创建一个，然后重新加载此页面。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:138
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
 msgid "This authenticator setup has already been used."
 msgstr "此身份验证器设置已被使用。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:129
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:136
 msgid "This authenticator setup has expired. Start again."
 msgstr "此身份验证器设置已过期。请重新开始。"
 
@@ -13337,9 +13535,13 @@ msgstr "此浏览器保留访问权限；您会获得一个供他人使用的绕
 msgid "This check could not run."
 msgstr "此检查无法运行。"
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "This device"
 msgstr "此设备"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:333
+msgid "This download link has expired. Ask for your data again from your account page."
+msgstr "此下载链接已过期。请从账户页面重新请求您的数据。"
 
 #: assets/js/admin/core.js:1175
 msgid "This field"
@@ -13414,6 +13616,10 @@ msgstr "这是一个收费应用；访问该文件需要有效的许可证或令
 #: themes/default/templates/pages/signing-key.php:49
 msgid "This is a public key: it can only check signatures, not make them, and it is safe to share."
 msgstr "这是一个公钥：它只能验证签名，不能生成签名，可以放心分享。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:144
+msgid "This is already your email address."
+msgstr "这已经是您的电子邮件地址。"
 
 #. translators: 1: app name (formatted), 2: support (formatted)
 #: src/Email/Templates/System/SystemAlertEmail.php:112
@@ -13589,11 +13795,11 @@ msgstr "此验证链接已过期。请申请新的链接。"
 msgid "This verification link is not valid."
 msgstr "此验证链接无效。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:81
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:201 src/ClientDashboard/ActionHandlers/AccountManagement.php:210 src/ClientDashboard/ActionHandlers/SecurityManagement.php:88
 msgid "This verification request has expired. Start again."
 msgstr "此验证请求已过期。请重新开始。"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:231
 msgid "This wasn't me — secure my account"
 msgstr "这不是我本人 — 保护我的账户"
 
@@ -13625,7 +13831,7 @@ msgstr "层级名称为必填项"
 msgid "Tiers"
 msgstr "层级"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:207 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:214 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
 msgid "Time"
 msgstr "时间"
 
@@ -13860,13 +14066,27 @@ msgstr "您账户的 %s 双重身份验证已开启。"
 msgid "Type"
 msgstr "类型"
 
+#. translators: %s: the user's email address.
+#: themes/default/templates/pages/client/account.php:140
+#, php-format
+msgid "Type %s to confirm"
+msgstr "输入 %s 以确认"
+
 #: src/Exceptions/RequestException.php:58
 msgid "Type Mismatch"
 msgstr "类型不匹配"
 
+#: themes/default/templates/pages/client/security.php:49
+msgid "Type the new password again"
+msgstr "再次输入新密码"
+
 #: src/Environments/Application/Installation/InstallerPage.php:383
 msgid "Type the same password again."
 msgstr "请再次输入相同的密码。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:378
+msgid "Type your email address exactly as shown to confirm."
+msgstr "请完全按照所示输入您的电子邮件地址以确认。"
 
 #: src/Email/Providers/SMTPProvider.php:143
 msgid "Typically 25 (plain), 465 (SSL), or 587 (STARTTLS/TLS)."
@@ -14106,7 +14326,7 @@ msgstr "未知的自动更新模式“%s”；请使用 off、security 或 all�
 msgid "Unknown callable"
 msgstr "未知的可调用对象"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:254
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:261
 msgid "Unknown device"
 msgstr "未知设备"
 
@@ -14133,7 +14353,7 @@ msgstr "未知的许可证条款：%s。"
 msgid "Unknown purchase request email \"%s\"."
 msgstr "未知的购买请求邮件“%s”。"
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:67
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:72
 msgid "Unknown security notice."
 msgstr "未知的安全通知。"
 
@@ -14492,7 +14712,7 @@ msgstr "如果您的 Mailgun 账户托管在欧洲，请使用 EU 区域。"
 msgid "Use a %s placeholder or a full URL."
 msgstr "使用 %s 占位符或完整 URL。"
 
-#: themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:152
 msgid "Use an app such as 1Password, Google Authenticator, or Microsoft Authenticator."
 msgstr "使用 1Password、Google Authenticator 或 Microsoft Authenticator 等应用。"
 
@@ -14620,7 +14840,7 @@ msgstr "验证失败"
 msgid "Value"
 msgstr "值"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:110 src/Email/Templates/Security/EmailOtpEmail.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:125 src/Email/Templates/Security/EmailOtpEmail.php:85 themes/default/templates/pages/client/account.php:62
 msgid "Verification code"
 msgstr "验证码"
 
@@ -14636,11 +14856,11 @@ msgstr "验证我的邮箱"
 msgid "Verify Your Email Address"
 msgstr "验证您的邮箱地址"
 
-#: themes/default/templates/pages/client/security.php:147
+#: themes/default/templates/pages/client/security.php:183
 msgid "Verify and enable"
 msgstr "验证并启用"
 
-#: themes/default/templates/pages/client/security.php:109
+#: themes/default/templates/pages/client/security.php:145
 msgid "Verify and enable email codes"
 msgstr "验证并启用邮件验证码"
 
@@ -14652,11 +14872,11 @@ msgstr "验证并登录"
 msgid "Verify your email"
 msgstr "验证您的邮箱"
 
-#: themes/default/templates/pages/client/security.php:102
+#: themes/default/templates/pages/client/security.php:138
 msgid "Verify your email address before enabling email codes."
 msgstr "启用邮件验证码前，请先验证您的邮箱地址。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:52
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:59
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr "启用邮件登录验证码前，请先验证您的邮箱地址。"
 
@@ -14887,7 +15107,7 @@ msgstr "警告"
 msgid "Warnings"
 msgstr "警告"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:217
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
 msgid "Wasn't you? Someone else may have access to your account. Secure it now by resetting your password, then review your sign-in methods."
 msgstr "不是您本人？可能有其他人能访问您的账户。请立即重置密码以保护账户，然后检查您的登录方式。"
 
@@ -15013,7 +15233,7 @@ msgstr "当您购买许可证并发送付款凭证后，它会在审核期间显
 msgid "When you buy a license and send your payment receipt, it appears here while it is reviewed. Verify your email address to see purchases made with it before you signed in."
 msgstr "当您购买许可证并发送付款凭证后，它会在审核期间显示在这里。验证您的邮箱地址，即可查看登录前使用该邮箱进行的购买。"
 
-#: themes/default/templates/pages/client/security.php:62
+#: themes/default/templates/pages/client/security.php:98
 msgid "When you sign in with your password, you also confirm with one of these. Passkey sign-in does not ask for it."
 msgstr "使用密码登录时，您还需要通过其中一种方式确认。使用通行密钥登录则不需要。"
 
@@ -15064,6 +15284,26 @@ msgstr "WordPress 主题"
 #: src/Environments/WordPress/WPDBAdapter.php:80
 msgid "WordPress could not connect to the database: "
 msgstr "WordPress 无法连接到数据库： "
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:435
+msgid "WordPress manages this account. Make this change from your WordPress profile."
+msgstr "此账户由 WordPress 管理。请在您的 WordPress 个人资料中进行此更改。"
+
+#: themes/default/templates/pages/client/account.php:30
+msgid "WordPress manages your name, email address, password and account. Change them from your WordPress profile."
+msgstr "您的姓名、电子邮件地址、密码和账户由 WordPress 管理。请在您的 WordPress 个人资料中更改。"
+
+#: themes/default/templates/pages/client/security.php:34
+msgid "WordPress manages your password and sessions. Change them from your WordPress profile."
+msgstr "您的密码和会话由 WordPress 管理。请在您的 WordPress 个人资料中更改。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:260
+msgid "WordPress manages your password. Change it from your WordPress profile."
+msgstr "您的密码由 WordPress 管理。请在您的 WordPress 个人资料中更改。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:302
+msgid "WordPress manages your sessions. Sign out of other sessions from your WordPress profile."
+msgstr "您的会话由 WordPress 管理。请在您的 WordPress 个人资料中退出其他会话。"
 
 #: src/Background/BackgroundSetup.php:242
 msgid "Works anywhere"
@@ -15128,6 +15368,16 @@ msgstr "您已登录"
 msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator before you leave."
 msgstr "您是 %s 唯一的组织管理员。离开前请将其他成员设为组织管理员。"
 
+#. translators: %s: organization name.
+#: src/Security/Accounts/AccountDeletion.php:111
+#, php-format
+msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator, or delete the organization, first."
+msgstr "您是 %s 唯一的组织管理员。请先将其他成员设为组织管理员，或删除该组织。"
+
+#: src/Security/Accounts/AccountDeletion.php:117
+msgid "You are the only active system administrator. Make another user an active system administrator first."
+msgstr "您是唯一的活跃系统管理员。请先将其他用户设为活跃系统管理员。"
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:161
 msgid "You asked for an account. Sign up with this email address and verify it; this license then appears in your account."
 msgstr "您申请了账户。请使用此邮箱地址注册并完成验证；之后此许可证将显示在您的账户中。"
@@ -15178,6 +15428,10 @@ msgstr "您没有访问此资源所需的权限"
 msgid "You do not have the required permission to perform this action."
 msgstr "您没有执行此操作所需的权限。"
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:305
+msgid "You downloaded your data a few minutes ago. Please wait before asking again."
+msgstr "您几分钟前刚下载过数据。请稍候再请求。"
+
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:76 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:203
 msgid "You have cancelled your subscription."
 msgstr "您已取消订阅。"
@@ -15189,6 +15443,13 @@ msgstr "您已超过此时间段内允许的最大请求数。"
 #: src/Exceptions/RequestException.php:231
 msgid "You have used all available quota for this operation."
 msgstr "您已用完此操作的全部可用配额。"
+
+#. translators: %d: number of apps.
+#: src/Security/Accounts/AccountDeletion.php:99
+#, php-format
+msgid "You host %d app, including any in the trash. Delete it, or move it to another owner, first."
+msgid_plural "You host %d apps, including any in the trash. Delete them, or move them to another owner, first."
+msgstr[0] "您托管了 %d 个应用（包括回收站中的应用）。请先删除它们，或将它们转移给其他所有者。"
 
 #: themes/default/templates/pages/client/organizations.php:53
 msgid "You join an organization when one of its administrators invites you."
@@ -15224,9 +15485,19 @@ msgstr "您必须提供主题 ID 或主题 slug。"
 msgid "You now act for %s."
 msgstr "您现在代表 %s 操作。"
 
+#. translators: %s: email address.
+#: themes/default/templates/pages/client/account.php:51
+#, php-format
+msgid "You sign in with %s."
+msgstr "您使用 %s 登录。"
+
 #: src/Environments/Application/Installation/InstallerPage.php:370
 msgid "You sign in with this address, and password resets are sent to it."
 msgstr "您使用此地址登录，密码重置邮件也会发送到此地址。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:310
+msgid "You were signed out on every other device. This one stays signed in."
+msgstr "您已在其他所有设备上退出登录。此设备保持登录。"
 
 #: themes/default/templates/pages/client/organizations.php:100
 msgid "You will run it as its Organization Administrator, and can invite others to it."
@@ -15292,9 +15563,25 @@ msgstr "您的订阅已取消"
 msgid "Your access to {{plan_name}} features will remain active until {{access_until}}, after which your account will be downgraded."
 msgstr "您对 {{plan_name}} 功能的访问将保持有效至 {{access_until}}，之后您的账户将被降级。"
 
+#: themes/default/templates/pages/client/account.php:25
+msgid "Your account"
+msgstr "您的账户"
+
+#: src/Security/Accounts/AccountDeletion.php:126
+msgid "Your account cannot be deleted yet."
+msgstr "您的账户暂时无法删除。"
+
+#: themes/default/templates/pages/client/account.php:126
+msgid "Your account cannot be deleted yet:"
+msgstr "您的账户暂时无法删除："
+
 #: src/Security/Organizations/OrganizationService.php:67
 msgid "Your account cannot create organizations."
 msgstr "您的账户无法创建组织。"
+
+#: src/Security/Accounts/AccountDeletion.php:175
+msgid "Your account could not be deleted. Nothing was changed. Please try again."
+msgstr "无法删除您的账户。未做任何更改。请重试。"
 
 #: src/Email/Templates/Accounts/WelcomeEmail.php:43
 msgid "Your account has been created successfully. Get started today."
@@ -15313,6 +15600,14 @@ msgstr "您在 {{app_name}} 的账户已成功创建。现在您可以登录并�
 #: src/Environments/Application/Auth/WebIdentityProvider.php:270
 msgid "Your account was created, but signing in failed. Please sign in."
 msgstr "您的账户已创建，但登录失败。请登录。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:395
+msgid "Your account was deleted. Goodbye."
+msgstr "您的账户已删除。再见。"
+
+#: src/Email/EmailPreferences.php:102
+msgid "Your app activity"
+msgstr "您的应用活动"
 
 #. translators: 1: opening link tag, 2: closing link tag, 3: URL pattern.
 #: themes/default/templates/pages/signing-key.php:67
@@ -15341,10 +15636,26 @@ msgstr "您的银行卡被拒绝。请检查付款信息。"
 msgid "Your code is %s. It expires in %d minutes."
 msgstr "您的验证码是 %s。它将在 %d 分钟后过期。"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:49 src/ClientDashboard/ActionHandlers/SecurityManagement.php:99 src/ClientDashboard/ActionHandlers/SecurityManagement.php:154 src/ClientDashboard/ActionHandlers/SecurityManagement.php:181
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:199
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:431 src/ClientDashboard/ActionHandlers/SecurityManagement.php:56 src/ClientDashboard/ActionHandlers/SecurityManagement.php:106 src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:188 src/ClientDashboard/ActionHandlers/SecurityManagement.php:206 src/ClientDashboard/ActionHandlers/SecurityManagement.php:263
 msgid "Your current password is incorrect."
 msgstr "当前密码不正确。"
+
+#: themes/default/templates/pages/client/account.php:106
+msgid "Your data"
+msgstr "您的数据"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:341
+msgid "Your data could not be exported. Please try again."
+msgstr "无法导出您的数据。请重试。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:314
+msgid "Your data is ready. The download starts now."
+msgstr "您的数据已准备就绪。即将开始下载。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:229
+msgid "Your email address could not be changed. Please try again."
+msgstr "无法更改您的电子邮件地址。请重试。"
 
 #: src/Security/Authentication/UserAccounts.php:185
 msgid "Your email address could not be verified. Please try again."
@@ -15353,6 +15664,18 @@ msgstr "无法验证您的邮箱地址。请重试。"
 #: src/Auth/ActionHandlers/AuthManagement.php:603
 msgid "Your email address is already verified."
 msgstr "您的邮箱地址已验证。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:253
+msgid "Your email address was changed. We let your previous address know."
+msgstr "您的电子邮件地址已更改。我们已通知您之前的地址。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:279
+msgid "Your email preferences could not be saved. Please try again."
+msgstr "无法保存您的电子邮件偏好。请重试。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:278
+msgid "Your email preferences were saved."
+msgstr "您的电子邮件偏好已保存。"
 
 #: src/Email/Templates/System/TestEmail.php:169
 msgid "Your email provider is configured correctly. This test email was delivered successfully."
@@ -15423,6 +15746,14 @@ msgstr "您在 {{organization_name}} 的成员资格已终止。您已无法访�
 msgid "Your name"
 msgstr "您的姓名"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:305
+msgid "Your other sessions could not be signed out. Please try again."
+msgstr "无法退出您的其他会话。请重试。"
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:279
+msgid "Your password could not be changed. Please try again."
+msgstr "无法更改您的密码。请重试。"
+
 #: src/Auth/ActionHandlers/AuthManagement.php:713
 msgid "Your password has been changed. Sign in with the new one."
 msgstr "您的密码已更改。请使用新密码登录。"
@@ -15446,6 +15777,10 @@ msgstr "您的密码已于 {{changed_at}} 成功更改。"
 msgid "Your password was changed successfully. If this was not you, contact support immediately."
 msgstr "您的密码已成功更改。如果这不是您本人操作，请立即联系支持。"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:287
+msgid "Your password was changed. You were signed out on every other device."
+msgstr "您的密码已更改。您已在其他所有设备上退出登录。"
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:141
 msgid "Your payment for {{product}} is confirmed. Here is your license; the license document is attached. Please keep them safe."
 msgstr "您购买 {{product}} 的付款已确认。这是您的许可证；许可证文件已附上。请妥善保管。"
@@ -15461,6 +15796,18 @@ msgstr "您于 {{payment_date}} 支付的 {{amount}} {{currency}} 无法处理�
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:27
 msgid "Your payment receipt is being reviewed. Your license follows once the payment is confirmed."
 msgstr "您的付款凭证正在审核中。付款确认后将发送许可证。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:109
+msgid "Your profile could not be saved. Please try again."
+msgstr "无法保存您的个人资料。请重试。"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:112
+msgid "Your profile was saved."
+msgstr "您的个人资料已保存。"
+
+#: themes/default/templates/pages/client/account.php:26
+msgid "Your profile, the emails you receive, and your data."
+msgstr "您的个人资料、您接收的电子邮件以及您的数据。"
 
 #: src/Email/Templates/Purchases/PurchaseRequestRejectedEmail.php:26
 #, php-format
@@ -15878,7 +16225,7 @@ msgid "{{token}} or value"
 msgstr "{{token}} 或值"
 
 #. translators: %s: year, app name
-#: src/Email/Templates/EmailTemplate.php:892
+#: src/Email/Templates/EmailTemplate.php:893
 #, php-format
 msgid "© %s. All rights reserved."
 msgstr "© %s。保留所有权利。"

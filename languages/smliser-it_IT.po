@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:17+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: Italiano (Italia)\n"
 "Language: it_IT\n"
@@ -87,7 +87,7 @@ msgstr " probabilmente a causa di una voce di file duplicata"
 msgid " on your account. If this was not you, secure your account now."
 msgstr " sul tuo account. Se non sei stato tu, proteggi subito il tuo account."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:236
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:243
 msgid " two-factor authentication is disabled."
 msgstr " l’autenticazione a due fattori è disattivata."
 
@@ -333,12 +333,12 @@ msgstr "%d di %d attività pianificate sono in ritardo di oltre %d minuti: %s."
 msgid "%d page(s) rendered."
 msgstr "%d pagine visualizzate."
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 #, php-format
 msgid "%d recovery codes remain."
 msgstr "Rimangono %d codici di recupero."
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 #, php-format
 msgid "%d registered"
 msgstr "%d registrati"
@@ -860,7 +860,7 @@ msgstr ". La decisione viene inviata via email all’acquirente. Una richiesta r
 msgid ". Their packages are refused without a valid key."
 msgstr ". I loro pacchetti vengono rifiutati senza una chiave valida."
 
-#: src/Email/Templates/EmailTemplate.php:281 src/Email/Templates/EmailTemplate.php:744
+#: src/Email/Templates/EmailTemplate.php:282 src/Email/Templates/EmailTemplate.php:745
 msgid "0 2px 8px rgba(0,0,0,0.06)"
 msgstr "0 2px 8px rgba(0,0,0,0.06)"
 
@@ -868,7 +868,7 @@ msgstr "0 2px 8px rgba(0,0,0,0.06)"
 msgid "0 4px 12px rgba(0, 0, 0, 0.05)"
 msgstr "0 4px 12px rgba(0, 0, 0, 0.05)"
 
-#: themes/default/templates/pages/client/security.php:61
+#: themes/default/templates/pages/client/security.php:97
 msgid "2Factor Authentication setup"
 msgstr "Configurazione dell’autenticazione a due fattori"
 
@@ -927,11 +927,19 @@ msgstr "Un acquirente ha inviato una ricevuta di pagamento. Verifica il pagament
 msgid "A buyer sent a payment receipt. Review it to issue the license."
 msgstr "Un acquirente ha inviato una ricevuta di pagamento. Esaminala per emettere la licenza."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:218
+#: themes/default/templates/pages/client/account.php:54
+msgid "A code is sent to the new address, and the change is made only once you enter it. Licenses already linked to your account stay linked; licenses issued to the new address are linked once it is verified. Your previous address is told about the change."
+msgstr "Un codice viene inviato al nuovo indirizzo e la modifica viene effettuata solo dopo averlo inserito. Le licenze già collegate al tuo account restano collegate; le licenze emesse per il nuovo indirizzo vengono collegate non appena viene verificato. Il tuo indirizzo precedente viene informato della modifica."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:150
+msgid "A code was sent a moment ago. Wait a minute before asking for another."
+msgstr "Un codice è appena stato inviato. Attendi un minuto prima di richiederne un altro."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:225
 msgid "A confirmation code could not be sent. Please try again."
 msgstr "Impossibile inviare un codice di conferma. Riprova."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:220
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:227
 msgid "A confirmation code was sent to your verified email address."
 msgstr "È stato inviato un codice di conferma al tuo indirizzo email verificato."
 
@@ -1021,6 +1029,14 @@ msgstr "Una nuova versione della tua applicazione è ora online."
 msgid "A new version of {{app_name}} is now available. Your active license entitles you to this update."
 msgstr "È disponibile una nuova versione di {{app_name}}. La tua licenza attiva ti dà diritto a questo aggiornamento."
 
+#: src/Email/EmailPreferences.php:95
+msgid "A notice each time a license is activated on a site or removed from one."
+msgstr "Un avviso ogni volta che una licenza viene attivata su un sito o rimossa da un sito."
+
+#: src/Email/EmailPreferences.php:99
+msgid "A notice when an app you hold a license for has a new version."
+msgstr "Un avviso quando un’app per cui possiedi una licenza ha una nuova versione."
+
 #: src/Exceptions/RequestException.php:59
 msgid "A parameter has an unexpected type or format."
 msgstr "Un parametro ha un tipo o un formato imprevisto."
@@ -1093,7 +1109,13 @@ msgstr "È necessario un token valido per accedere al file del documento di lice
 msgid "A value written to the \"%s\" cache adapter in one request was gone in the next."
 msgstr "Un valore scritto nell’adattatore di cache \"%s\" in una richiesta era sparito nella successiva."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:69
+#. translators: %s: the new email address.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:175
+#, php-format
+msgid "A verification code was sent to %s. Enter it to finish the change."
+msgstr "Un codice di verifica è stato inviato a %s. Inseriscilo per completare la modifica."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:76
 msgid "A verification code was sent to your email address."
 msgstr "Un codice di verifica è stato inviato al tuo indirizzo email."
 
@@ -1251,7 +1273,7 @@ msgstr "Rapporto accessi/download:"
 msgid "Accesses"
 msgstr "Accessi"
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: src/ClientDashboard/ContentHandlers/AccountPage.php:56 src/ClientDashboard/ContentHandlers/AccountPage.php:129 themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr "Account"
 
@@ -1271,11 +1293,11 @@ msgstr "Tipo di account"
 msgid "Account created successfully! Check your email to verify your account."
 msgstr "Account creato correttamente! Controlla la tua email per verificare l’account."
 
-#: src/ClientDashboard/ContentHandlers/SecurityPage.php:118 themes/default/templates/pages/client/security.php:27
+#: src/ClientDashboard/ContentHandlers/SecurityPage.php:122 themes/default/templates/pages/client/security.php:29
 msgid "Account security"
 msgstr "Sicurezza dell’account"
 
-#: themes/default/templates/pages/client/security.php:64
+#: themes/default/templates/pages/client/security.php:100
 msgid "Account security methods"
 msgstr "Metodi di sicurezza dell’account"
 
@@ -1299,7 +1321,7 @@ msgstr "Panoramica degli account"
 msgid "Acting as"
 msgstr "Agisci come"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:206 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:213 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
 msgid "Action"
 msgstr "Azione"
 
@@ -1413,7 +1435,7 @@ msgstr "Aggiungi livello di prezzo"
 msgid "Add a note"
 msgstr "Aggiungi una nota"
 
-#: themes/default/templates/pages/client/security.php:56
+#: themes/default/templates/pages/client/security.php:92
 msgid "Add a passkey"
 msgstr "Aggiungi una passkey"
 
@@ -1483,7 +1505,7 @@ msgstr "I controlli aggiuntivi hanno rilevato %s problemi."
 msgid "Additional verification could not be started. Please try again."
 msgstr "Impossibile avviare la verifica aggiuntiva. Riprova."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "Admin"
 
@@ -1668,7 +1690,7 @@ msgstr "Esiste già un artefatto chiamato \"%s\". Modifica quell’artefatto per
 msgid "An asset named \"%s\" already exists."
 msgstr "Esiste già una risorsa chiamata \"%s\"."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:102
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:109
 msgid "An authenticator app is already enabled."
 msgstr "Un’app di autenticazione è già attiva."
 
@@ -1781,6 +1803,10 @@ msgstr "Log delle analisi"
 #: src/Core/UserAgent.php:662
 msgid "Android WebView"
 msgstr "Android WebView"
+
+#: src/Email/EmailPreferences.php:106
+msgid "Announcements"
+msgstr "Annunci"
 
 #: src/Environments/Application/Modules/ModuleInstaller.php:954
 #, php-format
@@ -2101,15 +2127,15 @@ msgstr "Assegnare ruoli"
 msgid "Asynchronously appends a license activity entry to the activity log."
 msgstr "Aggiunge in modo asincrono una voce di attività della licenza al log delle attività."
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:117
-msgid "Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled."
-msgstr "Avvisa in modo asincrono un utente quando una passkey o un metodo a due fattori viene aggiunto, rimosso, attivato o disattivato."
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:136
+msgid "Asynchronously notify a user when their password or email address changes, or a passkey or two-factor method is added, removed, enabled or disabled."
+msgstr "Avvisa in modo asincrono un utente quando cambiano la sua password o il suo indirizzo email, oppure quando una passkey o un metodo a due fattori viene aggiunto, rimosso, attivato o disattivato."
 
 #: src/Background/Jobs/Accounts/MfaResetEmailJob.php:67
 msgid "Asynchronously send a notification email when 2FA is reset by an administrator."
 msgstr "Invia in modo asincrono un’email di notifica quando la 2FA viene reimpostata da un amministratore."
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:125
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:140
 msgid "Asynchronously send a one-time sign-in or two-factor confirmation code by email."
 msgstr "Invia in modo asincrono via email un codice di accesso monouso o di conferma a due fattori."
 
@@ -2169,15 +2195,15 @@ msgstr "Autenticazione negata a causa di un ruolo non valido."
 msgid "Authentication is required for this request but was not provided."
 msgstr "Per questa richiesta è richiesta l’autenticazione, ma non è stata fornita."
 
-#: themes/default/templates/pages/client/security.php:66 themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:102 themes/default/templates/pages/client/security.php:152
 msgid "Authenticator app"
 msgstr "App di autenticazione"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:152
 msgid "Authenticator app enabled. Save these one-time recovery codes now: "
 msgstr "App di autenticazione attivata. Salva subito questi codici di recupero monouso: "
 
-#: themes/default/templates/pages/client/security.php:146
+#: themes/default/templates/pages/client/security.php:182
 msgid "Authenticator code"
 msgstr "Codice dell’app di autenticazione"
 
@@ -2185,11 +2211,11 @@ msgstr "Codice dell’app di autenticazione"
 msgid "Authenticator code or recovery code"
 msgstr "Codice dell’app di autenticazione o codice di recupero"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:114
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:121
 msgid "Authenticator enrollment could not be started. Please try again."
 msgstr "Impossibile avviare la registrazione dell’app di autenticazione. Riprova."
 
-#: themes/default/templates/pages/client/security.php:125
+#: themes/default/templates/pages/client/security.php:161
 msgid "Authenticator or recovery code"
 msgstr "Codice di autenticazione o di recupero"
 
@@ -2599,7 +2625,7 @@ msgstr "Cambiare lo stato delle applicazioni ospitate"
 msgid "Change maintenance"
 msgstr "Modifica manutenzione"
 
-#: themes/default/templates/pages/auth/reset-password.php:33
+#: themes/default/templates/pages/auth/reset-password.php:33 themes/default/templates/pages/client/security.php:51
 msgid "Change password"
 msgstr "Cambia password"
 
@@ -2626,6 +2652,10 @@ msgstr "Registro delle modifiche"
 #: templates/admin/contents/options/routing.php:30
 msgid "Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated."
 msgstr "Modificando questi valori verranno aggiornati gli URL pubblici delle tue applicazioni ospitate. I link esistenti condivisi con gli utenti potrebbero smettere di funzionare finché non vengono aggiornati."
+
+#: themes/default/templates/pages/client/security.php:42
+msgid "Changing your password signs you out on every other device. This one stays signed in, and you get an email about the change."
+msgstr "Cambiando la password verrai disconnesso da tutti gli altri dispositivi. Questo resta connesso e riceverai un’email sulla modifica."
 
 #: src/Environments/Application/Installation/InstallerPage.php:284
 msgid "Character set"
@@ -2747,11 +2777,15 @@ msgstr "Scegli un file"
 msgid "Choose a new password"
 msgstr "Scegli una nuova password"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:272
+msgid "Choose a new password that is different from your current one."
+msgstr "Scegli una nuova password diversa da quella attuale."
+
 #: src/Security/Organizations/OrganizationInvitations.php:112
 msgid "Choose a role for the person you invite."
 msgstr "Scegli un ruolo per la persona che inviti."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:196
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:203
 msgid "Choose a supported security factor."
 msgstr "Scegli un fattore di sicurezza supportato."
 
@@ -2767,7 +2801,7 @@ msgstr "Scegli un account di servizio attivo del proprietario di questa app."
 msgid "Choose files"
 msgstr "Scegli file"
 
-#: themes/default/templates/pages/client/security.php:28
+#: themes/default/templates/pages/client/security.php:30
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr "Scegli come accedi e come è protetto il tuo account. Ogni metodo viene verificato prima di essere attivato."
 
@@ -2795,6 +2829,10 @@ msgstr "Scegli la lingua dell’installazione. Viene salvata anche come lingua d
 #: src/Monetization/Controller.php:65
 msgid "Choose the license term"
 msgstr "Scegli la durata della licenza"
+
+#: themes/default/templates/pages/client/account.php:86
+msgid "Choose the optional emails you receive. Emails about your account security, purchases, payments, license keys and invitations are always sent."
+msgstr "Scegli le email facoltative che ricevi. Le email sulla sicurezza del tuo account, sugli acquisti, sui pagamenti, sulle chiavi di licenza e sugli inviti vengono sempre inviate."
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:99
 msgid "Choose the theme package (.zip) to upload."
@@ -2836,7 +2874,7 @@ msgstr "Rimuovi l’immagine avatar selezionata"
 msgid "Clear selected image"
 msgstr "Rimuovi l’immagine selezionata"
 
-#: src/Email/Templates/EmailTemplate.php:649 templates/admin/contents/options/email/editor.php:401
+#: src/Email/Templates/EmailTemplate.php:650 templates/admin/contents/options/email/editor.php:401
 msgid "Click Here"
 msgstr "Clicca qui"
 
@@ -3033,6 +3071,10 @@ msgstr "Conferma rimozione del membro"
 msgid "Confirm Password"
 msgstr "Conferma password"
 
+#: themes/default/templates/pages/client/account.php:65
+msgid "Confirm new email address"
+msgstr "Conferma il nuovo indirizzo email"
+
 #: src/Admin/ContentHandlers/AccessControlPage.php:218
 msgid "Confirm passowrd"
 msgstr "Conferma password"
@@ -3044,6 +3086,14 @@ msgstr "Conferma password"
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
 msgstr "Conferma che questo è il tuo indirizzo email per completare la configurazione dell’account."
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:124
+msgid "Confirm your new email address"
+msgstr "Conferma il tuo nuovo indirizzo email"
+
+#: src/Email/EmailPreferences.php:103
+msgid "Confirmations when one of your hosted apps is published or a new version is uploaded."
+msgstr "Conferme quando una delle tue app ospitate viene pubblicata o ne viene caricata una nuova versione."
 
 #: src/Exceptions/FileRequestException.php:161 src/Exceptions/RequestException.php:170
 msgid "Conflict"
@@ -3482,8 +3532,9 @@ msgstr "Manutenzione attuale"
 msgid "Current pagination number."
 msgstr "Numero di pagina corrente."
 
-#: themes/default/templates/pages/client/security.php:45 themes/default/templates/pages/client/security.php:55 themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:90
-#: themes/default/templates/pages/client/security.php:98 themes/default/templates/pages/client/security.php:124 themes/default/templates/pages/client/security.php:153
+#: themes/default/templates/pages/client/account.php:76 themes/default/templates/pages/client/account.php:112 themes/default/templates/pages/client/account.php:144 themes/default/templates/pages/client/security.php:47
+#: themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:91 themes/default/templates/pages/client/security.php:117 themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:134 themes/default/templates/pages/client/security.php:160 themes/default/templates/pages/client/security.php:189
 msgid "Current password"
 msgstr "Password attuale"
 
@@ -3722,6 +3773,10 @@ msgstr "Eliminare %s? L’operazione non può essere annullata."
 msgid "Delete License"
 msgstr "Elimina licenza"
 
+#: themes/default/templates/pages/client/account.php:121 themes/default/templates/pages/client/account.php:136
+msgid "Delete account"
+msgstr "Elimina account"
+
 #: src/Security/Permission/Capability.php:46
 msgid "Delete app monetization"
 msgstr "Eliminare la monetizzazione delle app"
@@ -3770,6 +3825,10 @@ msgstr "Eliminare licenze"
 #: src/Security/Permission/Capability.php:50
 msgid "Delete monetization pricing tiers"
 msgstr "Eliminare livelli di prezzo della monetizzazione"
+
+#: themes/default/templates/pages/client/account.php:147
+msgid "Delete my account"
+msgstr "Elimina il mio account"
 
 #: src/Security/Permission/Capability.php:94
 msgid "Delete organizations"
@@ -3838,6 +3897,10 @@ msgstr "Elimina definitivamente questa licenza."
 msgid "Delete users"
 msgstr "Eliminare utenti"
 
+#: themes/default/templates/pages/client/account.php:135
+msgid "Delete your account for good? This cannot be undone."
+msgstr "Eliminare definitivamente il tuo account? L’operazione non può essere annullata."
+
 #: assets/js/admin/core.js:1090
 msgid "Deleted"
 msgstr "Eliminato"
@@ -3881,6 +3944,10 @@ msgstr "Elimina questa richiesta, le sue note e la ricevuta. La licenza n. %d vi
 #: templates/admin/contents/license/purchase-request.php:206
 msgid "Deletes this request, its notes and its receipt. The buyer is not told."
 msgstr "Elimina questa richiesta, le sue note e la ricevuta. L’acquirente non viene avvisato."
+
+#: themes/default/templates/pages/client/account.php:122
+msgid "Deleting your account signs you out and removes your profile, preferences, sign-in methods and organization memberships for good. Licenses and purchases are kept for the seller's records, without the link to your account, and are linked again if you sign up later with the same verified email address."
+msgstr "Eliminando il tuo account verrai disconnesso e il tuo profilo, le tue preferenze, i tuoi metodi di accesso e le tue appartenenze alle organizzazioni verranno rimossi definitivamente. Licenze e acquisti vengono conservati per i registri del venditore, senza il collegamento al tuo account, e vengono collegati di nuovo se in seguito ti registri con lo stesso indirizzo email verificato."
 
 #: src/Email/Templates/System/TestEmail.php:67 src/Email/Templates/System/TestEmail.php:186
 msgid "Delivered To"
@@ -3932,7 +3999,7 @@ msgstr "Gli sviluppatori inseriscono questa chiave nelle loro app; le app accett
 msgid "Development"
 msgstr "Sviluppo"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:209
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:216
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -3954,15 +4021,15 @@ msgstr "Disattiva"
 msgid "Disable %s? It stops loading from the next request on."
 msgstr "Disattivare %s? Smetterà di essere caricato dalla prossima richiesta."
 
-#: themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:162
 msgid "Disable authenticator app"
 msgstr "Disattiva l’app di autenticazione"
 
-#: themes/default/templates/pages/client/security.php:83
+#: themes/default/templates/pages/client/security.php:119
 msgid "Disable email codes"
 msgstr "Disattiva i codici via email"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:109
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:123
 msgid "Disable email two-factor authentication"
 msgstr "Disattiva l’autenticazione a due fattori via email"
 
@@ -4002,6 +4069,10 @@ msgstr "Chiudi questo avviso"
 #: src/Events/Jobs/AsyncEventJob.php:56
 msgid "Dispatches an event asynchronously in the background."
 msgstr "Invia un evento in modo asincrono in background."
+
+#: themes/default/templates/pages/client/account.php:41
+msgid "Display name"
+msgstr "Nome visualizzato"
 
 #: templates/admin/contents/license/view.php:159
 msgid "Document Download URL(public)"
@@ -4094,6 +4165,10 @@ msgstr "URL di download"
 msgid "Download URL:"
 msgstr "URL di download:"
 
+#: themes/default/templates/pages/client/account.php:107
+msgid "Download a JSON file with your profile, preferences, licenses, purchases, organizations and apps. It never contains passwords, keys or other secrets."
+msgstr "Scarica un file JSON con il tuo profilo, le preferenze, le licenze, gli acquisti, le organizzazioni e le app. Non contiene mai password, chiavi o altri segreti."
+
 #: src/Security/Permission/Capability.php:66
 msgid "Download application packages"
 msgstr "Scaricare pacchetti delle applicazioni"
@@ -4106,6 +4181,10 @@ msgstr "Scarica artefatto"
 #, javascript-format
 msgid "Download failed: %1$s %2$s (%3$s)"
 msgstr "Download non riuscito: %1$s %2$s (%3$s)"
+
+#: themes/default/templates/pages/client/account.php:115
+msgid "Download my data"
+msgstr "Scarica i miei dati"
 
 #: src/Utils/functions/functions.php:131
 msgid "Download token cannot be empty"
@@ -4345,6 +4424,10 @@ msgstr "Email"
 msgid "Email Address"
 msgstr "Indirizzo email"
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:59
+msgid "Email Address Changed"
+msgstr "Indirizzo email modificato"
+
 #: src/Email/Templates/System/TestEmail.php:61 src/Email/Templates/System/TestEmail.php:161
 msgid "Email Configuration Test"
 msgstr "Test di configurazione email"
@@ -4373,9 +4456,13 @@ msgstr "Modelli email"
 msgid "Email Verification Code"
 msgstr "Codice di verifica via email"
 
-#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/organization.php:76
+#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/account.php:49 themes/default/templates/pages/client/organization.php:76
 msgid "Email address"
 msgstr "Indirizzo email"
+
+#: src/Email/Templates/Security/EmailChangedEmail.php:47
+msgid "Email address changed"
+msgstr "Indirizzo email modificato"
 
 #: templates/admin/contents/options/email/index.php:122
 msgid "Email address to deliver the test message to."
@@ -4389,17 +4476,21 @@ msgstr "L’indirizzo email non è stato fornito."
 msgid "Email and password are required."
 msgstr "Email e password sono obbligatorie."
 
-#: themes/default/templates/pages/client/security.php:65
+#: themes/default/templates/pages/client/security.php:101
 msgid "Email codes"
 msgstr "Codici via email"
 
-#: themes/default/templates/pages/client/security.php:82
+#: themes/default/templates/pages/client/security.php:118
 msgid "Email confirmation code"
 msgstr "Codice di conferma via email"
 
 #: src/Environments/WordPress/IdentityService.php:486
 msgid "Email is required."
 msgstr "L’email è obbligatoria."
+
+#: themes/default/templates/pages/client/account.php:85
+msgid "Email notifications"
+msgstr "Notifiche email"
 
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:100
 msgid "Email someone a link to join an organization."
@@ -4413,19 +4504,19 @@ msgstr "La chiave del modello email non è valida."
 msgid "Email template key is required."
 msgstr "La chiave del modello email è obbligatoria."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:89
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:96
 msgid "Email two-factor authentication is enabled."
 msgstr "L’autenticazione a due fattori via email è attiva."
 
-#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:108
+#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:144
 msgid "Email verification code"
 msgstr "Codice di verifica via email"
 
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 msgid "Email verification codes"
 msgstr "Codici di verifica via email"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:55
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:62
 msgid "Email verification is already enabled."
 msgstr "La verifica via email è già attiva."
 
@@ -4455,7 +4546,7 @@ msgstr "Attiva"
 msgid "Enable \"%s\" %s?"
 msgstr "Attivare %2$s \"%1$s\"?"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:108
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:122
 msgid "Enable email two-factor authentication"
 msgstr "Attiva l’autenticazione a due fattori via email"
 
@@ -4480,7 +4571,7 @@ msgstr "Attivare questa estensione dopo l’installazione? Viene caricata dalla 
 msgid "Enable this template"
 msgstr "Attiva questo modello"
 
-#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 #: assets/js/admin/email-editor.js:995
 msgid "Enabled"
 msgstr "Attivato"
@@ -4595,6 +4686,12 @@ msgstr "Inserisci lo stato di %s"
 msgid "Enter the URL of the %s author profile."
 msgstr "Inserisci l’URL del profilo dell’autore di %s."
 
+#. translators: %s: the new email address.
+#: themes/default/templates/pages/client/account.php:60
+#, php-format
+msgid "Enter the code sent to %s."
+msgstr "Inserisci il codice inviato a %s."
+
 #: src/Admin/ContentHandlers/LicensePage.php:419
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "Inserisci il numero massimo di domini su cui è consentito installare questa licenza."
@@ -4608,6 +4705,10 @@ msgstr "Inserisci il nome dell’autore di %s."
 msgid "Enter the name the license is issued to."
 msgstr "Inserisci il nome a cui viene emessa la licenza."
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:101
+msgid "Enter the name to show on your account."
+msgstr "Inserisci il nome da mostrare nel tuo account."
+
 #: src/Security/Organizations/OrganizationService.php:421
 msgid "Enter the organization's name."
 msgstr "Inserisci il nome dell’organizzazione."
@@ -4616,7 +4717,7 @@ msgstr "Inserisci il nome dell’organizzazione."
 msgid "Enter the price buyers pay for this tier."
 msgstr "Inserisci il prezzo che gli acquirenti pagano per questo livello."
 
-#: themes/default/templates/pages/client/security.php:137
+#: themes/default/templates/pages/client/security.php:173
 msgid "Enter the setup key manually"
 msgstr "Inserisci manualmente la chiave di configurazione"
 
@@ -5098,7 +5199,7 @@ msgstr "Password dimenticata?"
 msgid "Form fields"
 msgstr "Campi del modulo"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:281
 msgid "Form slug or action path is required."
 msgstr "Lo slug del modulo o il percorso dell’azione è obbligatorio."
 
@@ -5339,7 +5440,7 @@ msgid "Hi {{buyer_name}},"
 msgstr "Ciao {{buyer_name}},"
 
 #. translators: {{display_name}} is replaced with the user's name; keep it as is.
-#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:189
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:196
 msgid "Hi {{display_name}},"
 msgstr "Ciao {{display_name}},"
 
@@ -5385,7 +5486,7 @@ msgstr "Tasso di riscontro"
 msgid "Hits"
 msgstr "Riscontri"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "Home"
 
@@ -5459,7 +5560,7 @@ msgstr "ID:"
 msgid "IP Address"
 msgstr "Indirizzo IP"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:208
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:215
 msgid "IP address"
 msgstr "Indirizzo IP"
 
@@ -5516,7 +5617,7 @@ msgstr "Se questo numero resta alto ricaricando la pagina, un worker potrebbe es
 msgid "If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP)."
 msgstr "Se questo è il tuo sito, avvia la configurazione. Richiede qualche minuto e ti serviranno i dati del database e l’accesso ai file del tuo hosting (File Manager o FTP)."
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:232
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:239
 msgid "If this was you, no action is needed. Questions? Contact us at {{support_email}}."
 msgstr "Se sei stato tu, non devi fare nulla. Domande? Contattaci a {{support_email}}."
 
@@ -6115,6 +6216,14 @@ msgstr "È emessa"
 msgid "Issue licenses"
 msgstr "Emettere licenze"
 
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is not verified yet."
+msgstr "Non è ancora verificato."
+
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is verified."
+msgstr "È verificato."
+
 #: src/Monetization/Controller.php:59
 msgid "Item type is required"
 msgstr "Il tipo di elemento è obbligatorio"
@@ -6193,11 +6302,11 @@ msgstr "Tienila segreta"
 msgid "Keep me signed in for 7 days"
 msgstr "Mantieni l’accesso per 7 giorni"
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 msgid "Keep them somewhere private."
 msgstr "Conservali in un luogo privato."
 
-#: themes/default/templates/pages/client/security.php:138
+#: themes/default/templates/pages/client/security.php:174
 msgid "Keep this key private. Anyone with it can generate your sign-in codes."
 msgstr "Mantieni privata questa chiave. Chiunque la possieda può generare i tuoi codici di accesso."
 
@@ -6450,6 +6559,14 @@ msgstr "Durata della licenza:"
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "License URI:"
 msgstr "URI della licenza:"
+
+#: src/Email/EmailPreferences.php:94
+msgid "License activity"
+msgstr "Attività delle licenze"
+
+#: src/Email/EmailPreferences.php:90
+msgid "License expiry reminders"
+msgstr "Promemoria di scadenza delle licenze"
 
 #: src/Admin/ContentHandlers/LicensePage.php:456
 msgid "License features"
@@ -7194,6 +7311,10 @@ msgstr "Notifica di registrazione di un nuovo utente"
 msgid "New Version"
 msgstr "Nuova versione"
 
+#: src/Email/EmailPreferences.php:98
+msgid "New app versions"
+msgstr "Nuove versioni delle app"
+
 #: templates/admin/contents/system/maintenance.php:114
 msgid "New bypass link"
 msgstr "Nuovo link di bypass"
@@ -7202,12 +7323,16 @@ msgstr "Nuovo link di bypass"
 msgid "New bypass link made; earlier links stop working."
 msgstr "Nuovo link di bypass creato; i link precedenti smettono di funzionare."
 
+#: themes/default/templates/pages/client/account.php:72
+msgid "New email address"
+msgstr "Nuovo indirizzo email"
+
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
 msgstr "Nuovo nome per %s"
 
-#: themes/default/templates/pages/auth/reset-password.php:25
+#: themes/default/templates/pages/auth/reset-password.php:25 themes/default/templates/pages/client/security.php:48
 msgid "New password"
 msgstr "Nuova password"
 
@@ -7223,6 +7348,10 @@ msgstr "Nuova richiesta di acquisto n. %d da esaminare"
 #: themes/default/templates/pages/client/app.php:95
 msgid "New version"
 msgstr "Nuova versione"
+
+#: src/Email/EmailPreferences.php:107
+msgid "News and messages the site sends to its customers."
+msgstr "Notizie e messaggi che il sito invia ai suoi clienti."
 
 #: themes/default/templates/partials/repository/pagination.php:22 assets/js/admin/modules.js:419
 msgid "Next"
@@ -7475,7 +7604,7 @@ msgstr "Ancora nessuna organizzazione"
 msgid "No parameters."
 msgstr "Nessun parametro."
 
-#: themes/default/templates/pages/client/security.php:36
+#: themes/default/templates/pages/client/security.php:72
 msgid "No passkeys are registered yet."
 msgstr "Non è ancora registrata alcuna passkey."
 
@@ -7620,7 +7749,7 @@ msgstr "Nessuno (licenze emesse da un amministratore)"
 msgid "None given"
 msgstr "Non indicato"
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 msgid "None registered"
 msgstr "Nessuno registrato"
 
@@ -7632,7 +7761,7 @@ msgstr "Ancora nessuno."
 msgid "None. Every app type can be uploaded without a key."
 msgstr "Nessuno. Ogni tipo di app può essere caricato senza chiave."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1103
 msgid "Not Allowed"
 msgstr "Non consentito"
 
@@ -7656,11 +7785,11 @@ msgstr "Non è un file dell’app"
 msgid "Not available"
 msgstr "Non disponibile"
 
-#: themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 msgid "Not enabled"
 msgstr "Non attivo"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1104 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "Non trovato"
 
@@ -7911,6 +8040,10 @@ msgstr "Riaprire il sito ai visitatori?"
 msgid "Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now."
 msgstr "Apri questo link in un altro browser per usare il sito mentre i visitatori attendono. Tienilo privato; viene mostrato solo ora."
 
+#: themes/default/templates/pages/client/account.php:32 themes/default/templates/pages/client/security.php:36
+msgid "Open your WordPress profile"
+msgstr "Apri il tuo profilo WordPress"
+
 #. translators: 1: opening <strong> tag, 2: closing <strong> tag
 #: src/Environments/Application/Installation/InstallerPage.php:115
 #, php-format
@@ -7994,7 +8127,7 @@ msgid "Options"
 msgstr "Opzioni"
 
 #. translators: 1: opening link tag, 2: closing link tag.
-#: themes/default/templates/pages/client/security.php:135
+#: themes/default/templates/pages/client/security.php:171
 #, php-format
 msgid "Or %1$sopen the authenticator app%2$s on this device."
 msgstr "Oppure %1$sapri l’app di autenticazione%2$s su questo dispositivo."
@@ -8198,11 +8331,11 @@ msgstr "Passkey rimossa"
 msgid "Passkey added"
 msgstr "Passkey aggiunta"
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "Passkey name"
 msgstr "Nome della passkey"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:173
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:180
 msgid "Passkey registered successfully."
 msgstr "Passkey registrata correttamente."
 
@@ -8210,11 +8343,11 @@ msgstr "Passkey registrata correttamente."
 msgid "Passkey registered."
 msgstr "Passkey registrata."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:168
 msgid "Passkey registration could not be started."
 msgstr "Impossibile avviare la registrazione della passkey."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:170
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:177
 msgid "Passkey registration failed or expired. Please try again."
 msgstr "Registrazione della passkey non riuscita o scaduta. Riprova."
 
@@ -8226,7 +8359,7 @@ msgstr "Registrazione della passkey non riuscita."
 msgid "Passkey removed"
 msgstr "Passkey rimossa"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:187
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:194
 msgid "Passkey removed."
 msgstr "Passkey rimossa."
 
@@ -8246,12 +8379,12 @@ msgstr "Accesso con passkey non riuscito."
 msgid "Passkey sign-in was cancelled."
 msgstr "L’accesso con passkey è stato annullato."
 
-#: themes/default/templates/pages/client/security.php:32
+#: themes/default/templates/pages/client/security.php:68
 msgid "Passkeys"
 msgstr "Passkey"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:375
-#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34
+#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34 themes/default/templates/pages/client/security.php:42
 msgid "Password"
 msgstr "Password"
 
@@ -8441,7 +8574,8 @@ msgstr "Conserva questa email come ricevuta. Per domande su questo pagamento, co
 msgid "Please paste or type some JSON."
 msgstr "Incolla o digita del JSON."
 
-#: src/Auth/ActionHandlers/AuthManagement.php:646 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54 src/Security/RequestController.php:201
+#: src/Auth/ActionHandlers/AuthManagement.php:646 src/ClientDashboard/ActionHandlers/AccountManagement.php:141 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54
+#: src/Security/RequestController.php:201
 msgid "Please provide a valid email address."
 msgstr "Fornisci un indirizzo email valido."
 
@@ -8716,6 +8850,10 @@ msgstr "Prodotto"
 msgid "Production"
 msgstr "Produzione"
 
+#: themes/default/templates/pages/client/account.php:37
+msgid "Profile"
+msgstr "Profilo"
+
 #: src/Core/Process/Process.php:90
 msgid "Programs cannot be started from this PHP (proc_open is unavailable)."
 msgstr "Questo PHP non può avviare programmi (proc_open non è disponibile)."
@@ -8966,7 +9104,7 @@ msgid "Receipt pages"
 msgstr "Pagine della ricevuta"
 
 #. translators: %s: email address.
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 #, php-format
 msgid "Receive a one-time code at %s when you sign in."
 msgstr "Ricevi un codice monouso a %s quando accedi."
@@ -9103,6 +9241,10 @@ msgstr "Rilascia job bloccati"
 msgid "Released %d stale job(s) back to the queue."
 msgstr "Rimessi in coda %d job bloccati."
 
+#: src/Email/EmailPreferences.php:91
+msgid "Reminders before a license expires, and a notice when it has expired."
+msgstr "Promemoria prima della scadenza di una licenza e un avviso quando è scaduta."
+
 #: src/Monetization/Providers/RemoteProvider.php:43
 msgid "Remote store"
 msgstr "Archivio remoto"
@@ -9130,7 +9272,7 @@ msgstr "Rimuovi blocco"
 msgid "Remove members from organizations"
 msgstr "Rimuovere membri dalle organizzazioni"
 
-#: themes/default/templates/pages/client/security.php:46
+#: themes/default/templates/pages/client/security.php:82
 msgid "Remove passkey"
 msgstr "Rimuovi passkey"
 
@@ -9702,6 +9844,14 @@ msgstr "Salva modello"
 msgid "Save changes"
 msgstr "Salva modifiche"
 
+#: themes/default/templates/pages/client/account.php:101
+msgid "Save email preferences"
+msgstr "Salva le preferenze email"
+
+#: themes/default/templates/pages/client/account.php:44
+msgid "Save profile"
+msgstr "Salva profilo"
+
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr "Salva l’indirizzo del sito"
@@ -9732,15 +9882,15 @@ msgstr "Salvataggio del metadato di licenza \"%s\" non riuscito: %s"
 msgid "Saving..."
 msgstr "Salvataggio..."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:117
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:124
 msgid "Scan the secret in your authenticator app, then enter its current code."
 msgstr "Scansiona il segreto con la tua app di autenticazione, quindi inserisci il codice attuale."
 
-#: themes/default/templates/pages/client/security.php:131
+#: themes/default/templates/pages/client/security.php:167
 msgid "Scan this QR code with your authenticator app"
 msgstr "Scansiona questo codice QR con la tua app di autenticazione"
 
-#: themes/default/templates/pages/client/security.php:132
+#: themes/default/templates/pages/client/security.php:168
 msgid "Scan this code with your authenticator app."
 msgstr "Scansiona questo codice con la tua app di autenticazione."
 
@@ -9987,7 +10137,7 @@ msgstr "File selezionato"
 msgid "Send Email Verification"
 msgstr "Invia verifica email"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:118
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:133
 msgid "Send Email Verification Code"
 msgstr "Invia codice di verifica email"
 
@@ -10007,7 +10157,7 @@ msgstr "Invia email di reimpostazione password"
 msgid "Send Purchase Request Email"
 msgstr "Invia email di richiesta di acquisto"
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:110
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:129
 msgid "Send Security Notice Email"
 msgstr "Invia email di avviso di sicurezza"
 
@@ -10043,11 +10193,11 @@ msgstr "Invia di nuovo"
 msgid "Send bulk messages"
 msgstr "Invia messaggi di massa"
 
-#: themes/default/templates/pages/client/security.php:91
+#: themes/default/templates/pages/client/security.php:127
 msgid "Send code to disable"
 msgstr "Invia codice per disattivare"
 
-#: themes/default/templates/pages/client/security.php:99
+#: themes/default/templates/pages/client/security.php:135
 msgid "Send enrollment code"
 msgstr "Invia codice di attivazione"
 
@@ -10071,6 +10221,10 @@ msgstr "Invia il link"
 #, php-format
 msgid "Send the site secret for this domain in the %s header."
 msgstr "Invia il segreto del sito per questo dominio nell’header %s."
+
+#: themes/default/templates/pages/client/account.php:79
+msgid "Send verification code"
+msgstr "Invia codice di verifica"
 
 #: src/Email/Providers/AmazonSESProvider.php:126 src/Email/Providers/ResendProvider.php:73
 msgid "Sender display name. Leave blank to use the global from name"
@@ -10212,6 +10366,10 @@ msgstr "Inviata al proprietario dell’app quando viene caricata una nuova versi
 msgid "Sent to the app owner when the status of their application is changed by an administrator."
 msgstr "Inviata al proprietario dell’app quando un amministratore cambia lo stato della sua applicazione."
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:63
+msgid "Sent to the previous address after a user changes the email address of their account."
+msgstr "Inviata all’indirizzo precedente dopo che un utente ha modificato l’indirizzo email del suo account."
+
 #: src/Email/Templates/System/UpdateInstalledEmail.php:62
 msgid "Sent to the site administration email after an automatic update installed a new release."
 msgstr "Inviata all’email di amministrazione del sito dopo che un aggiornamento automatico ha installato una nuova release."
@@ -10344,6 +10502,10 @@ msgstr "Account di servizio non attivo"
 msgid "Session Expired"
 msgstr "Sessione scaduta"
 
+#: themes/default/templates/pages/client/security.php:57
+msgid "Sessions"
+msgstr "Sessioni"
+
 #: src/Environments/Application/Health/SystemHealth.php:1297
 #, php-format
 msgid "Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough."
@@ -10357,7 +10519,7 @@ msgstr "Imposta questo adattatore di cache come provider predefinito per tutte l
 msgid "Set this email provider as the default provider for all mailing operations."
 msgstr "Imposta questo provider email come provider predefinito per tutti gli invii."
 
-#: themes/default/templates/pages/client/security.php:154
+#: themes/default/templates/pages/client/security.php:190
 msgid "Set up authenticator app"
 msgstr "Configura app di autenticazione"
 
@@ -10447,19 +10609,32 @@ msgstr "Accedi per verificare il tuo indirizzo email."
 msgid "Sign in with a passkey"
 msgstr "Accedi con una passkey"
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:46 src/ClientDashboard/ActionHandlers/SecurityManagement.php:77 src/ClientDashboard/ActionHandlers/SecurityManagement.php:96 src/ClientDashboard/ActionHandlers/SecurityManagement.php:125
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:53 src/ClientDashboard/ActionHandlers/SecurityManagement.php:84 src/ClientDashboard/ActionHandlers/SecurityManagement.php:103 src/ClientDashboard/ActionHandlers/SecurityManagement.php:132
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:257 src/ClientDashboard/ActionHandlers/SecurityManagement.php:299
 msgid "Sign in with a user account to manage security settings."
 msgstr "Accedi con un account utente per gestire le impostazioni di sicurezza."
 
-#: themes/default/templates/pages/client/security.php:32
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:427
+msgid "Sign in with a user account to manage your account."
+msgstr "Accedi con un account utente per gestire il tuo account."
+
+#: themes/default/templates/pages/client/security.php:68
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "Accedi con l’impronta digitale, il volto, il blocco schermo o una chiave di sicurezza invece della password. Una passkey dimostra già che sei tu, quindi accedendo con essa salti il secondo passaggio qui sotto."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/pages/client/security.php:59 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "Esci"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:107 src/Email/Templates/Security/EmailOtpEmail.php:121
+#: themes/default/templates/pages/client/security.php:61
+msgid "Sign out of all other sessions"
+msgstr "Esci da tutte le altre sessioni"
+
+#: themes/default/templates/pages/client/security.php:59
+msgid "Sign out of every other session?"
+msgstr "Uscire da tutte le altre sessioni?"
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:121 src/Email/Templates/Security/EmailOtpEmail.php:121
 msgid "Sign-in verification code"
 msgstr "Codice di verifica dell’accesso"
 
@@ -10485,6 +10660,10 @@ msgstr "Accesso effettuato come %s."
 #, php-format
 msgid "Signed in as user #%d"
 msgstr "Accesso effettuato come utente n. %d"
+
+#: themes/default/templates/pages/client/security.php:57
+msgid "Signed in on a device you no longer use, or a shared computer? Sign out everywhere else. This device stays signed in."
+msgstr "Hai effettuato l’accesso su un dispositivo che non usi più o su un computer condiviso? Esci ovunque altrove. Questo dispositivo resta connesso."
 
 #: assets/js/passkeys.js:85
 msgid "Signed in."
@@ -11099,7 +11278,11 @@ msgstr "Quel database non esiste. Crealo prima nel pannello di controllo del tuo
 msgid "That database user does not exist. Check the username."
 msgstr "Quell’utente del database non esiste. Controlla il nome utente."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:204
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:147 src/ClientDashboard/ActionHandlers/AccountManagement.php:214
+msgid "That email address is already used by another account."
+msgstr "Questo indirizzo email è già usato da un altro account."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:211
 msgid "That factor is not enabled."
 msgstr "Quel fattore non è attivo."
 
@@ -11107,7 +11290,7 @@ msgstr "Quel fattore non è attivo."
 msgid "That language is not available."
 msgstr "Quella lingua non è disponibile."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:184
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:191
 msgid "That passkey could not be found."
 msgstr "Impossibile trovare quella passkey."
 
@@ -11165,12 +11348,12 @@ msgstr "Il valore \"%s\" del tema \"%s\" deve essere una stringa."
 msgid "The \"%s\" parameter must be %s."
 msgstr "Il parametro \"%s\" deve essere %s."
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:73
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:78
 #, php-format
 msgid "The \"%s\" template is disabled."
 msgstr "Il modello \"%s\" è disattivato."
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:99
 msgid "The \"Email Verification Code\" template is disabled."
 msgstr "Il modello \"Codice di verifica email\" è disattivato."
 
@@ -11582,7 +11765,7 @@ msgstr "L’utente autenticato non ha il permesso di accedere a questa risorsa."
 msgid "The authenticated user does not have permission to perform this action."
 msgstr "L’utente autenticato non ha il permesso di eseguire questa azione."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:135
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:142
 msgid "The authenticator code is incorrect."
 msgstr "Il codice dell’autenticatore non è corretto."
 
@@ -11637,7 +11820,7 @@ msgstr "Il file dei checksum non elenca %s."
 msgid "The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has."
 msgstr "Il codice su disco è la versione %s, ma state.json registra %s: è stato installato un aggiornamento ma la fase di completamento non è stata eseguita. Le attività pianificate e i job in coda sono in pausa finché non viene eseguita."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:231
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:238
 msgid "The confirmation code is incorrect or expired."
 msgstr "Il codice di conferma non è corretto o è scaduto."
 
@@ -11745,6 +11928,12 @@ msgstr "L’indirizzo email è già verificato."
 #: src/Environments/WordPress/IdentityService.php:496
 msgid "The email address is invalid."
 msgstr "L’indirizzo email non è valido."
+
+#. translators: %s: the new email address, partly hidden.
+#: src/Email/Templates/Security/EmailChangedEmail.php:53
+#, php-format
+msgid "The email address of your account was changed to %s. Emails about your account now go to that address, and this one can no longer be used to sign in."
+msgstr "L’indirizzo email del tuo account è stato cambiato in %s. Le email sul tuo account ora vanno a quell’indirizzo e questo non può più essere usato per accedere."
 
 #: templates/admin/contents/options/email/form.php:38 templates/admin/contents/options/monetization/monetizations.php:41
 #, php-format
@@ -12121,7 +12310,8 @@ msgstr "Impossibile installare il modulo."
 msgid "The module release is not a release from release()."
 msgstr "La release del modulo non proviene da release()."
 
-#: src/Security/Organizations/OrganizationService.php:425
+#. translators: %d: maximum number of characters.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:105 src/Security/Organizations/OrganizationService.php:425
 #, php-format
 msgid "The name can be at most %d characters long."
 msgstr "Il nome può essere lungo al massimo %d caratteri."
@@ -12149,6 +12339,10 @@ msgstr "Il namespace \"%s\" dell’estensione \"%s\" non è valido: deve termina
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is reserved by the app."
 msgstr "Il namespace \"%s\" dell’estensione \"%s\" è riservato all’app."
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:79
+msgid "The new email address is not valid."
+msgstr "Il nuovo indirizzo email non è valido."
 
 #: src/FileSystem/Repository.php:242
 msgid "The new filename cannot be empty."
@@ -12583,7 +12777,7 @@ msgstr "La richiesta non è riuscita. Riprova."
 msgid "The request format or parameters provided are improperly structured."
 msgstr "Il formato o i parametri della richiesta non sono strutturati correttamente."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1098
 msgid "The request method is not allowed on this server."
 msgstr "Il metodo della richiesta non è consentito su questo server."
 
@@ -12635,7 +12829,7 @@ msgstr "L’applicazione richiesta non ha nulla da scaricare."
 msgid "The requested range cannot be satisfied."
 msgstr "L’intervallo richiesto non può essere soddisfatto."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1099 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "Impossibile trovare la risorsa richiesta."
 
@@ -13102,15 +13296,15 @@ msgstr "Il valore non può essere vuoto."
 msgid "The value must be an integer."
 msgstr "Il valore deve essere un numero intero."
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:67
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:68
 msgid "The verification code could not be read."
 msgstr "Impossibile leggere il codice di verifica."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:66
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:169 src/ClientDashboard/ActionHandlers/SecurityManagement.php:73
 msgid "The verification code could not be sent. Please try again."
 msgstr "Impossibile inviare il codice di verifica. Riprova."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:85
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:205 src/ClientDashboard/ActionHandlers/SecurityManagement.php:92
 msgid "The verification code is incorrect or expired."
 msgstr "Il codice di verifica non è corretto o è scaduto."
 
@@ -13241,6 +13435,10 @@ msgstr "Non c’era alcuna sessione attiva su questo dispositivo."
 msgid "These are checked for this web request. Installing from this page runs as the web server's PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with"
 msgstr "Questi elementi vengono controllati per questa richiesta web. L’installazione da questa pagina viene eseguita con l’utente PHP del server web; gli aggiornamenti automatici vengono eseguiti dove gira l’elaborazione in background, che può essere un altro utente o un altro PHP. Controlla lì con"
 
+#: themes/default/templates/pages/client/account.php:88
+msgid "These choices apply once your email address is verified."
+msgstr "Queste scelte si applicano non appena il tuo indirizzo email è verificato."
+
 #: assets/js/admin/repository-browser.js:371
 msgid "These files have no app record, so they can be viewed but not changed."
 msgstr "Questi file non hanno un record dell’app, quindi possono essere visualizzati ma non modificati."
@@ -13315,11 +13513,11 @@ msgstr "Questa app è sospesa dagli amministratori del sito, quindi non è offer
 msgid "This app's owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page."
 msgstr "Il proprietario di questa app non ha un account di servizio attivo. Creane uno per il proprietario in Account → Account di servizio, poi ricarica questa pagina."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:138
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
 msgid "This authenticator setup has already been used."
 msgstr "Questa configurazione dell’autenticatore è già stata usata."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:129
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:136
 msgid "This authenticator setup has expired. Start again."
 msgstr "Questa configurazione dell’autenticatore è scaduta. Ricomincia."
 
@@ -13339,9 +13537,13 @@ msgstr "Questo browser mantiene l’accesso; ricevi un link di bypass per gli al
 msgid "This check could not run."
 msgstr "Impossibile eseguire questo controllo."
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "This device"
 msgstr "Questo dispositivo"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:333
+msgid "This download link has expired. Ask for your data again from your account page."
+msgstr "Questo link di download è scaduto. Richiedi di nuovo i tuoi dati dalla pagina del tuo account."
 
 #: assets/js/admin/core.js:1175
 msgid "This field"
@@ -13416,6 +13618,10 @@ msgstr "Questa è un’applicazione monetizzata; per accedere al file è necessa
 #: themes/default/templates/pages/signing-key.php:49
 msgid "This is a public key: it can only check signatures, not make them, and it is safe to share."
 msgstr "Questa è una chiave pubblica: può solo verificare le firme, non crearle, ed è sicuro condividerla."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:144
+msgid "This is already your email address."
+msgstr "Questo è già il tuo indirizzo email."
 
 #. translators: 1: app name (formatted), 2: support (formatted)
 #: src/Email/Templates/System/SystemAlertEmail.php:112
@@ -13591,11 +13797,11 @@ msgstr "Questo link di verifica è scaduto. Chiedine uno nuovo."
 msgid "This verification link is not valid."
 msgstr "Questo link di verifica non è valido."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:81
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:201 src/ClientDashboard/ActionHandlers/AccountManagement.php:210 src/ClientDashboard/ActionHandlers/SecurityManagement.php:88
 msgid "This verification request has expired. Start again."
 msgstr "Questa richiesta di verifica è scaduta. Ricomincia."
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:231
 msgid "This wasn't me — secure my account"
 msgstr "Non sono stato io — proteggi il mio account"
 
@@ -13627,7 +13833,7 @@ msgstr "Il nome del livello è obbligatorio"
 msgid "Tiers"
 msgstr "Livelli"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:207 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:214 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
 msgid "Time"
 msgstr "Ora"
 
@@ -13862,13 +14068,27 @@ msgstr "L’autenticazione a due fattori con %s è stata attivata per il tuo acc
 msgid "Type"
 msgstr "Tipo"
 
+#. translators: %s: the user's email address.
+#: themes/default/templates/pages/client/account.php:140
+#, php-format
+msgid "Type %s to confirm"
+msgstr "Digita %s per confermare"
+
 #: src/Exceptions/RequestException.php:58
 msgid "Type Mismatch"
 msgstr "Tipo non corrispondente"
 
+#: themes/default/templates/pages/client/security.php:49
+msgid "Type the new password again"
+msgstr "Digita di nuovo la nuova password"
+
 #: src/Environments/Application/Installation/InstallerPage.php:383
 msgid "Type the same password again."
 msgstr "Digita di nuovo la stessa password."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:378
+msgid "Type your email address exactly as shown to confirm."
+msgstr "Digita il tuo indirizzo email esattamente come mostrato per confermare."
 
 #: src/Email/Providers/SMTPProvider.php:143
 msgid "Typically 25 (plain), 465 (SSL), or 587 (STARTTLS/TLS)."
@@ -14108,7 +14328,7 @@ msgstr "Modalità di aggiornamento automatico sconosciuta \"%s\"; usa off, secur
 msgid "Unknown callable"
 msgstr "Callable sconosciuto"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:254
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:261
 msgid "Unknown device"
 msgstr "Dispositivo sconosciuto"
 
@@ -14135,7 +14355,7 @@ msgstr "Termini di licenza sconosciuti: %s."
 msgid "Unknown purchase request email \"%s\"."
 msgstr "Email di richiesta di acquisto sconosciuta \"%s\"."
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:67
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:72
 msgid "Unknown security notice."
 msgstr "Avviso di sicurezza sconosciuto."
 
@@ -14494,7 +14714,7 @@ msgstr "Usa la regione UE se il tuo account Mailgun è ospitato in Europa."
 msgid "Use a %s placeholder or a full URL."
 msgstr "Usa un segnaposto %s o un URL completo."
 
-#: themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:152
 msgid "Use an app such as 1Password, Google Authenticator, or Microsoft Authenticator."
 msgstr "Usa un’app come 1Password, Google Authenticator o Microsoft Authenticator."
 
@@ -14622,7 +14842,7 @@ msgstr "Validazione non riuscita"
 msgid "Value"
 msgstr "Valore"
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:110 src/Email/Templates/Security/EmailOtpEmail.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:125 src/Email/Templates/Security/EmailOtpEmail.php:85 themes/default/templates/pages/client/account.php:62
 msgid "Verification code"
 msgstr "Codice di verifica"
 
@@ -14638,11 +14858,11 @@ msgstr "Verifica la mia email"
 msgid "Verify Your Email Address"
 msgstr "Verifica il tuo indirizzo email"
 
-#: themes/default/templates/pages/client/security.php:147
+#: themes/default/templates/pages/client/security.php:183
 msgid "Verify and enable"
 msgstr "Verifica e attiva"
 
-#: themes/default/templates/pages/client/security.php:109
+#: themes/default/templates/pages/client/security.php:145
 msgid "Verify and enable email codes"
 msgstr "Verifica e attiva i codici via email"
 
@@ -14654,11 +14874,11 @@ msgstr "Verifica e accedi"
 msgid "Verify your email"
 msgstr "Verifica la tua email"
 
-#: themes/default/templates/pages/client/security.php:102
+#: themes/default/templates/pages/client/security.php:138
 msgid "Verify your email address before enabling email codes."
 msgstr "Verifica il tuo indirizzo email prima di attivare i codici via email."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:52
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:59
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr "Verifica il tuo indirizzo email prima di attivare i codici di accesso via email."
 
@@ -14889,7 +15109,7 @@ msgstr "Avviso"
 msgid "Warnings"
 msgstr "Avvisi"
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:217
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
 msgid "Wasn't you? Someone else may have access to your account. Secure it now by resetting your password, then review your sign-in methods."
 msgstr "Non sei stato tu? Qualcun altro potrebbe avere accesso al tuo account. Proteggilo subito reimpostando la password, poi controlla i tuoi metodi di accesso."
 
@@ -15015,7 +15235,7 @@ msgstr "Quando acquisti una licenza e invii la ricevuta di pagamento, appare qui
 msgid "When you buy a license and send your payment receipt, it appears here while it is reviewed. Verify your email address to see purchases made with it before you signed in."
 msgstr "Quando acquisti una licenza e invii la ricevuta di pagamento, appare qui durante la revisione. Verifica il tuo indirizzo email per vedere gli acquisti fatti con esso prima di accedere."
 
-#: themes/default/templates/pages/client/security.php:62
+#: themes/default/templates/pages/client/security.php:98
 msgid "When you sign in with your password, you also confirm with one of these. Passkey sign-in does not ask for it."
 msgstr "Quando accedi con la password, confermi anche con uno di questi. L’accesso con passkey non lo richiede."
 
@@ -15066,6 +15286,26 @@ msgstr "Temi WordPress"
 #: src/Environments/WordPress/WPDBAdapter.php:80
 msgid "WordPress could not connect to the database: "
 msgstr "WordPress non è riuscito a connettersi al database: "
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:435
+msgid "WordPress manages this account. Make this change from your WordPress profile."
+msgstr "WordPress gestisce questo account. Effettua questa modifica dal tuo profilo WordPress."
+
+#: themes/default/templates/pages/client/account.php:30
+msgid "WordPress manages your name, email address, password and account. Change them from your WordPress profile."
+msgstr "WordPress gestisce il tuo nome, il tuo indirizzo email, la tua password e il tuo account. Modificali dal tuo profilo WordPress."
+
+#: themes/default/templates/pages/client/security.php:34
+msgid "WordPress manages your password and sessions. Change them from your WordPress profile."
+msgstr "WordPress gestisce la tua password e le tue sessioni. Modificale dal tuo profilo WordPress."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:260
+msgid "WordPress manages your password. Change it from your WordPress profile."
+msgstr "WordPress gestisce la tua password. Modificala dal tuo profilo WordPress."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:302
+msgid "WordPress manages your sessions. Sign out of other sessions from your WordPress profile."
+msgstr "WordPress gestisce le tue sessioni. Esci dalle altre sessioni dal tuo profilo WordPress."
 
 #: src/Background/BackgroundSetup.php:242
 msgid "Works anywhere"
@@ -15130,6 +15370,16 @@ msgstr "Hai effettuato l’accesso"
 msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator before you leave."
 msgstr "Sei l’unico Amministratore dell’organizzazione di %s. Nomina un altro membro Amministratore dell’organizzazione prima di uscire."
 
+#. translators: %s: organization name.
+#: src/Security/Accounts/AccountDeletion.php:111
+#, php-format
+msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator, or delete the organization, first."
+msgstr "Sei l’unico Amministratore dell’organizzazione di %s. Prima nomina un altro membro Amministratore dell’organizzazione, oppure elimina l’organizzazione."
+
+#: src/Security/Accounts/AccountDeletion.php:117
+msgid "You are the only active system administrator. Make another user an active system administrator first."
+msgstr "Sei l’unico amministratore di sistema attivo. Prima rendi un altro utente amministratore di sistema attivo."
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:161
 msgid "You asked for an account. Sign up with this email address and verify it; this license then appears in your account."
 msgstr "Hai richiesto un account. Registrati con questo indirizzo email e verificalo; la licenza apparirà poi nel tuo account."
@@ -15180,6 +15430,10 @@ msgstr "Non hai il permesso necessario per accedere a questa risorsa"
 msgid "You do not have the required permission to perform this action."
 msgstr "Non hai il permesso necessario per eseguire questa azione."
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:305
+msgid "You downloaded your data a few minutes ago. Please wait before asking again."
+msgstr "Hai scaricato i tuoi dati pochi minuti fa. Attendi prima di richiederli di nuovo."
+
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:76 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:203
 msgid "You have cancelled your subscription."
 msgstr "Hai annullato il tuo abbonamento."
@@ -15191,6 +15445,14 @@ msgstr "Hai superato il numero massimo di richieste consentite in questo interva
 #: src/Exceptions/RequestException.php:231
 msgid "You have used all available quota for this operation."
 msgstr "Hai esaurito la quota disponibile per questa operazione."
+
+#. translators: %d: number of apps.
+#: src/Security/Accounts/AccountDeletion.php:99
+#, php-format
+msgid "You host %d app, including any in the trash. Delete it, or move it to another owner, first."
+msgid_plural "You host %d apps, including any in the trash. Delete them, or move them to another owner, first."
+msgstr[0] "Ospiti %d app, comprese quelle nel cestino. Prima eliminala o trasferiscila a un altro proprietario."
+msgstr[1] "Ospiti %d app, comprese quelle nel cestino. Prima eliminale o trasferiscile a un altro proprietario."
 
 #: themes/default/templates/pages/client/organizations.php:53
 msgid "You join an organization when one of its administrators invites you."
@@ -15226,9 +15488,19 @@ msgstr "Devi fornire l’ID o lo slug del tema."
 msgid "You now act for %s."
 msgstr "Ora agisci per %s."
 
+#. translators: %s: email address.
+#: themes/default/templates/pages/client/account.php:51
+#, php-format
+msgid "You sign in with %s."
+msgstr "Accedi con %s."
+
 #: src/Environments/Application/Installation/InstallerPage.php:370
 msgid "You sign in with this address, and password resets are sent to it."
 msgstr "Accedi con questo indirizzo e qui vengono inviate le reimpostazioni della password."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:310
+msgid "You were signed out on every other device. This one stays signed in."
+msgstr "Sei stato disconnesso da tutti gli altri dispositivi. Questo resta connesso."
 
 #: themes/default/templates/pages/client/organizations.php:100
 msgid "You will run it as its Organization Administrator, and can invite others to it."
@@ -15294,9 +15566,25 @@ msgstr "Il tuo abbonamento è stato annullato"
 msgid "Your access to {{plan_name}} features will remain active until {{access_until}}, after which your account will be downgraded."
 msgstr "Il tuo accesso alle funzionalità di {{plan_name}} resterà attivo fino al {{access_until}}, dopodiché il tuo account verrà declassato."
 
+#: themes/default/templates/pages/client/account.php:25
+msgid "Your account"
+msgstr "Il tuo account"
+
+#: src/Security/Accounts/AccountDeletion.php:126
+msgid "Your account cannot be deleted yet."
+msgstr "Il tuo account non può ancora essere eliminato."
+
+#: themes/default/templates/pages/client/account.php:126
+msgid "Your account cannot be deleted yet:"
+msgstr "Il tuo account non può ancora essere eliminato:"
+
 #: src/Security/Organizations/OrganizationService.php:67
 msgid "Your account cannot create organizations."
 msgstr "Il tuo account non può creare organizzazioni."
+
+#: src/Security/Accounts/AccountDeletion.php:175
+msgid "Your account could not be deleted. Nothing was changed. Please try again."
+msgstr "Non è stato possibile eliminare il tuo account. Non è stato modificato nulla. Riprova."
 
 #: src/Email/Templates/Accounts/WelcomeEmail.php:43
 msgid "Your account has been created successfully. Get started today."
@@ -15315,6 +15603,14 @@ msgstr "Il tuo account su {{app_name}} è stato creato correttamente. Ora puoi a
 #: src/Environments/Application/Auth/WebIdentityProvider.php:270
 msgid "Your account was created, but signing in failed. Please sign in."
 msgstr "Il tuo account è stato creato, ma l’accesso non è riuscito. Accedi."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:395
+msgid "Your account was deleted. Goodbye."
+msgstr "Il tuo account è stato eliminato. Arrivederci."
+
+#: src/Email/EmailPreferences.php:102
+msgid "Your app activity"
+msgstr "Attività delle tue app"
 
 #. translators: 1: opening link tag, 2: closing link tag, 3: URL pattern.
 #: themes/default/templates/pages/signing-key.php:67
@@ -15343,10 +15639,26 @@ msgstr "La tua carta è stata rifiutata. Controlla i dati di pagamento."
 msgid "Your code is %s. It expires in %d minutes."
 msgstr "Il tuo codice è %s. Scade tra %d minuti."
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:49 src/ClientDashboard/ActionHandlers/SecurityManagement.php:99 src/ClientDashboard/ActionHandlers/SecurityManagement.php:154 src/ClientDashboard/ActionHandlers/SecurityManagement.php:181
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:199
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:431 src/ClientDashboard/ActionHandlers/SecurityManagement.php:56 src/ClientDashboard/ActionHandlers/SecurityManagement.php:106 src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:188 src/ClientDashboard/ActionHandlers/SecurityManagement.php:206 src/ClientDashboard/ActionHandlers/SecurityManagement.php:263
 msgid "Your current password is incorrect."
 msgstr "La password attuale non è corretta."
+
+#: themes/default/templates/pages/client/account.php:106
+msgid "Your data"
+msgstr "I tuoi dati"
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:341
+msgid "Your data could not be exported. Please try again."
+msgstr "Non è stato possibile esportare i tuoi dati. Riprova."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:314
+msgid "Your data is ready. The download starts now."
+msgstr "I tuoi dati sono pronti. Il download inizia ora."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:229
+msgid "Your email address could not be changed. Please try again."
+msgstr "Non è stato possibile modificare il tuo indirizzo email. Riprova."
 
 #: src/Security/Authentication/UserAccounts.php:185
 msgid "Your email address could not be verified. Please try again."
@@ -15355,6 +15667,18 @@ msgstr "Impossibile verificare il tuo indirizzo email. Riprova."
 #: src/Auth/ActionHandlers/AuthManagement.php:603
 msgid "Your email address is already verified."
 msgstr "Il tuo indirizzo email è già verificato."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:253
+msgid "Your email address was changed. We let your previous address know."
+msgstr "Il tuo indirizzo email è stato modificato. Abbiamo avvisato il tuo indirizzo precedente."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:279
+msgid "Your email preferences could not be saved. Please try again."
+msgstr "Non è stato possibile salvare le tue preferenze email. Riprova."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:278
+msgid "Your email preferences were saved."
+msgstr "Le tue preferenze email sono state salvate."
 
 #: src/Email/Templates/System/TestEmail.php:169
 msgid "Your email provider is configured correctly. This test email was delivered successfully."
@@ -15425,6 +15749,14 @@ msgstr "La tua iscrizione a {{organization_name}} è terminata. Non hai più acc
 msgid "Your name"
 msgstr "Il tuo nome"
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:305
+msgid "Your other sessions could not be signed out. Please try again."
+msgstr "Non è stato possibile disconnettere le tue altre sessioni. Riprova."
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:279
+msgid "Your password could not be changed. Please try again."
+msgstr "Non è stato possibile modificare la tua password. Riprova."
+
 #: src/Auth/ActionHandlers/AuthManagement.php:713
 msgid "Your password has been changed. Sign in with the new one."
 msgstr "La tua password è stata cambiata. Accedi con quella nuova."
@@ -15448,6 +15780,10 @@ msgstr "La tua password è stata cambiata correttamente il {{changed_at}}."
 msgid "Your password was changed successfully. If this was not you, contact support immediately."
 msgstr "La tua password è stata cambiata correttamente. Se non sei stato tu, contatta subito l’assistenza."
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:287
+msgid "Your password was changed. You were signed out on every other device."
+msgstr "La tua password è stata modificata. Sei stato disconnesso da tutti gli altri dispositivi."
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:141
 msgid "Your payment for {{product}} is confirmed. Here is your license; the license document is attached. Please keep them safe."
 msgstr "Il tuo pagamento per {{product}} è confermato. Ecco la tua licenza; il documento di licenza è allegato. Conservali al sicuro."
@@ -15463,6 +15799,18 @@ msgstr "Non è stato possibile elaborare il tuo pagamento di {{amount}} {{curren
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:27
 msgid "Your payment receipt is being reviewed. Your license follows once the payment is confirmed."
 msgstr "La tua ricevuta di pagamento è in fase di revisione. La licenza arriverà una volta confermato il pagamento."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:109
+msgid "Your profile could not be saved. Please try again."
+msgstr "Non è stato possibile salvare il tuo profilo. Riprova."
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:112
+msgid "Your profile was saved."
+msgstr "Il tuo profilo è stato salvato."
+
+#: themes/default/templates/pages/client/account.php:26
+msgid "Your profile, the emails you receive, and your data."
+msgstr "Il tuo profilo, le email che ricevi e i tuoi dati."
 
 #: src/Email/Templates/Purchases/PurchaseRequestRejectedEmail.php:26
 #, php-format
@@ -15880,7 +16228,7 @@ msgid "{{token}} or value"
 msgstr "{{token}} o valore"
 
 #. translators: %s: year, app name
-#: src/Email/Templates/EmailTemplate.php:892
+#: src/Email/Templates/EmailTemplate.php:893
 #, php-format
 msgid "© %s. All rights reserved."
 msgstr "© %s. Tutti i diritti riservati."

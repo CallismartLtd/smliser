@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:06+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: العربية\n"
 "Language: ar\n"
@@ -179,6 +179,11 @@ msgstr "#f8fafc"
 msgid "#ffffff"
 msgstr "#ffffff"
 
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:289
+#, php-format
+msgid "%1$d of %2$d"
+msgstr "%1$d من %2$d"
+
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:79
 #, php-format
@@ -331,6 +336,12 @@ msgstr "%d من %d مفقودة (%s)"
 #, php-format
 msgid "%d of %d scheduled tasks are more than %d minutes overdue: %s."
 msgstr "%d من %d مهام مجدولة متأخرة بأكثر من %d دقيقة: %s."
+
+#. translators: 1: sites the license is activated on, 2: the most it may be activated on.
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:289
+#, php-format
+msgid "%d of unlimited"
+msgstr "%d من غير محدود"
 
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:50
 #, php-format
@@ -607,6 +618,12 @@ msgstr "تم حذف %s."
 #, php-format
 msgid "%s is enabled and loads from the next request on."
 msgstr "تم تفعيل %s وسيتم تحميله بدءًا من الطلب التالي."
+
+#. translators: %s: the site's domain.
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:74
+#, php-format
+msgid "%s is freed. It can no longer use this license, and the license can be activated on another site."
+msgstr "تم تحرير %s. لم يعد بإمكانه استخدام هذا الترخيص، ويمكن تفعيل الترخيص على موقع آخر."
 
 #. translators: %s: app
 #: src/Environments/Application/Installation/InstallerPage.php:428
@@ -1041,7 +1058,7 @@ msgstr "لم يكتمل تحديث سابق. أكمله أو تراجع عنه �
 msgid "A pricing tier represents a specific license option for a hosted application."
 msgstr "تمثل فئة التسعير خيار ترخيص محددًا لتطبيق مُستضاف."
 
-#: src/Monetization/LicensingService.php:65
+#: src/Monetization/LicensingService.php:74
 msgid "A provider reference needs a provider ID."
 msgstr "يحتاج مرجع المزوّد إلى معرّف المزوّد."
 
@@ -1082,6 +1099,10 @@ msgstr "ملف واحد؛ لا حاجة إلى خادم قاعدة بيانات.
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:85 src/Email/Templates/Apps/AppStatusChangedEmail.php:182
 msgid "A status update for your application."
 msgstr "تحديث بخصوص حالة تطبيقك."
+
+#: themes/default/templates/pages/client/app-license.php:130
+msgid "A suspended or deactivated license cannot be validated or used to download the app."
+msgstr "لا يمكن التحقق من ترخيص معلّق أو معطّل ولا استخدامه لتنزيل التطبيق."
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:197
 #, php-format
@@ -1335,6 +1356,12 @@ msgstr "فعّل التراخيص وتحقق من التحديثات ونزّل 
 msgid "Activate this package after installing?"
 msgstr "تفعيل هذه الحزمة بعد التثبيت؟"
 
+#. translators: %s: the date the site was activated.
+#: themes/default/templates/pages/client/app-license.php:104
+#, php-format
+msgid "Activated %s"
+msgstr "فُعّل في %s"
+
 #: src/Email/Templates/Licenses/LicenseActivatedEmail.php:70 src/Email/Templates/Licenses/LicenseActivatedEmail.php:177
 msgid "Activated Domain"
 msgstr "النطاق المفعّل"
@@ -1342,6 +1369,10 @@ msgstr "النطاق المفعّل"
 #: templates/admin/contents/license/view.php:211
 msgid "Activated on"
 msgstr "تاريخ التفعيل"
+
+#: themes/default/templates/pages/client/app-license.php:88
+msgid "Activated sites"
+msgstr "المواقع المفعّلة"
 
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:74 src/Email/Templates/Licenses/LicenseIssuedEmail.php:193 src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:153
 msgid "Activation Limit"
@@ -1370,6 +1401,10 @@ msgstr "عمليات التثبيت النشطة"
 #: src/Environments/Application/Health/SystemHealth.php:1140
 msgid "Active Theme"
 msgstr "القالب النشط"
+
+#: themes/default/templates/pages/client/app-license.php:150
+msgid "Activity"
+msgstr "النشاط"
 
 #: src/Admin/ContentHandlers/LicensePage.php:492 templates/admin/contents/license/index.php:34 templates/admin/contents/license/search.php:33
 msgid "Activity Logs"
@@ -1487,7 +1522,7 @@ msgstr "وجدت الفحوصات الإضافية %s مشكلة."
 msgid "Additional verification could not be started. Please try again."
 msgstr "تعذّر بدء التحقق الإضافي. يرجى المحاولة مرة أخرى."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:98 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr "المسؤول"
 
@@ -1557,6 +1592,10 @@ msgstr "الكل (%d)"
 msgid "All active login sessions have been terminated across all your devices."
 msgstr "تم إنهاء جميع جلسات تسجيل الدخول النشطة على جميع أجهزتك."
 
+#: themes/default/templates/pages/client/app-licenses.php:33
+msgid "All apps"
+msgstr "كل التطبيقات"
+
 #: templates/admin/contents/system/health.php:80
 msgid "All critical and warning checks passed."
 msgstr "نجحت جميع الفحوصات الحرجة والتحذيرية."
@@ -1596,6 +1635,10 @@ msgstr "سيتم سرد جميع مالكي الموارد هنا"
 #: src/Environments/Application/Health/SystemHealth.php:1027
 msgid "All scheduled tasks last ran without error."
 msgstr "عملت جميع المهام المجدولة دون أخطاء في آخر تشغيل."
+
+#: themes/default/templates/pages/client/app-licenses.php:42
+msgid "All statuses"
+msgstr "كل الحالات"
 
 #: assets/js/admin/repository-browser.js:290
 msgid "All types"
@@ -1803,6 +1846,10 @@ msgstr "يجري تحديث آخر. حاول مرة أخرى بعد انتهائ
 msgid "Any database"
 msgstr "أي قاعدة بيانات"
 
+#: themes/default/templates/pages/client/app-license.php:50 themes/default/templates/pages/client/app-licenses.php:31 themes/default/templates/pages/client/app-licenses.php:81
+msgid "App"
+msgstr "التطبيق"
+
 #: templates/admin/contents/license/view.php:124
 msgid "App Attribute:"
 msgstr "خاصية التطبيق:"
@@ -1859,6 +1906,10 @@ msgstr "لم يتم العثور على فئة التطبيق للنوع «%s».
 #: assets/js/admin/core.js:889
 msgid "App data not found"
 msgstr "لم يتم العثور على بيانات التطبيق"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:75 src/ClientDashboard/ContentHandlers/AppLicensesPage.php:341 themes/default/templates/pages/client/app-license.php:78
+msgid "App licenses"
+msgstr "تراخيص التطبيقات"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:765
 msgid "App monetization"
@@ -2619,6 +2670,10 @@ msgstr "تغيير المعرّف"
 msgid "Change status"
 msgstr "تغيير الحالة"
 
+#: themes/default/templates/pages/client/app-licenses.php:63
+msgid "Change the filters to see more licenses."
+msgstr "غيّر عوامل التصفية لرؤية مزيد من التراخيص."
+
 #: src/Security/Permission/Capability.php:47
 msgid "Change the status of app monetization"
 msgstr "تغيير حالة تحقيق الدخل من التطبيقات"
@@ -2796,13 +2851,17 @@ msgstr "اختر حزمة الإضافة (.zip) لرفعها."
 msgid "Choose the language of the installation. It is also saved as the site language and your account's language."
 msgstr "اختر لغة التثبيت. تُحفظ أيضًا كلغة الموقع ولغة حسابك."
 
-#: src/Monetization/Controller.php:65
+#: src/Monetization/Controller.php:66
 msgid "Choose the license term"
 msgstr "اختر مدة الترخيص"
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:99
 msgid "Choose the theme package (.zip) to upload."
 msgstr "اختر حزمة القالب (.zip) لرفعها."
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:106
+msgid "Choose what to do with the license."
+msgstr "اختر ما تريد فعله بالترخيص."
 
 #: src/ClientDashboard/ActionHandlers/ContextSwitch.php:59
 msgid "Choose who to act for."
@@ -2820,7 +2879,7 @@ msgstr "تنظيف إيصالات الشراء"
 msgid "Clean Trashed Apps"
 msgstr "تنظيف التطبيقات في سلة المهملات"
 
-#: templates/admin/contents/accounts/access-control-form.php:100 templates/admin/contents/repository/uploader.php:58 assets/js/admin/apps-uploader.js:1543
+#: templates/admin/contents/accounts/access-control-form.php:100 templates/admin/contents/repository/uploader.php:58 themes/default/templates/pages/client/app-licenses.php:55 assets/js/admin/apps-uploader.js:1543
 msgid "Clear"
 msgstr "مسح"
 
@@ -3535,11 +3594,11 @@ msgstr "فهرس قاعدة البيانات"
 msgid "Database execution failure dropping application metadata rows."
 msgstr "فشل تنفيذ في قاعدة البيانات أثناء حذف صفوف البيانات الوصفية للتطبيق."
 
-#: src/Monetization/License.php:1251
+#: src/Monetization/License.php:1377
 msgid "Database execution failure dropping license activations."
 msgstr "فشل تنفيذ في قاعدة البيانات أثناء حذف تفعيلات الترخيص."
 
-#: src/Monetization/License.php:1246
+#: src/Monetization/License.php:1372
 msgid "Database execution failure dropping license metadata entries."
 msgstr "فشل تنفيذ في قاعدة البيانات أثناء حذف إدخالات البيانات الوصفية للترخيص."
 
@@ -3555,7 +3614,7 @@ msgstr "فشل تنفيذ في قاعدة البيانات أثناء حذف ف�
 msgid "Database execution failure dropping primary application entry."
 msgstr "فشل تنفيذ في قاعدة البيانات أثناء حذف الإدخال الرئيسي للتطبيق."
 
-#: src/Monetization/License.php:1255
+#: src/Monetization/License.php:1381
 msgid "Database execution failure dropping primary license record."
 msgstr "فشل تنفيذ في قاعدة البيانات أثناء حذف السجل الرئيسي للترخيص."
 
@@ -4760,7 +4819,7 @@ msgstr "انتهى في"
 msgid "Expired download link, please refresh current page."
 msgstr "رابط التنزيل منتهي الصلاحية، يرجى تحديث الصفحة الحالية."
 
-#: themes/default/templates/pages/client/licenses.php:50
+#: themes/default/templates/pages/client/app-license.php:70 themes/default/templates/pages/client/app-licenses.php:93 themes/default/templates/pages/client/licenses.php:50
 msgid "Expires"
 msgstr "ينتهي"
 
@@ -4860,7 +4919,7 @@ msgstr "فشل النسخ إلى الحافظة"
 msgid "Failed to delete entity. Transaction rolled back."
 msgstr "تعذّر حذف الكيان. تم التراجع عن المعاملة."
 
-#: src/Monetization/Controller.php:204
+#: src/Monetization/Controller.php:205
 msgid "Failed to delete the pricing tier, please try again."
 msgstr "تعذّر حذف فئة التسعير، يرجى المحاولة مرة أخرى."
 
@@ -5009,6 +5068,10 @@ msgstr "الملفات"
 msgid "Filesystem Error"
 msgstr "خطأ في نظام الملفات"
 
+#: themes/default/templates/pages/client/app-licenses.php:53
+msgid "Filter"
+msgstr "تصفية"
+
 #: themes/default/templates/pages/client/apps.php:31
 msgid "Filter by status"
 msgstr "التصفية حسب الحالة"
@@ -5106,7 +5169,7 @@ msgstr "نسيت كلمة المرور؟"
 msgid "Form fields"
 msgstr "حقول النموذج"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:281
 msgid "Form slug or action path is required."
 msgstr "معرّف النموذج أو مسار الإجراء مطلوب."
 
@@ -5125,6 +5188,20 @@ msgstr "تنسيق JSON (تجميل)"
 #: src/Environments/WordPress/WordPressEnvironment.php:521
 msgid "Four Hourly"
 msgstr "كل أربع ساعات"
+
+#. translators: %s: the site's domain.
+#: themes/default/templates/pages/client/app-license.php:111
+#, php-format
+msgid "Free %s? It can no longer use this license or download the app, until the license is activated on it again."
+msgstr "تحرير %s؟ لن يتمكن من استخدام هذا الترخيص أو تنزيل التطبيق حتى يُفعَّل الترخيص عليه مجددًا."
+
+#: themes/default/templates/pages/client/app-license.php:90
+msgid "Free a site to let the license be activated somewhere else. The site loses its download access at once."
+msgstr "حرّر موقعًا للسماح بتفعيل الترخيص في مكان آخر. يفقد الموقع صلاحية التنزيل فورًا."
+
+#: themes/default/templates/pages/client/app-license.php:112 themes/default/templates/pages/client/app-license.php:116
+msgid "Free site"
+msgstr "تحرير الموقع"
 
 #: src/FileSystem/WPPluginRepository.php:230
 msgid "Frequently Asked Questions"
@@ -5393,7 +5470,7 @@ msgstr "معدل الإصابة"
 msgid "Hits"
 msgstr "الإصابات"
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:90 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -6123,7 +6200,7 @@ msgstr "صادر"
 msgid "Issue licenses"
 msgstr "إصدار التراخيص"
 
-#: src/Monetization/Controller.php:59
+#: src/Monetization/Controller.php:60
 msgid "Item type is required"
 msgstr "نوع العنصر مطلوب"
 
@@ -6334,6 +6411,10 @@ msgstr "اتركه فارغًا لتقديم التنزيلات من هذا ال
 msgid "Leave the installer"
 msgstr "مغادرة المثبّت"
 
+#: src/Schema/Migrations/GrantLicenseSiteRemoval.php:40
+msgid "Let app owners free the sites a license of their app is activated on"
+msgstr "السماح لمالكي التطبيقات بتحرير المواقع المفعّل عليها ترخيص لتطبيقهم"
+
 #: src/Admin/ContentHandlers/RepositoryPage.php:816 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
 msgid "License"
 msgstr "الترخيص"
@@ -6342,12 +6423,17 @@ msgstr "الترخيص"
 msgid "License #"
 msgstr "الترخيص رقم"
 
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:257
+#, php-format
+msgid "License #%d"
+msgstr "الترخيص رقم %d"
+
 #: src/Monetization/PurchaseRequestService.php:359
 #, php-format
 msgid "License #%d was issued, but the request could not be marked approved. Please try again."
 msgstr "صدر الترخيص رقم %d، لكن تعذّر وضع علامة الموافقة على الطلب. يرجى المحاولة مرة أخرى."
 
-#: src/Monetization/Controller.php:346
+#: src/Monetization/Controller.php:347
 #, php-format
 msgid "License %s successfully."
 msgstr "تم %s الترخيص بنجاح."
@@ -6408,7 +6494,7 @@ msgstr "تذكير بانتهاء الترخيص - 7 أيام"
 msgid "License ID"
 msgstr "معرّف الترخيص"
 
-#: src/Monetization/Controller.php:456 src/Monetization/Controller.php:502
+#: src/Monetization/Controller.php:457 src/Monetization/Controller.php:508
 msgid "License ID is required."
 msgstr "معرّف الترخيص مطلوب."
 
@@ -6472,7 +6558,7 @@ msgstr "تم تفعيل الترخيص لنطاقك «%s»"
 msgid "License has been deactivated"
 msgstr "تم إلغاء تفعيل الترخيص"
 
-#: src/Monetization/License.php:1551
+#: src/Monetization/License.php:1677
 msgid "License is not issued to any application."
 msgstr "الترخيص غير صادر لأي تطبيق."
 
@@ -6481,11 +6567,19 @@ msgstr "الترخيص غير صادر لأي تطبيق."
 msgid "License issued to: %s"
 msgstr "صدر الترخيص لـ: %s"
 
-#: themes/default/templates/pages/client/licenses.php:43
+#: themes/default/templates/pages/client/app-license.php:58 themes/default/templates/pages/client/licenses.php:43
 msgid "License key"
 msgstr "مفتاح الترخيص"
 
-#: src/Monetization/License.php:1242
+#: themes/default/templates/pages/client/app-licenses.php:50
+msgid "License key or licensee email"
+msgstr "مفتاح الترخيص أو بريد المرخّص له"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:345
+msgid "License not found"
+msgstr "الترخيص غير موجود"
+
+#: src/Monetization/License.php:1368
 msgid "License record locked or already removed by a concurrent request."
 msgstr "سجل الترخيص مقفل أو حُذف بالفعل بواسطة طلب متزامن."
 
@@ -6506,15 +6600,15 @@ msgstr "مدة الترخيص: %s"
 msgid "License validity test result is ready."
 msgstr "نتيجة اختبار صلاحية الترخيص جاهزة."
 
-#: src/Monetization/Controller.php:565
+#: src/Monetization/Controller.php:571
 msgid "License was deleted"
 msgstr "تم حذف الترخيص"
 
-#: src/Monetization/Controller.php:556
+#: src/Monetization/Controller.php:562
 msgid "License was not found"
 msgstr "لم يتم العثور على الترخيص"
 
-#: src/Monetization/License.php:1559
+#: src/Monetization/License.php:1685
 msgid "License was not issued to this application."
 msgstr "لم يصدر الترخيص لهذا التطبيق."
 
@@ -6550,11 +6644,19 @@ msgstr "المرخّص له:"
 msgid "Licenses"
 msgstr "التراخيص"
 
+#: themes/default/templates/pages/client/app-licenses.php:27
+msgid "Licenses issued for the apps you host here, for whoever you act for."
+msgstr "التراخيص الصادرة للتطبيقات التي تستضيفها هنا، لمن تتصرف نيابةً عنه."
+
 #: themes/default/templates/pages/client/licenses.php:21
 msgid "Licenses issued to you. Use the key on each site you activate."
 msgstr "التراخيص الصادرة لك. استخدم المفتاح في كل موقع تفعّله."
 
-#: src/Monetization/Controller.php:196
+#: themes/default/templates/pages/client/app-licenses.php:63
+msgid "Licenses sold or issued for your apps appear here."
+msgstr "تظهر هنا التراخيص المبيعة أو الصادرة لتطبيقاتك."
+
+#: src/Monetization/Controller.php:197
 msgid "Licenses were issued from this pricing tier, so it was archived instead: it issues no new licenses."
 msgstr "صدرت تراخيص من فئة التسعير هذه، لذا تمت أرشفتها بدلًا من ذلك: لم تعد تصدر تراخيص جديدة."
 
@@ -6799,7 +6901,7 @@ msgstr "الحد الأقصى للنطاقات"
 msgid "Maximum Websites:"
 msgstr "الحد الأقصى للمواقع:"
 
-#: src/Monetization/License.php:1419 src/RESTAPI/Handlers/Licenses.php:557
+#: src/Monetization/License.php:1545 src/RESTAPI/Handlers/Licenses.php:557
 msgid "Maximum allowed domains has been reached."
 msgstr "تم بلوغ الحد الأقصى للنطاقات المسموح بها."
 
@@ -7015,7 +7117,7 @@ msgstr "الوحدات"
 msgid "Monetization"
 msgstr "تحقيق الدخل"
 
-#: src/Monetization/Controller.php:173
+#: src/Monetization/Controller.php:174
 msgid "Monetization ID is required."
 msgstr "معرّف تحقيق الدخل مطلوب."
 
@@ -7035,15 +7137,15 @@ msgstr "مزوّدو تحقيق الدخل"
 msgid "Monetization Status:"
 msgstr "حالة تحقيق الدخل:"
 
-#: src/Monetization/Controller.php:248
+#: src/Monetization/Controller.php:249
 msgid "Monetization disabled successfully."
 msgstr "تم تعطيل تحقيق الدخل بنجاح."
 
-#: src/Monetization/Controller.php:248
+#: src/Monetization/Controller.php:249
 msgid "Monetization enabled successfully."
 msgstr "تم تفعيل تحقيق الدخل بنجاح."
 
-#: src/Monetization/Controller.php:183 src/Monetization/Controller.php:238
+#: src/Monetization/Controller.php:184 src/Monetization/Controller.php:239
 msgid "Monetization not found."
 msgstr "لم يتم العثور على تحقيق الدخل."
 
@@ -7157,7 +7259,7 @@ msgstr "يتطلب التطبيق %s"
 msgid "Network Error"
 msgstr "خطأ في الشبكة"
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:97
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:290 src/ClientDashboard/ContentHandlers/LicensesPage.php:97
 msgid "Never"
 msgstr "أبدًا"
 
@@ -7292,6 +7394,10 @@ msgstr "تعذّر تشغيل أي برنامج PHP لسطر الأوامر (ق�
 #: themes/default/templates/pages/auth/sign-in.php:48
 msgid "No account?"
 msgstr "ليس لديك حساب؟"
+
+#: themes/default/templates/pages/client/app-license.php:153
+msgid "No activity recorded for this license yet."
+msgstr "لم يُسجَّل أي نشاط لهذا الترخيص بعد."
 
 #: assets/js/admin/site-health.js:295
 msgid "No additional checks were returned."
@@ -7437,7 +7543,11 @@ msgstr "لم تكن هناك مهام جاهزة للتشغيل."
 msgid "No licenses found."
 msgstr "لم يتم العثور على تراخيص."
 
-#: themes/default/templates/pages/client/licenses.php:25
+#: themes/default/templates/pages/client/app-licenses.php:62
+msgid "No licenses match"
+msgstr "لا توجد تراخيص مطابقة"
+
+#: themes/default/templates/pages/client/app-licenses.php:62 themes/default/templates/pages/client/licenses.php:25
 msgid "No licenses yet"
 msgstr "لا توجد تراخيص بعد"
 
@@ -7640,7 +7750,7 @@ msgstr "لا شيء بعد."
 msgid "None. Every app type can be uploaded without a key."
 msgstr "لا شيء. يمكن رفع كل أنواع التطبيقات دون مفتاح."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1103
 msgid "Not Allowed"
 msgstr "غير مسموح"
 
@@ -7668,7 +7778,7 @@ msgstr "غير متاح"
 msgid "Not enabled"
 msgstr "غير مفعّل"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1104 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "غير موجود"
 
@@ -7844,6 +7954,14 @@ msgstr "المساحة الحرة على القرص %d ميغابايت فقط؛
 #: src/Environments/WordPress/RESTAPI.php:584
 msgid "Only HTTPS URLs are allowed."
 msgstr "يُسمح بروابط HTTPS فقط."
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:99
+msgid "Only a deactivated license can be reactivated."
+msgstr "لا يمكن إعادة تفعيل إلا ترخيص معطّل."
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:105
+msgid "Only a suspended license can be unsuspended."
+msgstr "لا يمكن رفع التعليق إلا عن ترخيص معلّق."
 
 #: src/HostedApps/HostingController.php:801
 msgid "Only a system administrator can suspend an app."
@@ -8060,7 +8178,8 @@ msgstr "ملفات أخرى"
 msgid "Other files of an app are not signed by this site. Developers who want them verified sign them with their own key."
 msgstr "لا يوقّع هذا الموقع الملفات الأخرى للتطبيق. المطورون الذين يريدون التحقق منها يوقّعونها بمفاتيحهم الخاصة."
 
-#: src/Admin/ContentHandlers/DashboardPage.php:617 src/ClientDashboard/ContentHandlers/OverviewPage.php:43 templates/admin/contents/index.php:43 templates/admin/contents/license/view.php:107
+#: src/Admin/ContentHandlers/DashboardPage.php:617 src/ClientDashboard/ContentHandlers/AppLicensesPage.php:341 src/ClientDashboard/ContentHandlers/OverviewPage.php:43 templates/admin/contents/index.php:43
+#: templates/admin/contents/license/view.php:107
 msgid "Overview"
 msgstr "نظرة عامة"
 
@@ -8663,7 +8782,7 @@ msgstr "فئة التسعير"
 msgid "Pricing Tiers"
 msgstr "فئات التسعير"
 
-#: src/Monetization/Controller.php:206
+#: src/Monetization/Controller.php:207
 msgid "Pricing tier deleted successfully."
 msgstr "تم حذف فئة التسعير بنجاح."
 
@@ -8736,7 +8855,7 @@ msgstr "اسم الخاصية موجود بالفعل"
 msgid "Property name is required"
 msgstr "اسم الخاصية مطلوب"
 
-#: src/Monetization/Controller.php:460
+#: src/Monetization/Controller.php:461 src/Monetization/LicensingService.php:224
 msgid "Provide the domain to uninstall."
 msgstr "حدد النطاق المراد إلغاء تثبيته."
 
@@ -8924,6 +9043,10 @@ msgstr "تم تجاوز حد المعدل"
 #, php-format
 msgid "Reached the update server %s in %d ms via %s."
 msgstr "تم الوصول إلى خادم التحديثات %s خلال %d ملّي ثانية عبر %s."
+
+#: themes/default/templates/pages/client/app-license.php:134
+msgid "Reactivate"
+msgstr "إعادة التفعيل"
 
 #: assets/js/admin/repository-browser.js:37
 msgid "Read-only. Upload a new version of the app to change these."
@@ -9718,7 +9841,7 @@ msgstr "حفظ عنوان الموقع"
 msgid "Save this key now. For security, it will not be shown to you again."
 msgstr "احفظ هذا المفتاح الآن. لأسباب أمنية، لن يُعرض عليك مجددًا."
 
-#: src/Monetization/Controller.php:145 src/Monetization/Controller.php:340 src/Monetization/Controller.php:432 assets/js/admin/apps-uploader.js:542
+#: src/Monetization/Controller.php:146 src/Monetization/Controller.php:341 src/Monetization/Controller.php:433 assets/js/admin/apps-uploader.js:542
 #: assets/js/admin/core.js:328 assets/js/admin/email-editor.js:903
 msgid "Saved"
 msgstr "تم الحفظ"
@@ -9731,7 +9854,7 @@ msgstr "تم الحفظ بنجاح."
 msgid "Saved."
 msgstr "تم الحفظ."
 
-#: src/Monetization/License.php:1166
+#: src/Monetization/License.php:1292
 #, php-format
 msgid "Saving the license meta \"%s\" failed: %s"
 msgstr "فشل حفظ بيانات الترخيص الوصفية «%s»: %s"
@@ -9785,7 +9908,7 @@ msgid "Screenshots"
 msgstr "لقطات الشاشة"
 
 #: templates/admin/contents/broadcasts/search.php:30 templates/admin/contents/license/search.php:48 templates/admin/contents/modules/marketplace.php:41 templates/admin/contents/repository/search.php:37
-#: themes/default/templates/partials/repository/toolbar.php:22
+#: themes/default/templates/pages/client/app-licenses.php:49 themes/default/templates/partials/repository/toolbar.php:22
 msgid "Search"
 msgstr "بحث"
 
@@ -10463,7 +10586,7 @@ msgstr "سجّل الدخول بحساب مستخدم لإدارة إعدادا�
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr "سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة أو مفتاح أمان بدلًا من كلمة المرور. مفتاح المرور يثبت هويتك بالفعل، لذا يتخطى تسجيل الدخول به الخطوة الثانية أدناه."
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:106 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr "تسجيل الخروج"
 
@@ -10548,7 +10671,7 @@ msgstr "عنوان الموقع"
 msgid "Site language set to %s."
 msgstr "تم تعيين لغة الموقع إلى %s."
 
-#: themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
+#: themes/default/templates/pages/client/app-license.php:62 themes/default/templates/pages/client/app-licenses.php:89 themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
 msgid "Sites"
 msgstr "المواقع"
 
@@ -10602,7 +10725,7 @@ msgstr "لم تجتز بعض حقول الإدخال فحوصات التحقق."
 msgid "Something went wrong"
 msgstr "حدث خطأ ما"
 
-#: src/Monetization/Controller.php:150
+#: src/Monetization/Controller.php:151
 msgid "Something went wrong during data persistence."
 msgstr "حدث خطأ ما أثناء حفظ البيانات."
 
@@ -10682,6 +10805,10 @@ msgstr "بدء التثبيت"
 msgid "Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead."
 msgstr "شغّل عامل قائمة الانتظار الظاهر في الأدوات > المعالجة في الخلفية. على الاستضافة المشتركة، استخدم بدلًا من ذلك الأمر المجمّع `smliser cron`."
 
+#: themes/default/templates/pages/client/app-license.php:66
+msgid "Starts"
+msgstr "يبدأ"
+
 #: templates/admin/contents/system/index.php:55
 msgid "State"
 msgstr "الحالة"
@@ -10694,7 +10821,8 @@ msgstr "الإحصاءات"
 #: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
-#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
+#: themes/default/templates/pages/client/app-license.php:129 themes/default/templates/pages/client/app-licenses.php:40 themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196
+#: themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
 msgstr "الحالة"
 
@@ -10909,9 +11037,13 @@ msgstr "رابط الدعم"
 msgid "Support report"
 msgstr "تقرير الدعم"
 
-#: templates/admin/contents/license/index.php:59
+#: templates/admin/contents/license/index.php:59 themes/default/templates/pages/client/app-license.php:142
 msgid "Suspend"
 msgstr "تعليق"
+
+#: themes/default/templates/pages/client/app-license.php:142
+msgid "Suspend this license? It stops working on every site until you unsuspend it."
+msgstr "تعليق هذا الترخيص؟ سيتوقف عن العمل على كل المواقع حتى ترفع التعليق."
 
 #: src/Email/Templates/Licenses/LicenseSuspendedEmail.php:144
 msgid "Suspicious activity detected."
@@ -10932,6 +11064,10 @@ msgstr "تشغيل الصيانة"
 #: src/ClientDashboard/ActionHandlers/AppActions.php:72
 msgid "Switch to an account or organization that can host apps first."
 msgstr "انتقل أولًا إلى حساب أو مؤسسة يمكنها استضافة التطبيقات."
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:114
+msgid "Switch to an account or organization whose role lets you manage the licenses of its apps."
+msgstr "انتقل إلى حساب أو مؤسسة يسمح لك دورك فيها بإدارة تراخيص تطبيقاتها."
 
 #: src/Environments/Application/Health/SystemHealth.php:1127
 msgid "Switch to another installed theme or reinstall this theme."
@@ -11225,7 +11361,7 @@ msgstr "تعذر نقل %s «%s» إلى سلة المهملات."
 msgid "The %s \"%s\" could not be renamed to \"%s\"."
 msgstr "تعذرت إعادة تسمية %s «%s» إلى «%s»."
 
-#: src/FileSystem/Repository.php:734 src/FileSystem/Repository.php:806 src/Monetization/Controller.php:312
+#: src/FileSystem/Repository.php:734 src/FileSystem/Repository.php:806 src/Monetization/Controller.php:313
 #, php-format
 msgid "The %s \"%s\" does not exist."
 msgstr "%s «%s» غير موجود."
@@ -11455,7 +11591,7 @@ msgstr "تعذر إنشاء الحساب."
 msgid "The account for this link no longer exists."
 msgstr "الحساب المرتبط بهذا الرابط لم يعد موجودًا."
 
-#: src/Monetization/License.php:1431
+#: src/Monetization/License.php:1557
 msgid "The activation could not be saved."
 msgstr "تعذر حفظ التفعيل."
 
@@ -11481,7 +11617,7 @@ msgstr "تعذر حذف التطبيق. يرجى المحاولة مجددًا."
 msgid "The app status to list: active, deactivated, suspended or trash. Statuses other than active are for system admins only (403 for anyone else)."
 msgstr "حالة التطبيقات المراد سردها: active أو deactivated أو suspended أو trash. الحالات غير active مخصصة لمسؤولي النظام فقط (403 لأي شخص آخر)."
 
-#: src/Monetization/LicensingService.php:89
+#: src/Monetization/LicensingService.php:98
 msgid "The app this pricing tier belongs to does not exist."
 msgstr "التطبيق الذي تنتمي إليه فئة التسعير هذه غير موجود."
 
@@ -11707,7 +11843,7 @@ msgstr "اسم المرسل الافتراضي مطلوب"
 msgid "The default theme ships with the application; it is updated with the application, and cannot be installed, replaced or removed here."
 msgstr "يأتي القالب الافتراضي مع التطبيق؛ ويُحدَّث معه، ولا يمكن تثبيته أو استبداله أو إزالته هنا."
 
-#: src/Monetization/Controller.php:478
+#: src/Monetization/Controller.php:485
 #, php-format
 msgid "The domain \"%s\" has been uninstalled"
 msgstr "تم إلغاء تثبيت النطاق «%s»"
@@ -11716,7 +11852,7 @@ msgstr "تم إلغاء تثبيت النطاق «%s»"
 msgid "The domain parameter is required."
 msgstr "المعامل domain مطلوب."
 
-#: src/Monetization/Controller.php:474
+#: src/Monetization/Controller.php:482
 msgid "The domain provided does not exist in this license."
 msgstr "النطاق المقدم غير موجود في هذا الترخيص."
 
@@ -11977,20 +12113,24 @@ msgstr "فشل آخر %s في قائمة الانتظار، في %s."
 msgid "The license could not be found. The license key or service ID may be incorrect."
 msgstr "تعذر العثور على الترخيص. قد يكون مفتاح الترخيص أو معرّف الخدمة غير صحيح."
 
-#: src/Monetization/LicensingService.php:126 src/Monetization/LicensingService.php:235
+#: src/Monetization/LicensingService.php:135 src/Monetization/LicensingService.php:320
 msgid "The license could not be saved."
 msgstr "تعذر حفظ الترخيص."
 
-#: src/Monetization/License.php:1395 src/Monetization/License.php:1408 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
-#: src/Monetization/LicensingService.php:191
+#: src/Monetization/License.php:1521 src/Monetization/License.php:1534 src/Monetization/LicensingService.php:153 src/Monetization/LicensingService.php:178
+#: src/Monetization/LicensingService.php:218 src/Monetization/LicensingService.php:261
 msgid "The license does not exist."
 msgstr "الترخيص غير موجود."
+
+#: themes/default/templates/pages/client/app-license.php:84
+msgid "The license holder deactivated this license. It works again only once you reactivate it."
+msgstr "عطّل صاحب الترخيص هذا الترخيص. لن يعمل مجددًا إلا بعد أن تعيد تفعيله."
 
 #: src/RESTAPI/Handlers/Licenses.php:169
 msgid "The license is active on this domain, but a download token could not be issued. Activate again to get one."
 msgstr "الترخيص نشط على هذا النطاق، لكن تعذر إصدار رمز تنزيل. فعّله مجددًا للحصول على رمز."
 
-#: src/Monetization/License.php:1415
+#: src/Monetization/License.php:1541
 #, php-format
 msgid "The license is already activated on %s."
 msgstr "الترخيص مفعّل بالفعل على %s."
@@ -12003,10 +12143,18 @@ msgstr "الترخيص ملغى التفعيل بالفعل. يجب على ما�
 msgid "The license is delivered to this address. A registered user with this verified address is linked to the license."
 msgstr "يُرسل الترخيص إلى هذا العنوان. ويُربط بالترخيص أي مستخدم مسجل بهذا العنوان الموثّق."
 
-#: src/RESTAPI/Handlers/Licenses.php:310
+#: src/Monetization/LicensingService.php:228 src/RESTAPI/Handlers/Licenses.php:310
 #, php-format
 msgid "The license is not activated on %s."
 msgstr "الترخيص غير مفعّل على %s."
+
+#: themes/default/templates/pages/client/app-license.php:94
+msgid "The license is not activated on any site."
+msgstr "الترخيص غير مفعّل على أي موقع."
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:98
+msgid "The license is reactivated."
+msgstr "أُعيد تفعيل الترخيص."
 
 #: themes/default/templates/pages/purchase.php:75
 msgid "The license is sent here."
@@ -12017,6 +12165,14 @@ msgstr "يُرسل الترخيص إلى هنا."
 #, php-format
 msgid "The license is sent to %s and added to your account."
 msgstr "تم إرسال الترخيص إلى %s وإضافته إلى حسابك."
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:101
+msgid "The license is suspended. It cannot be validated or used to download the app until you unsuspend it."
+msgstr "عُلّق الترخيص. لا يمكن التحقق منه أو استخدامه لتنزيل التطبيق حتى ترفع التعليق."
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:104
+msgid "The license is unsuspended."
+msgstr "رُفع التعليق عن الترخيص."
 
 #: src/RESTAPI/Versions/V1.php:580
 msgid "The license key to activate"
@@ -12055,7 +12211,7 @@ msgstr "الترخيص الذي صدر له رمز التنزيل هذا لم ي
 msgid "The license uninstalled for the domain \"%s\" successfully."
 msgstr "تم إلغاء تثبيت الترخيص للنطاق «%s» بنجاح."
 
-#: src/Monetization/Controller.php:307 src/Monetization/LicensingService.php:101
+#: src/Monetization/Controller.php:308 src/Monetization/LicensingService.php:110
 msgid "The licensee email is required."
 msgstr "بريد المرخَّص له مطلوب."
 
@@ -12367,17 +12523,17 @@ msgstr "السعر كما يقرؤه المشترون، مثل «‎$49 / سنة
 msgid "The price as buyers read it, e.g. \"₦25,000 / year\". Shown as is; buyers pay this amount."
 msgstr "السعر كما يقرؤه المشترون، مثل «‎₦25,000 / سنة». يُعرض كما هو؛ ويدفع المشترون هذا المبلغ."
 
-#: src/Monetization/LicensingService.php:79
+#: src/Monetization/LicensingService.php:88
 #, php-format
 msgid "The pricing tier \"%s\" is archived and issues no new licenses."
 msgstr "فئة التسعير «%s» مؤرشفة ولا تُصدر تراخيص جديدة."
 
-#: src/Monetization/LicensingService.php:83
+#: src/Monetization/LicensingService.php:92
 #, php-format
 msgid "The pricing tier \"%s\" is not sold by the provider \"%s\"."
 msgstr "فئة التسعير «%s» لا يبيعها المزوّد «%s»."
 
-#: src/Monetization/LicensingService.php:75
+#: src/Monetization/LicensingService.php:84
 msgid "The pricing tier does not exist."
 msgstr "فئة التسعير غير موجودة."
 
@@ -12434,7 +12590,7 @@ msgstr "المعرّف المقدم لهذا التطبيق غير متاح."
 msgid "The provided slug is not available."
 msgstr "المعرّف المقدم غير متاح."
 
-#: src/Monetization/Controller.php:418
+#: src/Monetization/Controller.php:419
 #, php-format
 msgid "The provider \"%s\" is not supported."
 msgstr "المزوّد «%s» غير مدعوم."
@@ -12591,7 +12747,7 @@ msgstr "فشل الطلب. يرجى المحاولة مجددًا."
 msgid "The request format or parameters provided are improperly structured."
 msgstr "تنسيق الطلب أو معاملاته غير منظمة بشكل صحيح."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1098
 msgid "The request method is not allowed on this server."
 msgstr "طريقة الطلب غير مسموحة على هذا الخادم."
 
@@ -12643,7 +12799,7 @@ msgstr "التطبيق المطلوب لا يحتوي على شيء للتنزي
 msgid "The requested range cannot be satisfied."
 msgstr "لا يمكن تلبية النطاق المطلوب."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1099 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "تعذر العثور على المورد المطلوب."
 
@@ -12679,7 +12835,7 @@ msgstr "عبارة البحث"
 msgid "The selected account type is invalid."
 msgstr "نوع الحساب المحدد غير صالح."
 
-#: src/Monetization/Controller.php:70
+#: src/Monetization/Controller.php:71
 msgid "The selected monetization provider does not exist."
 msgstr "مزوّد تحقيق الدخل المحدد غير موجود."
 
@@ -13307,7 +13463,7 @@ msgstr "هذا التطبيق غير موجود."
 msgid "This app has no description yet."
 msgstr "ليس لهذا التطبيق وصف بعد."
 
-#: src/Monetization/Controller.php:97 src/Monetization/Controller.php:190
+#: src/Monetization/Controller.php:98 src/Monetization/Controller.php:191
 msgid "This app has no such pricing tier."
 msgstr "ليس لهذا التطبيق فئة التسعير هذه."
 
@@ -13453,7 +13609,12 @@ msgstr "هذا بريد اختباري تلقائي أُرسل من %s للتح�
 msgid "This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required."
 msgstr "هذا بريد اختباري تلقائي أُرسل من {{app_name}} للتحقق من أن مزوّد البريد لديك مُعد ويعمل بشكل صحيح. لا يلزم أي إجراء."
 
-#: src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:102
+msgid "This license cannot be suspended."
+msgstr "لا يمكن تعليق هذا الترخيص."
+
+#: src/ClientDashboard/AppOwnerScope.php:169 src/Monetization/Controller.php:292 src/Monetization/Controller.php:467 src/Monetization/Controller.php:514
+#: src/Monetization/LicenseAppAccess.php:53
 msgid "This license does not exist."
 msgstr "هذا الترخيص غير موجود."
 
@@ -13490,7 +13651,7 @@ msgstr "لا يمكن لهذا الجهاز الاستماع على %s."
 msgid "This member does not exist."
 msgstr "هذا العضو غير موجود."
 
-#: src/Monetization/Controller.php:232
+#: src/Monetization/Controller.php:233
 msgid "This monetization does not exist yet, please add a pricing tier first."
 msgstr "خطة تحقيق الدخل هذه غير موجودة بعد، يرجى إضافة فئة تسعير أولًا."
 
@@ -13615,7 +13776,11 @@ msgstr "سيؤدي هذا إلى إزالة قالبك المخصص نهائيً
 msgid "Three Minutely"
 msgstr "كل ثلاث دقائق"
 
-#: src/Monetization/Controller.php:177
+#: themes/default/templates/pages/client/app-license.php:54 themes/default/templates/pages/client/app-licenses.php:85
+msgid "Tier"
+msgstr "الفئة"
+
+#: src/Monetization/Controller.php:178
 msgid "Tier ID is required."
 msgstr "معرّف الفئة مطلوب."
 
@@ -13627,7 +13792,7 @@ msgstr "اسم الفئة:"
 msgid "Tier deleted"
 msgstr "تم حذف الفئة"
 
-#: src/Monetization/Controller.php:62
+#: src/Monetization/Controller.php:63
 msgid "Tier name is required"
 msgstr "اسم الفئة مطلوب"
 
@@ -13912,7 +14077,7 @@ msgstr "تعذر الحذف"
 msgid "Unable to delete %s."
 msgstr "تعذر حذف %s."
 
-#: src/Monetization/Controller.php:565 assets/js/admin/core.js:580
+#: src/Monetization/Controller.php:571 assets/js/admin/core.js:580
 msgid "Unable to delete license"
 msgstr "تعذر حذف الترخيص"
 
@@ -13920,7 +14085,7 @@ msgstr "تعذر حذف الترخيص"
 msgid "Unable to delete the provided entity from the database."
 msgstr "تعذر حذف الكيان المقدم من قاعدة البيانات."
 
-#: src/Monetization/License.php:1697
+#: src/Monetization/License.php:1823
 msgid "Unable to generate a unique license key after multiple attempts."
 msgstr "تعذر إنشاء مفتاح ترخيص فريد بعد عدة محاولات."
 
@@ -13973,7 +14138,7 @@ msgstr "تعذر حفظ الدور في قاعدة البيانات."
 msgid "Unable to save service account"
 msgstr "تعذر حفظ حساب الخدمة"
 
-#: src/Monetization/Controller.php:333
+#: src/Monetization/Controller.php:334
 msgid "Unable to save the license"
 msgstr "تعذر حفظ الترخيص"
 
@@ -13997,7 +14162,7 @@ msgstr "تعذر تعيين كلمة المرور الجديدة"
 msgid "Unable to start download. Headers already sent."
 msgstr "تعذر بدء التنزيل. تم إرسال الترويسات بالفعل."
 
-#: src/Monetization/Controller.php:478
+#: src/Monetization/Controller.php:485 src/Monetization/LicensingService.php:234
 #, php-format
 msgid "Unable to uninstall \"%s\""
 msgstr "تعذر إلغاء تثبيت «%s»"
@@ -14128,12 +14293,12 @@ msgstr "عنوان بريد غير معروف."
 msgid "Unknown error occurred."
 msgstr "حدث خطأ غير معروف."
 
-#: src/Monetization/LicensingService.php:170
+#: src/Monetization/LicensingService.php:182
 #, php-format
 msgid "Unknown license status \"%s\". Use one of: %s."
 msgstr "حالة ترخيص غير معروفة «%s». استخدم إحدى القيم التالية: %s."
 
-#: src/Monetization/LicensingService.php:197
+#: src/Monetization/LicensingService.php:267
 #, php-format
 msgid "Unknown license terms: %s."
 msgstr "شروط ترخيص غير معروفة: %s."
@@ -14190,6 +14355,10 @@ msgstr "نوع وسائط غير مدعوم"
 #: src/Exceptions/FileRequestException.php:44
 msgid "Unsupported Type"
 msgstr "نوع غير مدعوم"
+
+#: themes/default/templates/pages/client/app-license.php:138
+msgid "Unsuspend"
+msgstr "رفع التعليق"
 
 #: templates/admin/contents/system/updates.php:86
 msgid "Up to date"
@@ -15497,6 +15666,10 @@ msgstr "مرجعك لعملية البيع التي صدر لها الترخيص
 msgid "Your role"
 msgstr "دورك"
 
+#: src/ClientDashboard/AppOwnerScope.php:175
+msgid "Your role does not allow managing the licenses of this app."
+msgstr "لا يسمح لك دورك بإدارة تراخيص هذا التطبيق."
+
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:359
 #, php-format
 msgid "Your role in %s does not allow this."
@@ -15708,6 +15881,71 @@ msgstr "نوع مدمج بقيمة افتراضية"
 #: src/HostedApps/Storage/DirectoryAppStorage.php:904
 msgid "leads outside the app"
 msgstr "يؤدي إلى خارج التطبيق"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:320
+msgctxt "license event"
+msgid "Activated"
+msgstr "فُعّل"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:321
+msgctxt "license event"
+msgid "Deactivated"
+msgstr "عُطّل"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:322
+msgctxt "license event"
+msgid "Site removed"
+msgstr "أُزيل الموقع"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:324
+msgctxt "license event"
+msgid "Status changed"
+msgstr "تغيّرت الحالة"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:323
+msgctxt "license event"
+msgid "Verified"
+msgstr "تم التحقق"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:302
+msgctxt "license status"
+msgid "Active"
+msgstr "نشط"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:306
+msgctxt "license status"
+msgid "Deactivated"
+msgstr "معطّل"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:305
+msgctxt "license status"
+msgid "Expired"
+msgstr "منتهي"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:309
+msgctxt "license status"
+msgid "Inactive"
+msgstr "غير نشط"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:303
+msgctxt "license status"
+msgid "Lifetime"
+msgstr "مدى الحياة"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:304
+msgctxt "license status"
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:308
+msgctxt "license status"
+msgid "Revoked"
+msgstr "ملغى"
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:307
+msgctxt "license status"
+msgid "Suspended"
+msgstr "معلّق"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1285
 #, php-format

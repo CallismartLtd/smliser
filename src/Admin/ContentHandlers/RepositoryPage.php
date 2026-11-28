@@ -9,17 +9,16 @@
 namespace SmartLicenseServer\Admin\ContentHandlers;
 
 use SmartLicenseServer\Admin\Contracts\AdminPageInterface;
+use SmartLicenseServer\Analytics\AppStatsSummary;
 use SmartLicenseServer\Analytics\AppsAnalytics;
 use SmartLicenseServer\Assets\AssetsManager;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\URLManager;
-use SmartLicenseServer\Exceptions\StorageException;
 use SmartLicenseServer\HostedApps\AbstractHostedApp;
 use SmartLicenseServer\HostedApps\HostedApplicationService;
 use SmartLicenseServer\FileSystem\FileSystemHelper;
 use SmartLicenseServer\HostedApps\HostedAppsInterface;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
-use SmartLicenseServer\HostedApps\Storage\AppStorage;
 use SmartLicenseServer\Monetization\Monetization;
 use SmartLicenseServer\Monetization\MonetizationRegistry;
 use SmartLicenseServer\Templates\TemplateLocator;
@@ -571,7 +570,8 @@ class RepositoryPage implements AdminPageInterface {
 			$options[] = [
 				'type'        => $type,
 				'label'       => $label,
-				'description' => $data['description'] ?? sprintf( smliser__( 'Upload and manage %s.' ), strtolower( $registry->get_app_type_label( $type, true ) ) ),
+				// translators: %s: app type in the plural, e.g. "Desktop Apps".
+				'description' => $registry->get_app_type_description( $type ) ?? sprintf( smliser__( 'Upload and manage %s.' ), $registry->get_app_type_label( $type, true ) ),
 				'icon'        => $data['icon'] ?? 'ti ti-package',
 				'url'         => $this->urlmanager->admin_repo_url( 'add-new', [ 'type' => $type ] )->url(),
 			];
@@ -836,17 +836,7 @@ class RepositoryPage implements AdminPageInterface {
 	 * @return int Size in bytes; 0 when no package is stored.
 	 */
 	private function package_size( HostedAppsInterface $app ) : int {
-		$package = $app->get_package();
-
-		if ( null === $package ) {
-			return 0;
-		}
-
-		try {
-			return AppStorage::instance()->stat( $package )['size'];
-		} catch ( StorageException ) {
-			return 0;
-		}
+		return HostedApplicationService::get_package_size( $app );
 	}
 
 	/**
@@ -883,55 +873,19 @@ class RepositoryPage implements AdminPageInterface {
 	/**
 	 * Build analytics HTML payload for an app.
 	 *
+	 * The figures and the stat cards are AppStatsSummary's, shared with the
+	 * client dashboard.
+	 *
 	 * @param AbstractHostedApp $app
 	 * @return string
 	 */
 	private function build_analytics_html( AbstractHostedApp $app ) {
-
-		// Downloads.
-		$downloads_daily = $this->apps_analytics->get_downloads_per_day( $app, 30 );
-		ksort( $downloads_daily );
-
-		$download_days   = array_keys( $downloads_daily );
-		$download_values = array_values( $downloads_daily );
-
-		// Client access.
-		$access_daily = $this->apps_analytics->get_client_access_per_day( $app, 30 );
-		ksort( $access_daily );
-
-		$access_days   = array_keys( $access_daily );
-		$access_values = array_values( $access_daily );
-
-		// Aggregate KPIs.
-		$analytics = [
-			'downloads' => [
-				'total'    => $this->apps_analytics->get_total_downloads( $app ),
-				'today'    => $this->apps_analytics->get_todays_downloads( $app ),
-				'average'  => $this->apps_analytics->get_average_daily_downloads( $app, 30 ),
-				'growth'   => $this->apps_analytics->get_download_growth_percentage( $app, 30 ),
-				'peak_day' => $this->apps_analytics->get_peak_download_day( $app, 365 ),
-				'timeline' => [
-					'days'   => $download_days,
-					'values' => $download_values,
-				],
-			],
-			'client_access' => [
-				'total'           => $this->apps_analytics->get_total_client_accesses( $app ),
-				'average'         => $this->apps_analytics->get_average_daily_client_accesses( $app, 30 ),
-				'growth'          => $this->apps_analytics->get_client_access_growth_percentage( $app, 30 ),
-				'peak_day'        => $this->apps_analytics->get_peak_client_access_day( $app, 365 ),
-				'active_installs' => $this->apps_analytics->get_estimated_active_installations( $app, 30 ),
-				'timeline'        => [
-					'days'   => $access_days,
-					'values' => $access_values,
-				],
-			],
-		];
+		$analytics = ( new AppStatsSummary( $this->apps_analytics ) )->analytics( $app );
 
 		$json = smliser_json_encode_attr( $analytics );
 
 		$html = '<div class="smliser-app-analytics">';
-		
+
 		$html .= '<div class="chart-container">';
 		$html .= sprintf(
 			'<canvas class="smliser-app-mini-analytics" data-analytics="%s"></canvas>',
@@ -941,7 +895,7 @@ class RepositoryPage implements AdminPageInterface {
 
 		// Stats Footer
 		$html .= self::build_stats_footer( $analytics );
-		
+
 		$html .= '</div>';
 
 		return $html;
@@ -954,114 +908,7 @@ class RepositoryPage implements AdminPageInterface {
 	 * @return string HTML for stats footer.
 	 */
 	private function build_stats_footer( array $analytics ) {
-		$stats = [];
-
-		// Downloads stats
-		if ( ! empty( $analytics['downloads'] ) ) {
-			$downloads = $analytics['downloads'];
-
-			if ( isset( $downloads['total'] ) ) {
-				$stats[] = [
-					'icon'  => 'ti ti-download',
-					'label' => smliser__( 'Total Downloads' ),
-					'value' => Format::number( $downloads['total'] ),
-					'color' => '#3b82f6',
-				];
-			}
-
-			if ( isset( $downloads['today'] ) ) {
-				$stats[] = [
-					'icon'  => 'ti ti-chart-arrows',
-					'label' => smliser__( 'Today\'s Downloads' ),
-					'value' => Format::number( $downloads['today'] ),
-					'color' => '#3b82f6',
-				];
-			}
-
-			if ( isset( $downloads['average'] ) ) {
-				$stats[] = [
-					'icon'  => 'ti ti-chart-infographic',
-					'label' => smliser__( 'Avg Downloads/Day' ),
-					'value' => Format::number( $downloads['average'], 1 ),
-					'color' => '#3b82f6',
-				];
-			}
-
-			if ( isset( $downloads['growth'] ) ) {
-				$growth  = (float) $downloads['growth'];
-				$stats[] = [
-					'icon'      => $growth >= 0 ? 'ti ti-chart-dots-2' : 'ti ti-chart-line',
-					'label'     => smliser__( 'Download Growth' ),
-					'value'     => ( $growth >= 0 ? '+' : '' ) . Format::number( $growth, 1 ) . '%',
-					'color'     => $growth >= 0 ? '#10b981' : '#ef4444',
-					'highlight' => true,
-				];
-			}
-
-			if ( ! empty( $downloads['peak_day'] ) && isset( $downloads['peak_day']['count'] ) ) {
-				$stats[] = [
-					'icon'     => 'ti ti-trophy',
-					'label'    => smliser__( 'Peak Day' ),
-					'value'    => Format::number( $downloads['peak_day']['count'] ),
-					'subtitle' => date( 'M j, Y', strtotime( $downloads['peak_day']['date'] ) ),
-					'color'    => '#8b5cf6',
-				];
-			}
-		}
-
-		// Client Access stats
-		if ( ! empty( $analytics['client_access'] ) ) {
-			$access = $analytics['client_access'];
-
-			if ( isset( $access['total'] ) ) {
-				$stats[] = [
-					'icon'  => 'ti ti-world-www',
-					'label' => smliser__( 'Total Client Access' ),
-					'value' => Format::number( $access['total'] ),
-					'color' => '#10b981',
-				];
-			}
-
-			if ( isset( $access['average'] ) ) {
-				$stats[] = [
-					'icon'  => 'ti ti-percentage-33',
-					'label' => smliser__( 'Avg Access/Day' ),
-					'value' => Format::number( $access['average'], 1 ),
-					'color' => '#10b981',
-				];
-			}
-
-			if ( isset( $access['growth'] ) ) {
-				$growth  = (float) $access['growth'];
-				$stats[] = [
-					'icon'      => $growth >= 0 ? 'ti ti-chart-dots-2' : 'ti ti-chart-line',
-					'label'     => smliser__( 'Access Growth' ),
-					'value'     => ( $growth >= 0 ? '+' : '' ) . Format::number( $growth, 1 ) . '%',
-					'color'     => $growth >= 0 ? '#10b981' : '#ef4444',
-					'highlight' => true,
-				];
-			}
-
-			if ( isset( $access['active_installs'] ) ) {
-				$stats[] = [
-					'icon'      => 'ti ti-bolt',
-					'label'     => smliser__( 'Active Installs' ),
-					'value'     => '~' . Format::number( $access['active_installs'] ),
-					'color'     => '#f59e0b',
-					'highlight' => true,
-				];
-			}
-
-			if ( ! empty( $access['peak_day'] ) && isset( $access['peak_day']['count'] ) ) {
-				$stats[] = [
-					'icon'     => 'ti ti-trophy',
-					'label'    => smliser__( 'Peak Access Day' ),
-					'value'    => Format::number( $access['peak_day']['count'] ),
-					'subtitle' => date( 'M j, Y', strtotime( $access['peak_day']['date'] ) ),
-					'color'    => '#8b5cf6',
-				];
-			}
-		}
+		$stats = AppStatsSummary::stats( $analytics );
 
 		// No stats to display
 		if ( empty( $stats ) ) {
@@ -1073,7 +920,7 @@ class RepositoryPage implements AdminPageInterface {
 
 		foreach ( $stats as $stat ) {
 			$highlight = ! empty( $stat['highlight'] ) ? ' highlight' : '';
-			
+
 			$html .= sprintf( '<div class="stat-card%s">', $highlight );
 			$html .= '<div class="stat-card_header">';
 			$html .= sprintf( '<span class="%s"></span>', $stat['icon'] );
@@ -1081,12 +928,12 @@ class RepositoryPage implements AdminPageInterface {
 			$html .= '</div>';
 			$html .= '<div class="stat-card_content">';
 			$html .= sprintf( '<span class="stat-card_content-value">%s</span>', escHtml( $stat['value'] ) );
-			
+
 			if ( ! empty( $stat['subtitle'] ) ) {
 				$html .= sprintf( '<span class="stat-card_content-subtitle">%s</span>', escHtml( $stat['subtitle'] ) );
 			}
 			$html .= '</div>';
-			
+
 			$html .= '</div>'; // Stat card.
 		}
 

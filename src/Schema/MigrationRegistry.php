@@ -46,6 +46,8 @@ final class MigrationRegistry {
 		Migrations\CreateAuthenticationTables::class,
 		// Schema 0.2.4.
 		Migrations\BindDownloadTokensToActivations::class,
+		// Schema 0.2.5.
+		Migrations\GrantLicenseSiteRemoval::class,
 	];
 
 	/**

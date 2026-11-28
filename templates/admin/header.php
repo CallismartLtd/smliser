@@ -12,9 +12,9 @@
  * @var string $title
  * @var string $theme
  * @var bool $collapsed
- * @var string $preferences_url Where the language picker saves the user's choice.
  * @var \SmartLicenseServer\Admin\AdminDashboardRegistry $registry
  * @var \SmartLicenseServer\Assets\AssetsManager $assets_manager
+ * @var \SmartLicenseServer\Core\SiteFavicon|null $favicon The site icon; its tag is empty under WordPress.
  */
 
 use SmartLicenseServer\Assets\AssetsManager;
@@ -27,6 +27,7 @@ use SmartLicenseServer\Assets\AssetsManager;
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="noindex, nofollow">
 	<title><?php echo escHtml( $title ?? smliser__( 'Dashboard' ) ); ?></title>
+	<?php echo isset( $favicon ) ? $favicon->link_tag() : ''; // phpcs:ignore -- escaped by SiteFavicon::link_tag(). ?>
 
 	<?php $assets_manager->print_style( 'view-transition' ); ?>
 	<?php $assets_manager->print_category_styles( AssetsManager::CATEGORY_ADMIN_DASHBOARD ); ?>
@@ -49,7 +50,6 @@ use SmartLicenseServer\Assets\AssetsManager;
 			</div>
 
 			<div class="dashboard-top-menu-right">
-				<?php echo smliser_language_switcher( $preferences_url ?? '', 'dashboard-language' ); // phpcs:ignore -- escaped. ?>
 				<?php foreach ( $registry->get_top_menus() as $key => $item ) : ?>
 					<?php echo render_top_menu_item( $item ); ?>
 				<?php endforeach; ?>

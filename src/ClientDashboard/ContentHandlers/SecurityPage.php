@@ -59,23 +59,23 @@ final class SecurityPage implements ClientPageInterface {
 			return View::make( 'errors.404', [] )->set_status_code( 404 );
 		}
 
-		$user_id = (int) $user->get_id();
-		$status  = $this->factors->status( $user_id );
-		$email_token = (string) $request->get( 'email_challenge', '', false );
-		$totp_token  = (string) $request->get( 'totp_challenge', '', false );
-		$email_challenge = $this->factors->get_challenge( $email_token, 'enroll_email' );
-		$email_disable_token = (string) $request->get( 'email_disable_challenge', '', false );
-		$email_disable = $this->factors->get_challenge( $email_disable_token, 'disable_email' );
-		$totp_challenge  = $this->factors->get_challenge( $totp_token, 'enroll_totp' );
-		$email_challenge = $email_challenge && (int) $email_challenge['user_id'] === $user_id ? $email_challenge : null;
-		$email_disable = $email_disable && (int) $email_disable['user_id'] === $user_id ? $email_disable : null;
-		$totp_challenge  = $totp_challenge && (int) $totp_challenge['user_id'] === $user_id ? $totp_challenge : null;
-		$totp_secret     = $totp_challenge
+		$user_id				= (int) $user->get_id();
+		$status					= $this->factors->status( $user_id );
+		$email_token			= (string) $request->get( 'email_challenge', '', false );
+		$totp_token				= (string) $request->get( 'totp_challenge', '', false );
+		$email_challenge		= $this->factors->get_challenge( $email_token, 'enroll_email' );
+		$email_disable_token	= (string) $request->get( 'email_disable_challenge', '', false );
+		$email_disable			= $this->factors->get_challenge( $email_disable_token, 'disable_email' );
+		$totp_challenge			= $this->factors->get_challenge( $totp_token, 'enroll_totp' );
+		$email_challenge		= $email_challenge && (int) $email_challenge['user_id'] === $user_id ? $email_challenge : null;
+		$email_disable			= $email_disable && (int) $email_disable['user_id'] === $user_id ? $email_disable : null;
+		$totp_challenge			= $totp_challenge && (int) $totp_challenge['user_id'] === $user_id ? $totp_challenge : null;
+		$totp_secret			= $totp_challenge
 			? $this->factors->decrypt_totp_secret( (string) ( $totp_challenge['payload']['secret'] ?? '' ) )
 			: null;
-		$issuer = (string) SMLISER_APP_NAME;
-		$label  = rawurlencode( $issuer . ':' . $user->get_email() );
-		$uri    = null !== $totp_secret
+		$issuer	= (string) SMLISER_APP_NAME;
+		$label	= rawurlencode( $issuer . ':' . $user->get_email() );
+		$uri	= null !== $totp_secret
 			? sprintf( 'otpauth://totp/%s?secret=%s&issuer=%s&algorithm=SHA1&digits=6&period=30', $label, rawurlencode( $totp_secret ), rawurlencode( $issuer ) )
 			: '';
 		$qr_code = '';
@@ -104,6 +104,8 @@ final class SecurityPage implements ClientPageInterface {
 			'totp_uri'            => $uri,
 			'totp_qr_code'        => $qr_code,
 			'active_tab'          => $active_tab,
+			'wordpress'           => \is_wp(),
+			'wordpress_url'       => \is_wp() && function_exists( 'get_edit_profile_url' ) ? (string) \get_edit_profile_url() : '',
 			'actions'             => [
 				'email_start'     => $this->urls->client_dashboard_url( 'json/security/email/start' )->url(),
 				'email_verify'    => $this->urls->client_dashboard_url( 'json/security/email/verify' )->url(),
@@ -113,6 +115,8 @@ final class SecurityPage implements ClientPageInterface {
 				'passkey_start'   => $this->urls->client_dashboard_url( 'json/security/passkey/start' )->url(),
 				'passkey_finish'  => $this->urls->client_dashboard_url( 'json/security/passkey/finish' )->url(),
 				'passkey_revoke'  => $this->urls->client_dashboard_url( 'json/security/passkey/revoke' )->url(),
+				'password_change' => $this->urls->client_dashboard_url( 'json/security/password' )->url(),
+				'sessions_revoke' => $this->urls->client_dashboard_url( 'json/security/sessions/revoke' )->url(),
 			],
 		] )
 			->set_title( smliser__( 'Account security' ) )

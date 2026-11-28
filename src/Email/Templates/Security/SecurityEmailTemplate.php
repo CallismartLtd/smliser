@@ -155,6 +155,13 @@ abstract class SecurityEmailTemplate extends EmailTemplate {
 	}
 
 	/**
+	 * Write to the user in their own language.
+	 */
+	protected function locale() : ?string {
+		return $this->user->get_id() ? smliser_user_locale( $this->user ) : parent::locale();
+	}
+
+	/**
 	 * Plain text version.
 	 *
 	 * Built from the raw values rather than from body(): body() relies on the

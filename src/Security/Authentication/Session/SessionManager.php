@@ -268,6 +268,38 @@ final class SessionManager {
 	}
 
 	/**
+	 * Re-issue the current session as a fresh sign-in.
+	 *
+	 * Used to keep this browser signed in when every other session of the
+	 * user was just ended with a cut-off (UserSessionCutoff): the session
+	 * gets a new ID and a sign-in time after the cut-off, and keeps its
+	 * claims and "remember me". Its lifetime starts again from then.
+	 *
+	 * @param int $not_before Earliest sign-in time to record, e.g. the cut-off plus one second.
+	 * @return Session The new session.
+	 *
+	 * @throws RuntimeException When there is no valid session, or the token cannot be made.
+	 */
+	public function reauthenticate( int $not_before = 0 ) : Session {
+		$session = $this->require();
+		$now     = max( time(), $not_before );
+
+		$fresh = new Session(
+			id: $this->generate_session_id(),
+			principal_id: $session->principal_id,
+			issued_at: $now,
+			expires_at: $now + ( $session->persistent ? $this->remember_lifetime : $this->lifetime ),
+			claims: $session->claims,
+			authenticated_at: $now,
+			persistent: $session->persistent
+		);
+
+		$this->issue( $fresh );
+
+		return $fresh;
+	}
+
+	/**
 	 * Resolve the current browser session.
 	 *
 	 * Returns null when the cookie does not exist, is malformed, fails

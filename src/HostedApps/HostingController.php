@@ -1004,9 +1004,8 @@ class HostingController {
 			if ( '' !== $app_slug ) {
 				$app = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
-				if ( $app ) {
-					static::check_app_ownership( $app );
-				}
+				// Fails closed: storage left without an app record is a system administrator's only.
+				static::check_record_app_ownership( $app );
 			}
 
 			try {

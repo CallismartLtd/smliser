@@ -59,6 +59,13 @@ class Settings {
 	public const SITE_LOCALE = 'site_locale';
 
 	/**
+	 * The option name for the site favicon: the file name of the uploaded
+	 * icon in SiteFavicon::directory(). Empty means "use the default icon".
+	 * Not used under WordPress, where the WordPress site icon applies.
+	 */
+	public const SITE_FAVICON = 'site_favicon';
+
+	/**
 	 * The option name for the administration email.
 	 */
 	public const ADMIN_EMAIL = 'admin_email';

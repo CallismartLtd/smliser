@@ -8,6 +8,8 @@
 
 namespace SmartLicenseServer\ClientDashboard;
 
+use SmartLicenseServer\ClientDashboard\ContentHandlers\AccountPage;
+use SmartLicenseServer\ClientDashboard\ContentHandlers\AppLicensesPage;
 use SmartLicenseServer\ClientDashboard\ContentHandlers\AppsPage;
 use SmartLicenseServer\ClientDashboard\ContentHandlers\LicensesPage;
 use SmartLicenseServer\ClientDashboard\ContentHandlers\OrganizationPage;
@@ -15,6 +17,7 @@ use SmartLicenseServer\ClientDashboard\ContentHandlers\OrganizationsPage;
 use SmartLicenseServer\ClientDashboard\ContentHandlers\OverviewPage;
 use SmartLicenseServer\ClientDashboard\ContentHandlers\PurchasesPage;
 use SmartLicenseServer\ClientDashboard\ContentHandlers\SecurityPage;
+use SmartLicenseServer\ClientDashboard\ContentHandlers\SettingsPage;
 use SmartLicenseServer\ClientDashboard\Contracts\ClientPageInterface;
 use SmartLicenseServer\Contracts\AbstractDashboardRegistry;
 use SmartLicenseServer\Core\Container\Container;
@@ -69,9 +72,12 @@ final class ClientDashboardRegistry extends AbstractDashboardRegistry {
 			LicensesPage::class,
 			PurchasesPage::class,
 			AppsPage::class,
+			AppLicensesPage::class,
 			OrganizationsPage::class,
 			OrganizationPage::class,
+			AccountPage::class,
 			SecurityPage::class,
+			SettingsPage::class,
 		];
 
 		foreach ( $core_menu as $id ) {

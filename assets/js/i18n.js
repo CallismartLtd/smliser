@@ -11,10 +11,20 @@
  *     label = sprintf( _n( '%d file', '%d files', count ), count );
  *
  * Pass literal strings so `smliser i18n make-pot` can extract them.
+ * Extensions pass their own text domain last, as in PHP:
+ *
+ *     __( 'Invoice sent.', 'acme-invoices' );
+ *
+ * Its strings are sent to the browser once the extension registers the
+ * domain with I18n::add_text_domain().
  *
  * Also powers language pickers: any <select data-smliser-language-switcher>
  * saves the choice (to the user's preferences when signed in, otherwise a
  * cookie) and reloads the page.
+ *
+ * `window.smliserPreferences` saves the signed-in user's preferences to the
+ * client dashboard `json/preferences` endpoint (smliser_var.preferences_url)
+ * with the CSRF header: setTheme(), applyTheme(), setLanguage(), save().
  */
 ( function ( window, document ) {
 	'use strict';
@@ -92,18 +102,60 @@
 		}
 	}
 
-	const pluralIndex = compilePlural( data.plural_forms );
+	const DEFAULT_DOMAIN = data.domain || 'smliser';
+	const hasOwn = ( object, key ) => Object.prototype.hasOwnProperty.call( object, key );
 
-	function lookup( text, context ) {
+	/**
+	 * Catalogs per text domain: { messages, pluralIndex }. The core domain
+	 * comes from the top level of `smliser_i18n`, extension domains from
+	 * `smliser_i18n.domains` (see I18n::script_data()).
+	 */
+	const catalogs = Object.create( null );
+
+	function addCatalog( domain, catalog ) {
+		catalogs[ domain ] = {
+			messages: ( catalog && catalog.messages ) || {},
+			pluralIndex: compilePlural( catalog && catalog.plural_forms ),
+		};
+	}
+
+	addCatalog( DEFAULT_DOMAIN, { messages, plural_forms: data.plural_forms } );
+
+	Object.keys( data.domains || {} ).forEach( ( domain ) => {
+		if ( domain !== DEFAULT_DOMAIN ) {
+			addCatalog( domain, data.domains[ domain ] );
+		}
+	} );
+
+	/**
+	 * The catalog of a domain. No domain, or WordPress' `default`, means the
+	 * core domain. Domains are isolated: a domain without a catalog has no
+	 * translations, it does not borrow the core ones.
+	 */
+	function catalogFor( domain ) {
+		const name = ( ! domain || domain === 'default' ) ? DEFAULT_DOMAIN : String( domain );
+		return catalogs[ name ] || null;
+	}
+
+	function lookup( text, context, domain ) {
+		const catalog = catalogFor( domain );
 		const key = context ? context + CONTEXT_SEPARATOR + text : text;
-		return Object.prototype.hasOwnProperty.call( messages, key ) ? messages[ key ] : null;
+
+		if ( ! catalog || ! hasOwn( catalog.messages, key ) ) {
+			return null;
+		}
+
+		const forms = catalog.messages[ key ];
+
+		// Compiled catalogs hold plural forms as an array; accept a NUL-joined string too.
+		return Array.isArray( forms ) ? forms : String( forms ).split( '\u0000' );
 	}
 
 	/**
 	 * Translate a string.
 	 */
 	function __( text, domain ) {
-		const forms = lookup( text );
+		const forms = lookup( text, '', domain );
 		return ( forms && forms[ 0 ] ) || text;
 	}
 
@@ -111,19 +163,19 @@
 	 * Translate a string with a disambiguating context.
 	 */
 	function _x( text, context, domain ) {
-		const forms = lookup( text, context );
+		const forms = lookup( text, context, domain );
 		return ( forms && forms[ 0 ] ) || text;
 	}
 
 	/**
 	 * Translate a string with plural forms and a context.
 	 */
-	function translatePlural( single, plural, count, context ) {
-		const forms = lookup( single, context );
+	function translatePlural( single, plural, count, context, domain ) {
+		const forms = lookup( single, context, domain );
 		const n = Math.abs( parseInt( count, 10 ) || 0 );
 
 		if ( forms ) {
-			const form = forms[ pluralIndex( n ) ];
+			const form = forms[ catalogFor( domain ).pluralIndex( n ) ];
 			if ( form ) return form;
 		}
 
@@ -131,14 +183,21 @@
 	}
 
 	function _nx( single, plural, count, context, domain ) {
-		return translatePlural( single, plural, count, context );
+		return translatePlural( single, plural, count, context, domain );
 	}
 
 	/**
 	 * Translate a string with plural forms.
 	 */
 	function _n( single, plural, count, domain ) {
-		return translatePlural( single, plural, count, '' );
+		return translatePlural( single, plural, count, '', domain );
+	}
+
+	/**
+	 * Tell whether a text domain has translations in the active locale.
+	 */
+	function hasDomain( domain ) {
+		return null !== catalogFor( domain );
 	}
 
 	/**
@@ -195,15 +254,27 @@
 		window.location.assign( url.toString() );
 	}
 
-	async function savePreference( endpoint, locale ) {
-		const vars = ( typeof smliser_var === 'object' && smliser_var ) || window.smliser_var || {};
+	function vars() {
+		return ( typeof smliser_var === 'object' && smliser_var ) || window.smliser_var || {};
+	}
+
+	/**
+	 * Save one of the signed-in user's preferences (PreferenceManagement::save()).
+	 *
+	 * @param {string} endpoint The client dashboard `json/preferences` URL.
+	 * @param {string} key      'locale', 'theme' or 'sidebar_collapsed'.
+	 * @param {string} value
+	 * @return {Promise<string>} The server's message.
+	 */
+	async function savePreference( endpoint, key, value ) {
 		const body = new FormData();
-		body.append( 'key', 'locale' );
-		body.append( 'value', locale );
+		body.append( 'key', key );
+		body.append( 'value', value );
 
 		const headers = {};
-		if ( vars.csrf_header && vars.csrf_token ) {
-			headers[ vars.csrf_header ] = vars.csrf_token;
+		const csrf    = vars();
+		if ( csrf.csrf_header && csrf.csrf_token ) {
+			headers[ csrf.csrf_header ] = csrf.csrf_token;
 		}
 
 		const response = await fetch( endpoint, { method: 'POST', body, headers, credentials: 'same-origin' } );
@@ -212,6 +283,96 @@
 		if ( ! response.ok || ! json.success ) {
 			throw new Error( ( json.data && json.data.message ) || __( 'The preference could not be saved.' ) );
 		}
+
+		return ( json.data && json.data.message ) || __( 'Saved.' );
+	}
+
+	/*
+	|----------------------
+	| Dashboard theme
+	|----------------------
+	*/
+
+	const THEMES = [ 'auto', 'light', 'dark' ];
+
+	function themeStorageKey() {
+		return vars().theme_storage_key || 'dashboard-theme';
+	}
+
+	/**
+	 * Show a theme now and remember it in this browser: 'light' or 'dark' set
+	 * html[data-theme]; 'auto' removes it so prefers-color-scheme applies.
+	 *
+	 * @param {string} theme
+	 */
+	function applyTheme( theme ) {
+		const root = document.documentElement;
+
+		try {
+			if ( 'light' === theme || 'dark' === theme ) {
+				window.localStorage.setItem( themeStorageKey(), theme );
+			} else {
+				window.localStorage.removeItem( themeStorageKey() );
+			}
+		} catch ( e ) {
+			// Storage unavailable (private mode, disabled). The account still keeps the choice.
+		}
+
+		if ( ! root ) {
+			return;
+		}
+
+		if ( 'light' === theme || 'dark' === theme ) {
+			root.setAttribute( 'data-theme', theme );
+		} else {
+			root.removeAttribute( 'data-theme' );
+		}
+	}
+
+	/**
+	 * Choose the dashboard theme: shown at once, remembered in this browser and,
+	 * for a signed-in user, saved to their account.
+	 *
+	 * @param {string} theme    'auto', 'light' or 'dark'.
+	 * @param {string} endpoint Preferences URL; defaults to smliser_var.preferences_url.
+	 * @return {Promise<string>} The server's message ('' when not signed in).
+	 */
+	async function setTheme( theme, endpoint ) {
+		if ( ! THEMES.includes( theme ) ) {
+			throw new Error( __( 'That theme is not available.' ) );
+		}
+
+		applyTheme( theme );
+
+		const url = endpoint || vars().preferences_url;
+
+		return url ? savePreference( url, 'theme', theme ) : '';
+	}
+
+	/*
+	|----------------------
+	| Language
+	|----------------------
+	*/
+
+	/**
+	 * Choose the language and reload the page in it. '' returns to automatic
+	 * (cookie removed, account preference cleared). The page is reloaded only
+	 * once the account was updated, since a saved preference beats the cookie.
+	 *
+	 * @param {string} locale   A locale code, or ''.
+	 * @param {string} endpoint Preferences URL; defaults to smliser_var.preferences_url.
+	 * @return {Promise<void>}
+	 */
+	async function setLanguage( locale, endpoint ) {
+		const url = endpoint || vars().preferences_url;
+
+		if ( url ) {
+			await savePreference( url, 'locale', locale );
+		}
+
+		rememberInCookie( locale );
+		reloadWithoutLangParam();
 	}
 
 	function initSwitchers() {
@@ -225,7 +386,7 @@
 
 				if ( endpoint ) {
 					try {
-						await savePreference( endpoint, locale );
+						await savePreference( endpoint, 'locale', locale );
 					} catch ( e ) {
 						// The cookie still applies; the user is told why the account was not updated.
 						if ( typeof window.console !== 'undefined' ) {
@@ -250,6 +411,8 @@
 		lang: data.lang || 'en-US',
 		dir: data.dir || 'ltr',
 		isRTL: data.dir === 'rtl',
+		domain: DEFAULT_DOMAIN,
+		hasDomain,
 		__,
 		_x,
 		_n,
@@ -257,5 +420,17 @@
 		sprintf,
 		esc,
 		formatNumber,
+	} );
+
+	/**
+	 * The signed-in user's preferences, shared by the admin theme toggle and
+	 * the client dashboard Settings page.
+	 */
+	window.smliserPreferences = Object.freeze( {
+		themes: THEMES,
+		save: ( key, value, endpoint ) => savePreference( endpoint || vars().preferences_url, key, value ),
+		applyTheme,
+		setTheme,
+		setLanguage,
 	} );
 }( window, document ) );

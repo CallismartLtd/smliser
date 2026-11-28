@@ -6,7 +6,8 @@
  * its own inline copy of these tokens because it must render with no
  * theme, no database and no files. Change a token in both places.
  *
- *  - Dotted canvas, ink on paper; light and dark follow the visitor's system.
+ *  - Dotted canvas, ink on paper; light and dark follow the visitor's system,
+ *    or html[data-theme="light|dark"] when a user chose one.
  *  - The accent carries the state: teal (brand, neutral), green (success),
  *    orange (failure), slate (nothing happened).
  *  - Line diagrams instead of pictures; outlined buttons; monospace detail.
@@ -35,8 +36,17 @@
 	--sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* A theme the user chose (html[data-theme]) wins over the system's. */
+:root[data-theme="light"] {
+	color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+	color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme="light"]) {
 		--bg: #0b0e14;
 		--dot: #1c212b;
 		--surface: #11151c;
@@ -53,6 +63,25 @@
 		--neutral: #94a3b8;
 		--neutral-bg: #1e2530;
 	}
+}
+
+/* The user chose dark (client dashboard Settings > Theme). */
+:root[data-theme="dark"] {
+	--bg: #0b0e14;
+	--dot: #1c212b;
+	--surface: #11151c;
+	--ink: #eef1f5;
+	--muted: #8b93a1;
+	--border: #232935;
+
+	--accent: #2dd4bf;
+	--accent-bg: #0b2b2b;
+	--success: #4ade80;
+	--success-bg: #0d2818;
+	--failure: #fb923c;
+	--failure-bg: #2a1509;
+	--neutral: #94a3b8;
+	--neutral-bg: #1e2530;
 }
 
 /* State tones: set --accent for one block. */
@@ -237,6 +266,17 @@ code {
 .btn:disabled {
 	opacity: 0.6;
 	cursor: progress;
+}
+
+.btn-danger {
+	border-color: var(--failure);
+	background: var(--failure-bg);
+	color: var(--failure);
+}
+
+.btn-danger:hover {
+	border-color: var(--failure);
+	color: var(--failure);
 }
 
 .btn-small {
@@ -545,6 +585,17 @@ code {
 .field {
 	display: block;
 	margin-bottom: 16px;
+}
+
+.field-checkbox {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	font-size: 14px;
+}
+
+.field-checkbox input[type="checkbox"] {
+	margin-top: 3px;
 }
 
 .field-label {
@@ -1422,6 +1473,91 @@ code {
 	font-weight: 600;
 }
 
+/* Search and filters of a list, e.g. licenses by status and app. */
+.license-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 20px;
+}
+
+.license-filters .license-filter-search {
+	flex: 1 1 220px;
+	min-width: 0;
+}
+
+.license-filters input,
+.license-filters select {
+	width: 100%;
+	padding: 6px 10px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--ink);
+	font: inherit;
+	font-size: 13.5px;
+}
+
+.license-filters select {
+	width: auto;
+	max-width: 100%;
+}
+
+/* The sites a license is activated on, read-only. */
+.license-sites {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 14px;
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 13px;
+}
+
+.license-sites code {
+	font-family: var(--mono);
+}
+
+.record-head code {
+	font-family: var(--mono);
+	font-size: 13px;
+	overflow-wrap: anywhere;
+}
+
+.record-head strong+code {
+	margin-inline-start: 8px;
+}
+
+/* A list's filters and search, e.g. the licenses of the owner's apps. */
+.dash-search {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+.dash-search .field {
+	flex: 1 1 180px;
+	margin: 0;
+}
+
+.dash-search input[type="search"] {
+	width: 100%;
+	padding: 8px 10px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--ink);
+	font: inherit;
+}
+
+.dash-search-actions {
+	display: flex;
+	gap: 8px;
+}
+
 /* An app's images, by kind. */
 .asset-group+.asset-group {
 	margin-top: 8px;
@@ -1468,6 +1604,33 @@ code {
 
 .asset-tile .notice {
 	margin: 0;
+}
+
+/* An app's figures, manifest and artifacts. */
+.app-stats .app-stat-highlight dd {
+	font-weight: 600;
+}
+
+.app-manifest {
+	width: 100%;
+	font-family: var(--mono);
+	font-size: 12.5px;
+}
+
+.smliser-manifest-editor {
+	margin-block: 4px;
+}
+
+.artifact-edit {
+	display: grid;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.artifact-edit summary {
+	color: var(--muted);
+	cursor: pointer;
+	font-size: 13px;
 }
 
 .dash-danger {
@@ -1911,7 +2074,7 @@ code {
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme="light"]) {
 		--syntax-comment: #8b949e;
 		--syntax-keyword: #d2a8ff;
 		--syntax-string: #a5d6ff;
@@ -1926,6 +2089,23 @@ code {
 		--syntax-command: #7ee787;
 		--syntax-flag: #ffa657;
 	}
+}
+
+/* The user chose dark (client dashboard Settings > Theme). */
+:root[data-theme="dark"] {
+	--syntax-comment: #8b949e;
+	--syntax-keyword: #d2a8ff;
+	--syntax-string: #a5d6ff;
+	--syntax-number: #79c0ff;
+	--syntax-literal: #ff7b72;
+	--syntax-function: #d2a8ff;
+	--syntax-property: #79c0ff;
+	--syntax-variable: #ffa657;
+	--syntax-type: #7ee787;
+	--syntax-operator: #c9d1d9;
+	--syntax-punctuation: #8b949e;
+	--syntax-command: #7ee787;
+	--syntax-flag: #ffa657;
 }
 
 /* Code block container */
@@ -2383,6 +2563,81 @@ code {
 		position: static;
 	}
 }
+/* Client dashboard Settings page (pages/client/settings.php); the tabs reuse the security page's. */
+.settings-page {
+	max-width: 820px;
+}
+
+.settings-group {
+	margin-top: 8px;
+}
+
+.settings-choices {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.settings-choices legend {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.settings-choice {
+	display: flex;
+	flex: 1 1 150px;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 14px;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	background: var(--bg);
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.settings-choice:has(input:checked) {
+	border-color: var(--accent);
+	background: var(--accent-bg);
+}
+
+.settings-choice:has(input:focus-visible) {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.settings-choice input {
+	accent-color: var(--accent);
+}
+
+.settings-choice-swatch {
+	flex: 0 0 auto;
+	width: 28px;
+	height: 20px;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+}
+
+.settings-choice-swatch-light {
+	background: #f5f6f8;
+}
+
+.settings-choice-swatch-dark {
+	background: #0b0e14;
+}
+
+.settings-choice-swatch-auto {
+	background: linear-gradient(135deg, #f5f6f8 50%, #0b0e14 50%);
+}
+
+.settings-page form .btn {
+	margin-top: 6px;
+}
+
 /* Language picker (smliser_language_switcher()). */
 .smliser-language-switcher {
 	display: inline-flex;

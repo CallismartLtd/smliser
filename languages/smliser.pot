@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server 0.4.9\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,11 +84,11 @@ msgstr ""
 msgid " on your account. If this was not you, secure your account now."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:236
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:243
 msgid " two-factor authentication is disabled."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:110
+#: src/SettingsAPI/SettingsController.php:122
 #, php-format
 msgid "\"%s\" cannot be used as the %s: it is reserved. Reserved: %s."
 msgstr ""
@@ -138,22 +138,22 @@ msgstr ""
 msgid "\"%s\" is not a valid file name."
 msgstr ""
 
-#: src/Environments/Application/Theming/ThemeContext.php:122
+#: src/Environments/Application/Theming/ThemeContext.php:125
 #, php-format
 msgid "\"%s\" is not a valid partial name."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:585
+#: src/HostedApps/HostedApplicationService.php:605
 #, php-format
 msgid "\"%s\" is not a valid slug."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:584
+#: src/HostedApps/HostedApplicationService.php:604
 #, php-format
 msgid "\"%s\" is not a valid slug. Did you mean \"%s\"?"
 msgstr ""
 
-#: src/Environments/Application/Theming/ThemeContext.php:344
+#: src/Environments/Application/Theming/ThemeContext.php:349
 #, php-format
 msgid "\"%s\" is not a valid theme asset path."
 msgstr ""
@@ -174,6 +174,12 @@ msgstr ""
 
 #: templates/admin/contents/options/email/editor.php:221
 msgid "#ffffff"
+msgstr ""
+
+#. translators: 1: number of sites the license is activated on, 2: number of sites it allows.
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:289 src/ClientDashboard/ContentHandlers/LicensesPage.php:334
+#, php-format
+msgid "%1$d of %2$d"
 msgstr ""
 
 #. translators: 1: opening <a> tag, 2: closing <a> tag
@@ -252,6 +258,18 @@ msgstr ""
 msgid "%1$s · %2$s installer"
 msgstr ""
 
+#. translators: 1: file size, 2: MIME type, 3: date.
+#: themes/default/templates/pages/client/app.php:212
+#, php-format
+msgid "%1$s · %2$s · updated %3$s"
+msgstr ""
+
+#. translators: 1: a file name, or "Upload" for the upload as a whole, 2: why it failed.
+#: src/ClientDashboard/ActionHandlers/AppActions.php:195
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
 #. translators: 1: opening <span> tag, 2: closing <span> tag
 #: src/Environments/Application/Installation/InstallerPage.php:652
 #, php-format
@@ -295,10 +313,13 @@ msgstr ""
 msgid "%d file(s) do not match the release: %s"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:163
+#. translators: %d: number of images uploaded.
+#: src/ClientDashboard/ActionHandlers/AppActions.php:205
 #, php-format
-msgid "%d images are uploaded."
-msgstr ""
+msgid "%d image is uploaded."
+msgid_plural "%d images are uploaded."
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Environments/Application/Health/SystemHealth.php:1227
 #, php-format
@@ -325,17 +346,24 @@ msgstr ""
 msgid "%d of %d scheduled tasks are more than %d minutes overdue: %s."
 msgstr ""
 
+#. translators: 1: sites the license is activated on, 2: the most it may be activated on.
+#. translators: %d: number of sites the license is activated on; the license allows any number.
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:289 src/ClientDashboard/ContentHandlers/LicensesPage.php:330
+#, php-format
+msgid "%d of unlimited"
+msgstr ""
+
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:50
 #, php-format
 msgid "%d page(s) rendered."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 #, php-format
 msgid "%d recovery codes remain."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 #, php-format
 msgid "%d registered"
 msgstr ""
@@ -505,12 +533,12 @@ msgstr ""
 msgid "%s does not match its published checksum; the download may be damaged. Nothing was changed."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:177
+#: src/SettingsAPI/SettingsController.php:189
 #, php-format
 msgid "%s email has been disabled."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:176
+#: src/SettingsAPI/SettingsController.php:188
 #, php-format
 msgid "%s email has been enabled."
 msgstr ""
@@ -596,6 +624,12 @@ msgstr ""
 msgid "%s is enabled and loads from the next request on."
 msgstr ""
 
+#. translators: %s: the site's domain.
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:74
+#, php-format
+msgid "%s is freed. It can no longer use this license, and the license can be activated on another site."
+msgstr ""
+
 #. translators: %s: app
 #: src/Environments/Application/Installation/InstallerPage.php:428
 #, php-format
@@ -632,7 +666,7 @@ msgstr ""
 msgid "%s is removed."
 msgstr ""
 
-#: assets/js/admin/core.js:1970
+#: assets/js/admin/core.js:2063
 #, javascript-format
 msgid "%s is required."
 msgstr ""
@@ -774,7 +808,7 @@ msgstr ""
 msgid "%s was updated to %s"
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:49
+#: themes/default/templates/pages/client/apps.php:59
 #, php-format
 msgid "%s · %s · updated %s"
 msgstr ""
@@ -812,7 +846,7 @@ msgstr ""
 msgid "(Get-Acl -LiteralPath '"
 msgstr ""
 
-#: themes/default/templates/pages/client/app-new.php:39 themes/default/templates/pages/client/app.php:95 themes/default/templates/pages/client/app.php:101
+#: themes/default/templates/pages/client/app-new.php:40 themes/default/templates/pages/client/app.php:132 themes/default/templates/pages/client/app.php:138 themes/default/templates/pages/client/app.php:271
 msgid "(optional)"
 msgstr ""
 
@@ -852,7 +886,7 @@ msgstr ""
 msgid ". Their packages are refused without a valid key."
 msgstr ""
 
-#: src/Email/Templates/EmailTemplate.php:281 src/Email/Templates/EmailTemplate.php:744
+#: src/Email/Templates/EmailTemplate.php:282 src/Email/Templates/EmailTemplate.php:745
 msgid "0 2px 8px rgba(0,0,0,0.06)"
 msgstr ""
 
@@ -860,7 +894,7 @@ msgstr ""
 msgid "0 4px 12px rgba(0, 0, 0, 0.05)"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:61
+#: themes/default/templates/pages/client/security.php:97
 msgid "2Factor Authentication setup"
 msgstr ""
 
@@ -917,11 +951,19 @@ msgstr ""
 msgid "A buyer sent a payment receipt. Review it to issue the license."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:218
+#: themes/default/templates/pages/client/account.php:54
+msgid "A code is sent to the new address, and the change is made only once you enter it. Licenses already linked to your account stay linked; licenses issued to the new address are linked once it is verified. Your previous address is told about the change."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:150
+msgid "A code was sent a moment ago. Wait a minute before asking for another."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:225
 msgid "A confirmation code could not be sent. Please try again."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:220
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:227
 msgid "A confirmation code was sent to your verified email address."
 msgstr ""
 
@@ -1011,6 +1053,14 @@ msgstr ""
 msgid "A new version of {{app_name}} is now available. Your active license entitles you to this update."
 msgstr ""
 
+#: src/Email/EmailPreferences.php:95
+msgid "A notice each time a license is activated on a site or removed from one."
+msgstr ""
+
+#: src/Email/EmailPreferences.php:99
+msgid "A notice when an app you hold a license for has a new version."
+msgstr ""
+
 #: src/Exceptions/RequestException.php:59
 msgid "A parameter has an unexpected type or format."
 msgstr ""
@@ -1027,7 +1077,7 @@ msgstr ""
 msgid "A pricing tier represents a specific license option for a hosted application."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:65
+#: src/Monetization/LicensingService.php:74
 msgid "A provider reference needs a provider ID."
 msgstr ""
 
@@ -1069,6 +1119,10 @@ msgstr ""
 msgid "A status update for your application."
 msgstr ""
 
+#: themes/default/templates/pages/client/app-license.php:130
+msgid "A suspended or deactivated license cannot be validated or used to download the app."
+msgstr ""
+
 #: src/HostedApps/Storage/DirectoryAppStorage.php:197
 #, php-format
 msgid "A trashed %s already has the slug \"%s\"; purge it first."
@@ -1083,7 +1137,13 @@ msgstr ""
 msgid "A value written to the \"%s\" cache adapter in one request was gone in the next."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:69
+#. translators: %s: the new email address.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:175
+#, php-format
+msgid "A verification code was sent to %s. Enter it to finish the change."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:76
 msgid "A verification code was sent to your email address."
 msgstr ""
 
@@ -1132,11 +1192,11 @@ msgstr ""
 msgid "API Key"
 msgstr ""
 
-#: assets/js/admin/core.js:1653
+#: assets/js/admin/core.js:1746
 msgid "API Key Generated"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:484
+#: src/Admin/ContentHandlers/OptionsPage.php:442
 msgid "API Rate Limit (Per Minute)"
 msgstr ""
 
@@ -1160,7 +1220,7 @@ msgstr ""
 msgid "APP ID"
 msgstr ""
 
-#: assets/js/admin/apps-uploader.js:1446
+#: themes/default/templates/pages/client/app.php:140 assets/js/admin/apps-uploader.js:1446 assets/js/manifest-editor.js:62
 msgid "APP JSON Editor"
 msgstr ""
 
@@ -1205,15 +1265,15 @@ msgstr ""
 msgid "Access Denied"
 msgstr ""
 
-#: templates/admin/index.php:24
+#: templates/admin/index.php:25
 msgid "Access Denied. You must be logged into a valid administrator account to view this page."
 msgstr ""
 
-#: templates/admin/index.php:36
+#: templates/admin/index.php:37
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1038
+#: src/Analytics/AppStatsSummary.php:165
 msgid "Access Growth"
 msgstr ""
 
@@ -1241,7 +1301,7 @@ msgstr ""
 msgid "Accesses"
 msgstr ""
 
-#: themes/default/templates/frames/client-dashboard.php:58 themes/default/templates/pages/client/overview.php:17
+#: src/ClientDashboard/ContentHandlers/AccountPage.php:56 src/ClientDashboard/ContentHandlers/AccountPage.php:129 themes/default/templates/frames/client-dashboard.php:59 themes/default/templates/pages/client/overview.php:17
 msgid "Account"
 msgstr ""
 
@@ -1261,11 +1321,11 @@ msgstr ""
 msgid "Account created successfully! Check your email to verify your account."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/SecurityPage.php:118 themes/default/templates/pages/client/security.php:27
+#: src/ClientDashboard/ContentHandlers/SecurityPage.php:122 themes/default/templates/pages/client/security.php:29
 msgid "Account security"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:64
+#: themes/default/templates/pages/client/security.php:100
 msgid "Account security methods"
 msgstr ""
 
@@ -1285,11 +1345,11 @@ msgstr ""
 msgid "Accounts overview"
 msgstr ""
 
-#: themes/default/templates/frames/client-dashboard.php:74 themes/default/templates/frames/client-dashboard.php:83
+#: themes/default/templates/frames/client-dashboard.php:75 themes/default/templates/frames/client-dashboard.php:84
 msgid "Acting as"
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:206 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:213 templates/admin/contents/options/monetization/monetization-providers.php:23 templates/admin/contents/system/index.php:56
 msgid "Action"
 msgstr ""
 
@@ -1321,6 +1381,13 @@ msgstr ""
 msgid "Activate this package after installing?"
 msgstr ""
 
+#. translators: %s: the date the site was activated.
+#. translators: %s: date and time the license was activated on the site.
+#: themes/default/templates/pages/client/app-license.php:104 themes/default/templates/pages/client/license.php:156
+#, php-format
+msgid "Activated %s"
+msgstr ""
+
 #: src/Email/Templates/Licenses/LicenseActivatedEmail.php:70 src/Email/Templates/Licenses/LicenseActivatedEmail.php:177
 msgid "Activated Domain"
 msgstr ""
@@ -1329,8 +1396,16 @@ msgstr ""
 msgid "Activated on"
 msgstr ""
 
+#: themes/default/templates/pages/client/app-license.php:88 themes/default/templates/pages/client/license.php:142 themes/default/templates/pages/client/licenses.php:120
+msgid "Activated sites"
+msgstr ""
+
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:74 src/Email/Templates/Licenses/LicenseIssuedEmail.php:193 src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:153
 msgid "Activation Limit"
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:167
+msgid "Activation history"
 msgstr ""
 
 #: src/RESTAPI/Handlers/Licenses.php:111
@@ -1349,12 +1424,16 @@ msgstr ""
 msgid "Active Installations by Type (30 Days)"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1048
+#: src/Analytics/AppStatsSummary.php:175
 msgid "Active Installs"
 msgstr ""
 
 #: src/Environments/Application/Health/SystemHealth.php:1140
 msgid "Active Theme"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:150
+msgid "Activity"
 msgstr ""
 
 #: src/Admin/ContentHandlers/LicensePage.php:492 templates/admin/contents/license/index.php:34 templates/admin/contents/license/search.php:33
@@ -1369,16 +1448,17 @@ msgstr ""
 msgid "Adapters"
 msgstr ""
 
-#: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:156
+#. translators: %s: kind of image, e.g. icons.
+#: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:193
 #, php-format
 msgid "Add %s"
 msgstr ""
 
-#: templates/admin/contents/repository/edit-artifacts.php:110
+#: templates/admin/contents/repository/edit-artifacts.php:110 themes/default/templates/pages/client/app.php:278
 msgid "Add Artifact"
 msgstr ""
 
-#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:1120 templates/admin/contents/license/index.php:27
+#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:967 templates/admin/contents/license/index.php:27
 #: templates/admin/contents/license/search.php:26
 msgid "Add New"
 msgstr ""
@@ -1395,7 +1475,7 @@ msgstr ""
 msgid "Add Owner"
 msgstr ""
 
-#: assets/js/admin/core.js:1219 assets/js/admin/core.js:1225
+#: assets/js/admin/core.js:1312 assets/js/admin/core.js:1318
 msgid "Add Pricing Tier"
 msgstr ""
 
@@ -1403,8 +1483,12 @@ msgstr ""
 msgid "Add a note"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:56
+#: themes/default/templates/pages/client/security.php:92
 msgid "Add a passkey"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:266
+msgid "Add an artifact"
 msgstr ""
 
 #: assets/js/admin/json-editor.js:720
@@ -1473,11 +1557,11 @@ msgstr ""
 msgid "Additional verification could not be started. Please try again."
 msgstr ""
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:96 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
+#: src/ClientDashboard/ClientDashboardRegistry.php:102 themes/default/templates/pages/home.php:19 themes/default/templates/partials/header.php:20
 msgid "Admin"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:596
+#: src/Admin/ContentHandlers/OptionsPage.php:619
 msgid "Admin URL Prefix"
 msgstr ""
 
@@ -1485,7 +1569,7 @@ msgstr ""
 msgid "Admin: New User Signup"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:406
+#: src/Admin/ContentHandlers/OptionsPage.php:404
 msgid "Administration Email"
 msgstr ""
 
@@ -1509,7 +1593,7 @@ msgstr ""
 msgid "Algorithm"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:150 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:167 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
 #: themes/default/templates/partials/repository/toolbar.php:26
 msgid "All"
 msgstr ""
@@ -1541,6 +1625,10 @@ msgstr ""
 
 #: src/Email/Templates/Accounts/MfaResetEmail.php:64
 msgid "All active login sessions have been terminated across all your devices."
+msgstr ""
+
+#: themes/default/templates/pages/client/app-licenses.php:33 themes/default/templates/pages/client/licenses.php:53
+msgid "All apps"
 msgstr ""
 
 #: templates/admin/contents/system/health.php:80
@@ -1583,7 +1671,11 @@ msgstr ""
 msgid "All scheduled tasks last ran without error."
 msgstr ""
 
-#: assets/js/admin/repository-browser.js:290
+#: themes/default/templates/pages/client/app-licenses.php:42 themes/default/templates/pages/client/licenses.php:43
+msgid "All statuses"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:176 assets/js/admin/repository-browser.js:290
 msgid "All types"
 msgstr ""
 
@@ -1658,11 +1750,11 @@ msgstr ""
 msgid "An asset named \"%s\" already exists."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:102
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:109
 msgid "An authenticator app is already enabled."
 msgstr ""
 
-#: assets/js/admin/core.js:790 assets/js/admin/core.js:872
+#: assets/js/admin/core.js:883 assets/js/admin/core.js:965
 msgid "An error occurred"
 msgstr ""
 
@@ -1678,7 +1770,7 @@ msgstr ""
 msgid "An external dependency or microservice failed to respond correctly."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:191
+#: themes/default/templates/pages/client/app.php:308
 msgid "An inactive app is not offered for download or sale."
 msgstr ""
 
@@ -1704,7 +1796,7 @@ msgstr ""
 msgid "An organization is an account that represents a group, business, or other entity under which users, service accounts, resources, and access policies can be managed collectively."
 msgstr ""
 
-#: assets/js/admin/core.js:876 assets/js/admin/core.js:1354 assets/js/admin/core.js:1426 assets/js/globals.js:334
+#: assets/js/admin/core.js:969 assets/js/admin/core.js:1447 assets/js/admin/core.js:1519 assets/js/globals.js:334
 msgid "An unexpected error occurred"
 msgstr ""
 
@@ -1728,7 +1820,7 @@ msgstr ""
 msgid "An unexpected server error occurred while processing the request."
 msgstr ""
 
-#: assets/js/admin/core.js:1414 assets/js/admin/core.js:1570
+#: assets/js/admin/core.js:1507 assets/js/admin/core.js:1663
 msgid "An unknown error occurred."
 msgstr ""
 
@@ -1772,6 +1864,10 @@ msgstr ""
 msgid "Android WebView"
 msgstr ""
 
+#: src/Email/EmailPreferences.php:106
+msgid "Announcements"
+msgstr ""
+
 #: src/Environments/Application/Modules/ModuleInstaller.php:954
 #, php-format
 msgid "Another %s is being installed, updated or removed; try again in a moment."
@@ -1787,6 +1883,10 @@ msgstr ""
 
 #: themes/default/templates/pages/home.php:42
 msgid "Any database"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:50 themes/default/templates/pages/client/app-licenses.php:31 themes/default/templates/pages/client/app-licenses.php:81 themes/default/templates/pages/client/licenses.php:51
+msgid "App"
 msgstr ""
 
 #: templates/admin/contents/license/view.php:124
@@ -1825,7 +1925,7 @@ msgstr ""
 msgid "App Slug Conflict"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1132
+#: src/Admin/ContentHandlers/RepositoryPage.php:475 src/Admin/ContentHandlers/RepositoryPage.php:979
 msgid "App Storage"
 msgstr ""
 
@@ -1842,21 +1942,33 @@ msgstr ""
 msgid "App class for type \"%s\" not found."
 msgstr ""
 
-#: assets/js/admin/core.js:889
+#: assets/js/admin/core.js:982
 msgid "App data not found"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:75 src/ClientDashboard/ContentHandlers/AppLicensesPage.php:341 themes/default/templates/pages/client/app-license.php:78
+msgid "App licenses"
 msgstr ""
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:765
 msgid "App monetization"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:238
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:302 src/ClientDashboard/ContentHandlers/LicensesPage.php:389
+msgid "App no longer available"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:280
 msgid "App not found"
 msgstr ""
 
 #: src/Environments/Application/Health/SystemHealth.php:1066
 #, php-format
 msgid "App packages are signed. Key fingerprint: %s."
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:125
+msgid "App page"
 msgstr ""
 
 #: src/FileSystem/Repository.php:1020
@@ -1946,7 +2058,7 @@ msgstr ""
 msgid "Approved. License #%d was issued and is being emailed to %s."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:81 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:88 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
 msgid "Apps"
 msgstr ""
 
@@ -1970,11 +2082,11 @@ msgstr ""
 msgid "Apps that trust only the current key refuse every package signed with a new one. Publish the new public key first, give developers time to ship app updates that trust both keys, and only then switch."
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:40
+#: themes/default/templates/pages/client/apps.php:50
 msgid "Apps uploaded for this account appear here."
 msgstr ""
 
-#: assets/js/admin/core.js:1073
+#: assets/js/admin/core.js:1166
 msgid "Are you sure to delete"
 msgstr ""
 
@@ -1988,7 +2100,7 @@ msgstr ""
 msgid "Are you sure you want to delete %s? This action cannot be reversed."
 msgstr ""
 
-#: assets/js/admin/core.js:1287
+#: assets/js/admin/core.js:1380
 #, javascript-format
 msgid "Are you sure you want to delete tier \"%s\"?"
 msgstr ""
@@ -1997,15 +2109,15 @@ msgstr ""
 msgid "Are you sure you want to logout?"
 msgstr ""
 
-#: assets/js/admin/core.js:1782
+#: assets/js/admin/core.js:1875
 msgid "Are you sure you want to remove the selected member from this organization?"
 msgstr ""
 
-#: assets/js/admin/core.js:762
+#: assets/js/admin/core.js:855
 msgid "Are you sure you want to remove this domain?"
 msgstr ""
 
-#: assets/js/admin/core.js:1992
+#: assets/js/admin/core.js:2085
 msgid "Are you sure you want to reset the cache adapter to default settings?"
 msgstr ""
 
@@ -2021,7 +2133,7 @@ msgstr ""
 msgid "Artifact File Name:"
 msgstr ""
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:130
+#: src/FileSystem/DownloadsApi/FileRequestController.php:131
 msgid "Artifact file name is required."
 msgstr ""
 
@@ -2033,7 +2145,7 @@ msgstr ""
 msgid "Artifact upload request failed with an unknown error."
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:361 templates/admin/contents/system/signing-key.php:141 assets/js/admin/repository-browser.js:40
+#: src/Admin/ContentHandlers/RepositoryPage.php:360 templates/admin/contents/system/signing-key.php:141 themes/default/templates/pages/client/app.php:203 assets/js/admin/repository-browser.js:40
 msgid "Artifacts"
 msgstr ""
 
@@ -2055,7 +2167,7 @@ msgstr ""
 msgid "Asking %s for the release."
 msgstr ""
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:500
+#: src/FileSystem/DownloadsApi/FileRequestController.php:548
 msgid "Asset URL is required."
 msgstr ""
 
@@ -2091,15 +2203,15 @@ msgstr ""
 msgid "Asynchronously appends a license activity entry to the activity log."
 msgstr ""
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:117
-msgid "Asynchronously notify a user when a passkey or two-factor method is added, removed, enabled or disabled."
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:136
+msgid "Asynchronously notify a user when their password or email address changes, or a passkey or two-factor method is added, removed, enabled or disabled."
 msgstr ""
 
 #: src/Background/Jobs/Accounts/MfaResetEmailJob.php:67
 msgid "Asynchronously send a notification email when 2FA is reset by an administrator."
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:125
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:140
 msgid "Asynchronously send a one-time sign-in or two-factor confirmation code by email."
 msgstr ""
 
@@ -2139,7 +2251,7 @@ msgstr ""
 msgid "Authentication Challenges"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:649
+#: src/Admin/ContentHandlers/OptionsPage.php:672
 msgid "Authentication URL prefix"
 msgstr ""
 
@@ -2159,15 +2271,15 @@ msgstr ""
 msgid "Authentication is required for this request but was not provided."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:66 themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:102 themes/default/templates/pages/client/security.php:152
 msgid "Authenticator app"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:152
 msgid "Authenticator app enabled. Save these one-time recovery codes now: "
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:146
+#: themes/default/templates/pages/client/security.php:182
 msgid "Authenticator code"
 msgstr ""
 
@@ -2175,15 +2287,15 @@ msgstr ""
 msgid "Authenticator code or recovery code"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:114
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:121
 msgid "Authenticator enrollment could not be started. Please try again."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:125
+#: themes/default/templates/pages/client/security.php:161
 msgid "Authenticator or recovery code"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:270 themes/default/templates/pages/client/app-new.php:34
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:333 themes/default/templates/pages/client/app-new.php:35
 msgid "Author"
 msgstr ""
 
@@ -2195,7 +2307,7 @@ msgstr ""
 msgid "Author Profile URL"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:271 themes/default/templates/pages/client/app-new.php:39
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:334 themes/default/templates/pages/client/app-new.php:40
 msgid "Author profile URL"
 msgstr ""
 
@@ -2207,8 +2319,12 @@ msgstr ""
 msgid "Auto Calc"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:582
+#: src/Admin/ContentHandlers/OptionsPage.php:605
 msgid "Automatic (browser language)"
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:53
+msgid "Automatic (site default)"
 msgstr ""
 
 #: src/Admin/ContentHandlers/LicensePage.php:408
@@ -2258,6 +2374,10 @@ msgstr ""
 msgid "Automatic updates on this site install security releases only, so this release will not be installed automatically."
 msgstr ""
 
+#: themes/default/templates/pages/client/settings.php:58
+msgid "Automatic uses the site language, or your browser's language when the site has none."
+msgstr ""
+
 #: src/Email/Templates/System/UpdateAvailableEmail.php:107
 msgid "Available"
 msgstr ""
@@ -2274,11 +2394,11 @@ msgstr ""
 msgid "Avatar actions"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1028
+#: src/Analytics/AppStatsSummary.php:155
 msgid "Avg Access/Day"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:984
+#: src/Analytics/AppStatsSummary.php:112
 msgid "Avg Downloads/Day"
 msgstr ""
 
@@ -2459,6 +2579,10 @@ msgstr ""
 msgid "Buy %s — %s"
 msgstr ""
 
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:371
+msgid "Buy again"
+msgstr ""
+
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:86 templates/admin/contents/license/purchase-request.php:61 templates/admin/contents/license/purchase-requests.php:66
 msgid "Buyer"
 msgstr ""
@@ -2483,11 +2607,11 @@ msgstr ""
 msgid "CSRF Verification Failed"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:724 src/Admin/ContentHandlers/OptionsPage.php:781
+#: src/Admin/ContentHandlers/OptionsPage.php:747 src/Admin/ContentHandlers/OptionsPage.php:804
 msgid "Cache"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:685 src/Admin/ContentHandlers/OptionsPage.php:723 templates/admin/contents/options/cache/index.php:30
+#: src/Admin/ContentHandlers/OptionsPage.php:708 src/Admin/ContentHandlers/OptionsPage.php:746 templates/admin/contents/options/cache/index.php:30
 msgid "Cache Adapters"
 msgstr ""
 
@@ -2507,11 +2631,11 @@ msgstr ""
 msgid "Cache Persistence"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:684 src/Admin/ContentHandlers/OptionsPage.php:730
+#: src/Admin/ContentHandlers/OptionsPage.php:707 src/Admin/ContentHandlers/OptionsPage.php:753
 msgid "Cache Statistics"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:731
+#: src/Admin/ContentHandlers/OptionsPage.php:754
 msgid "Cache Stats"
 msgstr ""
 
@@ -2588,7 +2712,7 @@ msgstr ""
 msgid "Change maintenance"
 msgstr ""
 
-#: themes/default/templates/pages/auth/reset-password.php:33
+#: themes/default/templates/pages/auth/reset-password.php:33 themes/default/templates/pages/client/security.php:51
 msgid "Change password"
 msgstr ""
 
@@ -2600,8 +2724,12 @@ msgstr ""
 msgid "Change slug"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:203
+#: themes/default/templates/pages/client/app.php:319
 msgid "Change status"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-licenses.php:63
+msgid "Change the filters to see more licenses."
 msgstr ""
 
 #: src/Security/Permission/Capability.php:47
@@ -2614,6 +2742,10 @@ msgstr ""
 
 #: templates/admin/contents/options/routing.php:30
 msgid "Changing these values will update the public URLs of your hosted applications. Any existing links shared with users may stop working until they are updated."
+msgstr ""
+
+#: themes/default/templates/pages/client/security.php:42
+msgid "Changing your password signs you out on every other device. This one stays signed in, and you get an email about the change."
 msgstr ""
 
 #: src/Environments/Application/Installation/InstallerPage.php:284
@@ -2734,11 +2866,15 @@ msgstr ""
 msgid "Choose a new password"
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:272
+msgid "Choose a new password that is different from your current one."
+msgstr ""
+
 #: src/Security/Organizations/OrganizationInvitations.php:112
 msgid "Choose a role for the person you invite."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:196
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:203
 msgid "Choose a supported security factor."
 msgstr ""
 
@@ -2754,7 +2890,11 @@ msgstr ""
 msgid "Choose files"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:28
+#: themes/default/templates/pages/client/settings.php:27
+msgid "Choose how the dashboard looks and which language it speaks to you in. These settings follow your account to every device."
+msgstr ""
+
+#: themes/default/templates/pages/client/security.php:30
 msgid "Choose how you sign in and how your account is protected. Each method is verified before it is enabled."
 msgstr ""
 
@@ -2779,12 +2919,20 @@ msgstr ""
 msgid "Choose the language of the installation. It is also saved as the site language and your account's language."
 msgstr ""
 
-#: src/Monetization/Controller.php:65
+#: src/Monetization/Controller.php:66
 msgid "Choose the license term"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:86
+msgid "Choose the optional emails you receive. Emails about your account security, purchases, payments, license keys and invitations are always sent."
 msgstr ""
 
 #: src/Admin/ActionHandlers/ThemeManagement.php:99
 msgid "Choose the theme package (.zip) to upload."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:106
+msgid "Choose what to do with the license."
 msgstr ""
 
 #: src/ClientDashboard/ActionHandlers/ContextSwitch.php:59
@@ -2803,7 +2951,7 @@ msgstr ""
 msgid "Clean Trashed Apps"
 msgstr ""
 
-#: templates/admin/contents/accounts/access-control-form.php:100 templates/admin/contents/repository/uploader.php:58 assets/js/admin/apps-uploader.js:1543
+#: templates/admin/contents/accounts/access-control-form.php:100 templates/admin/contents/repository/uploader.php:58 themes/default/templates/pages/client/app-licenses.php:55 assets/js/admin/apps-uploader.js:1543
 msgid "Clear"
 msgstr ""
 
@@ -2815,6 +2963,10 @@ msgstr ""
 msgid "Clear date"
 msgstr ""
 
+#: themes/default/templates/pages/client/licenses.php:62
+msgid "Clear filters"
+msgstr ""
+
 #: templates/admin/contents/accounts/access-control-form.php:97
 msgid "Clear selected avatar image"
 msgstr ""
@@ -2823,7 +2975,7 @@ msgstr ""
 msgid "Clear selected image"
 msgstr ""
 
-#: src/Email/Templates/EmailTemplate.php:649 templates/admin/contents/options/email/editor.php:401
+#: src/Email/Templates/EmailTemplate.php:650 templates/admin/contents/options/email/editor.php:401
 msgid "Click Here"
 msgstr ""
 
@@ -2875,7 +3027,7 @@ msgstr ""
 msgid "Client Dashboard"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:609
+#: src/Admin/ContentHandlers/OptionsPage.php:632
 msgid "Client Dashboard URL Prefix"
 msgstr ""
 
@@ -2924,7 +3076,7 @@ msgstr ""
 msgid "Collapse all nodes"
 msgstr ""
 
-#: templates/admin/header.php:43
+#: templates/admin/header.php:44
 msgid "Collapse menu"
 msgstr ""
 
@@ -3012,12 +3164,16 @@ msgstr ""
 msgid "Confirm Action"
 msgstr ""
 
-#: assets/js/admin/core.js:1783
+#: assets/js/admin/core.js:1876
 msgid "Confirm Member Removal"
 msgstr ""
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:209
 msgid "Confirm Password"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:65
+msgid "Confirm new email address"
 msgstr ""
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:218
@@ -3028,8 +3184,20 @@ msgstr ""
 msgid "Confirm password"
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:66
+msgid "Confirm that you want to deactivate this license on every site."
+msgstr ""
+
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
+msgstr ""
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:124
+msgid "Confirm your new email address"
+msgstr ""
+
+#: src/Email/EmailPreferences.php:103
+msgid "Confirmations when one of your hosted apps is published or a new version is uploaded."
 msgstr ""
 
 #: src/Exceptions/FileRequestException.php:161 src/Exceptions/RequestException.php:170
@@ -3139,7 +3307,7 @@ msgstr ""
 msgid "Copy it before closing this message."
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:46
+#: themes/default/templates/pages/client/license.php:49 themes/default/templates/pages/client/licenses.php:99
 msgid "Copy key"
 msgstr ""
 
@@ -3147,11 +3315,15 @@ msgstr ""
 msgid "Copy license key"
 msgstr ""
 
+#: themes/default/templates/pages/client/license.php:56 themes/default/templates/pages/client/licenses.php:106
+msgid "Copy service ID"
+msgstr ""
+
 #: themes/default/templates/pages/signing-key.php:60
 msgid "Copy the key above into your app's code. Do not make your app download the key when it checks for updates: a key fetched from the same place as the update proves nothing."
 msgstr ""
 
-#: assets/js/admin/core.js:681
+#: assets/js/admin/core.js:774
 msgid "Copy this token now. For security, it will not be shown to you again."
 msgstr ""
 
@@ -3453,6 +3625,10 @@ msgstr ""
 msgid "Cron URL (external service)"
 msgstr ""
 
+#: themes/default/templates/pages/client/app.php:142
+msgid "Current app.json"
+msgstr ""
+
 #: templates/admin/contents/accounts/access-control-form.php:123
 msgid "Current avatar"
 msgstr ""
@@ -3469,8 +3645,9 @@ msgstr ""
 msgid "Current pagination number."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:45 themes/default/templates/pages/client/security.php:55 themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:90
-#: themes/default/templates/pages/client/security.php:98 themes/default/templates/pages/client/security.php:124 themes/default/templates/pages/client/security.php:153
+#: themes/default/templates/pages/client/account.php:76 themes/default/templates/pages/client/account.php:112 themes/default/templates/pages/client/account.php:144 themes/default/templates/pages/client/security.php:47
+#: themes/default/templates/pages/client/security.php:81 themes/default/templates/pages/client/security.php:91 themes/default/templates/pages/client/security.php:117 themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:134 themes/default/templates/pages/client/security.php:160 themes/default/templates/pages/client/security.php:189
 msgid "Current password"
 msgstr ""
 
@@ -3478,7 +3655,7 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:435
+#: src/Admin/ContentHandlers/OptionsPage.php:417
 msgid "Customer-facing support email address used in license communications and support responses."
 msgstr ""
 
@@ -3486,8 +3663,12 @@ msgstr ""
 msgid "Damaged or unreadable ("
 msgstr ""
 
-#: templates/admin/header.php:29 themes/default/templates/frames/client-dashboard.php:27 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
+#: templates/admin/header.php:29 themes/default/templates/frames/client-dashboard.php:28 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
 msgid "Dashboard"
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:76
+msgid "Dashboard theme"
 msgstr ""
 
 #: templates/admin/contents/accounts/index.php:118
@@ -3518,11 +3699,11 @@ msgstr ""
 msgid "Database execution failure dropping application metadata rows."
 msgstr ""
 
-#: src/Monetization/License.php:1251
+#: src/Monetization/License.php:1507
 msgid "Database execution failure dropping license activations."
 msgstr ""
 
-#: src/Monetization/License.php:1246
+#: src/Monetization/License.php:1502
 msgid "Database execution failure dropping license metadata entries."
 msgstr ""
 
@@ -3538,7 +3719,7 @@ msgstr ""
 msgid "Database execution failure dropping primary application entry."
 msgstr ""
 
-#: src/Monetization/License.php:1255
+#: src/Monetization/License.php:1511
 msgid "Database execution failure dropping primary license record."
 msgstr ""
 
@@ -3590,7 +3771,7 @@ msgstr ""
 msgid "Days Remaining"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:507
+#: src/Admin/ContentHandlers/OptionsPage.php:457
 msgid "Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever."
 msgstr ""
 
@@ -3598,8 +3779,18 @@ msgstr ""
 msgid "Deactivate"
 msgstr ""
 
+#: themes/default/templates/pages/client/license.php:198 themes/default/templates/pages/client/license.php:205
+msgid "Deactivate license"
+msgstr ""
+
 #: src/Security/Permission/Capability.php:55
 msgid "Deactivate licenses"
+msgstr ""
+
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/license.php:197
+#, php-format
+msgid "Deactivate the license for %s on every site? Only the app's owner or an administrator can reactivate it."
 msgstr ""
 
 #: src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:68 src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:158
@@ -3615,23 +3806,23 @@ msgstr ""
 msgid "Decline the invitation to %s?"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:338
+#: src/Admin/ContentHandlers/OptionsPage.php:340
 msgid "Default Email Provider"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:367
+#: src/Admin/ContentHandlers/OptionsPage.php:369
 msgid "Default From Address"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:353
+#: src/Admin/ContentHandlers/OptionsPage.php:355
 msgid "Default From Name"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:473
+#: src/Admin/ContentHandlers/OptionsPage.php:435
 msgid "Default License Activation Limit"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:462
+#: src/Admin/ContentHandlers/OptionsPage.php:428
 msgid "Default License Duration (Days)"
 msgstr ""
 
@@ -3643,11 +3834,11 @@ msgstr ""
 msgid "Default cache expiration duration in seconds."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:474
+#: src/Admin/ContentHandlers/OptionsPage.php:436
 msgid "Default number of activations allowed per license key."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:463
+#: src/Admin/ContentHandlers/OptionsPage.php:429
 msgid "Default number of days a newly generated license remains valid when no expiration date is specified."
 msgstr ""
 
@@ -3679,23 +3870,25 @@ msgstr ""
 msgid "Default sender name."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:518
+#: src/Admin/ContentHandlers/OptionsPage.php:465
 msgid "Defines whether this repository operates in production, staging, or development mode."
 msgstr ""
 
 #: templates/admin/contents/accounts/access-control-form.php:217 templates/admin/contents/accounts/owners.php:70 templates/admin/contents/broadcasts/index.php:36 templates/admin/contents/license/index.php:61
-#: templates/admin/contents/license/purchase-request.php:201 templates/admin/contents/repository/monetization.php:130 templates/admin/contents/repository/uploader.php:101 themes/default/templates/pages/client/app.php:136
-#: themes/default/templates/pages/client/organization.php:144 assets/js/admin/apps-uploader.js:1280 assets/js/admin/json-editor.js:709 assets/js/admin/repository-browser.js:744
-#: assets/js/admin/repository-browser.js:954
+#: templates/admin/contents/license/purchase-request.php:201 templates/admin/contents/repository/monetization.php:130 templates/admin/contents/repository/uploader.php:101 themes/default/templates/pages/client/app.php:172
+#: themes/default/templates/pages/client/app.php:175 themes/default/templates/pages/client/app.php:229 themes/default/templates/pages/client/app.php:232 themes/default/templates/pages/client/organization.php:144
+#: assets/js/admin/apps-uploader.js:1280 assets/js/admin/json-editor.js:709 assets/js/admin/repository-browser.js:744 assets/js/admin/repository-browser.js:954
 msgid "Delete"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:181
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/app.php:299
 #, php-format
 msgid "Delete %s for good? Its files go too, and this cannot be undone."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:131
+#. translators: %s: file name.
+#: themes/default/templates/pages/client/app.php:172 themes/default/templates/pages/client/app.php:229
 #, php-format
 msgid "Delete %s?"
 msgstr ""
@@ -3707,6 +3900,10 @@ msgstr ""
 
 #: templates/admin/contents/license/view.php:74
 msgid "Delete License"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:121 themes/default/templates/pages/client/account.php:136
+msgid "Delete account"
 msgstr ""
 
 #: src/Security/Permission/Capability.php:46
@@ -3729,7 +3926,7 @@ msgstr ""
 msgid "Delete completed jobs older than 7 days?"
 msgstr ""
 
-#: assets/js/admin/core.js:1303 assets/js/admin/core.js:1323
+#: assets/js/admin/core.js:1396 assets/js/admin/core.js:1416
 msgid "Delete failed"
 msgstr ""
 
@@ -3738,7 +3935,7 @@ msgstr ""
 msgid "Delete failed job records older than %d days? They are the audit trail of past failures."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:185
+#: themes/default/templates/pages/client/app.php:299 themes/default/templates/pages/client/app.php:302
 msgid "Delete for good"
 msgstr ""
 
@@ -3756,6 +3953,10 @@ msgstr ""
 
 #: src/Security/Permission/Capability.php:50
 msgid "Delete monetization pricing tiers"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:147
+msgid "Delete my account"
 msgstr ""
 
 #: src/Security/Permission/Capability.php:94
@@ -3825,7 +4026,11 @@ msgstr ""
 msgid "Delete users"
 msgstr ""
 
-#: assets/js/admin/core.js:1090
+#: themes/default/templates/pages/client/account.php:135
+msgid "Delete your account for good? This cannot be undone."
+msgstr ""
+
+#: assets/js/admin/core.js:1183
 msgid "Deleted"
 msgstr ""
 
@@ -3839,7 +4044,7 @@ msgstr ""
 msgid "Deleted %d %s. Not deleted: %s"
 msgstr ""
 
-#: src/HostedApps/HostingController.php:744 assets/js/admin/core.js:583
+#: src/HostedApps/HostingController.php:744 assets/js/admin/core.js:676
 msgid "Deleted successfully"
 msgstr ""
 
@@ -3869,6 +4074,10 @@ msgstr ""
 msgid "Deletes this request, its notes and its receipt. The buyer is not told."
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:122
+msgid "Deleting your account signs you out and removes your profile, preferences, sign-in methods and organization memberships for good. Licenses and purchases are kept for the seller's records, without the link to your account, and are linked again if you sign up later with the same verified email address."
+msgstr ""
+
 #: src/Email/Templates/System/TestEmail.php:67 src/Email/Templates/System/TestEmail.php:186
 msgid "Delivered To"
 msgstr ""
@@ -3891,11 +4100,11 @@ msgstr ""
 msgid "Description:"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:421
+#: src/Admin/ContentHandlers/OptionsPage.php:411
 msgid "Designated contact email for server, infrastructure, or application hosting-related issues and notifications."
 msgstr ""
 
-#: assets/js/admin/core.js:2026
+#: assets/js/admin/core.js:2119
 msgid "Detail"
 msgstr ""
 
@@ -3903,7 +4112,8 @@ msgstr ""
 msgid "Detail card"
 msgstr ""
 
-#: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:77
+#: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:115
+#: themes/default/templates/pages/client/licenses.php:141
 msgid "Details"
 msgstr ""
 
@@ -3915,11 +4125,11 @@ msgstr ""
 msgid "Developers put this key in their apps; apps then accept only packages this site signed. It cannot sign anything, so it is safe to share."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:526
+#: src/Admin/ContentHandlers/OptionsPage.php:473
 msgid "Development"
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:209
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:216
 msgid "Device"
 msgstr ""
 
@@ -3932,7 +4142,7 @@ msgid "Directory traversal sequences are not allowed."
 msgstr ""
 
 #: src/Admin/ContentHandlers/ModulesPage.php:262 src/Admin/ContentHandlers/ModulesPage.php:489 templates/admin/contents/options/email/editor.php:130 templates/admin/contents/options/email/templates.php:185
-#: assets/js/admin/core.js:1867 assets/js/admin/email-editor.js:987
+#: assets/js/admin/core.js:1960 assets/js/admin/email-editor.js:987
 msgid "Disable"
 msgstr ""
 
@@ -3941,15 +4151,15 @@ msgstr ""
 msgid "Disable %s? It stops loading from the next request on."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:126
+#: themes/default/templates/pages/client/security.php:162
 msgid "Disable authenticator app"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:83
+#: themes/default/templates/pages/client/security.php:119
 msgid "Disable email codes"
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:109
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:123
 msgid "Disable email two-factor authentication"
 msgstr ""
 
@@ -3962,7 +4172,7 @@ msgstr ""
 msgid "Disable the broken extension \"%s\"?"
 msgstr ""
 
-#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1867
+#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1960
 msgid "Disable this template"
 msgstr ""
 
@@ -3982,12 +4192,16 @@ msgstr ""
 msgid "Dismiss notification"
 msgstr ""
 
-#: assets/js/admin/dashboard.js:186
+#: assets/js/admin/dashboard.js:202
 msgid "Dismiss this notice"
 msgstr ""
 
 #: src/Events/Jobs/AsyncEventJob.php:56
 msgid "Dispatches an event asynchronously in the background."
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:41
+msgid "Display name"
 msgstr ""
 
 #: templates/admin/contents/license/view.php:159
@@ -3998,11 +4212,11 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:282 templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:347 templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
 msgid "Documentation URL"
 msgstr ""
 
-#: assets/js/admin/core.js:772
+#: assets/js/admin/core.js:865
 msgid "Domain value was not found"
 msgstr ""
 
@@ -4010,7 +4224,7 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:283 assets/js/admin/background.js:71 assets/js/admin/maintenance.js:96 assets/js/admin/maintenance.js:113
+#: src/ClientDashboard/ActionHandlers/AppActions.php:356 assets/js/admin/background.js:71 assets/js/admin/maintenance.js:96 assets/js/admin/maintenance.js:113
 #: assets/js/admin/modules.js:90 assets/js/admin/modules.js:152 assets/js/page-forms.js:94
 msgid "Done."
 msgstr ""
@@ -4023,12 +4237,13 @@ msgstr ""
 msgid "Double click for fullscreen"
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892
+#: themes/default/templates/pages/client/app.php:223 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892
 #: assets/js/admin/repository-browser.js:730
 msgid "Download"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/repository/app.php:62
+#. translators: %s: app name.
+#: src/Admin/ContentHandlers/RepositoryPage.php:392 themes/default/templates/pages/client/license.php:117 themes/default/templates/pages/client/licenses.php:153 themes/default/templates/pages/repository/app.php:62
 #, php-format
 msgid "Download %s"
 msgstr ""
@@ -4045,15 +4260,15 @@ msgstr ""
 msgid "Download Document"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:994
+#: src/Analytics/AppStatsSummary.php:122
 msgid "Download Growth"
 msgstr ""
 
-#: assets/js/admin/core.js:1631
+#: assets/js/admin/core.js:1724
 msgid "Download Key"
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:62
+#: themes/default/templates/pages/client/license.php:109 themes/default/templates/pages/client/licenses.php:145
 msgid "Download License"
 msgstr ""
 
@@ -4061,11 +4276,11 @@ msgstr ""
 msgid "Download License Document"
 msgstr ""
 
-#: assets/js/admin/core.js:686
+#: assets/js/admin/core.js:779
 msgid "Download License File"
 msgstr ""
 
-#: assets/js/admin/core.js:711
+#: assets/js/admin/core.js:804
 msgid "Download Token Generated"
 msgstr ""
 
@@ -4073,12 +4288,16 @@ msgstr ""
 msgid "Download Type Missing"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:296 templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:360 templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
 msgid "Download URL"
 msgstr ""
 
 #: templates/admin/contents/repository/edit-artifacts.php:87 assets/js/admin/apps-uploader.js:1845
 msgid "Download URL:"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:107
+msgid "Download a JSON file with your profile, preferences, licenses, purchases, organizations and apps. It never contains passwords, keys or other secrets."
 msgstr ""
 
 #: src/Security/Permission/Capability.php:66
@@ -4092,6 +4311,14 @@ msgstr ""
 #: assets/js/globals.js:492
 #, javascript-format
 msgid "Download failed: %1$s %2$s (%3$s)"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:115
+msgid "Download my data"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:87
+msgid "Download package"
 msgstr ""
 
 #: src/Utils/functions/functions.php:131
@@ -4114,7 +4341,7 @@ msgstr ""
 msgid "Download token record not found."
 msgstr ""
 
-#: assets/js/admin/core.js:616
+#: assets/js/admin/core.js:709
 msgid "Download tokens allow clients to download the application monetized under this license without exposing the primary license key. If expiry is not set, the token will be valid for 24 hours by default."
 msgstr ""
 
@@ -4136,7 +4363,7 @@ msgstr ""
 msgid "Downloads This Week"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:636
+#: src/Admin/ContentHandlers/OptionsPage.php:659
 msgid "Downloads URL Prefix"
 msgstr ""
 
@@ -4164,7 +4391,8 @@ msgstr ""
 msgid "Drag to reorder  ·  Click to edit"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:154
+#. translators: %s: kind of image, e.g. icons.
+#: themes/default/templates/pages/client/app.php:191
 #, php-format
 msgid "Drop %s images here, or choose them"
 msgstr ""
@@ -4177,7 +4405,7 @@ msgstr ""
 msgid "Drop a file here or click to choose"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:102
+#: themes/default/templates/pages/client/app.php:143
 msgid "Drop an app.json file here, or choose it"
 msgstr ""
 
@@ -4189,11 +4417,19 @@ msgstr ""
 msgid "Drop files here or click to choose"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:96
+#: themes/default/templates/pages/client/app.php:276
+msgid "Drop the artifact here, or choose it"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:133
 msgid "Drop the new zip file here, or choose it"
 msgstr ""
 
-#: themes/default/templates/pages/client/app-new.php:45
+#: themes/default/templates/pages/client/app.php:255
+msgid "Drop the replacement file here, or choose it"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-new.php:46
 msgid "Drop the zip file here, or choose it"
 msgstr ""
 
@@ -4242,7 +4478,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:385
+#: src/Admin/ContentHandlers/RepositoryPage.php:384
 #, php-format
 msgid "Edit %s"
 msgstr ""
@@ -4252,11 +4488,11 @@ msgstr ""
 msgid "Edit %s: %s"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:739 src/Admin/ContentHandlers/RepositoryPage.php:1138
+#: src/Admin/ContentHandlers/RepositoryPage.php:739 src/Admin/ContentHandlers/RepositoryPage.php:985
 msgid "Edit App"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1156
+#: src/Admin/ContentHandlers/RepositoryPage.php:1003
 msgid "Edit App Artifacts"
 msgstr ""
 
@@ -4276,7 +4512,7 @@ msgstr ""
 msgid "Edit Message"
 msgstr ""
 
-#: assets/js/admin/core.js:1225
+#: assets/js/admin/core.js:1318
 msgid "Edit Pricing Tier"
 msgstr ""
 
@@ -4307,6 +4543,10 @@ msgstr ""
 msgid "Edit license"
 msgstr ""
 
+#: themes/default/templates/pages/client/app.php:141
+msgid "Edit the app's manifest. Fields read from the package, such as its version, cannot be overridden here."
+msgstr ""
+
 #: assets/js/admin/json-editor.js:699
 msgid "Edit value"
 msgstr ""
@@ -4323,13 +4563,17 @@ msgstr ""
 msgid "Editor view"
 msgstr ""
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:178 src/Admin/ContentHandlers/OptionsPage.php:775 themes/default/templates/pages/auth/forgot-password.php:18 themes/default/templates/pages/auth/sign-up.php:30
+#: src/Admin/ContentHandlers/AccessControlPage.php:178 src/Admin/ContentHandlers/OptionsPage.php:798 themes/default/templates/pages/auth/forgot-password.php:18 themes/default/templates/pages/auth/sign-up.php:30
 #: themes/default/templates/pages/purchase.php:73
 msgid "Email"
 msgstr ""
 
 #: src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:60 src/Email/Templates/Accounts/AdminNewUserNotificationEmail.php:192 src/Email/Templates/Accounts/WelcomeEmail.php:66 src/Email/Templates/Accounts/WelcomeEmail.php:155
 msgid "Email Address"
+msgstr ""
+
+#: src/Email/Templates/Security/EmailChangedEmail.php:59
+msgid "Email Address Changed"
 msgstr ""
 
 #: src/Email/Templates/System/TestEmail.php:61 src/Email/Templates/System/TestEmail.php:161
@@ -4344,15 +4588,15 @@ msgstr ""
 msgid "Email Preview"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:709
+#: src/Admin/ContentHandlers/OptionsPage.php:732
 msgid "Email Provider Settings"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:683 src/Admin/ContentHandlers/OptionsPage.php:710 templates/admin/contents/options/email/index.php:49
+#: src/Admin/ContentHandlers/OptionsPage.php:706 src/Admin/ContentHandlers/OptionsPage.php:733 templates/admin/contents/options/email/index.php:49
 msgid "Email Providers"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:682 src/Admin/ContentHandlers/OptionsPage.php:716 src/Admin/ContentHandlers/OptionsPage.php:717
+#: src/Admin/ContentHandlers/OptionsPage.php:705 src/Admin/ContentHandlers/OptionsPage.php:739 src/Admin/ContentHandlers/OptionsPage.php:740
 msgid "Email Templates"
 msgstr ""
 
@@ -4360,8 +4604,12 @@ msgstr ""
 msgid "Email Verification Code"
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/organization.php:76
+#: src/Environments/Application/Installation/InstallerPage.php:368 themes/default/templates/pages/client/account.php:49 themes/default/templates/pages/client/organization.php:76
 msgid "Email address"
+msgstr ""
+
+#: src/Email/Templates/Security/EmailChangedEmail.php:47
+msgid "Email address changed"
 msgstr ""
 
 #: templates/admin/contents/options/email/index.php:122
@@ -4376,11 +4624,11 @@ msgstr ""
 msgid "Email and password are required."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:65
+#: themes/default/templates/pages/client/security.php:101
 msgid "Email codes"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:82
+#: themes/default/templates/pages/client/security.php:118
 msgid "Email confirmation code"
 msgstr ""
 
@@ -4388,31 +4636,35 @@ msgstr ""
 msgid "Email is required."
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:85
+msgid "Email notifications"
+msgstr ""
+
 #: src/Background/Jobs/Accounts/OrganizationInviteEmailJob.php:100
 msgid "Email someone a link to join an organization."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:157
+#: src/SettingsAPI/SettingsController.php:169
 msgid "Email template key is invalid."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:150
+#: src/SettingsAPI/SettingsController.php:162
 msgid "Email template key is required."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:89
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:96
 msgid "Email two-factor authentication is enabled."
 msgstr ""
 
-#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:108
+#: themes/default/templates/pages/auth/mfa.php:30 themes/default/templates/pages/client/security.php:144
 msgid "Email verification code"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 msgid "Email verification codes"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:55
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:62
 msgid "Email verification is already enabled."
 msgstr ""
 
@@ -4432,7 +4684,7 @@ msgstr ""
 msgid "Emails the site administration address when an update is available, installed automatically, or failed."
 msgstr ""
 
-#: src/Admin/ContentHandlers/ModulesPage.php:493 templates/admin/contents/options/email/editor.php:130 templates/admin/contents/options/email/templates.php:185 assets/js/admin/core.js:1869
+#: src/Admin/ContentHandlers/ModulesPage.php:493 templates/admin/contents/options/email/editor.php:130 templates/admin/contents/options/email/templates.php:185 assets/js/admin/core.js:1962
 #: assets/js/admin/email-editor.js:987
 msgid "Enable"
 msgstr ""
@@ -4442,7 +4694,7 @@ msgstr ""
 msgid "Enable \"%s\" %s?"
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:108
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:122
 msgid "Enable email two-factor authentication"
 msgstr ""
 
@@ -4463,11 +4715,11 @@ msgstr ""
 msgid "Enable this extension after installing? It loads from the next request on."
 msgstr ""
 
-#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1869
+#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1962
 msgid "Enable this template"
 msgstr ""
 
-#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: templates/admin/contents/options/email/editor.php:99 templates/admin/contents/options/email/templates.php:155 themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 #: assets/js/admin/email-editor.js:995
 msgid "Enabled"
 msgstr ""
@@ -4582,6 +4834,12 @@ msgstr ""
 msgid "Enter the URL of the %s author profile."
 msgstr ""
 
+#. translators: %s: the new email address.
+#: themes/default/templates/pages/client/account.php:60
+#, php-format
+msgid "Enter the code sent to %s."
+msgstr ""
+
 #: src/Admin/ContentHandlers/LicensePage.php:419
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr ""
@@ -4595,6 +4853,10 @@ msgstr ""
 msgid "Enter the name the license is issued to."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:101
+msgid "Enter the name to show on your account."
+msgstr ""
+
 #: src/Security/Organizations/OrganizationService.php:421
 msgid "Enter the organization's name."
 msgstr ""
@@ -4603,7 +4865,7 @@ msgstr ""
 msgid "Enter the price buyers pay for this tier."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:137
+#: themes/default/templates/pages/client/security.php:173
 msgid "Enter the setup key manually"
 msgstr ""
 
@@ -4611,7 +4873,7 @@ msgstr ""
 msgid "Enter your name."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:517
+#: src/Admin/ContentHandlers/OptionsPage.php:464
 msgid "Environment Mode"
 msgstr ""
 
@@ -4619,7 +4881,7 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: assets/js/admin/core.js:405
+#: assets/js/admin/core.js:406
 #, javascript-format
 msgid "Error attempting to enable fullscreen: %s"
 msgstr ""
@@ -4741,7 +5003,7 @@ msgstr ""
 msgid "Expired download link, please refresh current page."
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:50
+#: themes/default/templates/pages/client/app-license.php:70 themes/default/templates/pages/client/app-licenses.php:93 themes/default/templates/pages/client/license.php:64 themes/default/templates/pages/client/licenses.php:110
 msgid "Expires"
 msgstr ""
 
@@ -4791,7 +5053,7 @@ msgstr ""
 msgid "External cron service"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:279
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:342
 msgid "External repository URL"
 msgstr ""
 
@@ -4869,11 +5131,11 @@ msgstr ""
 msgid "Failed to paste from clipboard"
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:344
+#: src/SettingsAPI/SettingsController.php:356
 msgid "Failed to reset template. Please try again."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:292
+#: src/SettingsAPI/SettingsController.php:304
 msgid "Failed to save template. Please try again."
 msgstr ""
 
@@ -4885,7 +5147,7 @@ msgstr ""
 msgid "Failed to send email via PHP mail()."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:170
+#: src/SettingsAPI/SettingsController.php:182
 msgid "Failed to update email template state. Please try again."
 msgstr ""
 
@@ -4897,7 +5159,7 @@ msgstr ""
 msgid "Fatal Error"
 msgstr ""
 
-#: src/Admin/ContentHandlers/LicensePage.php:450
+#: src/Admin/ContentHandlers/LicensePage.php:450 themes/default/templates/pages/client/license.php:94
 msgid "Features"
 msgstr ""
 
@@ -4929,7 +5191,7 @@ msgstr ""
 msgid "File Reading Error"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:824
+#: src/Admin/ContentHandlers/RepositoryPage.php:824 src/ClientDashboard/ContentHandlers/AppsPage.php:370
 msgid "File Size"
 msgstr ""
 
@@ -4953,15 +5215,19 @@ msgstr ""
 msgid "File is not a valid HTTP uploaded file."
 msgstr ""
 
-#: assets/js/admin/core.js:460
+#: assets/js/admin/core.js:461
 msgid "File is too large. Maximum size is 2MB."
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:271
+msgid "File name"
 msgstr ""
 
 #: src/FileSystem/DownloadsApi/FileResponse.php:211
 msgid "File not readable"
 msgstr ""
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:536
+#: src/FileSystem/DownloadsApi/FileRequestController.php:584
 msgid "File path is required."
 msgstr ""
 
@@ -4982,16 +5248,28 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:369
+#: src/Admin/ContentHandlers/RepositoryPage.php:368
 msgid "Files"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:204
+msgid "Files distributed beside the main package, such as checksums, signatures or other builds. The main package changes only with a new version."
 msgstr ""
 
 #: src/Exceptions/FileRequestException.php:200 src/Exceptions/RequestException.php:247
 msgid "Filesystem Error"
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:31
+#: themes/default/templates/pages/client/app-licenses.php:53 themes/default/templates/pages/client/licenses.php:60
+msgid "Filter"
+msgstr ""
+
+#: themes/default/templates/pages/client/apps.php:33
 msgid "Filter by status"
+msgstr ""
+
+#: themes/default/templates/pages/client/apps.php:40
+msgid "Filter by type"
 msgstr ""
 
 #: templates/admin/contents/options/email/templates.php:69
@@ -5083,7 +5361,7 @@ msgstr ""
 msgid "Form fields"
 msgstr ""
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:283
 msgid "Form slug or action path is required."
 msgstr ""
 
@@ -5101,6 +5379,24 @@ msgstr ""
 
 #: src/Environments/WordPress/WordPressEnvironment.php:521
 msgid "Four Hourly"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371
+msgid "Free"
+msgstr ""
+
+#. translators: %s: the site's domain.
+#: themes/default/templates/pages/client/app-license.php:111
+#, php-format
+msgid "Free %s? It can no longer use this license or download the app, until the license is activated on it again."
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:90
+msgid "Free a site to let the license be activated somewhere else. The site loses its download access at once."
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:112 themes/default/templates/pages/client/app-license.php:116
+msgid "Free site"
 msgstr ""
 
 #: src/FileSystem/WPPluginRepository.php:230
@@ -5134,11 +5430,11 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:535
+#: src/Admin/ContentHandlers/OptionsPage.php:482
 msgid "Full URL to your Terms of Service or license agreement page."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:549
+#: src/Admin/ContentHandlers/OptionsPage.php:488
 msgid "Full URL to your privacy policy page."
 msgstr ""
 
@@ -5150,7 +5446,7 @@ msgstr ""
 msgid "Fullscreen"
 msgstr ""
 
-#: assets/js/admin/core.js:398
+#: assets/js/admin/core.js:399
 msgid "Fullscreen not supported by your browser."
 msgstr ""
 
@@ -5158,19 +5454,19 @@ msgstr ""
 msgid "Gateway Timeout"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:763
+#: src/Admin/ContentHandlers/OptionsPage.php:786
 msgid "General"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:686 src/Admin/ContentHandlers/OptionsPage.php:692
+#: src/Admin/ContentHandlers/OptionsPage.php:709 src/Admin/ContentHandlers/OptionsPage.php:715
 msgid "General Settings"
 msgstr ""
 
-#: assets/js/admin/core.js:629
+#: assets/js/admin/core.js:722
 msgid "Generate Download Token"
 msgstr ""
 
-#: assets/js/admin/core.js:629
+#: assets/js/admin/core.js:722
 #, javascript-format
 msgid "Generate Download Token for %s"
 msgstr ""
@@ -5179,7 +5475,7 @@ msgstr ""
 msgid "Generate Password"
 msgstr ""
 
-#: templates/admin/contents/license/view.php:54 assets/js/admin/core.js:626
+#: templates/admin/contents/license/view.php:54 assets/js/admin/core.js:719
 msgid "Generate Token"
 msgstr ""
 
@@ -5324,7 +5620,7 @@ msgid "Hi {{buyer_name}},"
 msgstr ""
 
 #. translators: {{display_name}} is replaced with the user's name; keep it as is.
-#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:189
+#: src/Email/Templates/Accounts/PasswordChangedEmail.php:150 src/Email/Templates/Accounts/PasswordResetEmail.php:166 src/Email/Templates/Accounts/VerifyEmailEmail.php:138 src/Email/Templates/Security/SecurityEmailTemplate.php:196
 msgid "Hi {{display_name}},"
 msgstr ""
 
@@ -5370,7 +5666,7 @@ msgstr ""
 msgid "Hits"
 msgstr ""
 
-#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:88 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
+#: src/Admin/AdminDashboardRegistry.php:84 src/ClientDashboard/ClientDashboardRegistry.php:94 themes/default/templates/pages/errors/404.php:18 themes/default/templates/pages/errors/405.php:19
 msgid "Home"
 msgstr ""
 
@@ -5378,7 +5674,7 @@ msgstr ""
 msgid "Homepage"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:272 templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:335 templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
 msgid "Homepage URL"
 msgstr ""
 
@@ -5386,11 +5682,11 @@ msgstr ""
 msgid "Hosted Application"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1114
+#: src/Admin/ContentHandlers/RepositoryPage.php:961
 msgid "Hosted apps"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:420
+#: src/Admin/ContentHandlers/OptionsPage.php:410
 msgid "Hosting Email"
 msgstr ""
 
@@ -5432,6 +5728,10 @@ msgstr ""
 msgid "I agree to the %1$s and the %2$s."
 msgstr ""
 
+#: themes/default/templates/pages/client/license.php:203
+msgid "I understand that the license stops working on every site until the app's owner or an administrator reactivates it."
+msgstr ""
+
 #: templates/admin/contents/accounts/owners.php:52 templates/admin/contents/accounts/principals.php:50 templates/admin/contents/system/queues.php:134
 msgid "ID"
 msgstr ""
@@ -5444,7 +5744,7 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:208
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:215
 msgid "IP address"
 msgstr ""
 
@@ -5453,11 +5753,17 @@ msgstr ""
 msgid "Icon file must be one of: %s"
 msgstr ""
 
+#. translators: 1: largest file size in kilobytes, 2: smallest size, 3: largest size (in pixels).
+#: src/Admin/ContentHandlers/OptionsPage.php:523
+#, php-format
+msgid "Icon shown in browser tabs and bookmarks for the admin dashboard, the client dashboard and public pages. Upload a square PNG or ICO file of %1$d KB or less, between %2$d and %3$d pixels per side."
+msgstr ""
+
 #: templates/admin/contents/repository/edit-software.php:89 templates/admin/contents/repository/edit-wpplugin.php:125
 msgid "Icons"
 msgstr ""
 
-#: assets/js/admin/core.js:1627
+#: assets/js/admin/core.js:1720
 msgid "Identifier: "
 msgstr ""
 
@@ -5471,6 +5777,10 @@ msgstr ""
 
 #: src/Environments/Application/Health/SystemHealth.php:1187
 msgid "If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back."
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:195
+msgid "If someone else has your license key, deactivate the license. It is then refused on every site, yours included. No site is freed, and you cannot reactivate it yourself: only the app's owner or an administrator can."
 msgstr ""
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:82 src/Email/Templates/Accounts/PasswordResetEmail.php:83 src/Email/Templates/Accounts/VerifyEmailEmail.php:71
@@ -5501,7 +5811,7 @@ msgstr ""
 msgid "If this is your site, start the setup. It takes a few minutes, and you will need your database details and access to your hosting files (File Manager or FTP)."
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:232
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:239
 msgid "If this was you, no action is needed. Questions? Contact us at {{support_email}}."
 msgstr ""
 
@@ -5751,7 +6061,7 @@ msgstr ""
 msgid "Image has been converted to PNG."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:113
+#: themes/default/templates/pages/client/app.php:154
 msgid "Images"
 msgstr ""
 
@@ -5932,7 +6242,7 @@ msgstr ""
 msgid "Invalid JSON in textarea"
 msgstr ""
 
-#: assets/js/admin/json-editor.js:1603
+#: assets/js/admin/json-editor.js:1603 assets/js/manifest-editor.js:88
 msgid "Invalid JSON string"
 msgstr ""
 
@@ -5980,7 +6290,7 @@ msgstr ""
 msgid "Invalid artifact configuration."
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:230 src/SettingsAPI/SettingsController.php:283
+#: src/SettingsAPI/SettingsController.php:242 src/SettingsAPI/SettingsController.php:295
 msgid "Invalid blocks or styles data."
 msgstr ""
 
@@ -6067,7 +6377,7 @@ msgstr ""
 msgid "Invalid signature"
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:223 src/SettingsAPI/SettingsController.php:276 src/SettingsAPI/SettingsController.php:336
+#: src/SettingsAPI/SettingsController.php:235 src/SettingsAPI/SettingsController.php:288 src/SettingsAPI/SettingsController.php:348
 msgid "Invalid template key."
 msgstr ""
 
@@ -6100,7 +6410,23 @@ msgstr ""
 msgid "Issue licenses"
 msgstr ""
 
-#: src/Monetization/Controller.php:59
+#: themes/default/templates/pages/client/license.php:87
+msgid "Issued"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:242
+msgid "Issued directly"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is not verified yet."
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:52
+msgid "It is verified."
+msgstr ""
+
+#: src/Monetization/Controller.php:60
 msgid "Item type is required"
 msgstr ""
 
@@ -6178,11 +6504,11 @@ msgstr ""
 msgid "Keep me signed in for 7 days"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:158
+#: themes/default/templates/pages/client/security.php:194
 msgid "Keep them somewhere private."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:138
+#: themes/default/templates/pages/client/security.php:174
 msgid "Keep this key private. Anyone with it can generate your sign-in codes."
 msgstr ""
 
@@ -6209,7 +6535,7 @@ msgstr ""
 msgid "Labels and values support %s placeholders."
 msgstr ""
 
-#: src/Environments/Application/Installation/InstallerPage.php:716
+#: src/Environments/Application/Installation/InstallerPage.php:716 themes/default/templates/pages/client/settings.php:21 themes/default/templates/pages/client/settings.php:42
 msgid "Language"
 msgstr ""
 
@@ -6221,7 +6547,7 @@ msgstr ""
 msgid "Language number (press Enter for English)"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:577
+#: src/Admin/ContentHandlers/OptionsPage.php:600
 msgid "Language of the admin and client dashboards, emails and public pages. Users can still choose their own language in their preferences. \"Automatic\" follows each visitor's browser language when a translation is installed."
 msgstr ""
 
@@ -6298,11 +6624,11 @@ msgstr ""
 msgid "Leave empty for unlimited"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:97
+#: themes/default/templates/pages/client/app.php:134
 msgid "Leave empty to keep the current version."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:300
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:364
 #, php-format
 msgid "Leave empty to serve downloads from this site, at %s"
 msgstr ""
@@ -6311,7 +6637,11 @@ msgstr ""
 msgid "Leave the installer"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:816 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
+#: src/Schema/Migrations/GrantLicenseSiteRemoval.php:40
+msgid "Let app owners free the sites a license of their app is activated on"
+msgstr ""
+
+#: src/Admin/ContentHandlers/RepositoryPage.php:816 src/ClientDashboard/ContentHandlers/AppsPage.php:369 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
 msgid "License"
 msgstr ""
 
@@ -6319,12 +6649,17 @@ msgstr ""
 msgid "License #"
 msgstr ""
 
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:257
+#, php-format
+msgid "License #%d"
+msgstr ""
+
 #: src/Monetization/PurchaseRequestService.php:359
 #, php-format
 msgid "License #%d was issued, but the request could not be marked approved. Please try again."
 msgstr ""
 
-#: src/Monetization/Controller.php:346
+#: src/Monetization/Controller.php:348
 #, php-format
 msgid "License %s successfully."
 msgstr ""
@@ -6385,7 +6720,7 @@ msgstr ""
 msgid "License ID"
 msgstr ""
 
-#: src/Monetization/Controller.php:456 src/Monetization/Controller.php:502
+#: src/Monetization/Controller.php:458 src/Monetization/Controller.php:509
 msgid "License ID is required."
 msgstr ""
 
@@ -6393,7 +6728,7 @@ msgstr ""
 msgid "License ID:"
 msgstr ""
 
-#: assets/js/admin/core.js:682
+#: assets/js/admin/core.js:775
 msgid "License ID: "
 msgstr ""
 
@@ -6412,7 +6747,7 @@ msgstr ""
 msgid "License Key"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:448
+#: src/Admin/ContentHandlers/OptionsPage.php:422
 msgid "License Key Prefix"
 msgstr ""
 
@@ -6436,6 +6771,14 @@ msgstr ""
 msgid "License URI:"
 msgstr ""
 
+#: src/Email/EmailPreferences.php:94
+msgid "License activity"
+msgstr ""
+
+#: src/Email/EmailPreferences.php:90
+msgid "License expiry reminders"
+msgstr ""
+
 #: src/Admin/ContentHandlers/LicensePage.php:456
 msgid "License features"
 msgstr ""
@@ -6449,20 +6792,28 @@ msgstr ""
 msgid "License has been deactivated"
 msgstr ""
 
-#: src/Monetization/License.php:1551
+#: src/Monetization/License.php:1807
 msgid "License is not issued to any application."
 msgstr ""
 
-#: assets/js/admin/core.js:685
+#: assets/js/admin/core.js:778
 #, javascript-format
 msgid "License issued to: %s"
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:43
+#: themes/default/templates/pages/client/app-license.php:58 themes/default/templates/pages/client/license.php:46 themes/default/templates/pages/client/licenses.php:96
 msgid "License key"
 msgstr ""
 
-#: src/Monetization/License.php:1242
+#: themes/default/templates/pages/client/app-licenses.php:50
+msgid "License key or licensee email"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:345 src/ClientDashboard/ContentHandlers/LicensesPage.php:214
+msgid "License not found"
+msgstr ""
+
+#: src/Monetization/License.php:1498
 msgid "License record locked or already removed by a concurrent request."
 msgstr ""
 
@@ -6483,15 +6834,15 @@ msgstr ""
 msgid "License validity test result is ready."
 msgstr ""
 
-#: src/Monetization/Controller.php:565
+#: src/Monetization/Controller.php:576
 msgid "License was deleted"
 msgstr ""
 
-#: src/Monetization/Controller.php:556
+#: src/Monetization/Controller.php:563
 msgid "License was not found"
 msgstr ""
 
-#: src/Monetization/License.php:1559
+#: src/Monetization/License.php:1815
 msgid "License was not issued to this application."
 msgstr ""
 
@@ -6527,20 +6878,32 @@ msgstr ""
 msgid "Licenses"
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:21
-msgid "Licenses issued to you. Use the key on each site you activate."
+#: themes/default/templates/pages/client/app-licenses.php:27
+msgid "Licenses issued for the apps you host here, for whoever you act for."
+msgstr ""
+
+#: themes/default/templates/pages/client/licenses.php:32
+msgid "Licenses issued to you. Use the key and service ID on each site you activate."
+msgstr ""
+
+#: themes/default/templates/pages/client/app-licenses.php:63
+msgid "Licenses sold or issued for your apps appear here."
 msgstr ""
 
 #: src/Monetization/Controller.php:196
 msgid "Licenses were issued from this pricing tier, so it was archived instead: it issues no new licenses."
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:28
+#: themes/default/templates/pages/client/licenses.php:76
 msgid "Licenses you buy appear here once they are issued."
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:29
+#: themes/default/templates/pages/client/licenses.php:77
 msgid "Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up."
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:69
+msgid "Light or dark colors for the admin and client dashboards. System follows your device's setting."
 msgstr ""
 
 #: templates/admin/contents/system/background.php:52
@@ -6581,11 +6944,11 @@ msgstr ""
 msgid "Log License Activity"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:495
+#: src/Admin/ContentHandlers/OptionsPage.php:449
 msgid "Log Retention (Days)"
 msgstr ""
 
-#: templates/admin/index.php:29
+#: templates/admin/index.php:30
 msgid "Login"
 msgstr ""
 
@@ -6615,7 +6978,7 @@ msgstr ""
 msgid "Main %s file"
 msgstr ""
 
-#: assets/js/admin/repository-browser.js:55
+#: themes/default/templates/pages/client/app.php:215 assets/js/admin/repository-browser.js:55
 msgid "Main package"
 msgstr ""
 
@@ -6775,7 +7138,7 @@ msgstr ""
 msgid "Maximum Websites:"
 msgstr ""
 
-#: src/Monetization/License.php:1419 src/RESTAPI/Handlers/Licenses.php:557
+#: src/Monetization/License.php:1675 src/RESTAPI/Handlers/Licenses.php:557
 msgid "Maximum allowed domains has been reached."
 msgstr ""
 
@@ -6787,7 +7150,7 @@ msgstr ""
 msgid "Maximum domains"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:485
+#: src/Admin/ContentHandlers/OptionsPage.php:443
 msgid "Maximum number of API requests allowed per client within a one-minute window."
 msgstr ""
 
@@ -6855,7 +7218,7 @@ msgstr ""
 msgid "Message Stream"
 msgstr ""
 
-#: assets/js/admin/core.js:1540
+#: assets/js/admin/core.js:1633
 msgid "Message body cannot be empty."
 msgstr ""
 
@@ -6875,7 +7238,7 @@ msgstr ""
 msgid "Message has been updated."
 msgstr ""
 
-#: assets/js/admin/core.js:1573
+#: assets/js/admin/core.js:1666
 msgid "Message saved successfully"
 msgstr ""
 
@@ -6883,7 +7246,7 @@ msgstr ""
 msgid "Message sent with the license"
 msgstr ""
 
-#: assets/js/admin/core.js:1535
+#: assets/js/admin/core.js:1628
 msgid "Message subject is required."
 msgstr ""
 
@@ -6986,16 +7349,16 @@ msgstr ""
 msgid "Modules"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
-#: src/Schema/Definitions/MonetizationSchema.php:30
+#: src/Admin/ContentHandlers/OptionsPage.php:792 src/Admin/ContentHandlers/RepositoryPage.php:376 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371 src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
 msgstr ""
 
-#: src/Monetization/Controller.php:173
+#: src/Monetization/Controller.php:174
 msgid "Monetization ID is required."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:702
+#: src/Admin/ContentHandlers/OptionsPage.php:725
 msgid "Monetization Provider Settings"
 msgstr ""
 
@@ -7003,7 +7366,7 @@ msgstr ""
 msgid "Monetization Provider:"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:681 templates/admin/contents/repository/monetization.php:147
+#: src/Admin/ContentHandlers/OptionsPage.php:704 templates/admin/contents/repository/monetization.php:147
 msgid "Monetization Providers"
 msgstr ""
 
@@ -7011,28 +7374,32 @@ msgstr ""
 msgid "Monetization Status:"
 msgstr ""
 
-#: src/Monetization/Controller.php:248
+#: src/Monetization/Controller.php:246
 msgid "Monetization disabled successfully."
 msgstr ""
 
-#: src/Monetization/Controller.php:248
+#: src/Monetization/Controller.php:246
 msgid "Monetization enabled successfully."
 msgstr ""
 
-#: src/Monetization/Controller.php:183 src/Monetization/Controller.php:238
+#: src/Monetization/Controller.php:184 src/Monetization/Controller.php:238
 msgid "Monetization not found."
 msgstr ""
 
-#: assets/js/admin/core.js:1352
+#: assets/js/admin/core.js:1445
 msgid "Monetization updated"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:703
+#: src/Admin/ContentHandlers/OptionsPage.php:726
 msgid "Monetizations"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1150
+#: src/Admin/ContentHandlers/RepositoryPage.php:997
 msgid "Monetize App"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371
+msgid "Monetized"
 msgstr ""
 
 #: assets/js/datetime-picker.js:524
@@ -7048,12 +7415,13 @@ msgstr ""
 msgid "Monthly on day(s) "
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:210
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/app.php:326
 #, php-format
 msgid "Move %s to the trash? It stops being offered, and is deleted for good after a while unless you restore it."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:215
+#: themes/default/templates/pages/client/app.php:326 themes/default/templates/pages/client/app.php:329
 msgid "Move to trash"
 msgstr ""
 
@@ -7065,7 +7433,7 @@ msgstr ""
 msgid "My Awesome Plugin — Pro Plan"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:46
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:93 src/ClientDashboard/ContentHandlers/LicensesPage.php:210 themes/default/templates/pages/client/license.php:105
 msgid "My licenses"
 msgstr ""
 
@@ -7085,12 +7453,12 @@ msgstr ""
 msgid "MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer."
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
-#: themes/default/templates/pages/client/app-new.php:28 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
+#: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:332 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
+#: themes/default/templates/pages/client/app-new.php:29 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
 msgid "Name"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:248
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:295
 #, php-format
 msgid "Name each file %s, with its image extension."
 msgstr ""
@@ -7133,7 +7501,7 @@ msgstr ""
 msgid "Network Error"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:97
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:290 src/ClientDashboard/ContentHandlers/LicensesPage.php:306
 msgid "Never"
 msgstr ""
 
@@ -7178,6 +7546,10 @@ msgstr ""
 msgid "New Version"
 msgstr ""
 
+#: src/Email/EmailPreferences.php:98
+msgid "New app versions"
+msgstr ""
+
 #: templates/admin/contents/system/maintenance.php:114
 msgid "New bypass link"
 msgstr ""
@@ -7186,12 +7558,20 @@ msgstr ""
 msgid "New bypass link made; earlier links stop working."
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:72
+msgid "New email address"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:244
+msgid "New file name"
+msgstr ""
+
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
 msgstr ""
 
-#: themes/default/templates/pages/auth/reset-password.php:25
+#: themes/default/templates/pages/auth/reset-password.php:25 themes/default/templates/pages/client/security.php:48
 msgid "New password"
 msgstr ""
 
@@ -7204,8 +7584,12 @@ msgstr ""
 msgid "New purchase request #%d to review"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:95
+#: themes/default/templates/pages/client/app.php:132
 msgid "New version"
+msgstr ""
+
+#: src/Email/EmailPreferences.php:107
+msgid "News and messages the site sends to its customers."
 msgstr ""
 
 #: themes/default/templates/partials/repository/pagination.php:22 assets/js/admin/modules.js:419
@@ -7224,7 +7608,7 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
-#: assets/js/admin/core.js:1054 assets/js/admin/core.js:1781
+#: assets/js/admin/core.js:1147 assets/js/admin/core.js:1874
 msgid "No"
 msgstr ""
 
@@ -7269,6 +7653,14 @@ msgstr ""
 msgid "No account?"
 msgstr ""
 
+#: themes/default/templates/pages/client/app-license.php:153
+msgid "No activity recorded for this license yet."
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:170
+msgid "No activity recorded yet."
+msgstr ""
+
 #: assets/js/admin/site-health.js:295
 msgid "No additional checks were returned."
 msgstr ""
@@ -7286,19 +7678,19 @@ msgstr ""
 msgid "No app found matching this status"
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:40
-msgid "No app has this status."
+#: themes/default/templates/pages/client/apps.php:50
+msgid "No app matches these filters."
 msgstr ""
 
 #: assets/js/admin/repository-browser.js:399
 msgid "No app types are stored yet."
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:39
+#: themes/default/templates/pages/client/apps.php:49
 msgid "No apps here"
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:39
+#: themes/default/templates/pages/client/apps.php:49
 msgid "No apps yet"
 msgstr ""
 
@@ -7409,11 +7801,19 @@ msgstr ""
 msgid "No jobs were ready to run."
 msgstr ""
 
+#: themes/default/templates/pages/client/licenses.php:71
+msgid "No license matches these filters."
+msgstr ""
+
 #: templates/admin/contents/license/search.php:65
 msgid "No licenses found."
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:25
+#: themes/default/templates/pages/client/app-licenses.php:62
+msgid "No licenses match"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-licenses.php:62 themes/default/templates/pages/client/licenses.php:73
 msgid "No licenses yet"
 msgstr ""
 
@@ -7425,6 +7825,10 @@ msgstr ""
 #: src/HostedApps/Storage/DirectoryAppStorage.php:260
 #, php-format
 msgid "No live or trashed %s has the slug \"%s\"."
+msgstr ""
+
+#: themes/default/templates/pages/client/licenses.php:70
+msgid "No matching licenses"
 msgstr ""
 
 #: templates/admin/contents/broadcasts/search.php:46
@@ -7459,7 +7863,7 @@ msgstr ""
 msgid "No parameters."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:36
+#: themes/default/templates/pages/client/security.php:72
 msgid "No passkeys are registered yet."
 msgstr ""
 
@@ -7467,7 +7871,7 @@ msgstr ""
 msgid "No pricing tier with this ID is sold by your store."
 msgstr ""
 
-#: templates/admin/contents/repository/monetization.php:84 assets/js/admin/core.js:1319
+#: templates/admin/contents/repository/monetization.php:84 assets/js/admin/core.js:1412
 msgid "No pricing tiers has been set"
 msgstr ""
 
@@ -7479,7 +7883,7 @@ msgstr ""
 msgid "No queued job registered."
 msgstr ""
 
-#: templates/admin/index.php:114
+#: templates/admin/index.php:116
 msgid "No registered handler for this page."
 msgstr ""
 
@@ -7487,12 +7891,12 @@ msgstr ""
 msgid "No release signing keys are configured, so no package can be verified."
 msgstr ""
 
-#: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:593
+#: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:613
 #, php-format
 msgid "No repository is registered for the app type \"%s\"."
 msgstr ""
 
-#: assets/js/admin/core.js:967
+#: assets/js/admin/core.js:1060
 msgid "No results found"
 msgstr ""
 
@@ -7540,12 +7944,12 @@ msgstr ""
 msgid "No tasks are due."
 msgstr ""
 
-#: src/Environments/Application/Theming/ThemeContext.php:353
+#: src/Environments/Application/Theming/ThemeContext.php:358
 #, php-format
 msgid "No theme in the chain of \"%s\" has the asset \"%s\"."
 msgstr ""
 
-#: src/Environments/Application/Theming/ThemeContext.php:372
+#: src/Environments/Application/Theming/ThemeContext.php:377
 #, php-format
 msgid "No theme in the chain of \"%s\" has the template \"%s\"."
 msgstr ""
@@ -7604,11 +8008,11 @@ msgstr ""
 msgid "None given"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:33
+#: themes/default/templates/pages/client/security.php:69
 msgid "None registered"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:120
+#: themes/default/templates/pages/client/app.php:161
 msgid "None yet."
 msgstr ""
 
@@ -7616,7 +8020,7 @@ msgstr ""
 msgid "None. Every app type can be uploaded without a key."
 msgstr ""
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1150
 msgid "Not Allowed"
 msgstr ""
 
@@ -7640,11 +8044,11 @@ msgstr ""
 msgid "Not available"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:72 themes/default/templates/pages/client/security.php:117
+#: themes/default/templates/pages/client/security.php:108 themes/default/templates/pages/client/security.php:153
 msgid "Not enabled"
 msgstr ""
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1151 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr ""
 
@@ -7662,6 +8066,10 @@ msgstr ""
 
 #: templates/admin/contents/options/cache/stats.php:204 templates/admin/contents/options/cache/stats.php:224 assets/js/admin/cache-stats.js:136 assets/js/admin/cache-stats.js:189
 msgid "Not reported"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:247
+msgid "Not set"
 msgstr ""
 
 #: src/Background/BackgroundSetup.php:160
@@ -7760,7 +8168,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:496
+#: src/Admin/ContentHandlers/OptionsPage.php:450
 msgid "Number of days system logs are retained before automatic cleanup."
 msgstr ""
 
@@ -7772,7 +8180,7 @@ msgstr ""
 msgid "Number of messages per page."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:253
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:296
 msgid "Numbered in the order added; name a file screenshot-2 to give it that place."
 msgstr ""
 
@@ -7800,7 +8208,7 @@ msgstr ""
 msgid "Once it is set up, its first run shows under Live status, usually within a few minutes."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:252 src/ClientDashboard/ContentHandlers/AppsPage.php:253
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:297
 msgid "One image; delete the current one to upload another."
 msgstr ""
 
@@ -7821,11 +8229,19 @@ msgstr ""
 msgid "Only HTTPS URLs are allowed."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:99
+msgid "Only a deactivated license can be reactivated."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:105
+msgid "Only a suspended license can be unsuspended."
+msgstr ""
+
 #: src/HostedApps/HostingController.php:801
 msgid "Only a system administrator can suspend an app."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:509
+#: src/HostedApps/HostedApplicationService.php:529
 msgid "Only an app in the trash can be deleted for good. Move it to the trash first."
 msgstr ""
 
@@ -7853,7 +8269,7 @@ msgstr ""
 msgid "Only system administrators can switch maintenance mode."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:64
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:69
 msgid "Only user accounts have preferences."
 msgstr ""
 
@@ -7871,7 +8287,7 @@ msgstr ""
 msgid "Open date picker"
 msgstr ""
 
-#: templates/admin/header.php:46
+#: templates/admin/header.php:47
 msgid "Open menu"
 msgstr ""
 
@@ -7895,6 +8311,10 @@ msgstr ""
 msgid "Open this link in another browser to use the site while visitors wait. Keep it private; it is shown only now."
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:32 themes/default/templates/pages/client/security.php:36
+msgid "Open your WordPress profile"
+msgstr ""
+
 #. translators: 1: opening <strong> tag, 2: closing <strong> tag
 #: src/Environments/Application/Installation/InstallerPage.php:115
 #, php-format
@@ -7909,7 +8329,7 @@ msgstr ""
 msgid "Operation failed"
 msgstr ""
 
-#: assets/js/admin/core.js:1409
+#: assets/js/admin/core.js:1502
 msgid "Operation successful"
 msgstr ""
 
@@ -7978,7 +8398,7 @@ msgid "Options"
 msgstr ""
 
 #. translators: 1: opening link tag, 2: closing link tag.
-#: themes/default/templates/pages/client/security.php:135
+#: themes/default/templates/pages/client/security.php:171
 #, php-format
 msgid "Or %1$sopen the authenticator app%2$s on this device."
 msgstr ""
@@ -8036,7 +8456,8 @@ msgstr ""
 msgid "Other files of an app are not signed by this site. Developers who want them verified sign them with their own key."
 msgstr ""
 
-#: src/Admin/ContentHandlers/DashboardPage.php:617 src/ClientDashboard/ContentHandlers/OverviewPage.php:43 templates/admin/contents/index.php:43 templates/admin/contents/license/view.php:107
+#: src/Admin/ContentHandlers/DashboardPage.php:617 src/ClientDashboard/ContentHandlers/AppLicensesPage.php:341 src/ClientDashboard/ContentHandlers/OverviewPage.php:43 templates/admin/contents/index.php:43
+#: templates/admin/contents/license/view.php:107
 msgid "Overview"
 msgstr ""
 
@@ -8133,7 +8554,7 @@ msgstr ""
 msgid "Page %d of %d"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:680
+#: src/Admin/ContentHandlers/OptionsPage.php:703
 msgid "Page Routing"
 msgstr ""
 
@@ -8182,11 +8603,11 @@ msgstr ""
 msgid "Passkey added"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "Passkey name"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:173
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:180
 msgid "Passkey registered successfully."
 msgstr ""
 
@@ -8194,11 +8615,11 @@ msgstr ""
 msgid "Passkey registered."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:168
 msgid "Passkey registration could not be started."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:170
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:177
 msgid "Passkey registration failed or expired. Please try again."
 msgstr ""
 
@@ -8210,7 +8631,7 @@ msgstr ""
 msgid "Passkey removed"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:187
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:194
 msgid "Passkey removed."
 msgstr ""
 
@@ -8230,12 +8651,12 @@ msgstr ""
 msgid "Passkey sign-in was cancelled."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:32
+#: themes/default/templates/pages/client/security.php:68
 msgid "Passkeys"
 msgstr ""
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:193 src/Cache/Adapters/RedisCacheAdapter.php:437 src/Email/Providers/SMTPProvider.php:165 src/Environments/Application/Installation/InstallerPage.php:375
-#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34
+#: themes/default/templates/pages/auth/sign-in.php:29 themes/default/templates/pages/auth/sign-up.php:34 themes/default/templates/pages/client/security.php:42
 msgid "Password"
 msgstr ""
 
@@ -8352,17 +8773,21 @@ msgstr ""
 msgid "Payment reference (optional)"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1058
+#: src/Analytics/AppStatsSummary.php:185
 msgid "Peak Access Day"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1004
+#: src/Analytics/AppStatsSummary.php:132
 msgid "Peak Day"
 msgstr ""
 
 #: templates/admin/contents/license/purchase-requests.php:25
 #, php-format
 msgid "Pending (%d)"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:101
+msgid "Performance Metrics (30 days)"
 msgstr ""
 
 #: src/Background/Jobs/Apps/CleanTrashedAppsJob.php:48
@@ -8385,6 +8810,10 @@ msgstr ""
 #: src/Environments/WordPress/WordPressEnvironment.php:448
 #, php-format
 msgid "Please check directory ownership and permissions. You may need to run %s or contact your hosting provider."
+msgstr ""
+
+#: assets/js/admin/core.js:523
+msgid "Please choose a PNG or ICO file."
 msgstr ""
 
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:66 src/Email/Templates/Accounts/VerifyEmailEmail.php:145
@@ -8425,7 +8854,8 @@ msgstr ""
 msgid "Please paste or type some JSON."
 msgstr ""
 
-#: src/Auth/ActionHandlers/AuthManagement.php:646 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54 src/Security/RequestController.php:201
+#: src/Auth/ActionHandlers/AuthManagement.php:646 src/ClientDashboard/ActionHandlers/AccountManagement.php:141 src/Environments/Application/Auth/WebIdentityProvider.php:243 src/Security/Authentication/UserAuthenticator.php:54
+#: src/Security/RequestController.php:201
 msgid "Please provide a valid email address."
 msgstr ""
 
@@ -8501,7 +8931,7 @@ msgstr ""
 msgid "Please specify the download type."
 msgstr ""
 
-#: assets/js/admin/core.js:455
+#: assets/js/admin/core.js:456
 msgid "Please upload an image."
 msgstr ""
 
@@ -8566,7 +8996,7 @@ msgstr ""
 msgid "Precondition Failed"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:449
+#: src/Admin/ContentHandlers/OptionsPage.php:423
 msgid "Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system."
 msgstr ""
 
@@ -8586,7 +9016,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:278
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:341
 msgid "Preview URL"
 msgstr ""
 
@@ -8651,7 +9081,7 @@ msgstr ""
 msgid "Primary Text"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:407
+#: src/Admin/ContentHandlers/OptionsPage.php:405
 msgid "Primary email address for receiving system notifications, error reports, and administrative alerts."
 msgstr ""
 
@@ -8663,7 +9093,7 @@ msgstr ""
 msgid "Priority"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:548
+#: src/Admin/ContentHandlers/OptionsPage.php:487
 msgid "Privacy Policy URL"
 msgstr ""
 
@@ -8696,8 +9126,12 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:524
+#: src/Admin/ContentHandlers/OptionsPage.php:471
 msgid "Production"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:37
+msgid "Profile"
 msgstr ""
 
 #: src/Core/Process/Process.php:90
@@ -8712,7 +9146,7 @@ msgstr ""
 msgid "Property name is required"
 msgstr ""
 
-#: src/Monetization/Controller.php:460
+#: src/Monetization/Controller.php:462 src/Monetization/LicensingService.php:224
 msgid "Provide the domain to uninstall."
 msgstr ""
 
@@ -8748,7 +9182,7 @@ msgstr ""
 msgid "Prune License Meta"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:822
+#: src/Admin/ContentHandlers/RepositoryPage.php:822 src/ClientDashboard/ContentHandlers/AppsPage.php:372
 msgid "Public Download URL"
 msgstr ""
 
@@ -8756,11 +9190,11 @@ msgstr ""
 msgid "Public key"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:393
+#: src/Admin/ContentHandlers/OptionsPage.php:399
 msgid "Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces."
 msgstr ""
 
-#: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:63
+#: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:81
 msgid "Public page"
 msgstr ""
 
@@ -8901,6 +9335,10 @@ msgstr ""
 msgid "Reached the update server %s in %d ms via %s."
 msgstr ""
 
+#: themes/default/templates/pages/client/app-license.php:134
+msgid "Reactivate"
+msgstr ""
+
 #: assets/js/admin/repository-browser.js:37
 msgid "Read-only. Upload a new version of the app to change these."
 msgstr ""
@@ -8936,7 +9374,7 @@ msgstr ""
 msgid "Receipt"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:506
+#: src/Admin/ContentHandlers/OptionsPage.php:456
 msgid "Receipt Retention (Days)"
 msgstr ""
 
@@ -8950,7 +9388,7 @@ msgid "Receipt pages"
 msgstr ""
 
 #. translators: %s: email address.
-#: themes/default/templates/pages/client/security.php:71
+#: themes/default/templates/pages/client/security.php:107
 #, php-format
 msgid "Receive a one-time code at %s when you sign in."
 msgstr ""
@@ -9012,6 +9450,12 @@ msgstr ""
 
 #: assets/js/admin/json-editor.js:296
 msgid "Redo (Ctrl+Y)"
+msgstr ""
+
+#. translators: %s: the seller's reference for the sale, e.g. an order number.
+#: themes/default/templates/pages/client/license.php:79
+#, php-format
+msgid "Reference: %s"
 msgstr ""
 
 #: templates/admin/contents/options/cache/stats.php:94
@@ -9085,6 +9529,10 @@ msgstr ""
 msgid "Released %d stale job(s) back to the queue."
 msgstr ""
 
+#: src/Email/EmailPreferences.php:91
+msgid "Reminders before a license expires, and a notice when it has expired."
+msgstr ""
+
 #: src/Monetization/Providers/RemoteProvider.php:43
 msgid "Remote store"
 msgstr ""
@@ -9112,7 +9560,7 @@ msgstr ""
 msgid "Remove members from organizations"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:46
+#: themes/default/templates/pages/client/security.php:82
 msgid "Remove passkey"
 msgstr ""
 
@@ -9134,7 +9582,7 @@ msgstr ""
 msgid "Removes license activity log entries older than the configured retention window."
 msgstr ""
 
-#: themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
+#: themes/default/templates/pages/client/app.php:247 themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
 msgid "Rename"
 msgstr ""
 
@@ -9148,6 +9596,10 @@ msgstr ""
 
 #: assets/js/admin/json-editor.js:689
 msgid "Rename key"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:239
+msgid "Rename or replace"
 msgstr ""
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:211 assets/js/admin/repository-browser.js:940
@@ -9165,6 +9617,10 @@ msgstr ""
 
 #: assets/js/admin/repository-browser.js:734
 msgid "Replace"
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:257
+msgid "Replace file"
 msgstr ""
 
 #: templates/admin/contents/modules/extensions.php:63
@@ -9185,12 +9641,16 @@ msgstr ""
 msgid "Replaced the %s \"%s\" %s with %s."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:103
+#: themes/default/templates/pages/client/app.php:144
 msgid "Replaces the app's manifest."
 msgstr ""
 
 #: templates/admin/contents/system/signing-key.php:162
 msgid "Replacing the key"
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:194
+msgid "Report as compromised"
 msgstr ""
 
 #: assets/js/admin/support-report.js:96
@@ -9201,9 +9661,9 @@ msgstr ""
 msgid "Report generated. Press Ctrl+C (Cmd+C) to copy the selected text."
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:86 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:148 src/Admin/ContentHandlers/RepositoryPage.php:191
-#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:723
-#: src/Admin/ContentHandlers/RepositoryPage.php:1170 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
+#: src/Admin/ContentHandlers/RepositoryPage.php:85 src/Admin/ContentHandlers/RepositoryPage.php:146 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:190
+#: src/Admin/ContentHandlers/RepositoryPage.php:191 src/Admin/ContentHandlers/RepositoryPage.php:352 src/Admin/ContentHandlers/RepositoryPage.php:470 src/Admin/ContentHandlers/RepositoryPage.php:723
+#: src/Admin/ContentHandlers/RepositoryPage.php:1017 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
 #: templates/admin/contents/repository/upload.php:20 themes/default/templates/pages/repository/app.php:29 themes/default/templates/partials/header.php:12
 msgid "Repository"
 msgstr ""
@@ -9216,11 +9676,11 @@ msgstr ""
 msgid "Repository Error"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:392
+#: src/Admin/ContentHandlers/OptionsPage.php:398
 msgid "Repository Name"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:622
+#: src/Admin/ContentHandlers/OptionsPage.php:645
 msgid "Repository URL Prefix"
 msgstr ""
 
@@ -9245,11 +9705,11 @@ msgstr ""
 msgid "Request Timeout"
 msgstr ""
 
-#: assets/js/admin/core.js:915
+#: assets/js/admin/core.js:1008
 msgid "Request failed"
 msgstr ""
 
-#: assets/js/admin/core.js:1741
+#: assets/js/admin/core.js:1834
 msgid "Request failed."
 msgstr ""
 
@@ -9264,7 +9724,7 @@ msgstr ""
 msgid "Request to the update server %s timed out after %d seconds (%s). Automatic updates will fail until the server can reach it."
 msgstr ""
 
-#: assets/js/admin/core.js:1744
+#: assets/js/admin/core.js:1837
 msgid "Request was successful, but no response message."
 msgstr ""
 
@@ -9325,7 +9785,7 @@ msgstr ""
 msgid "Reset Your Password"
 msgstr ""
 
-#: assets/js/admin/core.js:2005
+#: assets/js/admin/core.js:2098
 msgid "Reset successful"
 msgstr ""
 
@@ -9353,11 +9813,11 @@ msgstr ""
 msgid "Resource owners are individual users or organizations that own or host resources in this repository."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:176
+#: themes/default/templates/pages/client/app.php:294
 msgid "Restore"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:404 templates/admin/contents/system/updates.php:323
+#: src/Admin/ContentHandlers/RepositoryPage.php:403 templates/admin/contents/system/updates.php:323
 #, php-format
 msgid "Restore %s"
 msgstr ""
@@ -9492,15 +9952,15 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:738 src/Admin/ContentHandlers/OptionsPage.php:787
+#: src/Admin/ContentHandlers/OptionsPage.php:761 src/Admin/ContentHandlers/OptionsPage.php:810
 msgid "Routes"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:737
+#: src/Admin/ContentHandlers/OptionsPage.php:760
 msgid "Routes Settings"
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:125
+#: src/SettingsAPI/SettingsController.php:137
 msgid "Routes has been updated."
 msgstr ""
 
@@ -9658,8 +10118,8 @@ msgid "SQLite probe write failed."
 msgstr ""
 
 #: templates/admin/contents/accounts/access-control-form.php:270 templates/admin/contents/options/cache/form.php:116 templates/admin/contents/options/email/form.php:97 templates/admin/contents/options/email/index.php:41
-#: templates/admin/contents/options/index.php:29 templates/admin/contents/options/monetization/monetizations.php:60 templates/admin/contents/options/routing.php:42 templates/admin/contents/system/updates.php:248
-#: assets/js/admin/apps-uploader.js:1552 assets/js/admin/core.js:1212 assets/js/admin/json-editor.js:956
+#: templates/admin/contents/options/index.php:34 templates/admin/contents/options/monetization/monetizations.php:60 templates/admin/contents/options/routing.php:42 templates/admin/contents/system/updates.php:248
+#: assets/js/admin/apps-uploader.js:1552 assets/js/admin/core.js:1305 assets/js/admin/json-editor.js:956
 msgid "Save"
 msgstr ""
 
@@ -9680,20 +10140,40 @@ msgstr ""
 msgid "Save Template"
 msgstr ""
 
-#: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:106
+#: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:147
 msgid "Save changes"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:101
+msgid "Save email preferences"
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:60
+msgid "Save language"
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:44
+msgid "Save profile"
 msgstr ""
 
 #: src/Environments/Application/Installation/InstallerPage.php:82
 msgid "Save the site address"
 msgstr ""
 
-#: assets/js/admin/core.js:1626
+#: assets/js/admin/core.js:1719
 msgid "Save this key now. For security, it will not be shown to you again."
 msgstr ""
 
-#: src/Monetization/Controller.php:145 src/Monetization/Controller.php:340 src/Monetization/Controller.php:432 assets/js/admin/apps-uploader.js:542
-#: assets/js/admin/core.js:328 assets/js/admin/email-editor.js:903
+#: assets/js/admin/core.js:547
+msgid "Save to use the default favicon."
+msgstr ""
+
+#: assets/js/admin/core.js:538
+msgid "Save to use this favicon."
+msgstr ""
+
+#: src/Monetization/Controller.php:146 src/Monetization/Controller.php:342 src/Monetization/Controller.php:434 assets/js/admin/apps-uploader.js:542
+#: assets/js/admin/core.js:329 assets/js/admin/email-editor.js:903
 msgid "Saved"
 msgstr ""
 
@@ -9701,11 +10181,11 @@ msgstr ""
 msgid "Saved successfully."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:94 assets/js/admin/updates.js:100
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:115 assets/js/admin/updates.js:100 assets/js/i18n.js:287
 msgid "Saved."
 msgstr ""
 
-#: src/Monetization/License.php:1166
+#: src/Monetization/License.php:1422
 #, php-format
 msgid "Saving the license meta \"%s\" failed: %s"
 msgstr ""
@@ -9714,15 +10194,15 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:117
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:124
 msgid "Scan the secret in your authenticator app, then enter its current code."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:131
+#: themes/default/templates/pages/client/security.php:167
 msgid "Scan this QR code with your authenticator app"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:132
+#: themes/default/templates/pages/client/security.php:168
 msgid "Scan this code with your authenticator app."
 msgstr ""
 
@@ -9759,7 +10239,7 @@ msgid "Screenshots"
 msgstr ""
 
 #: templates/admin/contents/broadcasts/search.php:30 templates/admin/contents/license/search.php:48 templates/admin/contents/modules/marketplace.php:41 templates/admin/contents/repository/search.php:37
-#: themes/default/templates/partials/repository/toolbar.php:22
+#: themes/default/templates/pages/client/app-licenses.php:49 themes/default/templates/partials/repository/toolbar.php:22
 msgid "Search"
 msgstr ""
 
@@ -9784,12 +10264,16 @@ msgstr ""
 msgid "Search Messages"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1126 templates/admin/contents/repository/index.php:133
+#: src/Admin/ContentHandlers/RepositoryPage.php:150 src/Admin/ContentHandlers/RepositoryPage.php:973 templates/admin/contents/repository/index.php:133
 msgid "Search Repository"
 msgstr ""
 
 #: templates/admin/contents/repository/search.php:36 assets/js/globals.js:593
 msgid "Search apps"
+msgstr ""
+
+#: themes/default/templates/pages/client/licenses.php:37 themes/default/templates/pages/client/licenses.php:38
+msgid "Search by license key or app name"
 msgstr ""
 
 #: templates/admin/contents/modules/marketplace.php:40 assets/js/admin/modules.js:264
@@ -9888,7 +10372,7 @@ msgstr ""
 msgid "See Tools → Signing Key for how to set %s."
 msgstr ""
 
-#: themes/default/templates/pages/repository/app.php:59
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:374 themes/default/templates/pages/repository/app.php:59
 msgid "See pricing"
 msgstr ""
 
@@ -9969,7 +10453,7 @@ msgstr ""
 msgid "Send Email Verification"
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:118
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:133
 msgid "Send Email Verification Code"
 msgstr ""
 
@@ -9989,7 +10473,7 @@ msgstr ""
 msgid "Send Purchase Request Email"
 msgstr ""
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:110
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:129
 msgid "Send Security Notice Email"
 msgstr ""
 
@@ -10025,11 +10509,11 @@ msgstr ""
 msgid "Send bulk messages"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:91
+#: themes/default/templates/pages/client/security.php:127
 msgid "Send code to disable"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:99
+#: themes/default/templates/pages/client/security.php:135
 msgid "Send enrollment code"
 msgstr ""
 
@@ -10041,7 +10525,7 @@ msgstr ""
 msgid "Send invitation"
 msgstr ""
 
-#: themes/default/templates/frames/client-dashboard.php:127 themes/default/templates/pages/auth/verify-email.php:42
+#: themes/default/templates/frames/client-dashboard.php:128 themes/default/templates/pages/auth/verify-email.php:42
 msgid "Send me a new link"
 msgstr ""
 
@@ -10054,6 +10538,10 @@ msgstr ""
 msgid "Send the site secret for this domain in the %s header."
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:79
+msgid "Send verification code"
+msgstr ""
+
 #: src/Email/Providers/AmazonSESProvider.php:126 src/Email/Providers/ResendProvider.php:73
 msgid "Sender display name. Leave blank to use the global from name"
 msgstr ""
@@ -10062,7 +10550,7 @@ msgstr ""
 msgid "Sender display name. Leave blank to use the global from name."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:368
+#: src/Admin/ContentHandlers/OptionsPage.php:370
 msgid "Sender email address used in outgoing emails when the active provider does not have a From Email configured."
 msgstr ""
 
@@ -10074,7 +10562,7 @@ msgstr ""
 msgid "Sender email address. Leave blank to use the global from email."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:354
+#: src/Admin/ContentHandlers/OptionsPage.php:356
 msgid "Sender name used in outgoing emails when the active provider does not have a From Name configured."
 msgstr ""
 
@@ -10194,6 +10682,10 @@ msgstr ""
 msgid "Sent to the app owner when the status of their application is changed by an administrator."
 msgstr ""
 
+#: src/Email/Templates/Security/EmailChangedEmail.php:63
+msgid "Sent to the previous address after a user changes the email address of their account."
+msgstr ""
+
 #: src/Email/Templates/System/UpdateInstalledEmail.php:62
 msgid "Sent to the site administration email after an automatic update installed a new release."
 msgstr ""
@@ -10311,6 +10803,7 @@ msgid "Service Accounts"
 msgstr ""
 
 #: src/Admin/ContentHandlers/LicensePage.php:375 templates/admin/contents/license/index.php:77 templates/admin/contents/license/search.php:57 templates/admin/contents/license/view.php:167
+#: themes/default/templates/pages/client/license.php:53 themes/default/templates/pages/client/licenses.php:103
 msgid "Service ID"
 msgstr ""
 
@@ -10326,6 +10819,10 @@ msgstr ""
 msgid "Session Expired"
 msgstr ""
 
+#: themes/default/templates/pages/client/security.php:57
+msgid "Sessions"
+msgstr ""
+
 #: src/Environments/Application/Health/SystemHealth.php:1297
 #, php-format
 msgid "Set it up in %s. On hosting without cron jobs, an external cron service calling the cron URL every 5 minutes is enough."
@@ -10339,7 +10836,7 @@ msgstr ""
 msgid "Set this email provider as the default provider for all mailing operations."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:154
+#: themes/default/templates/pages/client/security.php:190
 msgid "Set up authenticator app"
 msgstr ""
 
@@ -10359,12 +10856,13 @@ msgstr ""
 msgid "Setting up&hellip;"
 msgstr ""
 
-#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 templates/admin/contents/index.php:31
-#: templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32 templates/admin/contents/repository/upload.php:33
+#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:824 src/ClientDashboard/ContentHandlers/SettingsPage.php:56
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:139 templates/admin/contents/index.php:31 templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32
+#: templates/admin/contents/repository/upload.php:33 themes/default/templates/pages/client/settings.php:26 themes/default/templates/pages/client/settings.php:31
 msgid "Settings"
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:71
+#: src/SettingsAPI/SettingsController.php:82
 msgid "Settings updated successfully."
 msgstr ""
 
@@ -10429,19 +10927,32 @@ msgstr ""
 msgid "Sign in with a passkey"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:46 src/ClientDashboard/ActionHandlers/SecurityManagement.php:77 src/ClientDashboard/ActionHandlers/SecurityManagement.php:96 src/ClientDashboard/ActionHandlers/SecurityManagement.php:125
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:53 src/ClientDashboard/ActionHandlers/SecurityManagement.php:84 src/ClientDashboard/ActionHandlers/SecurityManagement.php:103 src/ClientDashboard/ActionHandlers/SecurityManagement.php:132
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:257 src/ClientDashboard/ActionHandlers/SecurityManagement.php:299
 msgid "Sign in with a user account to manage security settings."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:32
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:427
+msgid "Sign in with a user account to manage your account."
+msgstr ""
+
+#: themes/default/templates/pages/client/security.php:68
 msgid "Sign in with your fingerprint, face, screen lock or a security key instead of a password. A passkey already proves it is you, so signing in with one skips the second step below."
 msgstr ""
 
-#: src/ClientDashboard/ClientDashboardRegistry.php:104 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
+#: src/ClientDashboard/ClientDashboardRegistry.php:110 themes/default/templates/pages/client/security.php:59 themes/default/templates/partials/auth/signed-in.php:17 themes/default/templates/partials/header.php:22
 msgid "Sign out"
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:107 src/Email/Templates/Security/EmailOtpEmail.php:121
+#: themes/default/templates/pages/client/security.php:61
+msgid "Sign out of all other sessions"
+msgstr ""
+
+#: themes/default/templates/pages/client/security.php:59
+msgid "Sign out of every other session?"
+msgstr ""
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:121 src/Email/Templates/Security/EmailOtpEmail.php:121
 msgid "Sign-in verification code"
 msgstr ""
 
@@ -10466,6 +10977,10 @@ msgstr ""
 #: templates/admin/contents/license/purchase-request.php:64
 #, php-format
 msgid "Signed in as user #%d"
+msgstr ""
+
+#: themes/default/templates/pages/client/security.php:57
+msgid "Signed in on a device you no longer use, or a shared computer? Sign out everywhere else. This device stays signed in."
 msgstr ""
 
 #: assets/js/passkeys.js:85
@@ -10500,11 +11015,15 @@ msgstr ""
 msgid "Site"
 msgstr ""
 
+#: src/Admin/ContentHandlers/OptionsPage.php:520
+msgid "Site Favicon"
+msgstr ""
+
 #: src/Admin/ContentHandlers/ToolsPage.php:316 src/Admin/ContentHandlers/ToolsPage.php:357 assets/js/admin/support-report.js:29
 msgid "Site Health"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:576
+#: src/Admin/ContentHandlers/OptionsPage.php:599
 msgid "Site Language"
 msgstr ""
 
@@ -10516,13 +11035,18 @@ msgstr ""
 msgid "Site address"
 msgstr ""
 
+#: templates/admin/contents/options/favicon-field.php:44
+msgid "Site favicon preview"
+msgstr ""
+
 #. translators: %s: locale code, e.g. fr_FR.
 #: src/Console/Commands/Installer.php:423
 #, php-format
 msgid "Site language set to %s."
 msgstr ""
 
-#: themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
+#: themes/default/templates/pages/client/app-license.php:62 themes/default/templates/pages/client/app-licenses.php:89 themes/default/templates/pages/client/license.php:68 themes/default/templates/pages/client/licenses.php:114
+#: themes/default/templates/pages/purchase.php:54
 msgid "Sites"
 msgstr ""
 
@@ -10535,7 +11059,7 @@ msgid "Size:"
 msgstr ""
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:814 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
-#: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:38
+#: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:50
 msgid "Slug"
 msgstr ""
 
@@ -10552,7 +11076,7 @@ msgstr ""
 msgid "Socket connection timeout. Default: "
 msgstr ""
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:464
 msgid "Software"
 msgstr ""
 
@@ -10576,11 +11100,11 @@ msgstr ""
 msgid "Something went wrong"
 msgstr ""
 
-#: src/Monetization/Controller.php:150
+#: src/Monetization/Controller.php:151
 msgid "Something went wrong during data persistence."
 msgstr ""
 
-#: assets/js/admin/core.js:1981 assets/js/admin/core.js:2003
+#: assets/js/admin/core.js:2074 assets/js/admin/core.js:2096
 msgid "Something went wrong!"
 msgstr ""
 
@@ -10620,6 +11144,10 @@ msgstr ""
 msgid "Sort keys alphabetically"
 msgstr ""
 
+#: themes/default/templates/pages/client/license.php:72
+msgid "Source"
+msgstr ""
+
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Stable tag:"
 msgstr ""
@@ -10638,7 +11166,7 @@ msgstr ""
 msgid "Staged %s %s for %s: requirements met, every file matches the package manifest."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:525
+#: src/Admin/ContentHandlers/OptionsPage.php:472
 msgid "Staging"
 msgstr ""
 
@@ -10655,6 +11183,10 @@ msgstr ""
 msgid "Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead."
 msgstr ""
 
+#: themes/default/templates/pages/client/app-license.php:66 themes/default/templates/pages/client/license.php:60
+msgid "Starts"
+msgstr ""
+
 #: templates/admin/contents/system/index.php:55
 msgid "State"
 msgstr ""
@@ -10667,7 +11199,8 @@ msgstr ""
 #: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
-#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
+#: themes/default/templates/pages/client/app-license.php:129 themes/default/templates/pages/client/app-licenses.php:40 themes/default/templates/pages/client/app.php:286 themes/default/templates/pages/client/app.php:312
+#: themes/default/templates/pages/client/licenses.php:41 themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
 msgstr ""
 
@@ -10684,7 +11217,7 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:90
+#: src/Admin/ContentHandlers/RepositoryPage.php:89
 #, php-format
 msgid "Status: %s"
 msgstr ""
@@ -10849,7 +11382,7 @@ msgstr ""
 msgid "Subscription Cancelled"
 msgstr ""
 
-#: templates/admin/contents/options/email/editor.php:378 assets/js/admin/core.js:328 assets/js/admin/core.js:793 assets/js/admin/core.js:1893
+#: templates/admin/contents/options/email/editor.php:378 assets/js/admin/core.js:329 assets/js/admin/core.js:886 assets/js/admin/core.js:1986
 #: assets/js/globals.js:900
 msgid "Success"
 msgstr ""
@@ -10866,7 +11399,7 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:434
+#: src/Admin/ContentHandlers/OptionsPage.php:416
 msgid "Support Email"
 msgstr ""
 
@@ -10874,7 +11407,7 @@ msgstr ""
 msgid "Support Report"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:287 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:351 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
 msgid "Support URL"
 msgstr ""
 
@@ -10882,15 +11415,19 @@ msgstr ""
 msgid "Support report"
 msgstr ""
 
-#: templates/admin/contents/license/index.php:59
+#: templates/admin/contents/license/index.php:59 themes/default/templates/pages/client/app-license.php:142
 msgid "Suspend"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:142
+msgid "Suspend this license? It stops working on every site until you unsuspend it."
 msgstr ""
 
 #: src/Email/Templates/Licenses/LicenseSuspendedEmail.php:144
 msgid "Suspicious activity detected."
 msgstr ""
 
-#: themes/default/templates/frames/client-dashboard.php:71
+#: themes/default/templates/frames/client-dashboard.php:72
 msgid "Switch account"
 msgstr ""
 
@@ -10902,8 +11439,12 @@ msgstr ""
 msgid "Switch maintenance on"
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:72
+#: src/ClientDashboard/ActionHandlers/AppActions.php:88
 msgid "Switch to an account or organization that can host apps first."
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:114
+msgid "Switch to an account or organization whose role lets you manage the licenses of its apps."
 msgstr ""
 
 #: src/Environments/Application/Health/SystemHealth.php:1127
@@ -10980,7 +11521,7 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: src/SettingsAPI/SettingsController.php:219 src/SettingsAPI/SettingsController.php:272 src/SettingsAPI/SettingsController.php:332
+#: src/SettingsAPI/SettingsController.php:231 src/SettingsAPI/SettingsController.php:284 src/SettingsAPI/SettingsController.php:344
 msgid "Template key is required."
 msgstr ""
 
@@ -11004,7 +11545,7 @@ msgstr ""
 msgid "Term:"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:534
+#: src/Admin/ContentHandlers/OptionsPage.php:481
 msgid "Terms URL"
 msgstr ""
 
@@ -11029,7 +11570,7 @@ msgstr ""
 msgid "Test email sent successfully to %s via %s."
 msgstr ""
 
-#: assets/js/admin/core.js:1983
+#: assets/js/admin/core.js:2076
 msgid "Test passed"
 msgstr ""
 
@@ -11080,20 +11621,28 @@ msgstr ""
 msgid "That database user does not exist. Check the username."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:204
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:147 src/ClientDashboard/ActionHandlers/AccountManagement.php:214
+msgid "That email address is already used by another account."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:211
 msgid "That factor is not enabled."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:83
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:88
 msgid "That language is not available."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:184
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:191
 msgid "That passkey could not be found."
 msgstr ""
 
 #: src/Environments/Application/Installation/WebInstaller.php:374
 msgid "That setup token is not right. Copy it again from the file (only the letters and numbers between the quotes) and try again."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:96 assets/js/i18n.js:342
+msgid "That theme is not available."
 msgstr ""
 
 #: src/RESTAPI/RouteArguments.php:208
@@ -11146,12 +11695,12 @@ msgstr ""
 msgid "The \"%s\" parameter must be %s."
 msgstr ""
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:73
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:78
 #, php-format
 msgid "The \"%s\" template is disabled."
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:99
 msgid "The \"Email Verification Code\" template is disabled."
 msgstr ""
 
@@ -11198,7 +11747,7 @@ msgstr ""
 msgid "The %s \"%s\" could not be renamed to \"%s\"."
 msgstr ""
 
-#: src/FileSystem/Repository.php:734 src/FileSystem/Repository.php:806 src/Monetization/Controller.php:312
+#: src/FileSystem/Repository.php:734 src/FileSystem/Repository.php:806 src/Monetization/Controller.php:314
 #, php-format
 msgid "The %s \"%s\" does not exist."
 msgstr ""
@@ -11238,7 +11787,7 @@ msgstr ""
 msgid "The %s \"%s\" was not installed from the marketplace; install a newer package of it to update it."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:575 src/HostedApps/Storage/DirectoryAppStorage.php:280
+#: src/HostedApps/HostedApplicationService.php:595 src/HostedApps/Storage/DirectoryAppStorage.php:280
 #, php-format
 msgid "The %s already has the slug \"%s\"."
 msgstr ""
@@ -11253,7 +11802,7 @@ msgstr ""
 msgid "The %s directory of %s \"%s\" leads outside the app."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:567
+#: src/HostedApps/HostedApplicationService.php:587
 #, php-format
 msgid "The %s does not exist."
 msgstr ""
@@ -11288,7 +11837,7 @@ msgstr ""
 msgid "The %s of the theme \"%s\" needs a \"%s\"."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:605
+#: src/HostedApps/HostedApplicationService.php:625
 #, php-format
 msgid "The %s was changed or deleted while renaming it. Reload it and try again."
 msgstr ""
@@ -11392,23 +11941,23 @@ msgstr ""
 msgid "The URL of the website where the license is currently activated."
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:637
+#: src/Admin/ContentHandlers/OptionsPage.php:660
 msgid "The URL segment that appears before download pages. For example: https://example.com/downloads/"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:623
+#: src/Admin/ContentHandlers/OptionsPage.php:646
 msgid "The URL segment that appears before repository pages. For example: https://example.com/repository/"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:597
+#: src/Admin/ContentHandlers/OptionsPage.php:620
 msgid "The URL segment that appears before the admin url. For example: https://example.com/smliser-admin/"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:610
+#: src/Admin/ContentHandlers/OptionsPage.php:633
 msgid "The URL segment that appears before the client dashboard page. For example: https://example.com/dashboard/"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:650
+#: src/Admin/ContentHandlers/OptionsPage.php:673
 msgid "The URL segment the appears before authentication pages. For example https://example.com/auth"
 msgstr ""
 
@@ -11428,7 +11977,7 @@ msgstr ""
 msgid "The account for this link no longer exists."
 msgstr ""
 
-#: src/Monetization/License.php:1431
+#: src/Monetization/License.php:1687
 msgid "The activation could not be saved."
 msgstr ""
 
@@ -11446,7 +11995,7 @@ msgstr ""
 msgid "The active theme \"%s\" cannot be used, so the default theme renders the public pages. The error log says why."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:513
+#: src/HostedApps/HostedApplicationService.php:533
 msgid "The app could not be deleted. Please try again."
 msgstr ""
 
@@ -11454,7 +12003,7 @@ msgstr ""
 msgid "The app status to list: active, deactivated, suspended or trash. Statuses other than active are for system admins only (403 for anyone else)."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:89
+#: src/Monetization/LicensingService.php:98
 msgid "The app this pricing tier belongs to does not exist."
 msgstr ""
 
@@ -11468,7 +12017,7 @@ msgstr ""
 msgid "The app type \"%s\" is not supported."
 msgstr ""
 
-#: themes/default/templates/pages/client/app-new.php:30
+#: themes/default/templates/pages/client/app-new.php:31
 msgid "The app's address on this site is made from it. Only an administrator can change the address later."
 msgstr ""
 
@@ -11508,7 +12057,7 @@ msgstr ""
 msgid "The application version. For Wordpress plugins and themes, the version will be extracted from the readme.txt and style.css respectively, custom apps should define the app version in the app.json file."
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:22
+#: themes/default/templates/pages/client/apps.php:24
 msgid "The apps you host here, for whoever you act for."
 msgstr ""
 
@@ -11539,8 +12088,24 @@ msgstr ""
 msgid "The artifact filename must not contain directory separators."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AppActions.php:297
+msgid "The artifact is deleted."
+msgstr ""
+
 #: assets/js/admin/apps-uploader.js:1531
 msgid "The artifact is saved under this exact name, extension included (e.g. \"my-app-1.0.0.zip.sha256\"). Leave it empty to use the uploaded file's name. Unsafe characters are sanitized, e.g. \"my artifact.zip\" becomes \"my-artifact.zip\"."
+msgstr ""
+
+#: themes/default/templates/pages/client/app.php:273
+msgid "The artifact is saved under this exact name, extension included. Leave it empty to use the uploaded file's name."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:277
+msgid "The artifact is saved."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:252
+msgid "The artifact is uploaded."
 msgstr ""
 
 #: src/HostedApps/AppRelease.php:165
@@ -11563,7 +12128,7 @@ msgstr ""
 msgid "The authenticated user does not have permission to perform this action."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:135
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:142
 msgid "The authenticator code is incorrect."
 msgstr ""
 
@@ -11618,7 +12183,7 @@ msgstr ""
 msgid "The code on disk is version %s, but state.json records %s: an update was installed but its finish step has not run. Scheduled tasks and queued jobs are paused until it has."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:231
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:238
 msgid "The confirmation code is incorrect or expired."
 msgstr ""
 
@@ -11680,7 +12245,7 @@ msgstr ""
 msgid "The default theme ships with the application; it is updated with the application, and cannot be installed, replaced or removed here."
 msgstr ""
 
-#: src/Monetization/Controller.php:478
+#: src/Monetization/Controller.php:486
 #, php-format
 msgid "The domain \"%s\" has been uninstalled"
 msgstr ""
@@ -11689,7 +12254,7 @@ msgstr ""
 msgid "The domain parameter is required."
 msgstr ""
 
-#: src/Monetization/Controller.php:474
+#: src/Monetization/Controller.php:483
 msgid "The domain provided does not exist in this license."
 msgstr ""
 
@@ -11727,12 +12292,18 @@ msgstr ""
 msgid "The email address is invalid."
 msgstr ""
 
+#. translators: %s: the new email address, partly hidden.
+#: src/Email/Templates/Security/EmailChangedEmail.php:53
+#, php-format
+msgid "The email address of your account was changed to %s. Emails about your account now go to that address, and this one can no longer be used to sign in."
+msgstr ""
+
 #: templates/admin/contents/options/email/form.php:38 templates/admin/contents/options/monetization/monetizations.php:41
 #, php-format
 msgid "The email provider \"%s\" does not exists. <a href=\"%s\">Go Back</a>"
 msgstr ""
 
-#: src/Admin/ContentHandlers/OptionsPage.php:339
+#: src/Admin/ContentHandlers/OptionsPage.php:341
 msgid "The email provider used for all outgoing system emails. Configure individual providers using the cards below."
 msgstr ""
 
@@ -11825,6 +12396,36 @@ msgstr ""
 msgid "The extension slug \"%s\" is invalid: use lowercase letters, digits and hyphens."
 msgstr ""
 
+#: src/Core/SiteFavicon.php:246
+msgid "The favicon could not be read. Please upload it again."
+msgstr ""
+
+#: src/Core/SiteFavicon.php:316 src/Core/SiteFavicon.php:326
+msgid "The favicon could not be saved. Please try again."
+msgstr ""
+
+#: src/Core/SiteFavicon.php:275
+msgid "The favicon image could not be read. Please upload a valid PNG or ICO file."
+msgstr ""
+
+#. translators: %d: largest file size, in kilobytes.
+#: src/Core/SiteFavicon.php:256 assets/js/admin/core.js:530
+#, php-format, javascript-format
+msgid "The favicon must be %d KB or smaller."
+msgstr ""
+
+#. translators: %s: list of file types, e.g. "PNG, ICO".
+#: src/Core/SiteFavicon.php:267
+#, php-format
+msgid "The favicon must be a %s file."
+msgstr ""
+
+#. translators: 1: smallest size, 2: largest size, 3: the image's width, 4: the image's height (all in pixels).
+#: src/Core/SiteFavicon.php:284
+#, php-format
+msgid "The favicon must be between %1$d and %2$d pixels per side; this image is %3$d × %4$d pixels."
+msgstr ""
+
 #: src/RESTAPI/Versions/V1.php:695
 msgid "The features the license includes; a list or a comma-separated string."
 msgstr ""
@@ -11887,10 +12488,6 @@ msgstr ""
 msgid "The hosting attestation does not name this hosted app and package."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:163
-msgid "The image is uploaded."
-msgstr ""
-
 #: src/Environments/Application/Boot/BootModeResolver.php:211
 msgid "The installation state could not be read."
 msgstr ""
@@ -11922,9 +12519,13 @@ msgid "The language \"%1$s\" is not installed. Use one of: %2$s."
 msgstr ""
 
 #. translators: %s: a locale code such as fr_FR.
-#: src/SettingsAPI/SettingsController.php:383
+#: src/SettingsAPI/SettingsController.php:438
 #, php-format
 msgid "The language \"%s\" is not installed."
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:43
+msgid "The language of the dashboards, the pages of this site and the emails sent to you."
 msgstr ""
 
 #: src/Console/Commands/Installer.php:130
@@ -11950,20 +12551,24 @@ msgstr ""
 msgid "The license could not be found. The license key or service ID may be incorrect."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:126 src/Monetization/LicensingService.php:235
+#: src/Monetization/LicensingService.php:135 src/Monetization/LicensingService.php:320
 msgid "The license could not be saved."
 msgstr ""
 
-#: src/Monetization/License.php:1395 src/Monetization/License.php:1408 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
-#: src/Monetization/LicensingService.php:191
+#: src/Monetization/License.php:1651 src/Monetization/License.php:1664 src/Monetization/LicensingService.php:153 src/Monetization/LicensingService.php:178
+#: src/Monetization/LicensingService.php:218 src/Monetization/LicensingService.php:261
 msgid "The license does not exist."
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:84
+msgid "The license holder deactivated this license. It works again only once you reactivate it."
 msgstr ""
 
 #: src/RESTAPI/Handlers/Licenses.php:169
 msgid "The license is active on this domain, but a download token could not be issued. Activate again to get one."
 msgstr ""
 
-#: src/Monetization/License.php:1415
+#: src/Monetization/License.php:1671
 #, php-format
 msgid "The license is already activated on %s."
 msgstr ""
@@ -11972,13 +12577,29 @@ msgstr ""
 msgid "The license is already deactivated. Its owner must resolve it."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:94
+msgid "The license is deactivated. It is refused on every site until the app's owner or an administrator reactivates it."
+msgstr ""
+
 #: src/Admin/ContentHandlers/LicensePage.php:368
 msgid "The license is delivered to this address. A registered user with this verified address is linked to the license."
 msgstr ""
 
-#: src/RESTAPI/Handlers/Licenses.php:310
+#: src/Monetization/LicensingService.php:228 src/RESTAPI/Handlers/Licenses.php:310
 #, php-format
 msgid "The license is not activated on %s."
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:146
+msgid "The license is not activated on any site yet."
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:94
+msgid "The license is not activated on any site."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:98
+msgid "The license is reactivated."
 msgstr ""
 
 #: themes/default/templates/pages/purchase.php:75
@@ -11989,6 +12610,14 @@ msgstr ""
 #: themes/default/templates/pages/purchase.php:78
 #, php-format
 msgid "The license is sent to %s and added to your account."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:101
+msgid "The license is suspended. It cannot be validated or used to download the app until you unsuspend it."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:104
+msgid "The license is unsuspended."
 msgstr ""
 
 #: src/RESTAPI/Versions/V1.php:580
@@ -12028,7 +12657,7 @@ msgstr ""
 msgid "The license uninstalled for the domain \"%s\" successfully."
 msgstr ""
 
-#: src/Monetization/Controller.php:307 src/Monetization/LicensingService.php:101
+#: src/Monetization/Controller.php:309 src/Monetization/LicensingService.php:110
 msgid "The licensee email is required."
 msgstr ""
 
@@ -12102,7 +12731,8 @@ msgstr ""
 msgid "The module release is not a release from release()."
 msgstr ""
 
-#: src/Security/Organizations/OrganizationService.php:425
+#. translators: %d: maximum number of characters.
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:105 src/Security/Organizations/OrganizationService.php:425
 #, php-format
 msgid "The name can be at most %d characters long."
 msgstr ""
@@ -12129,6 +12759,10 @@ msgstr ""
 #: src/Environments/Application/Extensions/Extension.php:191
 #, php-format
 msgid "The namespace \"%s\" of the extension \"%s\" is reserved by the app."
+msgstr ""
+
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:79
+msgid "The new email address is not valid."
 msgstr ""
 
 #: src/FileSystem/Repository.php:242
@@ -12322,12 +12956,12 @@ msgstr ""
 msgid "The plugin does not exist, please check the typography or the plugin slug."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:95 assets/js/i18n.js:213
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:116 assets/js/dashboard-settings.js:140 assets/js/dashboard-settings.js:159 assets/js/i18n.js:284
 msgid "The preference could not be saved."
 msgstr ""
 
 #. translators: %s: comma-separated list of preference names.
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:72
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:77
 #, php-format
 msgid "The preference must be one of: %s."
 msgstr ""
@@ -12340,17 +12974,17 @@ msgstr ""
 msgid "The price as buyers read it, e.g. \"₦25,000 / year\". Shown as is; buyers pay this amount."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:79
+#: src/Monetization/LicensingService.php:88
 #, php-format
 msgid "The pricing tier \"%s\" is archived and issues no new licenses."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:83
+#: src/Monetization/LicensingService.php:92
 #, php-format
 msgid "The pricing tier \"%s\" is not sold by the provider \"%s\"."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:75
+#: src/Monetization/LicensingService.php:84
 msgid "The pricing tier does not exist."
 msgstr ""
 
@@ -12367,7 +13001,7 @@ msgstr ""
 msgid "The provided API key or token is incorrect or expired."
 msgstr ""
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:506
+#: src/FileSystem/DownloadsApi/FileRequestController.php:554
 msgid "The provided URL is not valid."
 msgstr ""
 
@@ -12407,7 +13041,7 @@ msgstr ""
 msgid "The provided slug is not available."
 msgstr ""
 
-#: src/Monetization/Controller.php:418
+#: src/Monetization/Controller.php:420
 #, php-format
 msgid "The provider \"%s\" is not supported."
 msgstr ""
@@ -12562,7 +13196,7 @@ msgstr ""
 msgid "The request format or parameters provided are improperly structured."
 msgstr ""
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1145
 msgid "The request method is not allowed on this server."
 msgstr ""
 
@@ -12614,7 +13248,7 @@ msgstr ""
 msgid "The requested range cannot be satisfied."
 msgstr ""
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1146 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr ""
 
@@ -12650,7 +13284,7 @@ msgstr ""
 msgid "The selected account type is invalid."
 msgstr ""
 
-#: src/Monetization/Controller.php:70
+#: src/Monetization/Controller.php:71
 msgid "The selected monetization provider does not exist."
 msgstr ""
 
@@ -12781,6 +13415,10 @@ msgstr ""
 msgid "The site secret is not valid for this domain."
 msgstr ""
 
+#: themes/default/templates/pages/client/license.php:143
+msgid "The sites this license is activated on. To free a site, ask the app's owner."
+msgstr ""
+
 #: src/FileSystem/Repository.php:277
 #, php-format
 msgid "The slug \"%s\" belongs to a %s in the trash. Restore or permanently delete it, or change the %s name and try again."
@@ -12796,7 +13434,7 @@ msgstr ""
 msgid "The slug \"%s\" is not available, you can change the %s name and try again."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:613
+#: src/HostedApps/HostedApplicationService.php:633
 #, php-format
 msgid "The slug \"%s\" is not available: %s."
 msgstr ""
@@ -13081,15 +13719,15 @@ msgstr ""
 msgid "The value must be an integer."
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:67
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:68
 msgid "The verification code could not be read."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:66
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:169 src/ClientDashboard/ActionHandlers/SecurityManagement.php:73
 msgid "The verification code could not be sent. Please try again."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:85
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:205 src/ClientDashboard/ActionHandlers/SecurityManagement.php:92
 msgid "The verification code is incorrect or expired."
 msgstr ""
 
@@ -13158,6 +13796,10 @@ msgstr ""
 msgid "Theme assets published: "
 msgstr ""
 
+#: assets/js/dashboard-settings.js:157
+msgid "Theme saved."
+msgstr ""
+
 #: src/Admin/ContentHandlers/ModulesPage.php:352
 msgid "Themes"
 msgstr ""
@@ -13220,6 +13862,10 @@ msgstr ""
 msgid "These are checked for this web request. Installing from this page runs as the web server's PHP user; automatic updates run wherever background processing runs, which may be another user or PHP. Check there with"
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:88
+msgid "These choices apply once your email address is verified."
+msgstr ""
+
 #: assets/js/admin/repository-browser.js:371
 msgid "These files have no app record, so they can be viewed but not changed."
 msgstr ""
@@ -13238,7 +13884,7 @@ msgstr ""
 msgid "This %s has no package."
 msgstr ""
 
-#: src/HostedApps/HostedApplicationService.php:571
+#: src/HostedApps/HostedApplicationService.php:591
 #, php-format
 msgid "This %s is in the trash. Restore it before renaming it."
 msgstr ""
@@ -13266,11 +13912,11 @@ msgstr ""
 msgid "This app does not exist in the repository <a href=\"%s\">Back</a>"
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:232
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:274
 msgid "This app does not exist, or it belongs to someone else. Switch to its owner to manage it."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:249 src/HostedApps/HostingController.php:894
+#: src/ClientDashboard/ActionHandlers/AppActions.php:383 src/HostedApps/HostingController.php:894
 msgid "This app does not exist."
 msgstr ""
 
@@ -13278,15 +13924,15 @@ msgstr ""
 msgid "This app has no description yet."
 msgstr ""
 
-#: src/Monetization/Controller.php:97 src/Monetization/Controller.php:190
+#: src/Monetization/Controller.php:98 src/Monetization/Controller.php:190
 msgid "This app has no such pricing tier."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:72
+#: themes/default/templates/pages/client/app.php:96
 msgid "This app is in the trash. It is deleted for good after a while, unless you restore it."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:70
+#: themes/default/templates/pages/client/app.php:94
 msgid "This app is suspended by the site's administrators, so it is not offered. Contact them to have the suspension lifted."
 msgstr ""
 
@@ -13294,11 +13940,11 @@ msgstr ""
 msgid "This app's owner has no active service account. Create one for the owner under Accounts → Service Accounts, then reload this page."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:138
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:145
 msgid "This authenticator setup has already been used."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:129
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:136
 msgid "This authenticator setup has expired. Start again."
 msgstr ""
 
@@ -13318,11 +13964,15 @@ msgstr ""
 msgid "This check could not run."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:53
+#: themes/default/templates/pages/client/security.php:89
 msgid "This device"
 msgstr ""
 
-#: assets/js/admin/core.js:1175
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:333
+msgid "This download link has expired. Ask for your data again from your account page."
+msgstr ""
+
+#: assets/js/admin/core.js:1268
 msgid "This field"
 msgstr ""
 
@@ -13342,7 +13992,7 @@ msgstr ""
 msgid "This file type is not shown here. Download it to open it."
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:179
+#: src/Admin/ContentHandlers/RepositoryPage.php:178
 msgid "This hosted app type is not registered."
 msgstr ""
 
@@ -13396,6 +14046,10 @@ msgstr ""
 msgid "This is a public key: it can only check signatures, not make them, and it is safe to share."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:144
+msgid "This is already your email address."
+msgstr ""
+
 #. translators: 1: app name (formatted), 2: support (formatted)
 #: src/Email/Templates/System/SystemAlertEmail.php:112
 #, php-format
@@ -13424,8 +14078,33 @@ msgstr ""
 msgid "This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required."
 msgstr ""
 
-#: src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
+#: src/ClientDashboard/ActionHandlers/AppLicenseActions.php:102
+msgid "This license cannot be suspended."
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:208
+msgid "This license does not exist, or it is not linked to your account."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:62 src/ClientDashboard/AppOwnerScope.php:169 src/Monetization/Controller.php:289 src/Monetization/Controller.php:468
+#: src/Monetization/Controller.php:515 src/Monetization/LicenseAppAccess.php:53
 msgid "This license does not exist."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:70
+msgid "This license is already deactivated. Only the app's owner or an administrator can reactivate it."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:74
+msgid "This license is already refused on every site, so there is nothing to deactivate. Contact the app's owner about it."
+msgstr ""
+
+#: themes/default/templates/pages/client/licenses.php:91
+msgid "This license is deactivated and refused on every site. Only the app's owner or an administrator can reactivate it."
+msgstr ""
+
+#: themes/default/templates/pages/client/license.php:138
+msgid "This license is deactivated, so it is refused on every site. Only the app's owner or an administrator can reactivate it: contact them if it was deactivated by mistake or once the key is safe again."
 msgstr ""
 
 #: src/Monetization/DownloadToken.php:405
@@ -13520,6 +14199,10 @@ msgstr ""
 msgid "This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes."
 msgstr ""
 
+#: src/Security/SecurityAwareTrait.php:93
+msgid "This resource does not exist."
+msgstr ""
+
 #: src/Environments/Application/Update/UpdateRunner.php:182
 msgid "This server cannot start a new PHP process; the update finishes on the next request to the site."
 msgstr ""
@@ -13570,11 +14253,11 @@ msgstr ""
 msgid "This verification link is not valid."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:81
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:201 src/ClientDashboard/ActionHandlers/AccountManagement.php:210 src/ClientDashboard/ActionHandlers/SecurityManagement.php:88
 msgid "This verification request has expired. Start again."
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:231
 msgid "This wasn't me — secure my account"
 msgstr ""
 
@@ -13586,7 +14269,11 @@ msgstr ""
 msgid "Three Minutely"
 msgstr ""
 
-#: src/Monetization/Controller.php:177
+#: themes/default/templates/pages/client/app-license.php:54 themes/default/templates/pages/client/app-licenses.php:85
+msgid "Tier"
+msgstr ""
+
+#: src/Monetization/Controller.php:178
 msgid "Tier ID is required."
 msgstr ""
 
@@ -13594,11 +14281,11 @@ msgstr ""
 msgid "Tier Name:"
 msgstr ""
 
-#: assets/js/admin/core.js:1307
+#: assets/js/admin/core.js:1400
 msgid "Tier deleted"
 msgstr ""
 
-#: src/Monetization/Controller.php:62
+#: src/Monetization/Controller.php:63
 msgid "Tier name is required"
 msgstr ""
 
@@ -13606,7 +14293,7 @@ msgstr ""
 msgid "Tiers"
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:207 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:214 templates/admin/contents/index.php:183 assets/js/datetime-picker.js:677
 msgid "Time"
 msgstr ""
 
@@ -13638,7 +14325,7 @@ msgstr ""
 msgid "To renew your license or if you have any questions, please contact us at {{support_email}}."
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:975
+#: src/Analytics/AppStatsSummary.php:103
 msgid "Today's Downloads"
 msgstr ""
 
@@ -13662,7 +14349,7 @@ msgstr ""
 msgid "Toggle visibility"
 msgstr ""
 
-#: assets/js/admin/core.js:617
+#: assets/js/admin/core.js:710
 msgid "Token Expiry (optional)"
 msgstr ""
 
@@ -13727,7 +14414,7 @@ msgstr ""
 msgid "Total Accesses"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1019
+#: src/Analytics/AppStatsSummary.php:146
 msgid "Total Client Access"
 msgstr ""
 
@@ -13735,7 +14422,7 @@ msgstr ""
 msgid "Total Domains Activated:"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/index.php:314
+#: src/Analytics/AppStatsSummary.php:94 templates/admin/contents/index.php:314
 msgid "Total Downloads"
 msgstr ""
 
@@ -13755,7 +14442,7 @@ msgstr ""
 msgid "Transport encryption method."
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:412
+#: src/Admin/ContentHandlers/RepositoryPage.php:411
 #, php-format
 msgid "Trash %s"
 msgstr ""
@@ -13836,17 +14523,31 @@ msgstr ""
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:97 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:224 src/Email/Templates/Apps/AppPublishedEmail.php:70 src/Email/Templates/Apps/AppPublishedEmail.php:192
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:89 src/Email/Templates/Apps/AppStatusChangedEmail.php:199 src/Email/Templates/Apps/AppUpdatedEmail.php:74 src/Email/Templates/Apps/AppUpdatedEmail.php:195
-#: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:19
+#: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:20
 #: themes/default/templates/pages/repository/app.php:112 assets/js/admin/json-editor.js:926
 msgid "Type"
+msgstr ""
+
+#. translators: %s: the user's email address.
+#: themes/default/templates/pages/client/account.php:140
+#, php-format
+msgid "Type %s to confirm"
 msgstr ""
 
 #: src/Exceptions/RequestException.php:58
 msgid "Type Mismatch"
 msgstr ""
 
+#: themes/default/templates/pages/client/security.php:49
+msgid "Type the new password again"
+msgstr ""
+
 #: src/Environments/Application/Installation/InstallerPage.php:383
 msgid "Type the same password again."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:378
+msgid "Type your email address exactly as shown to confirm."
 msgstr ""
 
 #: src/Email/Providers/SMTPProvider.php:143
@@ -13874,7 +14575,7 @@ msgstr ""
 msgid "Unable to created destination directory."
 msgstr ""
 
-#: assets/js/admin/core.js:1087
+#: assets/js/admin/core.js:1180
 msgid "Unable to delete"
 msgstr ""
 
@@ -13883,7 +14584,7 @@ msgstr ""
 msgid "Unable to delete %s."
 msgstr ""
 
-#: src/Monetization/Controller.php:565 assets/js/admin/core.js:580
+#: src/Monetization/Controller.php:576 assets/js/admin/core.js:673
 msgid "Unable to delete license"
 msgstr ""
 
@@ -13891,11 +14592,11 @@ msgstr ""
 msgid "Unable to delete the provided entity from the database."
 msgstr ""
 
-#: src/Monetization/License.php:1697
+#: src/Monetization/License.php:1953
 msgid "Unable to generate a unique license key after multiple attempts."
 msgstr ""
 
-#: assets/js/admin/core.js:665
+#: assets/js/admin/core.js:758
 msgid "Unable to generate download token"
 msgstr ""
 
@@ -13907,7 +14608,7 @@ msgstr ""
 msgid "Unable to inspect the active database connection."
 msgstr ""
 
-#: src/RESTAPI/Handlers/Licenses.php:269
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:80 src/RESTAPI/Handlers/Licenses.php:269
 msgid "Unable to process this request at the moment."
 msgstr ""
 
@@ -13915,7 +14616,7 @@ msgstr ""
 msgid "Unable to read uploaded app.json file."
 msgstr ""
 
-#: assets/js/admin/core.js:1803
+#: assets/js/admin/core.js:1896
 msgid "Unable to remove member"
 msgstr ""
 
@@ -13924,7 +14625,7 @@ msgstr ""
 msgid "Unable to resolve repository class."
 msgstr ""
 
-#: assets/js/admin/core.js:822
+#: assets/js/admin/core.js:915
 msgid "Unable to save license"
 msgstr ""
 
@@ -13944,7 +14645,7 @@ msgstr ""
 msgid "Unable to save service account"
 msgstr ""
 
-#: src/Monetization/Controller.php:333
+#: src/Monetization/Controller.php:335
 msgid "Unable to save the license"
 msgstr ""
 
@@ -13968,7 +14669,7 @@ msgstr ""
 msgid "Unable to start download. Headers already sent."
 msgstr ""
 
-#: src/Monetization/Controller.php:478
+#: src/Monetization/Controller.php:486 src/Monetization/LicensingService.php:234
 #, php-format
 msgid "Unable to uninstall \"%s\""
 msgstr ""
@@ -14087,7 +14788,7 @@ msgstr ""
 msgid "Unknown callable"
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:254
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:261
 msgid "Unknown device"
 msgstr ""
 
@@ -14099,12 +14800,12 @@ msgstr ""
 msgid "Unknown error occurred."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:170
+#: src/Monetization/LicensingService.php:182
 #, php-format
 msgid "Unknown license status \"%s\". Use one of: %s."
 msgstr ""
 
-#: src/Monetization/LicensingService.php:197
+#: src/Monetization/LicensingService.php:267
 #, php-format
 msgid "Unknown license terms: %s."
 msgstr ""
@@ -14114,7 +14815,7 @@ msgstr ""
 msgid "Unknown purchase request email \"%s\"."
 msgstr ""
 
-#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:67
+#: src/Background/Jobs/Accounts/SecurityNoticeEmailJob.php:72
 msgid "Unknown security notice."
 msgstr ""
 
@@ -14160,6 +14861,10 @@ msgstr ""
 
 #: src/Exceptions/FileRequestException.php:44
 msgid "Unsupported Type"
+msgstr ""
+
+#: themes/default/templates/pages/client/app-license.php:138
+msgid "Unsuspend"
 msgstr ""
 
 #: templates/admin/contents/system/updates.php:86
@@ -14213,7 +14918,7 @@ msgstr ""
 msgid "Update app monetization"
 msgstr ""
 
-#: assets/js/admin/core.js:1349
+#: assets/js/admin/core.js:1442
 msgid "Update failed"
 msgstr ""
 
@@ -14270,7 +14975,7 @@ msgstr ""
 msgid "Update users"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:50 themes/default/templates/pages/repository/app.php:118
+#: themes/default/templates/pages/client/app.php:62 themes/default/templates/pages/repository/app.php:118
 msgid "Updated"
 msgstr ""
 
@@ -14303,11 +15008,11 @@ msgstr ""
 msgid "Upgrade Notice"
 msgstr ""
 
-#: assets/js/admin/core.js:872
+#: assets/js/admin/core.js:965
 msgid "Upgrade successful!"
 msgstr ""
 
-#: themes/default/templates/pages/client/app-new.php:48
+#: src/ClientDashboard/ActionHandlers/AppActions.php:195 themes/default/templates/pages/client/app-new.php:49
 msgid "Upload"
 msgstr ""
 
@@ -14328,20 +15033,24 @@ msgstr ""
 msgid "Upload Failed"
 msgstr ""
 
+#: templates/admin/contents/options/favicon-field.php:60
+msgid "Upload Favicon"
+msgstr ""
+
 #: templates/admin/contents/accounts/access-control-form.php:91
 msgid "Upload Image"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:157 src/Admin/ContentHandlers/RepositoryPage.php:482 templates/admin/contents/repository/index.php:47
+#: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:47
 msgid "Upload New"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:186
+#: src/Admin/ContentHandlers/RepositoryPage.php:185
 #, php-format
 msgid "Upload New %s"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:46
+#: src/Admin/ContentHandlers/RepositoryPage.php:155 src/Admin/ContentHandlers/RepositoryPage.php:480 templates/admin/contents/repository/index.php:46
 msgid "Upload New Application"
 msgstr ""
 
@@ -14349,15 +15058,15 @@ msgstr ""
 msgid "Upload a Hosted App"
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:78
+#: themes/default/templates/pages/client/app.php:116
 msgid "Upload a new zip file to publish a new version; its version and requirements are read from the package."
 msgstr ""
 
-#: themes/default/templates/pages/client/apps.php:40
+#: themes/default/templates/pages/client/apps.php:50
 msgid "Upload a plugin, theme or software package to host it here."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:92 themes/default/templates/pages/client/apps.php:26
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:99 themes/default/templates/pages/client/apps.php:28
 msgid "Upload an app"
 msgstr ""
 
@@ -14369,6 +15078,7 @@ msgstr ""
 msgid "Upload and install"
 msgstr ""
 
+#. translators: %s: app type in the plural, e.g. "Desktop Apps".
 #: src/Admin/ContentHandlers/RepositoryPage.php:574
 #, php-format
 msgid "Upload and manage %s."
@@ -14406,6 +15116,14 @@ msgstr ""
 msgid "Upload from device"
 msgstr ""
 
+#: src/HostedApps/HostedAppsRegistry.php:465
+msgid "Upload other software packages."
+msgstr ""
+
+#: src/HostedApps/HostedAppsRegistry.php:449
+msgid "Upload plugins for WordPress sites."
+msgstr ""
+
 #: assets/js/admin/apps-uploader.js:1173
 msgid "Upload request failed."
 msgstr ""
@@ -14415,8 +15133,12 @@ msgstr ""
 msgid "Upload the %s package as a .zip file whose name uses letters, digits, dots, hyphens and underscores."
 msgstr ""
 
-#: themes/default/templates/pages/client/app-new.php:13
+#: themes/default/templates/pages/client/app-new.php:14
 msgid "Upload the app's zip file. Its version and requirements are read from the package; the rest you can edit once it is uploaded."
+msgstr ""
+
+#: src/HostedApps/HostedAppsRegistry.php:457
+msgid "Upload themes for WordPress sites."
 msgstr ""
 
 #: assets/js/admin/apps-uploader.js:603
@@ -14431,7 +15153,7 @@ msgstr ""
 msgid "Upload your payment receipt."
 msgstr ""
 
-#: themes/default/templates/pages/client/app.php:46
+#: themes/default/templates/pages/client/app.php:58
 msgid "Uploaded"
 msgstr ""
 
@@ -14463,6 +15185,10 @@ msgstr ""
 msgid "Use %s placeholders for dynamic values."
 msgstr ""
 
+#: templates/admin/contents/options/favicon-field.php:65
+msgid "Use Default Favicon"
+msgstr ""
+
 #: src/Email/Providers/MailgunProvider.php:86
 msgid "Use EU region if your Mailgun account is hosted in Europe."
 msgstr ""
@@ -14473,7 +15199,7 @@ msgstr ""
 msgid "Use a %s placeholder or a full URL."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:116
+#: themes/default/templates/pages/client/security.php:152
 msgid "Use an app such as 1Password, Google Authenticator, or Microsoft Authenticator."
 msgstr ""
 
@@ -14601,7 +15327,7 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: src/Background/Jobs/Accounts/EmailOtpJob.php:110 src/Email/Templates/Security/EmailOtpEmail.php:85
+#: src/Background/Jobs/Accounts/EmailOtpJob.php:125 src/Email/Templates/Security/EmailOtpEmail.php:85 themes/default/templates/pages/client/account.php:62
 msgid "Verification code"
 msgstr ""
 
@@ -14617,11 +15343,11 @@ msgstr ""
 msgid "Verify Your Email Address"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:147
+#: themes/default/templates/pages/client/security.php:183
 msgid "Verify and enable"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:109
+#: themes/default/templates/pages/client/security.php:145
 msgid "Verify and enable email codes"
 msgstr ""
 
@@ -14633,15 +15359,15 @@ msgstr ""
 msgid "Verify your email"
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:102
+#: themes/default/templates/pages/client/security.php:138
 msgid "Verify your email address before enabling email codes."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:52
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:59
 msgid "Verify your email address before enabling email sign-in codes."
 msgstr ""
 
-#: themes/default/templates/frames/client-dashboard.php:123
+#: themes/default/templates/frames/client-dashboard.php:124
 #, php-format
 msgid "Verify your email address, %s. Licenses bought with it are added to your account once it is verified."
 msgstr ""
@@ -14651,7 +15377,7 @@ msgid "Verify your sign-in"
 msgstr ""
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:623 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
-#: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:42 themes/default/templates/pages/repository/app.php:115
+#: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:54 themes/default/templates/pages/repository/app.php:115
 msgid "Version"
 msgstr ""
 
@@ -14774,8 +15500,8 @@ msgstr ""
 msgid "View Activity Logs"
 msgstr ""
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:236 src/Admin/ContentHandlers/RepositoryPage.php:288 src/Admin/ContentHandlers/RepositoryPage.php:289
-#: src/Admin/ContentHandlers/RepositoryPage.php:752 src/Admin/ContentHandlers/RepositoryPage.php:1144
+#: src/Admin/ContentHandlers/RepositoryPage.php:234 src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:287 src/Admin/ContentHandlers/RepositoryPage.php:288
+#: src/Admin/ContentHandlers/RepositoryPage.php:752 src/Admin/ContentHandlers/RepositoryPage.php:991
 msgid "View App"
 msgstr ""
 
@@ -14868,7 +15594,7 @@ msgstr ""
 msgid "Warnings"
 msgstr ""
 
-#: src/Email/Templates/Security/SecurityEmailTemplate.php:217
+#: src/Email/Templates/Security/SecurityEmailTemplate.php:224
 msgid "Wasn't you? Someone else may have access to your account. Secure it now by resetting your password, then review your sign-in methods."
 msgstr ""
 
@@ -14994,7 +15720,7 @@ msgstr ""
 msgid "When you buy a license and send your payment receipt, it appears here while it is reviewed. Verify your email address to see purchases made with it before you signed in."
 msgstr ""
 
-#: themes/default/templates/pages/client/security.php:62
+#: themes/default/templates/pages/client/security.php:98
 msgid "When you sign in with your password, you also confirm with one of these. Passkey sign-in does not ask for it."
 msgstr ""
 
@@ -15018,6 +15744,10 @@ msgstr ""
 msgid "WooCommerce tested up to:"
 msgstr ""
 
+#: src/HostedApps/HostedAppsRegistry.php:448
+msgid "WordPress Plugin"
+msgstr ""
+
 #: templates/admin/contents/index.php:316
 msgid "WordPress Plugin Downloads"
 msgstr ""
@@ -15026,8 +15756,12 @@ msgstr ""
 msgid "WordPress Plugin Installations"
 msgstr ""
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:448
 msgid "WordPress Plugins"
+msgstr ""
+
+#: src/HostedApps/HostedAppsRegistry.php:456
+msgid "WordPress Theme"
 msgstr ""
 
 #: templates/admin/contents/index.php:317
@@ -15038,12 +15772,32 @@ msgstr ""
 msgid "WordPress Theme Installations"
 msgstr ""
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:456
 msgid "WordPress Themes"
 msgstr ""
 
 #: src/Environments/WordPress/WPDBAdapter.php:80
 msgid "WordPress could not connect to the database: "
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:435
+msgid "WordPress manages this account. Make this change from your WordPress profile."
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:30
+msgid "WordPress manages your name, email address, password and account. Change them from your WordPress profile."
+msgstr ""
+
+#: themes/default/templates/pages/client/security.php:34
+msgid "WordPress manages your password and sessions. Change them from your WordPress profile."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:260
+msgid "WordPress manages your password. Change it from your WordPress profile."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:302
+msgid "WordPress manages your sessions. Sign out of other sessions from your WordPress profile."
 msgstr ""
 
 #: src/Background/BackgroundSetup.php:242
@@ -15062,7 +15816,7 @@ msgstr ""
 msgid "Year"
 msgstr ""
 
-#: assets/js/admin/core.js:1780
+#: assets/js/admin/core.js:1873
 msgid "Yes"
 msgstr ""
 
@@ -15078,11 +15832,11 @@ msgstr ""
 msgid "You appear to be offline. Please check your connection."
 msgstr ""
 
-#: assets/js/admin/core.js:567
+#: assets/js/admin/core.js:660
 msgid "You are about to delete this license, be careful action cannot be reversed"
 msgstr ""
 
-#: assets/js/admin/core.js:895
+#: assets/js/admin/core.js:988
 #, javascript-format
 msgid "You are about to trash this %s, it will be automatically deleted after 60 days. Are you sure you want to proceed?"
 msgstr ""
@@ -15107,6 +15861,16 @@ msgstr ""
 #: src/Security/Organizations/OrganizationService.php:363
 #, php-format
 msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator before you leave."
+msgstr ""
+
+#. translators: %s: organization name.
+#: src/Security/Accounts/AccountDeletion.php:111
+#, php-format
+msgid "You are the only Organization Administrator of %s. Make another member an Organization Administrator, or delete the organization, first."
+msgstr ""
+
+#: src/Security/Accounts/AccountDeletion.php:117
+msgid "You are the only active system administrator. Make another user an active system administrator first."
 msgstr ""
 
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:161
@@ -15159,6 +15923,10 @@ msgstr ""
 msgid "You do not have the required permission to perform this action."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:305
+msgid "You downloaded your data a few minutes ago. Please wait before asking again."
+msgstr ""
+
 #: src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:76 src/Email/Templates/Monetization/SubscriptionCancelledEmail.php:203
 msgid "You have cancelled your subscription."
 msgstr ""
@@ -15170,6 +15938,14 @@ msgstr ""
 #: src/Exceptions/RequestException.php:231
 msgid "You have used all available quota for this operation."
 msgstr ""
+
+#. translators: %d: number of apps.
+#: src/Security/Accounts/AccountDeletion.php:99
+#, php-format
+msgid "You host %d app, including any in the trash. Delete it, or move it to another owner, first."
+msgid_plural "You host %d apps, including any in the trash. Delete them, or move them to another owner, first."
+msgstr[0] ""
+msgstr[1] ""
 
 #: themes/default/templates/pages/client/organizations.php:53
 msgid "You join an organization when one of its administrators invites you."
@@ -15188,7 +15964,7 @@ msgstr ""
 msgid "You must be logged in to access this resource."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:58
+#: src/ClientDashboard/ActionHandlers/PreferenceManagement.php:63
 msgid "You must be signed in to change your preferences."
 msgstr ""
 
@@ -15205,8 +15981,18 @@ msgstr ""
 msgid "You now act for %s."
 msgstr ""
 
+#. translators: %s: email address.
+#: themes/default/templates/pages/client/account.php:51
+#, php-format
+msgid "You sign in with %s."
+msgstr ""
+
 #: src/Environments/Application/Installation/InstallerPage.php:370
 msgid "You sign in with this address, and password resets are sent to it."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:310
+msgid "You were signed out on every other device. This one stays signed in."
 msgstr ""
 
 #: themes/default/templates/pages/client/organizations.php:100
@@ -15273,8 +16059,24 @@ msgstr ""
 msgid "Your access to {{plan_name}} features will remain active until {{access_until}}, after which your account will be downgraded."
 msgstr ""
 
+#: themes/default/templates/pages/client/account.php:25
+msgid "Your account"
+msgstr ""
+
+#: src/Security/Accounts/AccountDeletion.php:126
+msgid "Your account cannot be deleted yet."
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:126
+msgid "Your account cannot be deleted yet:"
+msgstr ""
+
 #: src/Security/Organizations/OrganizationService.php:67
 msgid "Your account cannot create organizations."
+msgstr ""
+
+#: src/Security/Accounts/AccountDeletion.php:175
+msgid "Your account could not be deleted. Nothing was changed. Please try again."
 msgstr ""
 
 #: src/Email/Templates/Accounts/WelcomeEmail.php:43
@@ -15295,6 +16097,14 @@ msgstr ""
 msgid "Your account was created, but signing in failed. Please sign in."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:395
+msgid "Your account was deleted. Goodbye."
+msgstr ""
+
+#: src/Email/EmailPreferences.php:102
+msgid "Your app activity"
+msgstr ""
+
 #. translators: 1: opening link tag, 2: closing link tag, 3: URL pattern.
 #: themes/default/templates/pages/signing-key.php:67
 #, php-format
@@ -15305,7 +16115,7 @@ msgstr ""
 msgid "Your application is now live."
 msgstr ""
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:234 themes/default/templates/pages/client/app.php:58
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:276 themes/default/templates/pages/client/app.php:76
 msgid "Your apps"
 msgstr ""
 
@@ -15322,9 +16132,25 @@ msgstr ""
 msgid "Your code is %s. It expires in %d minutes."
 msgstr ""
 
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:49 src/ClientDashboard/ActionHandlers/SecurityManagement.php:99 src/ClientDashboard/ActionHandlers/SecurityManagement.php:154 src/ClientDashboard/ActionHandlers/SecurityManagement.php:181
-#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:199
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:431 src/ClientDashboard/ActionHandlers/SecurityManagement.php:56 src/ClientDashboard/ActionHandlers/SecurityManagement.php:106 src/ClientDashboard/ActionHandlers/SecurityManagement.php:161
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:188 src/ClientDashboard/ActionHandlers/SecurityManagement.php:206 src/ClientDashboard/ActionHandlers/SecurityManagement.php:263
 msgid "Your current password is incorrect."
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:106
+msgid "Your data"
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:341
+msgid "Your data could not be exported. Please try again."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:314
+msgid "Your data is ready. The download starts now."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:229
+msgid "Your email address could not be changed. Please try again."
 msgstr ""
 
 #: src/Security/Authentication/UserAccounts.php:185
@@ -15335,12 +16161,28 @@ msgstr ""
 msgid "Your email address is already verified."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:253
+msgid "Your email address was changed. We let your previous address know."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:279
+msgid "Your email preferences could not be saved. Please try again."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:278
+msgid "Your email preferences were saved."
+msgstr ""
+
 #: src/Email/Templates/System/TestEmail.php:169
 msgid "Your email provider is configured correctly. This test email was delivered successfully."
 msgstr ""
 
 #: src/Environments/Application/Installation/WebInstaller.php:266
 msgid "Your installer session expired. Enter the setup token to continue."
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:51
+msgid "Your language"
 msgstr ""
 
 #: src/Console/Commands/Installer.php:1299
@@ -15404,6 +16246,14 @@ msgstr ""
 msgid "Your name"
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:305
+msgid "Your other sessions could not be signed out. Please try again."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:279
+msgid "Your password could not be changed. Please try again."
+msgstr ""
+
 #: src/Auth/ActionHandlers/AuthManagement.php:713
 msgid "Your password has been changed. Sign in with the new one."
 msgstr ""
@@ -15427,6 +16277,10 @@ msgstr ""
 msgid "Your password was changed successfully. If this was not you, contact support immediately."
 msgstr ""
 
+#: src/ClientDashboard/ActionHandlers/SecurityManagement.php:287
+msgid "Your password was changed. You were signed out on every other device."
+msgstr ""
+
 #: src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:141
 msgid "Your payment for {{product}} is confirmed. Here is your license; the license document is attached. Please keep them safe."
 msgstr ""
@@ -15441,6 +16295,18 @@ msgstr ""
 
 #: src/Email/Templates/Purchases/PurchaseRequestReceivedEmail.php:27
 msgid "Your payment receipt is being reviewed. Your license follows once the payment is confirmed."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:109
+msgid "Your profile could not be saved. Please try again."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AccountManagement.php:112
+msgid "Your profile was saved."
+msgstr ""
+
+#: themes/default/templates/pages/client/account.php:26
+msgid "Your profile, the emails you receive, and your data."
 msgstr ""
 
 #: src/Email/Templates/Purchases/PurchaseRequestRejectedEmail.php:26
@@ -15466,6 +16332,14 @@ msgstr ""
 
 #: themes/default/templates/pages/client/organizations.php:68
 msgid "Your role"
+msgstr ""
+
+#: src/ClientDashboard/AppOwnerScope.php:175
+msgid "Your role does not allow managing the licenses of this app."
+msgstr ""
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:392
+msgid "Your role here does not allow this."
 msgstr ""
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:359
@@ -15516,7 +16390,7 @@ msgstr ""
 msgid "Your verified Mailgun sending domain. e.g. mg.yourdomain.com"
 msgstr ""
 
-#: themes/default/templates/pages/client/app-new.php:44
+#: themes/default/templates/pages/client/app-new.php:45
 msgid "Zip file"
 msgstr ""
 
@@ -15539,6 +16413,14 @@ msgstr ""
 #: src/HostedApps/Storage/DirectoryAppStorage.php:517 src/HostedApps/Storage/DirectoryAppStorage.php:959
 msgid "already exists"
 msgstr ""
+
+#. translators: %d: number of other activated sites not listed.
+#: themes/default/templates/pages/client/licenses.php:130
+#, php-format
+msgid "and %d more"
+msgid_plural "and %d more"
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/Console/Commands/Installer.php:131
 msgid "and as the administrator's language. Without it, run asks when translations are installed;"
@@ -15566,6 +16448,26 @@ msgstr ""
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:963
 msgid "cannot replace something that is not a file"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:101
+msgctxt "color scheme"
+msgid "Dark"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:100
+msgctxt "color scheme"
+msgid "Light"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/SettingsPage.php:99
+msgctxt "color scheme"
+msgid "System"
+msgstr ""
+
+#: themes/default/templates/pages/client/settings.php:22 themes/default/templates/pages/client/settings.php:68
+msgctxt "color scheme"
+msgid "Theme"
 msgstr ""
 
 #: src/Core/Container/Container.php:440
@@ -15676,6 +16578,81 @@ msgstr ""
 
 #: src/HostedApps/Storage/DirectoryAppStorage.php:904
 msgid "leads outside the app"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:320 src/ClientDashboard/ContentHandlers/LicensesPage.php:221
+msgctxt "license event"
+msgid "Activated"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:321
+msgctxt "license event"
+msgid "Deactivated"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:223
+msgctxt "license event"
+msgid "License deactivated"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:322
+msgctxt "license event"
+msgid "Site removed"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:324
+msgctxt "license event"
+msgid "Status changed"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:222
+msgctxt "license event"
+msgid "Uninstalled"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:323
+msgctxt "license event"
+msgid "Verified"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:302 src/Monetization/License.php:1996
+msgctxt "license status"
+msgid "Active"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:306 src/Monetization/License.php:1997
+msgctxt "license status"
+msgid "Deactivated"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:305 src/Monetization/License.php:1998
+msgctxt "license status"
+msgid "Expired"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:309 src/Monetization/License.php:1999
+msgctxt "license status"
+msgid "Inactive"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:303 src/Monetization/License.php:2000
+msgctxt "license status"
+msgid "Lifetime"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:304 src/Monetization/License.php:2001
+msgctxt "license status"
+msgid "Pending"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:308 src/Monetization/License.php:2002
+msgctxt "license status"
+msgid "Revoked"
+msgstr ""
+
+#: src/ClientDashboard/ContentHandlers/AppLicensesPage.php:307 src/Monetization/License.php:2003
+msgctxt "license status"
+msgid "Suspended"
 msgstr ""
 
 #: src/Environments/Application/Installation/AppInstaller.php:1285
@@ -15857,7 +16834,7 @@ msgid "{{token}} or value"
 msgstr ""
 
 #. translators: %s: year, app name
-#: src/Email/Templates/EmailTemplate.php:892
+#: src/Email/Templates/EmailTemplate.php:893
 #, php-format
 msgid "© %s. All rights reserved."
 msgstr ""
@@ -15948,7 +16925,7 @@ msgstr ""
 msgid "❌ Your payment of %1$s on %2$s could not be processed. Please review your payment details and try again."
 msgstr ""
 
-#: templates/admin/index.php:37
+#: templates/admin/index.php:38
 msgid "🚫 403 - Access Denied"
 msgstr ""
 
@@ -15968,6 +16945,6 @@ msgstr ""
 msgid "🚫 Your membership in %s has been ended. You no longer have access to this organization's resources."
 msgstr ""
 
-#: templates/admin/index.php:25
+#: templates/admin/index.php:26
 msgid "🛑 401 - Authentication Required"
 msgstr ""

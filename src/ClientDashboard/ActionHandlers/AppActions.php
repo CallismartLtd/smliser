@@ -16,41 +16,54 @@ use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Exceptions\Exception;
 use SmartLicenseServer\Exceptions\RequestException;
 use SmartLicenseServer\HostedApps\AbstractHostedApp;
-use SmartLicenseServer\HostedApps\HostedApplicationService;
-use SmartLicenseServer\HostedApps\HostedAppsRegistry;
 use SmartLicenseServer\HostedApps\HostingController;
-use SmartLicenseServer\Security\Context\Guard;
+use SmartLicenseServer\HostedApps\OwnerAppScope;
 
 /**
  * The client dashboard's app actions (<client dashboard prefix>/json/apps/…).
  *
  * The apps are the current owner's: the user, or the organization they act
- * for. An app of any other owner is not found here, even for a system
- * administrator, who manages other owners' apps in the admin dashboard.
+ * for (OwnerAppScope). An app of any other owner is not found here, even for
+ * a system administrator, who manages other owners' apps in the admin
+ * dashboard.
  *
- *   POST apps/save            Create ("app_type", "app_name", "app_author", "app_zip_file")
- *                             or update ("app_type", "app_id", details, an optional new
- *                             "app_zip_file" and "app_json_file"). A new app always
- *                             belongs to the current owner; "app_owner_id" is ignored.
- *   POST apps/status          "app_type", "app_slug", "app_status".
- *   POST apps/delete          "app_type", "app_slug": an app in the trash, for good.
- *   POST apps/assets/upload   "app_type", "app_slug", "asset_type", "asset_file[]".
- *   POST apps/assets/delete   "app_type", "app_slug", "asset_name".
+ *   POST apps/save              Create ("app_type", "app_name", "app_author", "app_zip_file")
+ *                               or update ("app_type", "app_id", details, an optional new
+ *                               "app_zip_file" and "app_json_file"). A new app always
+ *                               belongs to the current owner; "app_owner_id" is ignored,
+ *                               and so are "app_slug" and "app_status".
+ *   POST apps/status            "app_type", "app_slug", "app_status".
+ *   POST apps/delete            "app_type", "app_slug": an app in the trash, for good.
+ *   POST apps/assets/upload     "app_type", "app_slug", "asset_type", "asset_file[]".
+ *   POST apps/assets/delete     "app_type", "app_slug", "asset_name".
+ *   POST apps/artifacts/upload  "app_type", "app_slug", "artifact_file", optional
+ *                               "canonical_filename" (the file's own name by default).
+ *   PUT  apps/artifacts/update  "app_type", "app_slug", "artifact_filename" (the current
+ *                               name), "canonical_filename", optional "artifact_file":
+ *                               renames, or replaces with the file.
+ *   POST apps/artifacts/delete  "app_type", "app_slug", "artifact_filename".
  *
- * The rules, capabilities included, are HostingController's, so each is
- * enforced once for the admin dashboard, the REST API, the CLI and here.
- * This class only scopes the request to the current owner and answers
- * { success, message, redirect? } for page-forms.js.
+ * Each action is checked twice: here, against the owner's apps and the
+ * capabilities of OwnerAppScope::ACTIONS, before anything is touched; then
+ * by HostingController, whose rules (capabilities, ownership, suspension,
+ * file validation) are enforced once for the admin dashboard, the REST API,
+ * the CLI and here. This class answers { success, message, redirect? } for
+ * page-forms.js.
  */
 final class AppActions {
 
 	/**
-	 * @param Guard             $guard      The signed-in principal.
+	 * Request fields only an administrator sets; never taken from the client dashboard.
+	 */
+	private const ADMIN_FIELDS = [ 'app_owner_id', 'app_slug', 'app_status', 'new_slug' ];
+
+	/**
+	 * @param OwnerAppScope     $scope      The current owner's apps.
 	 * @param HostingController $hosting    The hosting rules.
 	 * @param URLManager        $urlmanager Redirects.
 	 */
 	public function __construct(
-		private Guard $guard,
+		private OwnerAppScope $scope,
 		private HostingController $hosting,
 		private URLManager $urlmanager
 	) {}
@@ -62,24 +75,34 @@ final class AppActions {
 	 * @return Response
 	 */
 	public function save( Request $request ) : Response {
-		$request->remove( 'app_owner_id' );
-
 		$is_new = 0 === (int) $request->get( 'app_id', 0 );
+		$type   = (string) $request->get( 'app_type', '' );
+
+		foreach ( self::ADMIN_FIELDS as $field ) {
+			$request->remove( $field );
+		}
 
 		if ( $is_new ) {
 			// A new app goes to the owner acting; without one there is no one to own it.
-			if ( null === $this->owner_id() ) {
+			if ( null === $this->scope->owner_id() ) {
 				return $this->failure( new RequestException( 'unauthorized_scope', smliser__( 'Switch to an account or organization that can host apps first.' ), [ 'status' => 403 ] ) );
 			}
 
-			$request->remove( 'app_slug' );
+			if ( ! $this->scope->can( 'create' ) ) {
+				return $this->forbidden();
+			}
 		} else {
-			$app = $this->owned_app( (string) $request->get( 'app_type', '' ), (int) $request->get( 'app_id', 0 ) );
+			$app = $this->scope->find( $type, (int) $request->get( 'app_id', 0 ) );
 
-			if ( $app instanceof Exception ) {
-				return $this->failure( $app );
+			if ( null === $app ) {
+				return $this->not_found();
 			}
 
+			if ( ! $this->scope->can( 'update' ) ) {
+				return $this->forbidden();
+			}
+
+			$request->set( 'app_type', $app->get_type() );
 			$request->set( 'app_id', $app->get_id() );
 		}
 
@@ -92,14 +115,23 @@ final class AppActions {
 	/**
 	 * Change an app's status.
 	 *
+	 * Into or out of the trash needs the trash capabilities too.
+	 *
 	 * @param Request $request
 	 * @return Response
 	 */
 	public function status( Request $request ) : Response {
-		$app = $this->owned_app_by_slug( $request );
+		$app = $this->owned_app( $request );
 
-		if ( $app instanceof Exception ) {
-			return $this->failure( $app );
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		$trash  = AbstractHostedApp::STATUS_TRASH;
+		$action = $trash === (string) $request->get( 'app_status', '' ) || $trash === $app->get_status() ? 'trash' : 'change_status';
+
+		if ( ! $this->scope->can( $action ) ) {
+			return $this->forbidden();
 		}
 
 		return $this->relay( $this->hosting->change_app_status( $request, $app ), $this->app_url( $app ) );
@@ -112,10 +144,14 @@ final class AppActions {
 	 * @return Response
 	 */
 	public function delete( Request $request ) : Response {
-		$app = $this->owned_app_by_slug( $request );
+		$app = $this->owned_app( $request );
 
-		if ( $app instanceof Exception ) {
-			return $this->failure( $app );
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		if ( ! $this->scope->can( 'delete' ) ) {
+			return $this->forbidden();
 		}
 
 		return $this->relay(
@@ -134,10 +170,14 @@ final class AppActions {
 	 * @return Response
 	 */
 	public function upload_assets( Request $request ) : Response {
-		$app = $this->owned_app_by_slug( $request );
+		$app = $this->owned_app( $request );
 
-		if ( $app instanceof Exception ) {
-			return $this->failure( $app );
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		if ( ! $this->scope->can( 'upload_assets' ) ) {
+			return $this->forbidden();
 		}
 
 		$response = $this->hosting->app_asset_upload( $request );
@@ -151,7 +191,8 @@ final class AppActions {
 		$failed = [];
 
 		foreach ( (array) ( $result['failed'] ?? [] ) as $file => $reasons ) {
-			$failed[] = sprintf( '%s: %s', 'system' === $file ? 'Upload' : $file, implode( ' ', array_map( 'strval', (array) $reasons ) ) );
+			/* translators: 1: a file name, or "Upload" for the upload as a whole, 2: why it failed. */
+			$failed[] = sprintf( smliser__( '%1$s: %2$s' ), 'system' === $file ? smliser__( 'Upload' ) : $file, implode( ' ', array_map( 'strval', (array) $reasons ) ) );
 		}
 
 		if ( [] !== $failed ) {
@@ -160,7 +201,8 @@ final class AppActions {
 
 		$count = count( (array) ( $result['uploaded'] ?? [] ) );
 
-		return $this->success( 1 === $count ? smliser__( 'The image is uploaded.' ) : sprintf( smliser__( '%d images are uploaded.' ), $count ), $this->app_url( $app ) );
+		/* translators: %d: number of images uploaded. */
+		return $this->success( sprintf( smliser_n( '%d image is uploaded.', '%d images are uploaded.', $count ), $count ), $this->app_url( $app ) );
 	}
 
 	/**
@@ -170,13 +212,89 @@ final class AppActions {
 	 * @return Response
 	 */
 	public function delete_asset( Request $request ) : Response {
-		$app = $this->owned_app_by_slug( $request );
+		$app = $this->owned_app( $request );
 
-		if ( $app instanceof Exception ) {
-			return $this->failure( $app );
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		if ( ! $this->scope->can( 'delete_assets' ) ) {
+			return $this->forbidden();
 		}
 
 		return $this->relay( $this->hosting->app_asset_delete( $request ), $this->app_url( $app ) );
+	}
+
+	/**
+	 * Add an artifact: a file distributed beside the main package.
+	 *
+	 * @param Request $request
+	 * @return Response
+	 */
+	public function upload_artifact( Request $request ) : Response {
+		$app = $this->owned_app( $request );
+
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		if ( ! $this->scope->can( 'upload_artifacts' ) ) {
+			return $this->forbidden();
+		}
+
+		// Without a name, the artifact keeps the uploaded file's own.
+		if ( $request->isEmpty( 'canonical_filename' ) ) {
+			$request->set( 'canonical_filename', (string) $request->get_file( 'artifact_file' )?->get_client_name() );
+		}
+
+		$request->remove( 'artifact_filename' );
+
+		return $this->relay_artifact( $this->hosting->app_artifact_upload( $request ), $app, smliser__( 'The artifact is uploaded.' ) );
+	}
+
+	/**
+	 * Rename an artifact, or replace it with a new file.
+	 *
+	 * @param Request $request
+	 * @return Response
+	 */
+	public function update_artifact( Request $request ) : Response {
+		$app = $this->owned_app( $request );
+
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		if ( ! $this->scope->can( 'edit_artifacts' ) ) {
+			return $this->forbidden();
+		}
+
+		// An empty name keeps the current one.
+		if ( $request->isEmpty( 'canonical_filename' ) ) {
+			$request->set( 'canonical_filename', (string) $request->get( 'artifact_filename', '' ) );
+		}
+
+		return $this->relay_artifact( $this->hosting->app_artifact_upload( $request ), $app, smliser__( 'The artifact is saved.' ) );
+	}
+
+	/**
+	 * Delete an artifact.
+	 *
+	 * @param Request $request
+	 * @return Response
+	 */
+	public function delete_artifact( Request $request ) : Response {
+		$app = $this->owned_app( $request );
+
+		if ( null === $app ) {
+			return $this->not_found();
+		}
+
+		if ( ! $this->scope->can( 'delete_artifacts' ) ) {
+			return $this->forbidden();
+		}
+
+		return $this->relay_artifact( $this->hosting->app_artifact_delete( $request ), $app, smliser__( 'The artifact is deleted.' ) );
 	}
 
 	/*
@@ -186,67 +304,20 @@ final class AppActions {
 	*/
 
 	/**
-	 * The ID of the owner the user acts for.
-	 *
-	 * @return int|null
-	 */
-	private function owner_id() : ?int {
-		$id = (int) $this->guard->get_principal()?->get_owner()?->get_id();
-
-		return $id > 0 ? $id : null;
-	}
-
-	/**
-	 * An app of the current owner, by type and ID.
-	 *
-	 * @param string $type
-	 * @param int    $id
-	 * @return AbstractHostedApp|Exception
-	 */
-	private function owned_app( string $type, int $id ) : AbstractHostedApp|Exception {
-		$registry = HostedAppsRegistry::instance();
-		$type     = $registry->normalize_app_type( $type );
-		$app      = $id > 0 && $registry->is_app_type_registered( $type ) ? HostedApplicationService::get_app_by_id( $type, $id ) : null;
-
-		return $this->scoped( $app );
-	}
-
-	/**
 	 * An app of the current owner, by the request's "app_type" and "app_slug".
 	 *
 	 * The request is set to the app's own type and slug, so the controller
 	 * works on the app checked here.
 	 *
 	 * @param Request $request
-	 * @return AbstractHostedApp|Exception
+	 * @return AbstractHostedApp|null Null for an app of any other owner.
 	 */
-	private function owned_app_by_slug( Request $request ) : AbstractHostedApp|Exception {
-		$registry = HostedAppsRegistry::instance();
-		$type     = $registry->normalize_app_type( (string) $request->get( 'app_type', '' ) );
-		$slug     = (string) $request->get( 'app_slug', '' );
-		$app      = '' !== $slug && $registry->is_app_type_registered( $type ) ? HostedApplicationService::get_app_by_slug( $type, $slug ) : null;
-		$app      = $this->scoped( $app );
+	private function owned_app( Request $request ) : ?AbstractHostedApp {
+		$app = $this->scope->find_by_slug( (string) $request->get( 'app_type', '' ), (string) $request->get( 'app_slug', '' ) );
 
-		if ( $app instanceof AbstractHostedApp ) {
+		if ( null !== $app ) {
 			$request->set( 'app_type', $app->get_type() );
 			$request->set( 'app_slug', $app->get_slug() );
-		}
-
-		return $app;
-	}
-
-	/**
-	 * The app when the current owner owns it; "not found" otherwise, so
-	 * other owners' apps are not revealed.
-	 *
-	 * @param AbstractHostedApp|null $app
-	 * @return AbstractHostedApp|Exception
-	 */
-	private function scoped( ?AbstractHostedApp $app ) : AbstractHostedApp|Exception {
-		$owner_id = $this->owner_id();
-
-		if ( null === $app || null === $owner_id || $app->get_owner_id() !== $owner_id ) {
-			return new RequestException( 'resource_not_found', smliser__( 'This app does not exist.' ), [ 'status' => 404 ] );
 		}
 
 		return $app;
@@ -280,9 +351,45 @@ final class AppActions {
 		}
 
 		$body    = $response->get_body();
-		$message = is_array( $body ) ? (string) ( $body['data']['message'] ?? 'Done.' ) : smliser__( 'Done.' );
+		$message = is_array( $body ) ? (string) ( $body['data']['message'] ?? '' ) : '';
 
-		return $this->success( $message, $redirect );
+		return $this->success( '' !== $message ? $message : smliser__( 'Done.' ), $redirect );
+	}
+
+	/**
+	 * Turn an artifact answer into page-forms.js's, back on the app's page.
+	 *
+	 * The controller's artifact answers carry data, not a message.
+	 *
+	 * @param Response          $response
+	 * @param AbstractHostedApp $app
+	 * @param string            $message The message on success.
+	 * @return Response
+	 */
+	private function relay_artifact( Response $response, AbstractHostedApp $app, string $message ) : Response {
+		if ( $response->has_errors() ) {
+			return $this->relay( $response, null );
+		}
+
+		return $this->success( $message, $this->app_url( $app ) );
+	}
+
+	/**
+	 * The answer for an app outside the owner's apps: it does not exist.
+	 *
+	 * @return Response
+	 */
+	private function not_found() : Response {
+		return $this->failure( new RequestException( 'resource_not_found', smliser__( 'This app does not exist.' ), [ 'status' => 404 ] ) );
+	}
+
+	/**
+	 * The answer for an action the user's role does not allow.
+	 *
+	 * @return Response
+	 */
+	private function forbidden() : Response {
+		return $this->failure( new RequestException( 'unauthorized_scope', smliser__( 'Your role here does not allow this.' ), [ 'status' => 403 ] ) );
 	}
 
 	/**

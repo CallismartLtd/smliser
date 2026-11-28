@@ -121,9 +121,17 @@ final class JS {
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
+			// Self-contained (SmliserJsonEditor), so themed pages load it without the admin scripts.
 			'json-editor' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/admin/json-editor%s.js', $suffix ) ),
-				'dependencies' => [ 'i18n', 'jquery', 'core-admin', 'modal' ],
+				'dependencies' => [ 'i18n' ],
+				'version'      => SMLISER_VER,
+				'footer'       => true
+			],
+			// Mounts the JSON editor on textarea[data-smliser-json-editor] of themed pages (client dashboard apps).
+			'manifest-editor' => [
+				'url'          => $this->urlmanager->assets_url( sprintf( 'js/manifest-editor%s.js', $suffix ) ),
+				'dependencies' => [ 'i18n', 'json-editor' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true
 			],
@@ -168,6 +176,13 @@ final class JS {
 			'security-tabs' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'js/security-tabs%s.js', $suffix ) ),
 				'dependencies' => [],
+				'version'      => SMLISER_VER,
+				'footer'       => true,
+			],
+			// Client dashboard Settings page: language and theme tabs (SettingsPage).
+			'dashboard-settings' => [
+				'url'          => $this->urlmanager->assets_url( sprintf( 'js/dashboard-settings%s.js', $suffix ) ),
+				'dependencies' => [ 'i18n' ],
 				'version'      => SMLISER_VER,
 				'footer'       => true,
 			],

@@ -11,6 +11,7 @@ use SmartLicenseServer\Admin\AdminDashboardRegistry;
 use SmartLicenseServer\Assets\AssetsManager;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
+use SmartLicenseServer\Core\SiteFavicon;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\Templates\TemplateLocator;
@@ -60,6 +61,7 @@ class Shell {
 	 * @param AdminDashboardRegistry	$registry
 	 * @param TemplateLocator			$locator
 	 * @param Request					$request
+	 * @param SiteFavicon|null			$favicon The site icon printed in the dashboard's <head>.
 	 */
 	public function __construct(
 		protected AdminDashboardRegistry $registry,
@@ -67,7 +69,8 @@ class Shell {
 		protected Request $request,
 		protected Guard $guard,
 		protected AssetsManager $assets_manager,
-		protected URLManager $urlmanager
+		protected URLManager $urlmanager,
+		protected ?SiteFavicon $favicon = null
 	) {}
 
 	/*
@@ -88,6 +91,7 @@ class Shell {
 			'guard'          => $this->guard,
 			'assets_manager' => $this->assets_manager,
 			'urlmanager'     => $this->urlmanager,
+			'favicon'        => $this->favicon,
 		] );
 	}
 

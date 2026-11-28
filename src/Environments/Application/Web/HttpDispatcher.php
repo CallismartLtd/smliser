@@ -29,8 +29,11 @@ use SmartLicenseServer\Auth\ActionHandlers\AuthManagement;
 use SmartLicenseServer\Auth\ContentHandlers\AuthPages;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\ContextSwitch;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\AppActions;
+use SmartLicenseServer\ClientDashboard\ActionHandlers\LicenseActions;
+use SmartLicenseServer\ClientDashboard\ActionHandlers\AppLicenseActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\OrganizationActions;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\PreferenceManagement;
+use SmartLicenseServer\ClientDashboard\ActionHandlers\AccountManagement;
 use SmartLicenseServer\ClientDashboard\ActionHandlers\SecurityManagement;
 use SmartLicenseServer\ClientDashboard\Page\Dispatcher as ClientDashboardDispatcher;
 use SmartLicenseServer\Core\Container\Container;
@@ -692,6 +695,17 @@ final class HttpDispatcher {
 					handler: [FileRequestController::class, 'get_client_licensed_app']
 				);
 
+				// An app's package and artifacts, for the owner the user acts for (Apps).
+				$this->router->get(
+					pattern: "download/app/{app_type:{$app_types}}/{app_id:int}",
+					handler: [FileRequestController::class, 'get_client_owned_app_file']
+				);
+
+				$this->router->get(
+					pattern: "download/app/{app_type:{$app_types}}/{app_id:int}/artifacts/{artifact_filename:.+}",
+					handler: [FileRequestController::class, 'get_client_owned_app_file']
+				);
+
 				// Pages (themed), built from ClientDashboardRegistry like the admin dashboard.
 				$this->pages->get( '/', [ClientDashboardDispatcher::class, 'render_client_dashboard'] );
 				$this->pages->get( '{page:slug}', [ClientDashboardDispatcher::class, 'render_client_dashboard'] );
@@ -716,6 +730,17 @@ final class HttpDispatcher {
 					$this->router->post( 'security/passkey/finish', [ SecurityManagement::class, 'finish_passkey' ] );
 					$this->router->post( 'security/passkey/revoke', [ SecurityManagement::class, 'revoke_passkey' ] );
 					$this->router->post( 'security/disable', [ SecurityManagement::class, 'disable' ] );
+					$this->router->post( 'security/password', [ SecurityManagement::class, 'change_password' ] );
+					$this->router->post( 'security/sessions/revoke', [ SecurityManagement::class, 'sign_out_other_sessions' ] );
+
+					// The user's own account (AccountManagement).
+					$this->router->post( 'account/profile', [ AccountManagement::class, 'update_profile' ] );
+					$this->router->post( 'account/email/start', [ AccountManagement::class, 'start_email_change' ] );
+					$this->router->post( 'account/email/verify', [ AccountManagement::class, 'verify_email_change' ] );
+					$this->router->post( 'account/notifications', [ AccountManagement::class, 'save_notifications' ] );
+					$this->router->post( 'account/export', [ AccountManagement::class, 'request_export' ] );
+					$this->router->get( 'account/export/download', [ AccountManagement::class, 'download_export' ] );
+					$this->router->post( 'account/delete', [ AccountManagement::class, 'delete_account' ] );
 
 					$this->router->post(
 						pattern: 'context',
@@ -802,6 +827,40 @@ final class HttpDispatcher {
 					$this->router->post(
 						pattern: 'apps/assets/delete',
 						handler: [AppActions::class, 'delete_asset']
+					);
+
+					$this->router->post(
+						pattern: 'apps/artifacts/upload',
+						handler: [AppActions::class, 'upload_artifact']
+					);
+
+					// PUT: HostingController::app_artifact_upload() replaces or renames on PUT.
+					$this->router->put(
+						pattern: 'apps/artifacts/update',
+						handler: [AppActions::class, 'update_artifact']
+					);
+
+					$this->router->post(
+						pattern: 'apps/artifacts/delete',
+						handler: [AppActions::class, 'delete_artifact']
+					);
+
+					// The signed-in user's own licenses (LicenseActions). A holder can only
+					// deactivate a license; no route frees a site or reactivates a license.
+					$this->router->post(
+						pattern: 'licenses/deactivate',
+						handler: [LicenseActions::class, 'deactivate']
+					);
+
+					// The licenses of the current owner's apps (AppLicenseActions).
+					$this->router->post(
+						pattern: 'app-licenses/free-site',
+						handler: [AppLicenseActions::class, 'free_site']
+					);
+
+					$this->router->post(
+						pattern: 'app-licenses/status',
+						handler: [AppLicenseActions::class, 'status']
 					);
 				},
 					middleware: [

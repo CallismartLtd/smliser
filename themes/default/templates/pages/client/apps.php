@@ -6,7 +6,9 @@
  * @var list<array{name: string, type: string, slug: string, status: string,
  *     status_label: string, updated: string, url: string}> $apps
  * @var list<array{label: string, url: string, current: bool}> $filters
+ * @var list<array{label: string, url: string, current: bool}> $type_filters By type; empty with one type.
  * @var string $status The status shown; "" for every status.
+ * @var string $type The type shown; "" for every type.
  * @var array{page: int, total_pages: int, total: int, previous_url: string, next_url: string} $pagination
  * @var string $new_url The upload page; "" when the user cannot upload.
  * @var SmartLicenseServer\Environments\Application\Theming\ThemeContext $this
@@ -34,10 +36,18 @@ $tones = [
 	<?php endforeach; ?>
 </nav>
 
+<?php if ( [] !== $type_filters ) : ?>
+	<nav class="dash-filters" aria-label="<?php smliser_esc_attr_e( 'Filter by type' ); ?>">
+		<?php foreach ( $type_filters as $filter ) : ?>
+			<a href="<?php echo escUrl( $filter['url'] ); ?>"<?php echo $filter['current'] ? ' aria-current="page"' : ''; ?>><?php echo escHtml( $filter['label'] ); ?></a>
+		<?php endforeach; ?>
+	</nav>
+<?php endif; ?>
+
 <?php if ( [] === $apps ) : ?>
 	<div class="cell">
-		<h3><?php echo escHtml( '' === $status ? smliser__( 'No apps yet' ) : smliser__( 'No apps here' ) ); ?></h3>
-		<p><?php echo escHtml( '' === $status ? ( '' !== $new_url ? smliser__( 'Upload a plugin, theme or software package to host it here.' ) : smliser__( 'Apps uploaded for this account appear here.' ) ) : smliser__( 'No app has this status.' ) ); ?></p>
+		<h3><?php echo escHtml( '' === $status && '' === $type ? smliser__( 'No apps yet' ) : smliser__( 'No apps here' ) ); ?></h3>
+		<p><?php echo escHtml( '' === $status && '' === $type ? ( '' !== $new_url ? smliser__( 'Upload a plugin, theme or software package to host it here.' ) : smliser__( 'Apps uploaded for this account appear here.' ) ) : smliser__( 'No app matches these filters.' ) ); ?></p>
 	</div>
 <?php else : ?>
 	<ul class="records">

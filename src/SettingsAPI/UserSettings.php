@@ -25,6 +25,7 @@ class UserSettings extends DataStore {
 	const DASHBOARD_SIDEBAR_COLLAPSED_NAME = 'sidebar_collapsed';
 	const LOCALE                           = 'locale';
 	const SESSIONS_VALID_AFTER             = 'sessions_valid_after';
+	const EMAIL_OPT_OUTS                   = 'email_opt_outs';
 
 	/**
 	 * Cached user settings, invalidated on delete.

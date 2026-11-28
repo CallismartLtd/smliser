@@ -221,6 +221,52 @@ class RepositoryAnalytics extends DataStore {
 	}
 
 	/**
+	 * The activity log of one license, newest first, a page at a time.
+	 *
+	 * @param int          $license_id  The license.
+	 * @param int          $page        Page number.
+	 * @param int          $limit       Entries per page.
+	 * @param list<string> $event_types Event types to include; empty for all.
+	 * @return array{
+	 *  items: list<array{event_type: string, website: string, created_at: int}>,
+	 *  pagination: array{page: int, limit: int, total: int, total_pages: int}
+	 * }
+	 */
+	public function get_license_logs( int $license_id, int $page = 1, int $limit = 20, array $event_types = [] ) : array {
+		$page  = max( 1, $page );
+		$limit = max( 1, $limit );
+		$logs  = array_values( array_filter(
+			$this->get_license_activity_logs(),
+			static fn ( $log ) : bool => is_array( $log )
+				&& $license_id > 0
+				&& (int) ( $log['license_id'] ?? 0 ) === $license_id
+				&& ( [] === $event_types || in_array( (string) ( $log['event_type'] ?? '' ), $event_types, true ) )
+		) );
+
+		usort( $logs, static fn ( array $a, array $b ) : int => (int) ( $b['created_at'] ?? 0 ) <=> (int) ( $a['created_at'] ?? 0 ) );
+
+		$total = count( $logs );
+		$items = array_map(
+			static fn ( array $log ) : array => [
+				'event_type' => (string) ( $log['event_type'] ?? '' ),
+				'website'    => (string) ( $log['website'] ?? '' ),
+				'created_at' => (int) ( $log['created_at'] ?? 0 ),
+			],
+			array_slice( $logs, ( $page - 1 ) * $limit, $limit )
+		);
+
+		return [
+			'items'      => $items,
+			'pagination' => [
+				'page'        => $page,
+				'limit'       => $limit,
+				'total'       => $total,
+				'total_pages' => (int) ceil( $total / $limit ),
+			],
+		];
+	}
+
+	/**
 	 * Record a license activity with structured event type.
 	 *
 	 * Dispatches the read-modify-write to the background queue so

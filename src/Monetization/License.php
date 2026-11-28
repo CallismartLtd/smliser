@@ -1096,6 +1096,132 @@ class License extends DataStore {
 	}
 
 	/**
+	 * The licenses issued for some apps, filtered and paginated.
+	 *
+	 * Used to show an app owner the licenses sold for their apps: only
+	 * licenses whose app is one of $app_props are read, whatever $args say.
+	 *
+	 * A status filter matches the stored status, or, for a license whose
+	 * status is calculated (stored empty), the status its dates give, the
+	 * same way get_status() derives it.
+	 *
+	 * @param list<string> $app_props The apps, as "type/slug" (get_app_prop( 'view' )).
+	 * @param array{
+	 *  status?: string,
+	 *  search?: string,
+	 *  page?: int,
+	 *  limit?: int
+	 * } $args status: one of get_allowed_statuses(), empty for any; search: the start
+	 *        of a license key, or part of the licensee's email address or name.
+	 * @return array{
+	 *  items: static[],
+	 *  pagination: array{page: int, limit: int, total: int, total_pages: int}
+	 * }
+	 */
+	public static function search_for_apps( array $app_props, array $args = [] ) : array {
+		$page      = max( 1, (int) ( $args['page'] ?? 1 ) );
+		$limit     = max( 1, (int) ( $args['limit'] ?? 20 ) );
+		$status    = strtolower( trim( (string) ( $args['status'] ?? '' ) ) );
+		$search    = trim( (string) ( $args['search'] ?? '' ) );
+		$app_props = array_values( array_unique( array_filter( array_map( 'strval', $app_props ) ) ) );
+		$empty     = [
+			'items'      => [],
+			'pagination' => [ 'page' => $page, 'limit' => $limit, 'total' => 0, 'total_pages' => 0 ],
+		];
+
+		if ( [] === $app_props || ( '' !== $status && ! in_array( $status, static::get_allowed_statuses(), true ) ) ) {
+			return $empty;
+		}
+
+		$table  = TableName::LICENSES->table();
+		$filter = function ( $query ) use ( $app_props, $status, $search ) {
+			$query->where_in( 'app_prop', $app_props );
+
+			if ( '' !== $status ) {
+				$query->where_group( fn ( $group ) => static::status_condition( $group, $status ) );
+			}
+
+			if ( '' !== $search ) {
+				$query->where_group(
+					fn ( $group ) => $group->where_starts_with( 'license_key', $search )
+						->or_where_contains( 'licensee_email', $search )
+						->or_where_contains( 'licensee_fullname', $search )
+				);
+			}
+
+			return $query;
+		};
+
+		$count = $filter( static::query()->select( 'COUNT(*)' )->from( $table ) );
+		$total = (int) static::$DB->get_var( $count->build(), $count->get_bindings() );
+
+		if ( 0 === $total ) {
+			return $empty;
+		}
+
+		$sql  = $filter( static::query()->select( '*' )->from( $table ) )
+			->order_by( 'id', 'DESC' )
+			->limit( $limit )
+			->offset( static::$DB->calculate_query_offset( $page, $limit ) );
+		$rows = static::$DB->get_results( $sql->build(), $sql->get_bindings() ) ?: [];
+
+		return [
+			'items'      => array_map( [ static::class, 'from_array' ], $rows ),
+			'pagination' => [
+				'page'        => $page,
+				'limit'       => $limit,
+				'total'       => $total,
+				'total_pages' => (int) ceil( $total / $limit ),
+			],
+		];
+	}
+
+	/**
+	 * Add the conditions matching a status to a query group: the stored
+	 * status, or for a calculated status, the dates that give it.
+	 *
+	 * @param object $group  A query group (where_group() callback argument).
+	 * @param string $status One of get_allowed_statuses().
+	 * @return void
+	 */
+	private static function status_condition( object $group, string $status ) : void {
+		$group->where( 'status', '=', $status );
+
+		$now = ( new DateTimeImmutable( 'now', new DateTimeZone( 'UTC' ) ) )->format( 'Y-m-d H:i:s' );
+
+		// An empty status is calculated from the dates (see get_status()).
+		$calculated = static function ( $query ) : void {
+			$query->where_group( fn ( $empty ) => $empty->where_null( 'status' )->or_where( 'status', '=', '' ) );
+		};
+
+		$started = static function ( $query ) use ( $now ) : void {
+			$query->where_group( fn ( $start ) => $start->where_null( 'start_date' )->or_where( 'start_date', '<=', $now ) );
+		};
+
+		match ( $status ) {
+			static::STATUS_LIFETIME => $group->or_where_group( static function ( $query ) use ( $calculated ) : void {
+				$calculated( $query );
+				$query->where_null( 'end_date' );
+			} ),
+			static::STATUS_PENDING  => $group->or_where_group( static function ( $query ) use ( $calculated, $now ) : void {
+				$calculated( $query );
+				$query->where_not_null( 'end_date' )->where( 'start_date', '>', $now );
+			} ),
+			static::STATUS_EXPIRED  => $group->or_where_group( static function ( $query ) use ( $calculated, $started, $now ) : void {
+				$calculated( $query );
+				$query->where( 'end_date', '<', $now );
+				$started( $query );
+			} ),
+			static::STATUS_ACTIVE   => $group->or_where_group( static function ( $query ) use ( $calculated, $started, $now ) : void {
+				$calculated( $query );
+				$query->where( 'end_date', '>=', $now );
+				$started( $query );
+			} ),
+			default                 => null,
+		};
+	}
+
+	/**
 	 * Save the license.
 	 *
 	 * A new license gets a license key, and a service ID when it has none.

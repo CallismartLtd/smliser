@@ -11,6 +11,7 @@ namespace SmartLicenseServer\Monetization;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use SmartLicenseServer\Analytics\RepositoryAnalytics;
 use SmartLicenseServer\Exceptions\Exception;
 use SmartLicenseServer\HostedApps\AbstractHostedApp;
 use SmartLicenseServer\Security\Actors\User;
@@ -38,6 +39,14 @@ use SmartLicenseServer\Security\Actors\User;
  * whose data has an HTTP "status".
  */
 class LicensingService {
+
+	/**
+	 * @param RepositoryAnalytics|null $analytics Records license activity (site removals,
+	 *                                            status changes); nothing is recorded without it.
+	 */
+	public function __construct(
+		protected ?RepositoryAnalytics $analytics = null
+	) {}
 
 	/**
 	 * Issue a license from a pricing tier.
@@ -159,9 +168,12 @@ class LicensingService {
 	 * @param License $license The license.
 	 * @param string  $status  One of License::get_allowed_statuses(), or empty to
 	 *                         calculate the status from the license dates.
+	 * @param array{ip_address?: string, user_agent?: string, comment?: string, duration?: float}|null $activity
+	 *                         Request details to record the change in the license activity
+	 *                         log with; null to change it without recording.
 	 * @return true|Exception
 	 */
-	public function set_status( License $license, string $status ) : true|Exception {
+	public function set_status( License $license, string $status, ?array $activity = null ) : true|Exception {
 		if ( ! $license->exists() ) {
 			return new Exception( 'license_not_found', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
 		}
@@ -170,9 +182,67 @@ class LicensingService {
 			return new Exception( 'invalid_status', sprintf( smliser__( 'Unknown license status "%s". Use one of: %s.' ), $status, implode( ', ', License::get_allowed_statuses() ) ), [ 'status' => 400 ] );
 		}
 
+		$previous = $license->get_status();
+
 		$license->set_status( $status );
 
-		return $this->save( $license );
+		$saved = $this->save( $license );
+
+		if ( true === $saved && null !== $activity ) {
+			$this->log( $license, 'status_change', $activity + [
+				'comment' => sprintf( 'Status changed from %s to %s', $previous, $license->get_status() ),
+			] );
+		}
+
+		return $saved;
+	}
+
+	/**
+	 * Free a site: remove a domain from the domains a license is activated on.
+	 *
+	 * The domain's download tokens are revoked with it, so the freed site
+	 * keeps no download access, and the removal is recorded in the license
+	 * activity log as an uninstallation, the way the REST uninstallation
+	 * records it. Who may do this is the caller's check: the admin
+	 * dashboard (Monetization\Controller) and the app owner's client
+	 * dashboard (ClientDashboard\ActionHandlers\AppLicenseActions).
+	 *
+	 * @param License $license  The license.
+	 * @param string  $domain   The domain or URL, as activated.
+	 * @param array{ip_address?: string, user_agent?: string, comment?: string, duration?: float} $activity
+	 *                          Request details for the activity log.
+	 * @return true|Exception
+	 */
+	public function free_site( License $license, string $domain, array $activity = [] ) : true|Exception {
+		if ( ! $license->exists() ) {
+			return new Exception( 'license_not_found', smliser__( 'The license does not exist.' ), [ 'status' => 404 ] );
+		}
+
+		$domain = trim( $domain );
+
+		if ( '' === $domain ) {
+			return new Exception( 'invalid_input', smliser__( 'Provide the domain to uninstall.' ), [ 'status' => 400 ] );
+		}
+
+		if ( $license->is_new_domain( $domain ) ) {
+			return new Exception( 'domain_not_active', sprintf( smliser__( 'The license is not activated on %s.' ), $domain ), [ 'status' => 404 ] );
+		}
+
+		$host = License::activation_host( $domain );
+
+		if ( ! $license->remove_activated_domain( $domain ) ) {
+			return new Exception( 'site_not_freed', sprintf( smliser__( 'Unable to uninstall "%s"' ), $domain ), [ 'status' => 500 ] );
+		}
+
+		// A freed domain keeps no download access.
+		DownloadToken::revoke_for_activation( $license, $host );
+
+		$this->log( $license, 'uninstallation', $activity + [
+			'website' => $host,
+			'comment' => sprintf( 'The domain "%s" was removed from the license', $host ),
+		] );
+
+		return true;
 	}
 
 	/**
@@ -221,6 +291,21 @@ class LicensingService {
 	 */
 	public function find_by_reference( string $provider_id, string $external_ref ) : ?License {
 		return License::get_by_source( $provider_id, $external_ref );
+	}
+
+	/**
+	 * Record a license activity, when an activity log is available.
+	 *
+	 * @param License              $license
+	 * @param string               $event_type activation, deactivation, uninstallation, status_change, ...
+	 * @param array<string, mixed> $activity   ip_address, user_agent, website, comment, duration.
+	 * @return void
+	 */
+	protected function log( License $license, string $event_type, array $activity ) : void {
+		$this->analytics?->log_license_activity( [
+			'license_id' => $license->get_id(),
+			'event_type' => $event_type,
+		] + $activity );
 	}
 
 	/**

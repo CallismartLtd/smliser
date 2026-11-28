@@ -19,6 +19,7 @@ use SmartLicenseServer\FileSystem\FileSystemHelper;
 use SmartLicenseServer\HostedApps\HostedApplicationService;
 use SmartLicenseServer\HostedApps\HostedAppsInterface;
 use SmartLicenseServer\HostedApps\HostedAppsRegistry;
+use SmartLicenseServer\HostedApps\OwnerAppScope;
 use SmartLicenseServer\HostedApps\Storage\AppFile;
 use SmartLicenseServer\Monetization\License;
 use SmartLicenseServer\Monetization\PurchaseRequest;
@@ -365,6 +366,54 @@ class FileRequestController {
 		}
 	}
 	
+	/**
+	 * Serve an app's package, or one of its artifacts, to its owner.
+	 *
+	 * For the client dashboard's Apps page. The app must be one of the owner
+	 * the user acts for (OwnerAppScope), and their role there must allow
+	 * downloads (hosted_apps.access_files or repository.download). For anyone
+	 * else the app does not exist, so its ID tells them nothing. Monetization
+	 * does not apply: the owner always gets their own files, whatever the
+	 * app's status. The owner's downloads are not counted in the app's
+	 * analytics. Nothing is cached.
+	 *
+	 * Route params: app_type, app_id, and artifact_filename for an artifact.
+	 *
+	 * @param FileRequest|Request $request The file request object.
+	 * @return FileResponse
+	 */
+	public function get_client_owned_app_file( FileRequest|Request $request ) : FileResponse {
+		try {
+			$scope = new OwnerAppScope( $this->guard );
+			$app   = $scope->find( (string) $request->get( 'app_type', '' ), (int) $request->get( 'app_id', 0 ) );
+
+			if ( null === $app || ! $scope->can( 'download' ) ) {
+				throw new FileRequestException( 'file_not_found' );
+			}
+
+			$artifact_filename = (string) $request->get( 'artifact_filename', '' );
+
+			if ( '' === $artifact_filename ) {
+				$file = $app->get_package();
+			} else {
+				$repo_class = HostedAppsRegistry::instance()->get_app_type_directory_class( $app->get_type() );
+				$artifact   = $repo_class?->get_artifact( $app->get_slug(), $artifact_filename );
+				$file       = $artifact['file'] ?? null;
+			}
+
+			if ( null === $file ) {
+				throw new FileRequestException( 'file_not_found' );
+			}
+
+			$response = new FileResponse( $file, $request, [ 'type' => $app->get_type() ] );
+
+			return $response->set_header( 'Cache-Control', 'no-store' );
+
+		} catch ( FileRequestException $e ) {
+			return FileResponse::error_response( $e, $request );
+		}
+	}
+
 	/**
 	 * Serve a license document to the user the license is linked to.
 	 *

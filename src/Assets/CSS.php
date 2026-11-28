@@ -108,7 +108,8 @@ final class CSS {
 			],
 			'json-editor' => [
 				'url'          => $this->urlmanager->assets_url( sprintf( 'css/admin/json-editor%s.css', $suffix ) ),
-				'dependencies' => ['core-admin'],
+				// Self-contained: its own --sje-* tokens, so themed pages load it without the admin styles.
+				'dependencies' => [],
 				'version'      => SMLISER_VER,
 				'media-type'   => 'all'
 			],

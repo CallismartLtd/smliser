@@ -484,6 +484,26 @@ class HostedApplicationService extends DataStore {
 	}
 
 	/**
+	 * Get the size of an app's stored package.
+	 *
+	 * @param HostedAppsInterface $app Hosted app instance.
+	 * @return int Size in bytes; 0 when no package is stored.
+	 */
+	public static function get_package_size( HostedAppsInterface $app ) : int {
+		$package = $app->get_package();
+
+		if ( null === $package ) {
+			return 0;
+		}
+
+		try {
+			return AppStorage::instance()->stat( $package )['size'];
+		} catch ( StorageException ) {
+			return 0;
+		}
+	}
+
+	/**
 	 * Delete a trashed app for good: its database record, then its files.
 	 *
 	 * The record goes first: if deleting the files then fails, the app is

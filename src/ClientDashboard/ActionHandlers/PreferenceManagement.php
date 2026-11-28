@@ -37,6 +37,11 @@ final class PreferenceManagement {
 	];
 
 	/**
+	 * Dashboard themes a client may choose. 'auto' follows the system.
+	 */
+	public const THEMES = [ 'auto', 'light', 'dark' ];
+
+	/**
 	 * Constructor.
 	 *
 	 * @param Guard $guard The signed-in principal.
@@ -77,15 +82,31 @@ final class PreferenceManagement {
 		$value = $request->get( 'value', '' );
 
 		if ( UserSettings::LOCALE === $key ) {
-			$value = $this->normalize_locale( (string) $value );
+			$value = self::normalize_locale( (string) $value );
 
 			if ( null === $value ) {
 				return $this->answer( false, smliser__( 'That language is not available.' ), 400 );
 			}
 		}
 
+		if ( UserSettings::DASHBOARD_THEME_NAME === $key ) {
+			$value = self::normalize_theme( (string) $value );
+
+			if ( null === $value ) {
+				return $this->answer( false, smliser__( 'That theme is not available.' ), 400 );
+			}
+		}
+
 		try {
-			$saved = UserSettings::for( $actor )->set( $key, $value );
+			$settings = UserSettings::for( $actor );
+
+			// No language: forget the preference, so the cookie, the site language and the browser apply again.
+			if ( UserSettings::LOCALE === $key && '' === $value ) {
+				$settings->delete( $key );
+				$saved = null === $settings->get( $key );
+			} else {
+				$saved = $settings->set( $key, $value );
+			}
 		} catch ( Throwable $e ) {
 			return $this->answer( false, $e->getMessage(), 500 );
 		}
@@ -102,7 +123,7 @@ final class PreferenceManagement {
 	 * @param string $value
 	 * @return string|null The normalized code, '' or null when invalid.
 	 */
-	private function normalize_locale( string $value ) : ?string {
+	public static function normalize_locale( string $value ) : ?string {
 		if ( '' === $value ) {
 			return '';
 		}
@@ -114,6 +135,22 @@ final class PreferenceManagement {
 		}
 
 		return $locale->code();
+	}
+
+	/**
+	 * Validate a dashboard theme choice: one of THEMES, '' meaning 'auto'.
+	 *
+	 * @param string $value
+	 * @return string|null The theme, or null when invalid.
+	 */
+	public static function normalize_theme( string $value ) : ?string {
+		$value = strtolower( trim( $value ) );
+
+		if ( '' === $value || 'system' === $value ) {
+			return 'auto';
+		}
+
+		return in_array( $value, self::THEMES, true ) ? $value : null;
 	}
 
 	/**

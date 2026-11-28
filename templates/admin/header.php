@@ -12,7 +12,6 @@
  * @var string $title
  * @var string $theme
  * @var bool $collapsed
- * @var string $preferences_url Where the language picker saves the user's choice.
  * @var \SmartLicenseServer\Admin\AdminDashboardRegistry $registry
  * @var \SmartLicenseServer\Assets\AssetsManager $assets_manager
  */
@@ -49,7 +48,6 @@ use SmartLicenseServer\Assets\AssetsManager;
 			</div>
 
 			<div class="dashboard-top-menu-right">
-				<?php echo smliser_language_switcher( $preferences_url ?? '', 'dashboard-language' ); // phpcs:ignore -- escaped. ?>
 				<?php foreach ( $registry->get_top_menus() as $key => $item ) : ?>
 					<?php echo render_top_menu_item( $item ); ?>
 				<?php endforeach; ?>

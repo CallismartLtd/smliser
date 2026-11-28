@@ -21,6 +21,10 @@
  * Also powers language pickers: any <select data-smliser-language-switcher>
  * saves the choice (to the user's preferences when signed in, otherwise a
  * cookie) and reloads the page.
+ *
+ * `window.smliserPreferences` saves the signed-in user's preferences to the
+ * client dashboard `json/preferences` endpoint (smliser_var.preferences_url)
+ * with the CSRF header: setTheme(), applyTheme(), setLanguage(), save().
  */
 ( function ( window, document ) {
 	'use strict';
@@ -250,15 +254,27 @@
 		window.location.assign( url.toString() );
 	}
 
-	async function savePreference( endpoint, locale ) {
-		const vars = ( typeof smliser_var === 'object' && smliser_var ) || window.smliser_var || {};
+	function vars() {
+		return ( typeof smliser_var === 'object' && smliser_var ) || window.smliser_var || {};
+	}
+
+	/**
+	 * Save one of the signed-in user's preferences (PreferenceManagement::save()).
+	 *
+	 * @param {string} endpoint The client dashboard `json/preferences` URL.
+	 * @param {string} key      'locale', 'theme' or 'sidebar_collapsed'.
+	 * @param {string} value
+	 * @return {Promise<string>} The server's message.
+	 */
+	async function savePreference( endpoint, key, value ) {
 		const body = new FormData();
-		body.append( 'key', 'locale' );
-		body.append( 'value', locale );
+		body.append( 'key', key );
+		body.append( 'value', value );
 
 		const headers = {};
-		if ( vars.csrf_header && vars.csrf_token ) {
-			headers[ vars.csrf_header ] = vars.csrf_token;
+		const csrf    = vars();
+		if ( csrf.csrf_header && csrf.csrf_token ) {
+			headers[ csrf.csrf_header ] = csrf.csrf_token;
 		}
 
 		const response = await fetch( endpoint, { method: 'POST', body, headers, credentials: 'same-origin' } );
@@ -267,6 +283,96 @@
 		if ( ! response.ok || ! json.success ) {
 			throw new Error( ( json.data && json.data.message ) || __( 'The preference could not be saved.' ) );
 		}
+
+		return ( json.data && json.data.message ) || __( 'Saved.' );
+	}
+
+	/*
+	|----------------------
+	| Dashboard theme
+	|----------------------
+	*/
+
+	const THEMES = [ 'auto', 'light', 'dark' ];
+
+	function themeStorageKey() {
+		return vars().theme_storage_key || 'dashboard-theme';
+	}
+
+	/**
+	 * Show a theme now and remember it in this browser: 'light' or 'dark' set
+	 * html[data-theme]; 'auto' removes it so prefers-color-scheme applies.
+	 *
+	 * @param {string} theme
+	 */
+	function applyTheme( theme ) {
+		const root = document.documentElement;
+
+		try {
+			if ( 'light' === theme || 'dark' === theme ) {
+				window.localStorage.setItem( themeStorageKey(), theme );
+			} else {
+				window.localStorage.removeItem( themeStorageKey() );
+			}
+		} catch ( e ) {
+			// Storage unavailable (private mode, disabled). The account still keeps the choice.
+		}
+
+		if ( ! root ) {
+			return;
+		}
+
+		if ( 'light' === theme || 'dark' === theme ) {
+			root.setAttribute( 'data-theme', theme );
+		} else {
+			root.removeAttribute( 'data-theme' );
+		}
+	}
+
+	/**
+	 * Choose the dashboard theme: shown at once, remembered in this browser and,
+	 * for a signed-in user, saved to their account.
+	 *
+	 * @param {string} theme    'auto', 'light' or 'dark'.
+	 * @param {string} endpoint Preferences URL; defaults to smliser_var.preferences_url.
+	 * @return {Promise<string>} The server's message ('' when not signed in).
+	 */
+	async function setTheme( theme, endpoint ) {
+		if ( ! THEMES.includes( theme ) ) {
+			throw new Error( __( 'That theme is not available.' ) );
+		}
+
+		applyTheme( theme );
+
+		const url = endpoint || vars().preferences_url;
+
+		return url ? savePreference( url, 'theme', theme ) : '';
+	}
+
+	/*
+	|----------------------
+	| Language
+	|----------------------
+	*/
+
+	/**
+	 * Choose the language and reload the page in it. '' returns to automatic
+	 * (cookie removed, account preference cleared). The page is reloaded only
+	 * once the account was updated, since a saved preference beats the cookie.
+	 *
+	 * @param {string} locale   A locale code, or ''.
+	 * @param {string} endpoint Preferences URL; defaults to smliser_var.preferences_url.
+	 * @return {Promise<void>}
+	 */
+	async function setLanguage( locale, endpoint ) {
+		const url = endpoint || vars().preferences_url;
+
+		if ( url ) {
+			await savePreference( url, 'locale', locale );
+		}
+
+		rememberInCookie( locale );
+		reloadWithoutLangParam();
 	}
 
 	function initSwitchers() {
@@ -280,7 +386,7 @@
 
 				if ( endpoint ) {
 					try {
-						await savePreference( endpoint, locale );
+						await savePreference( endpoint, 'locale', locale );
 					} catch ( e ) {
 						// The cookie still applies; the user is told why the account was not updated.
 						if ( typeof window.console !== 'undefined' ) {
@@ -314,5 +420,17 @@
 		sprintf,
 		esc,
 		formatNumber,
+	} );
+
+	/**
+	 * The signed-in user's preferences, shared by the admin theme toggle and
+	 * the client dashboard Settings page.
+	 */
+	window.smliserPreferences = Object.freeze( {
+		themes: THEMES,
+		save: ( key, value, endpoint ) => savePreference( endpoint || vars().preferences_url, key, value ),
+		applyTheme,
+		setTheme,
+		setLanguage,
 	} );
 }( window, document ) );

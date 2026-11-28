@@ -13,7 +13,8 @@
  *     current: array{menu: string, submenu: ?string},
  *     context: array{action: string, current: string,
  *         options: list<array{value: string, label: string, role: string, type: string, avatar: string, current: bool}>},
- *     account: array{name: string, email: string, verified: bool, resend_url: string}
+ *     account: array{name: string, email: string, verified: bool, resend_url: string},
+ *     theme: string
  * } $dashboard See ClientDashboard\Page\Dispatcher.
  * @var SmartLicenseServer\Environments\Application\Theming\View $view
  * @var SmartLicenseServer\Environments\Application\Theming\ThemeContext $this

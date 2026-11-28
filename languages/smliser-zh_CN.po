@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:05+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: 中文（中国）\n"
 "Language: zh_CN\n"
@@ -179,6 +179,12 @@ msgstr "#f8fafc"
 msgid "#ffffff"
 msgstr "#ffffff"
 
+#. translators: 1: number of sites the license is activated on, 2: number of sites it allows.
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:334
+#, php-format
+msgid "%1$d of %2$d"
+msgstr "%1$d / %2$d"
+
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:79
 #, php-format
@@ -326,6 +332,12 @@ msgstr "%d / %d 缺失（%s）"
 #, php-format
 msgid "%d of %d scheduled tasks are more than %d minutes overdue: %s."
 msgstr "%d / %d 个计划任务已逾期超过 %d 分钟：%s。"
+
+#. translators: %d: number of sites the license is activated on; the license allows any number.
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:330
+#, php-format
+msgid "%d of unlimited"
+msgstr "%d / 不限"
 
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:50
 #, php-format
@@ -1330,6 +1342,12 @@ msgstr "从您的软件中激活许可证、检查更新并下载版本。"
 msgid "Activate this package after installing?"
 msgstr "安装后激活此软件包？"
 
+#. translators: %s: date and time the license was activated on the site.
+#: themes/default/templates/pages/client/license.php:156
+#, php-format
+msgid "Activated %s"
+msgstr "激活于 %s"
+
 #: src/Email/Templates/Licenses/LicenseActivatedEmail.php:70 src/Email/Templates/Licenses/LicenseActivatedEmail.php:177
 msgid "Activated Domain"
 msgstr "已激活的域名"
@@ -1338,9 +1356,17 @@ msgstr "已激活的域名"
 msgid "Activated on"
 msgstr "激活时间"
 
+#: themes/default/templates/pages/client/license.php:142 themes/default/templates/pages/client/licenses.php:120
+msgid "Activated sites"
+msgstr "已激活的站点"
+
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:74 src/Email/Templates/Licenses/LicenseIssuedEmail.php:193 src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:153
 msgid "Activation Limit"
 msgstr "激活上限"
+
+#: themes/default/templates/pages/client/license.php:167
+msgid "Activation history"
+msgstr "激活历史"
 
 #: src/RESTAPI/Handlers/Licenses.php:111
 msgid "Activation not allowed for unissued licenses."
@@ -1552,6 +1578,10 @@ msgstr "全部（%d）"
 msgid "All active login sessions have been terminated across all your devices."
 msgstr "已终止您所有设备上的全部活动登录会话。"
 
+#: themes/default/templates/pages/client/licenses.php:53
+msgid "All apps"
+msgstr "所有应用"
+
 #: templates/admin/contents/system/health.php:80
 msgid "All critical and warning checks passed."
 msgstr "所有严重和警告检查均已通过。"
@@ -1591,6 +1621,10 @@ msgstr "所有资源所有者都将在此列出"
 #: src/Environments/Application/Health/SystemHealth.php:1027
 msgid "All scheduled tasks last ran without error."
 msgstr "所有计划任务上次运行均无错误。"
+
+#: themes/default/templates/pages/client/licenses.php:43
+msgid "All statuses"
+msgstr "所有状态"
 
 #: assets/js/admin/repository-browser.js:290
 msgid "All types"
@@ -1798,6 +1832,10 @@ msgstr "另一个更新正在运行。请在其结束后再试。"
 msgid "Any database"
 msgstr "任意数据库"
 
+#: themes/default/templates/pages/client/licenses.php:51
+msgid "App"
+msgstr "应用"
+
 #: templates/admin/contents/license/view.php:124
 msgid "App Attribute:"
 msgstr "应用属性："
@@ -1859,6 +1897,10 @@ msgstr "未找到应用数据"
 msgid "App monetization"
 msgstr "应用变现"
 
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:302 src/ClientDashboard/ContentHandlers/LicensesPage.php:389
+msgid "App no longer available"
+msgstr "应用已不可用"
+
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:238
 msgid "App not found"
 msgstr "未找到应用"
@@ -1867,6 +1909,10 @@ msgstr "未找到应用"
 #, php-format
 msgid "App packages are signed. Key fingerprint: %s."
 msgstr "应用包已签名。密钥指纹：%s。"
+
+#: themes/default/templates/pages/client/license.php:125
+msgid "App page"
+msgstr "应用页面"
 
 #: src/FileSystem/Repository.php:1020
 msgid "App slug is required to upload artifact."
@@ -2469,6 +2515,10 @@ msgstr "购买"
 msgid "Buy %s — %s"
 msgstr "购买 %s — %s"
 
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:371
+msgid "Buy again"
+msgstr "再次购买"
+
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:86 templates/admin/contents/license/purchase-request.php:61 templates/admin/contents/license/purchase-requests.php:66
 msgid "Buyer"
 msgstr "买家"
@@ -2827,6 +2877,10 @@ msgstr "清除未保存应用别名的应用下载链接以及空的作者主页
 msgid "Clear date"
 msgstr "清除日期"
 
+#: themes/default/templates/pages/client/licenses.php:62
+msgid "Clear filters"
+msgstr "清除筛选"
+
 #: templates/admin/contents/accounts/access-control-form.php:97
 msgid "Clear selected avatar image"
 msgstr "清除所选头像图片"
@@ -3040,6 +3094,10 @@ msgstr "确认密码"
 msgid "Confirm password"
 msgstr "确认密码"
 
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:66
+msgid "Confirm that you want to deactivate this license on every site."
+msgstr "请确认您要在所有站点上停用此许可证。"
+
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
 msgstr "确认这是您的电子邮件地址，以完成账户设置。"
@@ -3151,13 +3209,17 @@ msgstr "复制命令被拒绝。"
 msgid "Copy it before closing this message."
 msgstr "请在关闭此消息之前复制。"
 
-#: themes/default/templates/pages/client/licenses.php:46
+#: themes/default/templates/pages/client/license.php:49 themes/default/templates/pages/client/licenses.php:99
 msgid "Copy key"
 msgstr "复制密钥"
 
 #: templates/admin/contents/license/view.php:183
 msgid "Copy license key"
 msgstr "复制许可证密钥"
+
+#: themes/default/templates/pages/client/license.php:56 themes/default/templates/pages/client/licenses.php:106
+msgid "Copy service ID"
+msgstr "复制服务 ID"
 
 #: themes/default/templates/pages/signing-key.php:60
 msgid "Copy the key above into your app's code. Do not make your app download the key when it checks for updates: a key fetched from the same place as the update proves nothing."
@@ -3530,11 +3592,11 @@ msgstr "数据库索引"
 msgid "Database execution failure dropping application metadata rows."
 msgstr "删除应用元数据行时数据库执行失败。"
 
-#: src/Monetization/License.php:1251
+#: src/Monetization/License.php:1381
 msgid "Database execution failure dropping license activations."
 msgstr "删除许可证激活记录时数据库执行失败。"
 
-#: src/Monetization/License.php:1246
+#: src/Monetization/License.php:1376
 msgid "Database execution failure dropping license metadata entries."
 msgstr "删除许可证元数据条目时数据库执行失败。"
 
@@ -3550,7 +3612,7 @@ msgstr "删除定价层级时数据库执行失败。"
 msgid "Database execution failure dropping primary application entry."
 msgstr "删除主应用条目时数据库执行失败。"
 
-#: src/Monetization/License.php:1255
+#: src/Monetization/License.php:1385
 msgid "Database execution failure dropping primary license record."
 msgstr "删除主许可证记录时数据库执行失败。"
 
@@ -3610,9 +3672,19 @@ msgstr "购买请求被批准或拒绝后付款凭证的保留天数。之后凭
 msgid "Deactivate"
 msgstr "停用"
 
+#: themes/default/templates/pages/client/license.php:198 themes/default/templates/pages/client/license.php:205
+msgid "Deactivate license"
+msgstr "停用许可证"
+
 #: src/Security/Permission/Capability.php:55
 msgid "Deactivate licenses"
 msgstr "停用许可证"
+
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/license.php:197
+#, php-format
+msgid "Deactivate the license for %s on every site? Only the app's owner or an administrator can reactivate it."
+msgstr "要在所有站点上停用 %s 的许可证吗？只有应用所有者或管理员可以重新激活它。"
 
 #: src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:68 src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:158
 msgid "Deactivated Domain"
@@ -3916,6 +3988,7 @@ msgid "Detail card"
 msgstr "详情卡片"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:77
+#: themes/default/templates/pages/client/licenses.php:141
 msgid "Details"
 msgstr "详细信息"
 
@@ -4035,12 +4108,12 @@ msgstr "不允许仅由点组成的路径段。"
 msgid "Double click for fullscreen"
 msgstr "双击进入全屏"
 
-#: themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892
-#: assets/js/admin/repository-browser.js:730
+#: assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892 assets/js/admin/repository-browser.js:730
 msgid "Download"
 msgstr "下载"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/repository/app.php:62
+#. translators: %s: app name.
+#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/client/license.php:117 themes/default/templates/pages/client/licenses.php:153 themes/default/templates/pages/repository/app.php:62
 #, php-format
 msgid "Download %s"
 msgstr "下载 %s"
@@ -4065,7 +4138,7 @@ msgstr "下载增长"
 msgid "Download Key"
 msgstr "下载密钥"
 
-#: themes/default/templates/pages/client/licenses.php:62
+#: themes/default/templates/pages/client/license.php:109 themes/default/templates/pages/client/licenses.php:145
 msgid "Download License"
 msgstr "下载许可证"
 
@@ -4755,7 +4828,7 @@ msgstr "过期时间"
 msgid "Expired download link, please refresh current page."
 msgstr "下载链接已过期，请刷新当前页面。"
 
-#: themes/default/templates/pages/client/licenses.php:50
+#: themes/default/templates/pages/client/license.php:64 themes/default/templates/pages/client/licenses.php:110
 msgid "Expires"
 msgstr "到期"
 
@@ -4911,7 +4984,7 @@ msgstr "一般"
 msgid "Fatal Error"
 msgstr "致命错误"
 
-#: src/Admin/ContentHandlers/LicensePage.php:450
+#: src/Admin/ContentHandlers/LicensePage.php:450 themes/default/templates/pages/client/license.php:94
 msgid "Features"
 msgstr "功能"
 
@@ -5003,6 +5076,10 @@ msgstr "文件"
 #: src/Exceptions/FileRequestException.php:200 src/Exceptions/RequestException.php:247
 msgid "Filesystem Error"
 msgstr "文件系统错误"
+
+#: themes/default/templates/pages/client/licenses.php:60
+msgid "Filter"
+msgstr "筛选"
 
 #: themes/default/templates/pages/client/apps.php:31
 msgid "Filter by status"
@@ -5096,7 +5173,7 @@ msgstr "忘记密码？"
 msgid "Form fields"
 msgstr "表单字段"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:281
 msgid "Form slug or action path is required."
 msgstr "需要表单别名或操作路径。"
 
@@ -5445,6 +5522,10 @@ msgstr "角色的可读名称"
 msgid "I agree to the %1$s and the %2$s."
 msgstr "我同意%1$s和%2$s。"
 
+#: themes/default/templates/pages/client/license.php:203
+msgid "I understand that the license stops working on every site until the app's owner or an administrator reactivates it."
+msgstr "我了解在应用所有者或管理员重新激活之前，该许可证将在所有站点上停止工作。"
+
 #: templates/admin/contents/accounts/owners.php:52 templates/admin/contents/accounts/principals.php:50 templates/admin/contents/system/queues.php:134
 msgid "ID"
 msgstr "ID"
@@ -5485,6 +5566,10 @@ msgstr "如果此电子邮件存在对应账户，您将很快收到密码重置
 #: src/Environments/Application/Health/SystemHealth.php:1187
 msgid "If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back."
 msgstr "如果没有正在运行的更新，请打开“更新”页面，或运行 `smliser update status` 来完成或回滚。"
+
+#: themes/default/templates/pages/client/license.php:195
+msgid "If someone else has your license key, deactivate the license. It is then refused on every site, yours included. No site is freed, and you cannot reactivate it yourself: only the app's owner or an administrator can."
+msgstr "如果其他人拿到了您的许可证密钥，请停用该许可证。之后它会在所有站点上被拒绝，包括您自己的站点。不会释放任何站点，且您无法自行重新激活：只有应用所有者或管理员可以。"
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:82 src/Email/Templates/Accounts/PasswordResetEmail.php:83 src/Email/Templates/Accounts/VerifyEmailEmail.php:71
 msgid "If the button above does not work, copy and paste the link below into your browser:"
@@ -6113,6 +6198,14 @@ msgstr "已签发"
 msgid "Issue licenses"
 msgstr "签发许可证"
 
+#: themes/default/templates/pages/client/license.php:87
+msgid "Issued"
+msgstr "签发时间"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:242
+msgid "Issued directly"
+msgstr "直接签发"
+
 #: src/Monetization/Controller.php:59
 msgid "Item type is required"
 msgstr "项目类型为必填项"
@@ -6462,7 +6555,7 @@ msgstr "已为您的域名“%s”激活许可证"
 msgid "License has been deactivated"
 msgstr "许可证已停用"
 
-#: src/Monetization/License.php:1551
+#: src/Monetization/License.php:1681
 msgid "License is not issued to any application."
 msgstr "该许可证未签发给任何应用。"
 
@@ -6471,11 +6564,15 @@ msgstr "该许可证未签发给任何应用。"
 msgid "License issued to: %s"
 msgstr "许可证签发给：%s"
 
-#: themes/default/templates/pages/client/licenses.php:43
+#: themes/default/templates/pages/client/license.php:46 themes/default/templates/pages/client/licenses.php:96
 msgid "License key"
 msgstr "许可证密钥"
 
-#: src/Monetization/License.php:1242
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:214
+msgid "License not found"
+msgstr "未找到许可证"
+
+#: src/Monetization/License.php:1372
 msgid "License record locked or already removed by a concurrent request."
 msgstr "许可证记录已被锁定或已被并发请求删除。"
 
@@ -6504,7 +6601,7 @@ msgstr "许可证已被删除"
 msgid "License was not found"
 msgstr "未找到许可证"
 
-#: src/Monetization/License.php:1559
+#: src/Monetization/License.php:1689
 msgid "License was not issued to this application."
 msgstr "该许可证未签发给此应用。"
 
@@ -6540,19 +6637,19 @@ msgstr "被许可人："
 msgid "Licenses"
 msgstr "许可证"
 
-#: themes/default/templates/pages/client/licenses.php:21
-msgid "Licenses issued to you. Use the key on each site you activate."
-msgstr "签发给您的许可证。请在您激活的每个站点上使用密钥。"
+#: themes/default/templates/pages/client/licenses.php:32
+msgid "Licenses issued to you. Use the key and service ID on each site you activate."
+msgstr "颁发给您的许可证。在您激活的每个站点上使用密钥和服务 ID。"
 
 #: src/Monetization/Controller.php:196
 msgid "Licenses were issued from this pricing tier, so it was archived instead: it issues no new licenses."
 msgstr "已从此定价层级签发过许可证，因此改为将其归档：它不再签发新许可证。"
 
-#: themes/default/templates/pages/client/licenses.php:28
+#: themes/default/templates/pages/client/licenses.php:76
 msgid "Licenses you buy appear here once they are issued."
 msgstr "您购买的许可证签发后将显示在此处。"
 
-#: themes/default/templates/pages/client/licenses.php:29
+#: themes/default/templates/pages/client/licenses.php:77
 msgid "Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up."
 msgstr "您购买的许可证签发后将显示在此处。验证您的电子邮件地址，即可看到注册前用该地址购买的许可证。"
 
@@ -6789,7 +6886,7 @@ msgstr "最大域名数"
 msgid "Maximum Websites:"
 msgstr "最大网站数："
 
-#: src/Monetization/License.php:1419 src/RESTAPI/Handlers/Licenses.php:557
+#: src/Monetization/License.php:1549 src/RESTAPI/Handlers/Licenses.php:557
 msgid "Maximum allowed domains has been reached."
 msgstr "已达到允许的最大域名数。"
 
@@ -7079,7 +7176,7 @@ msgstr "弱化文本"
 msgid "My Awesome Plugin — Pro Plan"
 msgstr "My Awesome Plugin — 专业版"
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:46
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:93 src/ClientDashboard/ContentHandlers/LicensesPage.php:210 themes/default/templates/pages/client/license.php:105
 msgid "My licenses"
 msgstr "我的许可证"
 
@@ -7147,7 +7244,7 @@ msgstr "需要应用 %s"
 msgid "Network Error"
 msgstr "网络错误"
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:97
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:306
 msgid "Never"
 msgstr "从不"
 
@@ -7282,6 +7379,10 @@ msgstr "无法启动 PHP 命令行程序（proc_open 可能已被禁用）。"
 #: themes/default/templates/pages/auth/sign-in.php:48
 msgid "No account?"
 msgstr "没有账户？"
+
+#: themes/default/templates/pages/client/license.php:170
+msgid "No activity recorded yet."
+msgstr "暂无活动记录。"
 
 #: assets/js/admin/site-health.js:295
 msgid "No additional checks were returned."
@@ -7423,11 +7524,15 @@ msgstr "当前没有正在运行的任务。"
 msgid "No jobs were ready to run."
 msgstr "没有准备好运行的任务。"
 
+#: themes/default/templates/pages/client/licenses.php:71
+msgid "No license matches these filters."
+msgstr "没有符合这些筛选条件的许可证。"
+
 #: templates/admin/contents/license/search.php:65
 msgid "No licenses found."
 msgstr "未找到许可证。"
 
-#: themes/default/templates/pages/client/licenses.php:25
+#: themes/default/templates/pages/client/licenses.php:73
 msgid "No licenses yet"
 msgstr "还没有许可证"
 
@@ -7440,6 +7545,10 @@ msgstr "没有活跃的%s使用别名“%s”。"
 #, php-format
 msgid "No live or trashed %s has the slug \"%s\"."
 msgstr "没有活跃或在回收站中的%s使用别名“%s”。"
+
+#: themes/default/templates/pages/client/licenses.php:70
+msgid "No matching licenses"
+msgstr "没有匹配的许可证"
 
 #: templates/admin/contents/broadcasts/search.php:46
 msgid "No messages found."
@@ -7630,7 +7739,7 @@ msgstr "暂无。"
 msgid "None. Every app type can be uploaded without a key."
 msgstr "无。所有应用类型都可以在没有密钥的情况下上传。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1099
 msgid "Not Allowed"
 msgstr "不允许"
 
@@ -7658,7 +7767,7 @@ msgstr "不可用"
 msgid "Not enabled"
 msgstr "未启用"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1100 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "未找到"
 
@@ -7677,6 +7786,10 @@ msgstr "不建议在生产环境中使用。"
 #: templates/admin/contents/options/cache/stats.php:204 templates/admin/contents/options/cache/stats.php:224 assets/js/admin/cache-stats.js:136 assets/js/admin/cache-stats.js:189
 msgid "Not reported"
 msgstr "未报告"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:247
+msgid "Not set"
+msgstr "未设置"
 
 #: src/Background/BackgroundSetup.php:160
 msgid "Not set up"
@@ -9028,6 +9141,12 @@ msgstr "重做"
 msgid "Redo (Ctrl+Y)"
 msgstr "重做（Ctrl+Y）"
 
+#. translators: %s: the seller's reference for the sale, e.g. an order number.
+#: themes/default/templates/pages/client/license.php:79
+#, php-format
+msgid "Reference: %s"
+msgstr "参考号：%s"
+
 #: templates/admin/contents/options/cache/stats.php:94
 msgid "Refresh"
 msgstr "刷新"
@@ -9208,6 +9327,10 @@ msgstr "替换应用的清单。"
 #: templates/admin/contents/system/signing-key.php:162
 msgid "Replacing the key"
 msgstr "更换密钥"
+
+#: themes/default/templates/pages/client/license.php:194
+msgid "Report as compromised"
+msgstr "报告为已泄露"
 
 #: assets/js/admin/support-report.js:96
 msgid "Report generated and copied. Paste it into your support request."
@@ -9721,7 +9844,7 @@ msgstr "保存成功。"
 msgid "Saved."
 msgstr "已保存。"
 
-#: src/Monetization/License.php:1166
+#: src/Monetization/License.php:1296
 #, php-format
 msgid "Saving the license meta \"%s\" failed: %s"
 msgstr "保存许可证元数据“%s”失败：%s"
@@ -9807,6 +9930,10 @@ msgstr "搜索存储库"
 #: templates/admin/contents/repository/search.php:36 assets/js/globals.js:593
 msgid "Search apps"
 msgstr "搜索应用"
+
+#: themes/default/templates/pages/client/licenses.php:37 themes/default/templates/pages/client/licenses.php:38
+msgid "Search by license key or app name"
+msgstr "按许可证密钥或应用名称搜索"
 
 #: templates/admin/contents/modules/marketplace.php:40 assets/js/admin/modules.js:264
 msgid "Search by name, slug or author"
@@ -9904,7 +10031,7 @@ msgstr "在此模式下，安全更新无法自动安装。"
 msgid "See Tools → Signing Key for how to set %s."
 msgstr "请参阅“工具 → 签名密钥”了解如何设置 %s。"
 
-#: themes/default/templates/pages/repository/app.php:59
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:374 themes/default/templates/pages/repository/app.php:59
 msgid "See pricing"
 msgstr "查看价格"
 
@@ -10327,6 +10454,7 @@ msgid "Service Accounts"
 msgstr "服务账户"
 
 #: src/Admin/ContentHandlers/LicensePage.php:375 templates/admin/contents/license/index.php:77 templates/admin/contents/license/search.php:57 templates/admin/contents/license/view.php:167
+#: themes/default/templates/pages/client/license.php:53 themes/default/templates/pages/client/licenses.php:103
 msgid "Service ID"
 msgstr "服务 ID"
 
@@ -10538,7 +10666,7 @@ msgstr "站点地址"
 msgid "Site language set to %s."
 msgstr "站点语言已设置为 %s。"
 
-#: themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
+#: themes/default/templates/pages/client/license.php:68 themes/default/templates/pages/client/licenses.php:114 themes/default/templates/pages/purchase.php:54
 msgid "Sites"
 msgstr "站点"
 
@@ -10636,6 +10764,10 @@ msgstr "排序键"
 msgid "Sort keys alphabetically"
 msgstr "按字母顺序排序键"
 
+#: themes/default/templates/pages/client/license.php:72
+msgid "Source"
+msgstr "来源"
+
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Stable tag:"
 msgstr "稳定标签："
@@ -10672,6 +10804,10 @@ msgstr "开始安装"
 msgid "Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead."
 msgstr "启动“工具 > 后台处理”中显示的队列工作进程。在共享主机上，请改用组合命令 `smliser cron`。"
 
+#: themes/default/templates/pages/client/license.php:60
+msgid "Starts"
+msgstr "开始"
+
 #: templates/admin/contents/system/index.php:55
 msgid "State"
 msgstr "状态"
@@ -10684,7 +10820,7 @@ msgstr "统计"
 #: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
-#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
+#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/licenses.php:41 themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
 msgstr "状态"
 
@@ -11445,7 +11581,7 @@ msgstr "无法创建账户。"
 msgid "The account for this link no longer exists."
 msgstr "此链接对应的账户已不存在。"
 
-#: src/Monetization/License.php:1431
+#: src/Monetization/License.php:1561
 msgid "The activation could not be saved."
 msgstr "无法保存激活。"
 
@@ -11971,7 +12107,7 @@ msgstr "找不到许可证。许可证密钥或服务 ID 可能不正确。"
 msgid "The license could not be saved."
 msgstr "无法保存许可证。"
 
-#: src/Monetization/License.php:1395 src/Monetization/License.php:1408 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
+#: src/Monetization/License.php:1525 src/Monetization/License.php:1538 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
 #: src/Monetization/LicensingService.php:191
 msgid "The license does not exist."
 msgstr "许可证不存在。"
@@ -11980,7 +12116,7 @@ msgstr "许可证不存在。"
 msgid "The license is active on this domain, but a download token could not be issued. Activate again to get one."
 msgstr "许可证在此域名上已激活，但无法签发下载令牌。请重新激活以获取令牌。"
 
-#: src/Monetization/License.php:1415
+#: src/Monetization/License.php:1545
 #, php-format
 msgid "The license is already activated on %s."
 msgstr "许可证已在 %s 上激活。"
@@ -11988,6 +12124,10 @@ msgstr "许可证已在 %s 上激活。"
 #: src/RESTAPI/Handlers/Licenses.php:226
 msgid "The license is already deactivated. Its owner must resolve it."
 msgstr "许可证已停用。需由其所有者处理。"
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:94
+msgid "The license is deactivated. It is refused on every site until the app's owner or an administrator reactivates it."
+msgstr "许可证已停用。在应用所有者或管理员重新激活之前，它会在所有站点上被拒绝。"
 
 #: src/Admin/ContentHandlers/LicensePage.php:368
 msgid "The license is delivered to this address. A registered user with this verified address is linked to the license."
@@ -11997,6 +12137,10 @@ msgstr "许可证将发送到此地址。使用此已验证地址的注册用户
 #, php-format
 msgid "The license is not activated on %s."
 msgstr "许可证未在 %s 上激活。"
+
+#: themes/default/templates/pages/client/license.php:146
+msgid "The license is not activated on any site yet."
+msgstr "该许可证尚未在任何站点上激活。"
 
 #: themes/default/templates/pages/purchase.php:75
 msgid "The license is sent here."
@@ -12581,7 +12725,7 @@ msgstr "请求失败，请重试。"
 msgid "The request format or parameters provided are improperly structured."
 msgstr "请求格式或参数结构不正确。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1094
 msgid "The request method is not allowed on this server."
 msgstr "此服务器不允许该请求方法。"
 
@@ -12633,7 +12777,7 @@ msgstr "请求的应用没有可下载的内容。"
 msgid "The requested range cannot be satisfied."
 msgstr "无法满足请求的范围。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1095 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "找不到请求的资源。"
 
@@ -12799,6 +12943,10 @@ msgstr "无法保存站点语言。请稍后在管理设置（常规）中选择
 #: src/RESTAPI/Handlers/Licenses.php:604
 msgid "The site secret is not valid for this domain."
 msgstr "站点密钥对此域名无效。"
+
+#: themes/default/templates/pages/client/license.php:143
+msgid "The sites this license is activated on. To free a site, ask the app's owner."
+msgstr "此许可证已激活的站点。如需释放站点，请联系应用所有者。"
 
 #: src/FileSystem/Repository.php:277
 #, php-format
@@ -13443,9 +13591,29 @@ msgstr "这是一封从 %s 发送的自动测试邮件，用于验证您的邮�
 msgid "This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required."
 msgstr "这是一封从 {{app_name}} 发送的自动测试邮件，用于验证您的邮件提供商已正确设置并正常工作。无需任何操作。"
 
-#: src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:208
+msgid "This license does not exist, or it is not linked to your account."
+msgstr "此许可证不存在，或未关联到您的账户。"
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:62 src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
 msgid "This license does not exist."
 msgstr "此许可证不存在。"
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:70
+msgid "This license is already deactivated. Only the app's owner or an administrator can reactivate it."
+msgstr "此许可证已停用。只有应用所有者或管理员可以重新激活它。"
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:74
+msgid "This license is already refused on every site, so there is nothing to deactivate. Contact the app's owner about it."
+msgstr "此许可证已在所有站点上被拒绝，因此无需停用。请就此联系应用所有者。"
+
+#: themes/default/templates/pages/client/licenses.php:91
+msgid "This license is deactivated and refused on every site. Only the app's owner or an administrator can reactivate it."
+msgstr "此许可证已停用，并在所有站点上被拒绝。只有应用所有者或管理员可以重新激活它。"
+
+#: themes/default/templates/pages/client/license.php:138
+msgid "This license is deactivated, so it is refused on every site. Only the app's owner or an administrator can reactivate it: contact them if it was deactivated by mistake or once the key is safe again."
+msgstr "此许可证已停用，因此在所有站点上都会被拒绝。只有应用所有者或管理员可以重新激活它：如果是误停用，或密钥重新安全后，请联系他们。"
 
 #: src/Monetization/DownloadToken.php:405
 msgid "This license must be issued to a hosted application first."
@@ -13910,7 +14078,7 @@ msgstr "无法删除许可证"
 msgid "Unable to delete the provided entity from the database."
 msgstr "无法从数据库中删除所提供的实体。"
 
-#: src/Monetization/License.php:1697
+#: src/Monetization/License.php:1827
 msgid "Unable to generate a unique license key after multiple attempts."
 msgstr "多次尝试后仍无法生成唯一的许可证密钥。"
 
@@ -13926,7 +14094,7 @@ msgstr "无法检查"
 msgid "Unable to inspect the active database connection."
 msgstr "无法检查当前的数据库连接。"
 
-#: src/RESTAPI/Handlers/Licenses.php:269
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:80 src/RESTAPI/Handlers/Licenses.php:269
 msgid "Unable to process this request at the moment."
 msgstr "目前无法处理此请求。"
 
@@ -15561,6 +15729,13 @@ msgstr "[已删除的实体]"
 msgid "already exists"
 msgstr "已存在"
 
+#. translators: %d: number of other activated sites not listed.
+#: themes/default/templates/pages/client/licenses.php:130
+#, php-format
+msgid "and %d more"
+msgid_plural "and %d more"
+msgstr[0] "以及另外 %d 个"
+
 #: src/Console/Commands/Installer.php:131
 msgid "and as the administrator's language. Without it, run asks when translations are installed;"
 msgstr "以及管理员的语言。不指定时，如果已安装翻译，run 会进行询问；"
@@ -15698,6 +15873,61 @@ msgstr "是带有默认值的内置类型"
 #: src/HostedApps/Storage/DirectoryAppStorage.php:904
 msgid "leads outside the app"
 msgstr "指向应用之外"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:221
+msgctxt "license event"
+msgid "Activated"
+msgstr "已激活"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:223
+msgctxt "license event"
+msgid "License deactivated"
+msgstr "许可证已停用"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:222
+msgctxt "license event"
+msgid "Uninstalled"
+msgstr "已卸载"
+
+#: src/Monetization/License.php:1870
+msgctxt "license status"
+msgid "Active"
+msgstr "有效"
+
+#: src/Monetization/License.php:1871
+msgctxt "license status"
+msgid "Deactivated"
+msgstr "已停用"
+
+#: src/Monetization/License.php:1872
+msgctxt "license status"
+msgid "Expired"
+msgstr "已过期"
+
+#: src/Monetization/License.php:1873
+msgctxt "license status"
+msgid "Inactive"
+msgstr "未启用"
+
+#: src/Monetization/License.php:1874
+msgctxt "license status"
+msgid "Lifetime"
+msgstr "永久"
+
+#: src/Monetization/License.php:1875
+msgctxt "license status"
+msgid "Pending"
+msgstr "待生效"
+
+#: src/Monetization/License.php:1876
+msgctxt "license status"
+msgid "Revoked"
+msgstr "已吊销"
+
+#: src/Monetization/License.php:1877
+msgctxt "license status"
+msgid "Suspended"
+msgstr "已暂停"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1285
 #, php-format

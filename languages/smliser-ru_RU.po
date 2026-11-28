@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 16:05+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: Русский (Россия)\n"
 "Language: ru_RU\n"
@@ -179,6 +179,12 @@ msgstr "#f8fafc"
 msgid "#ffffff"
 msgstr "#ffffff"
 
+#. translators: 1: number of sites the license is activated on, 2: number of sites it allows.
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:334
+#, php-format
+msgid "%1$d of %2$d"
+msgstr "%1$d из %2$d"
+
 #. translators: 1: opening <a> tag, 2: closing <a> tag
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:79
 #, php-format
@@ -328,6 +334,12 @@ msgstr "Отсутствует %d из %d (%s)"
 #, php-format
 msgid "%d of %d scheduled tasks are more than %d minutes overdue: %s."
 msgstr "%d из %d запланированных задач просрочены более чем на %d мин.: %s."
+
+#. translators: %d: number of sites the license is activated on; the license allows any number.
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:330
+#, php-format
+msgid "%d of unlimited"
+msgstr "%d из неограниченного числа"
 
 #: src/Background/Jobs/Purchases/RasterizeReceiptJob.php:50
 #, php-format
@@ -1332,6 +1344,12 @@ msgstr "Активируйте лицензии, проверяйте обнов
 msgid "Activate this package after installing?"
 msgstr "Активировать этот пакет после установки?"
 
+#. translators: %s: date and time the license was activated on the site.
+#: themes/default/templates/pages/client/license.php:156
+#, php-format
+msgid "Activated %s"
+msgstr "Активирован %s"
+
 #: src/Email/Templates/Licenses/LicenseActivatedEmail.php:70 src/Email/Templates/Licenses/LicenseActivatedEmail.php:177
 msgid "Activated Domain"
 msgstr "Активированный домен"
@@ -1340,9 +1358,17 @@ msgstr "Активированный домен"
 msgid "Activated on"
 msgstr "Активирован"
 
+#: themes/default/templates/pages/client/license.php:142 themes/default/templates/pages/client/licenses.php:120
+msgid "Activated sites"
+msgstr "Активированные сайты"
+
 #: src/Email/Templates/Licenses/LicenseIssuedEmail.php:74 src/Email/Templates/Licenses/LicenseIssuedEmail.php:193 src/Email/Templates/Purchases/PurchaseRequestApprovedEmail.php:153
 msgid "Activation Limit"
 msgstr "Лимит активаций"
+
+#: themes/default/templates/pages/client/license.php:167
+msgid "Activation history"
+msgstr "История активаций"
 
 #: src/RESTAPI/Handlers/Licenses.php:111
 msgid "Activation not allowed for unissued licenses."
@@ -1554,6 +1580,10 @@ msgstr "Все (%d)"
 msgid "All active login sessions have been terminated across all your devices."
 msgstr "Все активные сеансы входа завершены на всех ваших устройствах."
 
+#: themes/default/templates/pages/client/licenses.php:53
+msgid "All apps"
+msgstr "Все приложения"
+
 #: templates/admin/contents/system/health.php:80
 msgid "All critical and warning checks passed."
 msgstr "Все критические и предупреждающие проверки пройдены."
@@ -1593,6 +1623,10 @@ msgstr "Здесь будут перечислены все владельцы �
 #: src/Environments/Application/Health/SystemHealth.php:1027
 msgid "All scheduled tasks last ran without error."
 msgstr "Все запланированные задачи при последнем запуске выполнились без ошибок."
+
+#: themes/default/templates/pages/client/licenses.php:43
+msgid "All statuses"
+msgstr "Все статусы"
 
 #: assets/js/admin/repository-browser.js:290
 msgid "All types"
@@ -1800,6 +1834,10 @@ msgstr "Выполняется другое обновление. Попробу
 msgid "Any database"
 msgstr "Любая база данных"
 
+#: themes/default/templates/pages/client/licenses.php:51
+msgid "App"
+msgstr "Приложение"
+
 #: templates/admin/contents/license/view.php:124
 msgid "App Attribute:"
 msgstr "Атрибут приложения:"
@@ -1861,6 +1899,10 @@ msgstr "Данные приложения не найдены"
 msgid "App monetization"
 msgstr "Монетизация приложения"
 
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:302 src/ClientDashboard/ContentHandlers/LicensesPage.php:389
+msgid "App no longer available"
+msgstr "Приложение больше не доступно"
+
 #: src/ClientDashboard/ContentHandlers/AppsPage.php:238
 msgid "App not found"
 msgstr "Приложение не найдено"
@@ -1869,6 +1911,10 @@ msgstr "Приложение не найдено"
 #, php-format
 msgid "App packages are signed. Key fingerprint: %s."
 msgstr "Пакеты приложений подписаны. Отпечаток ключа: %s."
+
+#: themes/default/templates/pages/client/license.php:125
+msgid "App page"
+msgstr "Страница приложения"
 
 #: src/FileSystem/Repository.php:1020
 msgid "App slug is required to upload artifact."
@@ -2471,6 +2517,10 @@ msgstr "Купить"
 msgid "Buy %s — %s"
 msgstr "Купить %s — %s"
 
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:371
+msgid "Buy again"
+msgstr "Купить снова"
+
 #: src/Email/Templates/Purchases/AdminPurchaseRequestEmail.php:86 templates/admin/contents/license/purchase-request.php:61 templates/admin/contents/license/purchase-requests.php:66
 msgid "Buyer"
 msgstr "Покупатель"
@@ -2829,6 +2879,10 @@ msgstr "Очистить ссылки на загрузку приложений
 msgid "Clear date"
 msgstr "Очистить дату"
 
+#: themes/default/templates/pages/client/licenses.php:62
+msgid "Clear filters"
+msgstr "Сбросить фильтры"
+
 #: templates/admin/contents/accounts/access-control-form.php:97
 msgid "Clear selected avatar image"
 msgstr "Убрать выбранное изображение аватара"
@@ -3042,6 +3096,10 @@ msgstr "Подтверждение пароля"
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
 
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:66
+msgid "Confirm that you want to deactivate this license on every site."
+msgstr "Подтвердите, что хотите деактивировать эту лицензию на всех сайтах."
+
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:45
 msgid "Confirm this is your email address to finish setting up your account."
 msgstr "Подтвердите, что это ваш адрес электронной почты, чтобы завершить настройку аккаунта."
@@ -3153,13 +3211,17 @@ msgstr "Команда копирования отклонена."
 msgid "Copy it before closing this message."
 msgstr "Скопируйте его, прежде чем закрыть это сообщение."
 
-#: themes/default/templates/pages/client/licenses.php:46
+#: themes/default/templates/pages/client/license.php:49 themes/default/templates/pages/client/licenses.php:99
 msgid "Copy key"
 msgstr "Копировать ключ"
 
 #: templates/admin/contents/license/view.php:183
 msgid "Copy license key"
 msgstr "Копировать лицензионный ключ"
+
+#: themes/default/templates/pages/client/license.php:56 themes/default/templates/pages/client/licenses.php:106
+msgid "Copy service ID"
+msgstr "Копировать ID сервиса"
 
 #: themes/default/templates/pages/signing-key.php:60
 msgid "Copy the key above into your app's code. Do not make your app download the key when it checks for updates: a key fetched from the same place as the update proves nothing."
@@ -3532,11 +3594,11 @@ msgstr "Индекс базы данных"
 msgid "Database execution failure dropping application metadata rows."
 msgstr "Ошибка выполнения в базе данных при удалении строк метаданных приложения."
 
-#: src/Monetization/License.php:1251
+#: src/Monetization/License.php:1381
 msgid "Database execution failure dropping license activations."
 msgstr "Ошибка выполнения в базе данных при удалении активаций лицензии."
 
-#: src/Monetization/License.php:1246
+#: src/Monetization/License.php:1376
 msgid "Database execution failure dropping license metadata entries."
 msgstr "Ошибка выполнения в базе данных при удалении записей метаданных лицензии."
 
@@ -3552,7 +3614,7 @@ msgstr "Ошибка выполнения в базе данных при уда
 msgid "Database execution failure dropping primary application entry."
 msgstr "Ошибка выполнения в базе данных при удалении основной записи приложения."
 
-#: src/Monetization/License.php:1255
+#: src/Monetization/License.php:1385
 msgid "Database execution failure dropping primary license record."
 msgstr "Ошибка выполнения в базе данных при удалении основной записи лицензии."
 
@@ -3612,9 +3674,19 @@ msgstr "Сколько дней хранится квитанция об опл�
 msgid "Deactivate"
 msgstr "Деактивировать"
 
+#: themes/default/templates/pages/client/license.php:198 themes/default/templates/pages/client/license.php:205
+msgid "Deactivate license"
+msgstr "Деактивировать лицензию"
+
 #: src/Security/Permission/Capability.php:55
 msgid "Deactivate licenses"
 msgstr "Деактивация лицензий"
+
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/license.php:197
+#, php-format
+msgid "Deactivate the license for %s on every site? Only the app's owner or an administrator can reactivate it."
+msgstr "Деактивировать лицензию для %s на всех сайтах? Повторно активировать её может только владелец приложения или администратор."
 
 #: src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:68 src/Email/Templates/Licenses/LicenseDeactivatedEmail.php:158
 msgid "Deactivated Domain"
@@ -3918,6 +3990,7 @@ msgid "Detail card"
 msgstr "Карточка подробностей"
 
 #: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:77
+#: themes/default/templates/pages/client/licenses.php:141
 msgid "Details"
 msgstr "Подробности"
 
@@ -4037,12 +4110,12 @@ msgstr "Сегменты пути, состоящие только из точе
 msgid "Double click for fullscreen"
 msgstr "Двойной щелчок — полноэкранный режим"
 
-#: themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892
-#: assets/js/admin/repository-browser.js:730
+#: assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892 assets/js/admin/repository-browser.js:730
 msgid "Download"
 msgstr "Скачать"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/repository/app.php:62
+#. translators: %s: app name.
+#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/client/license.php:117 themes/default/templates/pages/client/licenses.php:153 themes/default/templates/pages/repository/app.php:62
 #, php-format
 msgid "Download %s"
 msgstr "Скачать %s"
@@ -4067,7 +4140,7 @@ msgstr "Рост загрузок"
 msgid "Download Key"
 msgstr "Скачать ключ"
 
-#: themes/default/templates/pages/client/licenses.php:62
+#: themes/default/templates/pages/client/license.php:109 themes/default/templates/pages/client/licenses.php:145
 msgid "Download License"
 msgstr "Скачать лицензию"
 
@@ -4757,7 +4830,7 @@ msgstr "Истекла"
 msgid "Expired download link, please refresh current page."
 msgstr "Ссылка на загрузку устарела, обновите страницу."
 
-#: themes/default/templates/pages/client/licenses.php:50
+#: themes/default/templates/pages/client/license.php:64 themes/default/templates/pages/client/licenses.php:110
 msgid "Expires"
 msgstr "Истекает"
 
@@ -4913,7 +4986,7 @@ msgstr "Удовлетворительно"
 msgid "Fatal Error"
 msgstr "Критическая ошибка"
 
-#: src/Admin/ContentHandlers/LicensePage.php:450
+#: src/Admin/ContentHandlers/LicensePage.php:450 themes/default/templates/pages/client/license.php:94
 msgid "Features"
 msgstr "Возможности"
 
@@ -5005,6 +5078,10 @@ msgstr "Файлы"
 #: src/Exceptions/FileRequestException.php:200 src/Exceptions/RequestException.php:247
 msgid "Filesystem Error"
 msgstr "Ошибка файловой системы"
+
+#: themes/default/templates/pages/client/licenses.php:60
+msgid "Filter"
+msgstr "Фильтровать"
 
 #: themes/default/templates/pages/client/apps.php:31
 msgid "Filter by status"
@@ -5100,7 +5177,7 @@ msgstr "Забыли пароль?"
 msgid "Form fields"
 msgstr "Поля формы"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:280
+#: src/Environments/Application/Web/HttpDispatcher.php:281
 msgid "Form slug or action path is required."
 msgstr "Требуется ярлык формы или путь действия."
 
@@ -5449,6 +5526,10 @@ msgstr "Понятное название роли"
 msgid "I agree to the %1$s and the %2$s."
 msgstr "Я принимаю %1$s и %2$s."
 
+#: themes/default/templates/pages/client/license.php:203
+msgid "I understand that the license stops working on every site until the app's owner or an administrator reactivates it."
+msgstr "Я понимаю, что лицензия перестанет работать на всех сайтах, пока владелец приложения или администратор не активирует её снова."
+
 #: templates/admin/contents/accounts/owners.php:52 templates/admin/contents/accounts/principals.php:50 templates/admin/contents/system/queues.php:134
 msgid "ID"
 msgstr "ID"
@@ -5489,6 +5570,10 @@ msgstr "Если для этого email существует аккаунт, в
 #: src/Environments/Application/Health/SystemHealth.php:1187
 msgid "If no update is running, open the Updates page, or run `smliser update status` to finish or roll it back."
 msgstr "Если обновление не выполняется, откройте страницу «Обновления» или выполните `smliser update status`, чтобы завершить или откатить его."
+
+#: themes/default/templates/pages/client/license.php:195
+msgid "If someone else has your license key, deactivate the license. It is then refused on every site, yours included. No site is freed, and you cannot reactivate it yourself: only the app's owner or an administrator can."
+msgstr "Если ваш лицензионный ключ есть у кого-то ещё, деактивируйте лицензию. После этого она будет отклоняться на всех сайтах, включая ваши. Ни один сайт не освобождается, и вы не сможете активировать её снова сами: это может сделать только владелец приложения или администратор."
 
 #: src/Email/Templates/Accounts/OrganizationInviteEmail.php:82 src/Email/Templates/Accounts/PasswordResetEmail.php:83 src/Email/Templates/Accounts/VerifyEmailEmail.php:71
 msgid "If the button above does not work, copy and paste the link below into your browser:"
@@ -6117,6 +6202,14 @@ msgstr "Выдана"
 msgid "Issue licenses"
 msgstr "Выдача лицензий"
 
+#: themes/default/templates/pages/client/license.php:87
+msgid "Issued"
+msgstr "Выдана"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:242
+msgid "Issued directly"
+msgstr "Выдана напрямую"
+
 #: src/Monetization/Controller.php:59
 msgid "Item type is required"
 msgstr "Требуется тип элемента"
@@ -6466,7 +6559,7 @@ msgstr "Лицензия активирована для вашего домен
 msgid "License has been deactivated"
 msgstr "Лицензия деактивирована"
 
-#: src/Monetization/License.php:1551
+#: src/Monetization/License.php:1681
 msgid "License is not issued to any application."
 msgstr "Лицензия не выдана ни для одного приложения."
 
@@ -6475,11 +6568,15 @@ msgstr "Лицензия не выдана ни для одного прилож
 msgid "License issued to: %s"
 msgstr "Лицензия выдана: %s"
 
-#: themes/default/templates/pages/client/licenses.php:43
+#: themes/default/templates/pages/client/license.php:46 themes/default/templates/pages/client/licenses.php:96
 msgid "License key"
 msgstr "Лицензионный ключ"
 
-#: src/Monetization/License.php:1242
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:214
+msgid "License not found"
+msgstr "Лицензия не найдена"
+
+#: src/Monetization/License.php:1372
 msgid "License record locked or already removed by a concurrent request."
 msgstr "Запись лицензии заблокирована или уже удалена параллельным запросом."
 
@@ -6508,7 +6605,7 @@ msgstr "Лицензия удалена"
 msgid "License was not found"
 msgstr "Лицензия не найдена"
 
-#: src/Monetization/License.php:1559
+#: src/Monetization/License.php:1689
 msgid "License was not issued to this application."
 msgstr "Лицензия не выдана для этого приложения."
 
@@ -6544,19 +6641,19 @@ msgstr "Лицензиат:"
 msgid "Licenses"
 msgstr "Лицензии"
 
-#: themes/default/templates/pages/client/licenses.php:21
-msgid "Licenses issued to you. Use the key on each site you activate."
-msgstr "Лицензии, выданные вам. Используйте ключ на каждом сайте, который активируете."
+#: themes/default/templates/pages/client/licenses.php:32
+msgid "Licenses issued to you. Use the key and service ID on each site you activate."
+msgstr "Лицензии, выданные вам. Используйте ключ и ID сервиса на каждом сайте, который активируете."
 
 #: src/Monetization/Controller.php:196
 msgid "Licenses were issued from this pricing tier, so it was archived instead: it issues no new licenses."
 msgstr "По этому ценовому уровню были выданы лицензии, поэтому он архивирован: новых лицензий он не выдаёт."
 
-#: themes/default/templates/pages/client/licenses.php:28
+#: themes/default/templates/pages/client/licenses.php:76
 msgid "Licenses you buy appear here once they are issued."
 msgstr "Купленные вами лицензии появятся здесь после выдачи."
 
-#: themes/default/templates/pages/client/licenses.php:29
+#: themes/default/templates/pages/client/licenses.php:77
 msgid "Licenses you buy appear here once they are issued. Verify your email address to see licenses bought with it before you signed up."
 msgstr "Купленные вами лицензии появятся здесь после выдачи. Подтвердите адрес электронной почты, чтобы увидеть лицензии, купленные на него до регистрации."
 
@@ -6793,7 +6890,7 @@ msgstr "Максимум доменов"
 msgid "Maximum Websites:"
 msgstr "Максимум сайтов:"
 
-#: src/Monetization/License.php:1419 src/RESTAPI/Handlers/Licenses.php:557
+#: src/Monetization/License.php:1549 src/RESTAPI/Handlers/Licenses.php:557
 msgid "Maximum allowed domains has been reached."
 msgstr "Достигнуто максимальное число разрешённых доменов."
 
@@ -7083,7 +7180,7 @@ msgstr "Приглушённый текст"
 msgid "My Awesome Plugin — Pro Plan"
 msgstr "My Awesome Plugin — тариф Pro"
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:46
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:93 src/ClientDashboard/ContentHandlers/LicensesPage.php:210 themes/default/templates/pages/client/license.php:105
 msgid "My licenses"
 msgstr "Мои лицензии"
 
@@ -7151,7 +7248,7 @@ msgstr "Требуется приложение %s"
 msgid "Network Error"
 msgstr "Ошибка сети"
 
-#: src/ClientDashboard/ContentHandlers/LicensesPage.php:97
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:306
 msgid "Never"
 msgstr "Никогда"
 
@@ -7286,6 +7383,10 @@ msgstr "Не удалось запустить исполняемый файл P
 #: themes/default/templates/pages/auth/sign-in.php:48
 msgid "No account?"
 msgstr "Нет аккаунта?"
+
+#: themes/default/templates/pages/client/license.php:170
+msgid "No activity recorded yet."
+msgstr "Активность пока не зарегистрирована."
 
 #: assets/js/admin/site-health.js:295
 msgid "No additional checks were returned."
@@ -7427,11 +7528,15 @@ msgstr "Сейчас нет выполняющихся заданий."
 msgid "No jobs were ready to run."
 msgstr "Не было готовых к запуску заданий."
 
+#: themes/default/templates/pages/client/licenses.php:71
+msgid "No license matches these filters."
+msgstr "Нет лицензий, соответствующих этим фильтрам."
+
 #: templates/admin/contents/license/search.php:65
 msgid "No licenses found."
 msgstr "Лицензии не найдены."
 
-#: themes/default/templates/pages/client/licenses.php:25
+#: themes/default/templates/pages/client/licenses.php:73
 msgid "No licenses yet"
 msgstr "Пока нет лицензий"
 
@@ -7444,6 +7549,10 @@ msgstr "Ни у одного активного %s нет ярлыка «%s»."
 #, php-format
 msgid "No live or trashed %s has the slug \"%s\"."
 msgstr "Ни у одного активного или удалённого в корзину %s нет ярлыка «%s»."
+
+#: themes/default/templates/pages/client/licenses.php:70
+msgid "No matching licenses"
+msgstr "Подходящих лицензий нет"
 
 #: templates/admin/contents/broadcasts/search.php:46
 msgid "No messages found."
@@ -7634,7 +7743,7 @@ msgstr "Пока нет."
 msgid "None. Every app type can be uploaded without a key."
 msgstr "Нет. Любой тип приложения можно загружать без ключа."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1099
 msgid "Not Allowed"
 msgstr "Не разрешено"
 
@@ -7662,7 +7771,7 @@ msgstr "Недоступно"
 msgid "Not enabled"
 msgstr "Не включено"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1100 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "Не найдено"
 
@@ -7681,6 +7790,10 @@ msgstr "Не рекомендуется для рабочей среды."
 #: templates/admin/contents/options/cache/stats.php:204 templates/admin/contents/options/cache/stats.php:224 assets/js/admin/cache-stats.js:136 assets/js/admin/cache-stats.js:189
 msgid "Not reported"
 msgstr "Нет данных"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:247
+msgid "Not set"
+msgstr "Не задано"
 
 #: src/Background/BackgroundSetup.php:160
 msgid "Not set up"
@@ -9032,6 +9145,12 @@ msgstr "Повторить"
 msgid "Redo (Ctrl+Y)"
 msgstr "Повторить (Ctrl+Y)"
 
+#. translators: %s: the seller's reference for the sale, e.g. an order number.
+#: themes/default/templates/pages/client/license.php:79
+#, php-format
+msgid "Reference: %s"
+msgstr "Номер: %s"
+
 #: templates/admin/contents/options/cache/stats.php:94
 msgid "Refresh"
 msgstr "Обновить"
@@ -9212,6 +9331,10 @@ msgstr "Заменяет манифест приложения."
 #: templates/admin/contents/system/signing-key.php:162
 msgid "Replacing the key"
 msgstr "Замена ключа"
+
+#: themes/default/templates/pages/client/license.php:194
+msgid "Report as compromised"
+msgstr "Сообщить о компрометации"
 
 #: assets/js/admin/support-report.js:96
 msgid "Report generated and copied. Paste it into your support request."
@@ -9725,7 +9848,7 @@ msgstr "Успешно сохранено."
 msgid "Saved."
 msgstr "Сохранено."
 
-#: src/Monetization/License.php:1166
+#: src/Monetization/License.php:1296
 #, php-format
 msgid "Saving the license meta \"%s\" failed: %s"
 msgstr "Не удалось сохранить метаданные лицензии «%s»: %s"
@@ -9811,6 +9934,10 @@ msgstr "Поиск по репозиторию"
 #: templates/admin/contents/repository/search.php:36 assets/js/globals.js:593
 msgid "Search apps"
 msgstr "Поиск приложений"
+
+#: themes/default/templates/pages/client/licenses.php:37 themes/default/templates/pages/client/licenses.php:38
+msgid "Search by license key or app name"
+msgstr "Поиск по лицензионному ключу или названию приложения"
 
 #: templates/admin/contents/modules/marketplace.php:40 assets/js/admin/modules.js:264
 msgid "Search by name, slug or author"
@@ -9908,7 +10035,7 @@ msgstr "В этом режиме обновления безопасности �
 msgid "See Tools → Signing Key for how to set %s."
 msgstr "Как задать %s, см. в разделе «Инструменты → Ключ подписи»."
 
-#: themes/default/templates/pages/repository/app.php:59
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:374 themes/default/templates/pages/repository/app.php:59
 msgid "See pricing"
 msgstr "Посмотреть цены"
 
@@ -10331,6 +10458,7 @@ msgid "Service Accounts"
 msgstr "Сервисные аккаунты"
 
 #: src/Admin/ContentHandlers/LicensePage.php:375 templates/admin/contents/license/index.php:77 templates/admin/contents/license/search.php:57 templates/admin/contents/license/view.php:167
+#: themes/default/templates/pages/client/license.php:53 themes/default/templates/pages/client/licenses.php:103
 msgid "Service ID"
 msgstr "ID сервиса"
 
@@ -10542,7 +10670,7 @@ msgstr "Адрес сайта"
 msgid "Site language set to %s."
 msgstr "Язык сайта: %s."
 
-#: themes/default/templates/pages/client/licenses.php:54 themes/default/templates/pages/purchase.php:54
+#: themes/default/templates/pages/client/license.php:68 themes/default/templates/pages/client/licenses.php:114 themes/default/templates/pages/purchase.php:54
 msgid "Sites"
 msgstr "Сайты"
 
@@ -10640,6 +10768,10 @@ msgstr "Сортировать ключи"
 msgid "Sort keys alphabetically"
 msgstr "Сортировать ключи по алфавиту"
 
+#: themes/default/templates/pages/client/license.php:72
+msgid "Source"
+msgstr "Источник"
+
 #: src/FileSystem/WPPluginRepository.php:238
 msgid "Stable tag:"
 msgstr "Стабильный тег:"
@@ -10676,6 +10808,10 @@ msgstr "Начать установку"
 msgid "Start the queue worker shown in Tools > Background Processing. On shared hosting, use the combined `smliser cron` command instead."
 msgstr "Запустите обработчик очереди, указанный в разделе «Инструменты > Фоновая обработка». На виртуальном хостинге используйте вместо этого общую команду `smliser cron`."
 
+#: themes/default/templates/pages/client/license.php:60
+msgid "Starts"
+msgstr "Начинается"
+
 #: templates/admin/contents/system/index.php:55
 msgid "State"
 msgstr "Состояние"
@@ -10688,7 +10824,7 @@ msgstr "Статистика"
 #: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
-#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
+#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/licenses.php:41 themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
 msgstr "Статус"
 
@@ -11449,7 +11585,7 @@ msgstr "Не удалось создать аккаунт."
 msgid "The account for this link no longer exists."
 msgstr "Аккаунт для этой ссылки больше не существует."
 
-#: src/Monetization/License.php:1431
+#: src/Monetization/License.php:1561
 msgid "The activation could not be saved."
 msgstr "Не удалось сохранить активацию."
 
@@ -11975,7 +12111,7 @@ msgstr "Лицензия не найдена. Возможно, неверен �
 msgid "The license could not be saved."
 msgstr "Не удалось сохранить лицензию."
 
-#: src/Monetization/License.php:1395 src/Monetization/License.php:1408 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
+#: src/Monetization/License.php:1525 src/Monetization/License.php:1538 src/Monetization/LicensingService.php:144 src/Monetization/LicensingService.php:166
 #: src/Monetization/LicensingService.php:191
 msgid "The license does not exist."
 msgstr "Лицензия не существует."
@@ -11984,7 +12120,7 @@ msgstr "Лицензия не существует."
 msgid "The license is active on this domain, but a download token could not be issued. Activate again to get one."
 msgstr "Лицензия активна на этом домене, но выдать токен загрузки не удалось. Активируйте снова, чтобы получить его."
 
-#: src/Monetization/License.php:1415
+#: src/Monetization/License.php:1545
 #, php-format
 msgid "The license is already activated on %s."
 msgstr "Лицензия уже активирована на %s."
@@ -11992,6 +12128,10 @@ msgstr "Лицензия уже активирована на %s."
 #: src/RESTAPI/Handlers/Licenses.php:226
 msgid "The license is already deactivated. Its owner must resolve it."
 msgstr "Лицензия уже деактивирована. Решить это должен её владелец."
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:94
+msgid "The license is deactivated. It is refused on every site until the app's owner or an administrator reactivates it."
+msgstr "Лицензия деактивирована. Она отклоняется на всех сайтах, пока владелец приложения или администратор не активирует её снова."
 
 #: src/Admin/ContentHandlers/LicensePage.php:368
 msgid "The license is delivered to this address. A registered user with this verified address is linked to the license."
@@ -12001,6 +12141,10 @@ msgstr "Лицензия отправляется на этот адрес. За
 #, php-format
 msgid "The license is not activated on %s."
 msgstr "Лицензия не активирована на %s."
+
+#: themes/default/templates/pages/client/license.php:146
+msgid "The license is not activated on any site yet."
+msgstr "Лицензия пока не активирована ни на одном сайте."
 
 #: themes/default/templates/pages/purchase.php:75
 msgid "The license is sent here."
@@ -12585,7 +12729,7 @@ msgstr "Запрос не выполнен. Повторите попытку."
 msgid "The request format or parameters provided are improperly structured."
 msgstr "Формат или параметры запроса имеют неверную структуру."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1094
 msgid "The request method is not allowed on this server."
 msgstr "Метод запроса не разрешён на этом сервере."
 
@@ -12637,7 +12781,7 @@ msgstr "У запрошенного приложения нечего загру
 msgid "The requested range cannot be satisfied."
 msgstr "Запрошенный диапазон недостижим."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1095 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "Запрошенный ресурс не найден."
 
@@ -12803,6 +12947,10 @@ msgstr "Не удалось сохранить язык сайта. Выбери
 #: src/RESTAPI/Handlers/Licenses.php:604
 msgid "The site secret is not valid for this domain."
 msgstr "Секрет сайта недействителен для этого домена."
+
+#: themes/default/templates/pages/client/license.php:143
+msgid "The sites this license is activated on. To free a site, ask the app's owner."
+msgstr "Сайты, на которых активирована эта лицензия. Чтобы освободить сайт, обратитесь к владельцу приложения."
 
 #: src/FileSystem/Repository.php:277
 #, php-format
@@ -13447,9 +13595,29 @@ msgstr "Это автоматическое тестовое письмо, от�
 msgid "This is an automated test email sent from {{app_name}} to verify that your email provider is set up and working correctly. No action is required."
 msgstr "Это автоматическое тестовое письмо, отправленное с {{app_name}}, чтобы проверить, что почтовый провайдер настроен и работает правильно. Никаких действий не требуется."
 
-#: src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:208
+msgid "This license does not exist, or it is not linked to your account."
+msgstr "Эта лицензия не существует или не привязана к вашей учётной записи."
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:62 src/Monetization/Controller.php:291 src/Monetization/Controller.php:466 src/Monetization/Controller.php:508
 msgid "This license does not exist."
 msgstr "Эта лицензия не существует."
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:70
+msgid "This license is already deactivated. Only the app's owner or an administrator can reactivate it."
+msgstr "Эта лицензия уже деактивирована. Повторно активировать её может только владелец приложения или администратор."
+
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:74
+msgid "This license is already refused on every site, so there is nothing to deactivate. Contact the app's owner about it."
+msgstr "Эта лицензия уже отклоняется на всех сайтах, поэтому деактивировать нечего. Обратитесь по этому вопросу к владельцу приложения."
+
+#: themes/default/templates/pages/client/licenses.php:91
+msgid "This license is deactivated and refused on every site. Only the app's owner or an administrator can reactivate it."
+msgstr "Эта лицензия деактивирована и отклоняется на всех сайтах. Повторно активировать её может только владелец приложения или администратор."
+
+#: themes/default/templates/pages/client/license.php:138
+msgid "This license is deactivated, so it is refused on every site. Only the app's owner or an administrator can reactivate it: contact them if it was deactivated by mistake or once the key is safe again."
+msgstr "Эта лицензия деактивирована, поэтому отклоняется на всех сайтах. Повторно активировать её может только владелец приложения или администратор: свяжитесь с ними, если она была деактивирована по ошибке или когда ключ снова будет в безопасности."
 
 #: src/Monetization/DownloadToken.php:405
 msgid "This license must be issued to a hosted application first."
@@ -13914,7 +14082,7 @@ msgstr "Не удалось удалить лицензию"
 msgid "Unable to delete the provided entity from the database."
 msgstr "Не удалось удалить указанную сущность из базы данных."
 
-#: src/Monetization/License.php:1697
+#: src/Monetization/License.php:1827
 msgid "Unable to generate a unique license key after multiple attempts."
 msgstr "Не удалось сгенерировать уникальный лицензионный ключ после нескольких попыток."
 
@@ -13930,7 +14098,7 @@ msgstr "Не удалось проверить"
 msgid "Unable to inspect the active database connection."
 msgstr "Не удалось проверить активное подключение к базе данных."
 
-#: src/RESTAPI/Handlers/Licenses.php:269
+#: src/ClientDashboard/ActionHandlers/LicenseActions.php:80 src/RESTAPI/Handlers/Licenses.php:269
 msgid "Unable to process this request at the moment."
 msgstr "Сейчас не удаётся обработать этот запрос."
 
@@ -15565,6 +15733,15 @@ msgstr "[Удалённая сущность]"
 msgid "already exists"
 msgstr "уже существует"
 
+#. translators: %d: number of other activated sites not listed.
+#: themes/default/templates/pages/client/licenses.php:130
+#, php-format
+msgid "and %d more"
+msgid_plural "and %d more"
+msgstr[0] "и ещё %d"
+msgstr[1] "и ещё %d"
+msgstr[2] "и ещё %d"
+
 #: src/Console/Commands/Installer.php:131
 msgid "and as the administrator's language. Without it, run asks when translations are installed;"
 msgstr "и как язык администратора. Без этого параметра run спрашивает, если установлены переводы;"
@@ -15702,6 +15879,61 @@ msgstr "является встроенным типом со значением
 #: src/HostedApps/Storage/DirectoryAppStorage.php:904
 msgid "leads outside the app"
 msgstr "ведёт за пределы приложения"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:221
+msgctxt "license event"
+msgid "Activated"
+msgstr "Активирован"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:223
+msgctxt "license event"
+msgid "License deactivated"
+msgstr "Лицензия деактивирована"
+
+#: src/ClientDashboard/ContentHandlers/LicensesPage.php:222
+msgctxt "license event"
+msgid "Uninstalled"
+msgstr "Удалён"
+
+#: src/Monetization/License.php:1870
+msgctxt "license status"
+msgid "Active"
+msgstr "Активна"
+
+#: src/Monetization/License.php:1871
+msgctxt "license status"
+msgid "Deactivated"
+msgstr "Деактивирована"
+
+#: src/Monetization/License.php:1872
+msgctxt "license status"
+msgid "Expired"
+msgstr "Истекла"
+
+#: src/Monetization/License.php:1873
+msgctxt "license status"
+msgid "Inactive"
+msgstr "Неактивна"
+
+#: src/Monetization/License.php:1874
+msgctxt "license status"
+msgid "Lifetime"
+msgstr "Бессрочная"
+
+#: src/Monetization/License.php:1875
+msgctxt "license status"
+msgid "Pending"
+msgstr "Ожидает"
+
+#: src/Monetization/License.php:1876
+msgctxt "license status"
+msgid "Revoked"
+msgstr "Отозвана"
+
+#: src/Monetization/License.php:1877
+msgctxt "license status"
+msgid "Suspended"
+msgstr "Приостановлена"
 
 #: src/Environments/Application/Installation/AppInstaller.php:1285
 #, php-format

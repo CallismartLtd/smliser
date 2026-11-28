@@ -1422,6 +1422,62 @@ code {
 	font-weight: 600;
 }
 
+/* Search and filters of a list, e.g. licenses by status and app. */
+.license-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 20px;
+}
+
+.license-filters .license-filter-search {
+	flex: 1 1 220px;
+	min-width: 0;
+}
+
+.license-filters input,
+.license-filters select {
+	width: 100%;
+	padding: 6px 10px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--ink);
+	font: inherit;
+	font-size: 13.5px;
+}
+
+.license-filters select {
+	width: auto;
+	max-width: 100%;
+}
+
+/* The sites a license is activated on, read-only. */
+.license-sites {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 14px;
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 13px;
+}
+
+.license-sites code {
+	font-family: var(--mono);
+}
+
+.record-head code {
+	font-family: var(--mono);
+	font-size: 13px;
+	overflow-wrap: anywhere;
+}
+
+.record-head strong+code {
+	margin-inline-start: 8px;
+}
+
 /* An app's images, by kind. */
 .asset-group+.asset-group {
 	margin-top: 8px;

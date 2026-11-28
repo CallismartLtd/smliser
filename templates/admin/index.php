@@ -11,6 +11,7 @@
  * @var \SmartLicenseServer\Security\Context\Guard $guard
  * @var \SmartLicenseServer\Assets\AssetsManager $assets_manager
  * @var \SmartLicenseServer\Core\URLManager $urlmanager
+ * @var \SmartLicenseServer\Core\SiteFavicon|null $favicon
  */
 
 use SmartLicenseServer\Admin\Page\Shell;
@@ -78,6 +79,7 @@ if ( $request->isEmpty( 'noheader' ) ) {
 		'collapsed'      => $collapsed,
 		'registry'       => $registry,
 		'assets_manager' => $assets_manager,
+		'favicon'         => $favicon ?? null,
 	] );
 
 	/*

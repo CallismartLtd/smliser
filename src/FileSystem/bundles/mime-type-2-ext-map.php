@@ -29,6 +29,7 @@ return [
 	'image/jxl'     => 'jxl',
 	'image/bmp'     => 'bmp',
 	'image/x-icon'  => 'ico',
+	'image/vnd.microsoft.icon' => 'ico', // What libmagic (finfo) reports for .ico files.
 	'image/svg+xml' => 'svg',
 	'image/tiff'    => 'tif',
 	'image/heif'    => 'heif',

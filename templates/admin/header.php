@@ -14,6 +14,7 @@
  * @var bool $collapsed
  * @var \SmartLicenseServer\Admin\AdminDashboardRegistry $registry
  * @var \SmartLicenseServer\Assets\AssetsManager $assets_manager
+ * @var \SmartLicenseServer\Core\SiteFavicon|null $favicon The site icon; its tag is empty under WordPress.
  */
 
 use SmartLicenseServer\Assets\AssetsManager;
@@ -26,6 +27,7 @@ use SmartLicenseServer\Assets\AssetsManager;
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="noindex, nofollow">
 	<title><?php echo escHtml( $title ?? smliser__( 'Dashboard' ) ); ?></title>
+	<?php echo isset( $favicon ) ? $favicon->link_tag() : ''; // phpcs:ignore -- escaped by SiteFavicon::link_tag(). ?>
 
 	<?php $assets_manager->print_style( 'view-transition' ); ?>
 	<?php $assets_manager->print_category_styles( AssetsManager::CATEGORY_ADMIN_DASHBOARD ); ?>

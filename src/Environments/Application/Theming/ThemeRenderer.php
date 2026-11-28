@@ -13,6 +13,7 @@ namespace SmartLicenseServer\Environments\Application\Theming;
 use SmartLicenseServer\Assets\AssetsManager;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
+use SmartLicenseServer\Core\SiteFavicon;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\FileSystem\FileSystem;
 use SmartLicenseServer\Security\Context\Guard;
@@ -41,14 +42,16 @@ final class ThemeRenderer {
 	 * @param URLManager    $urls   URL API.
 	 * @param Guard         $guard  The signed-in principal, if any.
 	 * @param AssetsManager $assets Registered styles and scripts.
-	 * @param FileSystem    $fs     Filesystem API.
+	 * @param FileSystem    $fs      Filesystem API.
+	 * @param SiteFavicon|null $favicon The site icon, printed by ThemeContext::head().
 	 */
 	public function __construct(
 		private ThemeManager $themes,
 		private URLManager $urls,
 		private Guard $guard,
 		private AssetsManager $assets,
-		private FileSystem $fs
+		private FileSystem $fs,
+		private ?SiteFavicon $favicon = null
 	) {}
 
 	/**
@@ -97,6 +100,6 @@ final class ThemeRenderer {
 	 * @return string
 	 */
 	private function render_with( array $chain, View $view, Request $request ) : string {
-		return ( new ThemeContext( $chain, $view, $request, $this->urls, $this->guard, $this->assets, $this->fs ) )->render_document();
+		return ( new ThemeContext( $chain, $view, $request, $this->urls, $this->guard, $this->assets, $this->fs, $this->favicon ) )->render_document();
 	}
 }

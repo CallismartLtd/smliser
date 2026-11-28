@@ -631,6 +631,29 @@ ul.smliser-app-artifacts li.smliser-app-artifacts_item {
     border: 1px var(--dashboard-border) solid;
 }
 
+/* Site favicon field (general settings). */
+.smliser-favicon-field_body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.smliser-favicon-field_preview {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    padding: 4px;
+    border: 1px var(--dashboard-border) solid;
+    border-radius: 4px;
+    background: repeating-conic-gradient( #8882 0% 25%, transparent 0% 50% ) 50% / 8px 8px;
+}
+
+.smliser-favicon-field_status {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
 .smliser-form-label-row textarea {
     min-height: 130px;
     border: 1px var(--dashboard-border) solid;

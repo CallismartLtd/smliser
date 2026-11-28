@@ -21,6 +21,7 @@ use SmartLicenseServer\Cache\Cache;
 use SmartLicenseServer\Environments\Application\Boot\BootstrapperInterface;
 use SmartLicenseServer\Core\Container\Container;
 use SmartLicenseServer\Core\Request;
+use SmartLicenseServer\Core\SiteFavicon;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Environments\Application\Auth\IdentityService;
 use SmartLicenseServer\Environments\Application\Auth\WebIdentityProvider;
@@ -141,7 +142,8 @@ class WebBootstrapper implements BootstrapperInterface {
 				$c->get( URLManager::class ),
 				$c->get( Guard::class ),
 				$c->get( AssetsManager::class ),
-				$c->get( FileSystem::class )
+				$c->get( FileSystem::class ),
+				$c->get( SiteFavicon::class )
 			)
 		);
 

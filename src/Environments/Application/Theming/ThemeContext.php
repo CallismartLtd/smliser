@@ -12,6 +12,7 @@ namespace SmartLicenseServer\Environments\Application\Theming;
 
 use SmartLicenseServer\Assets\AssetsManager;
 use SmartLicenseServer\Core\Request;
+use SmartLicenseServer\Core\SiteFavicon;
 use SmartLicenseServer\Core\URL;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\FileSystem\FileSystem;
@@ -68,6 +69,7 @@ final class ThemeContext {
 	 * @param Guard         $guard   The signed-in principal, if any.
 	 * @param AssetsManager $assets  Registered styles and scripts.
 	 * @param FileSystem    $fs      Filesystem API.
+	 * @param SiteFavicon|null $favicon The site icon, printed by head().
 	 */
 	public function __construct(
 		private array $chain,
@@ -76,7 +78,8 @@ final class ThemeContext {
 		private URLManager $urls,
 		private Guard $guard,
 		private AssetsManager $assets,
-		private FileSystem $fs
+		private FileSystem $fs,
+		private ?SiteFavicon $favicon = null
 	) {
 		if ( [] === $chain ) {
 			throw new \InvalidArgumentException( 'A theme chain needs at least one theme.' );
@@ -149,9 +152,9 @@ final class ThemeContext {
 	}
 
 	/**
-	 * Print what core puts in <head>: the title and description, then what
-	 * AssetsManager::print_head() prints (the enqueued styles, the JS
-	 * constants, the enqueued head scripts).
+	 * Print what core puts in <head>: the title and description, the site
+	 * icon (SiteFavicon::link_tag()), then what AssetsManager::print_head()
+	 * prints (the enqueued styles, the JS constants, the enqueued head scripts).
 	 *
 	 * @return void
 	 */
@@ -161,6 +164,8 @@ final class ThemeContext {
 		if ( '' !== $this->view->get_description() ) {
 			printf( "<meta name=\"description\" content=\"%s\">\n", \escAttr( $this->view->get_description() ) );
 		}
+
+		echo $this->favicon?->link_tag() ?? ''; // phpcs:ignore -- escaped by SiteFavicon::link_tag().
 
 		$this->assets->print_head();
 	}

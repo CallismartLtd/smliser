@@ -25,6 +25,11 @@ unset( $menu_args['breadcrumbs'][0] );
             <?php foreach( $page_handler->general_settings_fields() as $field ) : ?>
                 <?php smliser_render_input_field( $field ); ?>
             <?php endforeach; ?>
+
+            <?php $favicon_field = $page_handler->favicon_field(); // Null under WordPress, which owns the site icon. ?>
+            <?php if ( null !== $favicon_field ) : ?>
+                <?php $this->render( 'admin.contents.options.favicon-field', [ 'field' => $favicon_field ] ); ?>
+            <?php endif; ?>
         </div>
         <button type="submit" class="smliser-submit-button"><?php smliser_esc_html_e( 'Save' ); ?></button>
     </form>

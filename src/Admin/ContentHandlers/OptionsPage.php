@@ -18,6 +18,7 @@ use SmartLicenseServer\Cache\CacheAdapterRegistry;
 use SmartLicenseServer\Cache\CacheProviderIcons;
 use SmartLicenseServer\Contracts\URLManagerInterface;
 use SmartLicenseServer\Core\Request;
+use SmartLicenseServer\Core\SiteFavicon;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Email\EmailProviderIcons;
 use SmartLicenseServer\Email\EmailProvidersRegistry;
@@ -41,7 +42,8 @@ class OptionsPage implements AdminPageInterface {
 		protected URLManager $urlmanager,
 		protected EmailProviderIcons $email_icons_provider,
 		protected CacheProviderIcons $cache_provider_icons,
-		protected AssetsManager $assets_manager
+		protected AssetsManager $assets_manager,
+		protected SiteFavicon $favicon
 	) {
 		$this->register_scripts();
 	}
@@ -382,136 +384,81 @@ class OptionsPage implements AdminPageInterface {
 	/**
 	 * General settings form fields.
 	 *
+	 * Every field is saved by SettingsController::save_general_settings()
+	 * under its input name. The site favicon is not one of them: it is an
+	 * upload, see favicon_field().
+	 *
 	 * @return array<int, array<string, mixed>>
 	 */
 	public function general_settings_fields() : array {
 		$settings = $this->settings;
 
 		return [
-			[
-				'label' => smliser__( 'Repository Name' ),
-				'help'  => smliser__( 'Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::REPOSITORY_NAME,
-					'value' => $settings->get( Settings::REPOSITORY_NAME, SMLISER_APP_NAME ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Administration Email' ),
-				'help'  => smliser__( 'Primary email address for receiving system notifications, error reports, and administrative alerts.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::ADMIN_EMAIL,
-					'value' => $settings->get( Settings::ADMIN_EMAIL, '' ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Hosting Email' ),
-				'help'  => smliser__( 'Designated contact email for server, infrastructure, or application hosting-related issues and notifications.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::HOSTING_EMAIL,
-					'value' => $settings->get( Settings::HOSTING_EMAIL, '' ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Support Email' ),
-				'help'  => smliser__( 'Customer-facing support email address used in license communications and support responses.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::SUPPORT_EMAIL,
-					'value' => $settings->get( Settings::SUPPORT_EMAIL, '' ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
-				],
-			],
-
-			[
-				'label' => smliser__( 'License Key Prefix' ),
-				'help'  => smliser__( 'Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::LICENSE_KEY_PREFIX,
-					'value' => $settings->get( Settings::LICENSE_KEY_PREFIX, 'SMLISER' ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Default License Duration (Days)' ),
-				'help'  => smliser__( 'Default number of days a newly generated license remains valid when no expiration date is specified.' ),
-				'input' => [
-					'type'  => 'number',
-					'name'  => Settings::DEFAULT_LICENSE_DURATION,
-					'value' => $settings->get( Settings::DEFAULT_LICENSE_DURATION, 365 ),
-					'attr'  => [ 'min' => 1 ],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Default License Activation Limit' ),
-				'help'  => smliser__( 'Default number of activations allowed per license key.' ),
-				'input' => [
-					'type'  => 'number',
-					'name'  => Settings::DEFAULT_ACTIVATION_LIMIT,
-					'value' => $settings->get( Settings::DEFAULT_ACTIVATION_LIMIT, 1 ),
-					'attr'  => [ 'min' => 1 ],
-				],
-			],
-
-			[
-				'label' => smliser__( 'API Rate Limit (Per Minute)' ),
-				'help'  => smliser__( 'Maximum number of API requests allowed per client within a one-minute window.' ),
-				'input' => [
-					'type'  => 'number',
-					'name'  => Settings::API_RATE_LIMIT,
-					'value' => $settings->get( Settings::API_RATE_LIMIT, 60 ),
-					'attr'  => [ 'min' => 1 ],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Log Retention (Days)' ),
-				'help'  => smliser__( 'Number of days system logs are retained before automatic cleanup.' ),
-				'input' => [
-					'type'  => 'number',
-					'name'  => Settings::LOG_RETENTION_DAYS,
-					'value' => $settings->get( Settings::LOG_RETENTION_DAYS, 30 ),
-					'attr'  => [ 'min' => 1 ],
-				],
-			],
-
-			[
-				'label' => smliser__( 'Receipt Retention (Days)' ),
-				'help'  => smliser__( 'Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever.' ),
-				'input' => [
-					'type'  => 'number',
-					'name'  => Settings::RECEIPT_RETENTION_DAYS,
-					'value' => $settings->get( Settings::RECEIPT_RETENTION_DAYS, 90 ),
-					'attr'  => [ 'min' => 0 ],
-				],
-			],
+			$this->text_field(
+				smliser__( 'Repository Name' ),
+				smliser__( 'Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces.' ),
+				Settings::REPOSITORY_NAME,
+				$settings->get( Settings::REPOSITORY_NAME, SMLISER_APP_NAME )
+			),
+			$this->text_field(
+				smliser__( 'Administration Email' ),
+				smliser__( 'Primary email address for receiving system notifications, error reports, and administrative alerts.' ),
+				Settings::ADMIN_EMAIL,
+				$settings->get( Settings::ADMIN_EMAIL, '' )
+			),
+			$this->text_field(
+				smliser__( 'Hosting Email' ),
+				smliser__( 'Designated contact email for server, infrastructure, or application hosting-related issues and notifications.' ),
+				Settings::HOSTING_EMAIL,
+				$settings->get( Settings::HOSTING_EMAIL, '' )
+			),
+			$this->text_field(
+				smliser__( 'Support Email' ),
+				smliser__( 'Customer-facing support email address used in license communications and support responses.' ),
+				Settings::SUPPORT_EMAIL,
+				$settings->get( Settings::SUPPORT_EMAIL, '' )
+			),
+			$this->text_field(
+				smliser__( 'License Key Prefix' ),
+				smliser__( 'Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system.' ),
+				Settings::LICENSE_KEY_PREFIX,
+				$settings->get( Settings::LICENSE_KEY_PREFIX, 'SMLISER' )
+			),
+			$this->number_field(
+				smliser__( 'Default License Duration (Days)' ),
+				smliser__( 'Default number of days a newly generated license remains valid when no expiration date is specified.' ),
+				Settings::DEFAULT_LICENSE_DURATION,
+				$settings->get( Settings::DEFAULT_LICENSE_DURATION, 365 ),
+				1
+			),
+			$this->number_field(
+				smliser__( 'Default License Activation Limit' ),
+				smliser__( 'Default number of activations allowed per license key.' ),
+				Settings::DEFAULT_ACTIVATION_LIMIT,
+				$settings->get( Settings::DEFAULT_ACTIVATION_LIMIT, 1 ),
+				1
+			),
+			$this->number_field(
+				smliser__( 'API Rate Limit (Per Minute)' ),
+				smliser__( 'Maximum number of API requests allowed per client within a one-minute window.' ),
+				Settings::API_RATE_LIMIT,
+				$settings->get( Settings::API_RATE_LIMIT, 60 ),
+				1
+			),
+			$this->number_field(
+				smliser__( 'Log Retention (Days)' ),
+				smliser__( 'Number of days system logs are retained before automatic cleanup.' ),
+				Settings::LOG_RETENTION_DAYS,
+				$settings->get( Settings::LOG_RETENTION_DAYS, 30 ),
+				1
+			),
+			$this->number_field(
+				smliser__( 'Receipt Retention (Days)' ),
+				smliser__( 'Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever.' ),
+				Settings::RECEIPT_RETENTION_DAYS,
+				$settings->get( Settings::RECEIPT_RETENTION_DAYS, 90 ),
+				0
+			),
 
 			[
 				'label' => smliser__( 'Environment Mode' ),
@@ -530,32 +477,108 @@ class OptionsPage implements AdminPageInterface {
 
 			...$this->site_language_fields(),
 
-			[
-				'label' => smliser__( 'Terms URL' ),
-				'help'  => smliser__( 'Full URL to your Terms of Service or license agreement page.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::TERMS_URL,
-					'value' => $settings->get( Settings::TERMS_URL, '' ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
+			$this->text_field(
+				smliser__( 'Terms URL' ),
+				smliser__( 'Full URL to your Terms of Service or license agreement page.' ),
+				Settings::TERMS_URL,
+				$settings->get( Settings::TERMS_URL, '' )
+			),
+			$this->text_field(
+				smliser__( 'Privacy Policy URL' ),
+				smliser__( 'Full URL to your privacy policy page.' ),
+				Settings::PRIVACY_POLICY_URL,
+				$settings->get( Settings::PRIVACY_POLICY_URL, '' )
+			),
+		];
+	}
+
+	/**
+	 * The site favicon field, rendered by the
+	 * admin.contents.options.favicon-field template and saved by
+	 * SettingsController::save_general_settings() through SiteFavicon.
+	 *
+	 * Under WordPress the WordPress site icon applies, so there is no field.
+	 *
+	 * @return array{
+	 *     label: string,
+	 *     help: string,
+	 *     upload_name: string,
+	 *     remove_name: string,
+	 *     url: string,
+	 *     default_url: string,
+	 *     is_custom: bool,
+	 *     accept: string,
+	 *     max_bytes: int
+	 * }|null
+	 */
+	public function favicon_field() : ?array {
+		if ( $this->favicon->is_managed_by_wordpress() ) {
+			return null;
+		}
+
+		return [
+			'label'       => smliser__( 'Site Favicon' ),
+			'help'        => sprintf(
+				/* translators: 1: largest file size in kilobytes, 2: smallest size, 3: largest size (in pixels). */
+				smliser__( 'Icon shown in browser tabs and bookmarks for the admin dashboard, the client dashboard and public pages. Upload a square PNG or ICO file of %1$d KB or less, between %2$d and %3$d pixels per side.' ),
+				SiteFavicon::MAX_BYTES / 1024,
+				SiteFavicon::MIN_SIDE,
+				SiteFavicon::MAX_SIDE
+			),
+			'upload_name' => SiteFavicon::UPLOAD_FIELD,
+			'remove_name' => SiteFavicon::REMOVE_FIELD,
+			'url'         => $this->favicon->url()->url(),
+			'default_url' => $this->favicon->default_url()->url(),
+			'is_custom'   => $this->favicon->is_custom(),
+			'accept'      => '.png,.ico,image/png,image/x-icon,image/vnd.microsoft.icon',
+			'max_bytes'   => SiteFavicon::MAX_BYTES,
+		];
+	}
+
+	/**
+	 * A single-line text field (browser autocomplete and spellcheck off).
+	 *
+	 * @param string $label Translated label.
+	 * @param string $help  Translated help text.
+	 * @param string $name  Input name: the setting key.
+	 * @param mixed  $value Current value.
+	 * @return array<string, mixed>
+	 */
+	private function text_field( string $label, string $help, string $name, mixed $value ) : array {
+		return [
+			'label' => $label,
+			'help'  => $help,
+			'input' => [
+				'type'  => 'text',
+				'name'  => $name,
+				'value' => $value,
+				'attr'  => [
+					'autocomplete' => 'off',
+					'spellcheck'   => 'off',
 				],
 			],
+		];
+	}
 
-			[
-				'label' => smliser__( 'Privacy Policy URL' ),
-				'help'  => smliser__( 'Full URL to your privacy policy page.' ),
-				'input' => [
-					'type'  => 'text',
-					'name'  => Settings::PRIVACY_POLICY_URL,
-					'value' => $settings->get( Settings::PRIVACY_POLICY_URL, '' ),
-					'attr'  => [
-						'autocomplete' => 'off',
-						'spellcheck'   => 'off',
-					],
-				],
+	/**
+	 * A number field with a lower bound.
+	 *
+	 * @param string $label Translated label.
+	 * @param string $help  Translated help text.
+	 * @param string $name  Input name: the setting key.
+	 * @param mixed  $value Current value.
+	 * @param int    $min   Smallest value allowed.
+	 * @return array<string, mixed>
+	 */
+	private function number_field( string $label, string $help, string $name, mixed $value, int $min ) : array {
+		return [
+			'label' => $label,
+			'help'  => $help,
+			'input' => [
+				'type'  => 'number',
+				'name'  => $name,
+				'value' => $value,
+				'attr'  => [ 'min' => $min ],
 			],
 		];
 	}

@@ -4,6 +4,7 @@
  *
  * @author Callistus Nwachukwu
  * @var array<string, string> $types App types, type => label.
+ * @var string $type The type chosen first (?type=); "" for the first one.
  * @var int $max_size Largest upload, in bytes.
  * @var string $action The save action's URL.
  * @var SmartLicenseServer\Environments\Application\Theming\ThemeContext $this
@@ -18,8 +19,8 @@
 	<label class="field">
 		<span class="field-label"><?php smliser_esc_html_e( 'Type' ); ?></span>
 		<select name="app_type" required>
-			<?php foreach ( $types as $type => $label ) : ?>
-				<option value="<?php echo escAttr( $type ); ?>"><?php echo escHtml( $label ); ?></option>
+			<?php foreach ( $types as $key => $label ) : ?>
+				<option value="<?php echo escAttr( $key ); ?>"<?php echo $key === $type ? ' selected' : ''; ?>><?php echo escHtml( $label ); ?></option>
 			<?php endforeach; ?>
 		</select>
 	</label>

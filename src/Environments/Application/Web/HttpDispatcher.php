@@ -692,6 +692,17 @@ final class HttpDispatcher {
 					handler: [FileRequestController::class, 'get_client_licensed_app']
 				);
 
+				// An app's package and artifacts, for the owner the user acts for (Apps).
+				$this->router->get(
+					pattern: "download/app/{app_type:{$app_types}}/{app_id:int}",
+					handler: [FileRequestController::class, 'get_client_owned_app_file']
+				);
+
+				$this->router->get(
+					pattern: "download/app/{app_type:{$app_types}}/{app_id:int}/artifacts/{artifact_filename:.+}",
+					handler: [FileRequestController::class, 'get_client_owned_app_file']
+				);
+
 				// Pages (themed), built from ClientDashboardRegistry like the admin dashboard.
 				$this->pages->get( '/', [ClientDashboardDispatcher::class, 'render_client_dashboard'] );
 				$this->pages->get( '{page:slug}', [ClientDashboardDispatcher::class, 'render_client_dashboard'] );
@@ -802,6 +813,22 @@ final class HttpDispatcher {
 					$this->router->post(
 						pattern: 'apps/assets/delete',
 						handler: [AppActions::class, 'delete_asset']
+					);
+
+					$this->router->post(
+						pattern: 'apps/artifacts/upload',
+						handler: [AppActions::class, 'upload_artifact']
+					);
+
+					// PUT: HostingController::app_artifact_upload() replaces or renames on PUT.
+					$this->router->put(
+						pattern: 'apps/artifacts/update',
+						handler: [AppActions::class, 'update_artifact']
+					);
+
+					$this->router->post(
+						pattern: 'apps/artifacts/delete',
+						handler: [AppActions::class, 'delete_artifact']
 					);
 				},
 					middleware: [

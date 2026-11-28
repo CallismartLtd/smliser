@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 11:09+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: 中文（中国）\n"
 "Language: zh_CN\n"
@@ -146,12 +146,12 @@ msgstr "“%s”不是有效的文件名。"
 msgid "\"%s\" is not a valid partial name."
 msgstr "“%s”不是有效的局部模板名称。"
 
-#: src/HostedApps/HostedApplicationService.php:585
+#: src/HostedApps/HostedApplicationService.php:605
 #, php-format
 msgid "\"%s\" is not a valid slug."
 msgstr "“%s”不是有效的别名。"
 
-#: src/HostedApps/HostedApplicationService.php:584
+#: src/HostedApps/HostedApplicationService.php:604
 #, php-format
 msgid "\"%s\" is not a valid slug. Did you mean \"%s\"?"
 msgstr "“%s”不是有效的别名。您是指“%s”吗？"
@@ -254,6 +254,18 @@ msgstr "%1$s v%2$s"
 msgid "%1$s · %2$s installer"
 msgstr "%1$s · %2$s 安装程序"
 
+#. translators: 1: file size, 2: MIME type, 3: date.
+#: themes/default/templates/pages/client/app.php:212
+#, php-format
+msgid "%1$s · %2$s · updated %3$s"
+msgstr "%1$s · %2$s · 更新于 %3$s"
+
+#. translators: 1: a file name, or "Upload" for the upload as a whole, 2: why it failed.
+#: src/ClientDashboard/ActionHandlers/AppActions.php:195
+#, php-format
+msgid "%1$s: %2$s"
+msgstr "%1$s：%2$s"
+
 #. translators: 1: opening <span> tag, 2: closing <span> tag
 #: src/Environments/Application/Installation/InstallerPage.php:652
 #, php-format
@@ -297,10 +309,12 @@ msgstr "缺少 %d 个文件：%s"
 msgid "%d file(s) do not match the release: %s"
 msgstr "%d 个文件与发行版不匹配：%s"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:163
+#. translators: %d: number of images uploaded.
+#: src/ClientDashboard/ActionHandlers/AppActions.php:205
 #, php-format
-msgid "%d images are uploaded."
-msgstr "已上传 %d 张图片。"
+msgid "%d image is uploaded."
+msgid_plural "%d images are uploaded."
+msgstr[0] "已上传 %d 张图片。"
 
 #: src/Environments/Application/Health/SystemHealth.php:1227
 #, php-format
@@ -427,7 +441,7 @@ msgstr "%s 请在此域名上重新激活许可证以获取新的。"
 msgid "%s Assets"
 msgstr "%s 资源"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:716
+#: src/Admin/ContentHandlers/RepositoryPage.php:715
 #, php-format
 msgid "%s Distributable Artifacts"
 msgstr "%s 可分发构件"
@@ -781,7 +795,7 @@ msgstr "%s 到 %s：%s（开始于 %s）"
 msgid "%s was updated to %s"
 msgstr "%s 已更新到 %s"
 
-#: themes/default/templates/pages/client/apps.php:49
+#: themes/default/templates/pages/client/apps.php:59
 #, php-format
 msgid "%s · %s · updated %s"
 msgstr "%s · %s · 更新于 %s"
@@ -819,7 +833,7 @@ msgstr "（已归档）"
 msgid "(Get-Acl -LiteralPath '"
 msgstr "(Get-Acl -LiteralPath '"
 
-#: themes/default/templates/pages/client/app-new.php:39 themes/default/templates/pages/client/app.php:95 themes/default/templates/pages/client/app.php:101
+#: themes/default/templates/pages/client/app-new.php:40 themes/default/templates/pages/client/app.php:132 themes/default/templates/pages/client/app.php:138 themes/default/templates/pages/client/app.php:271
 msgid "(optional)"
 msgstr "（可选）"
 
@@ -1165,11 +1179,11 @@ msgstr "API 文档"
 msgid "API key was not provided."
 msgstr "未提供 API 密钥。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:812 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
+#: src/Admin/ContentHandlers/RepositoryPage.php:811 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
 msgid "APP ID"
 msgstr "应用 ID"
 
-#: assets/js/admin/apps-uploader.js:1446
+#: themes/default/templates/pages/client/app.php:140 assets/js/admin/apps-uploader.js:1446 assets/js/manifest-editor.js:62
 msgid "APP JSON Editor"
 msgstr "应用 JSON 编辑器"
 
@@ -1222,7 +1236,7 @@ msgstr "拒绝访问。您必须登录有效的管理员账户才能查看此页
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
 msgstr "拒绝访问。您必须登录有效的管理员账户才能查看此页面。[重新登录][返回首页]"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1038
+#: src/Analytics/AppStatsSummary.php:165
 msgid "Access Growth"
 msgstr "访问增长"
 
@@ -1358,7 +1372,7 @@ msgstr "活跃安装"
 msgid "Active Installations by Type (30 Days)"
 msgstr "按类型统计的活跃安装（30 天）"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1048
+#: src/Analytics/AppStatsSummary.php:175
 msgid "Active Installs"
 msgstr "活跃安装"
 
@@ -1378,16 +1392,17 @@ msgstr "需要适配器 ID。"
 msgid "Adapters"
 msgstr "适配器"
 
-#: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:156
+#. translators: %s: kind of image, e.g. icons.
+#: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:193
 #, php-format
 msgid "Add %s"
 msgstr "添加 %s"
 
-#: templates/admin/contents/repository/edit-artifacts.php:110
+#: templates/admin/contents/repository/edit-artifacts.php:110 themes/default/templates/pages/client/app.php:278
 msgid "Add Artifact"
 msgstr "添加构件"
 
-#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:1120 templates/admin/contents/license/index.php:27
+#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:714 src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/license/index.php:27
 #: templates/admin/contents/license/search.php:26
 msgid "Add New"
 msgstr "新增"
@@ -1415,6 +1430,10 @@ msgstr "添加备注"
 #: themes/default/templates/pages/client/security.php:56
 msgid "Add a passkey"
 msgstr "添加通行密钥"
+
+#: themes/default/templates/pages/client/app.php:266
+msgid "Add an artifact"
+msgstr "添加一个构件"
 
 #: assets/js/admin/json-editor.js:720
 msgid "Add item"
@@ -1518,7 +1537,7 @@ msgstr "警报"
 msgid "Algorithm"
 msgstr "算法"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:150 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:167 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
 #: themes/default/templates/partials/repository/toolbar.php:26
 msgid "All"
 msgstr "全部"
@@ -1592,7 +1611,7 @@ msgstr "所有资源所有者都将在此列出"
 msgid "All scheduled tasks last ran without error."
 msgstr "所有计划任务上次运行均无错误。"
 
-#: assets/js/admin/repository-browser.js:290
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:176 assets/js/admin/repository-browser.js:290
 msgid "All types"
 msgstr "所有类型"
 
@@ -1687,7 +1706,7 @@ msgstr "将文件写入磁盘时发生错误。"
 msgid "An external dependency or microservice failed to respond correctly."
 msgstr "外部依赖或微服务未正确响应。"
 
-#: themes/default/templates/pages/client/app.php:191
+#: themes/default/templates/pages/client/app.php:308
 msgid "An inactive app is not offered for download or sale."
 msgstr "未启用的应用不会提供下载或销售。"
 
@@ -1834,7 +1853,7 @@ msgstr "未找到应用"
 msgid "App Slug Conflict"
 msgstr "应用别名冲突"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1132
+#: src/Admin/ContentHandlers/RepositoryPage.php:475 src/Admin/ContentHandlers/RepositoryPage.php:978
 msgid "App Storage"
 msgstr "应用存储"
 
@@ -1855,11 +1874,11 @@ msgstr "未找到类型“%s”的应用类。"
 msgid "App data not found"
 msgstr "未找到应用数据"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:765
+#: src/Admin/ContentHandlers/RepositoryPage.php:764
 msgid "App monetization"
 msgstr "应用变现"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:238
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:280
 msgid "App not found"
 msgstr "未找到应用"
 
@@ -1955,7 +1974,7 @@ msgstr "已批准（%d）"
 msgid "Approved. License #%d was issued and is being emailed to %s."
 msgstr "已批准。许可证 #%d 已签发，正在通过电子邮件发送至 %s。"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:81 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:88 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
 msgid "Apps"
 msgstr "应用"
 
@@ -1979,7 +1998,7 @@ msgstr "只认识旧密钥的应用会拒绝使用新密钥签名的软件包。
 msgid "Apps that trust only the current key refuse every package signed with a new one. Publish the new public key first, give developers time to ship app updates that trust both keys, and only then switch."
 msgstr "只信任当前密钥的应用会拒绝所有使用新密钥签名的软件包。请先发布新的公钥，给开发者时间发布同时信任两个密钥的应用更新，然后再切换。"
 
-#: themes/default/templates/pages/client/apps.php:40
+#: themes/default/templates/pages/client/apps.php:50
 msgid "Apps uploaded for this account appear here."
 msgstr "为此账户上传的应用将显示在此处。"
 
@@ -2030,7 +2049,7 @@ msgstr "数组"
 msgid "Artifact File Name:"
 msgstr "构件文件名："
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:130
+#: src/FileSystem/DownloadsApi/FileRequestController.php:131
 msgid "Artifact file name is required."
 msgstr "构件文件名为必填项。"
 
@@ -2042,7 +2061,7 @@ msgstr "构件文件未上传"
 msgid "Artifact upload request failed with an unknown error."
 msgstr "构件上传请求因未知错误而失败。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:361 templates/admin/contents/system/signing-key.php:141 assets/js/admin/repository-browser.js:40
+#: src/Admin/ContentHandlers/RepositoryPage.php:360 templates/admin/contents/system/signing-key.php:141 themes/default/templates/pages/client/app.php:203 assets/js/admin/repository-browser.js:40
 msgid "Artifacts"
 msgstr "构件"
 
@@ -2064,7 +2083,7 @@ msgstr "正在向 %s 请求其 %s 应用。"
 msgid "Asking %s for the release."
 msgstr "正在向 %s 请求该版本。"
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:500
+#: src/FileSystem/DownloadsApi/FileRequestController.php:549
 msgid "Asset URL is required."
 msgstr "资源 URL 为必填项。"
 
@@ -2192,19 +2211,19 @@ msgstr "无法开始注册身份验证器。请重试。"
 msgid "Authenticator or recovery code"
 msgstr "身份验证器或恢复码"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:270 themes/default/templates/pages/client/app-new.php:34
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:333 themes/default/templates/pages/client/app-new.php:35
 msgid "Author"
 msgstr "作者"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:638
+#: src/Admin/ContentHandlers/RepositoryPage.php:637
 msgid "Author Name"
 msgstr "作者名称"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:652
+#: src/Admin/ContentHandlers/RepositoryPage.php:651
 msgid "Author Profile URL"
 msgstr "作者主页 URL"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:271 themes/default/templates/pages/client/app-new.php:39
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:334 themes/default/templates/pages/client/app-new.php:40
 msgid "Author profile URL"
 msgstr "作者主页 URL"
 
@@ -2284,11 +2303,11 @@ msgstr "可用的 REST API 路由，按版本和类别分组。"
 msgid "Avatar actions"
 msgstr "头像操作"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1028
+#: src/Analytics/AppStatsSummary.php:155
 msgid "Avg Access/Day"
 msgstr "日均访问"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:984
+#: src/Analytics/AppStatsSummary.php:112
 msgid "Avg Downloads/Day"
 msgstr "日均下载"
 
@@ -2610,7 +2629,7 @@ msgstr "更改角色"
 msgid "Change slug"
 msgstr "更改别名"
 
-#: themes/default/templates/pages/client/app.php:203
+#: themes/default/templates/pages/client/app.php:319
 msgid "Change status"
 msgstr "更改状态"
 
@@ -3465,6 +3484,10 @@ msgstr "Cron（smliser cron）"
 msgid "Cron URL (external service)"
 msgstr "Cron URL（外部服务）"
 
+#: themes/default/templates/pages/client/app.php:142
+msgid "Current app.json"
+msgstr "当前的 app.json"
+
 #: templates/admin/contents/accounts/access-control-form.php:123
 msgid "Current avatar"
 msgstr "当前头像"
@@ -3696,18 +3719,20 @@ msgid "Defines whether this repository operates in production, staging, or devel
 msgstr "定义此存储库以生产、预发布还是开发模式运行。"
 
 #: templates/admin/contents/accounts/access-control-form.php:217 templates/admin/contents/accounts/owners.php:70 templates/admin/contents/broadcasts/index.php:36 templates/admin/contents/license/index.php:61
-#: templates/admin/contents/license/purchase-request.php:201 templates/admin/contents/repository/monetization.php:130 templates/admin/contents/repository/uploader.php:101 themes/default/templates/pages/client/app.php:136
-#: themes/default/templates/pages/client/organization.php:144 assets/js/admin/apps-uploader.js:1280 assets/js/admin/json-editor.js:709 assets/js/admin/repository-browser.js:744
-#: assets/js/admin/repository-browser.js:954
+#: templates/admin/contents/license/purchase-request.php:201 templates/admin/contents/repository/monetization.php:130 templates/admin/contents/repository/uploader.php:101 themes/default/templates/pages/client/app.php:172
+#: themes/default/templates/pages/client/app.php:175 themes/default/templates/pages/client/app.php:229 themes/default/templates/pages/client/app.php:232 themes/default/templates/pages/client/organization.php:144
+#: assets/js/admin/apps-uploader.js:1280 assets/js/admin/json-editor.js:709 assets/js/admin/repository-browser.js:744 assets/js/admin/repository-browser.js:954
 msgid "Delete"
 msgstr "删除"
 
-#: themes/default/templates/pages/client/app.php:181
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/app.php:299
 #, php-format
 msgid "Delete %s for good? Its files go too, and this cannot be undone."
 msgstr "永久删除 %s？其文件也会被删除，且无法撤消。"
 
-#: themes/default/templates/pages/client/app.php:131
+#. translators: %s: file name.
+#: themes/default/templates/pages/client/app.php:172 themes/default/templates/pages/client/app.php:229
 #, php-format
 msgid "Delete %s?"
 msgstr "删除 %s？"
@@ -3750,7 +3775,7 @@ msgstr "删除失败"
 msgid "Delete failed job records older than %d days? They are the audit trail of past failures."
 msgstr "删除超过 %d 天的失败任务记录？它们是过去失败的审计记录。"
 
-#: themes/default/templates/pages/client/app.php:185
+#: themes/default/templates/pages/client/app.php:299 themes/default/templates/pages/client/app.php:302
 msgid "Delete for good"
 msgstr "永久删除"
 
@@ -3915,7 +3940,7 @@ msgstr "详情"
 msgid "Detail card"
 msgstr "详情卡片"
 
-#: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:77
+#: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:115
 msgid "Details"
 msgstr "详细信息"
 
@@ -4010,7 +4035,7 @@ msgstr "文档下载 URL（公开）"
 msgid "Documentation"
 msgstr "文档"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:282 templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:347 templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
 msgid "Documentation URL"
 msgstr "文档 URL"
 
@@ -4022,7 +4047,7 @@ msgstr "未找到域名值"
 msgid "Done"
 msgstr "完成"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:283 assets/js/admin/background.js:71 assets/js/admin/maintenance.js:96 assets/js/admin/maintenance.js:113
+#: src/ClientDashboard/ActionHandlers/AppActions.php:356 assets/js/admin/background.js:71 assets/js/admin/maintenance.js:96 assets/js/admin/maintenance.js:113
 #: assets/js/admin/modules.js:90 assets/js/admin/modules.js:152 assets/js/page-forms.js:94
 msgid "Done."
 msgstr "完成。"
@@ -4035,12 +4060,12 @@ msgstr "不允许仅由点组成的路径段。"
 msgid "Double click for fullscreen"
 msgstr "双击进入全屏"
 
-#: themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892
-#: assets/js/admin/repository-browser.js:730
+#: themes/default/templates/pages/client/app.php:223 themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866
+#: assets/js/admin/json-editor.js:1892 assets/js/admin/repository-browser.js:730
 msgid "Download"
 msgstr "下载"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/repository/app.php:62
+#: src/Admin/ContentHandlers/RepositoryPage.php:392 themes/default/templates/pages/repository/app.php:62
 #, php-format
 msgid "Download %s"
 msgstr "下载 %s"
@@ -4057,7 +4082,7 @@ msgstr "下载 .txt"
 msgid "Download Document"
 msgstr "下载文档"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:994
+#: src/Analytics/AppStatsSummary.php:122
 msgid "Download Growth"
 msgstr "下载增长"
 
@@ -4085,7 +4110,7 @@ msgstr "已生成下载令牌"
 msgid "Download Type Missing"
 msgstr "缺少下载类型"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:296 templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:360 templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
 msgid "Download URL"
 msgstr "下载 URL"
 
@@ -4105,6 +4130,10 @@ msgstr "下载构件"
 #, javascript-format
 msgid "Download failed: %1$s %2$s (%3$s)"
 msgstr "下载失败：%1$s %2$s（%3$s）"
+
+#: themes/default/templates/pages/client/app.php:87
+msgid "Download package"
+msgstr "下载软件包"
 
 #: src/Utils/functions/functions.php:131
 msgid "Download token cannot be empty"
@@ -4176,7 +4205,8 @@ msgstr "拖动以重新排序"
 msgid "Drag to reorder  ·  Click to edit"
 msgstr "拖动以重新排序  ·  点击以编辑"
 
-#: themes/default/templates/pages/client/app.php:154
+#. translators: %s: kind of image, e.g. icons.
+#: themes/default/templates/pages/client/app.php:191
 #, php-format
 msgid "Drop %s images here, or choose them"
 msgstr "将 %s 图片拖放到此处，或选择图片"
@@ -4189,7 +4219,7 @@ msgstr "拖放一个"
 msgid "Drop a file here or click to choose"
 msgstr "将文件拖放到此处或点击选择"
 
-#: themes/default/templates/pages/client/app.php:102
+#: themes/default/templates/pages/client/app.php:143
 msgid "Drop an app.json file here, or choose it"
 msgstr "将 app.json 文件拖放到此处，或选择它"
 
@@ -4201,11 +4231,19 @@ msgstr "将文件拖放到此处"
 msgid "Drop files here or click to choose"
 msgstr "将文件拖放到此处或点击选择"
 
-#: themes/default/templates/pages/client/app.php:96
+#: themes/default/templates/pages/client/app.php:276
+msgid "Drop the artifact here, or choose it"
+msgstr "将构件拖放到此处，或选择它"
+
+#: themes/default/templates/pages/client/app.php:133
 msgid "Drop the new zip file here, or choose it"
 msgstr "将新的 zip 文件拖放到此处，或选择它"
 
-#: themes/default/templates/pages/client/app-new.php:45
+#: themes/default/templates/pages/client/app.php:255
+msgid "Drop the replacement file here, or choose it"
+msgstr "将替换文件拖放到此处，或选择它"
+
+#: themes/default/templates/pages/client/app-new.php:46
 msgid "Drop the zip file here, or choose it"
 msgstr "将 zip 文件拖放到此处，或选择它"
 
@@ -4249,26 +4287,26 @@ msgstr "每次调用都作为一个 Web 请求运行，因此每次调用最多�
 msgid "Each runner records its last run. This list refreshes every 30 seconds while the page is open."
 msgstr "每个运行器都会记录其上次运行。页面打开时此列表每 30 秒刷新一次。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:740 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
+#: src/Admin/ContentHandlers/RepositoryPage.php:739 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
 #: templates/admin/contents/repository/monetization.php:126 templates/admin/contents/repository/uploader.php:100 assets/js/admin/apps-uploader.js:1274
 msgid "Edit"
 msgstr "编辑"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:385
+#: src/Admin/ContentHandlers/RepositoryPage.php:384
 #, php-format
 msgid "Edit %s"
 msgstr "编辑 %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:713 templates/admin/contents/repository/edit-generic.php:11
+#: src/Admin/ContentHandlers/RepositoryPage.php:712 templates/admin/contents/repository/edit-generic.php:11
 #, php-format
 msgid "Edit %s: %s"
 msgstr "编辑 %s：%s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:739 src/Admin/ContentHandlers/RepositoryPage.php:1138
+#: src/Admin/ContentHandlers/RepositoryPage.php:738 src/Admin/ContentHandlers/RepositoryPage.php:984
 msgid "Edit App"
 msgstr "编辑应用"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1156
+#: src/Admin/ContentHandlers/RepositoryPage.php:1002
 msgid "Edit App Artifacts"
 msgstr "编辑应用构件"
 
@@ -4318,6 +4356,10 @@ msgstr "编辑构件"
 #: src/Admin/ContentHandlers/LicensePage.php:293 templates/admin/contents/license/view.php:40
 msgid "Edit license"
 msgstr "编辑许可证"
+
+#: themes/default/templates/pages/client/app.php:141
+msgid "Edit the app's manifest. Fields read from the package, such as its version, cannot be overridden here."
+msgstr "编辑应用的清单。从软件包读取的字段（例如版本）无法在此覆盖。"
 
 #: assets/js/admin/json-editor.js:699
 msgid "Edit value"
@@ -4584,12 +4626,12 @@ msgstr "输入角色名称"
 msgid "Enter role slug"
 msgstr "输入角色别名"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:682
+#: src/Admin/ContentHandlers/RepositoryPage.php:681
 #, php-format
 msgid "Enter the %s status"
 msgstr "输入%s状态"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:653
+#: src/Admin/ContentHandlers/RepositoryPage.php:652
 #, php-format
 msgid "Enter the URL of the %s author profile."
 msgstr "输入%s作者主页的 URL。"
@@ -4598,7 +4640,7 @@ msgstr "输入%s作者主页的 URL。"
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "输入允许安装此许可证的最大域名数。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:639
+#: src/Admin/ContentHandlers/RepositoryPage.php:638
 #, php-format
 msgid "Enter the name of the %s author."
 msgstr "输入%s作者的名称。"
@@ -4805,7 +4847,7 @@ msgstr "外部存储库 URL"
 msgid "External cron service"
 msgstr "外部 cron 服务"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:279
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:342
 msgid "External repository URL"
 msgstr "外部存储库 URL"
 
@@ -4943,7 +4985,7 @@ msgstr "未找到文件"
 msgid "File Reading Error"
 msgstr "文件读取错误"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:824
+#: src/Admin/ContentHandlers/RepositoryPage.php:823 src/ClientDashboard/ContentHandlers/AppsPage.php:370
 msgid "File Size"
 msgstr "文件大小"
 
@@ -4971,11 +5013,15 @@ msgstr "该文件不是有效的 HTTP 上传文件。"
 msgid "File is too large. Maximum size is 2MB."
 msgstr "文件过大。最大为 2 MB。"
 
+#: themes/default/templates/pages/client/app.php:271
+msgid "File name"
+msgstr "文件名"
+
 #: src/FileSystem/DownloadsApi/FileResponse.php:211
 msgid "File not readable"
 msgstr "文件不可读"
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:536
+#: src/FileSystem/DownloadsApi/FileRequestController.php:585
 msgid "File path is required."
 msgstr "文件路径为必填项。"
 
@@ -4996,17 +5042,25 @@ msgstr "文件同步冲突：检测到存储库与元数据版本不匹配。"
 msgid "Filename"
 msgstr "文件名"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:369
+#: src/Admin/ContentHandlers/RepositoryPage.php:368
 msgid "Files"
 msgstr "文件"
+
+#: themes/default/templates/pages/client/app.php:204
+msgid "Files distributed beside the main package, such as checksums, signatures or other builds. The main package changes only with a new version."
+msgstr "与主软件包一同分发的文件，例如校验和、签名或其他构建。主软件包只会随新版本更改。"
 
 #: src/Exceptions/FileRequestException.php:200 src/Exceptions/RequestException.php:247
 msgid "Filesystem Error"
 msgstr "文件系统错误"
 
-#: themes/default/templates/pages/client/apps.php:31
+#: themes/default/templates/pages/client/apps.php:33
 msgid "Filter by status"
 msgstr "按状态筛选"
+
+#: themes/default/templates/pages/client/apps.php:40
+msgid "Filter by type"
+msgstr "按类型筛选"
 
 #: templates/admin/contents/options/email/templates.php:69
 msgid "Filter:"
@@ -5115,6 +5169,10 @@ msgstr "格式化 JSON（美化）"
 #: src/Environments/WordPress/WordPressEnvironment.php:521
 msgid "Four Hourly"
 msgstr "每四小时"
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371
+msgid "Free"
+msgstr "免费"
 
 #: src/FileSystem/WPPluginRepository.php:230
 msgid "Frequently Asked Questions"
@@ -5391,7 +5449,7 @@ msgstr "首页"
 msgid "Homepage"
 msgstr "主页"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:272 templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:335 templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
 msgid "Homepage URL"
 msgstr "主页 URL"
 
@@ -5399,7 +5457,7 @@ msgstr "主页 URL"
 msgid "Hosted Application"
 msgstr "托管应用"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1114
+#: src/Admin/ContentHandlers/RepositoryPage.php:960
 msgid "Hosted apps"
 msgstr "托管应用"
 
@@ -5764,7 +5822,7 @@ msgstr "获取图片失败：%s"
 msgid "Image has been converted to PNG."
 msgstr "图片已转换为 PNG。"
 
-#: themes/default/templates/pages/client/app.php:113
+#: themes/default/templates/pages/client/app.php:154
 msgid "Images"
 msgstr "图片"
 
@@ -5945,7 +6003,7 @@ msgstr "无效的 JSON"
 msgid "Invalid JSON in textarea"
 msgstr "文本框中的 JSON 无效"
 
-#: assets/js/admin/json-editor.js:1603
+#: assets/js/admin/json-editor.js:1603 assets/js/manifest-editor.js:88
 msgid "Invalid JSON string"
 msgstr "无效的 JSON 字符串"
 
@@ -6252,7 +6310,7 @@ msgstr "上次运行"
 msgid "Last Update Attempt"
 msgstr "上次更新尝试"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:826 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
+#: src/Admin/ContentHandlers/RepositoryPage.php:825 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
 msgid "Last Updated"
 msgstr "上次更新"
 
@@ -6311,11 +6369,11 @@ msgstr "留空则使用标准端口（"
 msgid "Leave empty for unlimited"
 msgstr "留空表示不限"
 
-#: themes/default/templates/pages/client/app.php:97
+#: themes/default/templates/pages/client/app.php:134
 msgid "Leave empty to keep the current version."
 msgstr "留空以保留当前版本。"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:300
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:364
 #, php-format
 msgid "Leave empty to serve downloads from this site, at %s"
 msgstr "留空则从此站点提供下载，地址为 %s"
@@ -6324,7 +6382,7 @@ msgstr "留空则从此站点提供下载，地址为 %s"
 msgid "Leave the installer"
 msgstr "离开安装程序"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:816 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
+#: src/Admin/ContentHandlers/RepositoryPage.php:815 src/ClientDashboard/ContentHandlers/AppsPage.php:369 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
 msgid "License"
 msgstr "许可证"
 
@@ -6629,7 +6687,7 @@ msgstr "机器可读的角色标识符"
 msgid "Main %s file"
 msgstr "%s 主文件"
 
-#: assets/js/admin/repository-browser.js:55
+#: themes/default/templates/pages/client/app.php:215 assets/js/admin/repository-browser.js:55
 msgid "Main package"
 msgstr "主软件包"
 
@@ -7000,8 +7058,8 @@ msgstr "弹窗标题"
 msgid "Modules"
 msgstr "模块"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
-#: src/Schema/Definitions/MonetizationSchema.php:30
+#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:376 src/Admin/ContentHandlers/RepositoryPage.php:765 src/Admin/ContentHandlers/RepositoryPage.php:819
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371 src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
 msgstr "变现"
 
@@ -7045,9 +7103,13 @@ msgstr "变现已更新"
 msgid "Monetizations"
 msgstr "变现"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1150
+#: src/Admin/ContentHandlers/RepositoryPage.php:996
 msgid "Monetize App"
 msgstr "应用变现"
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371
+msgid "Monetized"
+msgstr "已变现"
 
 #: assets/js/datetime-picker.js:524
 msgid "Month"
@@ -7062,12 +7124,13 @@ msgstr "每月第 %d 天"
 msgid "Monthly on day(s) "
 msgstr "每月的第 "
 
-#: themes/default/templates/pages/client/app.php:210
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/app.php:326
 #, php-format
 msgid "Move %s to the trash? It stops being offered, and is deleted for good after a while unless you restore it."
 msgstr "将 %s 移到回收站？它将不再提供，并会在一段时间后被永久删除，除非您恢复它。"
 
-#: themes/default/templates/pages/client/app.php:215
+#: themes/default/templates/pages/client/app.php:326 themes/default/templates/pages/client/app.php:329
 msgid "Move to trash"
 msgstr "移到回收站"
 
@@ -7099,12 +7162,12 @@ msgstr "MySQL (mysqli)"
 msgid "MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer."
 msgstr "通过同一个抽象层支持 MySQL、MariaDB、PostgreSQL 和 SQLite。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
-#: themes/default/templates/pages/client/app-new.php:28 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
+#: src/Admin/ContentHandlers/RepositoryPage.php:607 src/ClientDashboard/ContentHandlers/AppsPage.php:332 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
+#: themes/default/templates/pages/client/app-new.php:29 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
 msgid "Name"
 msgstr "名称"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:248
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:295
 #, php-format
 msgid "Name each file %s, with its image extension."
 msgstr "将每个文件命名为 %s，并带上其图片扩展名。"
@@ -7200,6 +7263,10 @@ msgstr "新的绕行链接"
 msgid "New bypass link made; earlier links stop working."
 msgstr "已生成新的绕行链接；之前的链接将失效。"
 
+#: themes/default/templates/pages/client/app.php:244
+msgid "New file name"
+msgstr "新文件名"
+
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
@@ -7218,7 +7285,7 @@ msgstr "新密码不能为空。"
 msgid "New purchase request #%d to review"
 msgstr "有新的购买请求 #%d 待审核"
 
-#: themes/default/templates/pages/client/app.php:95
+#: themes/default/templates/pages/client/app.php:132
 msgid "New version"
 msgstr "新版本"
 
@@ -7300,19 +7367,19 @@ msgstr "没有与搜索词“%s”匹配的应用。<a href=\"%s\">重置搜索<
 msgid "No app found matching this status"
 msgstr "没有与此状态匹配的应用"
 
-#: themes/default/templates/pages/client/apps.php:40
-msgid "No app has this status."
-msgstr "没有应用处于此状态。"
+#: themes/default/templates/pages/client/apps.php:50
+msgid "No app matches these filters."
+msgstr "没有符合这些筛选条件的应用。"
 
 #: assets/js/admin/repository-browser.js:399
 msgid "No app types are stored yet."
 msgstr "尚未存储任何应用类型。"
 
-#: themes/default/templates/pages/client/apps.php:39
+#: themes/default/templates/pages/client/apps.php:49
 msgid "No apps here"
 msgstr "此处没有应用"
 
-#: themes/default/templates/pages/client/apps.php:39
+#: themes/default/templates/pages/client/apps.php:49
 msgid "No apps yet"
 msgstr "还没有应用"
 
@@ -7501,7 +7568,7 @@ msgstr "此页面没有已注册的处理程序。"
 msgid "No release signing keys are configured, so no package can be verified."
 msgstr "未配置发行签名密钥，因此无法验证任何软件包。"
 
-#: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:593
+#: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:613
 #, php-format
 msgid "No repository is registered for the app type \"%s\"."
 msgstr "没有为应用类型“%s”注册存储库。"
@@ -7622,7 +7689,7 @@ msgstr "未提供"
 msgid "None registered"
 msgstr "未注册"
 
-#: themes/default/templates/pages/client/app.php:120
+#: themes/default/templates/pages/client/app.php:161
 msgid "None yet."
 msgstr "暂无。"
 
@@ -7630,7 +7697,7 @@ msgstr "暂无。"
 msgid "None. Every app type can be uploaded without a key."
 msgstr "无。所有应用类型都可以在没有密钥的情况下上传。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1118
 msgid "Not Allowed"
 msgstr "不允许"
 
@@ -7658,7 +7725,7 @@ msgstr "不可用"
 msgid "Not enabled"
 msgstr "未启用"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1119 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "未找到"
 
@@ -7786,7 +7853,7 @@ msgstr "天数、月数或年数"
 msgid "Number of messages per page."
 msgstr "每页消息数。"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:253
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:296
 msgid "Numbered in the order added; name a file screenshot-2 to give it that place."
 msgstr "按添加顺序编号；将文件命名为 screenshot-2 即可放在该位置。"
 
@@ -7814,7 +7881,7 @@ msgstr "在任何装有 PHP 的计算机上生成密钥："
 msgid "Once it is set up, its first run shows under Live status, usually within a few minutes."
 msgstr "设置完成后，其首次运行通常会在几分钟内显示在“实时状态”下。"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:252 src/ClientDashboard/ContentHandlers/AppsPage.php:253
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:297
 msgid "One image; delete the current one to upload another."
 msgstr "一张图片；删除当前图片后才能上传另一张。"
 
@@ -7839,7 +7906,7 @@ msgstr "仅允许 HTTPS URL。"
 msgid "Only a system administrator can suspend an app."
 msgstr "只有系统管理员可以暂停应用。"
 
-#: src/HostedApps/HostedApplicationService.php:509
+#: src/HostedApps/HostedApplicationService.php:529
 msgid "Only an app in the trash can be deleted for good. Move it to the trash first."
 msgstr "只有回收站中的应用才能被永久删除。请先将其移到回收站。"
 
@@ -8058,7 +8125,7 @@ msgstr "概览"
 msgid "Overwrite"
 msgstr "覆盖"
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:666
+#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:665
 msgid "Owner"
 msgstr "所有者"
 
@@ -8366,11 +8433,11 @@ msgstr "付款参考号"
 msgid "Payment reference (optional)"
 msgstr "付款参考号（可选）"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1058
+#: src/Analytics/AppStatsSummary.php:185
 msgid "Peak Access Day"
 msgstr "访问高峰日"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1004
+#: src/Analytics/AppStatsSummary.php:132
 msgid "Peak Day"
 msgstr "高峰日"
 
@@ -8378,6 +8445,10 @@ msgstr "高峰日"
 #, php-format
 msgid "Pending (%d)"
 msgstr "待处理（%d）"
+
+#: themes/default/templates/pages/client/app.php:101
+msgid "Performance Metrics (30 days)"
+msgstr "性能指标（30 天）"
 
 #: src/Background/Jobs/Apps/CleanTrashedAppsJob.php:48
 msgid "Permanently deletes apps that have been in trash longer than the retention threshold."
@@ -8600,7 +8671,7 @@ msgstr "美化格式（缩进）"
 msgid "Preview"
 msgstr "预览"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:278
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:341
 msgid "Preview URL"
 msgstr "预览 URL"
 
@@ -8762,7 +8833,7 @@ msgstr "清理许可证活动日志"
 msgid "Prune License Meta"
 msgstr "清理许可证元数据"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:822
+#: src/Admin/ContentHandlers/RepositoryPage.php:821 src/ClientDashboard/ContentHandlers/AppsPage.php:372
 msgid "Public Download URL"
 msgstr "公开下载 URL"
 
@@ -8774,7 +8845,7 @@ msgstr "公钥"
 msgid "Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces."
 msgstr "此许可证存储库的公开名称。它可能出现在系统邮件、API 响应和管理界面中。"
 
-#: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:63
+#: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:81
 msgid "Public page"
 msgstr "公开页面"
 
@@ -9150,7 +9221,7 @@ msgstr "删除此文件"
 msgid "Removes license activity log entries older than the configured retention window."
 msgstr "删除早于所配置保留期的许可证活动日志条目。"
 
-#: themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
+#: themes/default/templates/pages/client/app.php:247 themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
 msgid "Rename"
 msgstr "重命名"
 
@@ -9165,6 +9236,10 @@ msgstr "重命名制品"
 #: assets/js/admin/json-editor.js:689
 msgid "Rename key"
 msgstr "重命名键"
+
+#: themes/default/templates/pages/client/app.php:239
+msgid "Rename or replace"
+msgstr "重命名或替换"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:211 assets/js/admin/repository-browser.js:940
 #, php-format, javascript-format
@@ -9182,6 +9257,10 @@ msgstr "将 PDF 付款凭证的页面渲染为图片，使审核人员在任何�
 #: assets/js/admin/repository-browser.js:734
 msgid "Replace"
 msgstr "替换"
+
+#: themes/default/templates/pages/client/app.php:257
+msgid "Replace file"
+msgstr "替换文件"
 
 #: templates/admin/contents/modules/extensions.php:63
 msgid "Replace the installed extension of the same slug (same or newer version; downgrades are refused)"
@@ -9201,7 +9280,7 @@ msgstr "已替换 %s/（旧副本位于 %s/%s/）。"
 msgid "Replaced the %s \"%s\" %s with %s."
 msgstr "已将%s“%s”%s替换为 %s。"
 
-#: themes/default/templates/pages/client/app.php:103
+#: themes/default/templates/pages/client/app.php:144
 msgid "Replaces the app's manifest."
 msgstr "替换应用的清单。"
 
@@ -9217,9 +9296,9 @@ msgstr "报告已生成并复制。请将其粘贴到您的支持请求中。"
 msgid "Report generated. Press Ctrl+C (Cmd+C) to copy the selected text."
 msgstr "报告已生成。按 Ctrl+C（Cmd+C）复制所选文本。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:86 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:148 src/Admin/ContentHandlers/RepositoryPage.php:191
-#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:723
-#: src/Admin/ContentHandlers/RepositoryPage.php:1170 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
+#: src/Admin/ContentHandlers/RepositoryPage.php:85 src/Admin/ContentHandlers/RepositoryPage.php:146 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:190
+#: src/Admin/ContentHandlers/RepositoryPage.php:191 src/Admin/ContentHandlers/RepositoryPage.php:352 src/Admin/ContentHandlers/RepositoryPage.php:470 src/Admin/ContentHandlers/RepositoryPage.php:722
+#: src/Admin/ContentHandlers/RepositoryPage.php:1016 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
 #: templates/admin/contents/repository/upload.php:20 themes/default/templates/pages/repository/app.php:29 themes/default/templates/partials/header.php:12
 msgid "Repository"
 msgstr "存储库"
@@ -9369,11 +9448,11 @@ msgstr "资源所有者"
 msgid "Resource owners are individual users or organizations that own or host resources in this repository."
 msgstr "资源所有者是在此存储库中拥有或托管资源的个人用户或组织。"
 
-#: themes/default/templates/pages/client/app.php:176
+#: themes/default/templates/pages/client/app.php:294
 msgid "Restore"
 msgstr "恢复"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:404 templates/admin/contents/system/updates.php:323
+#: src/Admin/ContentHandlers/RepositoryPage.php:403 templates/admin/contents/system/updates.php:323
 #, php-format
 msgid "Restore %s"
 msgstr "恢复 %s"
@@ -9696,7 +9775,7 @@ msgstr "保存许可证"
 msgid "Save Template"
 msgstr "保存模板"
 
-#: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:106
+#: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:147
 msgid "Save changes"
 msgstr "保存更改"
 
@@ -9800,7 +9879,7 @@ msgstr "搜索许可证"
 msgid "Search Messages"
 msgstr "搜索消息"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1126 templates/admin/contents/repository/index.php:133
+#: src/Admin/ContentHandlers/RepositoryPage.php:150 src/Admin/ContentHandlers/RepositoryPage.php:972 templates/admin/contents/repository/index.php:133
 msgid "Search Repository"
 msgstr "搜索存储库"
 
@@ -10550,8 +10629,8 @@ msgstr "站点："
 msgid "Size:"
 msgstr "大小："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:814 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
-#: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:38
+#: src/Admin/ContentHandlers/RepositoryPage.php:813 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
+#: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:50
 msgid "Slug"
 msgstr "Slug"
 
@@ -10681,10 +10760,10 @@ msgid "Statistics"
 msgstr "统计"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:240 src/Admin/ContentHandlers/AccessControlPage.php:382 src/Admin/ContentHandlers/AccessControlPage.php:517 src/Admin/ContentHandlers/AccessControlPage.php:683
-#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
+#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:680 src/Admin/ContentHandlers/RepositoryPage.php:817
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
-#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
+#: themes/default/templates/pages/client/app.php:286 themes/default/templates/pages/client/app.php:312 themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
 msgstr "状态"
 
@@ -10701,7 +10780,7 @@ msgstr "状态已刷新。"
 msgid "Status:"
 msgstr "状态："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:90
+#: src/Admin/ContentHandlers/RepositoryPage.php:89
 #, php-format
 msgid "Status: %s"
 msgstr "状态：%s"
@@ -10891,7 +10970,7 @@ msgstr "支持邮箱"
 msgid "Support Report"
 msgstr "支持报告"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:287 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:351 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
 msgid "Support URL"
 msgstr "支持 URL"
 
@@ -10919,7 +10998,7 @@ msgstr "在数据库备份或导入、服务器迁移或其他需要站点保持
 msgid "Switch maintenance on"
 msgstr "开启维护模式"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:72
+#: src/ClientDashboard/ActionHandlers/AppActions.php:88
 msgid "Switch to an account or organization that can host apps first."
 msgstr "请先切换到可以托管应用的账户或组织。"
 
@@ -11255,7 +11334,7 @@ msgstr "%s“%s”已是最新（%s）。"
 msgid "The %s \"%s\" was not installed from the marketplace; install a newer package of it to update it."
 msgstr "%s“%s”不是从市场安装的；请安装其更新的软件包来更新它。"
 
-#: src/HostedApps/HostedApplicationService.php:575 src/HostedApps/Storage/DirectoryAppStorage.php:280
+#: src/HostedApps/HostedApplicationService.php:595 src/HostedApps/Storage/DirectoryAppStorage.php:280
 #, php-format
 msgid "The %s already has the slug \"%s\"."
 msgstr "%s的 slug 已经是“%s”。"
@@ -11270,7 +11349,7 @@ msgstr "无法发布%s资源：公共文件夹可写后请%s %s。"
 msgid "The %s directory of %s \"%s\" leads outside the app."
 msgstr "%s“%s”的 %s 目录指向应用之外。"
 
-#: src/HostedApps/HostedApplicationService.php:567
+#: src/HostedApps/HostedApplicationService.php:587
 #, php-format
 msgid "The %s does not exist."
 msgstr "%s不存在。"
@@ -11305,7 +11384,7 @@ msgstr "主题“%2$s”的 %1$s 不是有效的 JSON。"
 msgid "The %s of the theme \"%s\" needs a \"%s\"."
 msgstr "主题“%2$s”的 %1$s 需要“%3$s”。"
 
-#: src/HostedApps/HostedApplicationService.php:605
+#: src/HostedApps/HostedApplicationService.php:625
 #, php-format
 msgid "The %s was changed or deleted while renaming it. Reload it and try again."
 msgstr "重命名期间%s已被更改或删除。请重新加载后重试。"
@@ -11463,7 +11542,7 @@ msgstr "活动的缓存适配器是内存中的运行时缓存，因此一次请
 msgid "The active theme \"%s\" cannot be used, so the default theme renders the public pages. The error log says why."
 msgstr "无法使用活动主题“%s”，因此公共页面由默认主题渲染。错误日志中说明了原因。"
 
-#: src/HostedApps/HostedApplicationService.php:513
+#: src/HostedApps/HostedApplicationService.php:533
 msgid "The app could not be deleted. Please try again."
 msgstr "无法删除该应用，请重试。"
 
@@ -11485,7 +11564,7 @@ msgstr "不支持应用类型“%s”"
 msgid "The app type \"%s\" is not supported."
 msgstr "不支持应用类型“%s”。"
 
-#: themes/default/templates/pages/client/app-new.php:30
+#: themes/default/templates/pages/client/app-new.php:31
 msgid "The app's address on this site is made from it. Only an administrator can change the address later."
 msgstr "应用在此站点上的地址由此生成。以后只有管理员可以更改该地址。"
 
@@ -11525,7 +11604,7 @@ msgstr "请求中指定的应用类型不受支持。"
 msgid "The application version. For Wordpress plugins and themes, the version will be extracted from the readme.txt and style.css respectively, custom apps should define the app version in the app.json file."
 msgstr "应用版本。WordPress 插件和主题的版本分别从 readme.txt 和 style.css 中提取，自定义应用应在 app.json 文件中定义应用版本。"
 
-#: themes/default/templates/pages/client/apps.php:22
+#: themes/default/templates/pages/client/apps.php:24
 msgid "The apps you host here, for whoever you act for."
 msgstr "您在此托管的应用（按您当前代表的对象）。"
 
@@ -11556,9 +11635,25 @@ msgstr "制品文件名为必填项。"
 msgid "The artifact filename must not contain directory separators."
 msgstr "制品文件名不能包含目录分隔符。"
 
+#: src/ClientDashboard/ActionHandlers/AppActions.php:297
+msgid "The artifact is deleted."
+msgstr "构件已删除。"
+
 #: assets/js/admin/apps-uploader.js:1531
 msgid "The artifact is saved under this exact name, extension included (e.g. \"my-app-1.0.0.zip.sha256\"). Leave it empty to use the uploaded file's name. Unsafe characters are sanitized, e.g. \"my artifact.zip\" becomes \"my-artifact.zip\"."
 msgstr "制品将以此确切名称保存，包括扩展名（例如“my-app-1.0.0.zip.sha256”）。留空则使用上传文件的名称。不安全的字符会被清理，例如“my artifact.zip”会变为“my-artifact.zip”。"
+
+#: themes/default/templates/pages/client/app.php:273
+msgid "The artifact is saved under this exact name, extension included. Leave it empty to use the uploaded file's name."
+msgstr "构件将完全以此名称保存，包括扩展名。留空则使用上传文件的名称。"
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:277
+msgid "The artifact is saved."
+msgstr "构件已保存。"
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:252
+msgid "The artifact is uploaded."
+msgstr "构件已上传。"
 
 #: src/HostedApps/AppRelease.php:165
 msgid "The artifact must be the name of a ZIP artifact, e.g. \"acme-1.2.0.zip\"."
@@ -11904,10 +11999,6 @@ msgstr "生成的值是私钥。任何拥有它的人都可以签署您用户的
 msgid "The hosting attestation does not name this hosted app and package."
 msgstr "托管证明中未列出此托管应用和软件包。"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:163
-msgid "The image is uploaded."
-msgstr "图片已上传。"
-
 #: src/Environments/Application/Boot/BootModeResolver.php:211
 msgid "The installation state could not be read."
 msgstr "无法读取安装状态。"
@@ -12124,7 +12215,7 @@ msgstr "模块版本并非来自 release()。"
 msgid "The name can be at most %d characters long."
 msgstr "名称最多 %d 个字符。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:609
+#: src/Admin/ContentHandlers/RepositoryPage.php:608
 msgid "The name of the application"
 msgstr "应用名称"
 
@@ -12384,7 +12475,7 @@ msgstr "无法启动程序“%s”。"
 msgid "The provided API key or token is incorrect or expired."
 msgstr "提供的 API 密钥或令牌不正确或已过期。"
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:506
+#: src/FileSystem/DownloadsApi/FileRequestController.php:555
 msgid "The provided URL is not valid."
 msgstr "提供的 URL 无效。"
 
@@ -12581,7 +12672,7 @@ msgstr "请求失败，请重试。"
 msgid "The request format or parameters provided are improperly structured."
 msgstr "请求格式或参数结构不正确。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1113
 msgid "The request method is not allowed on this server."
 msgstr "此服务器不允许该请求方法。"
 
@@ -12633,7 +12724,7 @@ msgstr "请求的应用没有可下载的内容。"
 msgid "The requested range cannot be satisfied."
 msgstr "无法满足请求的范围。"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1114 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "找不到请求的资源。"
 
@@ -12815,7 +12906,7 @@ msgstr "slug“%s”不能用于存储此%s。"
 msgid "The slug \"%s\" is not available, you can change the %s name and try again."
 msgstr "slug“%s”不可用，您可以更改%s名称后重试。"
 
-#: src/HostedApps/HostedApplicationService.php:613
+#: src/HostedApps/HostedApplicationService.php:633
 #, php-format
 msgid "The slug \"%s\" is not available: %s."
 msgstr "slug“%s”不可用：%s。"
@@ -13257,7 +13348,7 @@ msgstr "他们会收到一封包含加入链接的邮件，有效期 48 小时�
 msgid "This %s has no package."
 msgstr "此%s没有软件包。"
 
-#: src/HostedApps/HostedApplicationService.php:571
+#: src/HostedApps/HostedApplicationService.php:591
 #, php-format
 msgid "This %s is in the trash. Restore it before renaming it."
 msgstr "此%s在回收站中。请先恢复再重命名。"
@@ -13285,11 +13376,11 @@ msgstr "此账户未激活。请联系站点管理员。"
 msgid "This app does not exist in the repository <a href=\"%s\">Back</a>"
 msgstr "存储库中不存在此应用 <a href=\"%s\">返回</a>"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:232
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:274
 msgid "This app does not exist, or it belongs to someone else. Switch to its owner to manage it."
 msgstr "此应用不存在，或属于其他人。请切换到其所有者以管理它。"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:249 src/HostedApps/HostingController.php:894
+#: src/ClientDashboard/ActionHandlers/AppActions.php:383 src/HostedApps/HostingController.php:894
 msgid "This app does not exist."
 msgstr "此应用不存在。"
 
@@ -13301,11 +13392,11 @@ msgstr "此应用尚无描述。"
 msgid "This app has no such pricing tier."
 msgstr "此应用没有该定价层级。"
 
-#: themes/default/templates/pages/client/app.php:72
+#: themes/default/templates/pages/client/app.php:96
 msgid "This app is in the trash. It is deleted for good after a while, unless you restore it."
 msgstr "此应用在回收站中。除非您恢复它，否则一段时间后将被永久删除。"
 
-#: themes/default/templates/pages/client/app.php:70
+#: themes/default/templates/pages/client/app.php:94
 msgid "This app is suspended by the site's administrators, so it is not offered. Contact them to have the suspension lifted."
 msgstr "此应用已被站点管理员暂停，因此不对外提供。请联系他们解除暂停。"
 
@@ -13361,7 +13452,7 @@ msgstr "此文件太大，无法预览。请下载查看。"
 msgid "This file type is not shown here. Download it to open it."
 msgstr "此处不显示该文件类型。请下载后打开。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:179
+#: src/Admin/ContentHandlers/RepositoryPage.php:178
 msgid "This hosted app type is not registered."
 msgstr "此托管应用类型未注册。"
 
@@ -13657,7 +13748,7 @@ msgstr "如需续订许可证或有任何问题，请通过 %s 联系我们。"
 msgid "To renew your license or if you have any questions, please contact us at {{support_email}}."
 msgstr "如需续订许可证或有任何问题，请通过 {{support_email}} 联系我们。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:975
+#: src/Analytics/AppStatsSummary.php:103
 msgid "Today's Downloads"
 msgstr "今日下载"
 
@@ -13746,7 +13837,7 @@ msgstr "%s总计"
 msgid "Total Accesses"
 msgstr "总访问量"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1019
+#: src/Analytics/AppStatsSummary.php:146
 msgid "Total Client Access"
 msgstr "客户端总访问量"
 
@@ -13754,7 +13845,7 @@ msgstr "客户端总访问量"
 msgid "Total Domains Activated:"
 msgstr "已激活域名总数："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/index.php:314
+#: src/Analytics/AppStatsSummary.php:94 templates/admin/contents/index.php:314
 msgid "Total Downloads"
 msgstr "总下载量"
 
@@ -13774,7 +13865,7 @@ msgstr "交易 ID"
 msgid "Transport encryption method."
 msgstr "传输加密方式。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:412
+#: src/Admin/ContentHandlers/RepositoryPage.php:411
 #, php-format
 msgid "Trash %s"
 msgstr "将%s移至回收站"
@@ -13855,7 +13946,7 @@ msgstr "您账户的 %s 双重身份验证已开启。"
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:97 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:224 src/Email/Templates/Apps/AppPublishedEmail.php:70 src/Email/Templates/Apps/AppPublishedEmail.php:192
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:89 src/Email/Templates/Apps/AppStatusChangedEmail.php:199 src/Email/Templates/Apps/AppUpdatedEmail.php:74 src/Email/Templates/Apps/AppUpdatedEmail.php:195
-#: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:19
+#: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:20
 #: themes/default/templates/pages/repository/app.php:112 assets/js/admin/json-editor.js:926
 msgid "Type"
 msgstr "类型"
@@ -14289,7 +14380,7 @@ msgstr "更新到 %s"
 msgid "Update users"
 msgstr "修改用户"
 
-#: themes/default/templates/pages/client/app.php:50 themes/default/templates/pages/repository/app.php:118
+#: themes/default/templates/pages/client/app.php:62 themes/default/templates/pages/repository/app.php:118
 msgid "Updated"
 msgstr "已更新"
 
@@ -14326,7 +14417,7 @@ msgstr "升级通知"
 msgid "Upgrade successful!"
 msgstr "升级成功！"
 
-#: themes/default/templates/pages/client/app-new.php:48
+#: src/ClientDashboard/ActionHandlers/AppActions.php:195 themes/default/templates/pages/client/app-new.php:49
 msgid "Upload"
 msgstr "上传"
 
@@ -14351,16 +14442,16 @@ msgstr "上传失败"
 msgid "Upload Image"
 msgstr "上传图片"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:157 src/Admin/ContentHandlers/RepositoryPage.php:482 templates/admin/contents/repository/index.php:47
+#: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:47
 msgid "Upload New"
 msgstr "上传新的"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:186
+#: src/Admin/ContentHandlers/RepositoryPage.php:185
 #, php-format
 msgid "Upload New %s"
 msgstr "上传新的%s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:46
+#: src/Admin/ContentHandlers/RepositoryPage.php:155 src/Admin/ContentHandlers/RepositoryPage.php:480 templates/admin/contents/repository/index.php:46
 msgid "Upload New Application"
 msgstr "上传新应用"
 
@@ -14368,15 +14459,15 @@ msgstr "上传新应用"
 msgid "Upload a Hosted App"
 msgstr "上传托管应用"
 
-#: themes/default/templates/pages/client/app.php:78
+#: themes/default/templates/pages/client/app.php:116
 msgid "Upload a new zip file to publish a new version; its version and requirements are read from the package."
 msgstr "上传新的 zip 文件以发布新版本；其版本和要求会从软件包中读取。"
 
-#: themes/default/templates/pages/client/apps.php:40
+#: themes/default/templates/pages/client/apps.php:50
 msgid "Upload a plugin, theme or software package to host it here."
 msgstr "上传插件、主题或软件包以在此托管。"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:92 themes/default/templates/pages/client/apps.php:26
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:99 themes/default/templates/pages/client/apps.php:28
 msgid "Upload an app"
 msgstr "上传应用"
 
@@ -14388,7 +14479,7 @@ msgstr "上传一张图片（建议 170 × 170 像素）。"
 msgid "Upload and install"
 msgstr "上传并安装"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:574
+#: src/Admin/ContentHandlers/RepositoryPage.php:573
 #, php-format
 msgid "Upload and manage %s."
 msgstr "上传并管理%s。"
@@ -14434,7 +14525,7 @@ msgstr "上传请求失败。"
 msgid "Upload the %s package as a .zip file whose name uses letters, digits, dots, hyphens and underscores."
 msgstr "请将 %s 软件包以 .zip 文件上传，文件名只能包含字母、数字、点、连字符和下划线。"
 
-#: themes/default/templates/pages/client/app-new.php:13
+#: themes/default/templates/pages/client/app-new.php:14
 msgid "Upload the app's zip file. Its version and requirements are read from the package; the rest you can edit once it is uploaded."
 msgstr "上传应用的 zip 文件。其版本和要求会从软件包中读取；其余内容可在上传后编辑。"
 
@@ -14450,7 +14541,7 @@ msgstr "上传未成功。"
 msgid "Upload your payment receipt."
 msgstr "上传您的付款凭证。"
 
-#: themes/default/templates/pages/client/app.php:46
+#: themes/default/templates/pages/client/app.php:58
 msgid "Uploaded"
 msgstr "已上传"
 
@@ -14471,7 +14562,7 @@ msgstr "已上传图片预览"
 msgid "Uptime"
 msgstr "运行时间"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:624
+#: src/Admin/ContentHandlers/RepositoryPage.php:623
 #, php-format
 msgid "Use %s file to edit %s version"
 msgstr "使用 %s 文件编辑 %s 版本"
@@ -14669,8 +14760,8 @@ msgstr "请验证您的邮箱地址，%s。验证后，使用该邮箱购买的�
 msgid "Verify your sign-in"
 msgstr "验证您的登录"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:623 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
-#: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:42 themes/default/templates/pages/repository/app.php:115
+#: src/Admin/ContentHandlers/RepositoryPage.php:622 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
+#: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:54 themes/default/templates/pages/repository/app.php:115
 msgid "Version"
 msgstr "版本"
 
@@ -14780,7 +14871,7 @@ msgstr "{{product_name}} 的版本 {{new_version}} 已可用。"
 msgid "Version:"
 msgstr "版本："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:753 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
+#: src/Admin/ContentHandlers/RepositoryPage.php:752 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
 msgid "View"
 msgstr "查看"
 
@@ -14793,8 +14884,8 @@ msgstr "查看 %s 原图"
 msgid "View Activity Logs"
 msgstr "查看活动日志"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:236 src/Admin/ContentHandlers/RepositoryPage.php:288 src/Admin/ContentHandlers/RepositoryPage.php:289
-#: src/Admin/ContentHandlers/RepositoryPage.php:752 src/Admin/ContentHandlers/RepositoryPage.php:1144
+#: src/Admin/ContentHandlers/RepositoryPage.php:234 src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:287 src/Admin/ContentHandlers/RepositoryPage.php:288
+#: src/Admin/ContentHandlers/RepositoryPage.php:751 src/Admin/ContentHandlers/RepositoryPage.php:990
 msgid "View App"
 msgstr "查看应用"
 
@@ -15324,7 +15415,7 @@ msgstr "应用的类型和 slug 位于其在%1$s存储库%2$s中的页面地址�
 msgid "Your application is now live."
 msgstr "您的应用现已上线。"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:234 themes/default/templates/pages/client/app.php:58
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:276 themes/default/templates/pages/client/app.php:76
 msgid "Your apps"
 msgstr "您的应用"
 
@@ -15487,6 +15578,10 @@ msgstr "您对签发此许可证的那次销售的引用。"
 msgid "Your role"
 msgstr "您的角色"
 
+#: src/ClientDashboard/ActionHandlers/AppActions.php:392
+msgid "Your role here does not allow this."
+msgstr "您在此处的角色不允许执行此操作。"
+
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:359
 #, php-format
 msgid "Your role in %s does not allow this."
@@ -15537,7 +15632,7 @@ msgstr ""
 msgid "Your verified Mailgun sending domain. e.g. mg.yourdomain.com"
 msgstr "您已验证的 Mailgun 发送域名，例如 mg.yourdomain.com"
 
-#: themes/default/templates/pages/client/app-new.php:44
+#: themes/default/templates/pages/client/app-new.php:45
 msgid "Zip file"
 msgstr "Zip 文件"
 

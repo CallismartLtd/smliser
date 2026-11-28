@@ -1470,6 +1470,33 @@ code {
 	margin: 0;
 }
 
+/* An app's figures, manifest and artifacts. */
+.app-stats .app-stat-highlight dd {
+	font-weight: 600;
+}
+
+.app-manifest {
+	width: 100%;
+	font-family: var(--mono);
+	font-size: 12.5px;
+}
+
+.smliser-manifest-editor {
+	margin-block: 4px;
+}
+
+.artifact-edit {
+	display: grid;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.artifact-edit summary {
+	color: var(--muted);
+	cursor: pointer;
+	font-size: 13px;
+}
+
 .dash-danger {
 	padding-top: 24px;
 	border-top: 1px solid var(--border);

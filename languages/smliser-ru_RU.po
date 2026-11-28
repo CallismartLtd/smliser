@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 11:09+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: Русский (Россия)\n"
 "Language: ru_RU\n"
@@ -146,12 +146,12 @@ msgstr "«%s» — недопустимое имя файла."
 msgid "\"%s\" is not a valid partial name."
 msgstr "«%s» — недопустимое имя частичного шаблона."
 
-#: src/HostedApps/HostedApplicationService.php:585
+#: src/HostedApps/HostedApplicationService.php:605
 #, php-format
 msgid "\"%s\" is not a valid slug."
 msgstr "«%s» — недопустимый ярлык."
 
-#: src/HostedApps/HostedApplicationService.php:584
+#: src/HostedApps/HostedApplicationService.php:604
 #, php-format
 msgid "\"%s\" is not a valid slug. Did you mean \"%s\"?"
 msgstr "«%s» — недопустимый ярлык. Возможно, вы имели в виду «%s»?"
@@ -256,6 +256,18 @@ msgstr "%1$s v%2$s"
 msgid "%1$s · %2$s installer"
 msgstr "%1$s · установщик %2$s"
 
+#. translators: 1: file size, 2: MIME type, 3: date.
+#: themes/default/templates/pages/client/app.php:212
+#, php-format
+msgid "%1$s · %2$s · updated %3$s"
+msgstr "%1$s · %2$s · обновлено %3$s"
+
+#. translators: 1: a file name, or "Upload" for the upload as a whole, 2: why it failed.
+#: src/ClientDashboard/ActionHandlers/AppActions.php:195
+#, php-format
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
 #. translators: 1: opening <span> tag, 2: closing <span> tag
 #: src/Environments/Application/Installation/InstallerPage.php:652
 #, php-format
@@ -299,10 +311,14 @@ msgstr "Отсутствует файлов: %d: %s"
 msgid "%d file(s) do not match the release: %s"
 msgstr "Файлов, не совпадающих с релизом: %d: %s"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:163
+#. translators: %d: number of images uploaded.
+#: src/ClientDashboard/ActionHandlers/AppActions.php:205
 #, php-format
-msgid "%d images are uploaded."
-msgstr "Загружено изображений: %d."
+msgid "%d image is uploaded."
+msgid_plural "%d images are uploaded."
+msgstr[0] "Загружено %d изображение."
+msgstr[1] "Загружено %d изображения."
+msgstr[2] "Загружено %d изображений."
 
 #: src/Environments/Application/Health/SystemHealth.php:1227
 #, php-format
@@ -429,7 +445,7 @@ msgstr "%s Активируйте лицензию на этом домене е
 msgid "%s Assets"
 msgstr "Ресурсы %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:716
+#: src/Admin/ContentHandlers/RepositoryPage.php:715
 #, php-format
 msgid "%s Distributable Artifacts"
 msgstr "Распространяемые артефакты %s"
@@ -783,7 +799,7 @@ msgstr "%s в %s: %s (начато %s)"
 msgid "%s was updated to %s"
 msgstr "%s обновлён до %s"
 
-#: themes/default/templates/pages/client/apps.php:49
+#: themes/default/templates/pages/client/apps.php:59
 #, php-format
 msgid "%s · %s · updated %s"
 msgstr "%s · %s · обновлено %s"
@@ -821,7 +837,7 @@ msgstr "(В архиве)"
 msgid "(Get-Acl -LiteralPath '"
 msgstr "(Get-Acl -LiteralPath '"
 
-#: themes/default/templates/pages/client/app-new.php:39 themes/default/templates/pages/client/app.php:95 themes/default/templates/pages/client/app.php:101
+#: themes/default/templates/pages/client/app-new.php:40 themes/default/templates/pages/client/app.php:132 themes/default/templates/pages/client/app.php:138 themes/default/templates/pages/client/app.php:271
 msgid "(optional)"
 msgstr "(необязательно)"
 
@@ -1167,11 +1183,11 @@ msgstr "Документация API"
 msgid "API key was not provided."
 msgstr "API-ключ не указан."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:812 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
+#: src/Admin/ContentHandlers/RepositoryPage.php:811 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
 msgid "APP ID"
 msgstr "ID приложения"
 
-#: assets/js/admin/apps-uploader.js:1446
+#: themes/default/templates/pages/client/app.php:140 assets/js/admin/apps-uploader.js:1446 assets/js/manifest-editor.js:62
 msgid "APP JSON Editor"
 msgstr "JSON-редактор приложения"
 
@@ -1224,7 +1240,7 @@ msgstr "Доступ запрещён. Чтобы просматривать э�
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
 msgstr "Доступ запрещён. Чтобы просматривать эту страницу, войдите в действительную учётную запись администратора.[Войти снова][На главную]"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1038
+#: src/Analytics/AppStatsSummary.php:165
 msgid "Access Growth"
 msgstr "Рост обращений"
 
@@ -1360,7 +1376,7 @@ msgstr "Активные установки"
 msgid "Active Installations by Type (30 Days)"
 msgstr "Активные установки по типам (30 дней)"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1048
+#: src/Analytics/AppStatsSummary.php:175
 msgid "Active Installs"
 msgstr "Активные установки"
 
@@ -1380,16 +1396,17 @@ msgstr "Требуется ID адаптера."
 msgid "Adapters"
 msgstr "Адаптеры"
 
-#: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:156
+#. translators: %s: kind of image, e.g. icons.
+#: templates/admin/contents/accounts/principals.php:23 themes/default/templates/pages/client/app.php:193
 #, php-format
 msgid "Add %s"
 msgstr "Добавить %s"
 
-#: templates/admin/contents/repository/edit-artifacts.php:110
+#: templates/admin/contents/repository/edit-artifacts.php:110 themes/default/templates/pages/client/app.php:278
 msgid "Add Artifact"
 msgstr "Добавить артефакт"
 
-#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:1120 templates/admin/contents/license/index.php:27
+#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:714 src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/license/index.php:27
 #: templates/admin/contents/license/search.php:26
 msgid "Add New"
 msgstr "Добавить"
@@ -1417,6 +1434,10 @@ msgstr "Добавить заметку"
 #: themes/default/templates/pages/client/security.php:56
 msgid "Add a passkey"
 msgstr "Добавить ключ доступа"
+
+#: themes/default/templates/pages/client/app.php:266
+msgid "Add an artifact"
+msgstr "Добавить артефакт"
 
 #: assets/js/admin/json-editor.js:720
 msgid "Add item"
@@ -1520,7 +1541,7 @@ msgstr "Оповещение"
 msgid "Algorithm"
 msgstr "Алгоритм"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:150 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:167 templates/admin/contents/options/email/templates.php:74 templates/admin/contents/repository/search.php:31 themes/default/templates/pages/documentation.php:21
 #: themes/default/templates/partials/repository/toolbar.php:26
 msgid "All"
 msgstr "Все"
@@ -1594,7 +1615,7 @@ msgstr "Здесь будут перечислены все владельцы �
 msgid "All scheduled tasks last ran without error."
 msgstr "Все запланированные задачи при последнем запуске выполнились без ошибок."
 
-#: assets/js/admin/repository-browser.js:290
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:176 assets/js/admin/repository-browser.js:290
 msgid "All types"
 msgstr "Все типы"
 
@@ -1689,7 +1710,7 @@ msgstr "Произошла ошибка при записи файла на ди
 msgid "An external dependency or microservice failed to respond correctly."
 msgstr "Внешняя зависимость или микросервис ответили некорректно."
 
-#: themes/default/templates/pages/client/app.php:191
+#: themes/default/templates/pages/client/app.php:308
 msgid "An inactive app is not offered for download or sale."
 msgstr "Неактивное приложение не предлагается для загрузки или продажи."
 
@@ -1836,7 +1857,7 @@ msgstr "Приложение не найдено"
 msgid "App Slug Conflict"
 msgstr "Конфликт ярлыков приложения"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1132
+#: src/Admin/ContentHandlers/RepositoryPage.php:475 src/Admin/ContentHandlers/RepositoryPage.php:978
 msgid "App Storage"
 msgstr "Хранилище приложений"
 
@@ -1857,11 +1878,11 @@ msgstr "Класс приложения для типа «%s» не найден
 msgid "App data not found"
 msgstr "Данные приложения не найдены"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:765
+#: src/Admin/ContentHandlers/RepositoryPage.php:764
 msgid "App monetization"
 msgstr "Монетизация приложения"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:238
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:280
 msgid "App not found"
 msgstr "Приложение не найдено"
 
@@ -1957,7 +1978,7 @@ msgstr "Одобрено (%d)"
 msgid "Approved. License #%d was issued and is being emailed to %s."
 msgstr "Одобрено. Лицензия №%d выдана и отправляется по почте на %s."
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:81 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:88 src/Schema/Definitions/AppsSchema.php:29 templates/admin/contents/broadcasts/index.php:53 templates/admin/contents/broadcasts/search.php:40
 msgid "Apps"
 msgstr "Приложения"
 
@@ -1981,7 +2002,7 @@ msgstr "Приложения, знающие только старый ключ,
 msgid "Apps that trust only the current key refuse every package signed with a new one. Publish the new public key first, give developers time to ship app updates that trust both keys, and only then switch."
 msgstr "Приложения, доверяющие только текущему ключу, отклоняют любой пакет, подписанный новым. Сначала опубликуйте новый открытый ключ, дайте разработчикам время выпустить обновления, доверяющие обоим ключам, и только потом переключайтесь."
 
-#: themes/default/templates/pages/client/apps.php:40
+#: themes/default/templates/pages/client/apps.php:50
 msgid "Apps uploaded for this account appear here."
 msgstr "Здесь появятся приложения, загруженные для этого аккаунта."
 
@@ -2032,7 +2053,7 @@ msgstr "Массив"
 msgid "Artifact File Name:"
 msgstr "Имя файла артефакта:"
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:130
+#: src/FileSystem/DownloadsApi/FileRequestController.php:131
 msgid "Artifact file name is required."
 msgstr "Требуется имя файла артефакта."
 
@@ -2044,7 +2065,7 @@ msgstr "Файл артефакта не был загружен"
 msgid "Artifact upload request failed with an unknown error."
 msgstr "Запрос на загрузку артефакта завершился неизвестной ошибкой."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:361 templates/admin/contents/system/signing-key.php:141 assets/js/admin/repository-browser.js:40
+#: src/Admin/ContentHandlers/RepositoryPage.php:360 templates/admin/contents/system/signing-key.php:141 themes/default/templates/pages/client/app.php:203 assets/js/admin/repository-browser.js:40
 msgid "Artifacts"
 msgstr "Артефакты"
 
@@ -2066,7 +2087,7 @@ msgstr "Запрос к %s о его приложениях %s."
 msgid "Asking %s for the release."
 msgstr "Запрос к %s о релизе."
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:500
+#: src/FileSystem/DownloadsApi/FileRequestController.php:549
 msgid "Asset URL is required."
 msgstr "Требуется URL ресурса."
 
@@ -2194,19 +2215,19 @@ msgstr "Не удалось начать подключение аутентиф
 msgid "Authenticator or recovery code"
 msgstr "Код аутентификатора или восстановления"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:270 themes/default/templates/pages/client/app-new.php:34
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:333 themes/default/templates/pages/client/app-new.php:35
 msgid "Author"
 msgstr "Автор"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:638
+#: src/Admin/ContentHandlers/RepositoryPage.php:637
 msgid "Author Name"
 msgstr "Имя автора"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:652
+#: src/Admin/ContentHandlers/RepositoryPage.php:651
 msgid "Author Profile URL"
 msgstr "URL профиля автора"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:271 themes/default/templates/pages/client/app-new.php:39
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:334 themes/default/templates/pages/client/app-new.php:40
 msgid "Author profile URL"
 msgstr "URL профиля автора"
 
@@ -2286,11 +2307,11 @@ msgstr "Доступные маршруты REST API, сгруппированн
 msgid "Avatar actions"
 msgstr "Действия с аватаром"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1028
+#: src/Analytics/AppStatsSummary.php:155
 msgid "Avg Access/Day"
 msgstr "Среднее обращений/день"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:984
+#: src/Analytics/AppStatsSummary.php:112
 msgid "Avg Downloads/Day"
 msgstr "Среднее загрузок/день"
 
@@ -2612,7 +2633,7 @@ msgstr "Сменить роль"
 msgid "Change slug"
 msgstr "Изменить ярлык"
 
-#: themes/default/templates/pages/client/app.php:203
+#: themes/default/templates/pages/client/app.php:319
 msgid "Change status"
 msgstr "Изменить статус"
 
@@ -3467,6 +3488,10 @@ msgstr "Cron (smliser cron)"
 msgid "Cron URL (external service)"
 msgstr "URL cron (внешний сервис)"
 
+#: themes/default/templates/pages/client/app.php:142
+msgid "Current app.json"
+msgstr "Текущий app.json"
+
 #: templates/admin/contents/accounts/access-control-form.php:123
 msgid "Current avatar"
 msgstr "Текущий аватар"
@@ -3698,18 +3723,20 @@ msgid "Defines whether this repository operates in production, staging, or devel
 msgstr "Определяет, работает ли этот репозиторий в режиме production, staging или разработки."
 
 #: templates/admin/contents/accounts/access-control-form.php:217 templates/admin/contents/accounts/owners.php:70 templates/admin/contents/broadcasts/index.php:36 templates/admin/contents/license/index.php:61
-#: templates/admin/contents/license/purchase-request.php:201 templates/admin/contents/repository/monetization.php:130 templates/admin/contents/repository/uploader.php:101 themes/default/templates/pages/client/app.php:136
-#: themes/default/templates/pages/client/organization.php:144 assets/js/admin/apps-uploader.js:1280 assets/js/admin/json-editor.js:709 assets/js/admin/repository-browser.js:744
-#: assets/js/admin/repository-browser.js:954
+#: templates/admin/contents/license/purchase-request.php:201 templates/admin/contents/repository/monetization.php:130 templates/admin/contents/repository/uploader.php:101 themes/default/templates/pages/client/app.php:172
+#: themes/default/templates/pages/client/app.php:175 themes/default/templates/pages/client/app.php:229 themes/default/templates/pages/client/app.php:232 themes/default/templates/pages/client/organization.php:144
+#: assets/js/admin/apps-uploader.js:1280 assets/js/admin/json-editor.js:709 assets/js/admin/repository-browser.js:744 assets/js/admin/repository-browser.js:954
 msgid "Delete"
 msgstr "Удалить"
 
-#: themes/default/templates/pages/client/app.php:181
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/app.php:299
 #, php-format
 msgid "Delete %s for good? Its files go too, and this cannot be undone."
 msgstr "Удалить %s навсегда? Его файлы тоже будут удалены, и это нельзя отменить."
 
-#: themes/default/templates/pages/client/app.php:131
+#. translators: %s: file name.
+#: themes/default/templates/pages/client/app.php:172 themes/default/templates/pages/client/app.php:229
 #, php-format
 msgid "Delete %s?"
 msgstr "Удалить %s?"
@@ -3752,7 +3779,7 @@ msgstr "Не удалось удалить"
 msgid "Delete failed job records older than %d days? They are the audit trail of past failures."
 msgstr "Удалить записи неудачных заданий старше %d дн.? Это журнал прошлых сбоев."
 
-#: themes/default/templates/pages/client/app.php:185
+#: themes/default/templates/pages/client/app.php:299 themes/default/templates/pages/client/app.php:302
 msgid "Delete for good"
 msgstr "Удалить навсегда"
 
@@ -3917,7 +3944,7 @@ msgstr "Подробности"
 msgid "Detail card"
 msgstr "Карточка подробностей"
 
-#: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:77
+#: src/Email/Templates/System/SystemAlertEmail.php:110 src/Email/Templates/System/SystemAlertEmail.php:227 templates/admin/contents/repository/uploader.php:44 themes/default/templates/pages/client/app.php:115
 msgid "Details"
 msgstr "Подробности"
 
@@ -4012,7 +4039,7 @@ msgstr "URL загрузки документа (публичный)"
 msgid "Documentation"
 msgstr "Документация"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:282 templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:347 templates/admin/contents/repository/edit-generic.php:41 templates/admin/contents/repository/edit-software.php:54
 msgid "Documentation URL"
 msgstr "URL документации"
 
@@ -4024,7 +4051,7 @@ msgstr "Значение домена не найдено"
 msgid "Done"
 msgstr "Готово"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:283 assets/js/admin/background.js:71 assets/js/admin/maintenance.js:96 assets/js/admin/maintenance.js:113
+#: src/ClientDashboard/ActionHandlers/AppActions.php:356 assets/js/admin/background.js:71 assets/js/admin/maintenance.js:96 assets/js/admin/maintenance.js:113
 #: assets/js/admin/modules.js:90 assets/js/admin/modules.js:152 assets/js/page-forms.js:94
 msgid "Done."
 msgstr "Готово."
@@ -4037,12 +4064,12 @@ msgstr "Сегменты пути, состоящие только из точе
 msgid "Double click for fullscreen"
 msgstr "Двойной щелчок — полноэкранный режим"
 
-#: themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866 assets/js/admin/json-editor.js:1892
-#: assets/js/admin/repository-browser.js:730
+#: themes/default/templates/pages/client/app.php:223 themes/default/templates/pages/client/licenses.php:66 assets/js/admin/json-editor.js:1819 assets/js/admin/json-editor.js:1866
+#: assets/js/admin/json-editor.js:1892 assets/js/admin/repository-browser.js:730
 msgid "Download"
 msgstr "Скачать"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:393 themes/default/templates/pages/repository/app.php:62
+#: src/Admin/ContentHandlers/RepositoryPage.php:392 themes/default/templates/pages/repository/app.php:62
 #, php-format
 msgid "Download %s"
 msgstr "Скачать %s"
@@ -4059,7 +4086,7 @@ msgstr "Скачать .txt"
 msgid "Download Document"
 msgstr "Скачать документ"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:994
+#: src/Analytics/AppStatsSummary.php:122
 msgid "Download Growth"
 msgstr "Рост загрузок"
 
@@ -4087,7 +4114,7 @@ msgstr "Токен загрузки создан"
 msgid "Download Type Missing"
 msgstr "Не указан тип загрузки"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:296 templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:360 templates/admin/contents/repository/edit-generic.php:23 templates/admin/contents/repository/edit-software.php:28
 msgid "Download URL"
 msgstr "URL загрузки"
 
@@ -4107,6 +4134,10 @@ msgstr "Скачать артефакт"
 #, javascript-format
 msgid "Download failed: %1$s %2$s (%3$s)"
 msgstr "Загрузка не удалась: %1$s %2$s (%3$s)"
+
+#: themes/default/templates/pages/client/app.php:87
+msgid "Download package"
+msgstr "Скачать пакет"
 
 #: src/Utils/functions/functions.php:131
 msgid "Download token cannot be empty"
@@ -4178,7 +4209,8 @@ msgstr "Перетащите, чтобы изменить порядок"
 msgid "Drag to reorder  ·  Click to edit"
 msgstr "Перетащите, чтобы изменить порядок  ·  Нажмите, чтобы изменить"
 
-#: themes/default/templates/pages/client/app.php:154
+#. translators: %s: kind of image, e.g. icons.
+#: themes/default/templates/pages/client/app.php:191
 #, php-format
 msgid "Drop %s images here, or choose them"
 msgstr "Перетащите сюда изображения %s или выберите их"
@@ -4191,7 +4223,7 @@ msgstr "Перетащите"
 msgid "Drop a file here or click to choose"
 msgstr "Перетащите файл сюда или нажмите, чтобы выбрать"
 
-#: themes/default/templates/pages/client/app.php:102
+#: themes/default/templates/pages/client/app.php:143
 msgid "Drop an app.json file here, or choose it"
 msgstr "Перетащите сюда файл app.json или выберите его"
 
@@ -4203,11 +4235,19 @@ msgstr "Перетащите файл сюда"
 msgid "Drop files here or click to choose"
 msgstr "Перетащите файлы сюда или нажмите, чтобы выбрать"
 
-#: themes/default/templates/pages/client/app.php:96
+#: themes/default/templates/pages/client/app.php:276
+msgid "Drop the artifact here, or choose it"
+msgstr "Перетащите сюда артефакт или выберите его"
+
+#: themes/default/templates/pages/client/app.php:133
 msgid "Drop the new zip file here, or choose it"
 msgstr "Перетащите сюда новый zip-файл или выберите его"
 
-#: themes/default/templates/pages/client/app-new.php:45
+#: themes/default/templates/pages/client/app.php:255
+msgid "Drop the replacement file here, or choose it"
+msgstr "Перетащите сюда файл для замены или выберите его"
+
+#: themes/default/templates/pages/client/app-new.php:46
 msgid "Drop the zip file here, or choose it"
 msgstr "Перетащите сюда zip-файл или выберите его"
 
@@ -4251,26 +4291,26 @@ msgstr "Каждый вызов выполняется как веб-запро�
 msgid "Each runner records its last run. This list refreshes every 30 seconds while the page is open."
 msgstr "Каждый исполнитель записывает свой последний запуск. Список обновляется каждые 30 секунд, пока страница открыта."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:740 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
+#: src/Admin/ContentHandlers/RepositoryPage.php:739 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
 #: templates/admin/contents/repository/monetization.php:126 templates/admin/contents/repository/uploader.php:100 assets/js/admin/apps-uploader.js:1274
 msgid "Edit"
 msgstr "Изменить"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:385
+#: src/Admin/ContentHandlers/RepositoryPage.php:384
 #, php-format
 msgid "Edit %s"
 msgstr "Изменить %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:713 templates/admin/contents/repository/edit-generic.php:11
+#: src/Admin/ContentHandlers/RepositoryPage.php:712 templates/admin/contents/repository/edit-generic.php:11
 #, php-format
 msgid "Edit %s: %s"
 msgstr "Изменить %s: %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:739 src/Admin/ContentHandlers/RepositoryPage.php:1138
+#: src/Admin/ContentHandlers/RepositoryPage.php:738 src/Admin/ContentHandlers/RepositoryPage.php:984
 msgid "Edit App"
 msgstr "Изменить приложение"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1156
+#: src/Admin/ContentHandlers/RepositoryPage.php:1002
 msgid "Edit App Artifacts"
 msgstr "Изменить артефакты приложения"
 
@@ -4320,6 +4360,10 @@ msgstr "Изменить артефакт"
 #: src/Admin/ContentHandlers/LicensePage.php:293 templates/admin/contents/license/view.php:40
 msgid "Edit license"
 msgstr "Изменить лицензию"
+
+#: themes/default/templates/pages/client/app.php:141
+msgid "Edit the app's manifest. Fields read from the package, such as its version, cannot be overridden here."
+msgstr "Измените манифест приложения. Поля, которые читаются из пакета, например версия, здесь переопределить нельзя."
 
 #: assets/js/admin/json-editor.js:699
 msgid "Edit value"
@@ -4586,12 +4630,12 @@ msgstr "Введите название роли"
 msgid "Enter role slug"
 msgstr "Введите ярлык роли"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:682
+#: src/Admin/ContentHandlers/RepositoryPage.php:681
 #, php-format
 msgid "Enter the %s status"
 msgstr "Введите статус %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:653
+#: src/Admin/ContentHandlers/RepositoryPage.php:652
 #, php-format
 msgid "Enter the URL of the %s author profile."
 msgstr "Введите URL профиля автора %s."
@@ -4600,7 +4644,7 @@ msgstr "Введите URL профиля автора %s."
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "Введите максимальное число доменов, на которые можно установить эту лицензию."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:639
+#: src/Admin/ContentHandlers/RepositoryPage.php:638
 #, php-format
 msgid "Enter the name of the %s author."
 msgstr "Введите имя автора %s."
@@ -4807,7 +4851,7 @@ msgstr "URL внешнего репозитория"
 msgid "External cron service"
 msgstr "Внешний cron-сервис"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:279
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:342
 msgid "External repository URL"
 msgstr "URL внешнего репозитория"
 
@@ -4945,7 +4989,7 @@ msgstr "Файл не найден"
 msgid "File Reading Error"
 msgstr "Ошибка чтения файла"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:824
+#: src/Admin/ContentHandlers/RepositoryPage.php:823 src/ClientDashboard/ContentHandlers/AppsPage.php:370
 msgid "File Size"
 msgstr "Размер файла"
 
@@ -4973,11 +5017,15 @@ msgstr "Файл не является корректно загруженным
 msgid "File is too large. Maximum size is 2MB."
 msgstr "Файл слишком большой. Максимальный размер — 2 МБ."
 
+#: themes/default/templates/pages/client/app.php:271
+msgid "File name"
+msgstr "Имя файла"
+
 #: src/FileSystem/DownloadsApi/FileResponse.php:211
 msgid "File not readable"
 msgstr "Файл недоступен для чтения"
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:536
+#: src/FileSystem/DownloadsApi/FileRequestController.php:585
 msgid "File path is required."
 msgstr "Требуется путь к файлу."
 
@@ -4998,17 +5046,25 @@ msgstr "Конфликт синхронизации файлов: обнаруж
 msgid "Filename"
 msgstr "Имя файла"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:369
+#: src/Admin/ContentHandlers/RepositoryPage.php:368
 msgid "Files"
 msgstr "Файлы"
+
+#: themes/default/templates/pages/client/app.php:204
+msgid "Files distributed beside the main package, such as checksums, signatures or other builds. The main package changes only with a new version."
+msgstr "Файлы, распространяемые вместе с основным пакетом: контрольные суммы, подписи или другие сборки. Основной пакет меняется только с новой версией."
 
 #: src/Exceptions/FileRequestException.php:200 src/Exceptions/RequestException.php:247
 msgid "Filesystem Error"
 msgstr "Ошибка файловой системы"
 
-#: themes/default/templates/pages/client/apps.php:31
+#: themes/default/templates/pages/client/apps.php:33
 msgid "Filter by status"
 msgstr "Фильтр по статусу"
+
+#: themes/default/templates/pages/client/apps.php:40
+msgid "Filter by type"
+msgstr "Фильтр по типу"
 
 #: templates/admin/contents/options/email/templates.php:69
 msgid "Filter:"
@@ -5119,6 +5175,10 @@ msgstr "Форматировать JSON (красиво)"
 #: src/Environments/WordPress/WordPressEnvironment.php:521
 msgid "Four Hourly"
 msgstr "Каждые четыре часа"
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371
+msgid "Free"
+msgstr "Бесплатно"
 
 #: src/FileSystem/WPPluginRepository.php:230
 msgid "Frequently Asked Questions"
@@ -5395,7 +5455,7 @@ msgstr "Главная"
 msgid "Homepage"
 msgstr "Домашняя страница"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:272 templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:335 templates/admin/contents/repository/edit-generic.php:32 templates/admin/contents/repository/edit-software.php:41
 msgid "Homepage URL"
 msgstr "URL домашней страницы"
 
@@ -5403,7 +5463,7 @@ msgstr "URL домашней страницы"
 msgid "Hosted Application"
 msgstr "Размещённое приложение"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1114
+#: src/Admin/ContentHandlers/RepositoryPage.php:960
 msgid "Hosted apps"
 msgstr "Размещённые приложения"
 
@@ -5768,7 +5828,7 @@ msgstr "Не удалось получить изображение: %s"
 msgid "Image has been converted to PNG."
 msgstr "Изображение преобразовано в PNG."
 
-#: themes/default/templates/pages/client/app.php:113
+#: themes/default/templates/pages/client/app.php:154
 msgid "Images"
 msgstr "Изображения"
 
@@ -5949,7 +6009,7 @@ msgstr "Недопустимый JSON"
 msgid "Invalid JSON in textarea"
 msgstr "Недопустимый JSON в текстовом поле"
 
-#: assets/js/admin/json-editor.js:1603
+#: assets/js/admin/json-editor.js:1603 assets/js/manifest-editor.js:88
 msgid "Invalid JSON string"
 msgstr "Недопустимая строка JSON"
 
@@ -6256,7 +6316,7 @@ msgstr "Последний запуск"
 msgid "Last Update Attempt"
 msgstr "Последняя попытка обновления"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:826 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
+#: src/Admin/ContentHandlers/RepositoryPage.php:825 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
 msgid "Last Updated"
 msgstr "Последнее обновление"
 
@@ -6315,11 +6375,11 @@ msgstr "Оставьте пустым для стандартного порта
 msgid "Leave empty for unlimited"
 msgstr "Оставьте пустым для неограниченного"
 
-#: themes/default/templates/pages/client/app.php:97
+#: themes/default/templates/pages/client/app.php:134
 msgid "Leave empty to keep the current version."
 msgstr "Оставьте пустым, чтобы сохранить текущую версию."
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:300
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:364
 #, php-format
 msgid "Leave empty to serve downloads from this site, at %s"
 msgstr "Оставьте пустым, чтобы раздавать загрузки с этого сайта по адресу %s"
@@ -6328,7 +6388,7 @@ msgstr "Оставьте пустым, чтобы раздавать загру�
 msgid "Leave the installer"
 msgstr "Выйти из установщика"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:816 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
+#: src/Admin/ContentHandlers/RepositoryPage.php:815 src/ClientDashboard/ContentHandlers/AppsPage.php:369 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
 msgid "License"
 msgstr "Лицензия"
 
@@ -6633,7 +6693,7 @@ msgstr "Машиночитаемый идентификатор роли"
 msgid "Main %s file"
 msgstr "Основной файл %s"
 
-#: assets/js/admin/repository-browser.js:55
+#: themes/default/templates/pages/client/app.php:215 assets/js/admin/repository-browser.js:55
 msgid "Main package"
 msgstr "Основной пакет"
 
@@ -7004,8 +7064,8 @@ msgstr "Заголовок окна"
 msgid "Modules"
 msgstr "Модули"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
-#: src/Schema/Definitions/MonetizationSchema.php:30
+#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:376 src/Admin/ContentHandlers/RepositoryPage.php:765 src/Admin/ContentHandlers/RepositoryPage.php:819
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371 src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
 msgstr "Монетизация"
 
@@ -7049,9 +7109,13 @@ msgstr "Монетизация обновлена"
 msgid "Monetizations"
 msgstr "Монетизации"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1150
+#: src/Admin/ContentHandlers/RepositoryPage.php:996
 msgid "Monetize App"
 msgstr "Монетизировать приложение"
+
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:371
+msgid "Monetized"
+msgstr "Монетизировано"
 
 #: assets/js/datetime-picker.js:524
 msgid "Month"
@@ -7066,12 +7130,13 @@ msgstr "Ежемесячно, %d-го числа"
 msgid "Monthly on day(s) "
 msgstr "Ежемесячно, числа: "
 
-#: themes/default/templates/pages/client/app.php:210
+#. translators: %s: app name.
+#: themes/default/templates/pages/client/app.php:326
 #, php-format
 msgid "Move %s to the trash? It stops being offered, and is deleted for good after a while unless you restore it."
 msgstr "Переместить %s в корзину? Оно перестанет предлагаться и через некоторое время будет удалено навсегда, если вы его не восстановите."
 
-#: themes/default/templates/pages/client/app.php:215
+#: themes/default/templates/pages/client/app.php:326 themes/default/templates/pages/client/app.php:329
 msgid "Move to trash"
 msgstr "Переместить в корзину"
 
@@ -7103,12 +7168,12 @@ msgstr "MySQL (mysqli)"
 msgid "MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer."
 msgstr "MySQL, MariaDB, PostgreSQL и SQLite через единый уровень абстракции."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
-#: themes/default/templates/pages/client/app-new.php:28 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
+#: src/Admin/ContentHandlers/RepositoryPage.php:607 src/ClientDashboard/ContentHandlers/AppsPage.php:332 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
+#: themes/default/templates/pages/client/app-new.php:29 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
 msgid "Name"
 msgstr "Имя"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:248
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:295
 #, php-format
 msgid "Name each file %s, with its image extension."
 msgstr "Назовите каждый файл %s, с расширением изображения."
@@ -7204,6 +7269,10 @@ msgstr "Новая обходная ссылка"
 msgid "New bypass link made; earlier links stop working."
 msgstr "Создана новая обходная ссылка; прежние ссылки больше не работают."
 
+#: themes/default/templates/pages/client/app.php:244
+msgid "New file name"
+msgstr "Новое имя файла"
+
 #: assets/js/admin/repository-browser.js:924
 #, javascript-format
 msgid "New name for %s"
@@ -7222,7 +7291,7 @@ msgstr "Новый пароль не может быть пустым."
 msgid "New purchase request #%d to review"
 msgstr "Новый запрос на покупку №%d ожидает рассмотрения"
 
-#: themes/default/templates/pages/client/app.php:95
+#: themes/default/templates/pages/client/app.php:132
 msgid "New version"
 msgstr "Новая версия"
 
@@ -7304,19 +7373,19 @@ msgstr "Не найдено приложений по запросу «%s». <a 
 msgid "No app found matching this status"
 msgstr "Нет приложений с этим статусом"
 
-#: themes/default/templates/pages/client/apps.php:40
-msgid "No app has this status."
-msgstr "Ни одно приложение не имеет этого статуса."
+#: themes/default/templates/pages/client/apps.php:50
+msgid "No app matches these filters."
+msgstr "Нет приложений, соответствующих этим фильтрам."
 
 #: assets/js/admin/repository-browser.js:399
 msgid "No app types are stored yet."
 msgstr "Типы приложений пока не сохранены."
 
-#: themes/default/templates/pages/client/apps.php:39
+#: themes/default/templates/pages/client/apps.php:49
 msgid "No apps here"
 msgstr "Здесь нет приложений"
 
-#: themes/default/templates/pages/client/apps.php:39
+#: themes/default/templates/pages/client/apps.php:49
 msgid "No apps yet"
 msgstr "Пока нет приложений"
 
@@ -7505,7 +7574,7 @@ msgstr "Для этой страницы не зарегистрирован о�
 msgid "No release signing keys are configured, so no package can be verified."
 msgstr "Ключи подписи релизов не настроены, поэтому ни один пакет нельзя проверить."
 
-#: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:593
+#: src/HostedApps/AbstractHostedApp.php:978 src/HostedApps/HostedApplicationService.php:613
 #, php-format
 msgid "No repository is registered for the app type \"%s\"."
 msgstr "Для типа приложения «%s» не зарегистрирован репозиторий."
@@ -7626,7 +7695,7 @@ msgstr "Не указано"
 msgid "None registered"
 msgstr "Не зарегистрировано"
 
-#: themes/default/templates/pages/client/app.php:120
+#: themes/default/templates/pages/client/app.php:161
 msgid "None yet."
 msgstr "Пока нет."
 
@@ -7634,7 +7703,7 @@ msgstr "Пока нет."
 msgid "None. Every app type can be uploaded without a key."
 msgstr "Нет. Любой тип приложения можно загружать без ключа."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1091
+#: src/Environments/Application/Web/HttpDispatcher.php:1118
 msgid "Not Allowed"
 msgstr "Не разрешено"
 
@@ -7662,7 +7731,7 @@ msgstr "Недоступно"
 msgid "Not enabled"
 msgstr "Не включено"
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1092 themes/default/templates/pages/client/not-found.php:14
+#: src/Environments/Application/Web/HttpDispatcher.php:1119 themes/default/templates/pages/client/not-found.php:14
 msgid "Not found"
 msgstr "Не найдено"
 
@@ -7790,7 +7859,7 @@ msgstr "Количество дней, месяцев или лет"
 msgid "Number of messages per page."
 msgstr "Количество сообщений на странице."
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:253
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:296
 msgid "Numbered in the order added; name a file screenshot-2 to give it that place."
 msgstr "Нумеруются в порядке добавления; назовите файл screenshot-2, чтобы поставить его на это место."
 
@@ -7818,7 +7887,7 @@ msgstr "На любом компьютере с PHP сгенерируйте к�
 msgid "Once it is set up, its first run shows under Live status, usually within a few minutes."
 msgstr "После настройки его первый запуск появится в разделе «Текущий статус», обычно в течение нескольких минут."
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:252 src/ClientDashboard/ContentHandlers/AppsPage.php:253
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:297
 msgid "One image; delete the current one to upload another."
 msgstr "Одно изображение; удалите текущее, чтобы загрузить другое."
 
@@ -7843,7 +7912,7 @@ msgstr "Разрешены только URL с HTTPS."
 msgid "Only a system administrator can suspend an app."
 msgstr "Только системный администратор может приостановить приложение."
 
-#: src/HostedApps/HostedApplicationService.php:509
+#: src/HostedApps/HostedApplicationService.php:529
 msgid "Only an app in the trash can be deleted for good. Move it to the trash first."
 msgstr "Окончательно удалить можно только приложение из корзины. Сначала переместите его в корзину."
 
@@ -8062,7 +8131,7 @@ msgstr "Обзор"
 msgid "Overwrite"
 msgstr "Перезаписать"
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:666
+#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:665
 msgid "Owner"
 msgstr "Владелец"
 
@@ -8370,11 +8439,11 @@ msgstr "Номер платежа"
 msgid "Payment reference (optional)"
 msgstr "Номер платежа (необязательно)"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1058
+#: src/Analytics/AppStatsSummary.php:185
 msgid "Peak Access Day"
 msgstr "День пиковых обращений"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1004
+#: src/Analytics/AppStatsSummary.php:132
 msgid "Peak Day"
 msgstr "Пиковый день"
 
@@ -8382,6 +8451,10 @@ msgstr "Пиковый день"
 #, php-format
 msgid "Pending (%d)"
 msgstr "Ожидают (%d)"
+
+#: themes/default/templates/pages/client/app.php:101
+msgid "Performance Metrics (30 days)"
+msgstr "Показатели эффективности (30 дней)"
 
 #: src/Background/Jobs/Apps/CleanTrashedAppsJob.php:48
 msgid "Permanently deletes apps that have been in trash longer than the retention threshold."
@@ -8604,7 +8677,7 @@ msgstr "Отформатированный (с отступами)"
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:278
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:341
 msgid "Preview URL"
 msgstr "URL предпросмотра"
 
@@ -8766,7 +8839,7 @@ msgstr "Очистка журналов активности лицензий"
 msgid "Prune License Meta"
 msgstr "Очистка метаданных лицензий"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:822
+#: src/Admin/ContentHandlers/RepositoryPage.php:821 src/ClientDashboard/ContentHandlers/AppsPage.php:372
 msgid "Public Download URL"
 msgstr "Публичный URL загрузки"
 
@@ -8778,7 +8851,7 @@ msgstr "Открытый ключ"
 msgid "Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces."
 msgstr "Публичное название этого репозитория лицензий. Может отображаться в системных письмах, ответах API и административных интерфейсах."
 
-#: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:63
+#: templates/admin/contents/system/signing-key.php:110 themes/default/templates/pages/client/app.php:81
 msgid "Public page"
 msgstr "Публичная страница"
 
@@ -9154,7 +9227,7 @@ msgstr "Удалить этот файл"
 msgid "Removes license activity log entries older than the configured retention window."
 msgstr "Удаляет записи журнала активности лицензий старше настроенного срока хранения."
 
-#: themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
+#: themes/default/templates/pages/client/app.php:247 themes/default/templates/pages/client/organization.php:132 assets/js/admin/repository-browser.js:740
 msgid "Rename"
 msgstr "Переименовать"
 
@@ -9169,6 +9242,10 @@ msgstr "Переименовать артефакт"
 #: assets/js/admin/json-editor.js:689
 msgid "Rename key"
 msgstr "Переименовать ключ"
+
+#: themes/default/templates/pages/client/app.php:239
+msgid "Rename or replace"
+msgstr "Переименовать или заменить"
 
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:211 assets/js/admin/repository-browser.js:940
 #, php-format, javascript-format
@@ -9186,6 +9263,10 @@ msgstr "Преобразует страницы PDF-квитанции об оп
 #: assets/js/admin/repository-browser.js:734
 msgid "Replace"
 msgstr "Заменить"
+
+#: themes/default/templates/pages/client/app.php:257
+msgid "Replace file"
+msgstr "Заменить файл"
 
 #: templates/admin/contents/modules/extensions.php:63
 msgid "Replace the installed extension of the same slug (same or newer version; downgrades are refused)"
@@ -9205,7 +9286,7 @@ msgstr "Заменено %s/ (предыдущая копия в %s/%s/)."
 msgid "Replaced the %s \"%s\" %s with %s."
 msgstr "%s «%s» %s заменено на %s."
 
-#: themes/default/templates/pages/client/app.php:103
+#: themes/default/templates/pages/client/app.php:144
 msgid "Replaces the app's manifest."
 msgstr "Заменяет манифест приложения."
 
@@ -9221,9 +9302,9 @@ msgstr "Отчёт создан и скопирован. Вставьте его
 msgid "Report generated. Press Ctrl+C (Cmd+C) to copy the selected text."
 msgstr "Отчёт создан. Нажмите Ctrl+C (Cmd+C), чтобы скопировать выделенный текст."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:86 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:148 src/Admin/ContentHandlers/RepositoryPage.php:191
-#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:723
-#: src/Admin/ContentHandlers/RepositoryPage.php:1170 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
+#: src/Admin/ContentHandlers/RepositoryPage.php:85 src/Admin/ContentHandlers/RepositoryPage.php:146 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:190
+#: src/Admin/ContentHandlers/RepositoryPage.php:191 src/Admin/ContentHandlers/RepositoryPage.php:352 src/Admin/ContentHandlers/RepositoryPage.php:470 src/Admin/ContentHandlers/RepositoryPage.php:722
+#: src/Admin/ContentHandlers/RepositoryPage.php:1016 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
 #: templates/admin/contents/repository/upload.php:20 themes/default/templates/pages/repository/app.php:29 themes/default/templates/partials/header.php:12
 msgid "Repository"
 msgstr "Репозиторий"
@@ -9373,11 +9454,11 @@ msgstr "Владелец ресурсов"
 msgid "Resource owners are individual users or organizations that own or host resources in this repository."
 msgstr "Владельцы ресурсов — это отдельные пользователи или организации, которые владеют ресурсами или размещают их в этом репозитории."
 
-#: themes/default/templates/pages/client/app.php:176
+#: themes/default/templates/pages/client/app.php:294
 msgid "Restore"
 msgstr "Восстановить"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:404 templates/admin/contents/system/updates.php:323
+#: src/Admin/ContentHandlers/RepositoryPage.php:403 templates/admin/contents/system/updates.php:323
 #, php-format
 msgid "Restore %s"
 msgstr "Восстановить %s"
@@ -9700,7 +9781,7 @@ msgstr "Сохранить лицензию"
 msgid "Save Template"
 msgstr "Сохранить шаблон"
 
-#: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:106
+#: templates/admin/contents/accounts/access-control-form.php:268 themes/default/templates/pages/client/app.php:147
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
@@ -9804,7 +9885,7 @@ msgstr "Поиск лицензий"
 msgid "Search Messages"
 msgstr "Поиск сообщений"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1126 templates/admin/contents/repository/index.php:133
+#: src/Admin/ContentHandlers/RepositoryPage.php:150 src/Admin/ContentHandlers/RepositoryPage.php:972 templates/admin/contents/repository/index.php:133
 msgid "Search Repository"
 msgstr "Поиск по репозиторию"
 
@@ -10554,8 +10635,8 @@ msgstr "Сайты:"
 msgid "Size:"
 msgstr "Размер:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:814 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
-#: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:38
+#: src/Admin/ContentHandlers/RepositoryPage.php:813 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
+#: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:50
 msgid "Slug"
 msgstr "Slug"
 
@@ -10685,10 +10766,10 @@ msgid "Statistics"
 msgstr "Статистика"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:240 src/Admin/ContentHandlers/AccessControlPage.php:382 src/Admin/ContentHandlers/AccessControlPage.php:517 src/Admin/ContentHandlers/AccessControlPage.php:683
-#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
+#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:680 src/Admin/ContentHandlers/RepositoryPage.php:817
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
-#: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
+#: themes/default/templates/pages/client/app.php:286 themes/default/templates/pages/client/app.php:312 themes/default/templates/pages/client/organizations.php:72
 msgid "Status"
 msgstr "Статус"
 
@@ -10705,7 +10786,7 @@ msgstr "Статус обновлён."
 msgid "Status:"
 msgstr "Статус:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:90
+#: src/Admin/ContentHandlers/RepositoryPage.php:89
 #, php-format
 msgid "Status: %s"
 msgstr "Статус: %s"
@@ -10895,7 +10976,7 @@ msgstr "Email поддержки"
 msgid "Support Report"
 msgstr "Отчёт для поддержки"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:287 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:351 templates/admin/contents/repository/edit-generic.php:14 templates/admin/contents/repository/edit-software.php:15
 msgid "Support URL"
 msgstr "URL поддержки"
 
@@ -10923,7 +11004,7 @@ msgstr "Включите режим обслуживания перед резе
 msgid "Switch maintenance on"
 msgstr "Включить обслуживание"
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:72
+#: src/ClientDashboard/ActionHandlers/AppActions.php:88
 msgid "Switch to an account or organization that can host apps first."
 msgstr "Сначала переключитесь на аккаунт или организацию, которые могут размещать приложения."
 
@@ -11259,7 +11340,7 @@ msgstr "%s «%s» в актуальном состоянии (%s)."
 msgid "The %s \"%s\" was not installed from the marketplace; install a newer package of it to update it."
 msgstr "%s «%s» установлен не из магазина; установите его более новый пакет, чтобы обновить."
 
-#: src/HostedApps/HostedApplicationService.php:575 src/HostedApps/Storage/DirectoryAppStorage.php:280
+#: src/HostedApps/HostedApplicationService.php:595 src/HostedApps/Storage/DirectoryAppStorage.php:280
 #, php-format
 msgid "The %s already has the slug \"%s\"."
 msgstr "У %s уже slug «%s»."
@@ -11274,7 +11355,7 @@ msgstr "Не удалось опубликовать ресурсы %s: %s %s, �
 msgid "The %s directory of %s \"%s\" leads outside the app."
 msgstr "Папка %s у %s «%s» указывает за пределы приложения."
 
-#: src/HostedApps/HostedApplicationService.php:567
+#: src/HostedApps/HostedApplicationService.php:587
 #, php-format
 msgid "The %s does not exist."
 msgstr "%s не существует."
@@ -11309,7 +11390,7 @@ msgstr "%s темы «%s» не является корректным JSON."
 msgid "The %s of the theme \"%s\" needs a \"%s\"."
 msgstr "%s темы «%s» требует «%s»."
 
-#: src/HostedApps/HostedApplicationService.php:605
+#: src/HostedApps/HostedApplicationService.php:625
 #, php-format
 msgid "The %s was changed or deleted while renaming it. Reload it and try again."
 msgstr "%s был изменён или удалён во время переименования. Перезагрузите и повторите попытку."
@@ -11467,7 +11548,7 @@ msgstr "Активный адаптер кэша — это кэш времен�
 msgid "The active theme \"%s\" cannot be used, so the default theme renders the public pages. The error log says why."
 msgstr "Активную тему «%s» нельзя использовать, поэтому публичные страницы отображаются темой по умолчанию. Причина указана в журнале ошибок."
 
-#: src/HostedApps/HostedApplicationService.php:513
+#: src/HostedApps/HostedApplicationService.php:533
 msgid "The app could not be deleted. Please try again."
 msgstr "Не удалось удалить приложение. Повторите попытку."
 
@@ -11489,7 +11570,7 @@ msgstr "Тип приложения «%s» не поддерживается"
 msgid "The app type \"%s\" is not supported."
 msgstr "Тип приложения «%s» не поддерживается."
 
-#: themes/default/templates/pages/client/app-new.php:30
+#: themes/default/templates/pages/client/app-new.php:31
 msgid "The app's address on this site is made from it. Only an administrator can change the address later."
 msgstr "Из этого формируется адрес приложения на сайте. Изменить адрес позже сможет только администратор."
 
@@ -11529,7 +11610,7 @@ msgstr "Указанный в запросе тип приложения не п
 msgid "The application version. For Wordpress plugins and themes, the version will be extracted from the readme.txt and style.css respectively, custom apps should define the app version in the app.json file."
 msgstr "Версия приложения. Для плагинов и тем WordPress версия извлекается из readme.txt и style.css соответственно; в собственных приложениях версию нужно указать в файле app.json."
 
-#: themes/default/templates/pages/client/apps.php:22
+#: themes/default/templates/pages/client/apps.php:24
 msgid "The apps you host here, for whoever you act for."
 msgstr "Приложения, которые вы размещаете здесь, от имени того, кого вы представляете."
 
@@ -11560,9 +11641,25 @@ msgstr "Требуется имя файла артефакта."
 msgid "The artifact filename must not contain directory separators."
 msgstr "Имя файла артефакта не должно содержать разделителей каталогов."
 
+#: src/ClientDashboard/ActionHandlers/AppActions.php:297
+msgid "The artifact is deleted."
+msgstr "Артефакт удалён."
+
 #: assets/js/admin/apps-uploader.js:1531
 msgid "The artifact is saved under this exact name, extension included (e.g. \"my-app-1.0.0.zip.sha256\"). Leave it empty to use the uploaded file's name. Unsafe characters are sanitized, e.g. \"my artifact.zip\" becomes \"my-artifact.zip\"."
 msgstr "Артефакт сохраняется точно под этим именем, включая расширение (например, «my-app-1.0.0.zip.sha256»). Оставьте пустым, чтобы использовать имя загруженного файла. Небезопасные символы заменяются, например «my artifact.zip» становится «my-artifact.zip»."
+
+#: themes/default/templates/pages/client/app.php:273
+msgid "The artifact is saved under this exact name, extension included. Leave it empty to use the uploaded file's name."
+msgstr "Артефакт сохраняется точно под этим именем, включая расширение. Оставьте поле пустым, чтобы использовать имя загруженного файла."
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:277
+msgid "The artifact is saved."
+msgstr "Артефакт сохранён."
+
+#: src/ClientDashboard/ActionHandlers/AppActions.php:252
+msgid "The artifact is uploaded."
+msgstr "Артефакт загружен."
 
 #: src/HostedApps/AppRelease.php:165
 msgid "The artifact must be the name of a ZIP artifact, e.g. \"acme-1.2.0.zip\"."
@@ -11908,10 +12005,6 @@ msgstr "Сгенерированное значение — это закрыт�
 msgid "The hosting attestation does not name this hosted app and package."
 msgstr "Подтверждение размещения не указывает это размещённое приложение и пакет."
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:163
-msgid "The image is uploaded."
-msgstr "Изображение загружено."
-
 #: src/Environments/Application/Boot/BootModeResolver.php:211
 msgid "The installation state could not be read."
 msgstr "Не удалось прочитать состояние установки."
@@ -12128,7 +12221,7 @@ msgstr "Выпуск модуля получен не из release()."
 msgid "The name can be at most %d characters long."
 msgstr "Длина имени — не более %d символов."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:609
+#: src/Admin/ContentHandlers/RepositoryPage.php:608
 msgid "The name of the application"
 msgstr "Название приложения"
 
@@ -12388,7 +12481,7 @@ msgstr "Не удалось запустить программу «%s»."
 msgid "The provided API key or token is incorrect or expired."
 msgstr "Указанный API-ключ или токен неверен или истёк."
 
-#: src/FileSystem/DownloadsApi/FileRequestController.php:506
+#: src/FileSystem/DownloadsApi/FileRequestController.php:555
 msgid "The provided URL is not valid."
 msgstr "Указанный URL недействителен."
 
@@ -12585,7 +12678,7 @@ msgstr "Запрос не выполнен. Повторите попытку."
 msgid "The request format or parameters provided are improperly structured."
 msgstr "Формат или параметры запроса имеют неверную структуру."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1086
+#: src/Environments/Application/Web/HttpDispatcher.php:1113
 msgid "The request method is not allowed on this server."
 msgstr "Метод запроса не разрешён на этом сервере."
 
@@ -12637,7 +12730,7 @@ msgstr "У запрошенного приложения нечего загру
 msgid "The requested range cannot be satisfied."
 msgstr "Запрошенный диапазон недостижим."
 
-#: src/Environments/Application/Web/HttpDispatcher.php:1087 themes/default/templates/pages/errors/404.php:15
+#: src/Environments/Application/Web/HttpDispatcher.php:1114 themes/default/templates/pages/errors/404.php:15
 msgid "The requested resource could not be found."
 msgstr "Запрошенный ресурс не найден."
 
@@ -12819,7 +12912,7 @@ msgstr "Slug «%s» нельзя использовать для хранени�
 msgid "The slug \"%s\" is not available, you can change the %s name and try again."
 msgstr "Slug «%s» недоступен; вы можете изменить имя %s и повторить попытку."
 
-#: src/HostedApps/HostedApplicationService.php:613
+#: src/HostedApps/HostedApplicationService.php:633
 #, php-format
 msgid "The slug \"%s\" is not available: %s."
 msgstr "Slug «%s» недоступен: %s."
@@ -13261,7 +13354,7 @@ msgstr "Они получат письмо со ссылкой для вступ
 msgid "This %s has no package."
 msgstr "У этого %s нет пакета."
 
-#: src/HostedApps/HostedApplicationService.php:571
+#: src/HostedApps/HostedApplicationService.php:591
 #, php-format
 msgid "This %s is in the trash. Restore it before renaming it."
 msgstr "Этот %s в корзине. Восстановите его перед переименованием."
@@ -13289,11 +13382,11 @@ msgstr "Этот аккаунт не активен. Обратитесь к а�
 msgid "This app does not exist in the repository <a href=\"%s\">Back</a>"
 msgstr "Этого приложения нет в репозитории <a href=\"%s\">Назад</a>"
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:232
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:274
 msgid "This app does not exist, or it belongs to someone else. Switch to its owner to manage it."
 msgstr "Это приложение не существует или принадлежит другому владельцу. Переключитесь на владельца, чтобы управлять им."
 
-#: src/ClientDashboard/ActionHandlers/AppActions.php:249 src/HostedApps/HostingController.php:894
+#: src/ClientDashboard/ActionHandlers/AppActions.php:383 src/HostedApps/HostingController.php:894
 msgid "This app does not exist."
 msgstr "Это приложение не существует."
 
@@ -13305,11 +13398,11 @@ msgstr "У этого приложения пока нет описания."
 msgid "This app has no such pricing tier."
 msgstr "У этого приложения нет такого ценового уровня."
 
-#: themes/default/templates/pages/client/app.php:72
+#: themes/default/templates/pages/client/app.php:96
 msgid "This app is in the trash. It is deleted for good after a while, unless you restore it."
 msgstr "Это приложение в корзине. Через некоторое время оно будет удалено окончательно, если вы его не восстановите."
 
-#: themes/default/templates/pages/client/app.php:70
+#: themes/default/templates/pages/client/app.php:94
 msgid "This app is suspended by the site's administrators, so it is not offered. Contact them to have the suspension lifted."
 msgstr "Это приложение приостановлено администраторами сайта, поэтому не предлагается. Свяжитесь с ними, чтобы снять приостановку."
 
@@ -13365,7 +13458,7 @@ msgstr "Файл слишком большой для предпросмотра
 msgid "This file type is not shown here. Download it to open it."
 msgstr "Этот тип файла здесь не отображается. Скачайте файл, чтобы открыть его."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:179
+#: src/Admin/ContentHandlers/RepositoryPage.php:178
 msgid "This hosted app type is not registered."
 msgstr "Этот тип размещённого приложения не зарегистрирован."
 
@@ -13661,7 +13754,7 @@ msgstr "Чтобы продлить лицензию или задать воп�
 msgid "To renew your license or if you have any questions, please contact us at {{support_email}}."
 msgstr "Чтобы продлить лицензию или задать вопрос, свяжитесь с нами по адресу {{support_email}}."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:975
+#: src/Analytics/AppStatsSummary.php:103
 msgid "Today's Downloads"
 msgstr "Загрузки за сегодня"
 
@@ -13750,7 +13843,7 @@ msgstr "Всего: %s"
 msgid "Total Accesses"
 msgstr "Всего обращений"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1019
+#: src/Analytics/AppStatsSummary.php:146
 msgid "Total Client Access"
 msgstr "Всего обращений клиентов"
 
@@ -13758,7 +13851,7 @@ msgstr "Всего обращений клиентов"
 msgid "Total Domains Activated:"
 msgstr "Всего активированных доменов:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/index.php:314
+#: src/Analytics/AppStatsSummary.php:94 templates/admin/contents/index.php:314
 msgid "Total Downloads"
 msgstr "Всего загрузок"
 
@@ -13778,7 +13871,7 @@ msgstr "ID транзакции"
 msgid "Transport encryption method."
 msgstr "Метод шифрования соединения."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:412
+#: src/Admin/ContentHandlers/RepositoryPage.php:411
 #, php-format
 msgid "Trash %s"
 msgstr "Переместить %s в корзину"
@@ -13859,7 +13952,7 @@ msgstr "Двухфакторная аутентификация через %s в
 
 #: src/Email/Templates/Apps/AppOwnershipChangedEmail.php:97 src/Email/Templates/Apps/AppOwnershipChangedEmail.php:224 src/Email/Templates/Apps/AppPublishedEmail.php:70 src/Email/Templates/Apps/AppPublishedEmail.php:192
 #: src/Email/Templates/Apps/AppStatusChangedEmail.php:89 src/Email/Templates/Apps/AppStatusChangedEmail.php:199 src/Email/Templates/Apps/AppUpdatedEmail.php:74 src/Email/Templates/Apps/AppUpdatedEmail.php:195
-#: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:19
+#: src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:77 src/Email/Templates/Apps/NewAppVersionNotificationEmail.php:194 templates/admin/contents/accounts/owners.php:54 themes/default/templates/pages/client/app-new.php:20
 #: themes/default/templates/pages/repository/app.php:112 assets/js/admin/json-editor.js:926
 msgid "Type"
 msgstr "Тип"
@@ -14293,7 +14386,7 @@ msgstr "Обновить до %s"
 msgid "Update users"
 msgstr "Изменение пользователей"
 
-#: themes/default/templates/pages/client/app.php:50 themes/default/templates/pages/repository/app.php:118
+#: themes/default/templates/pages/client/app.php:62 themes/default/templates/pages/repository/app.php:118
 msgid "Updated"
 msgstr "Обновлено"
 
@@ -14330,7 +14423,7 @@ msgstr "Примечание к обновлению"
 msgid "Upgrade successful!"
 msgstr "Обновление выполнено!"
 
-#: themes/default/templates/pages/client/app-new.php:48
+#: src/ClientDashboard/ActionHandlers/AppActions.php:195 themes/default/templates/pages/client/app-new.php:49
 msgid "Upload"
 msgstr "Загрузить"
 
@@ -14355,16 +14448,16 @@ msgstr "Загрузка не удалась"
 msgid "Upload Image"
 msgstr "Загрузить изображение"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:157 src/Admin/ContentHandlers/RepositoryPage.php:482 templates/admin/contents/repository/index.php:47
+#: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:47
 msgid "Upload New"
 msgstr "Загрузить новое"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:186
+#: src/Admin/ContentHandlers/RepositoryPage.php:185
 #, php-format
 msgid "Upload New %s"
 msgstr "Загрузить новый %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:156 src/Admin/ContentHandlers/RepositoryPage.php:481 templates/admin/contents/repository/index.php:46
+#: src/Admin/ContentHandlers/RepositoryPage.php:155 src/Admin/ContentHandlers/RepositoryPage.php:480 templates/admin/contents/repository/index.php:46
 msgid "Upload New Application"
 msgstr "Загрузить новое приложение"
 
@@ -14372,15 +14465,15 @@ msgstr "Загрузить новое приложение"
 msgid "Upload a Hosted App"
 msgstr "Загрузить размещаемое приложение"
 
-#: themes/default/templates/pages/client/app.php:78
+#: themes/default/templates/pages/client/app.php:116
 msgid "Upload a new zip file to publish a new version; its version and requirements are read from the package."
 msgstr "Загрузите новый zip-файл, чтобы опубликовать новую версию; версия и требования считываются из пакета."
 
-#: themes/default/templates/pages/client/apps.php:40
+#: themes/default/templates/pages/client/apps.php:50
 msgid "Upload a plugin, theme or software package to host it here."
 msgstr "Загрузите плагин, тему или пакет ПО, чтобы разместить его здесь."
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:92 themes/default/templates/pages/client/apps.php:26
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:99 themes/default/templates/pages/client/apps.php:28
 msgid "Upload an app"
 msgstr "Загрузить приложение"
 
@@ -14392,7 +14485,7 @@ msgstr "Загрузите изображение (рекомендуется 17
 msgid "Upload and install"
 msgstr "Загрузить и установить"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:574
+#: src/Admin/ContentHandlers/RepositoryPage.php:573
 #, php-format
 msgid "Upload and manage %s."
 msgstr "Загружайте %s и управляйте ими."
@@ -14438,7 +14531,7 @@ msgstr "Запрос на загрузку не выполнен."
 msgid "Upload the %s package as a .zip file whose name uses letters, digits, dots, hyphens and underscores."
 msgstr "Загрузите пакет %s как файл .zip, имя которого состоит из букв, цифр, точек, дефисов и подчёркиваний."
 
-#: themes/default/templates/pages/client/app-new.php:13
+#: themes/default/templates/pages/client/app-new.php:14
 msgid "Upload the app's zip file. Its version and requirements are read from the package; the rest you can edit once it is uploaded."
 msgstr "Загрузите zip-файл приложения. Версия и требования считываются из пакета; остальное можно изменить после загрузки."
 
@@ -14454,7 +14547,7 @@ msgstr "Загрузка не удалась."
 msgid "Upload your payment receipt."
 msgstr "Загрузите квитанцию об оплате."
 
-#: themes/default/templates/pages/client/app.php:46
+#: themes/default/templates/pages/client/app.php:58
 msgid "Uploaded"
 msgstr "Загружено"
 
@@ -14475,7 +14568,7 @@ msgstr "Предпросмотр загруженного изображения
 msgid "Uptime"
 msgstr "Время работы"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:624
+#: src/Admin/ContentHandlers/RepositoryPage.php:623
 #, php-format
 msgid "Use %s file to edit %s version"
 msgstr "Используйте файл %s, чтобы изменить версию %s"
@@ -14673,8 +14766,8 @@ msgstr "Подтвердите свой email, %s. Лицензии, купле�
 msgid "Verify your sign-in"
 msgstr "Подтвердите вход"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:623 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
-#: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:42 themes/default/templates/pages/repository/app.php:115
+#: src/Admin/ContentHandlers/RepositoryPage.php:622 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
+#: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:54 themes/default/templates/pages/repository/app.php:115
 msgid "Version"
 msgstr "Версия"
 
@@ -14784,7 +14877,7 @@ msgstr "Доступна версия {{new_version}} продукта {{product
 msgid "Version:"
 msgstr "Версия:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:753 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
+#: src/Admin/ContentHandlers/RepositoryPage.php:752 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
 msgid "View"
 msgstr "Просмотр"
 
@@ -14797,8 +14890,8 @@ msgstr "Посмотреть %s в полном размере"
 msgid "View Activity Logs"
 msgstr "Посмотреть журналы активности"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:236 src/Admin/ContentHandlers/RepositoryPage.php:288 src/Admin/ContentHandlers/RepositoryPage.php:289
-#: src/Admin/ContentHandlers/RepositoryPage.php:752 src/Admin/ContentHandlers/RepositoryPage.php:1144
+#: src/Admin/ContentHandlers/RepositoryPage.php:234 src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:287 src/Admin/ContentHandlers/RepositoryPage.php:288
+#: src/Admin/ContentHandlers/RepositoryPage.php:751 src/Admin/ContentHandlers/RepositoryPage.php:990
 msgid "View App"
 msgstr "Посмотреть приложение"
 
@@ -15328,7 +15421,7 @@ msgstr "Тип и slug вашего приложения есть в адрес�
 msgid "Your application is now live."
 msgstr "Ваше приложение опубликовано."
 
-#: src/ClientDashboard/ContentHandlers/AppsPage.php:234 themes/default/templates/pages/client/app.php:58
+#: src/ClientDashboard/ContentHandlers/AppsPage.php:276 themes/default/templates/pages/client/app.php:76
 msgid "Your apps"
 msgstr "Ваши приложения"
 
@@ -15491,6 +15584,10 @@ msgstr "Ваш идентификатор продажи, по которой в
 msgid "Your role"
 msgstr "Ваша роль"
 
+#: src/ClientDashboard/ActionHandlers/AppActions.php:392
+msgid "Your role here does not allow this."
+msgstr "Ваша роль здесь этого не позволяет."
+
 #: src/ClientDashboard/ActionHandlers/OrganizationActions.php:359
 #, php-format
 msgid "Your role in %s does not allow this."
@@ -15541,7 +15638,7 @@ msgstr ""
 msgid "Your verified Mailgun sending domain. e.g. mg.yourdomain.com"
 msgstr "Ваш подтверждённый домен отправки Mailgun, например mg.yourdomain.com"
 
-#: themes/default/templates/pages/client/app-new.php:44
+#: themes/default/templates/pages/client/app-new.php:45
 msgid "Zip file"
 msgstr "ZIP-файл"
 

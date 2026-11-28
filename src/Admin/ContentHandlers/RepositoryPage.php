@@ -571,7 +571,8 @@ class RepositoryPage implements AdminPageInterface {
 			$options[] = [
 				'type'        => $type,
 				'label'       => $label,
-				'description' => $data['description'] ?? sprintf( smliser__( 'Upload and manage %s.' ), strtolower( $registry->get_app_type_label( $type, true ) ) ),
+				// translators: %s: app type in the plural, e.g. "Desktop Apps".
+				'description' => $registry->get_app_type_description( $type ) ?? sprintf( smliser__( 'Upload and manage %s.' ), $registry->get_app_type_label( $type, true ) ),
 				'icon'        => $data['icon'] ?? 'ti ti-package',
 				'url'         => $this->urlmanager->admin_repo_url( 'add-new', [ 'type' => $type ] )->url(),
 			];

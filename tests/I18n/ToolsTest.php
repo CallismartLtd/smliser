@@ -45,6 +45,34 @@ final class ToolsTest extends TestCase {
 		$this->assertCount( 2, $extractor->warnings(), 'variable and nested calls are reported' );
 	}
 
+	public function test_extracts_context_and_noop_plural_calls() : void {
+		$code = <<<'PHP'
+		<?php
+		echo smliser_esc_attr_x( 'Title', 'attribute' );
+		smliser_ex( 'Open', 'verb' );
+		_ex( 'Close', 'verb' );
+		echo esc_html_x( 'Draft', 'status' );
+		echo esc_attr_x( 'Name', 'field' );
+		$a = smliser_n_noop( '%d site', '%d sites' );
+		$b = smliser_nx_noop( '%d seat', '%d seats', 'license' );
+		$c = _n_noop( '%d file', '%d files', 'smliser' );
+		$d = _nx_noop( '%d user', '%d users', 'team', 'smliser' );
+		$e = _n_noop( '%d other', '%d others', 'my-extension' );
+		PHP;
+
+		$extractor = new StringExtractor( 'smliser' );
+		$document  = new PoDocument();
+		$extractor->extract_php( $code, 'src/Example.php', $document );
+
+		$this->assertEqualsCanonicalizing(
+			[ "attribute\x04Title", "verb\x04Open", "verb\x04Close", "status\x04Draft", "field\x04Name", '%d site', "license\x04%d seat", '%d file', "team\x04%d user" ],
+			array_keys( $document->entries )
+		);
+		$this->assertSame( '%d seats', $document->entries["license\x04%d seat"]->plural );
+		$this->assertSame( '%d sites', $document->entries['%d site']->plural );
+		$this->assertSame( [], $extractor->warnings() );
+	}
+
 	public function test_extracts_js_calls() : void {
 		$code = <<<'JS'
 		const { __, _n } = smliserI18n;

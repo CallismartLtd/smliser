@@ -19,6 +19,8 @@ use SmartLicenseServer\FileSystem\Repository;
 use SmartLicenseServer\FileSystem\SoftwareRepository;
 use SmartLicenseServer\FileSystem\WPThemeRepository;
 use SmartLicenseServer\HostedApps\Storage\AppFile;
+use SmartLicenseServer\I18n\I18n;
+use SmartLicenseServer\I18n\TranslatorInterface;
 
 /**
  * Centralized registry for managing any type of 
@@ -73,11 +75,16 @@ class HostedAppsRegistry extends AbstractRegistry {
 	 *  directory_class: class-string<Repository>,
 	 *  labels?: array{singular: string, plural: string},
 	 *  description?: string,
+	 *  text_domain?: string,
 	 *  icon?: string,
 	 *  storage_dir?: string,
 	 *  requires_attestation?: bool
 	 * }|null $data The app class, its directory class and, optionally, the
-	 *              names people read (see get_app_type_labels()).
+	 *              names people read (see get_app_type_labels()). Give
+	 *              `labels` and `description` in English, marked with
+	 *              smliser__noop( '...', 'your-domain' ), and name that
+	 *              domain in `text_domain`: they are translated each time
+	 *              they are read, in the reader's language.
 	 * @return static
 	 * @throws \InvalidArgumentException When a key is missing or invalid, or the type is a core type.
 	 */
@@ -108,7 +115,7 @@ class HostedAppsRegistry extends AbstractRegistry {
 			$this->assert_labels( $type, $data['labels'] );
 		}
 
-		foreach ( [ 'description', 'icon' ] as $presentation_key ) {
+		foreach ( [ 'description', 'text_domain', 'icon' ] as $presentation_key ) {
 			if ( isset( $data[ $presentation_key ] ) && ( ! is_string( $data[ $presentation_key ] ) || '' === trim( $data[ $presentation_key ] ) ) ) {
 				throw new InvalidArgumentException( sprintf( 'The %s for hosted app type "%s" must be a non-empty string.', $presentation_key, $type ) );
 			}
@@ -174,6 +181,7 @@ class HostedAppsRegistry extends AbstractRegistry {
 	 *  directory_class: class-string<Repository>,
 	 *  labels?: array{singular: string, plural: string},
 	 *  description?: string,
+	 *  text_domain?: string,
 	 *  icon?: string,
 	 *  storage_dir?: string,
 	 *  requires_attestation?: bool
@@ -191,6 +199,7 @@ class HostedAppsRegistry extends AbstractRegistry {
 		 *  directory_class: class-string<Repository>,
 		 *  labels?: array{singular: string, plural: string},
 		 *  description?: string,
+		 *  text_domain?: string,
 		 *  icon?: string,
 		 *  storage_dir?: string,
 		 *  requires_attestation?: bool
@@ -290,7 +299,7 @@ class HostedAppsRegistry extends AbstractRegistry {
 	/**
 	 * Get the names people read for an app type, e.g. "WordPress Plugin" and "WordPress Plugins".
 	 *
-	 * The registered labels; for a type registered without labels, the
+	 * The registered labels, translated into the active language; for a type registered without labels, the
 	 * type key in words ("desktop-app" gives "Desktop App") for both, since
 	 * a plural cannot be guessed safely ("Software" is its own plural).
 	 *
@@ -305,7 +314,10 @@ class HostedAppsRegistry extends AbstractRegistry {
 		}
 
 		if ( isset( $entry['labels'] ) ) {
-			return $entry['labels'];
+			return [
+				'singular' => $this->translate_registered( $entry['labels']['singular'], $entry ),
+				'plural'   => $this->translate_registered( $entry['labels']['plural'], $entry ),
+			];
 		}
 
 		$words = ucwords( str_replace( [ '-', '_' ], ' ', $this->normalize_app_type( $type ) ) );
@@ -328,6 +340,40 @@ class HostedAppsRegistry extends AbstractRegistry {
 		}
 
 		return $plural ? $labels['plural'] : $labels['singular'];
+	}
+
+	/**
+	 * The registered description of an app type, translated into the active
+	 * language, e.g. "Upload plugins for WordPress sites.".
+	 *
+	 * @param string $type The app type.
+	 * @return string|null Null when the type is not registered or has no description.
+	 */
+	public function get_app_type_description( string $type ) : ?string {
+		$entry = $this->get_app_type_data( $type );
+
+		if ( ! $entry || ! isset( $entry['description'] ) ) {
+			return null;
+		}
+
+		return $this->translate_registered( $entry['description'], $entry );
+	}
+
+	/**
+	 * Translate a registered label or description in the type's text domain.
+	 *
+	 * The strings were marked with smliser__noop() where they were
+	 * registered, so the translator is called directly here: smliser__()
+	 * with a variable would be flagged by the string extractor.
+	 *
+	 * @param string               $text  Registered (English) text.
+	 * @param array<string, mixed> $entry Registration data.
+	 * @return string
+	 */
+	protected function translate_registered( string $text, array $entry ) : string {
+		$domain = isset( $entry['text_domain'] ) && is_string( $entry['text_domain'] ) ? $entry['text_domain'] : TranslatorInterface::DEFAULT_DOMAIN;
+
+		return I18n::translator()->translate( $text, $domain );
 	}
 
 	/**
@@ -399,24 +445,24 @@ class HostedAppsRegistry extends AbstractRegistry {
 			'wpplugin' => [
 				'class'           => WPPlugin::class,
 				'directory_class' => WPPluginRepository::class,
-				'labels'          => [ 'singular' => 'WordPress Plugin', 'plural' => 'WordPress Plugins' ],
-				'description'     => 'Upload plugins for WordPress sites.',
+				'labels'          => [ 'singular' => smliser__noop( 'WordPress Plugin' ), 'plural' => smliser__noop( 'WordPress Plugins' ) ],
+				'description'     => smliser__noop( 'Upload plugins for WordPress sites.' ),
 				'icon'            => 'ti ti-plug',
 				'storage_dir'     => 'wp-plugins',
 			],
 			'wptheme' => [
 				'class'           => WPTheme::class,
 				'directory_class' => WPThemeRepository::class,
-				'labels'          => [ 'singular' => 'WordPress Theme', 'plural' => 'WordPress Themes' ],
-				'description'     => 'Upload themes for WordPress sites.',
+				'labels'          => [ 'singular' => smliser__noop( 'WordPress Theme' ), 'plural' => smliser__noop( 'WordPress Themes' ) ],
+				'description'     => smliser__noop( 'Upload themes for WordPress sites.' ),
 				'icon'            => 'ti ti-palette',
 				'storage_dir'     => 'wp-themes',
 			],
 			'software' => [
 				'class'           => Software::class,
 				'directory_class' => SoftwareRepository::class,
-				'labels'          => [ 'singular' => 'Software', 'plural' => 'Software' ],
-				'description'     => 'Upload other software packages.',
+				'labels'          => [ 'singular' => smliser__noop( 'Software' ), 'plural' => smliser__noop( 'Software' ) ],
+				'description'     => smliser__noop( 'Upload other software packages.' ),
 				'icon'            => 'ti ti-device-desktop-code',
 				'storage_dir'     => 'software',
 			],

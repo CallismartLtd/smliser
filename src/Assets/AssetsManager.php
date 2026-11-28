@@ -17,7 +17,6 @@ use InvalidArgumentException;
 use SmartLicenseServer\Core\URL;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\I18n\I18n;
-use SmartLicenseServer\I18n\TranslatorInterface;
 use SmartLicenseServer\Security\CSRF\CSRF;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\Security\Permission\Capability;
@@ -1134,9 +1133,8 @@ final class AssetsManager {
 		$this->register_js_constant( 'smliser_var', $consts );
 
 		// Locale, direction, plural rule and the strings scripts use (assets/js/i18n.js).
-		$i18n             = I18n::js_data( TranslatorInterface::DEFAULT_DOMAIN . '-js' );
-		$i18n['domain']   = TranslatorInterface::DEFAULT_DOMAIN;
-		$this->register_js_constant( 'smliser_i18n', $i18n );
+		// Extension domains registered with I18n::add_text_domain() are included.
+		$this->register_js_constant( 'smliser_i18n', I18n::script_data() );
 	}
 
 	/**

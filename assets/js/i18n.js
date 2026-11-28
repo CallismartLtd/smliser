@@ -11,6 +11,12 @@
  *     label = sprintf( _n( '%d file', '%d files', count ), count );
  *
  * Pass literal strings so `smliser i18n make-pot` can extract them.
+ * Extensions pass their own text domain last, as in PHP:
+ *
+ *     __( 'Invoice sent.', 'acme-invoices' );
+ *
+ * Its strings are sent to the browser once the extension registers the
+ * domain with I18n::add_text_domain().
  *
  * Also powers language pickers: any <select data-smliser-language-switcher>
  * saves the choice (to the user's preferences when signed in, otherwise a
@@ -92,18 +98,60 @@
 		}
 	}
 
-	const pluralIndex = compilePlural( data.plural_forms );
+	const DEFAULT_DOMAIN = data.domain || 'smliser';
+	const hasOwn = ( object, key ) => Object.prototype.hasOwnProperty.call( object, key );
 
-	function lookup( text, context ) {
+	/**
+	 * Catalogs per text domain: { messages, pluralIndex }. The core domain
+	 * comes from the top level of `smliser_i18n`, extension domains from
+	 * `smliser_i18n.domains` (see I18n::script_data()).
+	 */
+	const catalogs = Object.create( null );
+
+	function addCatalog( domain, catalog ) {
+		catalogs[ domain ] = {
+			messages: ( catalog && catalog.messages ) || {},
+			pluralIndex: compilePlural( catalog && catalog.plural_forms ),
+		};
+	}
+
+	addCatalog( DEFAULT_DOMAIN, { messages, plural_forms: data.plural_forms } );
+
+	Object.keys( data.domains || {} ).forEach( ( domain ) => {
+		if ( domain !== DEFAULT_DOMAIN ) {
+			addCatalog( domain, data.domains[ domain ] );
+		}
+	} );
+
+	/**
+	 * The catalog of a domain. No domain, or WordPress' `default`, means the
+	 * core domain. Domains are isolated: a domain without a catalog has no
+	 * translations, it does not borrow the core ones.
+	 */
+	function catalogFor( domain ) {
+		const name = ( ! domain || domain === 'default' ) ? DEFAULT_DOMAIN : String( domain );
+		return catalogs[ name ] || null;
+	}
+
+	function lookup( text, context, domain ) {
+		const catalog = catalogFor( domain );
 		const key = context ? context + CONTEXT_SEPARATOR + text : text;
-		return Object.prototype.hasOwnProperty.call( messages, key ) ? messages[ key ] : null;
+
+		if ( ! catalog || ! hasOwn( catalog.messages, key ) ) {
+			return null;
+		}
+
+		const forms = catalog.messages[ key ];
+
+		// Compiled catalogs hold plural forms as an array; accept a NUL-joined string too.
+		return Array.isArray( forms ) ? forms : String( forms ).split( '\u0000' );
 	}
 
 	/**
 	 * Translate a string.
 	 */
 	function __( text, domain ) {
-		const forms = lookup( text );
+		const forms = lookup( text, '', domain );
 		return ( forms && forms[ 0 ] ) || text;
 	}
 
@@ -111,19 +159,19 @@
 	 * Translate a string with a disambiguating context.
 	 */
 	function _x( text, context, domain ) {
-		const forms = lookup( text, context );
+		const forms = lookup( text, context, domain );
 		return ( forms && forms[ 0 ] ) || text;
 	}
 
 	/**
 	 * Translate a string with plural forms and a context.
 	 */
-	function translatePlural( single, plural, count, context ) {
-		const forms = lookup( single, context );
+	function translatePlural( single, plural, count, context, domain ) {
+		const forms = lookup( single, context, domain );
 		const n = Math.abs( parseInt( count, 10 ) || 0 );
 
 		if ( forms ) {
-			const form = forms[ pluralIndex( n ) ];
+			const form = forms[ catalogFor( domain ).pluralIndex( n ) ];
 			if ( form ) return form;
 		}
 
@@ -131,14 +179,21 @@
 	}
 
 	function _nx( single, plural, count, context, domain ) {
-		return translatePlural( single, plural, count, context );
+		return translatePlural( single, plural, count, context, domain );
 	}
 
 	/**
 	 * Translate a string with plural forms.
 	 */
 	function _n( single, plural, count, domain ) {
-		return translatePlural( single, plural, count, '' );
+		return translatePlural( single, plural, count, '', domain );
+	}
+
+	/**
+	 * Tell whether a text domain has translations in the active locale.
+	 */
+	function hasDomain( domain ) {
+		return null !== catalogFor( domain );
 	}
 
 	/**
@@ -250,6 +305,8 @@
 		lang: data.lang || 'en-US',
 		dir: data.dir || 'ltr',
 		isRTL: data.dir === 'rtl',
+		domain: DEFAULT_DOMAIN,
+		hasDomain,
 		__,
 		_x,
 		_n,

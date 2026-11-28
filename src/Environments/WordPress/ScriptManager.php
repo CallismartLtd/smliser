@@ -17,7 +17,6 @@ use SmartLicenseServer\Assets\JS;
 use SmartLicenseServer\Core\URL;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\I18n\I18n;
-use SmartLicenseServer\I18n\TranslatorInterface;
 use SmartLicenseServer\Utils\Format;
 
 use function wp_register_script, wp_register_style, is_admin, wp_enqueue_script, wp_enqueue_style, wp_localize_script;
@@ -91,9 +90,7 @@ final class ScriptManager {
 		// Localize main script.
 		wp_localize_script( 'core-admin', 'smliser_var', $this->allVars() );
 
-		$i18n           = I18n::js_data( TranslatorInterface::DEFAULT_DOMAIN . '-js' );
-		$i18n['domain'] = TranslatorInterface::DEFAULT_DOMAIN;
-		wp_localize_script( 'i18n', 'smliser_i18n', $i18n );
+		wp_localize_script( 'i18n', 'smliser_i18n', I18n::script_data() );
 	}
 
 	/**

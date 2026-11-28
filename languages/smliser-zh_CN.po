@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 10:21+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: 中文（中国）\n"
 "Language: zh_CN\n"
@@ -427,7 +427,7 @@ msgstr "%s 请在此域名上重新激活许可证以获取新的。"
 msgid "%s Assets"
 msgstr "%s 资源"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:716
+#: src/Admin/ContentHandlers/RepositoryPage.php:717
 #, php-format
 msgid "%s Distributable Artifacts"
 msgstr "%s 可分发构件"
@@ -1165,7 +1165,7 @@ msgstr "API 文档"
 msgid "API key was not provided."
 msgstr "未提供 API 密钥。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:812 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
+#: src/Admin/ContentHandlers/RepositoryPage.php:813 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
 msgid "APP ID"
 msgstr "应用 ID"
 
@@ -1222,7 +1222,7 @@ msgstr "拒绝访问。您必须登录有效的管理员账户才能查看此页
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
 msgstr "拒绝访问。您必须登录有效的管理员账户才能查看此页面。[重新登录][返回首页]"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1038
+#: src/Admin/ContentHandlers/RepositoryPage.php:1039
 msgid "Access Growth"
 msgstr "访问增长"
 
@@ -1358,7 +1358,7 @@ msgstr "活跃安装"
 msgid "Active Installations by Type (30 Days)"
 msgstr "按类型统计的活跃安装（30 天）"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1048
+#: src/Admin/ContentHandlers/RepositoryPage.php:1049
 msgid "Active Installs"
 msgstr "活跃安装"
 
@@ -1387,7 +1387,7 @@ msgstr "添加 %s"
 msgid "Add Artifact"
 msgstr "添加构件"
 
-#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:1120 templates/admin/contents/license/index.php:27
+#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:716 src/Admin/ContentHandlers/RepositoryPage.php:1121 templates/admin/contents/license/index.php:27
 #: templates/admin/contents/license/search.php:26
 msgid "Add New"
 msgstr "新增"
@@ -1834,7 +1834,7 @@ msgstr "未找到应用"
 msgid "App Slug Conflict"
 msgstr "应用别名冲突"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1132
+#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1133
 msgid "App Storage"
 msgstr "应用存储"
 
@@ -1855,7 +1855,7 @@ msgstr "未找到类型“%s”的应用类。"
 msgid "App data not found"
 msgstr "未找到应用数据"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:765
+#: src/Admin/ContentHandlers/RepositoryPage.php:766
 msgid "App monetization"
 msgstr "应用变现"
 
@@ -2196,11 +2196,11 @@ msgstr "身份验证器或恢复码"
 msgid "Author"
 msgstr "作者"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:638
+#: src/Admin/ContentHandlers/RepositoryPage.php:639
 msgid "Author Name"
 msgstr "作者名称"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:652
+#: src/Admin/ContentHandlers/RepositoryPage.php:653
 msgid "Author Profile URL"
 msgstr "作者主页 URL"
 
@@ -2284,11 +2284,11 @@ msgstr "可用的 REST API 路由，按版本和类别分组。"
 msgid "Avatar actions"
 msgstr "头像操作"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1028
+#: src/Admin/ContentHandlers/RepositoryPage.php:1029
 msgid "Avg Access/Day"
 msgstr "日均访问"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:984
+#: src/Admin/ContentHandlers/RepositoryPage.php:985
 msgid "Avg Downloads/Day"
 msgstr "日均下载"
 
@@ -4057,7 +4057,7 @@ msgstr "下载 .txt"
 msgid "Download Document"
 msgstr "下载文档"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:994
+#: src/Admin/ContentHandlers/RepositoryPage.php:995
 msgid "Download Growth"
 msgstr "下载增长"
 
@@ -4249,7 +4249,7 @@ msgstr "每次调用都作为一个 Web 请求运行，因此每次调用最多�
 msgid "Each runner records its last run. This list refreshes every 30 seconds while the page is open."
 msgstr "每个运行器都会记录其上次运行。页面打开时此列表每 30 秒刷新一次。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:740 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
+#: src/Admin/ContentHandlers/RepositoryPage.php:741 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
 #: templates/admin/contents/repository/monetization.php:126 templates/admin/contents/repository/uploader.php:100 assets/js/admin/apps-uploader.js:1274
 msgid "Edit"
 msgstr "编辑"
@@ -4259,16 +4259,16 @@ msgstr "编辑"
 msgid "Edit %s"
 msgstr "编辑 %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:713 templates/admin/contents/repository/edit-generic.php:11
+#: src/Admin/ContentHandlers/RepositoryPage.php:714 templates/admin/contents/repository/edit-generic.php:11
 #, php-format
 msgid "Edit %s: %s"
 msgstr "编辑 %s：%s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:739 src/Admin/ContentHandlers/RepositoryPage.php:1138
+#: src/Admin/ContentHandlers/RepositoryPage.php:740 src/Admin/ContentHandlers/RepositoryPage.php:1139
 msgid "Edit App"
 msgstr "编辑应用"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1156
+#: src/Admin/ContentHandlers/RepositoryPage.php:1157
 msgid "Edit App Artifacts"
 msgstr "编辑应用构件"
 
@@ -4584,12 +4584,12 @@ msgstr "输入角色名称"
 msgid "Enter role slug"
 msgstr "输入角色别名"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:682
+#: src/Admin/ContentHandlers/RepositoryPage.php:683
 #, php-format
 msgid "Enter the %s status"
 msgstr "输入%s状态"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:653
+#: src/Admin/ContentHandlers/RepositoryPage.php:654
 #, php-format
 msgid "Enter the URL of the %s author profile."
 msgstr "输入%s作者主页的 URL。"
@@ -4598,7 +4598,7 @@ msgstr "输入%s作者主页的 URL。"
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "输入允许安装此许可证的最大域名数。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:639
+#: src/Admin/ContentHandlers/RepositoryPage.php:640
 #, php-format
 msgid "Enter the name of the %s author."
 msgstr "输入%s作者的名称。"
@@ -4943,7 +4943,7 @@ msgstr "未找到文件"
 msgid "File Reading Error"
 msgstr "文件读取错误"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:824
+#: src/Admin/ContentHandlers/RepositoryPage.php:825
 msgid "File Size"
 msgstr "文件大小"
 
@@ -5399,7 +5399,7 @@ msgstr "主页 URL"
 msgid "Hosted Application"
 msgstr "托管应用"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1114
+#: src/Admin/ContentHandlers/RepositoryPage.php:1115
 msgid "Hosted apps"
 msgstr "托管应用"
 
@@ -6252,7 +6252,7 @@ msgstr "上次运行"
 msgid "Last Update Attempt"
 msgstr "上次更新尝试"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:826 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
+#: src/Admin/ContentHandlers/RepositoryPage.php:827 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
 msgid "Last Updated"
 msgstr "上次更新"
 
@@ -6324,7 +6324,7 @@ msgstr "留空则从此站点提供下载，地址为 %s"
 msgid "Leave the installer"
 msgstr "离开安装程序"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:816 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
+#: src/Admin/ContentHandlers/RepositoryPage.php:817 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
 msgid "License"
 msgstr "许可证"
 
@@ -7000,7 +7000,7 @@ msgstr "弹窗标题"
 msgid "Modules"
 msgstr "模块"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
+#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:767 src/Admin/ContentHandlers/RepositoryPage.php:821
 #: src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
 msgstr "变现"
@@ -7045,7 +7045,7 @@ msgstr "变现已更新"
 msgid "Monetizations"
 msgstr "变现"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1150
+#: src/Admin/ContentHandlers/RepositoryPage.php:1151
 msgid "Monetize App"
 msgstr "应用变现"
 
@@ -7099,7 +7099,7 @@ msgstr "MySQL (mysqli)"
 msgid "MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer."
 msgstr "通过同一个抽象层支持 MySQL、MariaDB、PostgreSQL 和 SQLite。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
+#: src/Admin/ContentHandlers/RepositoryPage.php:609 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
 #: themes/default/templates/pages/client/app-new.php:28 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
 msgid "Name"
 msgstr "名称"
@@ -8058,7 +8058,7 @@ msgstr "概览"
 msgid "Overwrite"
 msgstr "覆盖"
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:666
+#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:667
 msgid "Owner"
 msgstr "所有者"
 
@@ -8366,11 +8366,11 @@ msgstr "付款参考号"
 msgid "Payment reference (optional)"
 msgstr "付款参考号（可选）"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1058
+#: src/Admin/ContentHandlers/RepositoryPage.php:1059
 msgid "Peak Access Day"
 msgstr "访问高峰日"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1004
+#: src/Admin/ContentHandlers/RepositoryPage.php:1005
 msgid "Peak Day"
 msgstr "高峰日"
 
@@ -8762,7 +8762,7 @@ msgstr "清理许可证活动日志"
 msgid "Prune License Meta"
 msgstr "清理许可证元数据"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:822
+#: src/Admin/ContentHandlers/RepositoryPage.php:823
 msgid "Public Download URL"
 msgstr "公开下载 URL"
 
@@ -9218,8 +9218,8 @@ msgid "Report generated. Press Ctrl+C (Cmd+C) to copy the selected text."
 msgstr "报告已生成。按 Ctrl+C（Cmd+C）复制所选文本。"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:86 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:148 src/Admin/ContentHandlers/RepositoryPage.php:191
-#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:723
-#: src/Admin/ContentHandlers/RepositoryPage.php:1170 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
+#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:724
+#: src/Admin/ContentHandlers/RepositoryPage.php:1171 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
 #: templates/admin/contents/repository/upload.php:20 themes/default/templates/pages/repository/app.php:29 themes/default/templates/partials/header.php:12
 msgid "Repository"
 msgstr "存储库"
@@ -9800,7 +9800,7 @@ msgstr "搜索许可证"
 msgid "Search Messages"
 msgstr "搜索消息"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1126 templates/admin/contents/repository/index.php:133
+#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1127 templates/admin/contents/repository/index.php:133
 msgid "Search Repository"
 msgstr "搜索存储库"
 
@@ -10550,7 +10550,7 @@ msgstr "站点："
 msgid "Size:"
 msgstr "大小："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:814 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
+#: src/Admin/ContentHandlers/RepositoryPage.php:815 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
 #: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:38
 msgid "Slug"
 msgstr "Slug"
@@ -10568,7 +10568,7 @@ msgstr "Smart License Server"
 msgid "Socket connection timeout. Default: "
 msgstr "套接字连接超时。默认值： "
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:458
 msgid "Software"
 msgstr "软件"
 
@@ -10681,7 +10681,7 @@ msgid "Statistics"
 msgstr "统计"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:240 src/Admin/ContentHandlers/AccessControlPage.php:382 src/Admin/ContentHandlers/AccessControlPage.php:517 src/Admin/ContentHandlers/AccessControlPage.php:683
-#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
+#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:682 src/Admin/ContentHandlers/RepositoryPage.php:819
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
 #: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
@@ -12124,7 +12124,7 @@ msgstr "模块版本并非来自 release()。"
 msgid "The name can be at most %d characters long."
 msgstr "名称最多 %d 个字符。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:609
+#: src/Admin/ContentHandlers/RepositoryPage.php:610
 msgid "The name of the application"
 msgstr "应用名称"
 
@@ -13657,7 +13657,7 @@ msgstr "如需续订许可证或有任何问题，请通过 %s 联系我们。"
 msgid "To renew your license or if you have any questions, please contact us at {{support_email}}."
 msgstr "如需续订许可证或有任何问题，请通过 {{support_email}} 联系我们。"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:975
+#: src/Admin/ContentHandlers/RepositoryPage.php:976
 msgid "Today's Downloads"
 msgstr "今日下载"
 
@@ -13746,7 +13746,7 @@ msgstr "%s总计"
 msgid "Total Accesses"
 msgstr "总访问量"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1019
+#: src/Admin/ContentHandlers/RepositoryPage.php:1020
 msgid "Total Client Access"
 msgstr "客户端总访问量"
 
@@ -13754,7 +13754,7 @@ msgstr "客户端总访问量"
 msgid "Total Domains Activated:"
 msgstr "已激活域名总数："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/index.php:314
+#: src/Admin/ContentHandlers/RepositoryPage.php:967 templates/admin/contents/index.php:314
 msgid "Total Downloads"
 msgstr "总下载量"
 
@@ -14388,7 +14388,8 @@ msgstr "上传一张图片（建议 170 × 170 像素）。"
 msgid "Upload and install"
 msgstr "上传并安装"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:574
+#. translators: %s: app type in the plural, e.g. "Desktop Apps".
+#: src/Admin/ContentHandlers/RepositoryPage.php:575
 #, php-format
 msgid "Upload and manage %s."
 msgstr "上传并管理%s。"
@@ -14425,6 +14426,14 @@ msgstr "从 URL 上传"
 msgid "Upload from device"
 msgstr "从设备上传"
 
+#: src/HostedApps/HostedAppsRegistry.php:459
+msgid "Upload other software packages."
+msgstr "上传其他软件包。"
+
+#: src/HostedApps/HostedAppsRegistry.php:443
+msgid "Upload plugins for WordPress sites."
+msgstr "上传适用于 WordPress 网站的插件。"
+
 #: assets/js/admin/apps-uploader.js:1173
 msgid "Upload request failed."
 msgstr "上传请求失败。"
@@ -14437,6 +14446,10 @@ msgstr "请将 %s 软件包以 .zip 文件上传，文件名只能包含字母�
 #: themes/default/templates/pages/client/app-new.php:13
 msgid "Upload the app's zip file. Its version and requirements are read from the package; the rest you can edit once it is uploaded."
 msgstr "上传应用的 zip 文件。其版本和要求会从软件包中读取；其余内容可在上传后编辑。"
+
+#: src/HostedApps/HostedAppsRegistry.php:451
+msgid "Upload themes for WordPress sites."
+msgstr "上传适用于 WordPress 网站的主题。"
 
 #: assets/js/admin/apps-uploader.js:603
 msgid "Upload to repository"
@@ -14471,7 +14484,7 @@ msgstr "已上传图片预览"
 msgid "Uptime"
 msgstr "运行时间"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:624
+#: src/Admin/ContentHandlers/RepositoryPage.php:625
 #, php-format
 msgid "Use %s file to edit %s version"
 msgstr "使用 %s 文件编辑 %s 版本"
@@ -14669,7 +14682,7 @@ msgstr "请验证您的邮箱地址，%s。验证后，使用该邮箱购买的�
 msgid "Verify your sign-in"
 msgstr "验证您的登录"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:623 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
+#: src/Admin/ContentHandlers/RepositoryPage.php:624 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
 #: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:42 themes/default/templates/pages/repository/app.php:115
 msgid "Version"
 msgstr "版本"
@@ -14780,7 +14793,7 @@ msgstr "{{product_name}} 的版本 {{new_version}} 已可用。"
 msgid "Version:"
 msgstr "版本："
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:753 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
+#: src/Admin/ContentHandlers/RepositoryPage.php:754 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
 msgid "View"
 msgstr "查看"
 
@@ -14794,7 +14807,7 @@ msgid "View Activity Logs"
 msgstr "查看活动日志"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:236 src/Admin/ContentHandlers/RepositoryPage.php:288 src/Admin/ContentHandlers/RepositoryPage.php:289
-#: src/Admin/ContentHandlers/RepositoryPage.php:752 src/Admin/ContentHandlers/RepositoryPage.php:1144
+#: src/Admin/ContentHandlers/RepositoryPage.php:753 src/Admin/ContentHandlers/RepositoryPage.php:1145
 msgid "View App"
 msgstr "查看应用"
 
@@ -15037,6 +15050,10 @@ msgstr "不使用终端"
 msgid "WooCommerce tested up to:"
 msgstr "WooCommerce 已测试至："
 
+#: src/HostedApps/HostedAppsRegistry.php:442
+msgid "WordPress Plugin"
+msgstr "WordPress 插件"
+
 #: templates/admin/contents/index.php:316
 msgid "WordPress Plugin Downloads"
 msgstr "WordPress 插件下载"
@@ -15045,9 +15062,13 @@ msgstr "WordPress 插件下载"
 msgid "WordPress Plugin Installations"
 msgstr "WordPress 插件安装"
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:442
 msgid "WordPress Plugins"
 msgstr "WordPress 插件"
+
+#: src/HostedApps/HostedAppsRegistry.php:450
+msgid "WordPress Theme"
+msgstr "WordPress 主题"
 
 #: templates/admin/contents/index.php:317
 msgid "WordPress Theme Downloads"
@@ -15057,7 +15078,7 @@ msgstr "WordPress 主题下载"
 msgid "WordPress Theme Installations"
 msgstr "WordPress 主题安装"
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:450
 msgid "WordPress Themes"
 msgstr "WordPress 主题"
 

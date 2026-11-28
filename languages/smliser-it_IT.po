@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 10:21+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: Italiano (Italia)\n"
 "Language: it_IT\n"
@@ -428,7 +428,7 @@ msgstr "%s Attiva di nuovo la licenza su questo dominio per ottenerne uno nuovo.
 msgid "%s Assets"
 msgstr "Risorse di %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:716
+#: src/Admin/ContentHandlers/RepositoryPage.php:717
 #, php-format
 msgid "%s Distributable Artifacts"
 msgstr "Artefatti distribuibili di %s"
@@ -1166,7 +1166,7 @@ msgstr "Documentazione API"
 msgid "API key was not provided."
 msgstr "La chiave API non è stata fornita."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:812 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
+#: src/Admin/ContentHandlers/RepositoryPage.php:813 templates/admin/contents/repository/index.php:143 templates/admin/contents/repository/search.php:44
 msgid "APP ID"
 msgstr "ID APP"
 
@@ -1223,7 +1223,7 @@ msgstr "Accesso negato. Devi aver effettuato l’accesso con un account amminist
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
 msgstr "Accesso negato. Devi aver effettuato l’accesso con un account amministratore valido per vedere questa pagina.[Accedi di nuovo][Torna alla home]"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1038
+#: src/Admin/ContentHandlers/RepositoryPage.php:1039
 msgid "Access Growth"
 msgstr "Crescita degli accessi"
 
@@ -1359,7 +1359,7 @@ msgstr "Installazioni attive"
 msgid "Active Installations by Type (30 Days)"
 msgstr "Installazioni attive per tipo (30 giorni)"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1048
+#: src/Admin/ContentHandlers/RepositoryPage.php:1049
 msgid "Active Installs"
 msgstr "Installazioni attive"
 
@@ -1388,7 +1388,7 @@ msgstr "Aggiungi %s"
 msgid "Add Artifact"
 msgstr "Aggiungi artefatto"
 
-#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:715 src/Admin/ContentHandlers/RepositoryPage.php:1120 templates/admin/contents/license/index.php:27
+#: src/Admin/ContentHandlers/LicensePage.php:486 src/Admin/ContentHandlers/RepositoryPage.php:716 src/Admin/ContentHandlers/RepositoryPage.php:1121 templates/admin/contents/license/index.php:27
 #: templates/admin/contents/license/search.php:26
 msgid "Add New"
 msgstr "Aggiungi nuovo"
@@ -1835,7 +1835,7 @@ msgstr "App non trovata"
 msgid "App Slug Conflict"
 msgstr "Conflitto di slug dell’app"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1132
+#: src/Admin/ContentHandlers/RepositoryPage.php:476 src/Admin/ContentHandlers/RepositoryPage.php:1133
 msgid "App Storage"
 msgstr "Archiviazione app"
 
@@ -1856,7 +1856,7 @@ msgstr "Classe app per il tipo \"%s\" non trovata."
 msgid "App data not found"
 msgstr "Dati dell’app non trovati"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:765
+#: src/Admin/ContentHandlers/RepositoryPage.php:766
 msgid "App monetization"
 msgstr "Monetizzazione dell’app"
 
@@ -2197,11 +2197,11 @@ msgstr "Codice di autenticazione o di recupero"
 msgid "Author"
 msgstr "Autore"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:638
+#: src/Admin/ContentHandlers/RepositoryPage.php:639
 msgid "Author Name"
 msgstr "Nome dell’autore"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:652
+#: src/Admin/ContentHandlers/RepositoryPage.php:653
 msgid "Author Profile URL"
 msgstr "URL del profilo dell’autore"
 
@@ -2285,11 +2285,11 @@ msgstr "Route dell’API REST disponibili, raggruppate per versione e categoria.
 msgid "Avatar actions"
 msgstr "Azioni sull’avatar"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1028
+#: src/Admin/ContentHandlers/RepositoryPage.php:1029
 msgid "Avg Access/Day"
 msgstr "Media accessi/giorno"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:984
+#: src/Admin/ContentHandlers/RepositoryPage.php:985
 msgid "Avg Downloads/Day"
 msgstr "Media download/giorno"
 
@@ -4058,7 +4058,7 @@ msgstr "Scarica .txt"
 msgid "Download Document"
 msgstr "Scarica documento"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:994
+#: src/Admin/ContentHandlers/RepositoryPage.php:995
 msgid "Download Growth"
 msgstr "Crescita dei download"
 
@@ -4250,7 +4250,7 @@ msgstr "Ogni chiamata viene eseguita come una richiesta web, quindi i job vengon
 msgid "Each runner records its last run. This list refreshes every 30 seconds while the page is open."
 msgstr "Ogni esecutore registra la sua ultima esecuzione. Questo elenco si aggiorna ogni 30 secondi mentre la pagina è aperta."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:740 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
+#: src/Admin/ContentHandlers/RepositoryPage.php:741 templates/admin/contents/accounts/access-control-form.php:209 templates/admin/contents/broadcasts/index.php:64 templates/admin/contents/broadcasts/search.php:54
 #: templates/admin/contents/repository/monetization.php:126 templates/admin/contents/repository/uploader.php:100 assets/js/admin/apps-uploader.js:1274
 msgid "Edit"
 msgstr "Modifica"
@@ -4260,16 +4260,16 @@ msgstr "Modifica"
 msgid "Edit %s"
 msgstr "Modifica %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:713 templates/admin/contents/repository/edit-generic.php:11
+#: src/Admin/ContentHandlers/RepositoryPage.php:714 templates/admin/contents/repository/edit-generic.php:11
 #, php-format
 msgid "Edit %s: %s"
 msgstr "Modifica %s: %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:739 src/Admin/ContentHandlers/RepositoryPage.php:1138
+#: src/Admin/ContentHandlers/RepositoryPage.php:740 src/Admin/ContentHandlers/RepositoryPage.php:1139
 msgid "Edit App"
 msgstr "Modifica app"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1156
+#: src/Admin/ContentHandlers/RepositoryPage.php:1157
 msgid "Edit App Artifacts"
 msgstr "Modifica artefatti dell’app"
 
@@ -4585,12 +4585,12 @@ msgstr "Inserisci il nome del ruolo"
 msgid "Enter role slug"
 msgstr "Inserisci lo slug del ruolo"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:682
+#: src/Admin/ContentHandlers/RepositoryPage.php:683
 #, php-format
 msgid "Enter the %s status"
 msgstr "Inserisci lo stato di %s"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:653
+#: src/Admin/ContentHandlers/RepositoryPage.php:654
 #, php-format
 msgid "Enter the URL of the %s author profile."
 msgstr "Inserisci l’URL del profilo dell’autore di %s."
@@ -4599,7 +4599,7 @@ msgstr "Inserisci l’URL del profilo dell’autore di %s."
 msgid "Enter the maximum number of domains allowed to install this license."
 msgstr "Inserisci il numero massimo di domini su cui è consentito installare questa licenza."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:639
+#: src/Admin/ContentHandlers/RepositoryPage.php:640
 #, php-format
 msgid "Enter the name of the %s author."
 msgstr "Inserisci il nome dell’autore di %s."
@@ -4944,7 +4944,7 @@ msgstr "File non trovato"
 msgid "File Reading Error"
 msgstr "Errore di lettura del file"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:824
+#: src/Admin/ContentHandlers/RepositoryPage.php:825
 msgid "File Size"
 msgstr "Dimensione del file"
 
@@ -5401,7 +5401,7 @@ msgstr "URL della homepage"
 msgid "Hosted Application"
 msgstr "Applicazione ospitata"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1114
+#: src/Admin/ContentHandlers/RepositoryPage.php:1115
 msgid "Hosted apps"
 msgstr "App ospitate"
 
@@ -6254,7 +6254,7 @@ msgstr "Ultima esecuzione"
 msgid "Last Update Attempt"
 msgstr "Ultimo tentativo di aggiornamento"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:826 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
+#: src/Admin/ContentHandlers/RepositoryPage.php:827 templates/admin/contents/accounts/principals.php:54 templates/admin/contents/repository/index.php:150 templates/admin/contents/repository/search.php:51
 msgid "Last Updated"
 msgstr "Ultimo aggiornamento"
 
@@ -6326,7 +6326,7 @@ msgstr "Lascia vuoto per servire i download da questo sito, su %s"
 msgid "Leave the installer"
 msgstr "Esci dall’installazione"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:816 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
+#: src/Admin/ContentHandlers/RepositoryPage.php:817 templates/admin/contents/license/purchase-request.php:104 themes/default/templates/pages/repository/app.php:126
 msgid "License"
 msgstr "Licenza"
 
@@ -7002,7 +7002,7 @@ msgstr "Titolo della finestra"
 msgid "Modules"
 msgstr "Moduli"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
+#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:767 src/Admin/ContentHandlers/RepositoryPage.php:821
 #: src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
 msgstr "Monetizzazione"
@@ -7047,7 +7047,7 @@ msgstr "Monetizzazione aggiornata"
 msgid "Monetizations"
 msgstr "Monetizzazioni"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1150
+#: src/Admin/ContentHandlers/RepositoryPage.php:1151
 msgid "Monetize App"
 msgstr "Monetizza app"
 
@@ -7101,7 +7101,7 @@ msgstr "MySQL (mysqli)"
 msgid "MySQL, MariaDB, PostgreSQL and SQLite through one abstraction layer."
 msgstr "MySQL, MariaDB, PostgreSQL e SQLite tramite un unico livello di astrazione."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:608 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
+#: src/Admin/ContentHandlers/RepositoryPage.php:609 src/ClientDashboard/ContentHandlers/AppsPage.php:269 templates/admin/contents/accounts/owners.php:53 templates/admin/contents/accounts/principals.php:52
 #: themes/default/templates/pages/client/app-new.php:28 themes/default/templates/pages/client/organization.php:125 themes/default/templates/pages/client/organizations.php:104
 msgid "Name"
 msgstr "Nome"
@@ -8060,7 +8060,7 @@ msgstr "Panoramica"
 msgid "Overwrite"
 msgstr "Sovrascrivi"
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:666
+#: src/Admin/ContentHandlers/AccessControlPage.php:806 src/Admin/ContentHandlers/RepositoryPage.php:667
 msgid "Owner"
 msgstr "Proprietario"
 
@@ -8368,11 +8368,11 @@ msgstr "Riferimento del pagamento"
 msgid "Payment reference (optional)"
 msgstr "Riferimento del pagamento (facoltativo)"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1058
+#: src/Admin/ContentHandlers/RepositoryPage.php:1059
 msgid "Peak Access Day"
 msgstr "Giorno di picco degli accessi"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1004
+#: src/Admin/ContentHandlers/RepositoryPage.php:1005
 msgid "Peak Day"
 msgstr "Giorno di picco"
 
@@ -8764,7 +8764,7 @@ msgstr "Elimina log delle attività delle licenze"
 msgid "Prune License Meta"
 msgstr "Elimina metadati delle licenze"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:822
+#: src/Admin/ContentHandlers/RepositoryPage.php:823
 msgid "Public Download URL"
 msgstr "URL di download pubblico"
 
@@ -9220,8 +9220,8 @@ msgid "Report generated. Press Ctrl+C (Cmd+C) to copy the selected text."
 msgstr "Report generato. Premi Ctrl+C (Cmd+C) per copiare il testo selezionato."
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:86 src/Admin/ContentHandlers/RepositoryPage.php:147 src/Admin/ContentHandlers/RepositoryPage.php:148 src/Admin/ContentHandlers/RepositoryPage.php:191
-#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:723
-#: src/Admin/ContentHandlers/RepositoryPage.php:1170 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
+#: src/Admin/ContentHandlers/RepositoryPage.php:192 src/Admin/ContentHandlers/RepositoryPage.php:353 src/Admin/ContentHandlers/RepositoryPage.php:471 src/Admin/ContentHandlers/RepositoryPage.php:724
+#: src/Admin/ContentHandlers/RepositoryPage.php:1171 src/HostedApps/ContentHandlers/RepositoryPages.php:109 templates/admin/contents/repository/index.php:28 templates/admin/contents/repository/index.php:29
 #: templates/admin/contents/repository/upload.php:20 themes/default/templates/pages/repository/app.php:29 themes/default/templates/partials/header.php:12
 msgid "Repository"
 msgstr "Repository"
@@ -9802,7 +9802,7 @@ msgstr "Cerca licenze"
 msgid "Search Messages"
 msgstr "Cerca messaggi"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1126 templates/admin/contents/repository/index.php:133
+#: src/Admin/ContentHandlers/RepositoryPage.php:151 src/Admin/ContentHandlers/RepositoryPage.php:1127 templates/admin/contents/repository/index.php:133
 msgid "Search Repository"
 msgstr "Cerca nel repository"
 
@@ -10552,7 +10552,7 @@ msgstr "Siti:"
 msgid "Size:"
 msgstr "Dimensione:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:814 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
+#: src/Admin/ContentHandlers/RepositoryPage.php:815 src/Email/Templates/Apps/AppPublishedEmail.php:72 src/Email/Templates/Apps/AppPublishedEmail.php:194 templates/admin/contents/repository/index.php:148
 #: templates/admin/contents/repository/search.php:49 themes/default/templates/pages/client/app.php:38
 msgid "Slug"
 msgstr "Slug"
@@ -10570,7 +10570,7 @@ msgstr "Smart License Server"
 msgid "Socket connection timeout. Default: "
 msgstr "Timeout di connessione del socket. Predefinito: "
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:458
 msgid "Software"
 msgstr "Software"
 
@@ -10683,7 +10683,7 @@ msgid "Statistics"
 msgstr "Statistiche"
 
 #: src/Admin/ContentHandlers/AccessControlPage.php:240 src/Admin/ContentHandlers/AccessControlPage.php:382 src/Admin/ContentHandlers/AccessControlPage.php:517 src/Admin/ContentHandlers/AccessControlPage.php:683
-#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:681 src/Admin/ContentHandlers/RepositoryPage.php:818
+#: src/Admin/ContentHandlers/AccessControlPage.php:836 src/Admin/ContentHandlers/LicensePage.php:400 src/Admin/ContentHandlers/RepositoryPage.php:682 src/Admin/ContentHandlers/RepositoryPage.php:819
 #: templates/admin/contents/accounts/owners.php:55 templates/admin/contents/license/index.php:79 templates/admin/contents/license/purchase-requests.php:69 templates/admin/contents/license/search.php:59
 #: templates/admin/contents/options/email/templates.php:102 templates/admin/contents/repository/index.php:149 templates/admin/contents/repository/search.php:50 templates/admin/contents/system/queues.php:144
 #: themes/default/templates/pages/client/app.php:166 themes/default/templates/pages/client/app.php:196 themes/default/templates/pages/client/organizations.php:72
@@ -12126,7 +12126,7 @@ msgstr "La release del modulo non proviene da release()."
 msgid "The name can be at most %d characters long."
 msgstr "Il nome può essere lungo al massimo %d caratteri."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:609
+#: src/Admin/ContentHandlers/RepositoryPage.php:610
 msgid "The name of the application"
 msgstr "Il nome dell’applicazione"
 
@@ -13659,7 +13659,7 @@ msgstr "Per rinnovare la licenza o per qualsiasi domanda, contattaci all’indir
 msgid "To renew your license or if you have any questions, please contact us at {{support_email}}."
 msgstr "Per rinnovare la licenza o per qualsiasi domanda, contattaci all’indirizzo {{support_email}}."
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:975
+#: src/Admin/ContentHandlers/RepositoryPage.php:976
 msgid "Today's Downloads"
 msgstr "Download di oggi"
 
@@ -13748,7 +13748,7 @@ msgstr "Totale %s"
 msgid "Total Accesses"
 msgstr "Accessi totali"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:1019
+#: src/Admin/ContentHandlers/RepositoryPage.php:1020
 msgid "Total Client Access"
 msgstr "Accessi client totali"
 
@@ -13756,7 +13756,7 @@ msgstr "Accessi client totali"
 msgid "Total Domains Activated:"
 msgstr "Domini attivati totali:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:966 templates/admin/contents/index.php:314
+#: src/Admin/ContentHandlers/RepositoryPage.php:967 templates/admin/contents/index.php:314
 msgid "Total Downloads"
 msgstr "Download totali"
 
@@ -14390,7 +14390,8 @@ msgstr "Carica un’immagine (consigliati 170 × 170 pixel)."
 msgid "Upload and install"
 msgstr "Carica e installa"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:574
+#. translators: %s: app type in the plural, e.g. "Desktop Apps".
+#: src/Admin/ContentHandlers/RepositoryPage.php:575
 #, php-format
 msgid "Upload and manage %s."
 msgstr "Carica e gestisci %s."
@@ -14427,6 +14428,14 @@ msgstr "Carica da URL"
 msgid "Upload from device"
 msgstr "Carica dal dispositivo"
 
+#: src/HostedApps/HostedAppsRegistry.php:459
+msgid "Upload other software packages."
+msgstr "Carica altri pacchetti software."
+
+#: src/HostedApps/HostedAppsRegistry.php:443
+msgid "Upload plugins for WordPress sites."
+msgstr "Carica plugin per siti WordPress."
+
 #: assets/js/admin/apps-uploader.js:1173
 msgid "Upload request failed."
 msgstr "Richiesta di caricamento non riuscita."
@@ -14439,6 +14448,10 @@ msgstr "Carica il pacchetto %s come file .zip il cui nome contenga lettere, cifr
 #: themes/default/templates/pages/client/app-new.php:13
 msgid "Upload the app's zip file. Its version and requirements are read from the package; the rest you can edit once it is uploaded."
 msgstr "Carica il file zip dell’app. Versione e requisiti vengono letti dal pacchetto; il resto puoi modificarlo dopo il caricamento."
+
+#: src/HostedApps/HostedAppsRegistry.php:451
+msgid "Upload themes for WordPress sites."
+msgstr "Carica temi per siti WordPress."
 
 #: assets/js/admin/apps-uploader.js:603
 msgid "Upload to repository"
@@ -14473,7 +14486,7 @@ msgstr "Anteprima dell’immagine caricata"
 msgid "Uptime"
 msgstr "Tempo di attività"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:624
+#: src/Admin/ContentHandlers/RepositoryPage.php:625
 #, php-format
 msgid "Use %s file to edit %s version"
 msgstr "Usa il file %s per modificare la versione di %s"
@@ -14671,7 +14684,7 @@ msgstr "Verifica il tuo indirizzo email, %s. Le licenze acquistate con esso veng
 msgid "Verify your sign-in"
 msgstr "Verifica il tuo accesso"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:623 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
+#: src/Admin/ContentHandlers/RepositoryPage.php:624 src/Email/Templates/Apps/AppPublishedEmail.php:71 src/Email/Templates/Apps/AppPublishedEmail.php:193 templates/admin/contents/repository/index.php:147
 #: templates/admin/contents/repository/search.php:48 themes/default/templates/pages/client/app.php:42 themes/default/templates/pages/repository/app.php:115
 msgid "Version"
 msgstr "Versione"
@@ -14782,7 +14795,7 @@ msgstr "È disponibile la versione {{new_version}} di {{product_name}}."
 msgid "Version:"
 msgstr "Versione:"
 
-#: src/Admin/ContentHandlers/RepositoryPage.php:753 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
+#: src/Admin/ContentHandlers/RepositoryPage.php:754 templates/admin/contents/system/queues.php:191 templates/admin/contents/system/queues.php:219 assets/js/admin/repository-browser.js:726
 msgid "View"
 msgstr "Visualizza"
 
@@ -14796,7 +14809,7 @@ msgid "View Activity Logs"
 msgstr "Visualizza log delle attività"
 
 #: src/Admin/ContentHandlers/RepositoryPage.php:235 src/Admin/ContentHandlers/RepositoryPage.php:236 src/Admin/ContentHandlers/RepositoryPage.php:288 src/Admin/ContentHandlers/RepositoryPage.php:289
-#: src/Admin/ContentHandlers/RepositoryPage.php:752 src/Admin/ContentHandlers/RepositoryPage.php:1144
+#: src/Admin/ContentHandlers/RepositoryPage.php:753 src/Admin/ContentHandlers/RepositoryPage.php:1145
 msgid "View App"
 msgstr "Visualizza app"
 
@@ -15039,6 +15052,10 @@ msgstr "Senza un terminale"
 msgid "WooCommerce tested up to:"
 msgstr "WooCommerce testato fino a:"
 
+#: src/HostedApps/HostedAppsRegistry.php:442
+msgid "WordPress Plugin"
+msgstr "Plugin WordPress"
+
 #: templates/admin/contents/index.php:316
 msgid "WordPress Plugin Downloads"
 msgstr "Download di plugin WordPress"
@@ -15047,9 +15064,13 @@ msgstr "Download di plugin WordPress"
 msgid "WordPress Plugin Installations"
 msgstr "Installazioni di plugin WordPress"
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:442
 msgid "WordPress Plugins"
 msgstr "Plugin WordPress"
+
+#: src/HostedApps/HostedAppsRegistry.php:450
+msgid "WordPress Theme"
+msgstr "Tema WordPress"
 
 #: templates/admin/contents/index.php:317
 msgid "WordPress Theme Downloads"
@@ -15059,7 +15080,7 @@ msgstr "Download di temi WordPress"
 msgid "WordPress Theme Installations"
 msgstr "Installazioni di temi WordPress"
 
-#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406
+#: src/Admin/ContentHandlers/DashboardPage.php:312 src/Admin/ContentHandlers/DashboardPage.php:406 src/HostedApps/HostedAppsRegistry.php:450
 msgid "WordPress Themes"
 msgstr "Temi WordPress"
 

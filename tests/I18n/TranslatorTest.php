@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 namespace SmartLicenseServer\Tests\I18n;
 
 use PHPUnit\Framework\TestCase;
+use SmartLicenseServer\Core\Container\Container;
+use SmartLicenseServer\HostedApps\HostedAppsRegistry;
 use SmartLicenseServer\I18n\Catalog;
 use SmartLicenseServer\I18n\I18n;
 use SmartLicenseServer\I18n\Loaders\MoFileLoader;
@@ -167,6 +169,81 @@ final class TranslatorTest extends TestCase {
 		$this->assertSame( 'lang="fr-FR" dir="ltr"', smliser_language_attributes() );
 		$this->assertSame( 'Save changes', smliser_with_locale( 'en_US', fn () => smliser__( 'Save changes' ) ) );
 		$this->assertSame( 'fr_FR', smliser_get_locale() );
+	}
+
+	public function test_context_and_noop_plural_helpers() : void {
+		I18n::set_translator( $this->translator() );
+
+		$this->assertSame( 'Article', smliser_esc_attr_x( 'Post', 'noun' ) );
+		$this->assertSame( 'Article', esc_attr_x( 'Post', 'noun' ) );
+		$this->assertSame( 'Article', esc_html_x( 'Post', 'noun' ) );
+
+		ob_start();
+		smliser_ex( 'Post', 'noun' );
+		_ex( 'Post', 'noun' );
+		$this->assertSame( 'ArticleArticle', ob_get_clean() );
+
+		$nooped = smliser_n_noop( '%d license', '%d licenses' );
+		$this->assertSame( '%d license', $nooped['singular'] );
+		$this->assertSame( '3 licences', sprintf( smliser_translate_nooped_plural( $nooped, 3 ), 3 ) );
+		$this->assertSame( '3 licences', sprintf( translate_nooped_plural( _n_noop( '%d license', '%d licenses' ), 3 ), 3 ) );
+		$this->assertSame( 'Untranslated items', smliser_translate_nooped_plural( smliser_nx_noop( 'Untranslated item', 'Untranslated items', 'ctx' ), 2 ) );
+		$this->assertSame( 'ctx', _nx_noop( 'a', 'b', 'ctx', 'my-ext' )['context'] );
+		$this->assertSame( 'my-ext', _nx_noop( 'a', 'b', 'ctx', 'my-ext' )['domain'] );
+	}
+
+	public function test_hosted_app_type_labels_are_translated() : void {
+		$translator = new Translator( 'fr_FR' );
+		$translator->add_catalog( new Catalog( [
+			'WordPress Plugin'                    => [ 'Extension WordPress' ],
+			'WordPress Plugins'                   => [ 'Extensions WordPress' ],
+			'Upload plugins for WordPress sites.' => [ 'Téléversez des extensions pour les sites WordPress.' ],
+		] ) );
+		I18n::set_translator( $translator );
+
+		$registry = HostedAppsRegistry::instance( new Container() );
+
+		$this->assertSame( [ 'singular' => 'Extension WordPress', 'plural' => 'Extensions WordPress' ], $registry->get_app_type_labels( 'wpplugin' ) );
+		$this->assertSame( 'Extensions WordPress', $registry->get_app_type_label( 'wpplugin', true ) );
+		$this->assertSame( 'Téléversez des extensions pour les sites WordPress.', $registry->get_app_type_description( 'wpplugin' ) );
+		$this->assertSame( 'Software', $registry->get_app_type_label( 'software' ), 'untranslated labels fall back to English' );
+		$this->assertNull( $registry->get_app_type_description( 'not-registered' ) );
+		$this->assertSame( 'WordPress Plugin', smliser_with_locale( 'en_US', fn () => $registry->get_app_type_label( 'wpplugin' ) ) );
+	}
+
+	public function test_script_data_includes_extension_domains() : void {
+		file_put_contents( $this->tmp . '/acme-script-test-fr_FR.po', implode( "\n", [
+			'msgid ""',
+			'msgstr ""',
+			'"Plural-Forms: nplurals=2; plural=(n > 1);\n"',
+			'',
+			'#: assets/acme.js:3',
+			'msgid "Invoice sent."',
+			'msgstr "Facture envoyée."',
+			'',
+			'#: src/Acme.php:9',
+			'msgid "Server only."',
+			'msgstr "Serveur uniquement."',
+			'',
+		] ) );
+		( new CatalogCompiler() )->compile( $this->tmp . '/acme-script-test-fr_FR.po' );
+
+		I18n::set_translator( $this->translator() );
+		I18n::add_text_domain( 'acme-script-test', $this->tmp );
+		I18n::add_script_domain( 'acme-script-empty' );
+
+		$this->assertSame( 'Serveur uniquement.', smliser__( 'Server only.', 'acme-script-test' ) );
+		$this->assertContains( 'acme-script-test', I18n::script_domains() );
+		$this->assertSame( 'smliser', I18n::script_domains()[0] );
+
+		$data    = I18n::script_data();
+		$domains = (array) $data['domains'];
+
+		$this->assertSame( 'smliser', $data['domain'] );
+		$this->assertArrayHasKey( 'acme-script-test', $domains );
+		$this->assertArrayNotHasKey( 'acme-script-empty', $domains, 'domains without translations are left out' );
+		$this->assertSame( [ 'Invoice sent.' => [ 'Facture envoyée.' ] ], (array) $domains['acme-script-test']['messages'], 'only strings used by scripts are sent' );
+		$this->assertSame( 'nplurals=2; plural=(n > 1);', $domains['acme-script-test']['plural_forms'] );
 	}
 
 	public function test_js_data() : void {

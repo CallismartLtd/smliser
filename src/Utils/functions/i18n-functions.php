@@ -163,6 +163,31 @@ function smliser_esc_attr_e( string $text, string $domain = TranslatorInterface:
 }
 
 /**
+ * Echo translated text with a context (not escaped; prefer
+ * smliser_esc_html_x() in HTML).
+ *
+ * @param string $text
+ * @param string $context
+ * @param string $domain
+ * @return void
+ */
+function smliser_ex( string $text, string $context, string $domain = TranslatorInterface::DEFAULT_DOMAIN ) : void {
+	echo smliser_x( $text, $context, $domain ); // phpcs:ignore
+}
+
+/**
+ * Translate with context and escape for an HTML attribute.
+ *
+ * @param string $text
+ * @param string $context
+ * @param string $domain
+ * @return string
+ */
+function smliser_esc_attr_x( string $text, string $context, string $domain = TranslatorInterface::DEFAULT_DOMAIN ) : string {
+	return escAttr( smliser_x( $text, $context, $domain ) );
+}
+
+/**
  * Mark a string for extraction without translating it now, for strings
  * defined before the locale is known (constants, static arrays). Translate
  * later with smliser__( $value ).
@@ -173,6 +198,72 @@ function smliser_esc_attr_e( string $text, string $domain = TranslatorInterface:
  */
 function smliser__noop( string $text, string $domain = TranslatorInterface::DEFAULT_DOMAIN ) : string {
 	return $text;
+}
+
+/**
+ * Mark a plural string for extraction without translating it now. Translate
+ * later, once the count is known, with smliser_translate_nooped_plural().
+ *
+ *     $labels = smliser_n_noop( '%d license', '%d licenses' );
+ *     sprintf( smliser_translate_nooped_plural( $labels, $count ), $count );
+ *
+ * The array has the shape of WordPress' _n_noop(), so either works with
+ * either translate function.
+ *
+ * @param string $singular
+ * @param string $plural
+ * @param string $domain
+ * @return array{0: string, 1: string, singular: string, plural: string, context: null, domain: string}
+ */
+function smliser_n_noop( string $singular, string $plural, string $domain = TranslatorInterface::DEFAULT_DOMAIN ) : array {
+	return [
+		0          => $singular,
+		1          => $plural,
+		'singular' => $singular,
+		'plural'   => $plural,
+		'context'  => null,
+		'domain'   => $domain,
+	];
+}
+
+/**
+ * Mark a plural string with a context for extraction without translating it
+ * now. See smliser_n_noop().
+ *
+ * @param string $singular
+ * @param string $plural
+ * @param string $context
+ * @param string $domain
+ * @return array{0: string, 1: string, 2: string, singular: string, plural: string, context: string, domain: string}
+ */
+function smliser_nx_noop( string $singular, string $plural, string $context, string $domain = TranslatorInterface::DEFAULT_DOMAIN ) : array {
+	return [
+		0          => $singular,
+		1          => $plural,
+		2          => $context,
+		'singular' => $singular,
+		'plural'   => $plural,
+		'context'  => $context,
+		'domain'   => $domain,
+	];
+}
+
+/**
+ * Translate a plural string marked with smliser_n_noop() or
+ * smliser_nx_noop() (or WordPress' _n_noop() / _nx_noop()).
+ *
+ * @param array{singular: string, plural: string, context?: string|null, domain?: string|null} $nooped
+ * @param int    $count
+ * @param string $domain Used when the array names no domain.
+ * @return string
+ */
+function smliser_translate_nooped_plural( array $nooped, int $count, string $domain = TranslatorInterface::DEFAULT_DOMAIN ) : string {
+	$singular = (string) ( $nooped['singular'] ?? $nooped[0] ?? '' );
+	$plural   = (string) ( $nooped['plural'] ?? $nooped[1] ?? $singular );
+	$context  = $nooped['context'] ?? null;
+	$domain   = is_string( $nooped['domain'] ?? null ) && '' !== $nooped['domain'] ? $nooped['domain'] : $domain;
+
+	return I18n::translator()->translate_plural( $singular, $plural, $count, smliser_i18n_domain( $domain ), is_string( $context ) ? $context : null );
 }
 
 /**
@@ -320,6 +411,15 @@ if ( ! function_exists( '_x' ) ) {
 	}
 }
 
+if ( ! function_exists( '_ex' ) ) {
+	/**
+	 * Displays translated string with gettext context.
+	 */
+	function _ex( string $text, string $context, string $domain = 'default' ) : void {
+		smliser_ex( $text, $context, $domain );
+	}
+}
+
 if ( ! function_exists( '_n' ) ) {
 	/**
 	 * Translates and retrieves the singular or plural form based on the supplied number.
@@ -335,6 +435,43 @@ if ( ! function_exists( '_nx' ) ) {
 	 */
 	function _nx( string $single, string $plural, int $number, string $context, string $domain = 'default' ) : string {
 		return smliser_nx( $single, $plural, $number, $context, $domain );
+	}
+}
+
+if ( ! function_exists( '_n_noop' ) ) {
+	/**
+	 * Registers plural strings in POT file, but does not translate them.
+	 *
+	 * @return array{0: string, 1: string, singular: string, plural: string, context: null, domain: string|null}
+	 */
+	function _n_noop( string $singular, string $plural, ?string $domain = null ) : array {
+		$nooped           = smliser_n_noop( $singular, $plural );
+		$nooped['domain'] = $domain;
+
+		return $nooped;
+	}
+}
+
+if ( ! function_exists( '_nx_noop' ) ) {
+	/**
+	 * Registers plural strings with gettext context in POT file, but does not translate them.
+	 *
+	 * @return array{0: string, 1: string, 2: string, singular: string, plural: string, context: string, domain: string|null}
+	 */
+	function _nx_noop( string $singular, string $plural, string $context, ?string $domain = null ) : array {
+		$nooped           = smliser_nx_noop( $singular, $plural, $context );
+		$nooped['domain'] = $domain;
+
+		return $nooped;
+	}
+}
+
+if ( ! function_exists( 'translate_nooped_plural' ) ) {
+	/**
+	 * Translates and returns the singular or plural form of a string that's been registered with _n_noop() or _nx_noop().
+	 */
+	function translate_nooped_plural( array $nooped_plural, int $count, string $domain = 'default' ) : string {
+		return smliser_translate_nooped_plural( $nooped_plural, $count, $domain );
 	}
 }
 
@@ -356,6 +493,15 @@ if ( ! function_exists( 'esc_html_e' ) ) {
 	}
 }
 
+if ( ! function_exists( 'esc_html_x' ) ) {
+	/**
+	 * Translates string with gettext context, and escapes it for safe use in HTML output.
+	 */
+	function esc_html_x( string $text, string $context, string $domain = 'default' ) : string {
+		return smliser_esc_html_x( $text, $context, $domain );
+	}
+}
+
 if ( ! function_exists( 'esc_attr__' ) ) {
 	/**
 	 * Retrieves the translation of $text and escapes it for safe use in an attribute.
@@ -371,6 +517,15 @@ if ( ! function_exists( 'esc_attr_e' ) ) {
 	 */
 	function esc_attr_e( string $text, string $domain = 'default' ) : void {
 		smliser_esc_attr_e( $text, $domain );
+	}
+}
+
+if ( ! function_exists( 'esc_attr_x' ) ) {
+	/**
+	 * Translates string with gettext context, and escapes it for safe use in attributes.
+	 */
+	function esc_attr_x( string $text, string $context, string $domain = 'default' ) : string {
+		return smliser_esc_attr_x( $text, $context, $domain );
 	}
 }
 

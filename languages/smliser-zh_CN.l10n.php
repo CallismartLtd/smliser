@@ -3342,6 +3342,7 @@ return [
 		'This request was already %s; only a pending request can be rejected.' => '此请求已被处理（%s）；只有待处理的请求才能被拒绝。',
 		'This request was already approved; its license is #%d.' => '此请求已获批准；其许可证为 #%d。',
 		'This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes.' => '此请求已被拒绝。如果付款随后已确认（例如争议已解决），请批准它：将签发许可证并通过邮件发送，拒绝记录会保留在备注中。',
+		'This resource does not exist.' => '此资源不存在。',
 		'This server cannot start a new PHP process; the update finishes on the next request to the site.' => '此服务器无法启动新的 PHP 进程；更新将在下一次访问站点时完成。',
 		'This server is not ready yet' => '此服务器尚未就绪',
 		'This sign-in challenge has already been used.' => '此登录质询已被使用。',

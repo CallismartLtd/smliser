@@ -67,6 +67,34 @@ trait SecurityAwareTrait {
 	}
 
 	/**
+	 * Check ownership of the app an existing record (license, monetization,
+	 * file) belongs to, failing closed.
+	 *
+	 * Unlike check_app_ownership(), an app that does not resolve (deleted,
+	 * never assigned) does not pass: only a system administrator may work
+	 * on a record whose app is gone; everyone else is told it does not exist.
+	 *
+	 * @param HostedAppsInterface|null $app
+	 * @throws RequestException On failure.
+	 */
+	private function check_record_app_ownership( ?HostedAppsInterface $app ) : void {
+		if ( null !== $app && $app->exists() ) {
+			$this->check_app_ownership( $app );
+			return;
+		}
+
+		$principal = $this->guard->get_principal();
+
+		if ( ! $principal ) {
+			throw new RequestException( 'missing_auth' );
+		}
+
+		if ( ! $principal->is( 'system_admin' ) ) {
+			throw new RequestException( 'resource_not_found', smliser__( 'This resource does not exist.' ), [ 'status' => 404 ] );
+		}
+	}
+
+	/**
 	 * Tells whether the principal is a system administrator.
 	 * 
 	 * @throws RequestException On failure.

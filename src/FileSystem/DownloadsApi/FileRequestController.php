@@ -239,12 +239,11 @@ class FileRequestController {
 			$app_slug = (string) $request->get( 'app_slug', '' );
 			$app      = HostedApplicationService::get_app_by_slug( $app_type, $app_slug );
 
-			if ( $app ) {
-				try {
-					static::check_app_ownership( $app );
-				} catch ( RequestException ) {
-					throw new FileRequestException( 'user_not_authorized' );
-				}
+			// Fails closed: files of an app that does not resolve are a system administrator's only.
+			try {
+				static::check_record_app_ownership( $app );
+			} catch ( RequestException $e ) {
+				throw new FileRequestException( 'resource_not_found' === $e->get_error_code() ? 'file_not_found' : 'user_not_authorized' );
 			}
 
 			try {

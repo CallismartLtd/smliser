@@ -3342,6 +3342,7 @@ return [
 		'This request was already %s; only a pending request can be rejected.' => 'تمت معالجة هذا الطلب بالفعل (%s)؛ لا يمكن رفض إلا طلب معلّق.',
 		'This request was already approved; its license is #%d.' => 'تمت الموافقة على هذا الطلب بالفعل؛ ترخيصه رقم %d.',
 		'This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes.' => 'تم رفض هذا الطلب. إذا تأكد الدفع منذ ذلك الحين (مثل حل نزاع)، فوافق عليه: سيُصدر الترخيص ويُرسل بالبريد، ويبقى الرفض في الملاحظات.',
+		'This resource does not exist.' => 'هذا المورد غير موجود.',
 		'This server cannot start a new PHP process; the update finishes on the next request to the site.' => 'لا يمكن لهذا الخادم بدء عملية PHP جديدة؛ سينتهي التحديث عند الطلب التالي إلى الموقع.',
 		'This server is not ready yet' => 'هذا الخادم غير جاهز بعد',
 		'This sign-in challenge has already been used.' => 'تم استخدام تحدي تسجيل الدخول هذا بالفعل.',

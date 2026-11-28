@@ -184,8 +184,7 @@ class Controller {
 				throw new RequestException( 'resource_not_found', __( 'Monetization not found.', 'smliser' ), ['status' => 404] );
 			}
 
-			$app = $monetization->get_app();
-			if ( $app ) $this->check_app_ownership( $app );
+			$this->check_record_app_ownership( $monetization->get_app() );
 			
 			$tier = $monetization->get_tier( $tier_id )
 				?? throw new RequestException( 'resource_not_found', smliser__( 'This app has no such pricing tier.' ), [ 'status' => 404 ] );
@@ -239,9 +238,7 @@ class Controller {
 				throw new RequestException( 'resource_not_found', __( 'Monetization not found.', 'smliser' ), ['status' => 404] );
 			}
 
-			$app = $monetization->get_app();
-
-			if ( $app ) $this->check_app_ownership( $app );
+			$this->check_record_app_ownership( $monetization->get_app() );
 
 			$monetization->set_enabled( $enabled );
 			$monetization->save();
@@ -294,6 +291,10 @@ class Controller {
 
 			if ( $license_exists ) {
 				$this->check_permissions( 'monetization.license.update' );
+
+				// The current app must be the caller's before anything changes,
+				// including unassigning it by leaving the app fields empty.
+				$this->check_record_app_ownership( $license->get_app() );
 			} else {
 				$this->check_permissions( 'monetization.license.create' );
 			}
@@ -561,6 +562,10 @@ class Controller {
 			if ( ! $license ) {
 				throw new RequestException( 'resource_not_found', smliser__( 'License was not found' ), ['status' => 404] );
 			}
+
+			// Deleting a license also frees every site it is activated on.
+			$this->check_permissions( 'monetization.license.delete' );
+			$this->check_record_app_ownership( $license->get_app() );
 
 			$success = true;
 

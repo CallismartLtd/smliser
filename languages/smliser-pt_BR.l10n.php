@@ -3342,6 +3342,7 @@ return [
 		'This request was already %s; only a pending request can be rejected.' => 'Esta solicitação já foi processada (%s); somente uma solicitação pendente pode ser recusada.',
 		'This request was already approved; its license is #%d.' => 'Esta solicitação já foi aprovada; a licença dela é a nº %d.',
 		'This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes.' => 'Esta solicitação foi recusada. Se o pagamento foi confirmado depois (ex.: uma contestação resolvida), aprove-a: a licença é emitida e enviada por e-mail, e a recusa permanece nas notas.',
+		'This resource does not exist.' => 'Este recurso não existe.',
 		'This server cannot start a new PHP process; the update finishes on the next request to the site.' => 'Este servidor não consegue iniciar um novo processo PHP; a atualização termina na próxima requisição ao site.',
 		'This server is not ready yet' => 'Este servidor ainda não está pronto',
 		'This sign-in challenge has already been used.' => 'Este desafio de login já foi usado.',

@@ -3342,6 +3342,7 @@ return [
 		'This request was already %s; only a pending request can be rejected.' => 'Этот запрос уже обработан (%s); отклонить можно только ожидающий запрос.',
 		'This request was already approved; its license is #%d.' => 'Этот запрос уже одобрен; его лицензия — № %d.',
 		'This request was rejected. If the payment has since been confirmed (e.g. a resolved dispute), approve it: the license is issued and emailed, and the rejection stays in the notes.' => 'Этот запрос был отклонён. Если оплата с тех пор подтвердилась (например, спор разрешён), одобрите его: лицензия будет выдана и отправлена по почте, а отказ останется в заметках.',
+		'This resource does not exist.' => 'Этот ресурс не существует.',
 		'This server cannot start a new PHP process; the update finishes on the next request to the site.' => 'Этот сервер не может запустить новый процесс PHP; обновление завершится при следующем запросе к сайту.',
 		'This server is not ready yet' => 'Сервер ещё не готов',
 		'This sign-in challenge has already been used.' => 'Этот запрос на вход уже использован.',

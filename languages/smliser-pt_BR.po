@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smart License Server\n"
 "Report-Msgid-Bugs-To: https://github.com/callismartltd/smliser/issues\n"
-"POT-Creation-Date: 2026-11-23 00:06+0000\n"
+"POT-Creation-Date: 2026-11-28 11:05+0000\n"
 "PO-Revision-Date: 2026-11-23 00:06+0000\n"
 "Language-Team: Português (Brasil)\n"
 "Language: pt_BR\n"
@@ -91,7 +91,7 @@ msgstr " na sua conta. Se não foi você, proteja sua conta agora."
 msgid " two-factor authentication is disabled."
 msgstr " a autenticação em dois fatores está desativada."
 
-#: src/SettingsAPI/SettingsController.php:110
+#: src/SettingsAPI/SettingsController.php:122
 #, php-format
 msgid "\"%s\" cannot be used as the %s: it is reserved. Reserved: %s."
 msgstr "\"%s\" não pode ser usado como %s: é reservado. Reservados: %s."
@@ -141,7 +141,7 @@ msgstr "\"%s\" não é um endereço de e-mail válido."
 msgid "\"%s\" is not a valid file name."
 msgstr "\"%s\" não é um nome de arquivo válido."
 
-#: src/Environments/Application/Theming/ThemeContext.php:122
+#: src/Environments/Application/Theming/ThemeContext.php:125
 #, php-format
 msgid "\"%s\" is not a valid partial name."
 msgstr "\"%s\" não é um nome de parcial válido."
@@ -156,7 +156,7 @@ msgstr "\"%s\" não é um slug válido."
 msgid "\"%s\" is not a valid slug. Did you mean \"%s\"?"
 msgstr "\"%s\" não é um slug válido. Você quis dizer \"%s\"?"
 
-#: src/Environments/Application/Theming/ThemeContext.php:344
+#: src/Environments/Application/Theming/ThemeContext.php:349
 #, php-format
 msgid "\"%s\" is not a valid theme asset path."
 msgstr "\"%s\" não é um caminho de recurso de tema válido."
@@ -513,12 +513,12 @@ msgstr "%s não existe."
 msgid "%s does not match its published checksum; the download may be damaged. Nothing was changed."
 msgstr "%s não corresponde à soma de verificação publicada; o download pode estar corrompido. Nada foi alterado."
 
-#: src/SettingsAPI/SettingsController.php:177
+#: src/SettingsAPI/SettingsController.php:189
 #, php-format
 msgid "%s email has been disabled."
 msgstr "O e-mail %s foi desativado."
 
-#: src/SettingsAPI/SettingsController.php:176
+#: src/SettingsAPI/SettingsController.php:188
 #, php-format
 msgid "%s email has been enabled."
 msgstr "O e-mail %s foi ativado."
@@ -640,7 +640,7 @@ msgstr "%s pode ser lido e gravado."
 msgid "%s is removed."
 msgstr "%s foi removido."
 
-#: assets/js/admin/core.js:1970
+#: assets/js/admin/core.js:2063
 #, javascript-format
 msgid "%s is required."
 msgstr "%s é obrigatório."
@@ -1142,11 +1142,11 @@ msgstr "Documentação da API: %s"
 msgid "API Key"
 msgstr "Chave de API"
 
-#: assets/js/admin/core.js:1653
+#: assets/js/admin/core.js:1746
 msgid "API Key Generated"
 msgstr "Chave de API gerada"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:484
+#: src/Admin/ContentHandlers/OptionsPage.php:442
 msgid "API Rate Limit (Per Minute)"
 msgstr "Limite de requisições da API (por minuto)"
 
@@ -1215,11 +1215,11 @@ msgstr "Acesso"
 msgid "Access Denied"
 msgstr "Acesso negado"
 
-#: templates/admin/index.php:24
+#: templates/admin/index.php:25
 msgid "Access Denied. You must be logged into a valid administrator account to view this page."
 msgstr "Acesso negado. Você precisa estar conectado a uma conta de administrador válida para ver esta página."
 
-#: templates/admin/index.php:36
+#: templates/admin/index.php:37
 msgid "Access Denied. You must be logged into a valid administrator account to view this page.[Log In Again][Return to Homepage]"
 msgstr "Acesso negado. Você precisa estar conectado a uma conta de administrador válida para ver esta página.[Entrar novamente][Voltar à página inicial]"
 
@@ -1405,7 +1405,7 @@ msgstr "Adicionar nova licença"
 msgid "Add Owner"
 msgstr "Adicionar proprietário"
 
-#: assets/js/admin/core.js:1219 assets/js/admin/core.js:1225
+#: assets/js/admin/core.js:1312 assets/js/admin/core.js:1318
 msgid "Add Pricing Tier"
 msgstr "Adicionar nível de preço"
 
@@ -1487,7 +1487,7 @@ msgstr "Não foi possível iniciar a verificação adicional. Tente novamente."
 msgid "Admin"
 msgstr "Admin"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:596
+#: src/Admin/ContentHandlers/OptionsPage.php:619
 msgid "Admin URL Prefix"
 msgstr "Prefixo da URL de administração"
 
@@ -1495,7 +1495,7 @@ msgstr "Prefixo da URL de administração"
 msgid "Admin: New User Signup"
 msgstr "Admin: novo cadastro de usuário"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:406
+#: src/Admin/ContentHandlers/OptionsPage.php:404
 msgid "Administration Email"
 msgstr "E-mail da administração"
 
@@ -1672,7 +1672,7 @@ msgstr "Já existe um recurso chamado \"%s\"."
 msgid "An authenticator app is already enabled."
 msgstr "Um aplicativo autenticador já está ativado."
 
-#: assets/js/admin/core.js:790 assets/js/admin/core.js:872
+#: assets/js/admin/core.js:883 assets/js/admin/core.js:965
 msgid "An error occurred"
 msgstr "Ocorreu um erro"
 
@@ -1714,7 +1714,7 @@ msgstr "Um convite está a caminho de %s. Ele é válido por %d horas."
 msgid "An organization is an account that represents a group, business, or other entity under which users, service accounts, resources, and access policies can be managed collectively."
 msgstr "Uma organização é uma conta que representa um grupo, empresa ou outra entidade, sob a qual usuários, contas de serviço, recursos e políticas de acesso podem ser gerenciados coletivamente."
 
-#: assets/js/admin/core.js:876 assets/js/admin/core.js:1354 assets/js/admin/core.js:1426 assets/js/globals.js:334
+#: assets/js/admin/core.js:969 assets/js/admin/core.js:1447 assets/js/admin/core.js:1519 assets/js/globals.js:334
 msgid "An unexpected error occurred"
 msgstr "Ocorreu um erro inesperado"
 
@@ -1738,7 +1738,7 @@ msgstr "Ocorreu um erro de arquivo inesperado ou indefinido durante o processame
 msgid "An unexpected server error occurred while processing the request."
 msgstr "Ocorreu um erro inesperado no servidor ao processar a requisição."
 
-#: assets/js/admin/core.js:1414 assets/js/admin/core.js:1570
+#: assets/js/admin/core.js:1507 assets/js/admin/core.js:1663
 msgid "An unknown error occurred."
 msgstr "Ocorreu um erro desconhecido."
 
@@ -1852,7 +1852,7 @@ msgstr "Tipo de aplicativo:"
 msgid "App class for type \"%s\" not found."
 msgstr "Classe de aplicativo para o tipo \"%s\" não encontrada."
 
-#: assets/js/admin/core.js:889
+#: assets/js/admin/core.js:982
 msgid "App data not found"
 msgstr "Dados do aplicativo não encontrados"
 
@@ -1984,7 +1984,7 @@ msgstr "Aplicativos que confiam apenas na chave atual recusam todo pacote assina
 msgid "Apps uploaded for this account appear here."
 msgstr "Os aplicativos enviados para esta conta aparecem aqui."
 
-#: assets/js/admin/core.js:1073
+#: assets/js/admin/core.js:1166
 msgid "Are you sure to delete"
 msgstr "Tem certeza de que deseja excluir"
 
@@ -1998,7 +1998,7 @@ msgstr "Tem certeza de que deseja excluir  %s?"
 msgid "Are you sure you want to delete %s? This action cannot be reversed."
 msgstr "Tem certeza de que deseja excluir %s? Esta ação não pode ser desfeita."
 
-#: assets/js/admin/core.js:1287
+#: assets/js/admin/core.js:1380
 #, javascript-format
 msgid "Are you sure you want to delete tier \"%s\"?"
 msgstr "Tem certeza de que deseja excluir o nível \"%s\"?"
@@ -2007,15 +2007,15 @@ msgstr "Tem certeza de que deseja excluir o nível \"%s\"?"
 msgid "Are you sure you want to logout?"
 msgstr "Tem certeza de que deseja sair?"
 
-#: assets/js/admin/core.js:1782
+#: assets/js/admin/core.js:1875
 msgid "Are you sure you want to remove the selected member from this organization?"
 msgstr "Tem certeza de que deseja remover o membro selecionado desta organização?"
 
-#: assets/js/admin/core.js:762
+#: assets/js/admin/core.js:855
 msgid "Are you sure you want to remove this domain?"
 msgstr "Tem certeza de que deseja remover este domínio?"
 
-#: assets/js/admin/core.js:1992
+#: assets/js/admin/core.js:2085
 msgid "Are you sure you want to reset the cache adapter to default settings?"
 msgstr "Tem certeza de que deseja redefinir o adaptador de cache para as configurações padrão?"
 
@@ -2149,7 +2149,7 @@ msgstr "Tentativas"
 msgid "Authentication Challenges"
 msgstr "Desafios de autenticação"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:649
+#: src/Admin/ContentHandlers/OptionsPage.php:672
 msgid "Authentication URL prefix"
 msgstr "Prefixo da URL de autenticação"
 
@@ -2217,7 +2217,7 @@ msgstr "Autor:"
 msgid "Auto Calc"
 msgstr "Cálculo auto"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:582
+#: src/Admin/ContentHandlers/OptionsPage.php:605
 msgid "Automatic (browser language)"
 msgstr "Automático (idioma do navegador)"
 
@@ -2494,11 +2494,11 @@ msgstr "Link de desvio"
 msgid "CSRF Verification Failed"
 msgstr "Falha na verificação CSRF"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:724 src/Admin/ContentHandlers/OptionsPage.php:781
+#: src/Admin/ContentHandlers/OptionsPage.php:747 src/Admin/ContentHandlers/OptionsPage.php:804
 msgid "Cache"
 msgstr "Cache"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:685 src/Admin/ContentHandlers/OptionsPage.php:723 templates/admin/contents/options/cache/index.php:30
+#: src/Admin/ContentHandlers/OptionsPage.php:708 src/Admin/ContentHandlers/OptionsPage.php:746 templates/admin/contents/options/cache/index.php:30
 msgid "Cache Adapters"
 msgstr "Adaptadores de cache"
 
@@ -2518,11 +2518,11 @@ msgstr "Memória do cache (MB)"
 msgid "Cache Persistence"
 msgstr "Persistência do cache"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:684 src/Admin/ContentHandlers/OptionsPage.php:730
+#: src/Admin/ContentHandlers/OptionsPage.php:707 src/Admin/ContentHandlers/OptionsPage.php:753
 msgid "Cache Statistics"
 msgstr "Estatísticas do cache"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:731
+#: src/Admin/ContentHandlers/OptionsPage.php:754
 msgid "Cache Stats"
 msgstr "Estatísticas do cache"
 
@@ -2888,7 +2888,7 @@ msgstr "Acessos de clientes nesta semana"
 msgid "Client Dashboard"
 msgstr "Painel do cliente"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:609
+#: src/Admin/ContentHandlers/OptionsPage.php:632
 msgid "Client Dashboard URL Prefix"
 msgstr "Prefixo da URL do painel do cliente"
 
@@ -2937,7 +2937,7 @@ msgstr "Recolher tudo"
 msgid "Collapse all nodes"
 msgstr "Recolher todos os nós"
 
-#: templates/admin/header.php:43
+#: templates/admin/header.php:45
 msgid "Collapse menu"
 msgstr "Recolher menu"
 
@@ -3025,7 +3025,7 @@ msgstr "Confirmar"
 msgid "Confirm Action"
 msgstr "Confirmar ação"
 
-#: assets/js/admin/core.js:1783
+#: assets/js/admin/core.js:1876
 msgid "Confirm Member Removal"
 msgstr "Confirmar remoção do membro"
 
@@ -3164,7 +3164,7 @@ msgstr "Copiar chave de licença"
 msgid "Copy the key above into your app's code. Do not make your app download the key when it checks for updates: a key fetched from the same place as the update proves nothing."
 msgstr "Copie a chave acima no código do seu aplicativo. Não faça seu aplicativo baixar a chave ao verificar atualizações: uma chave obtida do mesmo lugar que a atualização não prova nada."
 
-#: assets/js/admin/core.js:681
+#: assets/js/admin/core.js:774
 msgid "Copy this token now. For security, it will not be shown to you again."
 msgstr "Copie este token agora. Por segurança, ele não será exibido novamente."
 
@@ -3491,7 +3491,7 @@ msgstr "Senha atual"
 msgid "Custom"
 msgstr "Personalizado"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:435
+#: src/Admin/ContentHandlers/OptionsPage.php:417
 msgid "Customer-facing support email address used in license communications and support responses."
 msgstr "E-mail de suporte voltado aos clientes, usado nas comunicações de licença e nas respostas do suporte."
 
@@ -3499,7 +3499,7 @@ msgstr "E-mail de suporte voltado aos clientes, usado nas comunicações de lice
 msgid "Damaged or unreadable ("
 msgstr "Danificado ou ilegível ("
 
-#: templates/admin/header.php:29 themes/default/templates/frames/client-dashboard.php:27 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
+#: templates/admin/header.php:30 themes/default/templates/frames/client-dashboard.php:27 themes/default/templates/pages/home.php:20 themes/default/templates/partials/header.php:21
 msgid "Dashboard"
 msgstr "Painel"
 
@@ -3603,7 +3603,7 @@ msgstr "Caixa de diálogo do seletor de data"
 msgid "Days Remaining"
 msgstr "Dias restantes"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:507
+#: src/Admin/ContentHandlers/OptionsPage.php:457
 msgid "Days a payment receipt is kept after its purchase request is approved or rejected. The receipt file is then deleted; the request stays as a record. 0 keeps receipts forever."
 msgstr "Dias em que um comprovante de pagamento é mantido após a aprovação ou recusa da solicitação de compra. Depois, o arquivo do comprovante é excluído; a solicitação permanece como registro. 0 mantém os comprovantes para sempre."
 
@@ -3628,23 +3628,23 @@ msgstr "Recusar"
 msgid "Decline the invitation to %s?"
 msgstr "Recusar o convite para %s?"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:338
+#: src/Admin/ContentHandlers/OptionsPage.php:340
 msgid "Default Email Provider"
 msgstr "Provedor de e-mail padrão"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:367
+#: src/Admin/ContentHandlers/OptionsPage.php:369
 msgid "Default From Address"
 msgstr "Endereço de remetente padrão"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:353
+#: src/Admin/ContentHandlers/OptionsPage.php:355
 msgid "Default From Name"
 msgstr "Nome do remetente padrão"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:473
+#: src/Admin/ContentHandlers/OptionsPage.php:435
 msgid "Default License Activation Limit"
 msgstr "Limite padrão de ativações da licença"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:462
+#: src/Admin/ContentHandlers/OptionsPage.php:428
 msgid "Default License Duration (Days)"
 msgstr "Duração padrão da licença (dias)"
 
@@ -3656,11 +3656,11 @@ msgstr "TTL padrão"
 msgid "Default cache expiration duration in seconds."
 msgstr "Duração padrão de expiração do cache em segundos."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:474
+#: src/Admin/ContentHandlers/OptionsPage.php:436
 msgid "Default number of activations allowed per license key."
 msgstr "Número padrão de ativações permitidas por chave de licença."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:463
+#: src/Admin/ContentHandlers/OptionsPage.php:429
 msgid "Default number of days a newly generated license remains valid when no expiration date is specified."
 msgstr "Número padrão de dias em que uma nova licença permanece válida quando nenhuma data de expiração é informada."
 
@@ -3692,7 +3692,7 @@ msgstr "E-mail padrão do remetente. Deve ser uma identidade de remetente verifi
 msgid "Default sender name."
 msgstr "Nome padrão do remetente."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:518
+#: src/Admin/ContentHandlers/OptionsPage.php:465
 msgid "Defines whether this repository operates in production, staging, or development mode."
 msgstr "Define se este repositório funciona em modo de produção, homologação ou desenvolvimento."
 
@@ -3742,7 +3742,7 @@ msgstr "Excluir backup"
 msgid "Delete completed jobs older than 7 days?"
 msgstr "Excluir jobs concluídos há mais de 7 dias?"
 
-#: assets/js/admin/core.js:1303 assets/js/admin/core.js:1323
+#: assets/js/admin/core.js:1396 assets/js/admin/core.js:1416
 msgid "Delete failed"
 msgstr "Falha ao excluir"
 
@@ -3838,7 +3838,7 @@ msgstr "Excluir esta licença permanentemente."
 msgid "Delete users"
 msgstr "Excluir usuários"
 
-#: assets/js/admin/core.js:1090
+#: assets/js/admin/core.js:1183
 msgid "Deleted"
 msgstr "Excluído"
 
@@ -3852,7 +3852,7 @@ msgstr "%d %s excluído(s)."
 msgid "Deleted %d %s. Not deleted: %s"
 msgstr "%d %s excluído(s). Não excluídos: %s"
 
-#: src/HostedApps/HostingController.php:744 assets/js/admin/core.js:583
+#: src/HostedApps/HostingController.php:744 assets/js/admin/core.js:676
 msgid "Deleted successfully"
 msgstr "Excluído com sucesso"
 
@@ -3904,11 +3904,11 @@ msgstr "Descrição"
 msgid "Description:"
 msgstr "Descrição:"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:421
+#: src/Admin/ContentHandlers/OptionsPage.php:411
 msgid "Designated contact email for server, infrastructure, or application hosting-related issues and notifications."
 msgstr "E-mail de contato designado para problemas e notificações relacionados a servidor, infraestrutura ou hospedagem do aplicativo."
 
-#: assets/js/admin/core.js:2026
+#: assets/js/admin/core.js:2119
 msgid "Detail"
 msgstr "Detalhe"
 
@@ -3928,7 +3928,7 @@ msgstr "Os desenvolvedores encontram a chave, e como usá-la, em"
 msgid "Developers put this key in their apps; apps then accept only packages this site signed. It cannot sign anything, so it is safe to share."
 msgstr "Os desenvolvedores colocam esta chave em seus aplicativos; os aplicativos passam a aceitar apenas pacotes assinados por este site. Ela não pode assinar nada, então é seguro compartilhá-la."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:526
+#: src/Admin/ContentHandlers/OptionsPage.php:473
 msgid "Development"
 msgstr "Desenvolvimento"
 
@@ -3945,7 +3945,7 @@ msgid "Directory traversal sequences are not allowed."
 msgstr "Sequências de travessia de diretórios não são permitidas."
 
 #: src/Admin/ContentHandlers/ModulesPage.php:262 src/Admin/ContentHandlers/ModulesPage.php:489 templates/admin/contents/options/email/editor.php:130 templates/admin/contents/options/email/templates.php:185
-#: assets/js/admin/core.js:1867 assets/js/admin/email-editor.js:987
+#: assets/js/admin/core.js:1960 assets/js/admin/email-editor.js:987
 msgid "Disable"
 msgstr "Desativar"
 
@@ -3975,7 +3975,7 @@ msgstr "Desative ou reinstale esta extensão antes de depender da funcionalidade
 msgid "Disable the broken extension \"%s\"?"
 msgstr "Desativar a extensão com defeito \"%s\"?"
 
-#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1867
+#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1960
 msgid "Disable this template"
 msgstr "Desativar este modelo"
 
@@ -4015,7 +4015,7 @@ msgstr "Documentação"
 msgid "Documentation URL"
 msgstr "URL da documentação"
 
-#: assets/js/admin/core.js:772
+#: assets/js/admin/core.js:865
 msgid "Domain value was not found"
 msgstr "Valor do domínio não encontrado"
 
@@ -4062,7 +4062,7 @@ msgstr "Baixar documento"
 msgid "Download Growth"
 msgstr "Crescimento de downloads"
 
-#: assets/js/admin/core.js:1631
+#: assets/js/admin/core.js:1724
 msgid "Download Key"
 msgstr "Baixar chave"
 
@@ -4074,11 +4074,11 @@ msgstr "Baixar licença"
 msgid "Download License Document"
 msgstr "Baixar documento de licença"
 
-#: assets/js/admin/core.js:686
+#: assets/js/admin/core.js:779
 msgid "Download License File"
 msgstr "Baixar arquivo de licença"
 
-#: assets/js/admin/core.js:711
+#: assets/js/admin/core.js:804
 msgid "Download Token Generated"
 msgstr "Token de download gerado"
 
@@ -4127,7 +4127,7 @@ msgstr "O token de download expirou."
 msgid "Download token record not found."
 msgstr "Registro do token de download não encontrado."
 
-#: assets/js/admin/core.js:616
+#: assets/js/admin/core.js:709
 msgid "Download tokens allow clients to download the application monetized under this license without exposing the primary license key. If expiry is not set, the token will be valid for 24 hours by default."
 msgstr "Os tokens de download permitem que os clientes baixem o aplicativo monetizado sob esta licença sem expor a chave de licença principal. Se a expiração não for definida, o token é válido por 24 horas por padrão."
 
@@ -4149,7 +4149,7 @@ msgstr "Downloads nos últimos 30 dias"
 msgid "Downloads This Week"
 msgstr "Downloads nesta semana"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:636
+#: src/Admin/ContentHandlers/OptionsPage.php:659
 msgid "Downloads URL Prefix"
 msgstr "Prefixo da URL de downloads"
 
@@ -4289,7 +4289,7 @@ msgstr "Editar licença"
 msgid "Edit Message"
 msgstr "Editar mensagem"
 
-#: assets/js/admin/core.js:1225
+#: assets/js/admin/core.js:1318
 msgid "Edit Pricing Tier"
 msgstr "Editar nível de preço"
 
@@ -4336,7 +4336,7 @@ msgstr "Barra de ferramentas do editor"
 msgid "Editor view"
 msgstr "Visualização do editor"
 
-#: src/Admin/ContentHandlers/AccessControlPage.php:178 src/Admin/ContentHandlers/OptionsPage.php:775 themes/default/templates/pages/auth/forgot-password.php:18 themes/default/templates/pages/auth/sign-up.php:30
+#: src/Admin/ContentHandlers/AccessControlPage.php:178 src/Admin/ContentHandlers/OptionsPage.php:798 themes/default/templates/pages/auth/forgot-password.php:18 themes/default/templates/pages/auth/sign-up.php:30
 #: themes/default/templates/pages/purchase.php:73
 msgid "Email"
 msgstr "E-mail"
@@ -4357,15 +4357,15 @@ msgstr "Conflito de e-mail"
 msgid "Email Preview"
 msgstr "Pré-visualização do e-mail"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:709
+#: src/Admin/ContentHandlers/OptionsPage.php:732
 msgid "Email Provider Settings"
 msgstr "Configurações do provedor de e-mail"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:683 src/Admin/ContentHandlers/OptionsPage.php:710 templates/admin/contents/options/email/index.php:49
+#: src/Admin/ContentHandlers/OptionsPage.php:706 src/Admin/ContentHandlers/OptionsPage.php:733 templates/admin/contents/options/email/index.php:49
 msgid "Email Providers"
 msgstr "Provedores de e-mail"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:682 src/Admin/ContentHandlers/OptionsPage.php:716 src/Admin/ContentHandlers/OptionsPage.php:717
+#: src/Admin/ContentHandlers/OptionsPage.php:705 src/Admin/ContentHandlers/OptionsPage.php:739 src/Admin/ContentHandlers/OptionsPage.php:740
 msgid "Email Templates"
 msgstr "Modelos de e-mail"
 
@@ -4405,11 +4405,11 @@ msgstr "O e-mail é obrigatório."
 msgid "Email someone a link to join an organization."
 msgstr "Enviar por e-mail a alguém um link para participar de uma organização."
 
-#: src/SettingsAPI/SettingsController.php:157
+#: src/SettingsAPI/SettingsController.php:169
 msgid "Email template key is invalid."
 msgstr "A chave do modelo de e-mail é inválida."
 
-#: src/SettingsAPI/SettingsController.php:150
+#: src/SettingsAPI/SettingsController.php:162
 msgid "Email template key is required."
 msgstr "A chave do modelo de e-mail é obrigatória."
 
@@ -4445,7 +4445,7 @@ msgstr "Enviado por e-mail ao comprador"
 msgid "Emails the site administration address when an update is available, installed automatically, or failed."
 msgstr "Envia um e-mail ao endereço de administração do site quando uma atualização está disponível, foi instalada automaticamente ou falhou."
 
-#: src/Admin/ContentHandlers/ModulesPage.php:493 templates/admin/contents/options/email/editor.php:130 templates/admin/contents/options/email/templates.php:185 assets/js/admin/core.js:1869
+#: src/Admin/ContentHandlers/ModulesPage.php:493 templates/admin/contents/options/email/editor.php:130 templates/admin/contents/options/email/templates.php:185 assets/js/admin/core.js:1962
 #: assets/js/admin/email-editor.js:987
 msgid "Enable"
 msgstr "Ativar"
@@ -4476,7 +4476,7 @@ msgstr "Ative primeiro a extensão \"%s\": \"%s\" precisa dela."
 msgid "Enable this extension after installing? It loads from the next request on."
 msgstr "Ativar esta extensão após a instalação? Ela é carregada a partir da próxima requisição."
 
-#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1869
+#: templates/admin/contents/options/email/templates.php:177 assets/js/admin/core.js:1962
 msgid "Enable this template"
 msgstr "Ativar este modelo"
 
@@ -4624,7 +4624,7 @@ msgstr "Informar a chave de configuração manualmente"
 msgid "Enter your name."
 msgstr "Informe seu nome."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:517
+#: src/Admin/ContentHandlers/OptionsPage.php:464
 msgid "Environment Mode"
 msgstr "Modo do ambiente"
 
@@ -4632,7 +4632,7 @@ msgstr "Modo do ambiente"
 msgid "Error"
 msgstr "Erro"
 
-#: assets/js/admin/core.js:405
+#: assets/js/admin/core.js:406
 #, javascript-format
 msgid "Error attempting to enable fullscreen: %s"
 msgstr "Erro ao tentar ativar a tela cheia: %s"
@@ -4884,11 +4884,11 @@ msgstr "Falha ao analisar ou carregar o arquivo JSON"
 msgid "Failed to paste from clipboard"
 msgstr "Falha ao colar da área de transferência"
 
-#: src/SettingsAPI/SettingsController.php:344
+#: src/SettingsAPI/SettingsController.php:356
 msgid "Failed to reset template. Please try again."
 msgstr "Falha ao redefinir o modelo. Tente novamente."
 
-#: src/SettingsAPI/SettingsController.php:292
+#: src/SettingsAPI/SettingsController.php:304
 msgid "Failed to save template. Please try again."
 msgstr "Falha ao salvar o modelo. Tente novamente."
 
@@ -4900,7 +4900,7 @@ msgstr "Falha ao salvar a mensagem em massa."
 msgid "Failed to send email via PHP mail()."
 msgstr "Falha ao enviar o e-mail via mail() do PHP."
 
-#: src/SettingsAPI/SettingsController.php:170
+#: src/SettingsAPI/SettingsController.php:182
 msgid "Failed to update email template state. Please try again."
 msgstr "Falha ao atualizar o estado do modelo de e-mail. Tente novamente."
 
@@ -4968,7 +4968,7 @@ msgstr "Arquivo importado com sucesso"
 msgid "File is not a valid HTTP uploaded file."
 msgstr "O arquivo não é um arquivo enviado via HTTP válido."
 
-#: assets/js/admin/core.js:460
+#: assets/js/admin/core.js:461
 msgid "File is too large. Maximum size is 2MB."
 msgstr "O arquivo é muito grande. O tamanho máximo é 2 MB."
 
@@ -5149,11 +5149,11 @@ msgstr "Na pasta do aplicativo, execute o comando abaixo. Ele adiciona a chave a
 msgid "Full Name"
 msgstr "Nome completo"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:535
+#: src/Admin/ContentHandlers/OptionsPage.php:482
 msgid "Full URL to your Terms of Service or license agreement page."
 msgstr "URL completa da sua página de Termos de Serviço ou de contrato de licença."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:549
+#: src/Admin/ContentHandlers/OptionsPage.php:488
 msgid "Full URL to your privacy policy page."
 msgstr "URL completa da sua página de política de privacidade."
 
@@ -5165,7 +5165,7 @@ msgstr "Nome completo"
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
-#: assets/js/admin/core.js:398
+#: assets/js/admin/core.js:399
 msgid "Fullscreen not supported by your browser."
 msgstr "Seu navegador não oferece suporte a tela cheia."
 
@@ -5173,19 +5173,19 @@ msgstr "Seu navegador não oferece suporte a tela cheia."
 msgid "Gateway Timeout"
 msgstr "Tempo limite do gateway"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:763
+#: src/Admin/ContentHandlers/OptionsPage.php:786
 msgid "General"
 msgstr "Geral"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:686 src/Admin/ContentHandlers/OptionsPage.php:692
+#: src/Admin/ContentHandlers/OptionsPage.php:709 src/Admin/ContentHandlers/OptionsPage.php:715
 msgid "General Settings"
 msgstr "Configurações gerais"
 
-#: assets/js/admin/core.js:629
+#: assets/js/admin/core.js:722
 msgid "Generate Download Token"
 msgstr "Gerar token de download"
 
-#: assets/js/admin/core.js:629
+#: assets/js/admin/core.js:722
 #, javascript-format
 msgid "Generate Download Token for %s"
 msgstr "Gerar token de download para %s"
@@ -5194,7 +5194,7 @@ msgstr "Gerar token de download para %s"
 msgid "Generate Password"
 msgstr "Gerar senha"
 
-#: templates/admin/contents/license/view.php:54 assets/js/admin/core.js:626
+#: templates/admin/contents/license/view.php:54 assets/js/admin/core.js:719
 msgid "Generate Token"
 msgstr "Gerar token"
 
@@ -5405,7 +5405,7 @@ msgstr "Aplicativo hospedado"
 msgid "Hosted apps"
 msgstr "Aplicativos hospedados"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:420
+#: src/Admin/ContentHandlers/OptionsPage.php:410
 msgid "Hosting Email"
 msgstr "E-mail de hospedagem"
 
@@ -5468,11 +5468,17 @@ msgstr "Endereço IP"
 msgid "Icon file must be one of: %s"
 msgstr "O arquivo de ícone deve ser de um destes tipos: %s"
 
+#. translators: 1: largest file size in kilobytes, 2: smallest size, 3: largest size (in pixels).
+#: src/Admin/ContentHandlers/OptionsPage.php:523
+#, php-format
+msgid "Icon shown in browser tabs and bookmarks for the admin dashboard, the client dashboard and public pages. Upload a square PNG or ICO file of %1$d KB or less, between %2$d and %3$d pixels per side."
+msgstr "Ícone exibido nas abas e nos favoritos do navegador para o painel de administração, o painel do cliente e as páginas públicas. Envie um arquivo PNG ou ICO quadrado de %1$d KB ou menos, entre %2$d e %3$d pixels por lado."
+
 #: templates/admin/contents/repository/edit-software.php:89 templates/admin/contents/repository/edit-wpplugin.php:125
 msgid "Icons"
 msgstr "Ícones"
 
-#: assets/js/admin/core.js:1627
+#: assets/js/admin/core.js:1720
 msgid "Identifier: "
 msgstr "Identificador: "
 
@@ -5995,7 +6001,7 @@ msgstr "Arquivo app.json inválido. Não foi possível analisar o JSON."
 msgid "Invalid artifact configuration."
 msgstr "Configuração de artefato inválida."
 
-#: src/SettingsAPI/SettingsController.php:230 src/SettingsAPI/SettingsController.php:283
+#: src/SettingsAPI/SettingsController.php:242 src/SettingsAPI/SettingsController.php:295
 msgid "Invalid blocks or styles data."
 msgstr "Dados de blocos ou estilos inválidos."
 
@@ -6082,7 +6088,7 @@ msgstr "Nome de propriedade inválido (use letras, números, _ ou $)"
 msgid "Invalid signature"
 msgstr "Assinatura inválida"
 
-#: src/SettingsAPI/SettingsController.php:223 src/SettingsAPI/SettingsController.php:276 src/SettingsAPI/SettingsController.php:336
+#: src/SettingsAPI/SettingsController.php:235 src/SettingsAPI/SettingsController.php:288 src/SettingsAPI/SettingsController.php:348
 msgid "Invalid template key."
 msgstr "Chave de modelo inválida."
 
@@ -6236,7 +6242,7 @@ msgstr "Idioma (run, make:admin):"
 msgid "Language number (press Enter for English)"
 msgstr "Número do idioma (pressione Enter para inglês)"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:577
+#: src/Admin/ContentHandlers/OptionsPage.php:600
 msgid "Language of the admin and client dashboards, emails and public pages. Users can still choose their own language in their preferences. \"Automatic\" follows each visitor's browser language when a translation is installed."
 msgstr "Idioma dos painéis de administração e do cliente, dos e-mails e das páginas públicas. Os usuários ainda podem escolher seu próprio idioma nas preferências. \"Automático\" segue o idioma do navegador de cada visitante quando há uma tradução instalada."
 
@@ -6408,7 +6414,7 @@ msgstr "O ID da licença é obrigatório."
 msgid "License ID:"
 msgstr "ID da licença:"
 
-#: assets/js/admin/core.js:682
+#: assets/js/admin/core.js:775
 msgid "License ID: "
 msgstr "ID da licença: "
 
@@ -6427,7 +6433,7 @@ msgstr "Licença emitida"
 msgid "License Key"
 msgstr "Chave de licença"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:448
+#: src/Admin/ContentHandlers/OptionsPage.php:422
 msgid "License Key Prefix"
 msgstr "Prefixo das chaves de licença"
 
@@ -6468,7 +6474,7 @@ msgstr "A licença foi desativada"
 msgid "License is not issued to any application."
 msgstr "A licença não foi emitida para nenhum aplicativo."
 
-#: assets/js/admin/core.js:685
+#: assets/js/admin/core.js:778
 #, javascript-format
 msgid "License issued to: %s"
 msgstr "Licença emitida para: %s"
@@ -6597,11 +6603,11 @@ msgstr "Registrar download"
 msgid "Log License Activity"
 msgstr "Registrar atividade de licenças"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:495
+#: src/Admin/ContentHandlers/OptionsPage.php:449
 msgid "Log Retention (Days)"
 msgstr "Retenção de logs (dias)"
 
-#: templates/admin/index.php:29
+#: templates/admin/index.php:30
 msgid "Login"
 msgstr "Entrar"
 
@@ -6803,7 +6809,7 @@ msgstr "Espaço máximo em disco que o banco de dados do cache pode ocupar. Ao a
 msgid "Maximum domains"
 msgstr "Máximo de domínios"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:485
+#: src/Admin/ContentHandlers/OptionsPage.php:443
 msgid "Maximum number of API requests allowed per client within a one-minute window."
 msgstr "Número máximo de requisições à API permitidas por cliente em uma janela de um minuto."
 
@@ -6871,7 +6877,7 @@ msgstr "ID da mensagem"
 msgid "Message Stream"
 msgstr "Fluxo de mensagens"
 
-#: assets/js/admin/core.js:1540
+#: assets/js/admin/core.js:1633
 msgid "Message body cannot be empty."
 msgstr "O corpo da mensagem não pode estar vazio."
 
@@ -6891,7 +6897,7 @@ msgstr "A mensagem foi publicada."
 msgid "Message has been updated."
 msgstr "A mensagem foi atualizada."
 
-#: assets/js/admin/core.js:1573
+#: assets/js/admin/core.js:1666
 msgid "Message saved successfully"
 msgstr "Mensagem salva com sucesso"
 
@@ -6899,7 +6905,7 @@ msgstr "Mensagem salva com sucesso"
 msgid "Message sent with the license"
 msgstr "Mensagem enviada com a licença"
 
-#: assets/js/admin/core.js:1535
+#: assets/js/admin/core.js:1628
 msgid "Message subject is required."
 msgstr "O assunto da mensagem é obrigatório."
 
@@ -7002,7 +7008,7 @@ msgstr "Título do modal"
 msgid "Modules"
 msgstr "Módulos"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:769 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
+#: src/Admin/ContentHandlers/OptionsPage.php:792 src/Admin/ContentHandlers/RepositoryPage.php:377 src/Admin/ContentHandlers/RepositoryPage.php:766 src/Admin/ContentHandlers/RepositoryPage.php:820
 #: src/Schema/Definitions/MonetizationSchema.php:30
 msgid "Monetization"
 msgstr "Monetização"
@@ -7011,7 +7017,7 @@ msgstr "Monetização"
 msgid "Monetization ID is required."
 msgstr "O ID da monetização é obrigatório."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:702
+#: src/Admin/ContentHandlers/OptionsPage.php:725
 msgid "Monetization Provider Settings"
 msgstr "Configurações do provedor de monetização"
 
@@ -7019,7 +7025,7 @@ msgstr "Configurações do provedor de monetização"
 msgid "Monetization Provider:"
 msgstr "Provedor de monetização:"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:681 templates/admin/contents/repository/monetization.php:147
+#: src/Admin/ContentHandlers/OptionsPage.php:704 templates/admin/contents/repository/monetization.php:147
 msgid "Monetization Providers"
 msgstr "Provedores de monetização"
 
@@ -7039,11 +7045,11 @@ msgstr "Monetização ativada com sucesso."
 msgid "Monetization not found."
 msgstr "Monetização não encontrada."
 
-#: assets/js/admin/core.js:1352
+#: assets/js/admin/core.js:1445
 msgid "Monetization updated"
 msgstr "Monetização atualizada"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:703
+#: src/Admin/ContentHandlers/OptionsPage.php:726
 msgid "Monetizations"
 msgstr "Monetizações"
 
@@ -7240,7 +7246,7 @@ msgstr "Próximo mês"
 msgid "Next page"
 msgstr "Próxima página"
 
-#: assets/js/admin/core.js:1054 assets/js/admin/core.js:1781
+#: assets/js/admin/core.js:1147 assets/js/admin/core.js:1874
 msgid "No"
 msgstr "Não"
 
@@ -7483,7 +7489,7 @@ msgstr "Nenhuma chave de acesso foi registrada ainda."
 msgid "No pricing tier with this ID is sold by your store."
 msgstr "Sua loja não vende nenhum nível de preço com este ID."
 
-#: templates/admin/contents/repository/monetization.php:84 assets/js/admin/core.js:1319
+#: templates/admin/contents/repository/monetization.php:84 assets/js/admin/core.js:1412
 msgid "No pricing tiers has been set"
 msgstr "Nenhum nível de preço foi definido"
 
@@ -7495,7 +7501,7 @@ msgstr "Nenhuma compra ainda"
 msgid "No queued job registered."
 msgstr "Nenhum job na fila registrado."
 
-#: templates/admin/index.php:114
+#: templates/admin/index.php:116
 msgid "No registered handler for this page."
 msgstr "Nenhum manipulador registrado para esta página."
 
@@ -7508,7 +7514,7 @@ msgstr "Nenhuma chave de assinatura de versões está configurada, então nenhum
 msgid "No repository is registered for the app type \"%s\"."
 msgstr "Nenhum repositório está registrado para o tipo de aplicativo \"%s\"."
 
-#: assets/js/admin/core.js:967
+#: assets/js/admin/core.js:1060
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
@@ -7556,12 +7562,12 @@ msgstr "Nenhum slug foi obtido após o envio deste %s."
 msgid "No tasks are due."
 msgstr "Nenhuma tarefa pendente."
 
-#: src/Environments/Application/Theming/ThemeContext.php:353
+#: src/Environments/Application/Theming/ThemeContext.php:358
 #, php-format
 msgid "No theme in the chain of \"%s\" has the asset \"%s\"."
 msgstr "Nenhum tema da cadeia de \"%s\" tem o recurso \"%s\"."
 
-#: src/Environments/Application/Theming/ThemeContext.php:372
+#: src/Environments/Application/Theming/ThemeContext.php:377
 #, php-format
 msgid "No theme in the chain of \"%s\" has the template \"%s\"."
 msgstr "Nenhum tema da cadeia de \"%s\" tem o modelo \"%s\"."
@@ -7776,7 +7782,7 @@ msgstr "Null não tem valor editável"
 msgid "Number"
 msgstr "Número"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:496
+#: src/Admin/ContentHandlers/OptionsPage.php:450
 msgid "Number of days system logs are retained before automatic cleanup."
 msgstr "Número de dias em que os logs do sistema são mantidos antes da limpeza automática."
 
@@ -7887,7 +7893,7 @@ msgstr "Abrir aplicativo"
 msgid "Open date picker"
 msgstr "Abrir seletor de data"
 
-#: templates/admin/header.php:46
+#: templates/admin/header.php:48
 msgid "Open menu"
 msgstr "Abrir menu"
 
@@ -7925,7 +7931,7 @@ msgstr "Abra os cron jobs do painel da sua hospedagem"
 msgid "Operation failed"
 msgstr "Falha na operação"
 
-#: assets/js/admin/core.js:1409
+#: assets/js/admin/core.js:1502
 msgid "Operation successful"
 msgstr "Operação concluída com sucesso"
 
@@ -8149,7 +8155,7 @@ msgstr "Não foi possível salvar a página %d."
 msgid "Page %d of %d"
 msgstr "Página %d de %d"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:680
+#: src/Admin/ContentHandlers/OptionsPage.php:703
 msgid "Page Routing"
 msgstr "Roteamento de páginas"
 
@@ -8403,6 +8409,10 @@ msgstr "Plano"
 msgid "Please check directory ownership and permissions. You may need to run %s or contact your hosting provider."
 msgstr "Verifique o proprietário e as permissões do diretório. Talvez seja necessário executar %s ou entrar em contato com seu provedor de hospedagem."
 
+#: assets/js/admin/core.js:523
+msgid "Please choose a PNG or ICO file."
+msgstr "Escolha um arquivo PNG ou ICO."
+
 #: src/Email/Templates/Accounts/VerifyEmailEmail.php:66 src/Email/Templates/Accounts/VerifyEmailEmail.php:145
 msgid "Please confirm that this is your email address. Licenses issued to this address will then appear in your account."
 msgstr "Confirme que este é o seu endereço de e-mail. As licenças emitidas para este endereço aparecerão então na sua conta."
@@ -8517,7 +8527,7 @@ msgstr "Selecione ou solte um arquivo JSON."
 msgid "Please specify the download type."
 msgstr "Informe o tipo de download."
 
-#: assets/js/admin/core.js:455
+#: assets/js/admin/core.js:456
 msgid "Please upload an image."
 msgstr "Envie uma imagem."
 
@@ -8582,7 +8592,7 @@ msgstr "Conteúdo potencialmente malicioso detectado na imagem."
 msgid "Precondition Failed"
 msgstr "Falha na pré-condição"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:449
+#: src/Admin/ContentHandlers/OptionsPage.php:423
 msgid "Prefix automatically added to generated license keys (e.g., SMLISER-XXXX-XXXX). Helps identify the issuing system."
 msgstr "Prefixo adicionado automaticamente às chaves de licença geradas (ex.: SMLISER-XXXX-XXXX). Ajuda a identificar o sistema emissor."
 
@@ -8667,7 +8677,7 @@ msgstr "Principal"
 msgid "Primary Text"
 msgstr "Texto principal"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:407
+#: src/Admin/ContentHandlers/OptionsPage.php:405
 msgid "Primary email address for receiving system notifications, error reports, and administrative alerts."
 msgstr "Endereço de e-mail principal para receber notificações do sistema, relatórios de erro e alertas administrativos."
 
@@ -8679,7 +8689,7 @@ msgstr "O principal deve ser um proprietário de recursos válido ou atuar em no
 msgid "Priority"
 msgstr "Prioridade"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:548
+#: src/Admin/ContentHandlers/OptionsPage.php:487
 msgid "Privacy Policy URL"
 msgstr "URL da política de privacidade"
 
@@ -8712,7 +8722,7 @@ msgstr "Processando"
 msgid "Product"
 msgstr "Produto"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:524
+#: src/Admin/ContentHandlers/OptionsPage.php:471
 msgid "Production"
 msgstr "Produção"
 
@@ -8772,7 +8782,7 @@ msgstr "URL de download pública"
 msgid "Public key"
 msgstr "Chave pública"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:393
+#: src/Admin/ContentHandlers/OptionsPage.php:399
 msgid "Public name of this license repository. This may appear in system emails, API responses, and administrative interfaces."
 msgstr "Nome público deste repositório de licenças. Ele pode aparecer em e-mails do sistema, respostas da API e interfaces de administração."
 
@@ -8952,7 +8962,7 @@ msgstr "Motivo enviado ao comprador"
 msgid "Receipt"
 msgstr "Comprovante"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:506
+#: src/Admin/ContentHandlers/OptionsPage.php:456
 msgid "Receipt Retention (Days)"
 msgstr "Retenção de comprovantes (dias)"
 
@@ -9234,11 +9244,11 @@ msgstr "Conflito no repositório"
 msgid "Repository Error"
 msgstr "Erro no repositório"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:392
+#: src/Admin/ContentHandlers/OptionsPage.php:398
 msgid "Repository Name"
 msgstr "Nome do repositório"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:622
+#: src/Admin/ContentHandlers/OptionsPage.php:645
 msgid "Repository URL Prefix"
 msgstr "Prefixo de URL do repositório"
 
@@ -9263,11 +9273,11 @@ msgstr "ID da requisição:"
 msgid "Request Timeout"
 msgstr "Tempo limite da requisição esgotado"
 
-#: assets/js/admin/core.js:915
+#: assets/js/admin/core.js:1008
 msgid "Request failed"
 msgstr "Falha na requisição"
 
-#: assets/js/admin/core.js:1741
+#: assets/js/admin/core.js:1834
 msgid "Request failed."
 msgstr "Falha na requisição."
 
@@ -9282,7 +9292,7 @@ msgstr "Requisição feita do IP: %1$s Dispositivo: %2$s"
 msgid "Request to the update server %s timed out after %d seconds (%s). Automatic updates will fail until the server can reach it."
 msgstr "A requisição ao servidor de atualizações %s expirou após %d segundos (%s). As atualizações automáticas falharão até que o servidor consiga alcançá-lo."
 
-#: assets/js/admin/core.js:1744
+#: assets/js/admin/core.js:1837
 msgid "Request was successful, but no response message."
 msgstr "Requisição bem-sucedida, mas sem mensagem de resposta."
 
@@ -9343,7 +9353,7 @@ msgstr "Redefinir modelo"
 msgid "Reset Your Password"
 msgstr "Redefina sua senha"
 
-#: assets/js/admin/core.js:2005
+#: assets/js/admin/core.js:2098
 msgid "Reset successful"
 msgstr "Redefinição concluída"
 
@@ -9510,15 +9520,15 @@ msgstr "Função:"
 msgid "Roles"
 msgstr "Funções"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:738 src/Admin/ContentHandlers/OptionsPage.php:787
+#: src/Admin/ContentHandlers/OptionsPage.php:761 src/Admin/ContentHandlers/OptionsPage.php:810
 msgid "Routes"
 msgstr "Rotas"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:737
+#: src/Admin/ContentHandlers/OptionsPage.php:760
 msgid "Routes Settings"
 msgstr "Configurações de rotas"
 
-#: src/SettingsAPI/SettingsController.php:125
+#: src/SettingsAPI/SettingsController.php:137
 msgid "Routes has been updated."
 msgstr "As rotas foram atualizadas."
 
@@ -9676,8 +9686,8 @@ msgid "SQLite probe write failed."
 msgstr "Falha na gravação de teste do SQLite."
 
 #: templates/admin/contents/accounts/access-control-form.php:270 templates/admin/contents/options/cache/form.php:116 templates/admin/contents/options/email/form.php:97 templates/admin/contents/options/email/index.php:41
-#: templates/admin/contents/options/index.php:29 templates/admin/contents/options/monetization/monetizations.php:60 templates/admin/contents/options/routing.php:42 templates/admin/contents/system/updates.php:248
-#: assets/js/admin/apps-uploader.js:1552 assets/js/admin/core.js:1212 assets/js/admin/json-editor.js:956
+#: templates/admin/contents/options/index.php:34 templates/admin/contents/options/monetization/monetizations.php:60 templates/admin/contents/options/routing.php:42 templates/admin/contents/system/updates.php:248
+#: assets/js/admin/apps-uploader.js:1552 assets/js/admin/core.js:1305 assets/js/admin/json-editor.js:956
 msgid "Save"
 msgstr "Salvar"
 
@@ -9706,12 +9716,20 @@ msgstr "Salvar alterações"
 msgid "Save the site address"
 msgstr "Salvar o endereço do site"
 
-#: assets/js/admin/core.js:1626
+#: assets/js/admin/core.js:1719
 msgid "Save this key now. For security, it will not be shown to you again."
 msgstr "Salve esta chave agora. Por segurança, ela não será exibida novamente."
 
+#: assets/js/admin/core.js:547
+msgid "Save to use the default favicon."
+msgstr "Salve para usar o favicon padrão."
+
+#: assets/js/admin/core.js:538
+msgid "Save to use this favicon."
+msgstr "Salve para usar este favicon."
+
 #: src/Monetization/Controller.php:145 src/Monetization/Controller.php:340 src/Monetization/Controller.php:432 assets/js/admin/apps-uploader.js:542
-#: assets/js/admin/core.js:328 assets/js/admin/email-editor.js:903
+#: assets/js/admin/core.js:329 assets/js/admin/email-editor.js:903
 msgid "Saved"
 msgstr "Salvo"
 
@@ -10080,7 +10098,7 @@ msgstr "Nome de exibição do remetente. Deixe em branco para usar o nome de rem
 msgid "Sender display name. Leave blank to use the global from name."
 msgstr "Nome de exibição do remetente. Deixe em branco para usar o nome de remetente global."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:368
+#: src/Admin/ContentHandlers/OptionsPage.php:370
 msgid "Sender email address used in outgoing emails when the active provider does not have a From Email configured."
 msgstr "Endereço de e-mail do remetente usado nos e-mails enviados quando o provedor ativo não tem um configurado."
 
@@ -10092,7 +10110,7 @@ msgstr "Endereço de e-mail do remetente (deve ser um remetente verificado no Br
 msgid "Sender email address. Leave blank to use the global from email."
 msgstr "Endereço de e-mail do remetente. Deixe em branco para usar o e-mail de remetente global."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:354
+#: src/Admin/ContentHandlers/OptionsPage.php:356
 msgid "Sender name used in outgoing emails when the active provider does not have a From Name configured."
 msgstr "Nome do remetente usado nos e-mails enviados quando o provedor ativo não tem um configurado."
 
@@ -10377,12 +10395,12 @@ msgstr "Configurando uma chave"
 msgid "Setting up&hellip;"
 msgstr "Configurando&hellip;"
 
-#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:801 templates/admin/contents/index.php:31
+#: src/Admin/ContentHandlers/LicensePage.php:314 src/Admin/ContentHandlers/LicensePage.php:315 src/Admin/ContentHandlers/OptionsPage.php:824 templates/admin/contents/index.php:31
 #: templates/admin/contents/index.php:32 templates/admin/contents/repository/upload.php:32 templates/admin/contents/repository/upload.php:33
 msgid "Settings"
 msgstr "Configurações"
 
-#: src/SettingsAPI/SettingsController.php:71
+#: src/SettingsAPI/SettingsController.php:82
 msgid "Settings updated successfully."
 msgstr "Configurações atualizadas com sucesso."
 
@@ -10518,11 +10536,15 @@ msgstr "Desde a última reinicialização"
 msgid "Site"
 msgstr "Site"
 
+#: src/Admin/ContentHandlers/OptionsPage.php:520
+msgid "Site Favicon"
+msgstr "Favicon do site"
+
 #: src/Admin/ContentHandlers/ToolsPage.php:316 src/Admin/ContentHandlers/ToolsPage.php:357 assets/js/admin/support-report.js:29
 msgid "Site Health"
 msgstr "Saúde do site"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:576
+#: src/Admin/ContentHandlers/OptionsPage.php:599
 msgid "Site Language"
 msgstr "Idioma do site"
 
@@ -10533,6 +10555,10 @@ msgstr "Site acessível"
 #: src/Environments/Application/Installation/InstallerPage.php:327
 msgid "Site address"
 msgstr "Endereço do site"
+
+#: templates/admin/contents/options/favicon-field.php:44
+msgid "Site favicon preview"
+msgstr "Pré-visualização do favicon do site"
 
 #. translators: %s: locale code, e.g. fr_FR.
 #: src/Console/Commands/Installer.php:423
@@ -10598,7 +10624,7 @@ msgstr "Algo deu errado"
 msgid "Something went wrong during data persistence."
 msgstr "Algo deu errado ao salvar os dados."
 
-#: assets/js/admin/core.js:1981 assets/js/admin/core.js:2003
+#: assets/js/admin/core.js:2074 assets/js/admin/core.js:2096
 msgid "Something went wrong!"
 msgstr "Algo deu errado!"
 
@@ -10657,7 +10683,7 @@ msgstr ""
 msgid "Staged %s %s for %s: requirements met, every file matches the package manifest."
 msgstr "%s %s preparado para %s: requisitos atendidos, cada arquivo corresponde ao manifesto do pacote."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:525
+#: src/Admin/ContentHandlers/OptionsPage.php:472
 msgid "Staging"
 msgstr "Homologação"
 
@@ -10868,7 +10894,7 @@ msgstr "Enviada:"
 msgid "Subscription Cancelled"
 msgstr "Assinatura cancelada"
 
-#: templates/admin/contents/options/email/editor.php:378 assets/js/admin/core.js:328 assets/js/admin/core.js:793 assets/js/admin/core.js:1893
+#: templates/admin/contents/options/email/editor.php:378 assets/js/admin/core.js:329 assets/js/admin/core.js:886 assets/js/admin/core.js:1986
 #: assets/js/globals.js:900
 msgid "Success"
 msgstr "Sucesso"
@@ -10885,7 +10911,7 @@ msgstr "Excluído com sucesso."
 msgid "Support"
 msgstr "Suporte"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:434
+#: src/Admin/ContentHandlers/OptionsPage.php:416
 msgid "Support Email"
 msgstr "E-mail de suporte"
 
@@ -10999,7 +11025,7 @@ msgstr "Diga ao comprador por que a solicitação foi recusada."
 msgid "Template"
 msgstr "Modelo"
 
-#: src/SettingsAPI/SettingsController.php:219 src/SettingsAPI/SettingsController.php:272 src/SettingsAPI/SettingsController.php:332
+#: src/SettingsAPI/SettingsController.php:231 src/SettingsAPI/SettingsController.php:284 src/SettingsAPI/SettingsController.php:344
 msgid "Template key is required."
 msgstr "A chave do modelo é obrigatória."
 
@@ -11023,7 +11049,7 @@ msgstr "Duração do prazo:"
 msgid "Term:"
 msgstr "Prazo:"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:534
+#: src/Admin/ContentHandlers/OptionsPage.php:481
 msgid "Terms URL"
 msgstr "URL dos termos"
 
@@ -11048,7 +11074,7 @@ msgstr "Testar conexão e continuar"
 msgid "Test email sent successfully to %s via %s."
 msgstr "E-mail de teste enviado com sucesso para %s via %s."
 
-#: assets/js/admin/core.js:1983
+#: assets/js/admin/core.js:2076
 msgid "Test passed"
 msgstr "Teste aprovado"
 
@@ -11411,23 +11437,23 @@ msgstr "A URL não precisa de segredo: todo chamador recebe a mesma resposta vaz
 msgid "The URL of the website where the license is currently activated."
 msgstr "A URL do site onde a licença está ativada no momento."
 
-#: src/Admin/ContentHandlers/OptionsPage.php:637
+#: src/Admin/ContentHandlers/OptionsPage.php:660
 msgid "The URL segment that appears before download pages. For example: https://example.com/downloads/"
 msgstr "O segmento de URL que aparece antes das páginas de download. Por exemplo: https://example.com/downloads/"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:623
+#: src/Admin/ContentHandlers/OptionsPage.php:646
 msgid "The URL segment that appears before repository pages. For example: https://example.com/repository/"
 msgstr "O segmento de URL que aparece antes das páginas do repositório. Por exemplo: https://example.com/repository/"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:597
+#: src/Admin/ContentHandlers/OptionsPage.php:620
 msgid "The URL segment that appears before the admin url. For example: https://example.com/smliser-admin/"
 msgstr "O segmento de URL que aparece antes da URL de administração. Por exemplo: https://example.com/smliser-admin/"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:610
+#: src/Admin/ContentHandlers/OptionsPage.php:633
 msgid "The URL segment that appears before the client dashboard page. For example: https://example.com/dashboard/"
 msgstr "O segmento de URL que aparece antes da página do painel do cliente. Por exemplo: https://example.com/dashboard/"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:650
+#: src/Admin/ContentHandlers/OptionsPage.php:673
 msgid "The URL segment the appears before authentication pages. For example https://example.com/auth"
 msgstr "O segmento de URL que aparece antes das páginas de autenticação. Por exemplo https://example.com/auth"
 
@@ -11751,7 +11777,7 @@ msgstr "O endereço de e-mail é inválido."
 msgid "The email provider \"%s\" does not exists. <a href=\"%s\">Go Back</a>"
 msgstr "O provedor de e-mail \"%s\" não existe. <a href=\"%s\">Voltar</a>"
 
-#: src/Admin/ContentHandlers/OptionsPage.php:339
+#: src/Admin/ContentHandlers/OptionsPage.php:341
 msgid "The email provider used for all outgoing system emails. Configure individual providers using the cards below."
 msgstr "O provedor de e-mail usado para todos os e-mails de sistema enviados. Configure cada provedor nos cartões abaixo."
 
@@ -11843,6 +11869,36 @@ msgstr "O slug da extensão \"%s\" não corresponde à sua pasta \"%s\"."
 #, php-format
 msgid "The extension slug \"%s\" is invalid: use lowercase letters, digits and hyphens."
 msgstr "O slug da extensão \"%s\" é inválido: use letras minúsculas, dígitos e hífens."
+
+#: src/Core/SiteFavicon.php:246
+msgid "The favicon could not be read. Please upload it again."
+msgstr "Não foi possível ler o favicon. Envie-o novamente."
+
+#: src/Core/SiteFavicon.php:316 src/Core/SiteFavicon.php:326
+msgid "The favicon could not be saved. Please try again."
+msgstr "Não foi possível salvar o favicon. Tente novamente."
+
+#: src/Core/SiteFavicon.php:275
+msgid "The favicon image could not be read. Please upload a valid PNG or ICO file."
+msgstr "Não foi possível ler a imagem do favicon. Envie um arquivo PNG ou ICO válido."
+
+#. translators: %d: largest file size, in kilobytes.
+#: src/Core/SiteFavicon.php:256 assets/js/admin/core.js:530
+#, php-format, javascript-format
+msgid "The favicon must be %d KB or smaller."
+msgstr "O favicon deve ter %d KB ou menos."
+
+#. translators: %s: list of file types, e.g. "PNG, ICO".
+#: src/Core/SiteFavicon.php:267
+#, php-format
+msgid "The favicon must be a %s file."
+msgstr "O favicon deve ser um arquivo %s."
+
+#. translators: 1: smallest size, 2: largest size, 3: the image's width, 4: the image's height (all in pixels).
+#: src/Core/SiteFavicon.php:284
+#, php-format
+msgid "The favicon must be between %1$d and %2$d pixels per side; this image is %3$d × %4$d pixels."
+msgstr "O favicon deve ter entre %1$d e %2$d pixels por lado; esta imagem tem %3$d × %4$d pixels."
 
 #: src/RESTAPI/Versions/V1.php:695
 msgid "The features the license includes; a list or a comma-separated string."
@@ -11941,7 +11997,7 @@ msgid "The language \"%1$s\" is not installed. Use one of: %2$s."
 msgstr "O idioma \"%1$s\" não está instalado. Use um destes: %2$s."
 
 #. translators: %s: a locale code such as fr_FR.
-#: src/SettingsAPI/SettingsController.php:383
+#: src/SettingsAPI/SettingsController.php:438
 #, php-format
 msgid "The language \"%s\" is not installed."
 msgstr "O idioma \"%s\" não está instalado."
@@ -13343,7 +13399,7 @@ msgstr "Não foi possível executar esta verificação."
 msgid "This device"
 msgstr "Este dispositivo"
 
-#: assets/js/admin/core.js:1175
+#: assets/js/admin/core.js:1268
 msgid "This field"
 msgstr "Este campo"
 
@@ -13615,7 +13671,7 @@ msgstr "O ID do nível é obrigatório."
 msgid "Tier Name:"
 msgstr "Nome do nível:"
 
-#: assets/js/admin/core.js:1307
+#: assets/js/admin/core.js:1400
 msgid "Tier deleted"
 msgstr "Nível excluído"
 
@@ -13683,7 +13739,7 @@ msgstr "Mostrar/ocultar barra de ferramentas"
 msgid "Toggle visibility"
 msgstr "Mostrar/ocultar"
 
-#: assets/js/admin/core.js:617
+#: assets/js/admin/core.js:710
 msgid "Token Expiry (optional)"
 msgstr "Validade do token (opcional)"
 
@@ -13895,7 +13951,7 @@ msgstr "Não foi possível criar a tabela \"%s\", erro: %s"
 msgid "Unable to created destination directory."
 msgstr "Não foi possível criar o diretório de destino."
 
-#: assets/js/admin/core.js:1087
+#: assets/js/admin/core.js:1180
 msgid "Unable to delete"
 msgstr "Não foi possível excluir"
 
@@ -13904,7 +13960,7 @@ msgstr "Não foi possível excluir"
 msgid "Unable to delete %s."
 msgstr "Não foi possível excluir %s."
 
-#: src/Monetization/Controller.php:565 assets/js/admin/core.js:580
+#: src/Monetization/Controller.php:565 assets/js/admin/core.js:673
 msgid "Unable to delete license"
 msgstr "Não foi possível excluir a licença"
 
@@ -13916,7 +13972,7 @@ msgstr "Não foi possível excluir a entidade informada do banco de dados."
 msgid "Unable to generate a unique license key after multiple attempts."
 msgstr "Não foi possível gerar uma chave de licença única após várias tentativas."
 
-#: assets/js/admin/core.js:665
+#: assets/js/admin/core.js:758
 msgid "Unable to generate download token"
 msgstr "Não foi possível gerar o token de download"
 
@@ -13936,7 +13992,7 @@ msgstr "Não é possível processar esta requisição no momento."
 msgid "Unable to read uploaded app.json file."
 msgstr "Não foi possível ler o arquivo app.json enviado."
 
-#: assets/js/admin/core.js:1803
+#: assets/js/admin/core.js:1896
 msgid "Unable to remove member"
 msgstr "Não foi possível remover o membro"
 
@@ -13945,7 +14001,7 @@ msgstr "Não foi possível remover o membro"
 msgid "Unable to resolve repository class."
 msgstr "Não foi possível resolver a classe do repositório."
 
-#: assets/js/admin/core.js:822
+#: assets/js/admin/core.js:915
 msgid "Unable to save license"
 msgstr "Não foi possível salvar a licença"
 
@@ -14234,7 +14290,7 @@ msgstr "Conexão com o servidor de atualizações"
 msgid "Update app monetization"
 msgstr "Alterar a monetização de aplicativos"
 
-#: assets/js/admin/core.js:1349
+#: assets/js/admin/core.js:1442
 msgid "Update failed"
 msgstr "Falha na atualização"
 
@@ -14324,7 +14380,7 @@ msgstr "Atualizando pré-visualização..."
 msgid "Upgrade Notice"
 msgstr "Aviso de atualização"
 
-#: assets/js/admin/core.js:872
+#: assets/js/admin/core.js:965
 msgid "Upgrade successful!"
 msgstr "Atualização concluída!"
 
@@ -14348,6 +14404,10 @@ msgstr "Enviar (não assinado, confiável)"
 #: src/Exceptions/FileRequestException.php:80
 msgid "Upload Failed"
 msgstr "Falha no envio"
+
+#: templates/admin/contents/options/favicon-field.php:60
+msgid "Upload Favicon"
+msgstr "Enviar favicon"
 
 #: templates/admin/contents/accounts/access-control-form.php:91
 msgid "Upload Image"
@@ -14483,6 +14543,10 @@ msgstr "Use o arquivo %s para editar a versão de %s"
 #, php-format
 msgid "Use %s placeholders for dynamic values."
 msgstr "Use marcadores %s para valores dinâmicos."
+
+#: templates/admin/contents/options/favicon-field.php:65
+msgid "Use Default Favicon"
+msgstr "Usar o favicon padrão"
 
 #: src/Email/Providers/MailgunProvider.php:86
 msgid "Use EU region if your Mailgun account is hosted in Europe."
@@ -15083,7 +15147,7 @@ msgstr "Gravar as regras do servidor web (.htaccess)"
 msgid "Year"
 msgstr "Ano"
 
-#: assets/js/admin/core.js:1780
+#: assets/js/admin/core.js:1873
 msgid "Yes"
 msgstr "Sim"
 
@@ -15099,11 +15163,11 @@ msgstr "Você atua em nome dela"
 msgid "You appear to be offline. Please check your connection."
 msgstr "Parece que você está offline. Verifique sua conexão."
 
-#: assets/js/admin/core.js:567
+#: assets/js/admin/core.js:660
 msgid "You are about to delete this license, be careful action cannot be reversed"
 msgstr "Você está prestes a excluir esta licença; cuidado, a ação não pode ser desfeita"
 
-#: assets/js/admin/core.js:895
+#: assets/js/admin/core.js:988
 #, javascript-format
 msgid "You are about to trash this %s, it will be automatically deleted after 60 days. Are you sure you want to proceed?"
 msgstr "Você está prestes a mover este %s para a lixeira; ele será excluído automaticamente após 60 dias. Deseja continuar?"
@@ -15971,7 +16035,7 @@ msgstr "❌ Sua licença expirou em %s. O acesso aos recursos associados pode fi
 msgid "❌ Your payment of %1$s on %2$s could not be processed. Please review your payment details and try again."
 msgstr "❌ Não foi possível processar seu pagamento de %1$s em %2$s. Revise seus dados de pagamento e tente novamente."
 
-#: templates/admin/index.php:37
+#: templates/admin/index.php:38
 msgid "🚫 403 - Access Denied"
 msgstr "🚫 403 - Acesso negado"
 
@@ -15991,6 +16055,6 @@ msgstr "🚫 Sua licença foi suspensa e está inativa no momento. Fale com o su
 msgid "🚫 Your membership in %s has been ended. You no longer have access to this organization's resources."
 msgstr "🚫 Sua participação em %s foi encerrada. Você não tem mais acesso aos recursos desta organização."
 
-#: templates/admin/index.php:25
+#: templates/admin/index.php:26
 msgid "🛑 401 - Authentication Required"
 msgstr "🛑 401 - Autenticação necessária"

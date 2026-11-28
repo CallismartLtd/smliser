@@ -11,6 +11,7 @@ use SmartLicenseServer\Admin\AdminDashboardRegistry;
 use SmartLicenseServer\Assets\AssetsManager;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
+use SmartLicenseServer\Core\SiteFavicon;
 use SmartLicenseServer\Core\URLManager;
 use SmartLicenseServer\Security\Context\Guard;
 use SmartLicenseServer\Templates\TemplateLocator;
@@ -26,7 +27,8 @@ final class Dispatcher {
 		protected URLManager $urlmanager,
 		protected AdminDashboardRegistry $registry,
 		protected TemplateLocator $locator,
-		protected AssetsManager $assets_manager
+		protected AssetsManager $assets_manager,
+		protected SiteFavicon $favicon
 	) {}
 
 	/**
@@ -41,7 +43,8 @@ final class Dispatcher {
 			$this->locator,
 			$request, $this->guard,
 			$this->assets_manager,
-			$this->urlmanager
+			$this->urlmanager,
+			$this->favicon
 		);
 		$rest_base = $this->urlmanager->client_dashboard_url();
 		

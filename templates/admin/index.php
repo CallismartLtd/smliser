@@ -11,6 +11,7 @@
  * @var \SmartLicenseServer\Security\Context\Guard $guard
  * @var \SmartLicenseServer\Assets\AssetsManager $assets_manager
  * @var \SmartLicenseServer\Core\URLManager $urlmanager
+ * @var \SmartLicenseServer\Core\SiteFavicon|null $favicon
  */
 
 use SmartLicenseServer\Admin\Page\Shell;
@@ -78,6 +79,7 @@ if ( $request->isEmpty( 'noheader' ) ) {
 		'registry'       => $registry,
 		'assets_manager' => $assets_manager,
 		'preferences_url' => $urlmanager->client_dashboard_url( 'json/preferences' )->url(),
+		'favicon'         => $favicon ?? null,
 	] );
 
 	/*

@@ -14,6 +14,8 @@ use SmartLicenseServer\Admin\ContentHandlers\OptionsPage;
 use SmartLicenseServer\Contracts\URLManagerInterface;
 use SmartLicenseServer\Core\Request;
 use SmartLicenseServer\Core\Response;
+use SmartLicenseServer\Core\SiteFavicon;
+use SmartLicenseServer\Core\UploadedFile;
 use SmartLicenseServer\Email\Templates\EmailTemplateRegistry;
 use SmartLicenseServer\Exceptions\RequestException;
 use SmartLicenseServer\I18n\I18n;
@@ -31,8 +33,8 @@ class SettingsController {
 	public function __construct(
 		protected Settings $settings,
 		protected OptionsPage $options_page,
-		Guard $guard
-
+		Guard $guard,
+		protected SiteFavicon $favicon
 	) {
 		$this->guard = $guard;
 	}
@@ -47,6 +49,9 @@ class SettingsController {
 		try {
 			$this->is_system_admin();
 			$fields = $this->options_page->general_settings_fields();
+
+			// Checked before anything is saved, so a refused icon changes nothing.
+			$favicon_upload = $this->favicon_upload( $request );
 
 			foreach ( $fields as $field ) {
 				$key = $field['input']['name'] ?? '';
@@ -65,10 +70,17 @@ class SettingsController {
 				}
 			}
 
+			if ( null !== $favicon_upload ) {
+				$this->favicon->store( $favicon_upload );
+			} elseif ( $this->wants_favicon_removed( $request ) ) {
+				$this->favicon->remove();
+			}
+
 			return Response::json( [
 				'success' => true,
 				'data'    => [
-					'message' => smliser__( 'Settings updated successfully.' )
+					'message'     => smliser__( 'Settings updated successfully.' ),
+					'favicon_url' => $this->favicon->is_managed_by_wordpress() ? '' : $this->favicon->url()->url(),
 				]
 			] );
 		} catch ( RequestException $e ) {
@@ -359,6 +371,49 @@ class SettingsController {
 			return Response::error( $e )
 				->set_header( 'Content-Type', 'application/json; charset=utf-8' );
 		}
+	}
+
+	/**
+	 * The site favicon posted with the general settings, validated.
+	 *
+	 * Null when no file was chosen, and always under WordPress, where the
+	 * WordPress site icon applies.
+	 *
+	 * @param Request $request
+	 * @return UploadedFile|null
+	 * @throws RequestException When the file is not an acceptable icon.
+	 */
+	private function favicon_upload( Request $request ) : ?UploadedFile {
+		if ( $this->favicon->is_managed_by_wordpress() ) {
+			return null;
+		}
+
+		$file = $request->get_file( SiteFavicon::UPLOAD_FIELD );
+
+		// An empty file input is still posted, as "no file".
+		if ( null === $file || ! $file->exists() || UPLOAD_ERR_NO_FILE === $file->get_error_code() ) {
+			return null;
+		}
+
+		$problem = $this->favicon->validate( $file );
+
+		if ( null !== $problem ) {
+			$file->reject();
+			throw $problem;
+		}
+
+		return $file;
+	}
+
+	/**
+	 * Whether the general settings ask to go back to the default favicon.
+	 *
+	 * @param Request $request
+	 * @return bool
+	 */
+	private function wants_favicon_removed( Request $request ) : bool {
+		return ! $this->favicon->is_managed_by_wordpress()
+			&& '1' === (string) $request->get( SiteFavicon::REMOVE_FIELD, '' );
 	}
 
 	/**

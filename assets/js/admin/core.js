@@ -325,6 +325,7 @@
 						credentials: 'same-origin',
 					} );
 
+					form.dispatchEvent( new CustomEvent( 'smliser:options-saved', { detail: response } ) );
 					await SmliserModal.success( response?.data?.message ?? smliserI18n.__( 'Success' ), smliserI18n.__( 'Saved' ) );
 				} catch ( error ) {
 					await SmliserModal.error( error.message, error.statusText || 'Error' );
@@ -472,6 +473,98 @@
 				}
 
 				buttonsRow?.querySelector( '.clear' )?.classList.remove( 'smliser-hide' );
+			} );
+		} );
+	}
+
+	/**
+	 * The site favicon field of the general settings (templates/admin/contents/options/favicon-field.php).
+	 *
+	 * Previews the chosen icon before it is saved, and "Use Default Favicon"
+	 * asks the server to remove the uploaded one. The server validates the
+	 * file again: these checks only spare a round trip.
+	 */
+	function initFaviconField() {
+		document.querySelectorAll( '.smliser-favicon-field' ).forEach( ( field ) => {
+			/** @type {HTMLInputElement} */
+			const fileInput   = field.querySelector( 'input[type="file"]' );
+			/** @type {HTMLInputElement} */
+			const removeInput = field.querySelector( '.smliser-favicon-field_remove' );
+			/** @type {HTMLImageElement} */
+			const preview     = field.querySelector( '.smliser-favicon-field_preview' );
+			const resetBtn    = field.querySelector( '.smliser-favicon-field_reset' );
+			const status      = field.querySelector( '.smliser-favicon-field_status' );
+			const maxSize     = Number( field.dataset.maxSize ) || 0;
+			const allowed     = [ 'image/png', 'image/x-icon', 'image/vnd.microsoft.icon' ];
+
+			const revokePreview = () => {
+				if ( preview.src.startsWith( 'blob:' ) ) {
+					URL.revokeObjectURL( preview.src );
+				}
+			};
+
+			const setStatus = ( text ) => {
+				status.textContent = text;
+			};
+
+			field.querySelector( '.smliser-favicon-field_upload' )?.addEventListener( 'click', () => fileInput.click() );
+
+			fileInput.addEventListener( 'change', () => {
+				const [ file ] = fileInput.files;
+
+				if ( ! file ) {
+					return;
+				}
+
+				const isIco = file.name.toLowerCase().endsWith( '.ico' );
+
+				if ( ! allowed.includes( file.type ) && ! isIco ) {
+					fileInput.value = '';
+					SmliserToast.show( smliserI18n.__( 'Please choose a PNG or ICO file.' ), 3000 );
+					return;
+				}
+
+				if ( maxSize && file.size > maxSize ) {
+					fileInput.value = '';
+					// translators: %d: largest file size, in kilobytes.
+					SmliserToast.show( smliserI18n.sprintf( smliserI18n.__( 'The favicon must be %d KB or smaller.' ), Math.floor( maxSize / 1024 ) ), 3000 );
+					return;
+				}
+
+				revokePreview();
+				removeInput.value = '';
+				preview.src       = URL.createObjectURL( file );
+				resetBtn?.classList.remove( 'smliser-hide' );
+				setStatus( smliserI18n.__( 'Save to use this favicon.' ) );
+			} );
+
+			resetBtn?.addEventListener( 'click', () => {
+				revokePreview();
+				fileInput.value   = '';
+				removeInput.value = '1';
+				preview.src       = field.dataset.defaultSrc;
+				resetBtn.classList.add( 'smliser-hide' );
+				setStatus( smliserI18n.__( 'Save to use the default favicon.' ) );
+			} );
+
+			field.closest( 'form' )?.addEventListener( 'smliser:options-saved', ( e ) => {
+				const url = e.detail?.data?.favicon_url;
+
+				if ( ! url ) {
+					return;
+				}
+
+				revokePreview();
+				preview.src       = url;
+				fileInput.value   = '';
+				removeInput.value = '';
+				resetBtn?.classList.toggle( 'smliser-hide', url === field.dataset.defaultSrc );
+				setStatus( '' );
+
+				document.querySelectorAll( 'link[rel="icon"]' ).forEach( ( link ) => {
+					link.href = url;
+					link.removeAttribute( 'type' );
+				} );
 			} );
 		} );
 	}
@@ -2181,6 +2274,7 @@
 		initRoleBuilder,
 		initAccessControlForm,
 		initAvatarUploads,
+		initFaviconField,
 		initEntityDelete,
 		initLicenseForm,
 		initEmailTemplateFilters,
